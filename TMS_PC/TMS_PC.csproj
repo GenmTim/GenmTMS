@@ -88,6 +88,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resource\Style\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,7 +130,6 @@
     <Folder Include="Model\Dto\" />
     <Folder Include="Model\Enum\" />
     <Folder Include="Resource\Lang\" />
-    <Folder Include="Resource\Style\" />
     <Folder Include="Service\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
