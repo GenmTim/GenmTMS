@@ -25,6 +25,9 @@ namespace TMS_PC
         public MainWindow()
         {
             InitializeComponent();
+            content.Children.Clear();
+            content.Children.Add(new NotificationView());
+
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)
