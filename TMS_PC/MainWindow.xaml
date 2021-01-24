@@ -11,7 +11,8 @@
     Height="720"
     MinWidth="960"
     MinHeight="640"
-    mc:Ignorable="d" SourceInitialized="Window_SourceInitialized">
+    SourceInitialized="Window_SourceInitialized"
+    mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60" />
@@ -46,18 +47,53 @@
             </Button>
             <StackPanel>
                 <RadioButton IsChecked="True" Style="{StaticResource BrightButtonStyle}">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                            <hc:Poptip.Content>
+                                <TextBlock Text="消息" Margin="3" />
+                            </hc:Poptip.Content>
+                        </hc:Poptip>
+                    </hc:Poptip.Instance>
                     <TextBlock Text="&#xe6f8;" />
                 </RadioButton>
                 <RadioButton Style="{StaticResource BrightButtonStyle}">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                            <hc:Poptip.Content>
+                                <TextBlock Text="联系人" Margin="3" />
+                            </hc:Poptip.Content>
+                        </hc:Poptip>
+                    </hc:Poptip.Instance>
                     <TextBlock Text="&#xe6f6;" />
                 </RadioButton>
                 <RadioButton Style="{StaticResource BrightButtonStyle}">
-                    <TextBlock Text="&#xe6f4;"  />
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                            <hc:Poptip.Content>
+                                <TextBlock Text="资源" Margin="3" />
+                            </hc:Poptip.Content>
+                        </hc:Poptip>
+                    </hc:Poptip.Instance>
+                    <TextBlock Text="&#xe6f4;" />
                 </RadioButton>
                 <RadioButton Style="{StaticResource BrightButtonStyle}">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                            <hc:Poptip.Content>
+                                <TextBlock Text="日历" Margin="3" />
+                            </hc:Poptip.Content>
+                        </hc:Poptip>
+                    </hc:Poptip.Instance>
                     <TextBlock Text="&#xe6f3;" />
                 </RadioButton>
                 <RadioButton Style="{StaticResource BrightButtonStyle}">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                            <hc:Poptip.Content>
+                                <TextBlock Text="学习" Margin="3" />
+                            </hc:Poptip.Content>
+                        </hc:Poptip>
+                    </hc:Poptip.Instance>
                     <TextBlock Text="&#xe6f2;" />
                 </RadioButton>
             </StackPanel>
