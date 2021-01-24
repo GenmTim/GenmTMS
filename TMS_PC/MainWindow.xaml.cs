@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TMS_PC.Common.Helper;
+using TMS_PC.View;
 
 namespace TMS_PC
 {
@@ -24,6 +25,9 @@ namespace TMS_PC
         public MainWindow()
         {
             InitializeComponent();
+            content.Children.Clear();
+            content.Children.Add(new NotificationView());
+
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)

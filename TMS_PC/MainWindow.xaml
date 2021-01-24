@@ -98,8 +98,6 @@
                 </RadioButton>
             </StackPanel>
         </StackPanel>
-        <Grid Grid.Column="1">
-            <ContentControl />
-        </Grid>
+        <Grid x:Name="content" Grid.Column="1" />
     </Grid>
 </Window>
