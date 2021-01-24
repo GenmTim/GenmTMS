@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TMS_PC"
     xmlns:view="clr-namespace:TMS_PC.View"
-    StartupUri="MainWindow.xaml">
+    StartupUri="/View/LoginView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
