@@ -1,0 +1,197 @@
+﻿<UserControl
+    x:Class="TMS_PC.View.Appraisal.Apprasial"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:uc="clr-namespace:TMS_PC.View.Appraisal"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="TitleFontStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Margin" Value="10,0,10,10" />
+        </Style>
+
+        <Style x:Key="InfoGroupStyle" TargetType="StackPanel">
+            <Setter Property="Margin" Value="0,0,0,20" />
+        </Style>
+        <Style BasedOn="{StaticResource MyTextBoxBaseStyle}" TargetType="hc:TextBox">
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+        <Style BasedOn="{StaticResource MyComboBoxBaseStyle}" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+        <Style
+            x:Key="NewBorderRegion"
+            BasedOn="{StaticResource BorderRegion}"
+            TargetType="Border">
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+    </UserControl.Resources>
+    <hc:SimplePanel>
+        <hc:SimplePanel>
+            <Border
+                Width="725"
+                Background="White"
+                Effect="{StaticResource EffectShadow1}"
+                Style="{StaticResource NewBorderRegion}"
+                UseLayoutRounding="True">
+                <StackPanel Margin="10,30,0,10" Orientation="Vertical">
+                    <Grid Margin="0,0,0,20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                            <TextBlock
+                                Width="5"
+                                Height="20"
+                                Background="#3370FF" />
+                            <TextBlock
+                                Text="基础信息"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"
+                            Margin="20,20,20,0"
+                            Orientation="Vertical">
+                            <StackPanel Style="{StaticResource InfoGroupStyle}">
+                                <TextBlock Text="汇报名称" Style="{StaticResource TitleFontStyle}" />
+
+                                <hc:TextBox hc:InfoElement.Placeholder="请输入内容" IsError="False" />
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource InfoGroupStyle}">
+                                <TextBlock Text="汇报图标" Style="{StaticResource TitleFontStyle}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton Content="&#xe61d;" Style="{StaticResource GenmBrightButtonStyle}" />
+                                    <RadioButton Content="&#xe61d;" Style="{StaticResource GenmBrightButtonStyle}" />
+                                    <RadioButton Content="&#xe61d;" Style="{StaticResource GenmBrightButtonStyle}" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource InfoGroupStyle}">
+                                <TextBlock Text="时区" Style="{StaticResource TitleFontStyle}" />
+                                <ComboBox SelectedIndex="0">
+                                    <ComboBox.Items>
+                                        <sys:String>中国标准时间</sys:String>
+                                    </ComboBox.Items>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Margin="0,0,0,20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                            <TextBlock
+                                Width="5"
+                                Height="20"
+                                Background="#3370FF" />
+                            <TextBlock
+                                Text="周期设置"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"
+                            Margin="20,20,20,0"
+                            Orientation="Vertical">
+                            <StackPanel Style="{StaticResource InfoGroupStyle}">
+                                <TextBlock Text="重复频率" Style="{StaticResource TitleFontStyle}" />
+                                <ComboBox SelectedIndex="0">
+                                    <ComboBox.Items>
+                                        <sys:String>每天</sys:String>
+                                        <sys:String>每周</sys:String>
+                                        <sys:String>每月</sys:String>
+                                        <sys:String>不重复</sys:String>
+                                    </ComboBox.Items>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                            <TextBlock
+                                Width="5"
+                                Height="20"
+                                Background="#3370FF" />
+                            <TextBlock
+                                Text="汇报内容"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"
+                            Margin="20,20,20,0"
+                            Orientation="Vertical">
+                            <StackPanel x:Name="stackPanel" Style="{StaticResource InfoGroupStyle}">
+                                <uc:ASubjectBox Margin="0,0,0,10" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                            <TextBlock
+                                Width="5"
+                                Height="20"
+                                Background="#3370FF" />
+                            <TextBlock
+                                Text="人员设置"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"
+                            Margin="20,20,20,0"
+                            Orientation="Vertical">
+                            <StackPanel Style="{StaticResource InfoGroupStyle}">
+                                <TextBlock Text="汇报给" Style="{StaticResource TitleFontStyle}" />
+                                <ComboBox SelectedIndex="0">
+                                    <ComboBox.Items>
+                                        <sys:String>指定成员</sys:String>
+                                        <sys:String>向直接主管汇报</sys:String>
+                                    </ComboBox.Items>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource InfoGroupStyle}">
+                                <TextBlock Text="谁需要汇报" Style="{StaticResource TitleFontStyle}" />
+                                <ComboBox SelectedIndex="0">
+                                    <ComboBox.Items>
+                                        <sys:String>指定成员</sys:String>
+                                        <sys:String>向直接主管汇报</sys:String>
+                                    </ComboBox.Items>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource InfoGroupStyle}">
+                                <TextBlock Text="抄送对象" Style="{StaticResource TitleFontStyle}" />
+                                <ComboBox SelectedIndex="0">
+                                    <ComboBox.Items>
+                                        <sys:String>指定成员</sys:String>
+                                        <sys:String>向直接主管汇报</sys:String>
+                                    </ComboBox.Items>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Button
+                        Content="保存设置"
+                        Width="200"
+                        Height="45"
+                        Style="{StaticResource ButtonPrimary}" />
+                </StackPanel>
+            </Border>
+        </hc:SimplePanel>
+    </hc:SimplePanel>
+</UserControl>

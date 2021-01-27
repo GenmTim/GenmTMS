@@ -72,5 +72,36 @@ namespace TMS_PC
         {
             this.Close();
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        { 
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Tag == null) return;
+            if (radioButton.Tag.Equals("测试Tag"))
+            {
+                mainContent.Content = new AppraisalView();
+            }
+        }
+
+        int i = 0;
+        /// <summary>
+        /// 标题栏双击事件
+        /// </summary>
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            i += 1;
+            System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 300);
+            timer.Tick += (s, e1) => { timer.IsEnabled = false; i = 0; };
+            timer.IsEnabled = true;
+
+            if (i % 2 == 0)
+            {
+                timer.IsEnabled = false;
+                i = 0;
+                this.WindowState = this.WindowState == WindowState.Maximized ?
+                              WindowState.Normal : WindowState.Maximized;
+            }
+        }
     }
 }

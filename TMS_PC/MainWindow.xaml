@@ -28,7 +28,10 @@
             <RowDefinition Height="26" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Background="#FFFFFF" MouseMove="Grid_MouseMove">
+        <Grid
+            hc:WindowAttach.IsDragElement="True"
+            Background="#FFFFFF"
+            MouseDown="TitleBar_MouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition />
@@ -96,7 +99,10 @@
                 </Button>
 
                 <StackPanel>
-                    <RadioButton IsChecked="True" Style="{StaticResource BrightButtonStyle}">
+                    <RadioButton
+                        IsChecked="True"
+                        Checked="RadioButton_Checked"
+                        Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
                                 <hc:Poptip.Content>
@@ -106,7 +112,7 @@
                         </hc:Poptip.Instance>
                         <TextBlock Text="&#xe6f8;" />
                     </RadioButton>
-                    <RadioButton Style="{StaticResource BrightButtonStyle}">
+                    <RadioButton Checked="RadioButton_Checked" Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
                                 <hc:Poptip.Content>
@@ -116,7 +122,10 @@
                         </hc:Poptip.Instance>
                         <TextBlock Text="&#xe6f6;" />
                     </RadioButton>
-                    <RadioButton Style="{StaticResource BrightButtonStyle}">
+                    <RadioButton
+                        Checked="RadioButton_Checked"
+                        Tag="测试Tag"
+                        Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
                                 <hc:Poptip.Content>
@@ -126,7 +135,7 @@
                         </hc:Poptip.Instance>
                         <TextBlock Text="&#xe6f4;" />
                     </RadioButton>
-                    <RadioButton Style="{StaticResource BrightButtonStyle}">
+                    <RadioButton Checked="RadioButton_Checked" Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
                                 <hc:Poptip.Content>
@@ -136,7 +145,7 @@
                         </hc:Poptip.Instance>
                         <TextBlock Text="&#xe6f3;" />
                     </RadioButton>
-                    <RadioButton Style="{StaticResource BrightButtonStyle}">
+                    <RadioButton Checked="RadioButton_Checked" Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
                                 <hc:Poptip.Content>
