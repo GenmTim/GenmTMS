@@ -4,8 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TMS_PC"
     xmlns:view="clr-namespace:TMS_PC.View"
-    xmlns:prism="http://prismlibrary.com/"
-    StartupUri="/View/LoginView.xaml">
+    xmlns:prism="http://prismlibrary.com/">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
