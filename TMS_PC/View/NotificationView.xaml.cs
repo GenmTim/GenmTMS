@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TMS_PC.ViewModel;
 
 namespace TMS_PC.View
 {
@@ -23,6 +24,8 @@ namespace TMS_PC.View
 		public NotificationView()
 		{
 			InitializeComponent();
+			NotificationViewModel wm = new NotificationViewModel();
+			DataContext = wm;
 		}
 	}
 }

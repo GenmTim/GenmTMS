@@ -1,0 +1,108 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:hc="https://handyorg.github.io/handycontrol">
+    <!--  ListView的布局模板  -->
+    <ControlTemplate x:Key="myLVTemplate" TargetType="{x:Type ListView}">
+        <Grid>
+            <hc:ScrollViewer x:Name="ScrollViewerElement"
+                Background="White"
+                IsInertiaEnabled="True"
+                Orientation="Vertical"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Disabled">
+                <ItemsPresenter />
+            </hc:ScrollViewer>
+        </Grid>
+    </ControlTemplate>
+    <!--  ListViewItem的布局模板  -->
+    <DataTemplate x:Key="myLVItemTemplate">
+        <Border x:Name="itemBorder"
+            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}, Path=Width}"
+            Height="65"
+            BorderBrush="#003370FF"
+            BorderThickness="3,0,0,0"
+            Background="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <hc:Gravatar Grid.Column="0"
+                    Width="35"
+                    Height="35"
+                    Margin="12,0"
+                    Style="{StaticResource GravatarCircleImg}"
+                    Id="{Binding Path=ImgName}">
+                    <!--<Image
+                    Name="img"
+                    Width="32"
+                    Height="32"
+                    HorizontalAlignment="Center"
+                    Source="{Binding Path=ISource}"
+                    Stretch="UniformToFill"
+                    ToolTip="{Binding Path=FullFileName}">-->
+                </hc:Gravatar>
+                <DockPanel Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center">
+                    <TextBlock
+                        Text="{Binding Path=Content}"
+                        Margin="0,2"
+                        FontSize="10"
+                        Foreground="#777"
+                        DockPanel.Dock="Bottom" />
+                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                        <TextBlock x:Name="imgTitle"
+                            Text="{Binding Path=Title}"
+                            Margin="0,2"
+                            VerticalAlignment="Center"
+                            FontSize="14" />
+                        <TextBlock
+                            Text="BOT"
+                            Margin="8,0"
+                            Padding="5,2"
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Background="#FAF1D1"
+                            FontSize="10"
+                            Foreground="#DC9B04" />
+                    </StackPanel>
+                    <TextBlock
+                        Text="{Binding Path=Date}"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontSize="11"
+                        Foreground="#777" />
+                </DockPanel>
+            </Grid>
+        </Border>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListViewItem}}, Path=IsSelected}" Value="True">
+                <Setter TargetName="itemBorder" Property="BorderBrush" Value="#ff3370FF" />
+                <Setter TargetName="itemBorder" Property="Background" Value="#EFF0F1" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+    <!--  下面这段代码不用，选中的时候边框有些边会变成蓝色（不是你希望的颜色）  -->
+    <Style x:Key="ItemContainerStyle" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border x:Name="Bd"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="0">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Bd" Property="Background" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
