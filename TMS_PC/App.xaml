@@ -4,12 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TMS_PC"
     xmlns:view="clr-namespace:TMS_PC.View"
-    StartupUri="/View/LoginView.xaml">
+    StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+                <ResourceDictionary Source="Resource/Style/TestStyle.xaml" />
                 <ResourceDictionary Source="Resource/Style/Style.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

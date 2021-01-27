@@ -114,7 +114,9 @@
     </ApplicationDefinition>
     <Compile Include="Common\Event\WindowNormalEvent.cs" />
     <Compile Include="Common\Helper\IconHelper.cs" />
+    <Compile Include="Model\Entity\NotificationItemEntity.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\NotificationViewModel.cs" />
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -135,6 +137,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resource\Style\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\Style\TestStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
