@@ -118,7 +118,7 @@
             Width="2"
             HorizontalAlignment="Center" />
         <StackPanel Grid.Column="2">
-            <Button Content="anniu" />
+            <Button Content="asasdaaasad" />
         </StackPanel>
     </Grid>
 </UserControl>

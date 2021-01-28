@@ -12,6 +12,8 @@
         <Setter Property="Foreground" Value="#245BDC" />
     </Style>
     <Style BasedOn="{StaticResource ButtonBaseStyle}" TargetType="Button">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="White" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     </Style>
     <Style BasedOn="{StaticResource CheckBoxBaseStyle}" TargetType="CheckBox">
