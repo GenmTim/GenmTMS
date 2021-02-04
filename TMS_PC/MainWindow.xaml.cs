@@ -84,7 +84,10 @@ namespace TMS_PC
             else if (radioButton.Tag.Equals("Tag2"))
             {
                 mainContent.Content = new AppraisalView();
-
+            }
+            else if (radioButton.Tag.Equals("Tag3"))
+            {
+                mainContent.Content = new ApplicationView();
             }
         }
 
