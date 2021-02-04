@@ -77,9 +77,14 @@ namespace TMS_PC
         { 
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Tag == null) return;
-            if (radioButton.Tag.Equals("测试Tag"))
+            if (radioButton.Tag.Equals("Tag1"))
+            {
+                mainContent.Content = new NotificationView();
+            }
+            else if (radioButton.Tag.Equals("Tag2"))
             {
                 mainContent.Content = new AppraisalView();
+
             }
         }
 

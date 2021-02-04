@@ -101,6 +101,7 @@
                 <StackPanel>
                     <RadioButton
                         IsChecked="True"
+                        Tag="Tag1"
                         Checked="RadioButton_Checked"
                         Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
@@ -112,7 +113,10 @@
                         </hc:Poptip.Instance>
                         <TextBlock Text="&#xe6f8;" />
                     </RadioButton>
-                    <RadioButton Checked="RadioButton_Checked" Style="{StaticResource BrightButtonStyle}">
+                    <RadioButton
+                        Tag="Tag2"
+                        Checked="RadioButton_Checked"
+                        Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
                                 <hc:Poptip.Content>
@@ -124,7 +128,7 @@
                     </RadioButton>
                     <RadioButton
                         Checked="RadioButton_Checked"
-                        Tag="测试Tag"
+                        Tag="Tag3"
                         Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
@@ -135,7 +139,10 @@
                         </hc:Poptip.Instance>
                         <TextBlock Text="&#xe6f4;" />
                     </RadioButton>
-                    <RadioButton Checked="RadioButton_Checked" Style="{StaticResource BrightButtonStyle}">
+                    <RadioButton
+                        Tag="Tag4"
+                        Checked="RadioButton_Checked"
+                        Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
                                 <hc:Poptip.Content>
@@ -145,7 +152,10 @@
                         </hc:Poptip.Instance>
                         <TextBlock Text="&#xe6f3;" />
                     </RadioButton>
-                    <RadioButton Checked="RadioButton_Checked" Style="{StaticResource BrightButtonStyle}">
+                    <RadioButton
+                        Tag="Tag5"
+                        Checked="RadioButton_Checked"
+                        Style="{StaticResource BrightButtonStyle}">
                         <hc:Poptip.Instance>
                             <hc:Poptip Style="{StaticResource BlockPopTip}">
                                 <hc:Poptip.Content>
