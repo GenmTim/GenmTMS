@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7DDDC371-A935-4F58-A752-1DA40A0EE918}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TMS.DeskTop</RootNamespace>
+    <AssemblyName>TMS.DeskTop</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Resources\Converters\Converter.cs" />
+    <Compile Include="UserControls\ViewModels\BackNavigationViewModel.cs" />
+    <Compile Include="UserControls\Views\BackNavigationView.xaml.cs">
+      <DependentUpon>BackNavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CheckItemPopup.xaml.cs">
+      <DependentUpon>CheckItemPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FieldTypeCheckBox.xaml.cs">
+      <DependentUpon>FieldTypeCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VariableListBox.xaml.cs">
+      <DependentUpon>VariableListBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WorkPlace\EvaluationViewModel.cs" />
+    <Compile Include="ViewModels\WorkPlace\Evaluation\EvaluationMainViewModel.cs" />
+    <Compile Include="ViewModels\WorkPlace\Evaluation\FullInEvaluationViewModel.cs" />
+    <Compile Include="ViewModels\WorkPlace\Evaluation\ManageEvaluationViewModel.cs" />
+    <Compile Include="ViewModels\WorkPlace\Evaluation\NewEvaluationRuleViewModel.cs" />
+    <Compile Include="ViewModels\WorkPlace\Evaluation\ViewEvaluationViewModel.cs" />
+    <Compile Include="ViewModels\WorkPlace\WorkPlaceMainViewModel.cs" />
+    <Compile Include="Views\WorkPlaceView.xaml.cs">
+      <DependentUpon>WorkPlaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkPlace\EvaluationView.xaml.cs">
+      <DependentUpon>EvaluationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkPlace\Evaluation\EvaluationMainView.xaml.cs">
+      <DependentUpon>EvaluationMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkPlace\Evaluation\FullInEvaluationView.xaml.cs">
+      <DependentUpon>FullInEvaluationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkPlace\Evaluation\ManageEvaluationView.xaml.cs">
+      <DependentUpon>ManageEvaluationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkPlace\Evaluation\NewEvaluationRuleView.xaml.cs">
+      <DependentUpon>NewEvaluationRuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkPlace\Evaluation\ViewEvaluationView.xaml.cs">
+      <DependentUpon>ViewEvaluationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkPlace\WorkPlaceMainView.xaml.cs">
+      <DependentUpon>WorkPlaceMainView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\Converters\Converter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Geometry\TestGeometry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\UserControls\CheckItemPopupStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Views\MainWindowStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\Views\WorkPlaceViewStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\Views\WorkPlace\Evaluation\FullInEvaluationViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Views\WorkPlace\Evaluation\ManageEvaluationViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Views\WorkPlace\Evaluation\ViewEvaluationViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Views\BackNavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CheckItemPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FieldTypeCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\VariableListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModuleInfo.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\WorkPlaceViewModel.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\WorkPlaceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WorkPlace\EvaluationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkPlace\Evaluation\EvaluationMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkPlace\Evaluation\FullInEvaluationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkPlace\Evaluation\ManageEvaluationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkPlace\Evaluation\NewEvaluationRuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkPlace\Evaluation\ViewEvaluationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkPlace\WorkPlaceMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\Fonts\iconfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HandyControl">
+      <Version>3.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\empty.png" />
+    <Resource Include="Resources\Images\empty_record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tools\Converter\" />
+    <Folder Include="Tools\Helper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Assets\applogoexample.png" />
+    <Resource Include="Resources\Images\Assets\apps.png" />
+    <Resource Include="Resources\Images\Assets\bell.png" />
+    <Resource Include="Resources\Images\Assets\bell_16.png" />
+    <Resource Include="Resources\Images\Assets\bell_64.png" />
+    <Resource Include="Resources\Images\Assets\calendarcolor.png" />
+    <Resource Include="Resources\Images\Assets\calendarwhite.png" />
+    <Resource Include="Resources\Images\Assets\cartcolor.png" />
+    <Resource Include="Resources\Images\Assets\cartwhite.png" />
+    <Resource Include="Resources\Images\Assets\chatcolor.png" />
+    <Resource Include="Resources\Images\Assets\chatwhite.png" />
+    <Resource Include="Resources\Images\Assets\closecolor.png" />
+    <Resource Include="Resources\Images\Assets\closewhite.png" />
+    <Resource Include="Resources\Images\Assets\cloud.png" />
+    <Resource Include="Resources\Images\Assets\contacts.png" />
+    <Resource Include="Resources\Images\Assets\desk.jpg" />
+    <Resource Include="Resources\Images\Assets\desk2.jpg" />
+    <Resource Include="Resources\Images\Assets\document.png" />
+    <Resource Include="Resources\Images\Assets\downloadsfolder.png" />
+    <Resource Include="Resources\Images\Assets\dropbox.png" />
+    <Resource Include="Resources\Images\Assets\folder.png" />
+    <Resource Include="Resources\Images\Assets\googledrive.png" />
+    <Resource Include="Resources\Images\Assets\image.png" />
+    <Resource Include="Resources\Images\Assets\image1.jpg" />
+    <Resource Include="Resources\Images\Assets\image2.jpg" />
+    <Resource Include="Resources\Images\Assets\image3.jpg" />
+    <Resource Include="Resources\Images\Assets\image4.jpg" />
+    <Resource Include="Resources\Images\Assets\image5.jpg" />
+    <Resource Include="Resources\Images\Assets\image6.jpg" />
+    <Resource Include="Resources\Images\Assets\image6.png" />
+    <Resource Include="Resources\Images\Assets\image7.jpg" />
+    <Resource Include="Resources\Images\Assets\image8.jpg" />
+    <Resource Include="Resources\Images\Assets\image9.jpg" />
+    <Resource Include="Resources\Images\Assets\left.png" />
+    <Resource Include="Resources\Images\Assets\Logo.png" />
+    <Resource Include="Resources\Images\Assets\logoutwhite.png" />
+    <Resource Include="Resources\Images\Assets\mailcolor.png" />
+    <Resource Include="Resources\Images\Assets\mailwhite.png" />
+    <Resource Include="Resources\Images\Assets\mmc.png" />
+    <Resource Include="Resources\Images\Assets\music.png" />
+    <Resource Include="Resources\Images\Assets\newdocument.png" />
+    <Resource Include="Resources\Images\Assets\new_custom48.png" />
+    <Resource Include="Resources\Images\Assets\noimage.png" />
+    <Resource Include="Resources\Images\Assets\notifcolor.png" />
+    <Resource Include="Resources\Images\Assets\notifwhite.png" />
+    <Resource Include="Resources\Images\Assets\onedrive.png" />
+    <Resource Include="Resources\Images\Assets\play.png" />
+    <Resource Include="Resources\Images\Assets\plus.png" />
+    <Resource Include="Resources\Images\Assets\profilewhite.png" />
+    <Resource Include="Resources\Images\Assets\profolder.png" />
+    <Resource Include="Resources\Images\Assets\recent.png" />
+    <Resource Include="Resources\Images\Assets\right.png" />
+    <Resource Include="Resources\Images\Assets\right2.png" />
+    <Resource Include="Resources\Images\Assets\search.png" />
+    <Resource Include="Resources\Images\Assets\searchcolor.png" />
+    <Resource Include="Resources\Images\Assets\searchwhite.png" />
+    <Resource Include="Resources\Images\Assets\settings.png" />
+    <Resource Include="Resources\Images\Assets\share.png" />
+    <Resource Include="Resources\Images\Assets\sms.png" />
+    <Resource Include="Resources\Images\Assets\star.png" />
+    <Resource Include="Resources\Images\Assets\testprofile.jpg" />
+    <Resource Include="Resources\Images\Assets\todobw.png" />
+    <Resource Include="Resources\Images\Assets\todocolor.png" />
+    <Resource Include="Resources\Images\Assets\trash.png" />
+    <Resource Include="Resources\Images\Assets\video.png" />
+    <Resource Include="Resources\Images\Assets\zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\designer_and_client_2__dribbble__1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ngc6960.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TMS.Core\TMS.Core.csproj">
+      <Project>{c007311e-5ad4-4c0c-a9bb-87c5bbcc7209}</Project>
+      <Name>TMS.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

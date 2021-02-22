@@ -131,7 +131,7 @@
                                             Margin="20,0,0,0"
                                             Effect="{StaticResource EffectShadow1}"
                                             CornerRadius="8">
-                                            <hc:GifImage Height="500" Uri="\Resource\Image\designer_and_client_2__dribbble__1.gif">
+                                            <hc:GifImage Height="500">
                                                 <hc:GifImage.Clip>
                                                     <!--  矩形裁剪  -->
                                                     <RectangleGeometry
