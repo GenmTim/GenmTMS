@@ -121,7 +121,7 @@
                                                                 Text="&#xe64f;"
                                                                 HorizontalAlignment="Center"
                                                                 VerticalAlignment="Center"
-                                                                FontFamily="/Resource/Font/#iconfont"
+                                                                FontFamily="/Resources/Fonts/#iconfont"
                                                                 FontSize="20"
                                                                 Foreground="#FF8B8E93" />
                                                         </Border>

@@ -11,6 +11,7 @@ namespace TMS.DeskTop.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+
         private IRegionManager regionManager;
         private static int i = 0;
 
@@ -21,11 +22,11 @@ namespace TMS.DeskTop.Views
             this.regionManager.RegisterViewWithRegion(RegionToken.MainContent, typeof(WorkPlaceView));
 
 
-            this.MouseMove += (s, e) =>
-            {
-                if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
-                    this.DragMove();
-            };
+            //this.MouseMove += (s, e) =>
+            //    {
+            //        if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            //            this.DragMove();
+            //    };
         }
 
         private void InitDefaultData()

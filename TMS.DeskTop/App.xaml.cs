@@ -1,6 +1,6 @@
 ﻿using Prism.Ioc;
 using System.Windows;
-using TMS.DeskTop.UserControls;
+using TMS.Core.Service;
 using TMS.DeskTop.UserControls.ViewModels;
 using TMS.DeskTop.UserControls.Views;
 using TMS.DeskTop.ViewModels;
@@ -24,6 +24,8 @@ namespace TMS.DeskTop
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IDialogHostService, DialogHostService>();
+
             containerRegistry.RegisterForNavigation<WorkPlaceView, WorkPlaceViewModel>();
             containerRegistry.RegisterForNavigation<WorkPlaceMainView, WorkPlaceMainViewModel>();
             containerRegistry.RegisterForNavigation<EvaluationView, EvaluationViewModel>();
@@ -33,6 +35,11 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<ViewEvaluationView, ViewEvaluationViewModel>();
             containerRegistry.RegisterForNavigation<BackNavigationView, BackNavigationViewModel>();
             containerRegistry.RegisterForNavigation<NewEvaluationRuleView, NewEvaluationRuleViewModel>();
+            containerRegistry.RegisterForNavigation<CheckItemDialog, CheckItemDialogModel>();
+            containerRegistry.RegisterForNavigation<ContactsView, ContactsViewModel>();
+            containerRegistry.RegisterForNavigation<NotificationView, NotificationViewModel>();
+            containerRegistry.RegisterForNavigation<AttendanceView>();
+            //containerRegistry.RegisterDialog<CheckItemDialog, CheckItemDialogModel>();
             //containerRegistry.Register<EvaluationViewModel>();
         }
     }

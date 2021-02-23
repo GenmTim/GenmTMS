@@ -1,6 +1,4 @@
-﻿using Prism.Modularity;
-using Prism.Mvvm;
-using Prism.Regions;
+﻿using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
 

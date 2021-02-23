@@ -2,15 +2,15 @@
     x:Class="TMS.DeskTop.Views.WorkPlace.WorkPlaceMainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:hc="https://handyorg.github.io/handycontrol"
-    xmlns:prism="http://prismlibrary.com/"
     xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="615"
-    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignWidth="1000"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     Background="#FFEEEEEE"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -42,8 +42,8 @@
                                     Text="&#xe60e;"
                                     Margin="15,0,0,0"
                                     VerticalAlignment="Center"
-                                    FontSize="40"
-                                    FontFamily="/Resources/Fonts/#iconfont" />
+                                    FontFamily="/Resources/Fonts/#iconfont"
+                                    FontSize="40" />
                                 <TextBlock
                                     Text="日报"
                                     Margin="10,0,0,0"
@@ -74,8 +74,8 @@
                                     Text="&#xe60e;"
                                     Margin="15,0,0,0"
                                     VerticalAlignment="Center"
-                                    FontSize="40"
-                                    FontFamily="/Resources/Fonts/#iconfont" />
+                                    FontFamily="/Resources/Fonts/#iconfont"
+                                    FontSize="40" />
                                 <TextBlock
                                     Text="日报"
                                     Margin="10,0,0,0"
@@ -117,15 +117,15 @@
                             <TextBlock
                                 Text="&#xe61d;"
                                 VerticalAlignment="Center"
+                                FontFamily="/Resources/Fonts/#iconfont"
                                 FontSize="24"
-                                Foreground="#FF6B717A"
-                                FontFamily="/Resources/Fonts/#iconfont" />
+                                Foreground="#FF6B717A" />
                             <TextBlock
                                 Text="小提示"
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center"
-                                Foreground="#FF6B717A"
-                                FontSize="15" />
+                                FontSize="15"
+                                Foreground="#FF6B717A" />
                         </StackPanel>
                         <StackPanel
                             Margin="0,0,20,0"
@@ -134,15 +134,15 @@
                             <TextBlock
                                 Text="&#xe626;"
                                 VerticalAlignment="Center"
+                                FontFamily="/Resources/Fonts/#iconfont"
                                 FontSize="24"
-                                Foreground="#FF6B717A"
-                                FontFamily="/Resources/Fonts/#iconfont" />
+                                Foreground="#FF6B717A" />
                             <TextBlock
                                 Text="获取应用"
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center"
-                                Foreground="#FF6B717A"
-                                FontSize="15" />
+                                FontSize="15"
+                                Foreground="#FF6B717A" />
                         </StackPanel>
                         <StackPanel
                             Margin="0,0,20,0"
@@ -151,15 +151,15 @@
                             <TextBlock
                                 Text="&#xe6ef;"
                                 VerticalAlignment="Center"
+                                FontFamily="/Resources/Fonts/#iconfont"
                                 FontSize="24"
-                                Foreground="#FF6B717A"
-                                FontFamily="/Resources/Fonts/#iconfont" />
+                                Foreground="#FF6B717A" />
                             <TextBlock
                                 Text="创建应用"
                                 Margin="5,0,0,0"
                                 VerticalAlignment="Center"
-                                Foreground="#FF6B717A"
-                                FontSize="15" />
+                                FontSize="15"
+                                Foreground="#FF6B717A" />
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -178,8 +178,8 @@
                                     Width="400"
                                     Height="150"
                                     Margin="20,0,0,0"
-                                    Effect="{StaticResource EffectShadow1}"
-                                    CornerRadius="8">
+                                    CornerRadius="8"
+                                    Effect="{StaticResource EffectShadow1}">
                                     <hc:GifImage x:Name="displayBorder" Height="300">
                                         <hc:GifImage.Clip>
                                             <!--  矩形裁剪  -->
@@ -199,7 +199,10 @@
                                         Command="{Binding NavigationCommand}"
                                         CommandParameter="EvaluationView"
                                         Style="{StaticResource menuButtonTemplate}" />
-                                    <Button Style="{StaticResource menuButtonTemplate}" />
+                                    <Button
+                                        Command="{Binding NavigationCommand}"
+                                        CommandParameter="AttendanceView"
+                                        Style="{StaticResource menuButtonTemplate}" />
                                     <Button Style="{StaticResource menuButtonTemplate}" />
                                     <Button Style="{StaticResource menuButtonTemplate}" />
 

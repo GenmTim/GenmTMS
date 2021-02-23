@@ -13,7 +13,7 @@
         <Style x:Key="ContentOptBtnStyle" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontFamily" Value="/Resource/Font/#iconfont" />
+            <Setter Property="FontFamily" Value="/Resources/Fonts/#iconfont" />
             <Setter Property="FontSize" Value="25" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Foreground" Value="#A0A0A0" />
@@ -127,7 +127,7 @@
                             Text="&#xe64f;"
                             Padding="0"
                             VerticalAlignment="Center"
-                            FontFamily="/Resource/Font/#iconfont"
+                            FontFamily="/Resources/Fonts/#iconfont"
                             FontSize="15"
                             Foreground="#245BDC" />
                         <TextBlock

@@ -97,7 +97,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
             var param = new NavigationParameters();
             param.Add("title", "新建考评规则");
             param.Add("obj", "NewEvaluationRuleView");
-            regionManager.RequestNavigate(RegionToken.EvaluationMainContent, "BackNavigationView", arg =>
+            regionManager.RequestNavigate(RegionToken.EvaluationContent, "BackNavigationView", arg =>
             {
                 journal = arg.Context.NavigationService.Journal;
             }, param);

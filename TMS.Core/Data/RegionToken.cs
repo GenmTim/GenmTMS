@@ -11,5 +11,7 @@
         public static readonly string EvaluationMainContent = nameof(EvaluationMainContent);
 
         public static readonly string BackNavigationContent = nameof(BackNavigationContent);
+     
+        public static readonly string AttendanceContent = nameof(AttendanceContent);
     }
 }

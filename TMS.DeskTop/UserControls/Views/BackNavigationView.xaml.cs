@@ -1,7 +1,4 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Regions;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace TMS.DeskTop.UserControls.Views
 {

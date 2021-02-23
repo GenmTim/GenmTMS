@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "I9cFt89eOBwJi8UNp8+eV3DXm5uUerVT0agc7XvlDX8MbAYqtPcGSdmI3bg5fX/OCMHwdaIpwLz/tFlQeEvbYg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Codel\\Desktop\\SuperGame\\开发\\C#\\official\\TMS_PC\\TMS.Core\\TMS.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Codel\\.nuget\\packages\\dryioc.dll\\4.5.0\\dryioc.dll.4.5.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\handycontrol\\3.0.0\\handycontrol.3.0.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\prism.core\\8.0.0.1909\\prism.core.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\prism.dryioc\\8.0.0.1909\\prism.dryioc.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\prism.wpf\\8.0.0.1909\\prism.wpf.8.0.0.1909.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\Codel\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}

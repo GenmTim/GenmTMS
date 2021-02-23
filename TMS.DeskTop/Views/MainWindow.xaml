@@ -2,9 +2,9 @@
     x:Class="TMS.DeskTop.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:prism="http://prismlibrary.com/"
-    xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:prism="http://prismlibrary.com/"
     Width="1500"
     Height="900"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -57,7 +57,11 @@
                         </Grid.RowDefinitions>
                         <UniformGrid Columns="1">
                             <!--  Adding Menu buttons  -->
-                            <RadioButton Style="{StaticResource menuRadioButtonTemplate}" Tag="Tag3">
+                            <RadioButton
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="NotificationView"
+                                Style="{StaticResource menuRadioButtonTemplate}"
+                                Tag="Tag3">
                                 <hc:Poptip.Instance>
                                     <hc:Poptip Style="{StaticResource BlockPopTip}">
                                         <hc:Poptip.Content>
@@ -72,7 +76,12 @@
                                         Stretch="Uniform" />
                                 </RadioButton.Content>
                             </RadioButton>
-                            <RadioButton Style="{StaticResource menuRadioButtonTemplate}" Tag="Contacts">
+                            <RadioButton
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="ContactsView"
+                                Cursor="Hand"
+                                Style="{StaticResource menuRadioButtonTemplate}"
+                                Tag="Contacts">
                                 <hc:Poptip.Instance>
                                     <hc:Poptip Style="{StaticResource BlockPopTip}">
                                         <hc:Poptip.Content>

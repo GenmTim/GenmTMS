@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HandyControl" Version="3.0.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
   </ItemGroup>
 

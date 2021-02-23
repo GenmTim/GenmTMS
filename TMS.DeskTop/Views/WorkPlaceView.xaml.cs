@@ -1,6 +1,5 @@
 ﻿using Prism.Regions;
 using System.Windows.Controls;
-using TMS.Core.Data;
 
 namespace TMS.DeskTop.Views
 {
