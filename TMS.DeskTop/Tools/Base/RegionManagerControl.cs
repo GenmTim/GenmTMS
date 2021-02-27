@@ -33,10 +33,7 @@ namespace TMS.DeskTop.Tools.Base
         {
             foreach (KeyValuePair<string, string> kvp in regionsDefaultView)
             {
-                if (!this.regionManager.Regions.ContainsRegionWithName(kvp.Key))
-                {
                     this.regionManager.RequestNavigate(kvp.Key, kvp.Value);
-                }
             }
             this.Loaded -= LoadDefaultRegionView;
         }

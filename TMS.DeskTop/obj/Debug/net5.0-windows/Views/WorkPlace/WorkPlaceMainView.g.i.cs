@@ -81,7 +81,7 @@ namespace TMS.DeskTop.Views.WorkPlace {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;V1.0.0.0;component/views/workplace/workplacemainview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;component/views/workplace/workplacemainview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\WorkPlace\WorkPlaceMainView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

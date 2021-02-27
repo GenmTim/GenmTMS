@@ -65,8 +65,7 @@ namespace TMS.DeskTop.Views.WorkPlace.Evaluation {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;V1.0.0.0;component/views/workplace/evaluation/manageevaluationview.x" +
-                    "aml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;component/views/workplace/evaluation/manageevaluationview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\Views\WorkPlace\Evaluation\ManageEvaluationView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

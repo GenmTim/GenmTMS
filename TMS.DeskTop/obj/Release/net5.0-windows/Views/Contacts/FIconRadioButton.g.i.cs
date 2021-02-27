@@ -68,7 +68,7 @@ namespace TMS.DeskTop.Views.Contacts {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;V1.0.0.0;component/views/contacts/ficonradiobutton.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;component/views/contacts/ficonradiobutton.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Contacts\FIconRadioButton.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -65,7 +65,7 @@ namespace TMS.DeskTop.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;V1.0.0.0;component/usercontrols/fieldtypecheckbox.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;component/usercontrols/fieldtypecheckbox.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UserControls\FieldTypeCheckBox.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

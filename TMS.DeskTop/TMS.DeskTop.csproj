@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\iconfont.ttf" />
+    <None Remove="Resources\Fonts\iconfontplus.ttf" />
     <None Remove="Resources\Images\Assets\applogoexample.png" />
     <None Remove="Resources\Images\Assets\apps.png" />
     <None Remove="Resources\Images\Assets\bell.png" />
@@ -88,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Fonts\iconfont.ttf" />
+    <Resource Include="Resources\Fonts\Plus\iconfontplus.ttf" />
     <Resource Include="Resources\Images\Assets\applogoexample.png" />
     <Resource Include="Resources\Images\Assets\apps.png" />
     <Resource Include="Resources\Images\Assets\bell.png" />
@@ -173,6 +175,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tools\Converter\" />
-    <Folder Include="Views\WorkPlace\Attendance\Subitem\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,86 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.WorkPlace.Attendance.Subitem.AdminSettingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    d:DesignHeight="800"
+    d:DesignWidth="1600"
+    mc:Ignorable="d">
+    <StackPanel>
+        <uc:SettingItemBox Margin="30" Style="{StaticResource EmptyFillSettingItemBox}">
+            <StackPanel Margin="30">
+                <hc:SimplePanel>
+                    <hc:SearchBar
+                        Width="500"
+                        HorizontalAlignment="Left"
+                        hc:InfoElement.Placeholder="根据姓名筛选"
+                        Style="{StaticResource SearchBarExtendBaseStyle}"
+                        FontSize="14" />
+                    <Button
+                        Content="新增管理员"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource AddPrimaryBtnStyle}" />
+                </hc:SimplePanel>
+                <DataGrid
+                    Margin="0,10,0,0"
+                    AutoGenerateColumns="False"
+                    Background="Transparent"
+                    CanUserSortColumns="False"
+                    CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
+                    ColumnHeaderStyle="{StaticResource HollowOut_NonBorderDataGridColumnHeaderStyle}"
+                    FontSize="14"
+                    RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="1*"
+                            Binding="{Binding Name}"
+                            Foreground="Black"
+                            Header="姓名"
+                            IsReadOnly="True" />
+                        <DataGridTextColumn
+                            Width="1.5*"
+                            Binding="{Binding Cept}"
+                            Foreground="Black"
+                            Header="所在部门"
+                            IsReadOnly="True" />
+                        <DataGridTextColumn
+                            Width="1.5*"
+                            Binding="{Binding Role}"
+                            Foreground="Black"
+                            Header="角色"
+                            IsReadOnly="True" />
+                        <DataGridTemplateColumn
+                            Width="1*"
+                            CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
+                            Header="操作"
+                            HeaderStyle="{StaticResource HollowOut_NoBorderRightDataGridColumnRowHeaderStyle}"
+                            IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <Button Content="删除" Style="{StaticResource TextBtnStyle}" />
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <hc:Pagination
+                    Margin="0,20,0,0"
+                    HorizontalAlignment="Center"
+                    MaxPageCount="2"
+                    IsJumpEnabled="True"
+                    PageIndex="{Binding PageIndex}">
+                    <!--<hc:Interaction.Triggers>
+                        <hc:EventTrigger EventName="PageUpdated">
+                            <hc:EventToCommand Command="{Binding PageUpdatedCmd}" PassEventArgsToCommand="True" />
+                        </hc:EventTrigger>
+                    </hc:Interaction.Triggers>-->
+                </hc:Pagination>
+            </StackPanel>
+        </uc:SettingItemBox>
+    </StackPanel>
+</UserControl>

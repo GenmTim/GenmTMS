@@ -106,7 +106,7 @@ namespace TMS.DeskTop.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;V1.0.0.0;component/views/contactsview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TMS.DeskTop;component/views/contactsview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\ContactsView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

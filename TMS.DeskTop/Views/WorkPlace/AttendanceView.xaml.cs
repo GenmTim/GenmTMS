@@ -22,7 +22,7 @@ namespace TMS.DeskTop.Views.WorkPlace
     /// <summary>
     /// AttendanceView.xaml 的交互逻辑
     /// </summary>
-    public partial class AttendanceView : RegionManagerControl
+    public partial class AttendanceView : RegionManagerControl, IDisposable
     {
 
         public AttendanceView(IRegionManager regionManager) : base(regionManager)
@@ -30,6 +30,11 @@ namespace TMS.DeskTop.Views.WorkPlace
             InitializeComponent();
             this.regionManager = regionManager;
             RegisterDefaultRegionView(RegionToken.AttendanceContent, nameof(AttendanceMainView));
+        }
+
+        public void Dispose()
+        {
+            this.regionManager.Regions[RegionToken.AttendanceContent].RemoveAll();
         }
     }
 }

@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMS.Core.Data;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace
 {
-    class AttendanceViewModel
+    class AttendanceViewModel : BindableBase
     {
         private TabItemInfo tabItemInfo = new TabItemInfo { Title = "考勤", IconFont = "\xe631" };
         public TabItemInfo TabItemInfo
@@ -16,7 +18,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
         }
 
 
-        public EvaluationViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
+        public AttendanceViewModel()
         {
         }
     }

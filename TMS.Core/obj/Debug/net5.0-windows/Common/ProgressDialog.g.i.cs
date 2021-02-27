@@ -65,7 +65,7 @@ namespace TMS.Core.Common {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TMS.Core;V1.0.0.0;component/common/progressdialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TMS.Core;component/common/progressdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Common\ProgressDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
