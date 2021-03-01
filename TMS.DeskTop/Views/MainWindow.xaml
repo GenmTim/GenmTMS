@@ -131,7 +131,12 @@
                                         Stretch="Uniform" />
                                 </RadioButton.Content>
                             </RadioButton>
-                            <RadioButton Style="{StaticResource menuRadioButtonTemplate}" Tag="Application">
+                            <RadioButton
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="RecruitmentView"
+                                Style="{StaticResource menuRadioButtonTemplate}"
+                                Tag="Application"
+                                Cursor="Hand">
                                 <hc:Poptip.Instance>
                                     <hc:Poptip Style="{StaticResource BlockPopTip}">
                                         <hc:Poptip.Content>

@@ -17,6 +17,7 @@
                         <hc:SearchBar
                             Width="500"
                             hc:InfoElement.Placeholder="请输入班次名称或创建人姓名"
+                            FontSize="14"
                             Style="{StaticResource SearchBarExtendBaseStyle}" />
                         <CheckBox
                             Content="只展示我创建的班次"

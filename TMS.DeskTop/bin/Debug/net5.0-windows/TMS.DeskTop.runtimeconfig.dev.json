@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\Codel\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Codel\\.nuget\\packages"
-    ]
-  }
-}

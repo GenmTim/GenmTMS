@@ -3,12 +3,16 @@ using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TMS.Core.Data;
 
-namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
+namespace TMS.DeskTop.ViewModels.Recruitment.Requirements.Subitem
 {
-    class ManageEvaluationViewModel : BindableBase
+    class ManageRequirementsViewModel : BindableBase
     {
         private ObservableCollection<EvaluationRule> evaluationRuleList = new ObservableCollection<EvaluationRule>();
 
@@ -29,7 +33,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
         private IRegionNavigationJournal journal;
 
 
-        public ManageEvaluationViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
+        public ManageRequirementsViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
         {
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;

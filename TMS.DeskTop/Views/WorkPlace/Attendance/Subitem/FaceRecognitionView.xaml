@@ -17,6 +17,7 @@
                         Width="500"
                         HorizontalAlignment="Left"
                         hc:InfoElement.Placeholder="请输入考勤组名称、考勤组负责人、考勤部门、考勤人员"
+                        FontSize="14"
                         Style="{StaticResource SearchBarExtendBaseStyle}" />
                     <DockPanel HorizontalAlignment="Right">
                         <Button

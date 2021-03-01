@@ -76,6 +76,8 @@
     <None Remove="Resources\Images\Assets\zip.png" />
     <None Remove="Resources\Images\designer_and_client_2__dribbble__1.gif" />
     <None Remove="Resources\Images\empty_record.png" />
+    <None Remove="Resources\Images\illustrations\recruitment.png" />
+    <None Remove="Resources\Images\illustrations\recruitment2.png" />
     <None Remove="Resources\Images\ngc6960.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +160,8 @@
     <Resource Include="Resources\Images\Assets\zip.png" />
     <Resource Include="Resources\Images\designer_and_client_2__dribbble__1.gif" />
     <Resource Include="Resources\Images\empty_record.png" />
+    <Resource Include="Resources\Images\illustrations\recruitment.png" />
+    <Resource Include="Resources\Images\illustrations\recruitment2.png" />
     <Resource Include="Resources\Images\ngc6960.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +178,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="Tools\Converter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Resources\Styles\Views\Recruitment\Requirements\ManageRequirementsViewStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 </Project>

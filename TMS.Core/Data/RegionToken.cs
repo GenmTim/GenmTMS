@@ -15,5 +15,7 @@
         public static readonly string AttendanceContent = nameof(AttendanceContent);
 
         public static readonly string AttendanceMainContent = nameof(AttendanceMainContent);
+
+        public static readonly string RecruitmentContent = nameof(RecruitmentContent);
     }
 }
