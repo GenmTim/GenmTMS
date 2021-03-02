@@ -180,6 +180,7 @@
   <ItemGroup>
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="Tools\Converter\" />
+    <Folder Include="UserControls\Attach\" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Resources\Styles\Views\Recruitment\Requirements\ManageRequirementsViewStyle.xaml">

@@ -8,5 +8,6 @@ namespace TMS.Core.Data
     {
         public String Title { get; set; }
         public String IconFont { get; set; }
+        public Boolean IsMust { get; set; }
     }
 }

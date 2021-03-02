@@ -10,11 +10,11 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
 {
     class AttendanceViewModel : BindableBase
     {
-        private TabItemInfo tabItemInfo = new TabItemInfo { Title = "考勤", IconFont = "\xe631" };
-        public TabItemInfo TabItemInfo
+        private ViewInfo viewInfo = new ViewInfo { Title = "考勤", IconFont = "\xe6fd" };
+        public ViewInfo ViewInfo
         {
-            get { return this.tabItemInfo; }
-            set { this.SetProperty(ref this.tabItemInfo, value); }
+            get { return this.viewInfo; }
+            set { SetProperty(ref viewInfo, value); }
         }
 
 

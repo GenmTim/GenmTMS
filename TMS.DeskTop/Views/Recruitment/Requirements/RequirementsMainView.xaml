@@ -1,7 +1,8 @@
-﻿<UserControl
+﻿<base:RegionManagerControl
     x:Class="TMS.DeskTop.Views.Recruitment.Requirements.RequirementsMainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:TMS.DeskTop.Tools.Base"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
@@ -72,16 +73,17 @@
                     <StackPanel Orientation="Horizontal">
                         <RadioButton
                             Command="{Binding NavigationCommand}"
-                            CommandParameter="FullInEvaluationView"
+                            CommandParameter="ActivitiesRequirementsView"
                             Style="{StaticResource navRadioBtnStyle}"
-                            Tag="FullIn">
+                            Tag="FullIn"
+                            Cursor="Hand">
                             <RadioButton.Content>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock
-                                        Text="&#xe632;"
+                                        Text="&#xe6d5;"
                                         VerticalAlignment="Center"
                                         FontSize="16"
-                                        Style="{StaticResource FIconTextBlockStyle}" />
+                                        Style="{StaticResource FIconTextPlusBlockStyle}" />
                                     <TextBlock
                                         Text="进行中"
                                         Margin="5,0,0,0"
@@ -93,7 +95,7 @@
                         <RadioButton
                             IsChecked="True"
                             Command="{Binding NavigationCommand}"
-                            CommandParameter="ViewEvaluationView"
+                            CommandParameter="ViewRequirementsView"
                             Style="{StaticResource navRadioBtnStyle}"
                             Tag="View">
                             <RadioButton.Content>
@@ -113,7 +115,7 @@
                         </RadioButton>
                         <RadioButton
                             Command="{Binding NavigationCommand}"
-                            CommandParameter="ManageEvaluationView"
+                            CommandParameter="ManageRequirementsView"
                             Style="{StaticResource navRadioBtnStyle}"
                             Tag="Manage">
                             <RadioButton.Content>
@@ -135,8 +137,7 @@
                 </Grid>
             </Border>
             <!--#endregion-->
-            <ContentControl x:Name="evaluationMainContent" Grid.Row="1"
-                prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.EvaluationMainContent}" />
+            <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.RecruitmentRequirementsMainContent}" />
         </Grid>
     </Grid>
-</UserControl>
+</base:RegionManagerControl>

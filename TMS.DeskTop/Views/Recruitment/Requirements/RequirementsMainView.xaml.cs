@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TMS.Core.Data;
+using TMS.DeskTop.Tools.Base;
+using TMS.DeskTop.Views.Recruitment.Requirements.Subitem;
 
 namespace TMS.DeskTop.Views.Recruitment.Requirements
 {
     /// <summary>
     /// RequirementsMainView.xaml 的交互逻辑
     /// </summary>
-    public partial class RequirementsMainView : UserControl
+    public partial class RequirementsMainView : RegionManagerControl
     {
-        public RequirementsMainView()
+        public RequirementsMainView(IRegionManager regionManager) : base(regionManager)
         {
             InitializeComponent();
+            RegisterDefaultRegionView(RegionToken.RecruitmentRequirementsMainContent, nameof(ViewRequirementsView));
         }
     }
 }

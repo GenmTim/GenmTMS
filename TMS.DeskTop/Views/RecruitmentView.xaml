@@ -9,6 +9,7 @@
     xmlns:local="clr-namespace:TMS.DeskTop.Views"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="White"

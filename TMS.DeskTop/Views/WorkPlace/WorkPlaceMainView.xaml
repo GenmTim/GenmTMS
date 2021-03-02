@@ -164,127 +164,25 @@
                     </StackPanel>
                 </Grid>
                 <hc:ScrollViewer Grid.Row="1">
-                    <Grid Background="#FFF5F6F7">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="200" />
-                        </Grid.RowDefinitions>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="450" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <hc:SimplePanel Margin="0,20,0,0" VerticalAlignment="Top">
-                                <Border
-                                    Width="400"
-                                    Height="150"
-                                    Margin="20,0,0,0"
-                                    CornerRadius="8"
-                                    Effect="{StaticResource EffectShadow1}">
-                                    <hc:GifImage x:Name="displayBorder" Height="300">
-                                        <hc:GifImage.Clip>
-                                            <!--  矩形裁剪  -->
-                                            <RectangleGeometry
-                                                RadiusX="8"
-                                                RadiusY="8"
-                                                Rect="0, 0, 400, 150" />
-                                        </hc:GifImage.Clip>
-                                    </hc:GifImage>
-                                </Border>
-                            </hc:SimplePanel>
-                            <hc:SimplePanel Grid.Column="1"
-                                Margin="0,20,0,0"
-                                VerticalAlignment="Top">
-                                <WrapPanel>
-                                    <Button
-                                        Command="{Binding NavigationCommand}"
-                                        CommandParameter="EvaluationView"
-                                        Style="{StaticResource menuButtonTemplate}" />
-                                    <Button
-                                        Command="{Binding NavigationCommand}"
-                                        CommandParameter="AttendanceView"
-                                        Style="{StaticResource menuButtonTemplate}" />
-                                    <Button Style="{StaticResource menuButtonTemplate}" />
-                                    <Button Style="{StaticResource menuButtonTemplate}" />
-
-                                    <!--<Border Style="{StaticResource AppItemStyle}">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="&#xe60e;"
-                                                Margin="15,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="40"
-                                                FontFamily="/Resources/Fonts/#iconfont" />
-                                            <TextBlock
-                                                Text="日报"
-                                                Margin="10,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="15" />
-                                        </StackPanel>
-                                    </Border>
-                                    <Border Style="{StaticResource AppItemStyle}">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="&#xe60e;"
-                                                Margin="15,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="40"
-                                                FontFamily="/Resources/Fonts/#iconfont" />
-                                            <TextBlock
-                                                Text="日报"
-                                                Margin="10,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="15" />
-                                        </StackPanel>
-                                    </Border>
-                                    <Border Style="{StaticResource AppItemStyle}">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="&#xe60e;"
-                                                Margin="15,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="40"
-                                                FontFamily="/Resources/Fonts/#iconfont" />
-                                            <TextBlock
-                                                Text="日报"
-                                                Margin="10,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="15" />
-                                        </StackPanel>
-                                    </Border>
-                                    <Border Style="{StaticResource AppItemStyle}">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="&#xe60e;"
-                                                Margin="15,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="40"
-                                                FontFamily="/Resources/Fonts/#iconfont" />
-                                            <TextBlock
-                                                Text="日报"
-                                                Margin="10,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="15" />
-                                        </StackPanel>
-                                    </Border>
-                                    <Border Style="{StaticResource AppItemStyle}">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="&#xe60e;"
-                                                Margin="15,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="40"
-                                                FontFamily="/Resources/Fonts/#iconfont" />
-                                            <TextBlock
-                                                Text="日报"
-                                                Margin="10,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="15" />
-                                        </StackPanel>
-                                    </Border>-->
-                                </WrapPanel>
-                            </hc:SimplePanel>
-                        </Grid>
-                    </Grid>
+                    <hc:SimplePanel Grid.Column="1"
+                        Margin="0,20,0,0"
+                        VerticalAlignment="Top">
+                        <WrapPanel>
+                            <Button
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="EvaluationView"
+                                Style="{StaticResource menuButtonTemplate}" />
+                            <Button
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="AttendanceView"
+                                Style="{StaticResource menuButtonTemplate}" />
+                            <Button
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="RecruitmentView"
+                                Style="{StaticResource menuButtonTemplate}" />
+                            <Button Style="{StaticResource menuButtonTemplate}" />
+                        </WrapPanel>
+                    </hc:SimplePanel>
                 </hc:ScrollViewer>
             </Grid>
         </hc:SimplePanel>

@@ -32,6 +32,94 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style
+                x:Key="IconFontBtnStyle"
+                BasedOn="{StaticResource ButtonIconCircular}"
+                TargetType="Button">
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="/Resources/Fonts/Plus/#iconfont" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                Style="{StaticResource BorderCircular}"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style
+                x:Key="PIconFontBtnStyle"
+                BasedOn="{StaticResource IconFontBtnStyle}"
+                TargetType="Button">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0, 0.5" EndPoint="8, 0.5">
+                            <GradientStop Offset="0" Color="{StaticResource ThirdlyTextColor}" />
+                            <GradientStop Offset="1" Color="White" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="8, 0.5">
+                                    <GradientStop Offset="0" Color="{StaticResource PrimaryColor}" />
+                                    <GradientStop Offset="1" Color="White" />
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="TextRadioBtnStyle" TargetType="RadioButton">
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Padding" Value="0,8" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Height" Value="48" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="SnapsToDevicePixels" Value="true" />
+                <Setter Property="FontFamily" Value="/Resources/Fonts/#iconfont" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Grid VerticalAlignment="Center">
+                                <Border
+                                    Width="{TemplateBinding Width}"
+                                    Height="{TemplateBinding Height}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Focusable="False"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter Property="Foreground" Value="#63BCFB" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Foreground" Value="#63BCFB" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

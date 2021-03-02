@@ -51,7 +51,7 @@
                                     Foreground="White"
                                     Style="{StaticResource FIconTextBlockStyle}" />
                                 <TextBlock
-                                    Text="新增汇报规则"
+                                    Text="新增招聘需求"
                                     VerticalAlignment="Center"
                                     FontSize="15" />
                             </StackPanel>
@@ -73,7 +73,7 @@
                     </ListView.Resources>
                     <ListView.View>
                         <GridView AllowsColumnReorder="False">
-                            <GridViewColumn Width="220" Header="考评名称">
+                            <GridViewColumn Width="220" Header="职位名称">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid Margin="0,10">
@@ -117,15 +117,15 @@
                             <GridViewColumn
                                 Width="150"
                                 DisplayMemberBinding="{Binding Examiner}"
-                                Header="考评人" />
+                                Header="经验要求" />
                             <GridViewColumn
                                 Width="120"
                                 DisplayMemberBinding="{Binding Time}"
-                                Header="考评时间" />
+                                Header="截止日期" />
                             <GridViewColumn
                                 Width="160"
                                 DisplayMemberBinding="{Binding Content}"
-                                Header="考评内容" />
+                                Header="职位描述" />
                             <GridViewColumn CellTemplate="{StaticResource evaluationRuleItemOptCell}" Header="操作" />
                         </GridView>
                     </ListView.View>

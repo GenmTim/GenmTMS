@@ -5,6 +5,7 @@ using Prism.Regions;
 using System;
 using System.Collections.ObjectModel;
 using TMS.Core.Data;
+using TMS.DeskTop.Views.WorkPlace.Evaluation;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 {
@@ -82,7 +83,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
         {
             var param = new NavigationParameters();
             param.Add("title", "新建考评规则");
-            param.Add("obj", "NewEvaluationRuleView");
+            param.Add("obj", typeof(NewEvaluationRuleView));
             regionManager.RequestNavigate(RegionToken.EvaluationContent, "BackNavigationView", arg =>
             {
                 journal = arg.Context.NavigationService.Journal;

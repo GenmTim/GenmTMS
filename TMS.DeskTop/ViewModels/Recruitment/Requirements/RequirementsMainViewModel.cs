@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TMS.Core.Data;
 
-namespace TMS.DeskTop.ViewModels.Recruitment
+namespace TMS.DeskTop.ViewModels.Recruitment.Requirements
 {
-    class RecruitmentNavigationViewModel
+    class RequirementsMainViewModel
     {
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
 
-        public RecruitmentNavigationViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
+        public RequirementsMainViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
         {
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;
@@ -26,7 +26,7 @@ namespace TMS.DeskTop.ViewModels.Recruitment
 
         private void NavigationPage(string obj)
         {
-            regionManager.Regions[RegionToken.RecruitmentContent].RequestNavigate(obj);
+            regionManager.Regions[RegionToken.RecruitmentRequirementsMainContent].RequestNavigate(obj);
         }
     }
 }

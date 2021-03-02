@@ -5,6 +5,7 @@ using TMS.DeskTop.Resources.Styles.Views.Recruitment;
 using TMS.DeskTop.UserControls.ViewModels;
 using TMS.DeskTop.UserControls.Views;
 using TMS.DeskTop.ViewModels;
+using TMS.DeskTop.ViewModels.Recruitment;
 using TMS.DeskTop.ViewModels.Recruitment.Requirements.Subitem;
 using TMS.DeskTop.ViewModels.WorkPlace;
 using TMS.DeskTop.ViewModels.WorkPlace.Attendance;
@@ -29,7 +30,7 @@ namespace TMS.DeskTop
         {
             return Container.Resolve<MainWindow>();
         }
-
+        
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IDialogHostService, DialogHostService>();
@@ -41,7 +42,7 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<FullInEvaluationView, FullInEvaluationViewModel>();
             containerRegistry.RegisterForNavigation<ManageEvaluationView, ManageEvaluationViewModel>();
             containerRegistry.RegisterForNavigation<ViewEvaluationView, ViewEvaluationViewModel>();
-            containerRegistry.RegisterForNavigation<BackNavigationView, BackNavigationViewModel>();
+            containerRegistry.RegisterForNavigation<BackNavigationView, BackNavigationView>();
             containerRegistry.RegisterForNavigation<NewEvaluationRuleView, NewEvaluationRuleViewModel>();
             containerRegistry.RegisterForNavigation<CheckItemDialog, CheckItemDialogModel>();
             containerRegistry.RegisterForNavigation<ContactsView, ContactsViewModel>();
@@ -54,10 +55,14 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<DailyStatisticsView>();
             containerRegistry.RegisterForNavigation<FaceRecognitionView>();
             containerRegistry.RegisterForNavigation<ShiftSettingView>();
-            containerRegistry.RegisterForNavigation<RecruitmentView>();
-            containerRegistry.RegisterForNavigation<RequirementsMainView>();
+            containerRegistry.RegisterForNavigation<RecruitmentView, RecruitmentViewModel>();
             containerRegistry.RegisterForNavigation<ManageRequirementsView, ManageRequirementsViewModel>();
-            containerRegistry.RegisterForNavigation<RecruitmentNavigationView>();
+            containerRegistry.RegisterForNavigation<RecruitmentNavigationView, RecruitmentNavigationViewModel>();
+            containerRegistry.RegisterForNavigation<ViewRequirementsView, ViewRequirementsViewModel>();
+            containerRegistry.RegisterForNavigation<ActivitiesRequirementsView, ActivitiesRequirementsViewModel>();
+            containerRegistry.RegisterForNavigation<RequirementsMainView>();
+            containerRegistry.RegisterForNavigation<NewRequirementView>();
+            containerRegistry.RegisterForNavigation<TalentPoolView, TalentPoolViewModel>();
             //containerRegistry.RegisterDialog<CheckItemDialog, CheckItemDialogModel>();
             //containerRegistry.Register<EvaluationViewModel>();
         }

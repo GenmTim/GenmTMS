@@ -7,12 +7,13 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
 {
     class EvaluationViewModel : BindableBase
     {
-        private TabItemInfo tabItemInfo = new TabItemInfo { Title = "考评", IconFont = "\xe631" };
-        public TabItemInfo TabItemInfo
+        private ViewInfo viewInfo = new ViewInfo { Title = "考评", IconFont = "\xe6f7" };
+        public ViewInfo ViewInfo
         {
-            get { return this.tabItemInfo; }
-            set { this.SetProperty(ref this.tabItemInfo, value); }
+            get { return this.viewInfo; }
+            set { SetProperty(ref viewInfo, value); }
         }
+
 
 
         public EvaluationViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)

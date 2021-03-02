@@ -20,7 +20,7 @@
         <Border
             Background="#FF37A0EA"
             BorderThickness="0"
-            CornerRadius="10">
+            CornerRadius="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60" />
@@ -132,8 +132,6 @@
                                 </RadioButton.Content>
                             </RadioButton>
                             <RadioButton
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="RecruitmentView"
                                 Style="{StaticResource menuRadioButtonTemplate}"
                                 Tag="Application"
                                 Cursor="Hand">

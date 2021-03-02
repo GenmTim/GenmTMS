@@ -27,26 +27,25 @@ namespace TMS.Core.Service
                 parameters = new DialogParameters();
 
             var content = _containerExtension.Resolve<object>(name);
-            if (!(content is FrameworkElement dialogContent))
+            if (content is not FrameworkElement dialogContent)
                 throw new NullReferenceException("A dialog's content must be a FrameworkElement");
 
             if (dialogContent is FrameworkElement view && view.DataContext is null && ViewModelLocator.GetAutoWireViewModel(view) is null)
                 ViewModelLocator.SetAutoWireViewModel(view, true);
 
-            if (!(dialogContent.DataContext is IDialogHostAware viewModel))
+            if (dialogContent.DataContext is not IDialogHostAware viewModel)
                 throw new NullReferenceException("A dialog's ViewModel must implement the IDialogAware interface");
 
             viewModel.IdentifierName = IdentifierName;
 
-            DialogOpenedEventHandler eventHandler = async
-                (sender, eventArgs) =>
+            async void eventHandler(object sender, DialogOpenedEventArgs eventArgs)
             {
                 var content = eventArgs.Session.Content;
                 eventArgs.Session.UpdateContent(new ProgressDialog());
                 if (viewModel is IDialogHostAware aware)
                     await aware.OnDialogOpenedAsync(parameters);
                 eventArgs.Session.UpdateContent(content);
-            };
+            }
 
             return (IDialogResult)await DialogHost.Show(dialogContent, viewModel.IdentifierName, eventHandler);
         }

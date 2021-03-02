@@ -8,6 +8,13 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
 {
     class WorkPlaceMainViewModel : BindableBase
     {
+        private ViewInfo viewInfo = new ViewInfo { Title = "工作台", IconFont = "\xe79f" };
+        public ViewInfo ViewInfo
+        {
+            get { return this.viewInfo; }
+            set { SetProperty(ref viewInfo, value); }
+        }
+
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
 

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TMS.Core.Data;
+using TMS.DeskTop.Views.Recruitment.Requirements.Subitem;
 
 namespace TMS.DeskTop.ViewModels.Recruitment.Requirements.Subitem
 {
@@ -85,9 +86,9 @@ namespace TMS.DeskTop.ViewModels.Recruitment.Requirements.Subitem
         private void BackNavigationPage(string obj)
         {
             var param = new NavigationParameters();
-            param.Add("title", "新建考评规则");
-            param.Add("obj", "NewEvaluationRuleView");
-            regionManager.RequestNavigate(RegionToken.EvaluationContent, "BackNavigationView", arg =>
+            param.Add("title", "新建招聘需求");
+            param.Add("obj", typeof(NewRequirementView));
+            regionManager.RequestNavigate(RegionToken.RecruitmentContent, "BackNavigationView", arg =>
             {
                 journal = arg.Context.NavigationService.Journal;
             }, param);

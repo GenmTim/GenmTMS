@@ -87,7 +87,7 @@
         </Border>
         <materialDesign:DialogHost Grid.Row="1" Identifier="Root">
             <hc:ScrollViewer IsInertiaEnabled="True">
-                <ContentControl Margin="0,30" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.BackNavigationContent}" />
+                <ContentControl x:Name="backNavigationView" Margin="100,30" />
             </hc:ScrollViewer>
         </materialDesign:DialogHost>
 
