@@ -25,19 +25,6 @@ namespace TMS.UI.Test
             public string Title { get; set; }
         }
 
-        private string title = "标题";
-        public string Title
-        {
-            get
-            {
-                return title;
-            }
-            set
-            {
-                title = value;
-            }
-        }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -45,9 +32,6 @@ namespace TMS.UI.Test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TabItem tab = new TabItem();
-            tab.DataContext = new DataT { Title = "标题" };
-            tabcontrol.Items.Add(tab);
         }
     }
 }

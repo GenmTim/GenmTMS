@@ -63,6 +63,8 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<RequirementsMainView>();
             containerRegistry.RegisterForNavigation<NewRequirementView>();
             containerRegistry.RegisterForNavigation<TalentPoolView, TalentPoolViewModel>();
+            containerRegistry.RegisterForNavigation<HonourView>();
+            containerRegistry.RegisterForNavigation<DisciplineView>();
             //containerRegistry.RegisterDialog<CheckItemDialog, CheckItemDialogModel>();
             //containerRegistry.Register<EvaluationViewModel>();
         }

@@ -38,6 +38,41 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="CustomTitleSettingItemBoxStyle" TargetType="uc:SettingItemBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="uc:SettingItemBox">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Border
+                            Grid.RowSpan="2"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            Effect="{StaticResource EffectShadow1}" />
+                        <StackPanel Margin="20" Orientation="Horizontal">
+                            <Rectangle
+                                Width="4"
+                                Height="18"
+                                VerticalAlignment="Center"
+                                Fill="{StaticResource PrimaryBrush}" />
+                            <TextBlock
+                                Text="{TemplateBinding Title}"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="Bold" />
+                        </StackPanel>
+                        <Grid Grid.Row="1">
+                            <ContentPresenter />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="EmptyFillSettingItemBox" TargetType="uc:SettingItemBox">
         <Setter Property="Template">
             <Setter.Value>

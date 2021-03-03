@@ -7,6 +7,7 @@
     xmlns:prism="http://prismlibrary.com/"
     Width="1500"
     Height="900"
+    MinWidth="1180"
     prism:ViewModelLocator.AutoWireViewModel="True"
     AllowsTransparency="True"
     Background="Transparent"
@@ -17,10 +18,7 @@
         <ResourceDictionary Source="/Resources/Styles/Views/MainWindowStyle.xaml" />
     </Window.Resources>
     <Border Background="Transparent">
-        <Border
-            Background="#FF37A0EA"
-            BorderThickness="0"
-            CornerRadius="0">
+        <Border BorderThickness="0" CornerRadius="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60" />
@@ -36,7 +34,7 @@
                     MouseDown="TopBar_MouseDown"
                     RadiusX="10"
                     RadiusY="10" />
-                <Grid Grid.Column="0">
+                <Grid Grid.Column="0" Background="#FF37A0EA">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100" />
                         <RowDefinition Height="*" />
@@ -96,7 +94,6 @@
                                         Stretch="Uniform" />
                                 </RadioButton.Content>
                             </RadioButton>
-
                             <RadioButton
                                 Command="{Binding NavigationCommand}"
                                 CommandParameter="WorkPlaceView"
@@ -113,39 +110,6 @@
                                     <Image
                                         Width="24"
                                         Source="/Resources/Images/Assets/mmc.png"
-                                        Stretch="Uniform" />
-                                </RadioButton.Content>
-                            </RadioButton>
-                            <RadioButton Style="{StaticResource menuRadioButtonTemplate}" Tag="Tag3">
-                                <hc:Poptip.Instance>
-                                    <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                        <hc:Poptip.Content>
-                                            <TextBlock Text="成就" Margin="3" />
-                                        </hc:Poptip.Content>
-                                    </hc:Poptip>
-                                </hc:Poptip.Instance>
-                                <RadioButton.Content>
-                                    <Image
-                                        Width="24"
-                                        Source="/Resources/Images/Assets/new_custom48.png"
-                                        Stretch="Uniform" />
-                                </RadioButton.Content>
-                            </RadioButton>
-                            <RadioButton
-                                Style="{StaticResource menuRadioButtonTemplate}"
-                                Tag="Application"
-                                Cursor="Hand">
-                                <hc:Poptip.Instance>
-                                    <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                        <hc:Poptip.Content>
-                                            <TextBlock Text="设置" Margin="3" />
-                                        </hc:Poptip.Content>
-                                    </hc:Poptip>
-                                </hc:Poptip.Instance>
-                                <RadioButton.Content>
-                                    <Image
-                                        Width="24"
-                                        Source="/Resources/Images/Assets/settings.png"
                                         Stretch="Uniform" />
                                 </RadioButton.Content>
                             </RadioButton>

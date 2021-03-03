@@ -8,25 +8,20 @@
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    d:DesignHeight="615"
-    d:DesignWidth="1000"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    d:DesignHeight="1000"
+    d:DesignWidth="1120"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="#FFEEEEEE"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <Style x:Key="AppItemStyle" TargetType="Border">
-            <Setter Property="Margin" Value="22,0,0,22" />
-            <Setter Property="Width" Value="200" />
-            <Setter Property="Height" Value="64" />
+        <Style x:Key="OneRegionBorder" TargetType="Border">
+            <Setter Property="Margin" Value="0,0,20,20" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Width" Value="340" />
+            <Setter Property="Height" Value="140" />
             <Setter Property="CornerRadius" Value="8" />
             <Setter Property="Effect" Value="{StaticResource EffectShadow1}" />
-            <Setter Property="Background" Value="White" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Effect" Value="{StaticResource EffectShadow2}" />
-                    <Setter Property="Cursor" Value="Hand" />
-                </Trigger>
-            </Style.Triggers>
         </Style>
         <Style x:Key="funcBtnStyle" TargetType="Button">
             <Setter Property="Template">
@@ -57,7 +52,6 @@
         </Style>
         <Style x:Key="menuButtonTemplate" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="#FFDDDDDD" />
             <Setter Property="BorderBrush" Value="#FF707070" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -68,18 +62,42 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Style x:Key="AppItemStyle" TargetType="Border">
+                                <Setter Property="Width" Value="188" />
+                                <Setter Property="Height" Value="64" />
+                                <Setter Property="CornerRadius" Value="8" />
+                                <Setter Property="Effect" Value="{StaticResource EffectShadow1}" />
+                                <Setter Property="Background" Value="White" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Effect" Value="{StaticResource EffectShadow2}" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ControlTemplate.Resources>
                         <Border Style="{StaticResource AppItemStyle}">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="&#xe60e;"
+                                <Border
+                                    Width="40"
+                                    Height="40"
                                     Margin="15,0,0,0"
-                                    VerticalAlignment="Center"
-                                    FontFamily="/Resources/Fonts/#iconfont"
-                                    FontSize="40" />
+                                    CornerRadius="10"
+                                    Background="#1890ff">
+                                    <TextBlock
+                                        Text="&#xe7bc;"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="White"
+                                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                                        FontSize="30" />
+                                </Border>
                                 <TextBlock
                                     Text="日报"
                                     Margin="10,0,0,0"
                                     VerticalAlignment="Center"
+                                    Foreground="{StaticResource SecondaryTextBrush}"
                                     FontSize="15" />
                             </StackPanel>
                         </Border>
@@ -163,11 +181,314 @@
                         </StackPanel>
                     </StackPanel>
                 </Grid>
-                <hc:ScrollViewer Grid.Row="1">
-                    <hc:SimplePanel Grid.Column="1"
-                        Margin="0,20,0,0"
-                        VerticalAlignment="Top">
+                <hc:ScrollViewer Grid.Row="1" Background="#FFF5F6F7">
+                    <StackPanel Margin="30,30,10,10">
                         <WrapPanel>
+                            <Border Style="{StaticResource OneRegionBorder}" />
+                            <Border Style="{StaticResource OneRegionBorder}" />
+                            <Border Style="{StaticResource OneRegionBorder}" />
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Border Style="{StaticResource OneRegionBorder}">
+                                <Grid Margin="20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Margin="0,0,10,0" Source="/Resources/Images/Icon/1 (10).png" />
+                                        <TextBlock
+                                            Text="天眼查 CRM"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            FontWeight="Bold" />
+                                    </StackPanel>
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <UniformGrid
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Columns="3">
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="100"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="#08979c"
+                                                    FontWeight="Bold"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="负责任务"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="24"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="#08979c"
+                                                    FontWeight="Bold"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="创建任务"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="0"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="#08979c"
+                                                    FontWeight="Bold"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="延期任务"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                        </UniformGrid>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </Border>
+                            <Border Style="{StaticResource OneRegionBorder}">
+                                <Grid Margin="20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Margin="0,0,10,0" Source="/Resources/Images/Icon/1 (16).png" />
+                                        <TextBlock
+                                            Text="赤狐 TSM"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            FontWeight="Bold" />
+                                    </StackPanel>
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <UniformGrid
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Columns="3">
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="34"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="#d46b08"
+                                                    FontWeight="Bold"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="团体任务"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="24"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="#d46b08"
+                                                    FontWeight="Bold"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="个人任务"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="45"
+                                                    HorizontalAlignment="Center"
+                                                    FontWeight="Bold"
+                                                    Foreground="#d46b08"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="离散任务"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                        </UniformGrid>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </Border>
+                            <Border Style="{StaticResource OneRegionBorder}">
+                                <Grid Margin="20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Margin="0,0,10,0" Source="/Resources/Images/Icon/1 (12).png" />
+                                        <TextBlock
+                                            Text="天眼查 CRM"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            FontWeight="Bold" />
+                                    </StackPanel>
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <UniformGrid
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Columns="3">
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="45"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="#c41d7f"
+                                                    FontWeight="Bold"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="负责人"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="21"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="#c41d7f"
+                                                    FontWeight="Bold"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="审核人"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <StackPanel Width="90">
+                                                <TextBlock
+                                                    Text="0"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="#c41d7f"
+                                                    FontWeight="Bold"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="开发者"
+                                                    Margin="0,10,0,0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                        </UniformGrid>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </Border>
+                        </WrapPanel>
+                        <uc:SettingItemBox
+                            Title="人事管理"
+                            Margin="0,0,20,20"
+                            Style="{StaticResource CustomTitleSettingItemBoxStyle}">
+                            <WrapPanel Margin="20,0,0,0" Orientation="Horizontal">
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                            </WrapPanel>
+                        </uc:SettingItemBox>
+                        <uc:SettingItemBox
+                            Title="行政办公"
+                            Margin="0,0,20,20"
+                            Style="{StaticResource CustomTitleSettingItemBoxStyle}">
+                            <WrapPanel Margin="20,0,0,0" Orientation="Horizontal">
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                            </WrapPanel>
+                        </uc:SettingItemBox>
+                        <uc:SettingItemBox
+                            Title="团队协作"
+                            Margin="0,0,20,20"
+                            Style="{StaticResource CustomTitleSettingItemBoxStyle}">
+                            <WrapPanel Margin="20,0,0,0" Orientation="Horizontal">
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                                <Button
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="DisciplineView"
+                                    Margin="0,0,20,20"
+                                    Style="{StaticResource menuButtonTemplate}" />
+                            </WrapPanel>
+                        </uc:SettingItemBox>
+                    </StackPanel>
+                    <!--<WrapPanel>
                             <Button
                                 Command="{Binding NavigationCommand}"
                                 CommandParameter="EvaluationView"
@@ -180,9 +501,15 @@
                                 Command="{Binding NavigationCommand}"
                                 CommandParameter="RecruitmentView"
                                 Style="{StaticResource menuButtonTemplate}" />
-                            <Button Style="{StaticResource menuButtonTemplate}" />
-                        </WrapPanel>
-                    </hc:SimplePanel>
+                            <Button
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="HonourView"
+                                Style="{StaticResource menuButtonTemplate}" />
+                            <Button
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="DisciplineView"
+                                Style="{StaticResource menuButtonTemplate}" />
+                        </WrapPanel>-->
                 </hc:ScrollViewer>
             </Grid>
         </hc:SimplePanel>
