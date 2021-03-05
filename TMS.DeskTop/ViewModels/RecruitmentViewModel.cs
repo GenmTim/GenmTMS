@@ -3,6 +3,7 @@ using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels
 {
@@ -28,9 +29,9 @@ namespace TMS.DeskTop.ViewModels
 
         public DelegateCommand<string> NavigationCommand { get; private set; }
 
-        private void NavigationPage(string obj)
+        private void NavigationPage(string view)
         {
-            regionManager.Regions[RegionToken.RecruitmentContent].RequestNavigate(obj);
+            RegionHelper.RequestNavigate(regionManager, RegionToken.RecruitmentContent, view);
         }
     }
 }

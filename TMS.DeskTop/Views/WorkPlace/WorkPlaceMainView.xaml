@@ -9,18 +9,47 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
     d:DesignHeight="1000"
     d:DesignWidth="1120"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="#FFEEEEEE"
     mc:Ignorable="d">
     <UserControl.Resources>
+        <Style x:Key="ListBoxCustomStyle" TargetType="ListBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border
+                            Name="Bd"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="true">
+                            <ItemsPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ListBoxItemCustomStyle" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="OneRegionBorder" TargetType="Border">
             <Setter Property="Margin" Value="0,0,20,20" />
             <Setter Property="Background" Value="White" />
             <Setter Property="Width" Value="340" />
-            <Setter Property="Height" Value="140" />
-            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Height" Value="150" />
+            <Setter Property="CornerRadius" Value="5" />
             <Setter Property="Effect" Value="{StaticResource EffectShadow1}" />
         </Style>
         <Style x:Key="funcBtnStyle" TargetType="Button">
@@ -64,8 +93,8 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <ControlTemplate.Resources>
                             <Style x:Key="AppItemStyle" TargetType="Border">
-                                <Setter Property="Width" Value="188" />
-                                <Setter Property="Height" Value="64" />
+                                <Setter Property="Width" Value="160" />
+                                <Setter Property="Height" Value="65" />
                                 <Setter Property="CornerRadius" Value="8" />
                                 <Setter Property="Effect" Value="{StaticResource EffectShadow1}" />
                                 <Setter Property="Background" Value="White" />
@@ -86,7 +115,7 @@
                                     CornerRadius="10"
                                     Background="#1890ff">
                                     <TextBlock
-                                        Text="&#xe7bc;"
+                                        Text="{TemplateBinding uc:IconFontElement.Geometry}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Foreground="White"
@@ -94,7 +123,7 @@
                                         FontSize="30" />
                                 </Border>
                                 <TextBlock
-                                    Text="日报"
+                                    Text="{TemplateBinding uc:IconFontElement.IconName}"
                                     Margin="10,0,0,0"
                                     VerticalAlignment="Center"
                                     Foreground="{StaticResource SecondaryTextBrush}"
@@ -184,11 +213,11 @@
                 <hc:ScrollViewer Grid.Row="1" Background="#FFF5F6F7">
                     <StackPanel Margin="30,30,10,10">
                         <WrapPanel>
-                            <Border Style="{StaticResource OneRegionBorder}" />
-                            <Border Style="{StaticResource OneRegionBorder}" />
-                            <Border Style="{StaticResource OneRegionBorder}" />
-                        </WrapPanel>
-                        <WrapPanel>
+                            <Border Style="{StaticResource OneRegionBorder}">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Resources/Images/illustrations/1.png" />
+                                </Border.Background>
+                            </Border>
                             <Border Style="{StaticResource OneRegionBorder}">
                                 <Grid Margin="20">
                                     <Grid.RowDefinitions>
@@ -313,203 +342,61 @@
                                     </hc:SimplePanel>
                                 </Grid>
                             </Border>
-                            <Border Style="{StaticResource OneRegionBorder}">
-                                <Grid Margin="20">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="40" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image Margin="0,0,10,0" Source="/Resources/Images/Icon/1 (12).png" />
-                                        <TextBlock
-                                            Text="天眼查 CRM"
-                                            VerticalAlignment="Center"
-                                            FontSize="14"
-                                            FontWeight="Bold" />
-                                    </StackPanel>
-                                    <hc:SimplePanel Grid.Row="1">
-                                        <UniformGrid
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Columns="3">
-                                            <StackPanel Width="90">
-                                                <TextBlock
-                                                    Text="45"
-                                                    HorizontalAlignment="Center"
-                                                    Foreground="#c41d7f"
-                                                    FontWeight="Bold"
-                                                    FontSize="18" />
-                                                <TextBlock
-                                                    Text="负责人"
-                                                    Margin="0,10,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="14" />
-                                            </StackPanel>
-                                            <StackPanel Width="90">
-                                                <TextBlock
-                                                    Text="21"
-                                                    HorizontalAlignment="Center"
-                                                    Foreground="#c41d7f"
-                                                    FontWeight="Bold"
-                                                    FontSize="18" />
-                                                <TextBlock
-                                                    Text="审核人"
-                                                    Margin="0,10,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="14" />
-                                            </StackPanel>
-                                            <StackPanel Width="90">
-                                                <TextBlock
-                                                    Text="0"
-                                                    HorizontalAlignment="Center"
-                                                    Foreground="#c41d7f"
-                                                    FontWeight="Bold"
-                                                    FontSize="18" />
-                                                <TextBlock
-                                                    Text="开发者"
-                                                    Margin="0,10,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="14" />
-                                            </StackPanel>
-                                        </UniformGrid>
-                                    </hc:SimplePanel>
-                                </Grid>
-                            </Border>
                         </WrapPanel>
-                        <uc:SettingItemBox
-                            Title="人事管理"
-                            Margin="0,0,20,20"
-                            Style="{StaticResource CustomTitleSettingItemBoxStyle}">
-                            <WrapPanel Margin="20,0,0,0" Orientation="Horizontal">
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                            </WrapPanel>
-                        </uc:SettingItemBox>
-                        <uc:SettingItemBox
-                            Title="行政办公"
-                            Margin="0,0,20,20"
-                            Style="{StaticResource CustomTitleSettingItemBoxStyle}">
-                            <WrapPanel Margin="20,0,0,0" Orientation="Horizontal">
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                            </WrapPanel>
-                        </uc:SettingItemBox>
-                        <uc:SettingItemBox
-                            Title="团队协作"
-                            Margin="0,0,20,20"
-                            Style="{StaticResource CustomTitleSettingItemBoxStyle}">
-                            <WrapPanel Margin="20,0,0,0" Orientation="Horizontal">
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                                <Button
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="DisciplineView"
-                                    Margin="0,0,20,20"
-                                    Style="{StaticResource menuButtonTemplate}" />
-                            </WrapPanel>
-                        </uc:SettingItemBox>
+                        <ListBox
+                            HorizontalAlignment="Left"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            ItemsPanel="{StaticResource WrapPanelHorizontalItemsPanelTemplate}"
+                            Style="{StaticResource ListBoxCustomStyle}"
+                            ItemContainerStyle="{StaticResource ListBoxItemCustomStyle}"
+                            ItemsSource="{Binding CommonAppList}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Command="{Binding NavigationCommand}"
+                                        CommandParameter="{Binding}"
+                                        Margin="0,0,20,20"
+                                        uc:IconFontElement.Geometry="{Binding IconFont}"
+                                        uc:IconFontElement.IconName="{Binding Name}"
+                                        Style="{StaticResource menuButtonTemplate}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ListBox>
+                        <ListBox
+                            Style="{StaticResource ListBoxCustomStyle}"
+                            ItemsSource="{Binding AppGroupList}"
+                            ItemContainerStyle="{StaticResource ListBoxItemCustomStyle}"
+                            Background="Transparent"
+                            ItemsPanel="{StaticResource StackPanelVerticalItemsPanelTemplate}"
+                            BorderThickness="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <uc:SettingItemBox Title="{Binding Name}" Style="{StaticResource CustomTitleSettingItemBoxStyle}">
+                                        <ListBox
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            ItemsPanel="{StaticResource WrapPanelHorizontalItemsPanelTemplate}"
+                                            Style="{StaticResource ListBoxCustomStyle}"
+                                            ItemContainerStyle="{StaticResource ListBoxItemCustomStyle}"
+                                            ItemsSource="{Binding AppList}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Button
+                                                        Command="{Binding DataContext.NavigationCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2, Mode=FindAncestor}}"
+                                                        CommandParameter="{Binding Url}"
+                                                        Margin="0,0,20,20"
+                                                        uc:IconFontElement.Geometry="{Binding IconFont}"
+                                                        uc:IconFontElement.IconName="{Binding Name}"
+                                                        Style="{StaticResource menuButtonTemplate}" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ListBox>
+                                    </uc:SettingItemBox>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </StackPanel>
-                    <!--<WrapPanel>
-                            <Button
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="EvaluationView"
-                                Style="{StaticResource menuButtonTemplate}" />
-                            <Button
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="AttendanceView"
-                                Style="{StaticResource menuButtonTemplate}" />
-                            <Button
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="RecruitmentView"
-                                Style="{StaticResource menuButtonTemplate}" />
-                            <Button
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="HonourView"
-                                Style="{StaticResource menuButtonTemplate}" />
-                            <Button
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="DisciplineView"
-                                Style="{StaticResource menuButtonTemplate}" />
-                        </WrapPanel>-->
                 </hc:ScrollViewer>
             </Grid>
         </hc:SimplePanel>

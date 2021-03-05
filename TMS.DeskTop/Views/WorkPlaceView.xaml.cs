@@ -1,5 +1,4 @@
 ﻿using Prism.Regions;
-using System.Windows.Controls;
 using TMS.Core.Data;
 using TMS.DeskTop.Tools.Base;
 using TMS.DeskTop.Views.WorkPlace;
@@ -13,12 +12,11 @@ namespace TMS.DeskTop.Views
     {
         //private IRegionManager regionManager;
 
-        public WorkPlaceView(IRegionManager regionManager) : base(regionManager)
+        public WorkPlaceView(IRegionManager regionManager) : base(regionManager, nameof(WorkPlaceView))
         {
             InitializeComponent();
             //this.regionManager = regionManager;
             RegisterDefaultRegionView(RegionToken.WorkPlaceTabContent, nameof(WorkPlaceMainView));
-            
         }
     }
 }

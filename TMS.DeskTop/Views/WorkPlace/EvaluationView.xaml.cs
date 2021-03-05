@@ -1,34 +1,26 @@
 ﻿using Prism.Regions;
 using System;
-using System.Windows.Controls;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Base;
 
 namespace TMS.DeskTop.Views.WorkPlace
 {
     /// <summary>
     /// EvaluationView.xaml 的交互逻辑
     /// </summary>
-    public partial class EvaluationView : UserControl, IDisposable
+    public partial class EvaluationView : RegionManagerControl, IDisposable
     {
-        private IRegionManager regionManager;
         //private IRegionNavigationJournal journal;
 
-        public EvaluationView(IRegionManager regionManager)
+        public EvaluationView(IRegionManager regionManager) : base(regionManager, nameof(EvaluationView))
         {
             InitializeComponent();
-            this.regionManager = regionManager;
-            this.Loaded += EvaluationView_Loaded;
+            RegisterDefaultRegionView(RegionToken.EvaluationContent, "EvaluationMainView");
         }
 
         public void Dispose()
         {
             this.regionManager.Regions[RegionToken.EvaluationContent].RemoveAll();
-        }
-
-        private void EvaluationView_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            this.regionManager.RequestNavigate(RegionToken.EvaluationContent, "EvaluationMainView");
-            e.Handled = true;
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.Views
 {
@@ -19,7 +20,7 @@ namespace TMS.DeskTop.Views
         {
             InitializeComponent();
             this.regionManager = regionManager;
-            this.regionManager.RegisterViewWithRegion(RegionToken.MainContent, typeof(WorkPlaceView));
+            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.MainContent, typeof(WorkPlaceView));
 
 
             //this.MouseMove += (s, e) =>

@@ -1,7 +1,8 @@
-﻿<UserControl
+﻿<base:RegionManagerControl
     x:Class="TMS.DeskTop.Views.ContactsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:TMS.DeskTop.Tools.Base"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
     xmlns:hc="https://handyorg.github.io/handycontrol"
@@ -1408,4 +1409,4 @@
             </Grid>
         </Border>
     </Border>
-</UserControl>
+</base:RegionManagerControl>

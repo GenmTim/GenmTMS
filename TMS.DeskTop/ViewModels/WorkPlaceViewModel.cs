@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels
 {
@@ -26,9 +27,9 @@ namespace TMS.DeskTop.ViewModels
 
         public DelegateCommand<string> NavigationCommand { get; private set; }
 
-        private void NavigationPage(string obj)
+        private void NavigationPage(string view)
         {
-            regionManager.Regions[RegionToken.WorkPlaceTabContent].RequestNavigate(obj);
+            RegionHelper.RequestNavigate(regionManager, RegionToken.WorkPlaceTabContent, view);
         }
 
         public DelegateCommand<RoutedEventArgs> TabClosedCommand { get; private set; }

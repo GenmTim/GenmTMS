@@ -1,6 +1,4 @@
 ﻿using Prism.Regions;
-using System.Windows;
-using System.Windows.Controls;
 using TMS.Core.Data;
 using TMS.DeskTop.Tools.Base;
 
@@ -12,24 +10,10 @@ namespace TMS.DeskTop.Views.WorkPlace.Evaluation
     public partial class EvaluationMainView : RegionManagerControl, INavigationAware
     {
 
-        public EvaluationMainView(IRegionManager regionManager) : base(regionManager)
+        public EvaluationMainView(IRegionManager regionManager) : base(regionManager, nameof(EvaluationMainView))
         {
             InitializeComponent();
             RegisterDefaultRegionView(RegionToken.EvaluationMainContent, nameof(ViewEvaluationView));
-        }
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-
         }
     }
 }

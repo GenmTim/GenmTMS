@@ -1,0 +1,3 @@
+﻿namespace TMS.Core.Data
+{
+}

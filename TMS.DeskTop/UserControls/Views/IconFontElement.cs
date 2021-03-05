@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace TMS.DeskTop.UserControls.Views
@@ -17,5 +13,14 @@ namespace TMS.DeskTop.UserControls.Views
 
         public static String GetGeometry(DependencyObject element)
             => (String)element.GetValue(GeometryProperty);
+
+        public static readonly DependencyProperty IconNameProperty = DependencyProperty.RegisterAttached(
+            "IconName", typeof(String), typeof(IconFontElement), new PropertyMetadata(default(String)));
+
+        public static void SetIconName(DependencyObject element, String value)
+            => element.SetValue(IconNameProperty, value);
+
+        public static String GetIconName(DependencyObject element)
+            => (String)element.GetValue(IconNameProperty);
     }
 }

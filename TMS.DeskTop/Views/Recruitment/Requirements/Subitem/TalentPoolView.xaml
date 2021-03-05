@@ -20,10 +20,10 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Grid x:Name="grid" Margin="0,30,0,0">
-                            <Grid Margin="15,15" Panel.ZIndex="1">
+                            <Grid Margin="15,15,15,0" Panel.ZIndex="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
-                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BorderBrush}">
                                     <Grid>
@@ -65,7 +65,7 @@
                                         <TextBlock Grid.Row="2"
                                             Grid.ColumnSpan="2"
                                             Text="{Binding Readme}"
-                                            Width="280"
+                                            Width="240"
                                             Height="30"
                                             TextWrapping="Wrap"
                                             Margin="0,10,0,10"
@@ -74,7 +74,7 @@
                                     </Grid>
                                 </Border>
                                 <DockPanel Grid.Row="1"
-                                    Margin="0,10,0,0"
+                                    Margin="0,10"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Center">
                                     <Button Content="&#xe718;" Style="{StaticResource PIconFontBtnStyle}" />
@@ -129,7 +129,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Border
-            Margin="30"
+            Margin="20"
             Background="White"
             Effect="{StaticResource EffectShadow1}"
             CornerRadius="10">
@@ -185,7 +185,7 @@
                 </hc:WaterfallPanel>
             </Grid>
         </Border>
-        <Grid Grid.Row="1" Margin="40,10">
+        <Grid Grid.Row="1" Margin="20,10,10,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
@@ -254,27 +254,26 @@
                 </RadioButton>
             </StackPanel>
             <ListView Grid.Row="1"
+                Margin="-15,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
                 Style="{StaticResource ListBoxCustom}"
                 ItemsSource="{Binding TalentList}"
                 Background="Transparent"
+                ItemsPanel="{StaticResource WrapPanelHorizontalItemsPanelTemplate}"
                 BorderThickness="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Button Style="{StaticResource evaluationItemBtnStyle}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ListBoxItem">
                                     <ContentPresenter
-                                        Margin="10,0,10,0"
+                                        Margin="15,0,15,5"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />

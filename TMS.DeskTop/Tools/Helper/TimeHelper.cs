@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TMS.DeskTop.Tools.Helper
 {
@@ -34,7 +30,8 @@ namespace TMS.DeskTop.Tools.Helper
         /// <returns></returns>
         public static long GetUtcOffsets()
         {
-            long UtcOffsets = TimeZone.CurrentTimeZone.GetUtcOffset(new DateTime()).Ticks / 10000;
+
+            long UtcOffsets = TimeZoneInfo.Local.GetUtcOffset(new DateTime()).Ticks / 10000;
             return UtcOffsets;
         }
 

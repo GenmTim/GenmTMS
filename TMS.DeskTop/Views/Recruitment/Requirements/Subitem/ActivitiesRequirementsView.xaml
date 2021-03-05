@@ -5,7 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.Recruitment.Requirements.Subitem"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -153,9 +155,10 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Button
-                            Command="{Binding RelativeSource={RelativeSource AncestorType=ListView, Mode=FindAncestor}, Path=DataContext.BackNavigationCommand}"
-                            CommandParameter="Golang 服务端"
-                            Style="{StaticResource evaluationItemBtnStyle}" />
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=ListView, Mode=FindAncestor}, Path=DataContext.NavigationCommand}"
+                            CommandParameter="TalentPoolView"
+                            Style="{StaticResource evaluationItemBtnStyle}"
+                            Cursor="Hand" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.ItemsPanel>

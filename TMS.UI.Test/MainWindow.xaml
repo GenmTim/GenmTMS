@@ -10,41 +10,68 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Window.Resources />
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle
+                            Margin="2"
+                            StrokeDashArray="1 2"
+                            SnapsToDevicePixels="true"
+                            StrokeThickness="1"
+                            Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="OptionMarkFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle
+                            Margin="14,0,0,0"
+                            StrokeDashArray="1 2"
+                            SnapsToDevicePixels="true"
+                            StrokeThickness="1"
+                            Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid x:Name="templateRoot"
+                            Background="Transparent"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Button Content="添加" Click="Button_Click" />
-        <hc:TabControl x:Name="tabcontrol" Grid.Row="1">
-            <hc:TabControl.Resources>
-                <Style TargetType="hc:TabItem">
-                    <Setter Property="HeaderTemplate">
-                        <Setter.Value>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border
-                                        Width="18"
-                                        Height="18"
-                                        Margin="5,0,8,0"
-                                        VerticalAlignment="Center"
-                                        Background="{StaticResource PrimaryBrush}"
-                                        CornerRadius="5">
-                                        <TextBlock
-                                            Text="{Binding Title}"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            FontSize="10"
-                                            Foreground="White" />
-                                    </Border>
-                                    <TextBlock Text="{Binding Title}" VerticalAlignment="Center" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </hc:TabControl.Resources>
-        </hc:TabControl>
+        <StackPanel Margin="32" VerticalAlignment="Center">
+            <RadioButton Content="测试" />
+            <hc:Badge
+                Text="New"
+                Height="30"
+                BadgeMargin="0,0,300,0">
+                <Button Content="腭侧" />
+            </hc:Badge>
+        </StackPanel>
+
     </Grid>
 </Window>

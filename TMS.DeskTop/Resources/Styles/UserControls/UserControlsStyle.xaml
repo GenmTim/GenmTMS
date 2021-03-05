@@ -52,7 +52,7 @@
                             Background="{TemplateBinding Background}"
                             CornerRadius="5"
                             Effect="{StaticResource EffectShadow1}" />
-                        <StackPanel Margin="20" Orientation="Horizontal">
+                        <StackPanel Margin="0,20" Orientation="Horizontal">
                             <Rectangle
                                 Width="4"
                                 Height="18"

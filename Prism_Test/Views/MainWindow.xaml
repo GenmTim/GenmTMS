@@ -1,0 +1,43 @@
+﻿<Window
+    x:Class="Prism_Test.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    Title="{Binding Title}"
+    Width="525"
+    Height="350"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="6">
+            <Button
+                Content="A"
+                Command="{Binding NaviagationCommand}"
+                CommandParameter="A" />
+            <Button
+                Content="A1"
+                Command="{Binding NaviagationCommand}"
+                CommandParameter="A1" />
+            <Button
+                Content="A2"
+                Command="{Binding NaviagationCommand}"
+                CommandParameter="A2" />
+            <Button
+                Content="B"
+                Command="{Binding NaviagationCommand}"
+                CommandParameter="B" />
+            <Button
+                Content="B1"
+                Command="{Binding NaviagationCommand}"
+                CommandParameter="B1" />
+            <Button
+                Content="B2"
+                Command="{Binding NaviagationCommand}"
+                CommandParameter="B2" />
+        </UniformGrid>
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ContentRegion" />
+    </Grid>
+</Window>

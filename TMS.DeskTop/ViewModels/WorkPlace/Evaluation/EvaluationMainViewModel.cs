@@ -3,6 +3,7 @@ using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 {
@@ -35,9 +36,9 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
             journal = navigationContext.NavigationService.Journal;
         }
 
-        private void NavigationPage(string obj)
+        private void NavigationPage(string view)
         {
-            regionManager.Regions[RegionToken.EvaluationMainContent].RequestNavigate(obj);
+            RegionHelper.RequestNavigate(regionManager, RegionToken.EvaluationMainContent, view);
         }
     }
 }

@@ -15,7 +15,7 @@
                 <hc:SimplePanel>
                     <StackPanel Orientation="Horizontal">
                         <hc:SearchBar
-                            Width="500"
+                            Width="400"
                             hc:InfoElement.Placeholder="请输入班次名称或创建人姓名"
                             FontSize="14"
                             Style="{StaticResource SearchBarExtendBaseStyle}" />

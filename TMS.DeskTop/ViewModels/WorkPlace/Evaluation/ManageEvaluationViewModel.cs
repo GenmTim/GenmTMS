@@ -2,9 +2,9 @@
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
 using System.Collections.ObjectModel;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
@@ -35,7 +35,6 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;
             NavigationCommand = new DelegateCommand<string>(NavigationPage);
-            BackNavigationCommand = new DelegateCommand<string>(BackNavigationPage);
 
             evaluationRuleList.Add(new EvaluationRule
             {
@@ -68,26 +67,9 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 
         public DelegateCommand<string> NavigationCommand { get; private set; }
 
-        private void NavigationPage(string obj)
+        private void NavigationPage(string view)
         {
-            regionManager.RequestNavigate(RegionToken.EvaluationMainContent, obj, arg =>
-            {
-                journal = arg.Context.NavigationService.Journal;
-            });
-            regionManager.Regions[RegionToken.EvaluationMainContent].RequestNavigate(obj);
-        }
-
-        public DelegateCommand<string> BackNavigationCommand { get; private set; }
-
-        private void BackNavigationPage(string obj)
-        {
-            var param = new NavigationParameters();
-            param.Add("title", "新建考评规则");
-            param.Add("obj", typeof(NewEvaluationRuleView));
-            regionManager.RequestNavigate(RegionToken.EvaluationContent, "BackNavigationView", arg =>
-            {
-                journal = arg.Context.NavigationService.Journal;
-            }, param);
+            RouteHelper.Goto(regionManager, nameof(ManageEvaluationView), view);
         }
     }
 }
