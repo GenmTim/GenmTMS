@@ -58,5 +58,10 @@ namespace TMS.DeskTop.Views
         {
             this.Close();
         }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }

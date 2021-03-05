@@ -3,17 +3,29 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
     xmlns:hc="https://handyorg.github.io/handycontrol">
+    <Style
+        x:Key="tabItemCloseBtnStyle"
+        BasedOn="{StaticResource BorderCircular}"
+        TargetType="Border">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Background" Value="#01FFFFFF" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource DarkOpacityBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style x:Key="tabItemStyle" TargetType="{x:Type hc:TabItem}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
-        <Setter Property="Background" Value="#FFEFF0F1" />
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="10,0,0,0" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="hc:BackgroundSwitchElement.MouseHoverBackground" Value="{StaticResource BorderBrush}" />
         <Setter Property="hc:BorderElement.CornerRadius" Value="20" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="ShowCloseButton" Value="True" />
         <Setter Property="ShowContextMenu" Value="False" />
         <Setter Property="Tag" Value="False" />
@@ -70,19 +82,6 @@
                             Focusable="False"
                             RecognizesAccessKey="True"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        <Border x:Name="BorderMask" Grid.Column="1"
-                            Width="20"
-                            Margin="0,0,1,1"
-                            HorizontalAlignment="Right"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="10, 10,0 ,0">
-                            <Border.OpacityMask>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                    <GradientStop Offset="1" Color="White" />
-                                    <GradientStop Offset="0" />
-                                </LinearGradientBrush>
-                            </Border.OpacityMask>
-                        </Border>
                         <Button Grid.Column="2"
                             Command="hc:ControlCommands.Close"
                             Width="28"
@@ -92,24 +91,28 @@
                                                          Converter={StaticResource Boolean2VisibilityConverter}}"
                             Background="Transparent"
                             Style="{StaticResource ButtonCustom}">
-                            <Path
-                                Width="8"
-                                Height="8"
-                                Fill="{DynamicResource PrimaryTextBrush}"
-                                Style="{StaticResource ClosePathStyle}" />
+                            <Border x:Name="closeBtnBoder" Style="{StaticResource tabItemCloseBtnStyle}">
+                                <Path
+                                    Width="8"
+                                    Height="8"
+                                    Fill="{DynamicResource PrimaryTextBrush}"
+                                    Style="{StaticResource ClosePathStyle}" />
+                            </Border>
                         </Button>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Panel.ZIndex" Value="0" />
+                            <Setter TargetName="innerBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="innerBorder" Property="Background" Value="#FFF8F9FA" />
+                        </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Panel.ZIndex" Value="1" />
                             <Setter TargetName="innerBorder" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="BorderMask" Property="Background" Value="{DynamicResource RegionBrush}" />
+                            <Setter TargetName="innerBorder" Property="Background" Value="{DynamicResource RegionBrush}" />
                         </Trigger>
                         <Trigger Property="uc:IconFontElement.Geometry" Value="{x:Null}">
                             <Setter TargetName="PathMain" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
-                        <Trigger Property="ShowCloseButton" Value="True">
-                            <Setter TargetName="BorderMask" Property="Margin" Value="0,0,0,1" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -74,5 +74,16 @@ namespace TMS.DeskTop
 
             containerRegistry.RegisterDialog<CheckItemDialog>();
         }
+
+        protected override void OnInitialized()
+        {
+            var login = Container.Resolve<LoginView>();
+            var result = login.ShowDialog();
+
+            if (result.Value)
+                base.OnInitialized();
+            else
+                Application.Current.Shutdown();
+        }
     }
 }

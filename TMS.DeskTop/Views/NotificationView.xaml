@@ -9,108 +9,105 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Resources/Styles/Views/NotificationViewStyle.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/Views/NotificationViewStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style BasedOn="{StaticResource GravatarCircleImg}" TargetType="hc:Gravatar">
+                <Setter Property="Width" Value="33" />
+                <Setter Property="Height" Value="33" />
+            </Style>
+            <Style
+                x:Key="addBtnStyle"
+                BasedOn="{StaticResource ButtonCustom}"
+                TargetType="Button">
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+                <Setter Property="Foreground" Value="#8b8f96" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Border x:Name="border"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Style="{StaticResource BorderCircular}"
+                                BorderThickness="1"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                                <TextBlock
+                                    Text="&#xe773;"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    FontSize="20"
+                                    Style="{StaticResource FIconTextPlusBlockStyle}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                                    <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+
     </UserControl.Resources>
     <Border Grid.Column="1" Background="Transparent">
-        <Border
-            Background="White"
-            BorderThickness="0"
-            CornerRadius="0">
+        <Border Background="White" CornerRadius="0">
             <Grid x:Name="main">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="300"
-                        MinWidth="290"
-                        MaxWidth="490" />
+                    <ColumnDefinition Width="272" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <Border Grid.Column="1"
+                    BorderBrush="{StaticResource TMS_BorderBrush}"
+                    BorderThickness="0,0,1,0" />
                 <Grid Grid.Column="0"
-                    Margin="0,20,0,5"
+                    Margin="0,15,0,5"
                     Background="White">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <DockPanel Grid.Row="0" Margin="10,0,12,0">
-                        <Button Content="按钮" DockPanel.Dock="Right" />
-                        <TextBox
-                            Text="搜索框"
-                            Margin="5"
-                            BorderThickness="1"
-                            DockPanel.Dock="Top" />
-                    </DockPanel>
-                    <hc:FlexPanel Grid.Row="1"
-                        Margin="10,20,10,8"
-                        AlignItems="FlexStart"
-                        AlignContent="FlexEnd"
-                        JustifyContent="FlexStart"
-                        FlexWrap="Wrap"
-                        FlexDirection="Row">
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="User2131a"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="Users1"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="Userh"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="User1"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="User1hs"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="Userewr1"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="Userty1"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="User3241"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="User4"
-                            Style="{StaticResource GravatarCircleImg}" />
-                        <hc:Gravatar
-                            Width="35"
-                            Height="35"
-                            Margin="5,3"
-                            Id="User2"
-                            Style="{StaticResource GravatarCircleImg}" />
-                    </hc:FlexPanel>
+                    <Grid Grid.Row="0" Margin="8,0,12,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <hc:SearchBar
+                            Height="33"
+                            Padding="15,0,0,0"
+                            hc:BorderElement.CornerRadius="15"
+                            hc:InfoElement.Placeholder="搜索"
+                            FontSize="14"
+                            Style="{StaticResource SearchBarExtend}" />
+                        <Button Grid.Column="1"
+                            Width="33"
+                            Height="33"
+                            Margin="10,0,0,0"
+                            Style="{StaticResource addBtnStyle}" />
+                    </Grid>
+                    <hc:ScrollViewer Grid.Row="1"
+                        Margin="4,5,10,8"
+                        Orientation="Horizontal"
+                        HorizontalScrollBarVisibility="Auto"
+                        IsInertiaEnabled="True">
+                        <StackPanel Margin="0,15" Orientation="Horizontal">
+                            <hc:Gravatar Margin="5,3" Id="User2131a" />
+                            <hc:Gravatar Margin="5,3" Id="Users1" />
+                            <hc:Gravatar Margin="5,3" Id="Userh" />
+                            <hc:Gravatar Margin="5,3" Id="User1" />
+                            <hc:Gravatar Margin="5,3" Id="User1hs" />
+                            <hc:Gravatar Margin="5,3" Id="User1hs" />
+                            <hc:Gravatar Margin="5,3" Id="User1hs" />
+                        </StackPanel>
+                    </hc:ScrollViewer>
                     <ListView x:Name="listView1" Grid.Row="2"
-                        Margin="0"
+                        Margin="0,5,0,0"
                         HorizontalAlignment="Stretch"
                         ItemTemplate="{StaticResource myLVItemTemplate}"
                         Template="{StaticResource myLVTemplate}"
@@ -123,12 +120,10 @@
                         </ItemsControl.ItemsPanel>
                     </ListView>
                 </Grid>
-                <GridSplitter Grid.Column="1"
+                <!--<GridSplitter Grid.Column="1"
                     Width="2"
-                    HorizontalAlignment="Center" />
-                <StackPanel Grid.Column="2">
-                    <Button Content="asasdaaasad" />
-                </StackPanel>
+                    HorizontalAlignment="Center" />-->
+                <hc:SimplePanel Grid.Column="2" Background="#FFF5F6F7" />
             </Grid>
         </Border>
     </Border>

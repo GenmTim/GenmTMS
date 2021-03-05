@@ -150,6 +150,7 @@
                     <hc:SearchBar
                         Height="30"
                         Margin="40,0,0,0"
+                        Padding="15,0,0,0"
                         hc:BorderElement.CornerRadius="15"
                         hc:InfoElement.Placeholder="搜索"
                         Style="{StaticResource SearchBarPlus}" />

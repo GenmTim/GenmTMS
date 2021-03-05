@@ -33,7 +33,8 @@
                     </hc:RoutedEventTrigger>
                 </hc:Interaction.Triggers>
                 <hc:TabControl x:Name="tabControl"
-                    Margin="0,30,0,0"
+                    Margin="0,10,0,0"
+                    Panel.ZIndex="10"
                     prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.WorkPlaceTabContent}"
                     BorderThickness="0"
                     IsAnimationEnabled="True"
@@ -41,6 +42,7 @@
                     <hc:TabControl.Resources>
                         <Style BasedOn="{StaticResource tabItemStyle}" TargetType="{x:Type hc:TabItem}">
                             <Setter Property="Header" Value="{Binding DataContext.ViewInfo.Title}" />
+                            <Setter Property="Cursor" Value="Hand" />
                             <Setter Property="uc:IconFontElement.Geometry" Value="{Binding DataContext.ViewInfo.IconFont}" />
                             <Style.Triggers>
                                 <Trigger Property="Header" Value="工作台">

@@ -59,6 +59,20 @@ namespace TMS.DeskTop.Views
         }
 
         /// <summary>
+        /// 窗口关闭
+        /// </summary>
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
+
+
+        /// <summary>
         /// 标题栏双击事件
         /// </summary>
         private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
