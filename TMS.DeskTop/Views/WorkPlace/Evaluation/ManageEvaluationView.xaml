@@ -36,7 +36,8 @@
                         FontSize="17"
                         FontWeight="Bold" />
                     <Button
-                        Command="{Binding BackNavigationCommand}"
+                        Command="{Binding NavigationCommand}"
+                        CommandParameter="NewEvaluationRuleView"
                         Height="35"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"

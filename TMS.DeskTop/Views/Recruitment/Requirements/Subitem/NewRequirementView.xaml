@@ -1,0 +1,104 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.Recruitment.Requirements.Subitem.NewRequirementView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.Recruitment.Requirements.Subitem"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    d:DesignHeight="500"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="titleTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,20,0,15" />
+            <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+        </Style>
+        <Style x:Key="titleAttachTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="4,20,0,10" />
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="Text" Value="*" />
+        </Style>
+        <Style BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </UserControl.Resources>
+    <StackPanel MaxWidth="1000">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Text="需求岗位"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource titleTextBlockStyle}" />
+                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
+            </StackPanel>
+            <TextBox />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Text="需求人数"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource titleTextBlockStyle}" />
+                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
+            </StackPanel>
+            <TextBox />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Text="岗位要求"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource titleTextBlockStyle}" />
+                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
+            </StackPanel>
+            <TextBox
+                Height="80"
+                TextWrapping="Wrap"
+                VerticalContentAlignment="Top"
+                AcceptsReturn="True"
+                VerticalScrollBarVisibility="Visible" />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Text="期望到岗日期"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource titleTextBlockStyle}" />
+                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
+            </StackPanel>
+            <hc:DatePicker FontSize="14" />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Text="审批人"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource titleTextBlockStyle}" />
+                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
+            </StackPanel>
+            <uc:VariableListBox />
+        </StackPanel>
+        <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
+            <Button
+                Content="提交"
+                Width="100"
+                Height="35"
+                FontSize="14"
+                Cursor="Hand"
+                Style="{StaticResource ButtonPrimary}" />
+            <Button
+                Content="取消"
+                Width="100"
+                Height="35"
+                Margin="35,0,0,0"
+                Cursor="Hand"
+                FontSize="14" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

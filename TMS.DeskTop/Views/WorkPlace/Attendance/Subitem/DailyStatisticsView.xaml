@@ -27,13 +27,13 @@
                         VerticalAlignment="Center" />
                     <hc:DateTimePicker Width="250" FontSize="14" />
                 </StackPanel>
-                <StackPanel Margin="40,0,0,0" Orientation="Horizontal">
+                <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
                     <TextBlock
                         Text="考勤组 :"
                         Margin="0,0,20,0"
                         VerticalAlignment="Center" />
                     <TextBox
-                        Width="300"
+                        Width="250"
                         hc:InfoElement.Placeholder="可输入考勤组名称"
                         FontSize="14"
                         Style="{StaticResource TextBoxExtendBaseStyle}" />

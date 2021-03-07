@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using TMS.DeskTop.ViewModels;
 
 namespace TMS.DeskTop.Views
 {

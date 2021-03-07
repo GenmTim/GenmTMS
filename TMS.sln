@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMS.DeskTop", "TMS.DeskTop\TMS.DeskTop.csproj", "{7A7B4944-03B5-4716-B7A2-3DE0E3C59375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMS.DeskTop", "TMS.DeskTop\TMS.DeskTop.csproj", "{7A7B4944-03B5-4716-B7A2-3DE0E3C59375}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMS.Core", "TMS.Core\TMS.Core.csproj", "{FCC727C8-F919-4122-BB6A-1E6F4E475D81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMS.Core", "TMS.Core\TMS.Core.csproj", "{FCC727C8-F919-4122-BB6A-1E6F4E475D81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMS.UI.Test", "TMS.UI.Test\TMS.UI.Test.csproj", "{58363B91-A75F-4DAF-9F4A-82BF9B3C738E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism_Test", "Prism_Test\Prism_Test.csproj", "{C115EC0B-EFCA-48FE-861D-398157708F20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic_Test", "Logic_Test\Logic_Test.csproj", "{50C98C79-3CA9-4524-A677-B6319C821419}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{FCC727C8-F919-4122-BB6A-1E6F4E475D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCC727C8-F919-4122-BB6A-1E6F4E475D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCC727C8-F919-4122-BB6A-1E6F4E475D81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58363B91-A75F-4DAF-9F4A-82BF9B3C738E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58363B91-A75F-4DAF-9F4A-82BF9B3C738E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58363B91-A75F-4DAF-9F4A-82BF9B3C738E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58363B91-A75F-4DAF-9F4A-82BF9B3C738E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C115EC0B-EFCA-48FE-861D-398157708F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C115EC0B-EFCA-48FE-861D-398157708F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C115EC0B-EFCA-48FE-861D-398157708F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C115EC0B-EFCA-48FE-861D-398157708F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C98C79-3CA9-4524-A677-B6319C821419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C98C79-3CA9-4524-A677-B6319C821419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C98C79-3CA9-4524-A677-B6319C821419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C98C79-3CA9-4524-A677-B6319C821419}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -32,8 +32,9 @@
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="Width" Value="40" />
             <Setter Property="Height" Value="26" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="FontFamily" Value="/Resource/Font/#iconfont" />
+            <Setter Property="FontFamily" Value="/Resources/Fonts/#iconfont" />
             <Setter Property="BorderThickness" Value="0" />
             <!--  取消按钮的虚线框  -->
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -64,7 +65,7 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-        <Grid
+        <hc:SimplePanel
             DockPanel.Dock="Top"
             Background="#FFFFFF"
             MouseMove="Grid_MouseMove">
@@ -87,7 +88,7 @@
                     Click="btn_close_Click"
                     Style="{StaticResource MainViewCloseBtnStyle}" />
             </WrapPanel>
-        </Grid>
+        </hc:SimplePanel>
         <StackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -113,10 +114,10 @@
                             FontSize="14"
                             Foreground="DarkGray" />
                     </StackPanel>
-                    <Image
+                    <hc:GifImage
                         Width="300"
                         Margin="0,30,0,0"
-                        gif:ImageBehavior.AnimatedSource="/Resources/Images/designer_and_client_2__dribbble__1.gif" />
+                        Source="/Resources/Images/designer_and_client_2__dribbble__1.gif" />
                     <StackPanel Margin="40" />
                 </StackPanel>
             </Grid>
@@ -152,7 +153,8 @@
                             Name="username"
                             Height="40"
                             Margin="30,0,30,30"
-                            hc:InfoElement.Placeholder="请输入手机号码" />
+                            hc:InfoElement.Placeholder="请输入手机号码"
+                            FontSize="12" />
                         <hc:PasswordBox
                             Name="aaa"
                             Height="40"
@@ -165,8 +167,10 @@
                                 Content="登录"
                                 Height="40"
                                 HorizontalAlignment="Stretch"
+                                Cursor="Hand"
                                 FontSize="16"
-                                Style="{StaticResource ButtonPrimary}" />
+                                Style="{StaticResource ButtonPrimary}"
+                                Click="LoginBtn_Click" />
                         </Grid>
                         <StackPanel Margin="30,0,30,30" Orientation="Horizontal">
                             <CheckBox Content="15天内自动登录" Foreground="Gray" />

@@ -1,7 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.UserControls.ViewModels
 {
@@ -18,17 +18,21 @@ namespace TMS.DeskTop.UserControls.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        private string timestampStr;
+
+
         public BackNavigationViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
             this.GoBackCommand = new DelegateCommand(GoBack);
+            timestampStr = TimeHelper.GetNowTimeStamp().ToString();
         }
 
         public DelegateCommand GoBackCommand { get; private set; }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            return true;
+            return false;
         }
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
@@ -37,9 +41,7 @@ namespace TMS.DeskTop.UserControls.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            _title = navigationContext.Parameters.GetValue<string>("title");
-            var obj = navigationContext.Parameters.GetValue<string>("obj");
-            regionManager.RequestNavigate(RegionToken.BackNavigationContent, obj);
+            Title = navigationContext.Parameters.GetValue<string>("title");
             journal = navigationContext.NavigationService.Journal;
         }
 

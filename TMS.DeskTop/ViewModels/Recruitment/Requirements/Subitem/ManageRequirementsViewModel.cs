@@ -2,13 +2,9 @@
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels.Recruitment.Requirements.Subitem
 {
@@ -38,7 +34,6 @@ namespace TMS.DeskTop.ViewModels.Recruitment.Requirements.Subitem
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;
             NavigationCommand = new DelegateCommand<string>(NavigationPage);
-            BackNavigationCommand = new DelegateCommand<string>(BackNavigationPage);
 
             evaluationRuleList.Add(new EvaluationRule
             {
@@ -71,26 +66,9 @@ namespace TMS.DeskTop.ViewModels.Recruitment.Requirements.Subitem
 
         public DelegateCommand<string> NavigationCommand { get; private set; }
 
-        private void NavigationPage(string obj)
+        private void NavigationPage(string view)
         {
-            regionManager.RequestNavigate(RegionToken.EvaluationMainContent, obj, arg =>
-            {
-                journal = arg.Context.NavigationService.Journal;
-            });
-            regionManager.Regions[RegionToken.EvaluationMainContent].RequestNavigate(obj);
-        }
-
-        public DelegateCommand<string> BackNavigationCommand { get; private set; }
-
-        private void BackNavigationPage(string obj)
-        {
-            var param = new NavigationParameters();
-            param.Add("title", "新建考评规则");
-            param.Add("obj", "NewEvaluationRuleView");
-            regionManager.RequestNavigate(RegionToken.EvaluationContent, "BackNavigationView", arg =>
-            {
-                journal = arg.Context.NavigationService.Journal;
-            }, param);
+            RegionHelper.RequestNavigate(regionManager, RegionToken.RecruitmentContent, view);
         }
     }
 }

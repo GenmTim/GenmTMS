@@ -5,169 +5,241 @@
     xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
-    Width="1500"
-    Height="900"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    Width="1180"
+    Height="720"
+    MinWidth="1224"
+    MinHeight="720"
+    hc:WindowAttach.IsDragElement="True"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    AllowsTransparency="True"
-    Background="Transparent"
-    ResizeMode="CanResizeWithGrip"
-    WindowStartupLocation="CenterScreen"
-    WindowStyle="None">
+    MouseDown="TopBar_MouseDown"
+    Background="White"
+    WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary Source="/Resources/Styles/Views/MainWindowStyle.xaml" />
     </Window.Resources>
-    <Border Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            CaptionHeight="0"
+            CornerRadius="0"
+            GlassFrameThickness="0"
+            ResizeBorderThickness="4"
+            UseAeroCaptionButtons="False"
+            NonClientFrameEdges="None" />
+    </WindowChrome.WindowChrome>
+    <Border Effect="{StaticResource EffectShadow1}" Background="Transparent">
         <Border
-            Background="#FF37A0EA"
+            Margin="2"
             BorderThickness="0"
-            CornerRadius="10">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Rectangle
-                    Grid.ColumnSpan="2"
-                    Height="30"
-                    VerticalAlignment="Top"
-                    Panel.ZIndex="100"
-                    hc:WindowAttach.IsDragElement="True"
-                    Fill="Transparent"
-                    MouseDown="TopBar_MouseDown"
-                    RadiusX="10"
-                    RadiusY="10" />
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Button Style="{DynamicResource profileBtnStyle}">
-                        <Button.Content>
-                            <Image Source="/Resources/Images/Assets/googledrive.png" />
-                        </Button.Content>
-                    </Button>
-
-                    <!--#region Left Grid - Menu-->
-                    <Grid Grid.Row="1">
+            CornerRadius="0">
+            <hc:SimplePanel>
+                <DockPanel>
+                    <Grid Grid.Column="0"
+                        Width="60"
+                        Panel.ZIndex="1"
+                        Background="White">
+                        <!--<Grid Grid.Column="0"
+                        Width="60"
+                        Panel.ZIndex="1"
+                        Background="#FF37A0EA">-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="300" />
+                            <RowDefinition Height="100" />
                             <RowDefinition Height="*" />
-                            <RowDefinition Height="50" />
-                            <RowDefinition Height="20" />
                         </Grid.RowDefinitions>
-                        <UniformGrid Columns="1">
-                            <!--  Adding Menu buttons  -->
-                            <RadioButton
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="NotificationView"
-                                Style="{StaticResource menuRadioButtonTemplate}"
-                                Tag="Tag3">
-                                <hc:Poptip.Instance>
-                                    <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                        <hc:Poptip.Content>
-                                            <TextBlock Text="通知" Margin="3" />
-                                        </hc:Poptip.Content>
-                                    </hc:Poptip>
-                                </hc:Poptip.Instance>
-                                <RadioButton.Content>
-                                    <Image
-                                        Width="24"
-                                        Source="/Resources/Images/Assets/sms.png"
-                                        Stretch="Uniform" />
-                                </RadioButton.Content>
-                            </RadioButton>
-                            <RadioButton
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="ContactsView"
-                                Cursor="Hand"
-                                Style="{StaticResource menuRadioButtonTemplate}"
-                                Tag="Contacts">
-                                <hc:Poptip.Instance>
-                                    <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                        <hc:Poptip.Content>
-                                            <TextBlock Text="联系" Margin="3" />
-                                        </hc:Poptip.Content>
-                                    </hc:Poptip>
-                                </hc:Poptip.Instance>
-                                <RadioButton.Content>
-                                    <Image
-                                        Width="24"
-                                        Source="/Resources/Images/Assets/contacts.png"
-                                        Stretch="Uniform" />
-                                </RadioButton.Content>
-                            </RadioButton>
-
-                            <RadioButton
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="WorkPlaceView"
-                                Style="{StaticResource menuRadioButtonTemplate}"
-                                Tag="Tag3">
-                                <hc:Poptip.Instance>
-                                    <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                        <hc:Poptip.Content>
-                                            <TextBlock Text="多应用" Margin="3" />
-                                        </hc:Poptip.Content>
-                                    </hc:Poptip>
-                                </hc:Poptip.Instance>
-                                <RadioButton.Content>
-                                    <Image
-                                        Width="24"
-                                        Source="/Resources/Images/Assets/mmc.png"
-                                        Stretch="Uniform" />
-                                </RadioButton.Content>
-                            </RadioButton>
-                            <RadioButton Style="{StaticResource menuRadioButtonTemplate}" Tag="Tag3">
-                                <hc:Poptip.Instance>
-                                    <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                        <hc:Poptip.Content>
-                                            <TextBlock Text="成就" Margin="3" />
-                                        </hc:Poptip.Content>
-                                    </hc:Poptip>
-                                </hc:Poptip.Instance>
-                                <RadioButton.Content>
-                                    <Image
-                                        Width="24"
-                                        Source="/Resources/Images/Assets/new_custom48.png"
-                                        Stretch="Uniform" />
-                                </RadioButton.Content>
-                            </RadioButton>
-                            <RadioButton
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="RecruitmentView"
-                                Style="{StaticResource menuRadioButtonTemplate}"
-                                Tag="Application"
-                                Cursor="Hand">
-                                <hc:Poptip.Instance>
-                                    <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                        <hc:Poptip.Content>
-                                            <TextBlock Text="设置" Margin="3" />
-                                        </hc:Poptip.Content>
-                                    </hc:Poptip>
-                                </hc:Poptip.Instance>
-                                <RadioButton.Content>
-                                    <Image
-                                        Width="24"
-                                        Source="/Resources/Images/Assets/settings.png"
-                                        Stretch="Uniform" />
-                                </RadioButton.Content>
-                            </RadioButton>
-                        </UniformGrid>
-                        <Button Grid.Row="2"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Style="{DynamicResource menuButtonTemplate}">
+                        <Border
+                            Grid.RowSpan="2"
+                            BorderThickness="0,0,1,0"
+                            BorderBrush="{StaticResource TMS_BorderBrush}" />
+                        <Button Style="{DynamicResource profileBtnStyle}">
                             <Button.Content>
-                                <Image
-                                    Width="24"
-                                    Source="/Resources/Images/Assets/cloud.png"
-                                    Stretch="Uniform" />
+                                <Image Source="/Resources/Images/Assets/googledrive.png" />
                             </Button.Content>
                         </Button>
+
+                        <!--#region Left Grid - Menu-->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="500" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="20" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Margin="0,-15,0,0">
+                                <StackPanel.Resources>
+                                    <Style TargetType="uc:MenuRadioButton">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter Property="Foreground" Value="{StaticResource BorderBrush}" />
+                                        <Setter Property="Height" Value="80" />
+                                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                        <Setter Property="Width" Value="40" />
+                                        <Setter Property="FontSize" Value="28" />
+                                        <Setter Property="BorderThickness" Value="0" />
+                                        <Setter Property="SnapsToDevicePixels" Value="true" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="uc:MenuRadioButton">
+                                                    <hc:SimplePanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                                                        <hc:SimplePanel VerticalAlignment="Center">
+                                                            <Border
+                                                                Width="40"
+                                                                Height="40"
+                                                                Background="{TemplateBinding Background}"
+                                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                                CornerRadius="10">
+                                                                <TextBlock
+                                                                    Text="{TemplateBinding uc:IconFontElement.Geometry}"
+                                                                    Margin="{TemplateBinding Padding}"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    Focusable="False"
+                                                                    Foreground="{TemplateBinding Foreground}"
+                                                                    FontSize="{TemplateBinding FontSize}"
+                                                                    Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                                                            </Border>
+                                                            <hc:Badge x:Name="badge"
+                                                                FontSize="10"
+                                                                BorderThickness="0"
+                                                                BadgeMargin="0,-5,-5,0"
+                                                                Style="{StaticResource BadgeDanger}"
+                                                                Value="{TemplateBinding uc:ValueAttach.Integer}" />
+                                                        </hc:SimplePanel>
+                                                    </hc:SimplePanel>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger SourceName="badge" Property="Value" Value="0">
+                                                            <Setter TargetName="badge" Property="Visibility" Value="Collapsed" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                            <Setter Property="Background" Value="#CC63BCFB" />
+                                                            <Setter Property="Foreground" Value="White" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsChecked" Value="true">
+                                                            <Setter Property="Background" Value="#63BCFB" />
+                                                            <Setter Property="Foreground" Value="White" />
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                    <Style
+                                        x:Key="BlockPopTip"
+                                        BasedOn="{StaticResource PoptipBaseStyle}"
+                                        TargetType="{x:Type hc:Poptip}">
+                                        <Setter Property="Background" Value="#dd111111" />
+                                        <Setter Property="Focusable" Value="False" />
+                                        <Setter Property="IsHitTestVisible" Value="False" />
+                                        <Setter Property="PlacementType" Value="Right" />
+                                        <Setter Property="BorderThickness" Value="0" />
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="FontSize" Value="13" />
+                                        <Setter Property="Offset" Value="7" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <!--  Adding Menu buttons  -->
+                                <uc:MenuRadioButton
+                                    IsChecked="True"
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="NotificationView"
+                                    Padding="0,4,0,0"
+                                    uc:ValueAttach.Integer="100"
+                                    uc:IconFontElement.Geometry="&#xe643;"
+                                    Cursor="Hand">
+                                    <hc:Poptip.Instance>
+                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                            <hc:Poptip.Content>
+                                                <TextBlock Text="通知" Margin="3" />
+                                            </hc:Poptip.Content>
+                                        </hc:Poptip>
+                                    </hc:Poptip.Instance>
+                                </uc:MenuRadioButton>
+                                <uc:MenuRadioButton
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="ContactsView"
+                                    uc:ValueAttach.Integer="100"
+                                    uc:IconFontElement.Geometry="&#xe648;">
+                                    <hc:Poptip.Instance>
+                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                            <hc:Poptip.Content>
+                                                <TextBlock Text="联系" Margin="3" />
+                                            </hc:Poptip.Content>
+                                        </hc:Poptip>
+                                    </hc:Poptip.Instance>
+                                </uc:MenuRadioButton>
+                                <uc:MenuRadioButton
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter=""
+                                    uc:ValueAttach.Integer="100"
+                                    uc:IconFontElement.Geometry="&#xe638;">
+                                    <hc:Poptip.Instance>
+                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                            <hc:Poptip.Content>
+                                                <TextBlock Text="文件" Margin="3" />
+                                            </hc:Poptip.Content>
+                                        </hc:Poptip>
+                                    </hc:Poptip.Instance>
+                                </uc:MenuRadioButton>
+                                <uc:MenuRadioButton
+                                    Command="{Binding NavigationCommand}"
+                                    CommandParameter="WorkPlaceView"
+                                    uc:ValueAttach.Integer="100"
+                                    uc:IconFontElement.Geometry="&#xe61d;">
+                                    <hc:Poptip.Instance>
+                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                            <hc:Poptip.Content>
+                                                <TextBlock Text="工作台" Margin="3" />
+                                            </hc:Poptip.Content>
+                                        </hc:Poptip>
+                                    </hc:Poptip.Instance>
+                                </uc:MenuRadioButton>
+                            </StackPanel>
+                            <Button Grid.Row="2"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Style="{DynamicResource menuButtonTemplate}">
+                                <Button.Content>
+                                    <Image
+                                        Width="24"
+                                        Source="/Resources/Images/Assets/cloud.png"
+                                        Stretch="Uniform" />
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                        <!--#endregion-->
                     </Grid>
-                    <!--#endregion-->
-                </Grid>
-                <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.MainContent}" />
-            </Grid>
+                    <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.MainContent}" />
+                </DockPanel>
+                <hc:SimplePanel
+                    Height="25"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Panel.ZIndex="0"
+                    hc:WindowAttach.IsDragElement="True"
+                    MouseDown="TopBar_MouseDown"
+                    Background="Transparent">
+                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,0" />
+                    <WrapPanel Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Style="{x:Null}"
+                        Orientation="Horizontal">
+                        <Button
+                            Content="&#xe61c;"
+                            Click="btn_min_Click"
+                            Style="{StaticResource MainViewMinBtnStyle}" />
+                        <Button
+                            Content="&#xe61b;"
+                            Click="btn_max_Click"
+                            Style="{StaticResource MainViewMaxBtnStyle}" />
+                        <Button
+                            Content="&#xe61a;"
+                            hc:BackgroundSwitchElement.MouseDownBackground="Red"
+                            Click="btn_close_Click"
+                            Style="{StaticResource MainViewCloseBtnStyle}" />
+                    </WrapPanel>
+                </hc:SimplePanel>
+            </hc:SimplePanel>
         </Border>
     </Border>
 </Window>

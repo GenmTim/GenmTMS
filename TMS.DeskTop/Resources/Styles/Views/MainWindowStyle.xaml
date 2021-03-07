@@ -223,17 +223,5 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-    <Style
-        x:Key="BlockPopTip"
-        BasedOn="{StaticResource PoptipBaseStyle}"
-        TargetType="{x:Type hc:Poptip}">
-        <Setter Property="Background" Value="#dd111111" />
-        <Setter Property="Focusable" Value="False" />
-        <Setter Property="IsHitTestVisible" Value="False" />
-        <Setter Property="PlacementType" Value="Right" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Foreground" Value="White" />
-        <Setter Property="FontSize" Value="13" />
-        <Setter Property="Offset" Value="5" />
-    </Style>
+
 </ResourceDictionary>

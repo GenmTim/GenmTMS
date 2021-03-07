@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using TMS.Core.Data;
 
 namespace TMS.DeskTop.Views.WorkPlace
 {
@@ -8,15 +9,16 @@ namespace TMS.DeskTop.Views.WorkPlace
     /// </summary>
     public partial class WorkPlaceMainView : UserControl, IDisposable
     {
+        private TabItemInfo tagItemInfo = new TabItemInfo { IsMust = true };
+        public TabItemInfo TagItemInfo { get => tagItemInfo; set => tagItemInfo = value; }
+
         public WorkPlaceMainView()
         {
             InitializeComponent();
-            displayBorder.Uri = new Uri(@"/TMS.DeskTop;component/Resources/Images/designer_and_client_2__dribbble__1.gif", UriKind.Relative);
         }
 
         public void Dispose()
         {
-            displayBorder.Dispose();
         }
     }
 }

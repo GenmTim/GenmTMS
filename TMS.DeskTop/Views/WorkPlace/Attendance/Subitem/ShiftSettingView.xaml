@@ -15,7 +15,7 @@
                 <hc:SimplePanel>
                     <StackPanel Orientation="Horizontal">
                         <hc:SearchBar
-                            Width="500"
+                            Width="400"
                             hc:InfoElement.Placeholder="请输入班次名称或创建人姓名"
                             FontSize="14"
                             Style="{StaticResource SearchBarExtendBaseStyle}" />
@@ -84,8 +84,7 @@
                     Margin="0,20,0,0"
                     HorizontalAlignment="Center"
                     MaxPageCount="2"
-                    IsJumpEnabled="True"
-                    PageIndex="{Binding PageIndex}">
+                    IsJumpEnabled="True">
                     <!--<hc:Interaction.Triggers>
                         <hc:EventTrigger EventName="PageUpdated">
                             <hc:EventToCommand Command="{Binding PageUpdatedCmd}" PassEventArgsToCommand="True" />

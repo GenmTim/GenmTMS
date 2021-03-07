@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.Views
 {
@@ -19,8 +20,7 @@ namespace TMS.DeskTop.Views
         {
             InitializeComponent();
             this.regionManager = regionManager;
-            this.regionManager.RegisterViewWithRegion(RegionToken.MainContent, typeof(WorkPlaceView));
-
+            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.MainContent, typeof(NotificationView));
 
             //this.MouseMove += (s, e) =>
             //    {
@@ -56,6 +56,20 @@ namespace TMS.DeskTop.Views
                 this.WindowState = WindowState.Maximized; //设置窗口最大化
             }
         }
+
+        /// <summary>
+        /// 窗口关闭
+        /// </summary>
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
+
 
         /// <summary>
         /// 标题栏双击事件

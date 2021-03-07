@@ -1,11 +1,7 @@
 ﻿using Prism.Regions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.Tools.Base
 {
@@ -13,11 +9,33 @@ namespace TMS.DeskTop.Tools.Base
     {
         protected IRegionManager regionManager;
         private Dictionary<string, string> regionsDefaultView;
+        private readonly string viewName;
 
-        public RegionManagerControl(IRegionManager regionManager)
+        public RegionManagerControl(IRegionManager regionManager, string viewName)
         {
             this.regionManager = regionManager;
             this.Loaded += LoadDefaultRegionView;
+            this.viewName = viewName;
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            string now_view = viewName;
+            bool needRoute = navigationContext.Parameters.TryGetValue<string>("target_view", out string target_view);
+            if (needRoute)
+            {
+                RouteHelper.Route(regionManager, now_view, target_view);
+            }
+
         }
 
         protected void RegisterDefaultRegionView(string regionName, string viewName)
@@ -31,9 +49,12 @@ namespace TMS.DeskTop.Tools.Base
 
         private void LoadDefaultRegionView(object sender, System.Windows.RoutedEventArgs e)
         {
-            foreach (KeyValuePair<string, string> kvp in regionsDefaultView)
+            if (regionsDefaultView != null)
             {
-                    this.regionManager.RequestNavigate(kvp.Key, kvp.Value);
+                foreach (KeyValuePair<string, string> kvp in regionsDefaultView)
+                {
+                    RegionHelper.RequestNavigate(regionManager, regionName: kvp.Key, view: kvp.Value);
+                }
             }
             this.Loaded -= LoadDefaultRegionView;
         }

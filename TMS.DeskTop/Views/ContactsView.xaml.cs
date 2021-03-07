@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
+using TMS.DeskTop.Tools.Base;
 using TMS.DeskTop.ViewModels;
 
 namespace TMS.DeskTop.Views
@@ -22,33 +23,17 @@ namespace TMS.DeskTop.Views
     /// <summary>
     /// ContactsView.xaml 的交互逻辑
     /// </summary>
-    public partial class ContactsView : UserControl
+    public partial class ContactsView : RegionManagerControl
     {
         ContactsViewModel vm = new ContactsViewModel();
 
 
-        public ContactsView()
+        public ContactsView(IRegionManager regionManager) : base(regionManager, nameof(ContactsView))
         {
             InitializeComponent();
-            Console.WriteLine(toggleBtn.IsChecked);
             this.DataContext = vm;
             ShowTreeView();
         }
-
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            mainGrid.ColumnDefinitions[0].Width = new GridLength(80);
-            Console.WriteLine(vm.ToggleBtnIsChecked);
-            e.Handled = true;
-        }
-
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            mainGrid.ColumnDefinitions[0].Width = new GridLength(200);
-            Console.WriteLine(vm.ToggleBtnIsChecked);
-            e.Handled = true;
-        }
-
 
         private void ShowTreeView()
         {

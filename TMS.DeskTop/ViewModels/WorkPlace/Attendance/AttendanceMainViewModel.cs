@@ -1,12 +1,8 @@
 ﻿using Prism.Commands;
 using Prism.Modularity;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.Attendance
 {
@@ -15,7 +11,6 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Attendance
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
 
-        public DelegateCommand<string> NavigationCommand { get; private set; }
 
 
         public AttendanceMainViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
@@ -25,10 +20,11 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Attendance
             NavigationCommand = new DelegateCommand<string>(NavigationPage);
         }
 
+        public DelegateCommand<string> NavigationCommand { get; private set; }
 
-        private void NavigationPage(string obj)
+        private void NavigationPage(string view)
         {
-            regionManager.Regions[RegionToken.AttendanceMainContent].RequestNavigate(obj);
+            RegionHelper.RequestNavigate(regionManager, RegionToken.AttendanceMainContent, view);
         }
     }
 }
