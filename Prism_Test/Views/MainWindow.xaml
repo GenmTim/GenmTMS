@@ -8,36 +8,11 @@
     Height="350"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <UniformGrid Columns="6">
-            <Button
-                Content="A"
-                Command="{Binding NaviagationCommand}"
-                CommandParameter="A" />
-            <Button
-                Content="A1"
-                Command="{Binding NaviagationCommand}"
-                CommandParameter="A1" />
-            <Button
-                Content="A2"
-                Command="{Binding NaviagationCommand}"
-                CommandParameter="A2" />
-            <Button
-                Content="B"
-                Command="{Binding NaviagationCommand}"
-                CommandParameter="B" />
-            <Button
-                Content="B1"
-                Command="{Binding NaviagationCommand}"
-                CommandParameter="B1" />
-            <Button
-                Content="B2"
-                Command="{Binding NaviagationCommand}"
-                CommandParameter="B2" />
-        </UniformGrid>
-        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ContentRegion" />
+        <TextBlock
+            Text="{Binding LogString}"
+            MaxWidth="400"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
     </Grid>
 </Window>
