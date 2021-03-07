@@ -106,7 +106,8 @@
                         VerticalAlignment="Center"
                         FontSize="8"
                         BorderThickness="0"
-                        Style="{StaticResource BadgeInfo}"
+                        Style="{StaticResource BadgeBaseStyle}"
+                        Background="#1890FF"
                         BadgeMargin="0,0,10,0"
                         Value="1" />
                     <hc:SimplePanel x:Name="extendTool" Grid.Column="1"
