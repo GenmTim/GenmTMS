@@ -1,4 +1,5 @@
-﻿namespace Logic_Test
+﻿
+namespace Logic_Test
 {
     class Program
     {
@@ -11,7 +12,9 @@
 
         static void Main(string[] args)
         {
+            //HttpClient serviceApi = new HttpClient();
 
+            // serviceApi.GetCompany(101);
 
         }
     }
