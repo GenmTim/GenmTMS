@@ -3,6 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Resources/Styles/UserControls/Base/ChatBubbleBaseStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
     <Style x:Key="TitleSettingItemBoxStyle" TargetType="uc:SettingItemBox">
         <Setter Property="Template">
             <Setter.Value>

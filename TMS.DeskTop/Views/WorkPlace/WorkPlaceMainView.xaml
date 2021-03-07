@@ -11,7 +11,7 @@
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
     xmlns:system="clr-namespace:System;assembly=netstandard"
     d:DesignHeight="1000"
-    d:DesignWidth="1120"
+    d:DesignWidth="1160"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="#FFEEEEEE"
     mc:Ignorable="d">
@@ -45,7 +45,7 @@
             </Setter>
         </Style>
         <Style x:Key="OneRegionBorder" TargetType="Border">
-            <Setter Property="Margin" Value="0,0,20,20" />
+            <Setter Property="Margin" Value="0,0,30,20" />
             <Setter Property="Background" Value="White" />
             <Setter Property="Width" Value="340" />
             <Setter Property="Height" Value="150" />
@@ -212,7 +212,7 @@
                     </StackPanel>
                 </Grid>
                 <hc:ScrollViewer Grid.Row="1" Background="#FFF5F6F7">
-                    <StackPanel Margin="30,30,10,10">
+                    <StackPanel Margin="40,30,10,10">
                         <WrapPanel>
                             <Border Style="{StaticResource OneRegionBorder}">
                                 <Border.Background>
@@ -365,22 +365,30 @@
                             </ItemsControl.ItemTemplate>
                         </ListBox>
                         <ListBox
+                            VerticalContentAlignment="Top"
                             Style="{StaticResource ListBoxCustomStyle}"
                             ItemsSource="{Binding AppGroupList}"
                             ItemContainerStyle="{StaticResource ListBoxItemCustomStyle}"
                             Background="Transparent"
-                            ItemsPanel="{StaticResource StackPanelVerticalItemsPanelTemplate}"
+                            ItemsPanel="{StaticResource StackPanelHorizontalItemsPanelTemplate}"
                             BorderThickness="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <uc:SettingItemBox Title="{Binding Name}" Style="{StaticResource CustomTitleSettingItemBoxStyle}">
+                                    <uc:SettingItemBox
+                                        Title="{Binding Name}"
+                                        Margin="0,0,10,0"
+                                        Style="{StaticResource CustomTitleSettingItemBoxStyle}">
                                         <ListBox
-                                            Background="Transparent"
                                             BorderThickness="0"
-                                            ItemsPanel="{StaticResource WrapPanelHorizontalItemsPanelTemplate}"
                                             Style="{StaticResource ListBoxCustomStyle}"
                                             ItemContainerStyle="{StaticResource ListBoxItemCustomStyle}"
+                                            Background="Transparent"
                                             ItemsSource="{Binding AppList}">
+                                            <ListBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <UniformGrid Columns="2" />
+                                                </ItemsPanelTemplate>
+                                            </ListBox.ItemsPanel>
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Button

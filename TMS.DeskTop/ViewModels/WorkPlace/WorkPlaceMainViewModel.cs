@@ -72,11 +72,22 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
                 new AppItem { Name = "用章申请", IconFont = "\xe70a", Url = "" },
                 new AppItem { Name = "名片申请", IconFont = "\xe70b", Url = "" },
                 new AppItem { Name = "礼品申请", IconFont = "\xe722", Url = "" },
-                new AppItem { Name = "用车申请", IconFont = "\xe740", Url = "" }
+                new AppItem { Name = "用车申请", IconFont = "\xe740", Url = "" },
+            };
+
+            appGroupMap["流程中心"] = new ObservableCollection<AppItem>
+            {
+                new AppItem { Name = "请假", IconFont = "\xe703", Url = "" },
+                new AppItem { Name = "报销", IconFont = "\xe70a", Url = "" },
+                new AppItem { Name = "客户管理", IconFont = "\xe70b", Url = "" },
+                new AppItem { Name = "考勤打卡", IconFont = "\xe722", Url = "" },
+                new AppItem { Name = "办公电话", IconFont = "\xe740", Url = "" },
+                new AppItem { Name = "复工申报", IconFont = "\xe740", Url = "" },
             };
 
             appGroupList.Add(new AppGroup { Name = "人事管理", AppList = appGroupMap["人事管理"] });
             appGroupList.Add(new AppGroup { Name = "行政办公", AppList = appGroupMap["行政办公"] });
+            appGroupList.Add(new AppGroup { Name = "流程中心", AppList = appGroupMap["流程中心"] });
 
             commonAppList.Clear();
             //foreach(var appItem in appGroupMap["人事管理"])

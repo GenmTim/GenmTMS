@@ -20,8 +20,7 @@ namespace TMS.DeskTop.Views
         {
             InitializeComponent();
             this.regionManager = regionManager;
-            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.MainContent, typeof(WorkPlaceView));
-
+            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.MainContent, typeof(NotificationView));
 
             //this.MouseMove += (s, e) =>
             //    {

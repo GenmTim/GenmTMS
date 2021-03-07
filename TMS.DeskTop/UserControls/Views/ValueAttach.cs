@@ -12,5 +12,14 @@ namespace TMS.DeskTop.UserControls.Views
 
         public static int GetInteger(DependencyObject element)
     => (int)element.GetValue(IntegerProperty);
+
+        public static readonly DependencyProperty TextProperty = DependencyProperty.RegisterAttached(
+    "Text", typeof(string), typeof(ValueAttach), new PropertyMetadata(default(string)));
+
+        public static void SetText(DependencyObject element, string value)
+            => element.SetValue(TextProperty, value);
+
+        public static string GetText(DependencyObject element)
+    => (string)element.GetValue(TextProperty);
     }
 }

@@ -8,7 +8,7 @@
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
     Width="1180"
     Height="720"
-    MinWidth="1180"
+    MinWidth="1220"
     MinHeight="720"
     hc:WindowAttach.IsDragElement="True"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -62,6 +62,7 @@
                                         <Setter Property="Cursor" Value="Hand" />
                                         <Setter Property="Foreground" Value="{StaticResource BorderBrush}" />
                                         <Setter Property="Height" Value="80" />
+                                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                                         <Setter Property="Width" Value="40" />
                                         <Setter Property="FontSize" Value="28" />
                                         <Setter Property="BorderThickness" Value="0" />
@@ -100,11 +101,11 @@
                                                         <Trigger SourceName="badge" Property="Value" Value="0">
                                                             <Setter TargetName="badge" Property="Visibility" Value="Collapsed" />
                                                         </Trigger>
-                                                        <Trigger Property="IsChecked" Value="true">
-                                                            <Setter Property="Background" Value="#63BCFB" />
+                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                            <Setter Property="Background" Value="#CC63BCFB" />
                                                             <Setter Property="Foreground" Value="White" />
                                                         </Trigger>
-                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                        <Trigger Property="IsChecked" Value="true">
                                                             <Setter Property="Background" Value="#63BCFB" />
                                                             <Setter Property="Foreground" Value="White" />
                                                         </Trigger>
@@ -129,11 +130,13 @@
                                 </StackPanel.Resources>
                                 <!--  Adding Menu buttons  -->
                                 <uc:MenuRadioButton
+                                    IsChecked="True"
                                     Command="{Binding NavigationCommand}"
                                     CommandParameter="NotificationView"
                                     Padding="0,4,0,0"
                                     uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe643;">
+                                    uc:IconFontElement.Geometry="&#xe643;"
+                                    Cursor="Hand">
                                     <hc:Poptip.Instance>
                                         <hc:Poptip Style="{StaticResource BlockPopTip}">
                                             <hc:Poptip.Content>

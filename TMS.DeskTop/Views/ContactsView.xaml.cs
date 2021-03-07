@@ -31,25 +31,9 @@ namespace TMS.DeskTop.Views
         public ContactsView(IRegionManager regionManager) : base(regionManager, nameof(ContactsView))
         {
             InitializeComponent();
-            Console.WriteLine(toggleBtn.IsChecked);
             this.DataContext = vm;
             ShowTreeView();
         }
-
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            mainGrid.ColumnDefinitions[0].Width = new GridLength(80);
-            Console.WriteLine(vm.ToggleBtnIsChecked);
-            e.Handled = true;
-        }
-
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            mainGrid.ColumnDefinitions[0].Width = new GridLength(200);
-            Console.WriteLine(vm.ToggleBtnIsChecked);
-            e.Handled = true;
-        }
-
 
         private void ShowTreeView()
         {

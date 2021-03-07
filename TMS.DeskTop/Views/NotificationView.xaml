@@ -5,6 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -13,10 +16,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/Views/NotificationViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Style BasedOn="{StaticResource GravatarCircleImg}" TargetType="hc:Gravatar">
-                <Setter Property="Width" Value="33" />
-                <Setter Property="Height" Value="33" />
-            </Style>
             <Style
                 x:Key="addBtnStyle"
                 BasedOn="{StaticResource ButtonCustom}"
@@ -79,7 +78,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <hc:SearchBar
-                            Height="33"
+                            Height="30"
                             Padding="15,0,0,0"
                             hc:BorderElement.CornerRadius="15"
                             hc:InfoElement.Placeholder="搜索"
@@ -92,18 +91,37 @@
                             Style="{StaticResource addBtnStyle}" />
                     </Grid>
                     <hc:ScrollViewer Grid.Row="1"
-                        Margin="4,5,10,8"
+                        Margin="4,5,8,8"
                         Orientation="Horizontal"
                         HorizontalScrollBarVisibility="Auto"
                         IsInertiaEnabled="True">
                         <StackPanel Margin="0,15" Orientation="Horizontal">
-                            <hc:Gravatar Margin="5,3" Id="User2131a" />
-                            <hc:Gravatar Margin="5,3" Id="Users1" />
-                            <hc:Gravatar Margin="5,3" Id="Userh" />
-                            <hc:Gravatar Margin="5,3" Id="User1" />
-                            <hc:Gravatar Margin="5,3" Id="User1hs" />
-                            <hc:Gravatar Margin="5,3" Id="User1hs" />
-                            <hc:Gravatar Margin="5,3" Id="User1hs" />
+                            <StackPanel.Resources>
+                                <Style BasedOn="{StaticResource GravatarCircleImg}" TargetType="hc:Gravatar">
+                                    <Setter Property="Width" Value="33" />
+                                    <Setter Property="Height" Value="33" />
+                                </Style>
+                                <Style BasedOn="{StaticResource ButtonCustom}" TargetType="Button">
+                                    <Setter Property="Cursor" Value="Hand" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <hc:SimplePanel>
+                                                    <hc:Gravatar Margin="5,3" Id="User2131a" />
+                                                    <hc:Badge
+                                                        BadgeMargin="0,-4,-2,0"
+                                                        Style="{StaticResource BadgeDanger}"
+                                                        BorderThickness="0"
+                                                        FontSize="8"
+                                                        Value="1" />
+                                                </hc:SimplePanel>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button />
+                            <Button />
                         </StackPanel>
                     </hc:ScrollViewer>
                     <ListView x:Name="listView1" Grid.Row="2"
@@ -123,7 +141,117 @@
                 <!--<GridSplitter Grid.Column="1"
                     Width="2"
                     HorizontalAlignment="Center" />-->
-                <hc:SimplePanel Grid.Column="2" Background="#FFF5F6F7" />
+                <hc:SimplePanel Grid.Column="2" Background="#F5F6F8">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="1"
+                            BorderThickness="0,0,0,1"
+                            BorderBrush="{StaticResource TMS_BorderBrush}" />
+                        <hc:SimplePanel Grid.Row="1">
+                            <TextBlock
+                                Text="SuperGame"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="#000235"
+                                FontWeight="Bold"
+                                FontSize="16" />
+                            <StackPanel
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style BasedOn="{StaticResource FIconTextBtnStyle}" TargetType="Button">
+                                        <Setter Property="Width" Value="40" />
+                                        <Setter Property="Foreground" Value="#C8D5DD" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+
+                                </StackPanel.Resources>
+                                <Button Content="&#xe7bb;" FontSize="14" />
+                                <Button Content="&#xe780;" FontSize="14" />
+                            </StackPanel>
+                        </hc:SimplePanel>
+                        <uc:ChatBox Grid.Row="2" />
+                        <!--<hc:SimplePanel Grid.Row="2" />
+                        <hc:SimplePanel Grid.Row="3" Background="{StaticResource TMS_TransparencyRegionBrush}">
+                            <Border
+                                Margin="25,8"
+                                Effect="{StaticResource EffectShadow3}"
+                                CornerRadius="10"
+                                Background="White">
+                                <hc:SimplePanel>
+                                    <TextBox
+                                        Padding="10,0,0,0"
+                                        hc:InfoElement.Placeholder="发送消息"
+                                        Style="{StaticResource TextBoxExtend}"
+                                        BorderThickness="0"
+                                        Foreground="#2B2F36"
+                                        FontSize="14" />
+                                    <StackPanel
+                                        Margin="0,0,10,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="Button" BasedOn="{StaticResource FIconTextBtnStyle}">
+                                                <Setter Property="Width" Value="33" />
+                                                <Setter Property="Cursor" Value="Hand" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                            </Style>
+                                            <Style
+                                                x:Key="SendBtnStyle"
+                                                BasedOn="{StaticResource ButtonCustom}"
+                                                TargetType="Button">
+                                                <Setter Property="Cursor" Value="Hand" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Border x:Name="border"
+                                                                Width="30"
+                                                                Height="30"
+                                                                CornerRadius="8"
+                                                                Background="{StaticResource PrimaryBrush}">
+                                                                <TextBlock
+                                                                    Text="&#xe77f;"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    FontSize="15"
+                                                                    Foreground="White"
+                                                                    Style="{StaticResource FIconTextPlusBlockStyle}" />
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsPressed" Value="True">
+                                                        <Setter Property="RenderTransform">
+                                                            <Setter.Value>
+                                                                <ScaleTransform CenterX="15" CenterY="15" ScaleX="0.8" ScaleY="0.8" />
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <Button Content="&#xe758;" />
+                                        <Button Content="&#xe792; " />
+                                        <Button Style="{StaticResource SendBtnStyle}" />
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                            </Border>
+                        </hc:SimplePanel>-->
+                    </Grid>
+                </hc:SimplePanel>
             </Grid>
         </Border>
     </Border>
