@@ -8,21 +8,30 @@
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
     Width="1180"
     Height="720"
-    MinWidth="1220"
+    MinWidth="1224"
     MinHeight="720"
     hc:WindowAttach.IsDragElement="True"
     prism:ViewModelLocator.AutoWireViewModel="True"
     MouseDown="TopBar_MouseDown"
-    AllowsTransparency="True"
     Background="White"
-    ResizeMode="CanResizeWithGrip"
-    WindowStartupLocation="CenterScreen"
-    WindowStyle="None">
+    WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary Source="/Resources/Styles/Views/MainWindowStyle.xaml" />
     </Window.Resources>
-    <Border Background="Transparent">
-        <Border BorderThickness="0" CornerRadius="0">
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            CaptionHeight="0"
+            CornerRadius="0"
+            GlassFrameThickness="0"
+            ResizeBorderThickness="4"
+            UseAeroCaptionButtons="False"
+            NonClientFrameEdges="None" />
+    </WindowChrome.WindowChrome>
+    <Border Effect="{StaticResource EffectShadow1}" Background="Transparent">
+        <Border
+            Margin="2"
+            BorderThickness="0"
+            CornerRadius="0">
             <hc:SimplePanel>
                 <DockPanel>
                     <Grid Grid.Column="0"

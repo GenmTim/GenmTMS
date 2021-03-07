@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media;
 
 namespace TMS.DeskTop.UserControls.Views
 {
@@ -22,5 +23,14 @@ namespace TMS.DeskTop.UserControls.Views
 
         public static String GetIconName(DependencyObject element)
             => (String)element.GetValue(IconNameProperty);
+
+        public static readonly DependencyProperty IconColorProperty = DependencyProperty.RegisterAttached(
+    "IconColor", typeof(Brush), typeof(IconFontElement), new PropertyMetadata(default(Brush)));
+
+        public static void SetIconColor(DependencyObject element, Brush value)
+            => element.SetValue(IconNameProperty, value);
+
+        public static Brush GetIconColor(DependencyObject element)
+            => (Brush)element.GetValue(IconNameProperty);
     }
 }

@@ -65,7 +65,7 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-        <Grid
+        <hc:SimplePanel
             DockPanel.Dock="Top"
             Background="#FFFFFF"
             MouseMove="Grid_MouseMove">
@@ -88,7 +88,7 @@
                     Click="btn_close_Click"
                     Style="{StaticResource MainViewCloseBtnStyle}" />
             </WrapPanel>
-        </Grid>
+        </hc:SimplePanel>
         <StackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
