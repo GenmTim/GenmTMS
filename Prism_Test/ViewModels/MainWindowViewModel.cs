@@ -24,7 +24,7 @@ namespace Prism_Test.ViewModels
 			LogString = "测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串";
 			HttpClient serviceApi = new HttpClient();
 
-			int v = serviceApi.GetUserLogin("jjj","11101");
+			int v = serviceApi.LoginUser("jjj","11101");
             LogString = v.ToString();
 
             //this.NaviagationCommand = new DelegateCommand<string>(NavigationPage);

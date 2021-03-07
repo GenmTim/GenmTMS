@@ -17,7 +17,6 @@ namespace TMS.Core.Api
 			restClient = new RestClient("http://47.101.157.194:8081");
 		}
 
-
 		/// <summary>
 		/// 注册用户
 		/// </summary>
@@ -26,7 +25,7 @@ namespace TMS.Core.Api
 		/// <param name="password">密码</param>
 		/// <param name="name">名称</param>
 		/// <returns>返回用户id</returns>
-		public int PostUser(string email, string tel, string password, string name)
+		public int RegisterUser(string email, string tel, string password, string name)
 		{
 			RestRequest restRequest = new RestRequest("/User");
 
@@ -50,7 +49,7 @@ namespace TMS.Core.Api
 		/// <param name="userId">用户id</param>
 		/// <param name="newPassword">新密码</param>
 		/// <returns></returns>
-		public bool PutUserPassword(int userId, string newPassword)
+		public bool ChangeUserPassword(int userId, string newPassword)
 		{
 			RestRequest restRequest = new RestRequest("/User");
 			restRequest.AddParameter("user_id", userId);
@@ -74,7 +73,7 @@ namespace TMS.Core.Api
 		/// <param name="tel"></param>
 		/// <param name="email"></param>
 		/// <returns>用户id</returns>
-		public int GetUserLogin(string pwd, string tel = "", string email = "")
+		public int LoginUser(string pwd, string tel = "", string email = "")
 		{
 			RestRequest restRequest = new RestRequest("/User/login");
 			if (tel != null && !tel.Equals(""))
