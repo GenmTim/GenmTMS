@@ -169,9 +169,10 @@
                                 </uc:MenuRadioButton>
                                 <uc:MenuRadioButton
                                     Command="{Binding NavigationCommand}"
-                                    CommandParameter=""
+                                    CommandParameter="CloudFileView"
                                     uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe638;">
+                                    uc:IconFontElement.Geometry="&#xe638;"
+                                    Cursor="Hand">
                                     <hc:Poptip.Instance>
                                         <hc:Poptip Style="{StaticResource BlockPopTip}">
                                             <hc:Poptip.Content>

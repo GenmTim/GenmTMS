@@ -87,6 +87,7 @@ namespace TMS.DeskTop.Tools.Helper
             routeMap[nameof(MainWindow)] = Root;
             routeMap[nameof(NotificationView)] = "notification/";
             routeMap[nameof(ContactsView)] = "contacts/";
+            routeMap[nameof(CloudFileView)] = "cloudfile/";
             routeMap[nameof(WorkPlaceView)] = "workplace/";
             {
                 routeMap[nameof(WorkPlaceMainView)] = routeMap[nameof(WorkPlaceView)] + "main/";

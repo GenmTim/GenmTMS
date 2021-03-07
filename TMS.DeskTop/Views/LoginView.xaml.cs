@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using TMS.Core.Api;
 using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.Views
@@ -10,6 +11,9 @@ namespace TMS.DeskTop.Views
     /// </summary>
     public partial class LoginView : Window
     {
+        public string UserName { get; set; } = "";
+        public string PassWord { get; set; } = "";
+
         public LoginView()
         {
             InitializeComponent();
@@ -61,6 +65,16 @@ namespace TMS.DeskTop.Views
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            string username = this.usernameBox.Text;
+            string password = this.passwordBox.Password;
+
+
+            HttpClient serviceApi = new HttpClient();
+
+            //serviceApi.LoginUser("123456", "15858102098");
+
+
+
             DialogResult = true;
         }
     }

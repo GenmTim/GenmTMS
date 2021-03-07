@@ -66,6 +66,10 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<TalentPoolView>(GetRoutePath(nameof(TalentPoolView)));
 
 
+            containerRegistry.RegisterForNavigation<CloudFileView>(GetRoutePath(nameof(CloudFileView)));
+
+
+
             containerRegistry.RegisterForNavigation<MajorEventView>(GetRoutePath(nameof(MajorEventView)));
             containerRegistry.RegisterForNavigation<HonourView>(GetRoutePath(nameof(HonourView)));
             containerRegistry.RegisterForNavigation<DisciplineView>(GetRoutePath(nameof(DisciplineView)));
