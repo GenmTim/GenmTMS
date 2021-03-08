@@ -183,9 +183,24 @@
                                 </uc:MenuRadioButton>
                                 <uc:MenuRadioButton
                                     Command="{Binding NavigationCommand}"
+                                    CommandParameter="KalendarView"
+                                    uc:ValueAttach.Integer="100"
+                                    uc:IconFontElement.Geometry="&#xe62f;"
+                                    Cursor="Hand">
+                                    <hc:Poptip.Instance>
+                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                            <hc:Poptip.Content>
+                                                <TextBlock Text="日程表" Margin="3" />
+                                            </hc:Poptip.Content>
+                                        </hc:Poptip>
+                                    </hc:Poptip.Instance>
+                                </uc:MenuRadioButton>
+                                <uc:MenuRadioButton
+                                    Command="{Binding NavigationCommand}"
                                     CommandParameter="WorkPlaceView"
                                     uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe61d;">
+                                    uc:IconFontElement.Geometry="&#xe61d;"
+                                    Cursor="Hand">
                                     <hc:Poptip.Instance>
                                         <hc:Poptip Style="{StaticResource BlockPopTip}">
                                             <hc:Poptip.Content>

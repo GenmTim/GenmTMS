@@ -181,7 +181,7 @@
                                         TextAlignment="Left"
                                         Foreground="LightSlateGray" />
                                     <TextBlock Grid.Column="2"
-                                        Text="Jan 3, 2019"
+                                        Text="2021-03-01"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         TextAlignment="Left"
@@ -231,7 +231,7 @@
                                         TextAlignment="Left"
                                         Foreground="LightSlateGray" />
                                     <TextBlock Grid.Column="2"
-                                        Text="Jan 10, 2020"
+                                        Text="2021-02-24"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         TextAlignment="Left"
@@ -281,7 +281,7 @@
                                         TextAlignment="Left"
                                         Foreground="LightSlateGray" />
                                     <TextBlock Grid.Column="2"
-                                        Text="Mar 10, 2020"
+                                        Text="2020-02-23"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         TextAlignment="Left"
@@ -331,7 +331,7 @@
                                         TextAlignment="Left"
                                         Foreground="LightSlateGray" />
                                     <TextBlock Grid.Column="2"
-                                        Text="Jun 14, 2020"
+                                        Text="2020-02-23"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         TextAlignment="Left"
@@ -381,7 +381,7 @@
                                         TextAlignment="Left"
                                         Foreground="LightSlateGray" />
                                     <TextBlock Grid.Column="2"
-                                        Text="Jun 17, 2020"
+                                        Text="2020-02-22"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         TextAlignment="Left"
@@ -431,7 +431,7 @@
                                         TextAlignment="Left"
                                         Foreground="LightSlateGray" />
                                     <TextBlock Grid.Column="2"
-                                        Text="March 19, 2019"
+                                        Text="2020-02-21"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         TextAlignment="Left"

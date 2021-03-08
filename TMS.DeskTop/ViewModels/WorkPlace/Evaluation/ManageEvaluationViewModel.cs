@@ -27,7 +27,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
-        private IRegionNavigationJournal journal;
+        //private IRegionNavigationJournal journal;
 
 
         public ManageEvaluationViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)

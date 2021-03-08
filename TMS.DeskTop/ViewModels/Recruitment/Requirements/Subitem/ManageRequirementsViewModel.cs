@@ -26,7 +26,7 @@ namespace TMS.DeskTop.ViewModels.Recruitment.Requirements.Subitem
 
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
-        private IRegionNavigationJournal journal;
+        //private IRegionNavigationJournal journal;
 
 
         public ManageRequirementsViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)

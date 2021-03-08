@@ -36,6 +36,8 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<WorkPlaceView>(GetRoutePath(nameof(WorkPlaceView)));
             containerRegistry.RegisterForNavigation<WorkPlaceMainView>(GetRoutePath(nameof(WorkPlaceMainView)));
 
+            containerRegistry.RegisterForNavigation<KalendarView>(GetRoutePath(nameof(KalendarView)));
+
             containerRegistry.RegisterForNavigation<EvaluationView>(GetRoutePath(nameof(EvaluationView)));
             containerRegistry.RegisterForNavigation<EvaluationMainView>(GetRoutePath(nameof(EvaluationMainView)));
             containerRegistry.RegisterForNavigation<FullInEvaluationView>(GetRoutePath(nameof(FullInEvaluationView)));
