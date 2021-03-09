@@ -278,11 +278,11 @@
                     </Grid>
                     <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.MainContent}" />
                 </DockPanel>
-                <popup:ProfilePopup
+                <!--<popup:ProfilePopup
                     Margin="70,60,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Effect="{StaticResource EffectShadow2}" />
+                    Effect="{StaticResource EffectShadow2}" />-->
                 <!--<popup:UpgradePopup
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"

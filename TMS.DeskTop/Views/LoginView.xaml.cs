@@ -69,7 +69,7 @@ namespace TMS.DeskTop.Views
             string password = this.passwordBox.Password;
 
 
-            HttpClient serviceApi = new HttpClient();
+            //HttpClient serviceApi = new HttpClient();
 
             //serviceApi.LoginUser("123456", "15858102098");
 
