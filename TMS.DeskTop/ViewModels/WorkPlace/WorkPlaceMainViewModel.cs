@@ -68,7 +68,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
 
             appGroupMap["行政办公"] = new ObservableCollection<AppItem>
             {
-                new AppItem { Name = "物品领用", IconFont = "\xe703", Url = "" },
+                new AppItem { Name = "物品领用", IconFont = "\xe703", Url = "ApprovalView" },
                 new AppItem { Name = "用章申请", IconFont = "\xe70a", Url = "" },
                 new AppItem { Name = "名片申请", IconFont = "\xe70b", Url = "" },
                 new AppItem { Name = "礼品申请", IconFont = "\xe722", Url = "" },

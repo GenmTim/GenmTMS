@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 
 
-namespace TMS.DeskTop.UserControls.Views
+namespace TMS.DeskTop.UserControls.Dialogs.Views
 {
 
     /// <summary>

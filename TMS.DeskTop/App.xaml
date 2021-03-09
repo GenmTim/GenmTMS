@@ -207,6 +207,16 @@
                 x:Key="TMS_TransparencyRegionBrush"
                 o:Freeze="True"
                 Color="#01FFFFFF" />
+            <DropShadowEffect
+                x:Key="EffectShadow1"
+                o:Freeze="True"
+                BlurRadius="5"
+                ShadowDepth="1"
+                Direction="270"
+                Opacity=".1"
+                RenderingBias="Performance"
+                Color="{StaticResource EffectShadowColor}" />
+
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

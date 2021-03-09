@@ -8,8 +8,14 @@
     Title="MainWindow"
     Width="800"
     Height="450"
+    DragEnter="Window_DragEnter"
+    Drop="Window_Drop"
+    AllowDrop="True"
+    DragOver="Window_DragLeave"
     mc:Ignorable="d">
-    <Grid>
-        <local:GenmCalendar />
-    </Grid>
+    <StackPanel>
+        <!--<local:FileDragView Background="Aqua" />-->
+        <Label x:Name="lblFilename" />
+        <TextBlock x:Name="txtContent" />
+    </StackPanel>
 </Window>
