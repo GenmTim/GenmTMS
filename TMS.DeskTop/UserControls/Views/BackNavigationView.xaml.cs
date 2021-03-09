@@ -14,7 +14,7 @@ namespace TMS.DeskTop.UserControls.Views
 
 
         private readonly IRegionManager regionManager;
-        private IRegionNavigationJournal journal;
+        //private IRegionNavigationJournal journal;
 
         public BackNavigationView(IRegionManager regionManager)
         {

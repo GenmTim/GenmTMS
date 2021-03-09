@@ -1,0 +1,455 @@
+﻿<UserControl
+    x:Class="FileManagerUI.Custom_Controls.FileListControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FileManagerUI.Custom_Controls"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle
+                                        Margin="2"
+                                        SnapsToDevicePixels="True"
+                                        Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                        StrokeThickness="1"
+                                        StrokeDashArray="1 2" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#FF707070" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Height" Value="60" />
+            <Setter Property="Margin" Value="4,0,0,4" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="20">
+                            <ContentPresenter x:Name="contentPresenter"
+                                Content="{TemplateBinding Content}"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#F3F6F9" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF3C7FB1" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#F3F6F9" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF2C628B" />
+                            </Trigger>
+                            <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#F3F6F9" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF245A83" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#F3F6F9" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FFADB2B5" />
+                                <Setter Property="Foreground" Value="#FF838383" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+    <Border Background="Transparent" Visibility="{Binding Visibility}">
+        <Border
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="White"
+            BorderThickness="0"
+            CornerRadius="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--#region Header-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="140" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="15" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                        Text="文件名"
+                        Margin="30,15,15,15"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold"
+                        Foreground="DarkSlateGray" />
+                    <TextBlock Grid.Column="1"
+                        Text="文件项"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold"
+                        Foreground="DarkSlateGray" />
+                    <TextBlock Grid.Column="2"
+                        Text="最后修改时间"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold"
+                        Foreground="DarkSlateGray" />
+                    <TextBlock Grid.Column="3"
+                        Text="文件大小"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold"
+                        Foreground="DarkSlateGray" />
+                    <Separator
+                        Grid.ColumnSpan="5"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Bottom"
+                        BorderThickness="1"
+                        BorderBrush="#F0F5F8" />
+                </Grid>
+                <ScrollViewer Grid.Row="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Focusable="False">
+                    <StackPanel Margin="0,20,0,0" Orientation="Vertical">
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="120" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0"
+                                        Margin="20,0,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Orientation="Horizontal">
+                                        <Image
+                                            Width="50"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            Stretch="Uniform"
+                                            Source="/Resources/Images/Assets/folder.png" />
+                                        <TextBlock
+                                            Text="文件夹 1"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            TextAlignment="Left"
+                                            FontWeight="Bold"
+                                            Foreground="LightSlateGray" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1"
+                                        Text="21 Items"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="2"
+                                        Text="2021-03-01"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="3"
+                                        Text="15 Gb"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="120" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0"
+                                        Margin="20,0,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Orientation="Horizontal">
+                                        <Image
+                                            Width="50"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            Stretch="Uniform"
+                                            Source="/Resources/Images/Assets/folder.png" />
+                                        <TextBlock
+                                            Text="文件夹 2"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            TextAlignment="Left"
+                                            FontWeight="Bold"
+                                            Foreground="LightSlateGray" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1"
+                                        Text="40 Items"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="2"
+                                        Text="2021-02-24"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="3"
+                                        Text="45 Gb"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="120" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0"
+                                        Margin="20,0,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Orientation="Horizontal">
+                                        <Image
+                                            Width="50"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            Stretch="Uniform"
+                                            Source="/Resources/Images/Assets/folder.png" />
+                                        <TextBlock
+                                            Text="文件夹 3"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            TextAlignment="Left"
+                                            FontWeight="Bold"
+                                            Foreground="LightSlateGray" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1"
+                                        Text="90 Items"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="2"
+                                        Text="2020-02-23"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="3"
+                                        Text="82 Gb"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="120" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0"
+                                        Margin="20,0,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Orientation="Horizontal">
+                                        <Image
+                                            Width="50"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            Stretch="Uniform"
+                                            Source="/Resources/Images/Assets/Video.png" />
+                                        <TextBlock
+                                            Text="视频文件-1 "
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            TextAlignment="Left"
+                                            FontWeight="Bold"
+                                            Foreground="LightSlateGray" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1"
+                                        Text="1 Item"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="2"
+                                        Text="2020-02-23"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="3"
+                                        Text="1 Gb"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="120" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0"
+                                        Margin="20,0,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Orientation="Horizontal">
+                                        <Image
+                                            Width="50"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            Stretch="Uniform"
+                                            Source="/Resources/Images/Assets/Video.png" />
+                                        <TextBlock
+                                            Text="视频文件-2 "
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            TextAlignment="Left"
+                                            FontWeight="Bold"
+                                            Foreground="LightSlateGray" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1"
+                                        Text="1 Item"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="2"
+                                        Text="2020-02-22"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="3"
+                                        Text="4 Gb"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyle1}">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="120" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0"
+                                        Margin="20,0,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Orientation="Horizontal">
+                                        <Image
+                                            Width="50"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            Stretch="Uniform"
+                                            Source="/Resources/Images/Assets/Music.png" />
+                                        <TextBlock
+                                            Text="音乐"
+                                            Margin="5,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            TextAlignment="Left"
+                                            FontWeight="Bold"
+                                            Foreground="LightSlateGray" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1"
+                                        Text="1 Item"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="2"
+                                        Text="2020-02-21"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                    <TextBlock Grid.Column="3"
+                                        Text="5 Mb"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Left"
+                                        Foreground="LightSlateGray" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+
+                    </StackPanel>
+                </ScrollViewer>
+                <!--#endregion-->
+            </Grid>
+        </Border>
+    </Border>
+</UserControl>

@@ -36,6 +36,8 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<WorkPlaceView>(GetRoutePath(nameof(WorkPlaceView)));
             containerRegistry.RegisterForNavigation<WorkPlaceMainView>(GetRoutePath(nameof(WorkPlaceMainView)));
 
+            containerRegistry.RegisterForNavigation<KalendarView>(GetRoutePath(nameof(KalendarView)));
+
             containerRegistry.RegisterForNavigation<EvaluationView>(GetRoutePath(nameof(EvaluationView)));
             containerRegistry.RegisterForNavigation<EvaluationMainView>(GetRoutePath(nameof(EvaluationMainView)));
             containerRegistry.RegisterForNavigation<FullInEvaluationView>(GetRoutePath(nameof(FullInEvaluationView)));
@@ -64,6 +66,10 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<RequirementsMainView>(GetRoutePath(nameof(RequirementsMainView)));
             containerRegistry.RegisterForNavigation<NewRequirementView>(GetRoutePath(nameof(NewRequirementView)));
             containerRegistry.RegisterForNavigation<TalentPoolView>(GetRoutePath(nameof(TalentPoolView)));
+
+
+            containerRegistry.RegisterForNavigation<CloudFileView>(GetRoutePath(nameof(CloudFileView)));
+
 
 
             containerRegistry.RegisterForNavigation<MajorEventView>(GetRoutePath(nameof(MajorEventView)));

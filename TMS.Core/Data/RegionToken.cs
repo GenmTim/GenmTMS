@@ -19,5 +19,8 @@
         public static readonly string RecruitmentContent = nameof(RecruitmentContent);
 
         public static readonly string RecruitmentRequirementsMainContent = nameof(RecruitmentRequirementsMainContent);
+
+
+        public static readonly string KalendarContent = nameof(KalendarContent);
     }
 }
