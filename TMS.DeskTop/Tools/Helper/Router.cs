@@ -5,6 +5,7 @@ using TMS.DeskTop.Views;
 using TMS.DeskTop.Views.Recruitment.Requirements;
 using TMS.DeskTop.Views.Recruitment.Requirements.Subitem;
 using TMS.DeskTop.Views.WorkPlace;
+using TMS.DeskTop.Views.WorkPlace.Approval;
 using TMS.DeskTop.Views.WorkPlace.Attendance;
 using TMS.DeskTop.Views.WorkPlace.Attendance.Subitem;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
@@ -129,9 +130,15 @@ namespace TMS.DeskTop.Tools.Helper
                 }
 
                 routeMap[nameof(MajorEventView)] = routeMap[nameof(WorkPlaceView)] + "major_event/";
+                //{
+                //    routeMap[nameof(HonourView)] = routeMap[nameof(MajorEventView)] + "honour/";
+                //    routeMap[nameof(DisciplineView)] = routeMap[nameof(MajorEventView)] + "discipline/";
+                //}
+
+                routeMap[nameof(ApprovalView)] = routeMap[nameof(WorkPlaceView)] + "approval/";
                 {
-                    routeMap[nameof(HonourView)] = routeMap[nameof(MajorEventView)] + "honour/";
-                    routeMap[nameof(DisciplineView)] = routeMap[nameof(MajorEventView)] + "discipline/";
+                    routeMap[nameof(HonourView)] = routeMap[nameof(ApprovalView)] + "honour/";
+                    routeMap[nameof(DisciplineView)] = routeMap[nameof(ApprovalView)] + "discipline/";
                 }
             }
         }

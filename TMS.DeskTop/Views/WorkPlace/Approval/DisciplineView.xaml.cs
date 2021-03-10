@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace TMS.DeskTop.Views.WorkPlace
+namespace TMS.DeskTop.Views.WorkPlace.Approval
 {
     /// <summary>
     /// DisciplineView.xaml 的交互逻辑

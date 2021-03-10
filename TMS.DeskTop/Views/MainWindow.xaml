@@ -6,13 +6,12 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:popup="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
     Width="1180"
     Height="720"
     MinWidth="1224"
     MinHeight="720"
-    hc:WindowAttach.IsDragElement="True"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    MouseDown="TopBar_MouseDown"
     Background="White"
     WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -50,7 +49,7 @@
                             Grid.RowSpan="2"
                             BorderThickness="0,0,1,0"
                             BorderBrush="{StaticResource TMS_BorderBrush}" />
-                        <Button Style="{DynamicResource profileBtnStyle}">
+                        <Button Style="{DynamicResource profileBtnStyle}" Cursor="Hand">
                             <Button.Content>
                                 <Image Source="/Resources/Images/Assets/googledrive.png" />
                             </Button.Content>
@@ -59,9 +58,9 @@
                         <!--#region Left Grid - Menu-->
                         <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="500" />
+                                <RowDefinition Height="400" />
+                                <RowDefinition Height="20" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="50" />
                                 <RowDefinition Height="20" />
                             </Grid.RowDefinitions>
                             <StackPanel Margin="0,-15,0,0">
@@ -210,22 +209,93 @@
                                     </hc:Poptip.Instance>
                                 </uc:MenuRadioButton>
                             </StackPanel>
-                            <Button Grid.Row="2"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Style="{DynamicResource menuButtonTemplate}">
-                                <Button.Content>
-                                    <Image
-                                        Width="24"
-                                        Source="/Resources/Images/Assets/cloud.png"
-                                        Stretch="Uniform" />
-                                </Button.Content>
-                            </Button>
+                            <StackPanel Grid.Row="2">
+                                <StackPanel.Resources>
+                                    <Style TargetType="RadioButton" BasedOn="{StaticResource RadioButtonIcon}">
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter Property="Height" Value="35" />
+                                        <Setter Property="Margin" Value="0,0,0,10" />
+                                        <Setter Property="hc:BorderElement.CornerRadius" Value="8" />
+                                        <Setter Property="BorderThickness" Value="8" />
+                                        <Setter Property="FontSize" Value="14" />
+                                        <Setter Property="FontWeight" Value="SemiBold" />
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="8,0.5">
+                                                    <GradientStop Offset="0" Color="{StaticResource PrimaryColor}" />
+                                                    <GradientStop Offset="1" Color="White" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="RadioButton">
+                                                    <hc:SimplePanel>
+                                                        <Border x:Name="selectedBorder"
+                                                            Width="5"
+                                                            Height="35"
+                                                            Margin="-3,0,0,0"
+                                                            HorizontalAlignment="Left"
+                                                            Visibility="Collapsed"
+                                                            CornerRadius="0,5,5,0"
+                                                            Background="{StaticResource PrimaryBrush}" />
+                                                        <hc:SimplePanel
+                                                            Width="35"
+                                                            Height="35"
+                                                            VerticalAlignment="Center">
+                                                            <Border x:Name="border"
+                                                                BorderThickness="2"
+                                                                CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}"
+                                                                Background="{TemplateBinding Background}" />
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                        </hc:SimplePanel>
+                                                    </hc:SimplePanel>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsChecked" Value="True">
+                                                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+                                                            <Setter TargetName="selectedBorder" Property="Visibility" Value="Visible" />
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </StackPanel.Resources>
+
+                                <RadioButton
+                                    Content="S"
+                                    Background="#a0d911"
+                                    BorderThickness="0" />
+                                <RadioButton
+                                    Content="S"
+                                    IsChecked="True"
+                                    BorderThickness="0"
+                                    Cursor="Hand" />
+                            </StackPanel>
                         </Grid>
                         <!--#endregion-->
                     </Grid>
                     <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.MainContent}" />
                 </DockPanel>
+                <!--<popup:ProfilePopup
+                    Margin="70,60,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Effect="{StaticResource EffectShadow2}" />-->
+                <!--<popup:UpgradePopup
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Effect="{StaticResource EffectShadow2}" />-->
+
+                <hc:SimplePanel
+                    Height="10"
+                    VerticalAlignment="Top"
+                    Panel.ZIndex="0"
+                    hc:WindowAttach.IsDragElement="True"
+                    MouseDown="TopBar_MouseDown"
+                    Background="Transparent" />
+
                 <hc:SimplePanel
                     Height="25"
                     HorizontalAlignment="Right"

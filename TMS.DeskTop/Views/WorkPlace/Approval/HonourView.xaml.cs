@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace TMS.DeskTop.Views.WorkPlace
+namespace TMS.DeskTop.Views.WorkPlace.Approval
 {
     /// <summary>
     /// HonourView.xaml 的交互逻辑

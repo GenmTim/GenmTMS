@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TMS.Core.Data;
 using TMS.Core.Service;
 
-namespace TMS.DeskTop.UserControls.ViewModels
+namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
 {
     class CheckItemDialogModel : BindableBase, IDialogHostAware
     {
