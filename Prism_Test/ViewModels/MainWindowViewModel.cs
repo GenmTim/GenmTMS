@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism_Test.Views;
 using TMS.Core.Api;
+using TMS.Core.Data.Dto;
 
 namespace Prism_Test.ViewModels
 {
@@ -21,10 +22,29 @@ namespace Prism_Test.ViewModels
 		public MainWindowViewModel(IRegionManager regionManager)
 		{
 			this.regionManager = regionManager;
-			LogString = "测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串测试字符串";
-			HttpClient serviceApi = new HttpClient();
+			
+            
+            HttpClient serviceApi = HttpClient.Instance;
+            HttpClient serviceApi2 = HttpClient.GetInstance();
 
-            serviceApi.GetCompanyInfo(100);
+            ApiResponse apiResponse = serviceApi.LoginUserEmail("123@qq.com", "qzj");
+			if (apiResponse.StatusCode!=200)
+			{
+                LogString = apiResponse.Message;
+            }
+            
+            apiResponse = serviceApi.LoginUserTel("111011", "qzj");
+            if (apiResponse.StatusCode != 200)
+            {
+                LogString = apiResponse.Message;
+            }
+
+            apiResponse = serviceApi.ChangeUserPassword(((UserDto)apiResponse.Result).UserId, "jjj");
+            if (apiResponse.StatusCode != 200)
+            {
+                LogString = apiResponse.Message;
+            }
+
 
             //this.NaviagationCommand = new DelegateCommand<string>(NavigationPage);
         }
