@@ -39,7 +39,7 @@ namespace Prism_Test.ViewModels
                 LogString = apiResponse.Message;
             }
 
-            apiResponse = serviceApi.ChangeUserPassword(((UserDto)apiResponse.Result).UserId, "jjj");
+            apiResponse = serviceApi.ChangeUserPassword(((UserDto)apiResponse.Data).UserId, "jjj");
             if (apiResponse.StatusCode != 200)
             {
                 LogString = apiResponse.Message;
