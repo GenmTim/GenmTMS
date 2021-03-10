@@ -216,7 +216,14 @@
                 Opacity=".1"
                 RenderingBias="Performance"
                 Color="{StaticResource EffectShadowColor}" />
-
+            <DropShadowEffect
+                x:Key="EffectShadow_Left"
+                BlurRadius="10"
+                ShadowDepth="3"
+                Direction="180"
+                Opacity=".1"
+                RenderingBias="Performance"
+                Color="{StaticResource EffectShadowColor}" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

@@ -6,6 +6,11 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Resources/Styles/UserControls/Base/ChatBubbleBaseStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="DrawerBaseStyle" TargetType="uc:Drawer">
+        <Setter Property="Dock" Value="Right" />
+        <Setter Property="MaskBrush" Value="{DynamicResource DarkOpacityBrush}" />
+    </Style>
+    <Style BasedOn="{StaticResource DrawerBaseStyle}" TargetType="uc:Drawer" />
     <Style x:Key="TitleSettingItemBoxStyle" TargetType="uc:SettingItemBox">
         <Setter Property="Template">
             <Setter.Value>
@@ -85,6 +90,18 @@
                             Effect="{StaticResource EffectShadow1}"
                             Background="White"
                             CornerRadius="5" />
+                        <ContentPresenter />
+                    </hc:SimplePanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="PreEmptyFillSettingItemBox" TargetType="uc:SettingItemBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="uc:SettingItemBox">
+                    <hc:SimplePanel>
+                        <Border Background="White" CornerRadius="5" />
                         <ContentPresenter />
                     </hc:SimplePanel>
                 </ControlTemplate>

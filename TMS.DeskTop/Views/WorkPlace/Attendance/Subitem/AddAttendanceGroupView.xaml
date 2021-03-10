@@ -8,7 +8,6 @@
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
     d:DesignHeight="800"
     d:DesignWidth="1600"
-    Background="{StaticResource BorderBrush}"
     TextOptions.TextFormattingMode="Display"
     TextOptions.TextHintingMode="Fixed"
     TextOptions.TextRenderingMode="ClearType"
@@ -119,305 +118,315 @@
         </Style>
         <Style BasedOn="{StaticResource G_ButtonBaseStyle}" TargetType="Button" />
     </UserControl.Resources>
-    <hc:SimplePanel>
-        <StackPanel Margin="0,0,0,60">
-            <uc:SettingItemBox Title="基本信息">
-                <StackPanel Width="{Binding RelativeSource={RelativeSource AncestorType=uc:SettingItemBox}, Path=ActualWidth}" Orientation="Vertical">
-                    <uc:TitleControlBox Title="考勤组名称 :">
-                        <hc:TextBox hc:InfoElement.Placeholder="请输入考勤组名称，不超过30个字符" />
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="考勤组负责人 :">
-                        <StackPanel>
-                            <hc:TagContainer ItemContainerStyle="{StaticResource TagBaseStyle}">
-                                <hc:Tag Content="蔡承龙" />
-                            </hc:TagContainer>
-                            <hc:SimpleText
-                                Text="负责人不可编辑考勤组规则，可查看和导出考勤组数据，以及可对排班制考勤组进行排班"
-                                Margin="0,10,0,0"
-                                Foreground="{StaticResource ThirdlyTextBrush}" />
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="参加考勤的部门和人员 :">
-                        <StackPanel>
-                            <hc:TagContainer />
-                            <hc:SimpleText
-                                Text="请选择参与考勤的部门和人员"
-                                Margin="0,10,0,0"
-                                Foreground="{StaticResource ThirdlyTextBrush}" />
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="考勤组时区 :">
-                        <ComboBox />
-                    </uc:TitleControlBox>
-                </StackPanel>
-            </uc:SettingItemBox>
-            <uc:SettingItemBox Title="考勤班次">
-                <StackPanel>
-                    <uc:TitleControlBox Title="考勤类型 :">
-                        <StackPanel Orientation="Horizontal">
-                            <RadioButton Content="固定班次" IsChecked="True" />
-                            <RadioButton Content="排班制" />
-                            <RadioButton Content="自由班制" />
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="班次设置 :">
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="默认班次： 09:00 - 18:00" />
-                                <Button
-                                    Content="详情"
-                                    Margin="25,0,0,0"
-                                    Style="{StaticResource TextBtnStyle}" />
-                                <Button
-                                    Content="更改"
-                                    Margin="15,0,0,0"
-                                    Style="{StaticResource TextBtnStyle}" />
+    <hc:TransitioningContentControl>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <hc:ScrollViewer IsInertiaEnabled="True">
+                <hc:SimplePanel>
+                    <StackPanel Margin="0,0,0,60">
+                        <uc:SettingItemBox Title="基本信息">
+                            <StackPanel Width="{Binding RelativeSource={RelativeSource AncestorType=uc:SettingItemBox}, Path=ActualWidth}" Orientation="Vertical">
+                                <uc:TitleControlBox Title="考勤组名称 :">
+                                    <hc:TextBox hc:InfoElement.Placeholder="请输入考勤组名称，不超过30个字符" />
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="考勤组负责人 :">
+                                    <StackPanel>
+                                        <hc:TagContainer ItemContainerStyle="{StaticResource TagBaseStyle}">
+                                            <hc:Tag Content="蔡承龙" />
+                                        </hc:TagContainer>
+                                        <hc:SimpleText
+                                            Text="负责人不可编辑考勤组规则，可查看和导出考勤组数据，以及可对排班制考勤组进行排班"
+                                            Margin="0,10,0,0"
+                                            Foreground="{StaticResource ThirdlyTextBrush}" />
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="参加考勤的部门和人员 :">
+                                    <StackPanel>
+                                        <hc:TagContainer />
+                                        <hc:SimpleText
+                                            Text="请选择参与考勤的部门和人员"
+                                            Margin="0,10,0,0"
+                                            Foreground="{StaticResource ThirdlyTextBrush}" />
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="考勤组时区 :">
+                                    <ComboBox />
+                                </uc:TitleControlBox>
                             </StackPanel>
-                            <DataGrid
-                                Margin="0,10,0,0"
-                                AutoGenerateColumns="False"
-                                Background="Transparent"
-                                CanUserSortColumns="False"
-                                CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
-                                ColumnHeaderStyle="{StaticResource HollowOut_TopAndBottonBorderDataGridColumnHeaderStyle}"
-                                FontSize="14"
-                                RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn
-                                        Width="1*"
-                                        Binding="{Binding Address}"
-                                        Foreground="Black"
-                                        Header="工作日"
-                                        IsReadOnly="True" />
-                                    <DataGridTextColumn
-                                        Width="1.5*"
-                                        Binding="{Binding Address}"
-                                        Foreground="Black"
-                                        Header="班次"
-                                        IsReadOnly="True" />
-                                    <DataGridTemplateColumn
-                                        Width="1*"
-                                        CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
-                                        Header="操作"
-                                        HeaderStyle="{StaticResource HollowOut_RightDataGridColumnRowHeaderStyle}"
-                                        IsReadOnly="True">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <WrapPanel>
-                                                    <Button Content="查看" Style="{StaticResource TextBtnStyle}" />
-                                                    <Button
-                                                        Content="删除"
-                                                        Margin="15,0,0,0"
-                                                        Style="{StaticResource TextBtnStyle}" />
-                                                </WrapPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="排休设置 :">
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox Content="按照" IsChecked="True" />
-                            <ComboBox Width="200" Margin="20,0,0,0" />
-                            <TextBlock
-                                Text="自动排休"
-                                Margin="10,0,0,0"
-                                VerticalAlignment="Center" />
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="特殊日设置 :">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Content="新增必须打卡日期" Style="{StaticResource CommonAddBtnStyle}" />
-                            <Button
-                                Content="新增无需打卡日期"
-                                Margin="20,0,0,0"
-                                Style="{StaticResource CommonAddBtnStyle}" />
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                </StackPanel>
-            </uc:SettingItemBox>
-            <uc:SettingItemBox Title="考勤方式">
-                <StackPanel>
-                    <uc:TitleControlBox Title="考勤方式 :">
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel.Resources>
-                                <Style BasedOn="{StaticResource HorizontalPanelCheckBoxStyle}" TargetType="CheckBox" />
-                            </StackPanel.Resources>
-                            <CheckBox Content="GPS 打卡" IsChecked="True" />
-                            <CheckBox Content="Wi-Fi 打卡" IsChecked="True" />
-                            <CheckBox Content="考勤机打开" />
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="根据办公地点考勤 :">
-                        <StackPanel>
-                            <hc:SimplePanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Content="新增考勤地点" Style="{StaticResource AddBtnStyle}" />
-                                    <ComboBox Width="180" Margin="20,0,0,0" />
-                                </StackPanel>
-                                <DockPanel HorizontalAlignment="Right">
-                                    <Button Content="批量导出" Margin="0,0,20,0" />
-                                    <Button Content="批量导入" />
-                                </DockPanel>
-                            </hc:SimplePanel>
-                            <!--<ListBox Height="50" Margin="0,20,0,0" />-->
-                            <DataGrid
-                                Margin="0,10,0,0"
-                                AutoGenerateColumns="False"
-                                Background="Transparent"
-                                CanUserSortColumns="False"
-                                CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
-                                ColumnHeaderStyle="{StaticResource HollowOut_TopAndBottonBorderDataGridColumnHeaderStyle}"
-                                FontSize="14"
-                                RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn
-                                        Width="1*"
-                                        Binding="{Binding Address}"
-                                        Foreground="Black"
-                                        Header="地址"
-                                        IsReadOnly="True" />
-                                    <DataGridTemplateColumn
-                                        Width="1*"
-                                        CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
-                                        Header="操作"
-                                        HeaderStyle="{StaticResource HollowOut_RightDataGridColumnRowHeaderStyle}"
-                                        IsReadOnly="True">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <WrapPanel>
-                                                    <Button Content="查看" Style="{StaticResource TextBtnStyle}" />
-                                                    <Button
-                                                        Content="删除"
-                                                        Margin="15,0,0,0"
-                                                        Style="{StaticResource TextBtnStyle}" />
-                                                </WrapPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="根据 Wi-Fi 考勤 :">
-                        <StackPanel>
-                            <hc:SimplePanel>
-                                <Button
-                                    Content="新增 MAC 地址"
-                                    HorizontalAlignment="Left"
-                                    Style="{StaticResource AddBtnStyle}" />
-                                <DockPanel HorizontalAlignment="Right">
-                                    <Button Content="批量导出" Margin="0,0,20,0" />
-                                    <Button Content="批量导入" />
-                                </DockPanel>
-                            </hc:SimplePanel>
-                            <DataGrid
-                                Margin="0,10,0,0"
-                                AutoGenerateColumns="False"
-                                Background="Transparent"
-                                CanUserSortColumns="False"
-                                CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
-                                ColumnHeaderStyle="{StaticResource HollowOut_TopAndBottonBorderDataGridColumnHeaderStyle}"
-                                FontSize="14"
-                                RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn
-                                        Width="1*"
-                                        Binding="{Binding Address}"
-                                        Foreground="Black"
-                                        Header="Wi-Fi 名称"
-                                        IsReadOnly="True" />
-                                    <DataGridTextColumn
-                                        Width="1.5*"
-                                        Binding="{Binding Address}"
-                                        Foreground="Black"
-                                        Header="MAC 地址"
-                                        IsReadOnly="True" />
-                                    <DataGridTemplateColumn
-                                        Width="1*"
-                                        CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
-                                        Header="操作"
-                                        HeaderStyle="{StaticResource HollowOut_RightDataGridColumnRowHeaderStyle}"
-                                        IsReadOnly="True">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <WrapPanel>
-                                                    <Button Content="查看" Style="{StaticResource TextBtnStyle}" />
-                                                    <Button
-                                                        Content="删除"
-                                                        Margin="15,0,0,0"
-                                                        Style="{StaticResource TextBtnStyle}" />
-                                                </WrapPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                </StackPanel>
-            </uc:SettingItemBox>
-            <uc:SettingItemBox Title="考勤设置">
-                <StackPanel>
-                    <uc:TitleControlBox Title="更多打卡规则 :">
-                        <StackPanel Margin="0,0,0,-15" HorizontalAlignment="Left">
-                            <StackPanel.Resources>
-                                <Style BasedOn="{StaticResource VerticalPanelCheckBoxStyle}" TargetType="CheckBox" />
-                            </StackPanel.Resources>
-                            <CheckBox Content="允许外勤打卡" />
-                            <CheckBox
-                                Content="允许补卡"
-                                IsChecked="True"
-                                Cursor="Hand" />
-                            <CheckBox Content="允许PC端打卡" />
-                            <CheckBox Content="开启人脸识别打卡" />
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="打卡界面显示 :">
-                        <StackPanel Margin="0,0,0,-15" HorizontalAlignment="Left">
-                            <StackPanel.Resources>
-                                <Style BasedOn="{StaticResource VerticalPanelCheckBoxStyle}" TargetType="CheckBox" />
-                            </StackPanel.Resources>
-                            <CheckBox Content="允许考勤人员查看到加班累计工时" />
-                            <CheckBox Content="允许考勤人员查看到上班累计工时" />
-                            <CheckBox Content="隐藏考勤人员的打卡具体时间" />
-                        </StackPanel>
-                    </uc:TitleControlBox>
-                    <uc:TitleControlBox Title="关联加班规则 :">
-                        <TextBlock
-                            Text="若有加班需求，请前往审批后台-加班规则中进行设置"
-                            VerticalAlignment="Center"
-                            FontSize="14" />
-                    </uc:TitleControlBox>
-                </StackPanel>
-            </uc:SettingItemBox>
-        </StackPanel>
-        <Border
-            Height="60"
-            VerticalAlignment="Bottom"
-            Background="White"
-            BorderBrush="{StaticResource BorderBrush}"
-            BorderThickness="0,1,0,0">
-            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button
-                    Content="取消"
-                    Width="80"
-                    Height="35"
-                    Padding="0"
-                    Cursor="Hand"
-                    FontSize="14" />
-                <Button
-                    Content="提交"
-                    Width="80"
-                    Height="33"
-                    Margin="20,0"
-                    Padding="0"
-                    Cursor="Hand"
-                    FontSize="14"
-                    Style="{StaticResource ButtonPrimary}" />
-            </WrapPanel>
-        </Border>
-    </hc:SimplePanel>
+                        </uc:SettingItemBox>
+                        <uc:SettingItemBox Title="考勤班次">
+                            <StackPanel>
+                                <uc:TitleControlBox Title="考勤类型 :">
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton Content="固定班次" IsChecked="True" />
+                                        <RadioButton Content="排班制" />
+                                        <RadioButton Content="自由班制" />
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="班次设置 :">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="默认班次： 09:00 - 18:00" />
+                                            <Button
+                                                Content="详情"
+                                                Margin="25,0,0,0"
+                                                Style="{StaticResource TextBtnStyle}" />
+                                            <Button
+                                                Content="更改"
+                                                Margin="15,0,0,0"
+                                                Style="{StaticResource TextBtnStyle}" />
+                                        </StackPanel>
+                                        <DataGrid
+                                            Margin="0,10,0,0"
+                                            AutoGenerateColumns="False"
+                                            Background="Transparent"
+                                            CanUserSortColumns="False"
+                                            CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
+                                            ColumnHeaderStyle="{StaticResource HollowOut_TopAndBottonBorderDataGridColumnHeaderStyle}"
+                                            FontSize="14"
+                                            RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn
+                                                    Width="1*"
+                                                    Binding="{Binding Address}"
+                                                    Foreground="Black"
+                                                    Header="工作日"
+                                                    IsReadOnly="True" />
+                                                <DataGridTextColumn
+                                                    Width="1.5*"
+                                                    Binding="{Binding Address}"
+                                                    Foreground="Black"
+                                                    Header="班次"
+                                                    IsReadOnly="True" />
+                                                <DataGridTemplateColumn
+                                                    Width="1*"
+                                                    CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
+                                                    Header="操作"
+                                                    HeaderStyle="{StaticResource HollowOut_RightDataGridColumnRowHeaderStyle}"
+                                                    IsReadOnly="True">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <WrapPanel>
+                                                                <Button Content="查看" Style="{StaticResource TextBtnStyle}" />
+                                                                <Button
+                                                                    Content="删除"
+                                                                    Margin="15,0,0,0"
+                                                                    Style="{StaticResource TextBtnStyle}" />
+                                                            </WrapPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="排休设置 :">
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox Content="按照" IsChecked="True" />
+                                        <ComboBox Width="200" Margin="20,0,0,0" />
+                                        <TextBlock
+                                            Text="自动排休"
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="特殊日设置 :">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="新增必须打卡日期" Style="{StaticResource CommonAddBtnStyle}" />
+                                        <Button
+                                            Content="新增无需打卡日期"
+                                            Margin="20,0,0,0"
+                                            Style="{StaticResource CommonAddBtnStyle}" />
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                            </StackPanel>
+                        </uc:SettingItemBox>
+                        <uc:SettingItemBox Title="考勤方式">
+                            <StackPanel>
+                                <uc:TitleControlBox Title="考勤方式 :">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel.Resources>
+                                            <Style BasedOn="{StaticResource HorizontalPanelCheckBoxStyle}" TargetType="CheckBox" />
+                                        </StackPanel.Resources>
+                                        <CheckBox Content="GPS 打卡" IsChecked="True" />
+                                        <CheckBox Content="Wi-Fi 打卡" IsChecked="True" />
+                                        <CheckBox Content="考勤机打开" />
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="根据办公地点考勤 :">
+                                    <StackPanel>
+                                        <hc:SimplePanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="新增考勤地点" Style="{StaticResource AddBtnStyle}" />
+                                                <ComboBox Width="180" Margin="20,0,0,0" />
+                                            </StackPanel>
+                                            <DockPanel HorizontalAlignment="Right">
+                                                <Button Content="批量导出" Margin="0,0,20,0" />
+                                                <Button Content="批量导入" />
+                                            </DockPanel>
+                                        </hc:SimplePanel>
+                                        <!--<ListBox Height="50" Margin="0,20,0,0" />-->
+                                        <DataGrid
+                                            Margin="0,10,0,0"
+                                            AutoGenerateColumns="False"
+                                            Background="Transparent"
+                                            CanUserSortColumns="False"
+                                            CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
+                                            ColumnHeaderStyle="{StaticResource HollowOut_TopAndBottonBorderDataGridColumnHeaderStyle}"
+                                            FontSize="14"
+                                            RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn
+                                                    Width="1*"
+                                                    Binding="{Binding Address}"
+                                                    Foreground="Black"
+                                                    Header="地址"
+                                                    IsReadOnly="True" />
+                                                <DataGridTemplateColumn
+                                                    Width="1*"
+                                                    CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
+                                                    Header="操作"
+                                                    HeaderStyle="{StaticResource HollowOut_RightDataGridColumnRowHeaderStyle}"
+                                                    IsReadOnly="True">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <WrapPanel>
+                                                                <Button Content="查看" Style="{StaticResource TextBtnStyle}" />
+                                                                <Button
+                                                                    Content="删除"
+                                                                    Margin="15,0,0,0"
+                                                                    Style="{StaticResource TextBtnStyle}" />
+                                                            </WrapPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="根据 Wi-Fi 考勤 :">
+                                    <StackPanel>
+                                        <hc:SimplePanel>
+                                            <Button
+                                                Content="新增 MAC 地址"
+                                                HorizontalAlignment="Left"
+                                                Style="{StaticResource AddBtnStyle}" />
+                                            <DockPanel HorizontalAlignment="Right">
+                                                <Button Content="批量导出" Margin="0,0,20,0" />
+                                                <Button Content="批量导入" />
+                                            </DockPanel>
+                                        </hc:SimplePanel>
+                                        <DataGrid
+                                            Margin="0,10,0,0"
+                                            AutoGenerateColumns="False"
+                                            Background="Transparent"
+                                            CanUserSortColumns="False"
+                                            CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
+                                            ColumnHeaderStyle="{StaticResource HollowOut_TopAndBottonBorderDataGridColumnHeaderStyle}"
+                                            FontSize="14"
+                                            RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn
+                                                    Width="1*"
+                                                    Binding="{Binding Address}"
+                                                    Foreground="Black"
+                                                    Header="Wi-Fi 名称"
+                                                    IsReadOnly="True" />
+                                                <DataGridTextColumn
+                                                    Width="1.5*"
+                                                    Binding="{Binding Address}"
+                                                    Foreground="Black"
+                                                    Header="MAC 地址"
+                                                    IsReadOnly="True" />
+                                                <DataGridTemplateColumn
+                                                    Width="1*"
+                                                    CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
+                                                    Header="操作"
+                                                    HeaderStyle="{StaticResource HollowOut_RightDataGridColumnRowHeaderStyle}"
+                                                    IsReadOnly="True">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <WrapPanel>
+                                                                <Button Content="查看" Style="{StaticResource TextBtnStyle}" />
+                                                                <Button
+                                                                    Content="删除"
+                                                                    Margin="15,0,0,0"
+                                                                    Style="{StaticResource TextBtnStyle}" />
+                                                            </WrapPanel>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                            </StackPanel>
+                        </uc:SettingItemBox>
+                        <uc:SettingItemBox Title="考勤设置">
+                            <StackPanel>
+                                <uc:TitleControlBox Title="更多打卡规则 :">
+                                    <StackPanel Margin="0,0,0,-15" HorizontalAlignment="Left">
+                                        <StackPanel.Resources>
+                                            <Style BasedOn="{StaticResource VerticalPanelCheckBoxStyle}" TargetType="CheckBox" />
+                                        </StackPanel.Resources>
+                                        <CheckBox Content="允许外勤打卡" />
+                                        <CheckBox
+                                            Content="允许补卡"
+                                            IsChecked="True"
+                                            Cursor="Hand" />
+                                        <CheckBox Content="允许PC端打卡" />
+                                        <CheckBox Content="开启人脸识别打卡" />
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="打卡界面显示 :">
+                                    <StackPanel Margin="0,0,0,-15" HorizontalAlignment="Left">
+                                        <StackPanel.Resources>
+                                            <Style BasedOn="{StaticResource VerticalPanelCheckBoxStyle}" TargetType="CheckBox" />
+                                        </StackPanel.Resources>
+                                        <CheckBox Content="允许考勤人员查看到加班累计工时" />
+                                        <CheckBox Content="允许考勤人员查看到上班累计工时" />
+                                        <CheckBox Content="隐藏考勤人员的打卡具体时间" />
+                                    </StackPanel>
+                                </uc:TitleControlBox>
+                                <uc:TitleControlBox Title="关联加班规则 :">
+                                    <TextBlock
+                                        Text="若有加班需求，请前往审批后台-加班规则中进行设置"
+                                        VerticalAlignment="Center"
+                                        FontSize="14" />
+                                </uc:TitleControlBox>
+                            </StackPanel>
+                        </uc:SettingItemBox>
+                    </StackPanel>
+                </hc:SimplePanel>
+            </hc:ScrollViewer>
+            <Border Grid.Row="1"
+                Height="60"
+                VerticalAlignment="Bottom"
+                Background="White"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,1,0,0">
+                <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button
+                        Content="取消"
+                        Width="80"
+                        Height="35"
+                        Padding="0"
+                        Cursor="Hand"
+                        FontSize="14" />
+                    <Button
+                        Content="提交"
+                        Width="80"
+                        Height="33"
+                        Margin="20,0"
+                        Padding="0"
+                        Cursor="Hand"
+                        FontSize="14"
+                        Style="{StaticResource ButtonPrimary}" />
+                </WrapPanel>
+            </Border>
+        </Grid>
+    </hc:TransitioningContentControl>
 </UserControl>

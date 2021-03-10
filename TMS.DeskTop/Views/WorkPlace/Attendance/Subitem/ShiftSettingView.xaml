@@ -6,92 +6,251 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="800"
     d:DesignWidth="1600"
     mc:Ignorable="d">
-    <StackPanel Margin="30">
-        <uc:SettingItemBox Style="{StaticResource EmptyFillSettingItemBox}">
-            <StackPanel Margin="30">
+    <hc:TransitioningContentControl>
+        <AdornerDecorator>
+            <hc:ScrollViewer IsInertiaEnabled="True">
                 <hc:SimplePanel>
-                    <StackPanel Orientation="Horizontal">
-                        <hc:SearchBar
-                            Width="400"
-                            hc:InfoElement.Placeholder="请输入班次名称或创建人姓名"
-                            FontSize="14"
-                            Style="{StaticResource SearchBarExtendBaseStyle}" />
-                        <CheckBox
-                            Content="只展示我创建的班次"
-                            Margin="15,0,0,0"
-                            FontSize="14"
-                            DockPanel.Dock="Left" />
-                    </StackPanel>
-                    <Button
-                        Content="新建班次"
-                        HorizontalAlignment="Right"
-                        Style="{StaticResource AddPrimaryBtnStyle}" />
-                </hc:SimplePanel>
-                <DataGrid
-                    Margin="0,10,0,0"
-                    AutoGenerateColumns="False"
-                    Background="Transparent"
-                    CanUserSortColumns="False"
-                    CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
-                    ColumnHeaderStyle="{StaticResource HollowOut_NonBorderDataGridColumnHeaderStyle}"
-                    FontSize="14"
-                    RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="1*"
-                            Binding="{Binding Name}"
-                            Foreground="Black"
-                            Header="班次名称"
-                            IsReadOnly="True" />
-                        <DataGridTextColumn
-                            Width="1*"
-                            Binding="{Binding Cept}"
-                            Foreground="Black"
-                            Header="考勤时间"
-                            IsReadOnly="True" />
-                        <DataGridTextColumn
-                            Width="1*"
-                            Binding="{Binding Role}"
-                            Foreground="Black"
-                            Header="创建人"
-                            IsReadOnly="True" />
-                        <DataGridTextColumn
-                            Width="1*"
-                            Binding="{Binding Role}"
-                            Foreground="Black"
-                            Header="最后更新时间"
-                            IsReadOnly="True" />
-                        <DataGridTemplateColumn
-                            Width="1*"
-                            CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
-                            Header="操作"
-                            HeaderStyle="{StaticResource HollowOut_NoBorderRightDataGridColumnRowHeaderStyle}"
-                            IsReadOnly="True">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <WrapPanel>
-                                        <Button Content="删除" Style="{StaticResource TextBtnStyle}" />
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <hc:Pagination
-                    Margin="0,20,0,0"
-                    HorizontalAlignment="Center"
-                    MaxPageCount="2"
-                    IsJumpEnabled="True">
-                    <!--<hc:Interaction.Triggers>
+                    <uc:Drawer x:Name="DrawerRight"
+                        ShowMask="True"
+                        MaskBrush="{StaticResource TMS_TransparencyRegionBrush}"
+                        MaskCanClose="True"
+                        IsOpen="{Binding IsOpenNewShiftView, Mode=TwoWay}">
+                        <Border
+                            Width="500"
+                            Background="{DynamicResource RegionBrush}"
+                            Effect="{StaticResource EffectShadow_Left}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <hc:SimplePanel Margin="20,20,20,0">
+                                    <TextBlock
+                                        Text="新增班次"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontWeight="SemiBold"
+                                        Style="{StaticResource TextBlockTitle}" />
+                                    <Button
+                                        Content="&#xe61a;"
+                                        Command="hc:ControlCommands.Close"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource TextBtnStyle}"
+                                        Cursor="Hand"
+                                        FontFamily="/Resources/Fonts/#iconfont" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Grid.Row="1" Margin="20">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock
+                                                Text="班次名称"
+                                                VerticalAlignment="Center"
+                                                Foreground="{StaticResource SecondaryTextBrush}"
+                                                FontSize="12" />
+                                            <TextBox
+                                                Width="200"
+                                                Height="30"
+                                                Margin="15,0,0,0" />
+                                        </StackPanel>
+                                        <StackPanel Margin="0,20,0,0">
+                                            <TextBlock
+                                                Text="打卡时段"
+                                                FontSize="14"
+                                                FontWeight="SemiBold" />
+                                            <TextBlock
+                                                Text="一天上下班次数"
+                                                Margin="0,15,0,0"
+                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                                            <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
+                                                <hc:ButtonGroup
+                                                    Width="340"
+                                                    VerticalAlignment="Center"
+                                                    Orientation="Horizontal">
+                                                    <RadioButton Content="1天1次上下班" Cursor="Hand" />
+                                                    <RadioButton Content="1天2次上下班" Cursor="Hand" />
+                                                    <RadioButton Content="1天3次上下班" Cursor="Hand" />
+                                                </hc:ButtonGroup>
+                                                <CheckBox
+                                                    Content="打卡时段设置"
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    Cursor="Hand" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100" />
+                                                    <ColumnDefinition Width="320" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    Text="第1次"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                                <hc:SimplePanel Grid.Column="1">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock
+                                                            Text="上班："
+                                                            VerticalAlignment="Center"
+                                                            Foreground="{StaticResource SecondaryTextBrush}" />
+                                                        <hc:TimePicker TimeFormat="hh:mm">
+                                                            <hc:TimePicker.Clock>
+                                                                <hc:ListClock />
+                                                            </hc:TimePicker.Clock>
+                                                        </hc:TimePicker>
+                                                    </StackPanel>
+                                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                                        <TextBlock
+                                                            Text="下班："
+                                                            VerticalAlignment="Center"
+                                                            Foreground="{StaticResource SecondaryTextBrush}" />
+                                                        <hc:TimePicker TimeFormat="HH:mm">
+                                                            <hc:TimePicker.Clock>
+                                                                <hc:ListClock />
+                                                            </hc:TimePicker.Clock>
+                                                        </hc:TimePicker>
+
+                                                    </StackPanel>
+                                                </hc:SimplePanel>
+                                            </Grid>
+                                        </StackPanel>
+                                        <!--<StackPanel>
+                                        <RadioButton Content="休息时间" />
+                                        <TextBlock Text="休息开始: " />
+                                        <hc:TimePicker />
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="休息开始: " />
+                                        <hc:TimePicker />
+                                    </StackPanel>-->
+                                        <StackPanel Margin="0,20,0,0" HorizontalAlignment="Left">
+                                            <StackPanel.Resources>
+                                                <Style BasedOn="{StaticResource RadioButtonBaseStyle}" TargetType="RadioButton">
+                                                    <Setter Property="HorizontalAlignment" Value="Left" />
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                    <Setter Property="FontSize" Value="14" />
+                                                    <Setter Property="Margin" Value="0,15,0,0" />
+                                                </Style>
+
+                                            </StackPanel.Resources>
+                                            <TextBlock
+                                                Text="弹性打卡"
+                                                FontSize="14"
+                                                FontWeight="SemiBold" />
+                                            <RadioButton Content="允许晚到晚走、早到早走" />
+                                            <RadioButton Content="晚到、早走几分钟不记为异常" />
+                                            <RadioButton Content="下班晚走，第二天可玩晚到" />
+                                        </StackPanel>
+                                        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                                            <TextBlock Text="合计工作时长" Foreground="{StaticResource SecondaryTextBrush}" />
+                                            <TextBlock Text=" 9小时0分钟" Foreground="{StaticResource SecondaryTextBrush}" />
+                                        </StackPanel>
+
+
+                                        <TextBlock
+                                            Text="考勤统计工作时长及请假出差外出统计，会以此为时间为准"
+                                            Margin="0,15,0,0"
+                                            Foreground="#91000000" />
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                            </Grid>
+                        </Border>
+                    </uc:Drawer>
+                    <StackPanel Margin="30">
+                        <uc:SettingItemBox Effect="{StaticResource EffectShadow_Left}" Style="{StaticResource EmptyFillSettingItemBox}">
+                            <StackPanel Margin="30">
+                                <hc:SimplePanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <hc:SearchBar
+                                            Width="400"
+                                            hc:InfoElement.Placeholder="请输入班次名称或创建人姓名"
+                                            FontSize="14"
+                                            Style="{StaticResource SearchBarExtendBaseStyle}" />
+                                        <CheckBox
+                                            Content="只展示我创建的班次"
+                                            Margin="15,0,0,0"
+                                            FontSize="14"
+                                            DockPanel.Dock="Left" />
+                                    </StackPanel>
+                                    <Button
+                                        Content="新建班次"
+                                        Command="{Binding OpenNewShiftView}"
+                                        HorizontalAlignment="Right"
+                                        Style="{StaticResource AddPrimaryBtnStyle}"
+                                        Cursor="Hand" />
+                                </hc:SimplePanel>
+                                <DataGrid
+                                    Margin="0,10,0,0"
+                                    AutoGenerateColumns="False"
+                                    Background="Transparent"
+                                    CanUserSortColumns="False"
+                                    CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
+                                    ColumnHeaderStyle="{StaticResource HollowOut_NonBorderDataGridColumnHeaderStyle}"
+                                    FontSize="14"
+                                    RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn
+                                            Width="1*"
+                                            Binding="{Binding Name}"
+                                            Foreground="Black"
+                                            Header="班次名称"
+                                            IsReadOnly="True" />
+                                        <DataGridTextColumn
+                                            Width="1*"
+                                            Binding="{Binding Cept}"
+                                            Foreground="Black"
+                                            Header="考勤时间"
+                                            IsReadOnly="True" />
+                                        <DataGridTextColumn
+                                            Width="1*"
+                                            Binding="{Binding Role}"
+                                            Foreground="Black"
+                                            Header="创建人"
+                                            IsReadOnly="True" />
+                                        <DataGridTextColumn
+                                            Width="1*"
+                                            Binding="{Binding Role}"
+                                            Foreground="Black"
+                                            Header="最后更新时间"
+                                            IsReadOnly="True" />
+                                        <DataGridTemplateColumn
+                                            Width="1*"
+                                            CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
+                                            Header="操作"
+                                            HeaderStyle="{StaticResource HollowOut_NoBorderRightDataGridColumnRowHeaderStyle}"
+                                            IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <WrapPanel>
+                                                        <Button Content="删除" Style="{StaticResource TextBtnStyle}" />
+                                                    </WrapPanel>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <hc:Pagination
+                                    Margin="0,20,0,0"
+                                    HorizontalAlignment="Center"
+                                    MaxPageCount="2"
+                                    IsJumpEnabled="True">
+                                    <!--<hc:Interaction.Triggers>
                         <hc:EventTrigger EventName="PageUpdated">
                             <hc:EventToCommand Command="{Binding PageUpdatedCmd}" PassEventArgsToCommand="True" />
                         </hc:EventTrigger>
                     </hc:Interaction.Triggers>-->
-                </hc:Pagination>
-            </StackPanel>
-        </uc:SettingItemBox>
-    </StackPanel>
+                                </hc:Pagination>
+                            </StackPanel>
+                        </uc:SettingItemBox>
+                    </StackPanel>
+                </hc:SimplePanel>
+            </hc:ScrollViewer>
+        </AdornerDecorator>
+    </hc:TransitioningContentControl>
 </UserControl>

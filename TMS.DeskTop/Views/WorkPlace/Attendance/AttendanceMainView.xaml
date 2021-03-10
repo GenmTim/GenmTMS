@@ -17,7 +17,7 @@
             BasedOn="{StaticResource SideMenuItemBaseStyle}"
             TargetType="hc:SideMenuItem">
             <Setter Property="FontSize" Value="14" />
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background" Value="White" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="hc:SideMenuItem">
@@ -139,7 +139,7 @@
             <hc:SimplePanel>
                 <hc:SideMenu
                     AutoSelect="True"
-                    Background="Transparent"
+                    Background="White"
                     BorderThickness="0"
                     ExpandMode="ShowAll"
                     ItemContainerStyle="{StaticResource SideMenuItemHeaderAccordionBaseStyle}">
@@ -222,28 +222,25 @@
                             Header="管理员设置" />
                     </hc:SideMenuItem>
                 </hc:SideMenu>
+                <Border BorderThickness="0,0,1,0" BorderBrush="{StaticResource TMS_BorderBrush}" />
+
             </hc:SimplePanel>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <hc:SimplePanel Grid.Column="1">
                 <Border
                     Grid.RowSpan="2"
-                    Background="#1F1C2757"
+                    Background="White"
                     CornerRadius="0,0,0,0" />
-                <TextBlock
+                <!--<TextBlock
                     Text="考勤组设置"
                     Margin="14,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="20"
                     FontWeight="Bold"
-                    Foreground="{StaticResource PrimaryBrush}" />
-                <hc:ScrollViewer Grid.Row="1" IsInertiaEnabled="True">
-                    <ContentControl prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.AttendanceMainContent}" />
-                </hc:ScrollViewer>
-            </Grid>
+                    Foreground="{StaticResource PrimaryBrush}" />-->
+                <ContentControl prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.AttendanceMainContent}" />
+
+            </hc:SimplePanel>
         </Grid>
     </DockPanel>
 </UserControl>
