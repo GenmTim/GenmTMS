@@ -34,6 +34,15 @@ namespace TMS.Core.Api
 			return instance;
 		}
 
+		public static HttpClient GetConn()
+		{
+			if (instance == null)
+			{
+				instance = new HttpClient();
+			}
+			return instance;
+		}
+
 		private RestClient restClient;
 
 		private HttpClient()
