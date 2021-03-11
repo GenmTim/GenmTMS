@@ -9,284 +9,15 @@
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="900"
     d:DesignWidth="1440"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <!--<Style x:Key="IconControl" TargetType="Control">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Control">
-                        <Border
-                            Width="28"
-                            Height="28"
-                            CornerRadius="5">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1.2,0.5">
-                                    <GradientStop Offset="0" Color="#FF4280FF" />
-                                    <GradientStop Offset="0" Color="#FF5D93FE" />
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            <TextBlock
-                                Text="{TemplateBinding uc:ValueAttach.Text}"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                FontWeight="Bold"
-                                Foreground="White" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>-->
-        <!--<Style x:Key="menuRadioButtonTemplate2" TargetType="{x:Type RadioButton}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Padding" Value="0,8" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="SnapsToDevicePixels" Value="true" />
-            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <Grid>
-                            <Border
-                                Width="{TemplateBinding Width}"
-                                Height="{TemplateBinding Height}"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="10">
-                                <ContentPresenter
-                                    Margin="{TemplateBinding Padding}"
-                                    VerticalAlignment="Center"
-                                    Focusable="False"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="AliceBlue" />
-                                <Setter Property="Cursor" Value="Hand" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="AliceBlue" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Background" Value="AliceBlue" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>-->
-        <Style BasedOn="{StaticResource BaseStyle}" TargetType="{x:Type TreeViewItem}">
-            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="Padding" Value="10,0" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition MinHeight="30" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Border x:Name="Bd"
-                                Padding="{TemplateBinding Padding}"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                SnapsToDevicePixels="True">
-                                <DockPanel LastChildFill="True">
-                                    <DockPanel.Margin>
-                                        <Binding RelativeSource="{RelativeSource TemplatedParent}">
-                                            <Binding.Converter>
-                                                <hc:TreeViewItemMarginConverter />
-                                            </Binding.Converter>
-                                        </Binding>
-                                    </DockPanel.Margin>
-                                    <ToggleButton x:Name="Expander"
-                                        IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
-                                        ClickMode="Press">
-                                        <ToggleButton.Style>
-                                            <Style TargetType="{x:Type ToggleButton}">
-                                                <Setter Property="Focusable" Value="False" />
-                                                <Setter Property="Width" Value="16" />
-                                                <Setter Property="Height" Value="16" />
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                                            <Border
-                                                                Width="16"
-                                                                Height="16"
-                                                                Padding="4"
-                                                                Background="Transparent">
-                                                                <Path x:Name="ExpandPath"
-                                                                    Data="M508.89325,762.93166 A65.039498,65.039498,0,0,1,462.47259,743.44582 L97.125746,371.00402 C71.982728,345.3697 72.372878,304.18717 98.007197,279.04415 123.65597,253.87946 164.81682,254.29851 189.96706,279.92561 L508.90047,605.05084 827.83388,279.92561 A65.025048,65.025048,0,0,1,920.6752,371.00402 L555.31391,743.44582 A65.025048,65.025048,0,0,1,508.89325,762.93166 z"
-                                                                    Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type TreeViewItem}}}"
-                                                                    RenderTransformOrigin="0.5,0.5"
-                                                                    Stretch="Uniform">
-                                                                    <Path.RenderTransform>
-                                                                        <RotateTransform Angle="-90" />
-                                                                    </Path.RenderTransform>
-                                                                </Path>
-                                                            </Border>
-                                                            <ControlTemplate.Triggers>
-                                                                <Trigger Property="IsChecked" Value="True">
-                                                                    <Setter TargetName="ExpandPath" Property="RenderTransform">
-                                                                        <Setter.Value>
-                                                                            <RotateTransform Angle="0" />
-                                                                        </Setter.Value>
-                                                                    </Setter>
-                                                                </Trigger>
-                                                            </ControlTemplate.Triggers>
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                        </ToggleButton.Style>
-                                    </ToggleButton>
-                                    <ContentPresenter x:Name="PART_Header"
-                                        Content="{TemplateBinding Header}"
-                                        VerticalAlignment="Center"
-                                        ContentSource="Header"
-                                        ContentStringFormat="{TemplateBinding HeaderStringFormat}"
-                                        ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                </DockPanel>
-                            </Border>
-                            <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger SourceName="Bd" Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#FFEFF0F1" />
-                                <Setter Property="Cursor" Value="Hand" />
-                            </Trigger>
-                            <Trigger Property="IsExpanded" Value="False">
-                                <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed" />
-                            </Trigger>
-                            <Trigger Property="HasItems" Value="False">
-                                <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#FFF0F4FF" />
-                                <Setter Property="Foreground" Value="#FF4E83FF" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Foreground" Value="#FF6D6D6D" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="UserItemStyle" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Height" Value="80" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Border x:Name="border"
-                            Height="60"
-                            CornerRadius="0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="100" />
-                                </Grid.ColumnDefinitions>
-                                <hc:Gravatar
-                                    Width="50"
-                                    Height="50"
-                                    Source="{Binding Icon}"
-                                    Style="{StaticResource GravatarCircleImg}" />
-                                <TextBlock Grid.Column="1"
-                                    Text="{Binding Name}"
-                                    VerticalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="Black" />
-                                <Label Grid.Column="2"
-                                    Content="超级管理员"
-                                    Margin="5"
-                                    Padding="5"
-                                    HorizontalAlignment="Left"
-                                    hc:BorderElement.CornerRadius="0"
-                                    Background="#FF6425D0"
-                                    BorderThickness="0"
-                                    FontSize="10"
-                                    Foreground="White" />
-                            </Grid>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="false">
-                                <Setter TargetName="border" Property="Background" Value="White" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#FFDEE0E3" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox">
-            <Setter Property="ItemContainerStyle" Value="{StaticResource UserItemStyle}" />
-            <Setter Property="BorderThickness" Value="0" />
-        </Style>
-        <Style x:Key="funcButtonStyle" TargetType="Button">
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Focusable" Value="False" />
-            <Setter Property="Background" Value="#FFDDDDDD" />
-            <Setter Property="BorderBrush" Value="#FF707070" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Padding" Value="1" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="5"
-                            SnapsToDevicePixels="True">
-                            <ContentPresenter x:Name="contentPresenter"
-                                Content="{TemplateBinding Content}"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#FFE1EAFF" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#FFBACEFD" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <Style TargetType="RadioButton">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
@@ -294,23 +25,23 @@
                             Width="200"
                             Height="50"
                             Margin="10,0"
-                            CornerRadius="10">
+                            CornerRadius="5">
                             <Grid Margin="5,5" VerticalAlignment="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="60" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Border x:Name="iconBorder" Grid.Column="0"
-                                    Width="40"
-                                    Height="40"
-                                    CornerRadius="10"
-                                    Background="#f0f5f8">
+                                    Width="33"
+                                    Height="33"
+                                    CornerRadius="5"
+                                    Background="#1890ff">
                                     <TextBlock
                                         Text="{TemplateBinding uc:IconFontElement.Geometry}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Style="{StaticResource FIconTextPlusBlockStyle}"
-                                        FontSize="24"
+                                        FontSize="16"
                                         Foreground="{TemplateBinding uc:IconFontElement.IconColor}" />
                                 </Border>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
@@ -330,13 +61,10 @@
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
-                                <Setter TargetName="border" Property="Background" Value="AliceBlue" />
-                                <Setter TargetName="iconBorder" Property="Background" Value="White" />
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource BackgroundBrush}" />
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="AliceBlue" />
-                                <Setter TargetName="iconBorder" Property="Background" Value="White" />
-                                <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource BackgroundBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -355,39 +83,52 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,1,0" />
-                <Grid Margin="0,30" VerticalAlignment="Center">
-                    <StackPanel x:Name="funcRadioBtns">
-                        <!--  Adding Menu buttons  -->
+                <Grid Margin="0,30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        Text="通讯"
+                        Margin="20,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="16" />
+                    <hc:SimplePanel Grid.Row="1"
+                        Margin="0,20,0,0"
+                        VerticalAlignment="Top">
+                        <StackPanel x:Name="funcRadioBtns">
+                            <!--  Adding Menu buttons  -->
+                            <RadioButton
+                                Content="个人信息"
+                                IsChecked="True"
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="PersonalInfoView"
+                                Margin="0,0,0,20"
+                                uc:IconFontElement.Geometry="&#xe7b8;"
+                                uc:IconFontElement.IconColor="White"
+                                Cursor="Hand" />
+                            <RadioButton
+                                Content="外部联系人"
+                                Command="{Binding NavigationCommand}"
+                                Margin="0,0,0,20"
+                                uc:IconFontElement.Geometry="&#xe799;"
+                                uc:IconFontElement.IconColor="White"
+                                Cursor="Hand" />
+                            <RadioButton
+                                Content="组织架构"
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="OrganizationalStructrureView"
+                                Margin="0,0,0,20"
+                                uc:IconFontElement.Geometry="&#xe70b;"
+                                uc:IconFontElement.IconColor="White" />
+                            <RadioButton
+                                Content="我的群组"
+                                Command="{Binding NavigationCommand}"
+                                uc:IconFontElement.Geometry="&#xe78d;"
+                                uc:IconFontElement.IconColor="White"
+                                Cursor="Hand" />
 
-                        <RadioButton
-                            Content="个人信息"
-                            Margin="0,0,0,20"
-                            uc:IconFontElement.Geometry="&#xe7b8;"
-                            uc:IconFontElement.IconColor="#FF14C0FF"
-                            FontWeight="Bold"
-                            FontSize="18" />
-                        <RadioButton
-                            Content="外部联系人"
-                            Margin="0,0,0,20"
-                            uc:IconFontElement.Geometry="&#xe799;"
-                            uc:IconFontElement.IconColor="#FFFFC60A"
-                            FontWeight="Bold"
-                            FontSize="18" />
-                        <RadioButton
-                            Content="组织架构"
-                            Margin="0,0,0,20"
-                            uc:IconFontElement.Geometry="&#xe70b;"
-                            uc:IconFontElement.IconColor="#52c41a"
-                            FontWeight="Bold"
-                            FontSize="18" />
-                        <RadioButton
-                            Content="我的群组"
-                            uc:IconFontElement.Geometry="&#xe78d;"
-                            uc:IconFontElement.IconColor="#13c2c2"
-                            FontWeight="Bold"
-                            FontSize="18" />
-
-                        <!--<RadioButton x:Name="test"
+                            <!--<RadioButton x:Name="test"
                             Margin="10,0,10,0"
                             Style="{StaticResource menuRadioButtonTemplate2}"
                             Tag="Tag3">
@@ -411,306 +152,14 @@
                                     IconColor="#FFFFC60A" />
                             </RadioButton.Content>
                         </RadioButton>-->
-                    </StackPanel>
+                        </StackPanel>
+                    </hc:SimplePanel>
                 </Grid>
-                <Border Grid.Column="1" Background="Transparent">
-                    <Border
-                        Background="White"
-                        BorderThickness="0"
-                        CornerRadius="0">
-                        <Grid Margin="0,30,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <hc:SimplePanel Grid.ColumnSpan="2">
-                                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
-                                <StackPanel
-                                    Margin="10,0,0,0"
-                                    VerticalAlignment="Center"
-                                    Orientation="Horizontal">
-                                    <TextBlock
-                                        Text="&#xe721;"
-                                        VerticalAlignment="Center"
-                                        FontSize="18"
-                                        Style="{StaticResource FIconTextPlusBlockStyle}" />
-                                    <TextBlock
-                                        Text="组织架构"
-                                        Margin="10,0,0,0"
-                                        VerticalAlignment="Center"
-                                        FontSize="18" />
-                                </StackPanel>
-                                <StackPanel
-                                    Margin="0,0,25,0"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center">
-                                    <Button
-                                        Background="Transparent"
-                                        BorderBrush="#FF3370FF"
-                                        Style="{StaticResource funcButtonStyle}">
-                                        <Button.Content>
-                                            <StackPanel Margin="5" Orientation="Horizontal">
-                                                <TextBlock
-                                                    Text="&#xe64f;"
-                                                    VerticalAlignment="Center"
-                                                    FontFamily="/Resources/Fonts/#iconfont"
-                                                    FontSize="18"
-                                                    Foreground="#FF3370FF" />
-                                                <TextBlock
-                                                    Text="添加组织成员"
-                                                    Margin="2,0,0,0"
-                                                    VerticalAlignment="Center"
-                                                    FontSize="14"
-                                                    Foreground="#FF3370FF" />
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-                                </StackPanel>
-                            </hc:SimplePanel>
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="200" />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Border BorderThickness="0,0,1,0" BorderBrush="{StaticResource TMS_BorderBrush}" />
-                                <StackPanel Grid.Row="2"
-                                    Margin="0,20,0,0"
-                                    Orientation="Vertical">
-                                    <Grid Grid.Row="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50" />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <Border Grid.Column="0"
-                                            Width="28"
-                                            Height="28"
-                                            CornerRadius="5">
-                                            <Border.Background>
-                                                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1.2,0.5">
-                                                    <GradientStop Offset="0" Color="#FF4280FF" />
-                                                    <GradientStop Offset="0" Color="#FF5D93FE" />
-                                                </LinearGradientBrush>
-                                            </Border.Background>
-                                            <TextBlock
-                                                Text="宁"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontSize="20"
-                                                FontWeight="Bold"
-                                                Foreground="White" />
-                                        </Border>
-                                        <TextBlock Grid.Column="1"
-                                            Text="宁波工程学院"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            FontSize="20" />
-                                    </Grid>
-                                    <TreeView x:Name="tvProperties"
-                                        Margin="0,15,0,0"
-                                        hc:BorderElement.CornerRadius="0"
-                                        Background="Transparent"
-                                        BorderThickness="0">
-                                        <TreeView.ItemTemplate>
-                                            <HierarchicalDataTemplate DataType="{x:Type data:TreeNodeItem}" ItemsSource="{Binding Children}">
-                                                <StackPanel Height="40" Orientation="Horizontal">
-                                                    <TextBlock
-                                                        Text="&#xe74b;"
-                                                        Margin="2,0,5,0"
-                                                        VerticalAlignment="Center"
-                                                        FontFamily="/Resources/Fonts/#iconfont"
-                                                        FontSize="16" />
-                                                    <TextBlock
-                                                        Text="{Binding Name}"
-                                                        VerticalAlignment="Center"
-                                                        FontSize="14" />
-                                                </StackPanel>
-                                            </HierarchicalDataTemplate>
-                                        </TreeView.ItemTemplate>
-                                    </TreeView>
-                                </StackPanel>
-                                <Grid Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="40" />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />
-                                    <TextBlock
-                                        Text="研发部"
-                                        Margin="20,0,0,0"
-                                        VerticalAlignment="Center"
-                                        Foreground="{StaticResource SecondaryTextBrush}"
-                                        FontSize="16" />
-                                    <ListBox Grid.Row="1" ItemsSource="{Binding UserList}" />
-
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                        <!--<Grid Margin="20,0,0,20">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="100" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Border
-                                Height="60"
-                                Margin="0,0,20,0"
-                                VerticalAlignment="Center"
-                                CornerRadius="10"
-                                Background="White"
-                                Effect="{StaticResource EffectShadow1}">
-                                <TextBlock
-                                    Text="组织架构"
-                                    Margin="25,0,0,0"
-                                    VerticalAlignment="Center"
-                                    FontSize="24"
-                                    FontWeight="Bold" />
-                            </Border>
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="250" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0" Background="Transparent">
-                                    <Border
-                                        Background="White"
-                                        BorderThickness="0"
-                                        CornerRadius="10"
-                                        Effect="{StaticResource EffectShadow1}">
-                                        <Grid Margin="10">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="40" />
-                                                <RowDefinition Height="40" />
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <hc:SearchBar
-                                                Height="30"
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Stretch"
-                                                hc:BorderElement.CornerRadius="5"
-                                                hc:InfoElement.Placeholder=" 搜索"
-                                                Style="{StaticResource SearchBarPlus}" />
-                                            <Grid Grid.Row="1">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50" />
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-                                                <Border Grid.Column="0"
-                                                    Width="28"
-                                                    Height="28"
-                                                    CornerRadius="5">
-                                                    <Border.Background>
-                                                        <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1.2,0.5">
-                                                            <GradientStop Offset="0" Color="#FF4280FF" />
-                                                            <GradientStop Offset="0" Color="#FF5D93FE" />
-                                                        </LinearGradientBrush>
-                                                    </Border.Background>
-                                                    <TextBlock
-                                                        Text="S"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        FontSize="20"
-                                                        FontWeight="Bold"
-                                                        Foreground="White" />
-                                                </Border>
-                                                <TextBlock Grid.Column="1"
-                                                    Text="SuperGame"
-                                                    HorizontalAlignment="Left"
-                                                    VerticalAlignment="Center"
-                                                    FontSize="20" />
-                                            </Grid>
-                                            <TreeView x:Name="tvProperties" Grid.Row="2"
-                                                hc:BorderElement.CornerRadius="5"
-                                                Background="Transparent"
-                                                BorderThickness="0">
-                                                <TreeView.ItemTemplate>
-                                                    <HierarchicalDataTemplate DataType="{x:Type data:TreeNodeItem}" ItemsSource="{Binding Children}">
-                                                        <StackPanel Height="40" Orientation="Horizontal">
-                                                            <TextBlock
-                                                                Text="&#xe74b;"
-                                                                Margin="2,0,5,0"
-                                                                VerticalAlignment="Center"
-                                                                FontFamily="/Resources/Fonts/#iconfont"
-                                                                FontSize="16" />
-                                                            <TextBlock
-                                                                Text="{Binding Name}"
-                                                                VerticalAlignment="Center"
-                                                                FontSize="14" />
-                                                        </StackPanel>
-                                                    </HierarchicalDataTemplate>
-                                                </TreeView.ItemTemplate>
-                                            </TreeView>
-                                        </Grid>
-                                    </Border>
-                                </Border>
-                                <Grid Grid.Column="1" Margin="20">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="60" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="研发部 /"
-                                                VerticalAlignment="Center"
-                                                Cursor="Hand"
-                                                FontSize="25"
-                                                FontWeight="Bold"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
-                                            <TextBlock
-                                                Text=" 研发一部"
-                                                VerticalAlignment="Center"
-                                                Cursor="Hand"
-                                                FontSize="25"
-                                                FontWeight="Bold"
-                                                Foreground="#FF4280FF" />
-                                        </StackPanel>
-                                        <StackPanel Grid.Column="1"
-                                            Margin="0,0,30,0"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Center">
-                                            <Button
-                                                Background="Transparent"
-                                                BorderBrush="#FF3370FF"
-                                                Style="{StaticResource funcButtonStyle}">
-                                                <Button.Content>
-                                                    <StackPanel Margin="5" Orientation="Horizontal">
-                                                        <TextBlock
-                                                            Text="&#xe64f;"
-                                                            VerticalAlignment="Center"
-                                                            FontFamily="/Resources/Fonts/#iconfont"
-                                                            FontSize="18"
-                                                            Foreground="#FF3370FF" />
-                                                        <TextBlock
-                                                            Text="添加组织成员"
-                                                            Margin="2,0,0,0"
-                                                            VerticalAlignment="Center"
-                                                            FontSize="14"
-                                                            Foreground="#FF3370FF" />
-                                                    </StackPanel>
-                                                </Button.Content>
-                                            </Button>
-                                        </StackPanel>
-                                    </Grid>
-                                    <Border Grid.Row="1" Background="Transparent">
-                                        <Border
-                                            Background="White"
-                                            BorderThickness="0"
-                                            CornerRadius="10"
-                                            Effect="{StaticResource EffectShadow1}">
-                                            <Grid Margin="10">
-                                                <ListBox ItemsSource="{Binding UserList}" />
-                                            </Grid>
-                                        </Border>
-                                    </Border>
-                                </Grid>
-                            </Grid>
-                        </Grid>-->
-                    </Border>
-                </Border>
+                <hc:SimplePanel Grid.Column="1" Margin="0,30,0,0">
+                    <ContentControl prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.ContactsContent}" />
+                </hc:SimplePanel>
             </Grid>
         </Border>
     </Border>
+
 </base:RegionManagerControl>

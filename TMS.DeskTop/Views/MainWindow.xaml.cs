@@ -21,17 +21,6 @@ namespace TMS.DeskTop.Views
             InitializeComponent();
             this.regionManager = regionManager;
             RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.MainContent, typeof(NotificationView));
-
-            //this.MouseMove += (s, e) =>
-            //    {
-            //        if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
-            //            this.DragMove();
-            //    };
-        }
-
-        private void InitDefaultData()
-        {
-            //mainContent.Content = new ApplicationView();
         }
 
         /// <summary>

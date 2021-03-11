@@ -2,6 +2,7 @@
 using TMS.Core.Data;
 using TMS.DeskTop.Resources.Styles.Views.Recruitment;
 using TMS.DeskTop.Views;
+using TMS.DeskTop.Views.Contacts;
 using TMS.DeskTop.Views.Recruitment.Requirements;
 using TMS.DeskTop.Views.Recruitment.Requirements.Subitem;
 using TMS.DeskTop.Views.WorkPlace;
@@ -77,7 +78,8 @@ namespace TMS.DeskTop.Tools.Helper
                 [nameof(AttendanceView)] = RegionToken.AttendanceContent,
                 [nameof(AttendanceMainView)] = RegionToken.AttendanceMainContent,
                 [nameof(EvaluationView)] = RegionToken.EvaluationContent,
-                [nameof(EvaluationMainView)] = RegionToken.EvaluationMainContent
+                [nameof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
+                [nameof(ContactsView)] = RegionToken.ContactsContent,
             };
         }
 
@@ -88,6 +90,10 @@ namespace TMS.DeskTop.Tools.Helper
             routeMap[nameof(MainWindow)] = Root;
             routeMap[nameof(NotificationView)] = "notification/";
             routeMap[nameof(ContactsView)] = "contacts/";
+            {
+                routeMap[nameof(OrganizationalStructrureView)] = routeMap[nameof(ContactsView)] + "organizational/";
+                routeMap[nameof(PersonalInfoView)] = routeMap[nameof(ContactsView)] + "personal/";
+            }
             routeMap[nameof(CloudFileView)] = "cloudfile/";
             routeMap[nameof(KalendarView)] = "kalendar/";
             routeMap[nameof(WorkPlaceView)] = "workplace/";

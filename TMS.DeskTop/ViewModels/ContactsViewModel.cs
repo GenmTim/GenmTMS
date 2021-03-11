@@ -1,4 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using Prism.Commands;
+using Prism.Regions;
+using System.Collections.ObjectModel;
+using TMS.Core.Data;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels
 {
@@ -10,13 +14,26 @@ namespace TMS.DeskTop.ViewModels
 
     public class ContactsViewModel
     {
+        private IRegionManager regionManager;
         private ObservableCollection<User> userList = new ObservableCollection<User>();
         public ObservableCollection<User> UserList { get { return userList; } set { userList = value; } }
 
 
-        public ContactsViewModel()
+        public ContactsViewModel(IRegionManager regionManager)
         {
             initUserList();
+            this.regionManager = regionManager;
+            this.NavigationCommand = new DelegateCommand<string>(NavigationPage);
+        }
+
+        public DelegateCommand<string> NavigationCommand { get; private set; }
+
+        private void NavigationPage(string view)
+        {
+            if (view != null && !view.Equals(""))
+            {
+                RegionHelper.RequestNavigate(regionManager, RegionToken.ContactsContent, view);
+            }
         }
 
         public bool ToggleBtnIsChecked { get; set; }

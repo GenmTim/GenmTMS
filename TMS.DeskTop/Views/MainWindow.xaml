@@ -157,7 +157,8 @@
                                     Command="{Binding NavigationCommand}"
                                     CommandParameter="ContactsView"
                                     uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe648;">
+                                    uc:IconFontElement.Geometry="&#xe648;"
+                                    Cursor="Hand">
                                     <hc:Poptip.Instance>
                                         <hc:Poptip Style="{StaticResource BlockPopTip}">
                                             <hc:Poptip.Content>

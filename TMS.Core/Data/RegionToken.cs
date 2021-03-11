@@ -10,6 +10,8 @@
 
         public static readonly string EvaluationMainContent = nameof(EvaluationMainContent);
 
+        public static readonly string ContactsContent = nameof(ContactsContent);
+
         public static readonly string BackNavigationContent = nameof(BackNavigationContent);
 
         public static readonly string AttendanceContent = nameof(AttendanceContent);
@@ -20,10 +22,7 @@
 
         public static readonly string RecruitmentRequirementsMainContent = nameof(RecruitmentRequirementsMainContent);
 
-
         public static readonly string KalendarContent = nameof(KalendarContent);
-
-
 
         public static readonly string ApprovalContent = nameof(ApprovalContent);
     }
