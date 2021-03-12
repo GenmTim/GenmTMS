@@ -12,43 +12,43 @@ namespace TMS.Core.Data.Dto
 		/// <summary>
 		/// 考勤组ID
 		/// </summary>
-		[JsonProperty("attendanceGroup_id")]
-		public int AttendanceGroupId { get; set; }
+		[JsonProperty("attendanceGroup_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? AttendanceGroupId { get; set; }
 
 		/// <summary>
 		/// 考勤组名称
 		/// </summary>
-		[JsonProperty("name")]
-		public string Name { get; set; }
+		[JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Name { get; set; }
 
 		/// <summary>
 		/// 考勤班次
 		/// </summary>
-		[JsonProperty("attendance_shifts")]
-		public string AttendanceShifts { get; set; }
+		[JsonProperty("attendance_shifts", NullValueHandling = NullValueHandling.Ignore)]
+		public string? AttendanceShifts { get; set; }
 
 		/// <summary>
 		/// 考勤方式
 		/// </summary>
-		[JsonProperty("attendance_methods")]
-		public string AttendanceMethods { get; set; }
+		[JsonProperty("attendance_methods", NullValueHandling = NullValueHandling.Ignore)]
+		public string? AttendanceMethods { get; set; }
 
 		/// <summary>
 		/// 所属企业
 		/// </summary>
-		[JsonProperty("company_id")]
-		public int CompanyId { get; set; }
+		[JsonProperty("company_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? CompanyId { get; set; }
 
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		[JsonProperty("create_at")]
-		public DateTime CreateAt { get; set; }
+		[JsonProperty("create_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? CreateAt { get; set; }
 
 		/// <summary>
 		/// 最近更新时间
 		/// </summary>
-		[JsonProperty("update_at")]
-		public DateTime UpdateAt { get; set; }
+		[JsonProperty("update_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? UpdateAt { get; set; }
 	}
 }

@@ -12,31 +12,31 @@ namespace TMS.Core.Data.Dto
 		/// <summary>
 		/// 汇报组ID
 		/// </summary>
-		[JsonProperty("reportGroup_id")]
-		public int ReportGroupId { get; set; }
+		[JsonProperty("reportGroup_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? ReportGroupId { get; set; }
 
 		/// <summary>
 		/// 汇报人员ID
 		/// </summary>
-		[JsonProperty("reporter_id")]
-		public int ReporterId { get; set; }
+		[JsonProperty("reporter_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? ReporterId { get; set; }
 
 		/// <summary>
 		/// 提交的考评内容
 		/// </summary>
-		[JsonProperty("content")]
-		public string Content { get; set; }
+		[JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Content { get; set; }
 
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		[JsonProperty("create_at")]
-		public DateTime CreateAt { get; set; }
+		[JsonProperty("create_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? CreateAt { get; set; }
 
 		/// <summary>
 		/// 最近更新时间
 		/// </summary>
-		[JsonProperty("update_at")]
-		public DateTime UpdateAt { get; set; }
+		[JsonProperty("update_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? UpdateAt { get; set; }
 	}
 }

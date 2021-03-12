@@ -12,37 +12,37 @@ namespace TMS.Core.Data.Dto
 		/// <summary>
 		/// 部门ID
 		/// </summary>
-		[JsonProperty("dept_id")]
-		public int DeptId { get; set; }
+		[JsonProperty("dept_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? DeptId { get; set; }
 
 		/// <summary>
 		/// 企业ID
 		/// </summary>
-		[JsonProperty("company_id")]
-		public int CompanyId { get; set; }
+		[JsonProperty("company_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? CompanyId { get; set; }
 
 		/// <summary>
 		/// 部门名称
 		/// </summary>
-		[JsonProperty("name")]
-		public string Name { get; set; }
+		[JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Name { get; set; }
 
 		/// <summary>
 		/// 上级部门
 		/// </summary>
-		[JsonProperty("parent_dept")]
-		public int ParentDept { get; set; }
+		[JsonProperty("parent_dept", NullValueHandling = NullValueHandling.Ignore)]
+		public int? ParentDept { get; set; }
 
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		[JsonProperty("create_at")]
-		public DateTime CreateAt { get; set; }
+		[JsonProperty("create_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? CreateAt { get; set; }
 
 		/// <summary>
 		/// 最近更新时间
 		/// </summary>
-		[JsonProperty("update_at")]
-		public DateTime UpdateAt { get; set; }
+		[JsonProperty("update_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? UpdateAt { get; set; }
 	}
 }

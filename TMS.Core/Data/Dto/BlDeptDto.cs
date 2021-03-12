@@ -12,25 +12,25 @@ namespace TMS.Core.Data.Dto
 		/// <summary>
 		/// 用户ID
 		/// </summary>
-		[JsonProperty("user_id")]
-		public int UserId { get; set; }
+		[JsonProperty("user_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? UserId { get; set; }
 
 		/// <summary>
 		/// 部门ID
 		/// </summary>
-		[JsonProperty("dept_id")]
-		public int DeptId { get; set; }
+		[JsonProperty("dept_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? DeptId { get; set; }
 
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		[JsonProperty("create_at")]
-		public DateTime CreateAt { get; set; }
+		[JsonProperty("create_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? CreateAt { get; set; }
 
 		/// <summary>
 		/// 最近更新时间
 		/// </summary>
-		[JsonProperty("update_at")]
-		public DateTime UpdateAt { get; set; }
+		[JsonProperty("update_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? UpdateAt { get; set; }
 	}
 }

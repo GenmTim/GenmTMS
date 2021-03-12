@@ -12,43 +12,43 @@ namespace TMS.Core.Data.Dto
 		/// <summary>
 		/// 用户id
 		/// </summary>
-		[JsonProperty("user_id")]
-		public int UserId { get; set; }
+		[JsonProperty("user_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? UserId { get; set; }
 
 		/// <summary>
 		/// 名称
 		/// </summary>
-		[JsonProperty("name")]
-		public string Name { get; set; }
+		[JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Name { get; set; }
 
 		/// <summary>
 		/// 密码
 		/// </summary>
-		[JsonProperty("password")]
-		public string Password { get; set; }
+		[JsonProperty("password", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Password { get; set; }
 
 		/// <summary>
 		/// 邮箱
 		/// </summary>
-		[JsonProperty("email")]
-		public string Email { get; set; }
+		[JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Email { get; set; }
 
 		/// <summary>
 		/// 手机号
 		/// </summary>
-		[JsonProperty("tel")]
-		public string Tel { get; set; }
+		[JsonProperty("tel", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Tel { get; set; }
 
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		[JsonProperty("create_at")]
-		public DateTime CreateAt { get; set; }
+		[JsonProperty("create_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? CreateAt { get; set; }
 
 		/// <summary>
 		/// 最近更新时间
 		/// </summary>
-		[JsonProperty("update_at")]
-		public DateTime UpdateAt { get; set; }
+		[JsonProperty("update_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? UpdateAt { get; set; }
 	}
 }

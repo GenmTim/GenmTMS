@@ -7,25 +7,31 @@ using System.Threading.Tasks;
 
 namespace TMS.Core.Data.Dto
 {
-	public class EvaluationRuleExamineeDto
+	public class FolderDto
 	{
 		/// <summary>
-		/// 考评组ID
+		/// 文件夹id
 		/// </summary>
-		[JsonProperty("evaluationGroup_id", NullValueHandling = NullValueHandling.Ignore)]
-		public int? EvaluationGroupId { get; set; }
+		[JsonProperty("folder_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? FolderId { get; set; }
 
 		/// <summary>
-		/// 考评对象ID
+		/// 文件夹名
 		/// </summary>
-		[JsonProperty("examinee_id", NullValueHandling = NullValueHandling.Ignore)]
-		public int? ExamineeId { get; set; }
+		[JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Name { get; set; }
 
 		/// <summary>
-		/// 提交考评内容
+		/// 所有者id
 		/// </summary>
-		[JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
-		public string? Content { get; set; }
+		[JsonProperty("user_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? UserId { get; set; }
+
+		/// <summary>
+		/// 上级目录id
+		/// </summary>
+		[JsonProperty("parent_folder", NullValueHandling = NullValueHandling.Ignore)]
+		public int? ParentFolder { get; set; }
 
 		/// <summary>
 		/// 创建时间
