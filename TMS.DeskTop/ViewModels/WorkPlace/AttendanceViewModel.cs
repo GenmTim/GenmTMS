@@ -16,5 +16,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
         public AttendanceViewModel()
         {
         }
+
+
     }
 }

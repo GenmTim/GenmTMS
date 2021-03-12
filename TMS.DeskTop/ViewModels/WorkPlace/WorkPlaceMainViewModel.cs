@@ -57,8 +57,8 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
 
             appGroupMap["人事管理"] = new ObservableCollection<AppItem>
             {
-                new AppItem { Name = "考勤打卡", IconFont = "\xe6fd", Url = "EvaluationView" },
-                new AppItem { Name = "考评管理", IconFont = "\xe6f7", Url = "AttendanceView" },
+                new AppItem { Name = "考勤打卡", IconFont = "\xe6fd", Url = "AttendanceView" },
+                new AppItem { Name = "考评管理", IconFont = "\xe6f7", Url = "EvaluationView" },
                 new AppItem { Name = "重大事件", IconFont = "\xe6e7", Url = "MajorEventView" },
                 new AppItem { Name = "招聘流程", IconFont = "\xe7bc", Url = "RecruitmentView" },
                 new AppItem { Name = "招聘需求", IconFont = "\xe7bc", Url = "RecruitmentView" },

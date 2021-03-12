@@ -7,6 +7,7 @@ using TMS.DeskTop.UserControls.Dialogs.ViewModels;
 using TMS.DeskTop.UserControls.Dialogs.Views;
 using TMS.DeskTop.UserControls.Views;
 using TMS.DeskTop.Views;
+using TMS.DeskTop.Views.Contacts;
 using TMS.DeskTop.Views.Recruitment.Requirements;
 using TMS.DeskTop.Views.Recruitment.Requirements.Subitem;
 using TMS.DeskTop.Views.WorkPlace;
@@ -49,6 +50,8 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<NewEvaluationRuleView>(GetRoutePath(nameof(NewEvaluationRuleView)));
 
             containerRegistry.RegisterForNavigation<ContactsView>(GetRoutePath(nameof(ContactsView)));
+            containerRegistry.RegisterForNavigation<OrganizationalStructrureView>(GetRoutePath(nameof(OrganizationalStructrureView)));
+            containerRegistry.RegisterForNavigation<PersonalInfoView>(GetRoutePath(nameof(PersonalInfoView)));
 
             containerRegistry.RegisterForNavigation<NotificationView>(GetRoutePath(nameof(NotificationView)));
 

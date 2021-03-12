@@ -98,6 +98,9 @@
     <None Remove="Resources\Images\illustrations\3.png" />
     <None Remove="Resources\Images\illustrations\recruitment.png" />
     <None Remove="Resources\Images\illustrations\recruitment2.png" />
+    <None Remove="Resources\Images\illustrations\test1.png" />
+    <None Remove="Resources\Images\illustrations\test2.png" />
+    <None Remove="Resources\Images\illustrations\test3.png" />
     <None Remove="Resources\Images\ngc6960.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +205,9 @@
     <Resource Include="Resources\Images\illustrations\2.png" />
     <Resource Include="Resources\Images\illustrations\recruitment.png" />
     <Resource Include="Resources\Images\illustrations\recruitment2.png" />
+    <Resource Include="Resources\Images\illustrations\test1.png" />
+    <Resource Include="Resources\Images\illustrations\test2.png" />
+    <Resource Include="Resources\Images\illustrations\test3.png" />
     <Resource Include="Resources\Images\ngc6960.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -220,7 +226,6 @@
   <ItemGroup>
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="Tools\Converter\" />
-    <Folder Include="UserControls\Attach\" />
     <Folder Include="Session\" />
   </ItemGroup>
   <ItemGroup>
