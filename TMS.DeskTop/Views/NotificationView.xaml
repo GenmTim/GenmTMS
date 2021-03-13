@@ -153,11 +153,11 @@
                             BorderBrush="{StaticResource TMS_BorderBrush}" />
                         <hc:SimplePanel Grid.Row="1">
                             <TextBlock
-                                Text="SuperGame"
+                                Text="SuperGame团队"
                                 Margin="20,0,0,0"
                                 VerticalAlignment="Center"
                                 Foreground="#000235"
-                                FontWeight="Bold"
+                                FontWeight="SemiBold"
                                 FontSize="16" />
                             <StackPanel
                                 Margin="0,0,0,0"

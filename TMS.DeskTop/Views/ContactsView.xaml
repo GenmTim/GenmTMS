@@ -127,35 +127,10 @@
                                 uc:IconFontElement.Geometry="&#xe78d;"
                                 uc:IconFontElement.IconColor="White"
                                 Cursor="Hand" />
-
-                            <!--<RadioButton x:Name="test"
-                            Margin="10,0,10,0"
-                            Style="{StaticResource menuRadioButtonTemplate2}"
-                            Tag="Tag3">
-                            <RadioButton.Content>
-                                <local:FIconRadioButton
-                                    Text="组织架构"
-                                    Height="40"
-                                    Icon="&#xe62f;"
-                                    IconColor="#FF14C0FF" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <RadioButton
-                            Margin="10,10,10,0"
-                            Style="{StaticResource menuRadioButtonTemplate2}"
-                            Tag="Tag3">
-                            <RadioButton.Content>
-                                <local:FIconRadioButton
-                                    Text="我的群组"
-                                    Height="40"
-                                    Icon="&#xe610;"
-                                    IconColor="#FFFFC60A" />
-                            </RadioButton.Content>
-                        </RadioButton>-->
                         </StackPanel>
                     </hc:SimplePanel>
                 </Grid>
-                <hc:SimplePanel Grid.Column="1" Margin="0,30,0,0">
+                <hc:SimplePanel Grid.Column="1">
                     <ContentControl prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.ContactsContent}" />
                 </hc:SimplePanel>
             </Grid>
