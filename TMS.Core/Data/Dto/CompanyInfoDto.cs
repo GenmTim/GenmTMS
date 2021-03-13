@@ -12,61 +12,61 @@ namespace TMS.Core.Data.Dto
 		/// <summary>
 		/// 企业ID
 		/// </summary>
-		[JsonProperty("company_id")]
-		public int CompanyId { get; set; }
+		[JsonProperty("company_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? CompanyId { get; set; }
 
 		/// <summary>
 		/// 联系人姓名
 		/// </summary>
-		[JsonProperty("contacts_name")]
-		public string ContactsName { get; set; }
+		[JsonProperty("contacts_name", NullValueHandling = NullValueHandling.Ignore)]
+		public string? ContactsName { get; set; }
 
 		/// <summary>
 		/// 联系人手机
 		/// </summary>
-		[JsonProperty("contacts_tel")]
-		public string ContactsTel { get; set; }
+		[JsonProperty("contacts_tel", NullValueHandling = NullValueHandling.Ignore)]
+		public string? ContactsTel { get; set; }
 
 		/// <summary>
 		/// 联系人邮箱
 		/// </summary>
-		[JsonProperty("contacts_email")]
-		public string ContactsEmail { get; set; }
+		[JsonProperty("contacts_email", NullValueHandling = NullValueHandling.Ignore)]
+		public string? ContactsEmail { get; set; }
 
 		/// <summary>
 		/// 座机
 		/// </summary>
-		[JsonProperty("plane")]
-		public string Plane { get; set; }
+		[JsonProperty("plane", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Plane { get; set; }
 
 		/// <summary>
 		/// 国家或地区
 		/// </summary>
-		[JsonProperty("country")]
-		public string Country { get; set; }
+		[JsonProperty("country", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Country { get; set; }
 
 		/// <summary>
 		/// 企业地址
 		/// </summary>
-		[JsonProperty("address")]
-		public string Address { get; set; }
+		[JsonProperty("address", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Address { get; set; }
 
 		/// <summary>
 		/// 邮编
 		/// </summary>
-		[JsonProperty("postcode")]
-		public string PostCode { get; set; }
+		[JsonProperty("postcode", NullValueHandling = NullValueHandling.Ignore)]
+		public string? PostCode { get; set; }
 
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		[JsonProperty("create_at")]
-		public DateTime CreateAt { get; set; }
+		[JsonProperty("create_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? CreateAt { get; set; }
 
 		/// <summary>
 		/// 最近更新时间
 		/// </summary>
-		[JsonProperty("update_at")]
-		public DateTime UpdateAt { get; set; }
+		[JsonProperty("update_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? UpdateAt { get; set; }
 	}
 }

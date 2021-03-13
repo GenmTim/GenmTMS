@@ -12,49 +12,49 @@ namespace TMS.Core.Data.Dto
 		/// <summary>
 		/// 用户id
 		/// </summary>
-		[JsonProperty("user_id")]
-		public int UserId { get; set; }
+		[JsonProperty("user_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? UserId { get; set; }
 
 		/// <summary>
 		/// 头像
 		/// </summary>
-		[JsonProperty("avatar")]
-		public string Avatar { get; set; }
+		[JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Avatar { get; set; }
 
 		/// <summary>
 		/// 性别
 		/// </summary>
-		[JsonProperty("gender")]
-		public int Gender { get; set; }
+		[JsonProperty("gender", NullValueHandling = NullValueHandling.Ignore)]
+		public int? Gender { get; set; }
 
 		/// <summary>
 		/// 城市
 		/// </summary>
-		[JsonProperty("city")]
-		public string City { get; set; }
+		[JsonProperty("city", NullValueHandling = NullValueHandling.Ignore)]
+		public string? City { get; set; }
 
 		/// <summary>
 		/// 省份
 		/// </summary>
-		[JsonProperty("province")]
-		public string Province { get; set; }
+		[JsonProperty("province", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Province { get; set; }
 
 		/// <summary>
 		/// 国家
 		/// </summary>
-		[JsonProperty("country")]
-		public string Country { get; set; }
+		[JsonProperty("country", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Country { get; set; }
 
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		[JsonProperty("create_at")]
-		public DateTime CreateAt { get; set; }
+		[JsonProperty("create_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? CreateAt { get; set; }
 
 		/// <summary>
 		/// 最近更新时间
 		/// </summary>
-		[JsonProperty("update_at")]
-		public DateTime UpdateAt { get; set; }
+		[JsonProperty("update_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? UpdateAt { get; set; }
 	}
 }

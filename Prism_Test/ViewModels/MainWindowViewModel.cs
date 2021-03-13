@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json.Linq;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism_Test.Views;
@@ -27,23 +28,31 @@ namespace Prism_Test.ViewModels
             HttpClient serviceApi = HttpClient.Instance;
             HttpClient serviceApi2 = HttpClient.GetInstance();
 
-            ApiResponse apiResponse = serviceApi.LoginUserEmail("123@qq.com", "qzj");
-			if (apiResponse.StatusCode!=200)
-			{
-                LogString = apiResponse.Message;
-            }
-            
-            apiResponse = serviceApi.LoginUserTel("111011", "qzj");
-            if (apiResponse.StatusCode != 200)
-            {
-                LogString = apiResponse.Message;
-            }
+			EvaluationGroupDto evaluationGroupDto = new EvaluationGroupDto();
+            evaluationGroupDto.ExaminerId = 122;
+            evaluationGroupDto.Subject="asdsad";
+            JObject jObject = JObject.FromObject(evaluationGroupDto);
+			string v = jObject.ToString();
+            JObject jObject1=new JObject();
+            //ApiResponse apiResponse = serviceApi2.PostEvaluationGroup(evaluationGroupDto);
 
-            apiResponse = serviceApi.ChangeUserPassword(((UserDto)apiResponse.Data).UserId, "jjj");
-            if (apiResponse.StatusCode != 200)
-            {
-                LogString = apiResponse.Message;
-            }
+            //         ApiResponse apiResponse = serviceApi.LoginUserEmail("123@qq.com", "qzj");
+            //if (apiResponse.StatusCode!=200)
+            //{
+            //             LogString = apiResponse.Message;
+            //         }
+
+            //         apiResponse = await serviceApi.LoginUserTel("111011", "qzj");
+            //         if (apiResponse.StatusCode != 200)
+            //         {
+            //             LogString = apiResponse.Message;
+            //         }
+
+            //apiResponse = await serviceApi.ChangeUserPassword(((UserDto)apiResponse.Data).UserId, "jjj");
+            //if (apiResponse.StatusCode != 200)
+            //{
+            //    LogString = apiResponse.Message;
+            //}
 
 
             //this.NaviagationCommand = new DelegateCommand<string>(NavigationPage);

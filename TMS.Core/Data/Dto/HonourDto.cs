@@ -12,67 +12,67 @@ namespace TMS.Core.Data.Dto
 		/// <summary>
 		/// 荣耀ID
 		/// </summary>
-		[JsonProperty("honour_id")]
-		public int HonourId { get; set; }
+		[JsonProperty("honour_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? HonourId { get; set; }
 
 		/// <summary>
 		/// 用户ID
 		/// </summary>
-		[JsonProperty("user_id")]
-		public int UserId { get; set; }
+		[JsonProperty("user_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? UserId { get; set; }
 
 		/// <summary>
 		/// 职称
 		/// </summary>
-		[JsonProperty("jobtitle")]
-		public string Jobtitle { get; set; }
+		[JsonProperty("jobtitle", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Jobtitle { get; set; }
 
 		/// <summary>
 		/// 部门ID
 		/// </summary>
-		[JsonProperty("dept_id")]
-		public int DeptId { get; set; }
+		[JsonProperty("dept_id", NullValueHandling = NullValueHandling.Ignore)]
+		public int? DeptId { get; set; }
 
 		/// <summary>
 		/// 部门名称
 		/// </summary>
-		[JsonProperty("dept_name")]
-		public string DeptName { get; set; }
+		[JsonProperty("dept_name", NullValueHandling = NullValueHandling.Ignore)]
+		public string? DeptName { get; set; }
 
 		/// <summary>
 		/// 荣耀类型
 		/// </summary>
-		[JsonProperty("type")]
-		public string Type { get; set; }
+		[JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Type { get; set; }
 
 		/// <summary>
 		/// 荣耀获取时间
 		/// </summary>
-		[JsonProperty("time")]
-		public DateTime Time { get; set; }
+		[JsonProperty("time", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? Time { get; set; }
 
 		/// <summary>
 		/// 主要事迹
 		/// </summary>
-		[JsonProperty("description")]
-		public string Description { get; set; }
+		[JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// 备注
 		/// </summary>
-		[JsonProperty("remark")]
-		public string Remark { get; set; }
+		[JsonProperty("remark", NullValueHandling = NullValueHandling.Ignore)]
+		public string? Remark { get; set; }
 
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		[JsonProperty("create_at")]
-		public DateTime CreateAt { get; set; }
+		[JsonProperty("create_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? CreateAt { get; set; }
 
 		/// <summary>
 		/// 最近更新时间
 		/// </summary>
-		[JsonProperty("update_at")]
-		public DateTime UpdateAt { get; set; }
+		[JsonProperty("update_at", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? UpdateAt { get; set; }
 	}
 }
