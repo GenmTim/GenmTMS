@@ -12,7 +12,7 @@ namespace TMS.DeskTop.Views.WorkPlace
     {
         //private IRegionNavigationJournal journal;
 
-        public EvaluationView(IRegionManager regionManager) : base(regionManager, nameof(EvaluationView))
+        public EvaluationView(IRegionManager regionManager) : base(regionManager, typeof(EvaluationView))
         {
             InitializeComponent();
             RegisterDefaultRegionView(RegionToken.EvaluationContent, "EvaluationMainView");

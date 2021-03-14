@@ -14,7 +14,7 @@ namespace TMS.DeskTop.Views
     /// </summary>
     public partial class ContactsView : RegionManagerControl
     {
-        public ContactsView(IRegionManager regionManager) : base(regionManager, nameof(ContactsView))
+        public ContactsView(IRegionManager regionManager) : base(regionManager, typeof(ContactsView))
         {
             InitializeComponent();
             RegisterDefaultRegionView(RegionToken.ContactsContent, nameof(OrganizationalStructrureView));

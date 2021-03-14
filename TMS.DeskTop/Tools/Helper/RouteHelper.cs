@@ -1,10 +1,20 @@
-﻿using Prism.Regions;
+﻿using Prism.Ioc;
+using Prism.Regions;
 using System;
+using System.Collections.Generic;
 
 namespace TMS.DeskTop.Tools.Helper
 {
     public static class RouteHelper
     {
+        public static void RegisterToContainer(IContainerRegistry containerRegistry)
+        {
+            foreach(KeyValuePair<Type, string> kv in Router.Instance.GetRouteMap())
+            {
+                containerRegistry.RegisterForNavigation(kv.Key, kv.Value);
+            }
+        }
+
         /// <summary>
         /// 跳转函数
         /// 
@@ -13,21 +23,16 @@ namespace TMS.DeskTop.Tools.Helper
         /// <param name="regionManager"></param>
         /// <param name="nowView"></param>
         /// <param name="targetView"></param>
-        public static void Goto(IRegionManager regionManager, string nowView, string targetView)
+        public static void Goto(IRegionManager regionManager, Type nowView, Type targetView)
         {
-            // 取出目前路径
-            string now_url = GetViewPath(nowView);
+            // 寻找公共视图
+            Type common_view = FindCommonView(nowView, targetView);
 
-            // 取出目标路径
-            string target_url = GetViewPath(targetView);
-
-            // 寻找公共区域
-            string common_view = FindCommonView(now_url, target_url);
+            // 寻找公共视图对应的公共区域
             string common_region = GetRegionName(common_view);
 
             // 寻找公共区域的注入视图，以进行下一步导航
-            string next_route = GetNextRoute(GetViewPath(common_view), target_url);
-
+            string next_route = GetNextRoute(GetViewPath(common_view), GetViewPath(targetView));
 
             // 发送导航请求
             if (!next_route.Equals(""))
@@ -35,27 +40,25 @@ namespace TMS.DeskTop.Tools.Helper
                 NavigationParameters param = new NavigationParameters();
                 param.Add("target_view", targetView);
 
-                RegionHelper.RequestNavigate(regionManager, common_region, GetViewName(next_route), param);
+                RegionHelper.RequestNavigate(regionManager, common_region, ConverterViewPathToType(next_route), param);
             }
+        }
+
+        public static void Goto(IRegionManager regionManager, Type nowView, string targetView)
+        {
+            Goto(regionManager, nowView, Router.Instance.ConverterViewNameToType(targetView));
         }
 
         /// <summary>
-        /// 过程路由函数
-        /// 
+        /// 实现直线路由
         /// </summary>
         /// <param name="regionManager"></param>
-        /// <param name="go_url"></param>
-        /// <param name="nowView"></param>
-        public static void Route(IRegionManager regionManager, string nowView, string targetView)
+        /// <param name="nowView">现在所在的视图的名字</param>
+        /// <param name="targetView">目标视图的名字</param>
+        public static void Route(IRegionManager regionManager, Type nowView, Type targetView)
         {
-            // 取出目前路径
-            string now_url = GetViewPath(nowView);
-
-            // 取出目标路径
-            string target_url = GetViewPath(targetView);
-
             // 寻找下个路由
-            string next_route = GetNextRoute(now_url, target_url);
+            string next_route = GetNextRoute(GetViewPath(nowView), GetViewPath(targetView));
 
             // 发送导航请求
             if (!next_route.Equals(""))
@@ -63,39 +66,44 @@ namespace TMS.DeskTop.Tools.Helper
                 NavigationParameters param = new NavigationParameters();
                 param.Add("target_view", targetView);
 
-                RegionHelper.RequestNavigate(regionManager, GetRegionName(nowView), GetViewName(next_route), param);
+                RegionHelper.RequestNavigate(regionManager, GetRegionName(nowView), ConverterViewPathToType(next_route), param);
             }
         }
 
-        public static string GetRegionName(string view)
+        public static string GetRegionName(Type view)
         {
             return Router.Instance.GetRegionName(view);
         }
 
-        public static string GetViewPath(string view)
+        public static string GetViewPath(Type view)
         {
             return Router.Instance.GetViewPath(view);
         }
 
-        public static string GetViewName(string viewPath)
+        public static Type ConverterViewPathToType(string viewPath)
         {
-            return Router.Instance.GetViewName(viewPath);
+            return Router.Instance.ConvertViewPathToType(viewPath);
         }
 
-        public static bool IsBackPage(string view)
+        public static bool IsBackPage(Type view)
         {
             return Router.Instance.IsBackPage(view);
         }
 
-        private static string FindCommonView(string view1, string view2)
+        private static Type FindCommonView(Type view1, Type view2)
         {
+            // 取出目前路径
+            string view1Path = GetViewPath(view1);
+
+            // 取出目标路径
+            string view2Path = GetViewPath(view2);
+
             int index = -1;
-            string common_url = "";
-            for (int i = 0; i < Math.Min(view1.Length, view2.Length); ++i)
+            for (int i = 0; i < Math.Min(view1Path.Length, view2Path.Length); ++i)
             {
-                if (view1[i] == view2[i])
+                if (view1Path[i] == view2Path[i])
                 {
-                    if (view1[i] == '/')
+                    if (view1Path[i] == '/')
                     {
                         index = i;
                     }
@@ -106,15 +114,16 @@ namespace TMS.DeskTop.Tools.Helper
                 }
             }
 
+            string common_url;
             if (index == -1)
             {
                 common_url = GetViewPath(Router.Instance.Root);
             }
             else
             {
-                common_url = GetViewPath(view1.Substring(0, index + 1));
+                common_url = view1Path.Substring(0, index + 1);
             }
-            return GetViewName(common_url);
+            return ConverterViewPathToType(common_url);
         }
 
         /// <summary>

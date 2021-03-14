@@ -10,7 +10,7 @@ namespace TMS.DeskTop.Views
     /// </summary>
     public partial class RecruitmentView : RegionManagerControl
     {
-        public RecruitmentView(IRegionManager regionManager) : base(regionManager, nameof(RecruitmentView))
+        public RecruitmentView(IRegionManager regionManager) : base(regionManager, typeof(RecruitmentView))
         {
             InitializeComponent();
             RegisterDefaultRegionView(RegionToken.RecruitmentContent, nameof(RecruitmentNavigationView));

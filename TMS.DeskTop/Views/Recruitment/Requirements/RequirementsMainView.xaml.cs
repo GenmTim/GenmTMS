@@ -10,7 +10,7 @@ namespace TMS.DeskTop.Views.Recruitment.Requirements
     /// </summary>
     public partial class RequirementsMainView : RegionManagerControl
     {
-        public RequirementsMainView(IRegionManager regionManager) : base(regionManager, nameof(RequirementsMainView))
+        public RequirementsMainView(IRegionManager regionManager) : base(regionManager, typeof(RequirementsMainView))
         {
             InitializeComponent();
             RegisterDefaultRegionView(RegionToken.RecruitmentRequirementsMainContent, nameof(ViewRequirementsView));

@@ -1,13 +1,19 @@
 ﻿using Prism.Regions;
+using System;
 using TMS.DeskTop.UserControls.Views;
 
 namespace TMS.DeskTop.Tools.Helper
 {
     public static class RegionHelper
     {
-        public static void RequestNavigate(IRegionManager regionManager, string regionName, string view)
+        public static void RequestNavigate(IRegionManager regionManager, string regionName, Type view)
         {
             RequestNavigate(regionManager, regionName, view, null);
+        }
+
+        public static void RequestNavigate(IRegionManager regionManager, string regionName, string viewName)
+        {
+            RequestNavigate(regionManager, regionName, Router.Instance.ConverterViewNameToType(viewName));
         }
 
         /// <summary>
@@ -17,7 +23,7 @@ namespace TMS.DeskTop.Tools.Helper
         /// <param name="regionName"></param>
         /// <param name="viewUrl"></param>
         /// <param name="param"></param>
-        public static void RequestNavigate(IRegionManager regionManager, string regionName, string view, NavigationParameters param)
+        public static void RequestNavigate(IRegionManager regionManager, string regionName, Type view, NavigationParameters param)
         {
             if (param == null)
             {
@@ -29,12 +35,12 @@ namespace TMS.DeskTop.Tools.Helper
                 BackPageViewInfo viewInfo = Router.Instance.GetBackPageViewInfo(view);
                 param.Add("title", viewInfo.Title);
                 param.Add("view", viewInfo.View);
-                view = nameof(BackNavigationView);
+                view = typeof(BackNavigationView);
             }
             regionManager.RequestNavigate(regionName, RouteHelper.GetViewPath(view), param);
         }
 
-        public static void RegisterViewWithRegion(IRegionManager regionManager, string regionName, System.Type viewType)
+        public static void RegisterViewWithRegion(IRegionManager regionManager, string regionName, Type viewType)
         {
             regionManager.RegisterViewWithRegion(regionName, viewType);
         }

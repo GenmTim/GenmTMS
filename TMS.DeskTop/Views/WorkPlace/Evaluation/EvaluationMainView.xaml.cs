@@ -10,7 +10,7 @@ namespace TMS.DeskTop.Views.WorkPlace.Evaluation
     public partial class EvaluationMainView : RegionManagerControl, INavigationAware
     {
 
-        public EvaluationMainView(IRegionManager regionManager) : base(regionManager, nameof(EvaluationMainView))
+        public EvaluationMainView(IRegionManager regionManager) : base(regionManager, typeof(EvaluationMainView))
         {
             InitializeComponent();
             RegisterDefaultRegionView(RegionToken.EvaluationMainContent, nameof(ViewEvaluationView));

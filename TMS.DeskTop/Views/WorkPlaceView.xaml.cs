@@ -12,7 +12,7 @@ namespace TMS.DeskTop.Views
     {
         //private IRegionManager regionManager;
 
-        public WorkPlaceView(IRegionManager regionManager) : base(regionManager, nameof(WorkPlaceView))
+        public WorkPlaceView(IRegionManager regionManager) : base(regionManager, typeof(WorkPlaceView))
         {
             InitializeComponent();
             //this.regionManager = regionManager;

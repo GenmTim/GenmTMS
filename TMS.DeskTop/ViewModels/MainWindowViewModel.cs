@@ -29,18 +29,9 @@ namespace TMS.DeskTop.ViewModels
 
         public DelegateCommand<string> NavigationCommand { get; private set; }
 
-        private void NavigationPage(string view)
+        private void NavigationPage(string viewName)
         {
-            string go_url = RouteHelper.GetViewPath(view);
-            string now_url = RouteHelper.GetViewPath(nameof(MainWindow));
-            string next_url = RouteHelper.GetNextRoute(now_url, go_url);
-
-            if (!next_url.Equals(""))
-            {
-                NavigationParameters param = new NavigationParameters();
-                param.Add("url", go_url);
-                RegionHelper.RequestNavigate(regionManager, RegionToken.MainContent, view, param);
-            }
+            RouteHelper.Route(regionManager, typeof(MainWindow), Router.Instance.ConverterViewNameToType(viewName));
         }
     }
 }

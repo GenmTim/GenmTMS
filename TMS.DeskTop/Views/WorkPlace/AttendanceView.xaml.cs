@@ -11,7 +11,7 @@ namespace TMS.DeskTop.Views.WorkPlace
     /// </summary>
     public partial class AttendanceView : RegionManagerControl, IDisposable
     {
-        public AttendanceView(IRegionManager regionManager) : base(regionManager, nameof(AttendanceView))
+        public AttendanceView(IRegionManager regionManager) : base(regionManager, typeof(AttendanceView))
         {
             InitializeComponent();
             this.regionManager = regionManager;

@@ -69,7 +69,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 
         private void NavigationPage(string view)
         {
-            RouteHelper.Goto(regionManager, nameof(ManageEvaluationView), view);
+            RouteHelper.Goto(regionManager, typeof(ManageEvaluationView), view);
         }
     }
 }

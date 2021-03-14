@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMS.Core.Data;
 using TMS.DeskTop.Resources.Styles.Views.Recruitment;
 using TMS.DeskTop.Views;
@@ -34,11 +35,13 @@ namespace TMS.DeskTop.Tools.Helper
             }
         }
 
-        public string Root { get; set; } = "";
-        private Dictionary<string, string> routeMap;
-        private Dictionary<string, string> routeReMap;
-        private Dictionary<string, string> navigationRegionRegedit;
-        private Dictionary<string, BackPageViewInfo> backPageViewRegedit;
+        public Type Root { get; set; }
+        public string RootPath { get; set; } = "";
+        private Dictionary<string, Type> viewTypeMap;
+        private Dictionary<Type, string> routeMap;
+        private Dictionary<string, Type> routeReMap;
+        private Dictionary<Type, string> navigationRegionRegedit;
+        private Dictionary<Type, BackPageViewInfo> backPageViewRegedit;
 
         private Router()
         {
@@ -46,131 +49,155 @@ namespace TMS.DeskTop.Tools.Helper
             InitRouteReMap();
             InitNavigationRegionRegedit();
             InitBackNavigationViewRegedit();
+            InitViewTypeMap();
+        }
+
+        public Dictionary<Type, string> GetRouteMap()
+        {
+            return routeMap;
         }
 
         private void InitRouteReMap()
         {
-            routeReMap = new Dictionary<string, string>();
-            foreach (KeyValuePair<string, string> kvp in routeMap)
+            routeReMap = new Dictionary<string, Type>();
+            foreach (KeyValuePair<Type, string> kvp in routeMap)
             {
                 routeReMap.Add(kvp.Value, kvp.Key);
             }
         }
 
+        private void InitViewTypeMap()
+        {
+            viewTypeMap = new Dictionary<string, Type>();
+            foreach(Type type in routeMap.Keys)
+            {
+                viewTypeMap[type.Name] = type;
+            }
+        }
+
         private void InitBackNavigationViewRegedit()
         {
-            backPageViewRegedit = new Dictionary<string, BackPageViewInfo>
+            backPageViewRegedit = new Dictionary<Type, BackPageViewInfo>
             {
-                [nameof(NewEvaluationRuleView)] = new BackPageViewInfo { Title = NewEvaluationRuleView.Title, View = typeof(NewEvaluationRuleView) },
-                [nameof(TalentPoolView)] = new BackPageViewInfo { Title = TalentPoolView.Title, View = typeof(TalentPoolView) },
-                [nameof(NewRequirementView)] = new BackPageViewInfo { Title = NewRequirementView.Title, View = typeof(NewRequirementView) },
+                [typeof(NewEvaluationRuleView)] = new BackPageViewInfo { Title = NewEvaluationRuleView.Title, View = typeof(NewEvaluationRuleView) },
+                [typeof(TalentPoolView)] = new BackPageViewInfo { Title = TalentPoolView.Title, View = typeof(TalentPoolView) },
+                [typeof(NewRequirementView)] = new BackPageViewInfo { Title = NewRequirementView.Title, View = typeof(NewRequirementView) },
             };
         }
 
         private void InitNavigationRegionRegedit()
         {
-            navigationRegionRegedit = new Dictionary<string, string>
+            navigationRegionRegedit = new Dictionary<Type, string>
             {
-                [nameof(MainWindow)] = RegionToken.MainContent,
-                [nameof(WorkPlaceView)] = RegionToken.WorkPlaceTabContent,
-                [nameof(RecruitmentView)] = RegionToken.RecruitmentContent,
-                [nameof(RequirementsMainView)] = RegionToken.RecruitmentRequirementsMainContent,
-                [nameof(AttendanceView)] = RegionToken.AttendanceContent,
-                [nameof(AttendanceMainView)] = RegionToken.AttendanceMainContent,
-                [nameof(EvaluationView)] = RegionToken.EvaluationContent,
-                [nameof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
-                [nameof(ContactsView)] = RegionToken.ContactsContent,
+                [typeof(MainWindow)] = RegionToken.MainContent,
+                [typeof(WorkPlaceView)] = RegionToken.WorkPlaceTabContent,
+                [typeof(RecruitmentView)] = RegionToken.RecruitmentContent,
+                [typeof(RequirementsMainView)] = RegionToken.RecruitmentRequirementsMainContent,
+                [typeof(AttendanceView)] = RegionToken.AttendanceContent,
+                [typeof(AttendanceMainView)] = RegionToken.AttendanceMainContent,
+                [typeof(EvaluationView)] = RegionToken.EvaluationContent,
+                [typeof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
+                [typeof(ContactsView)] = RegionToken.ContactsContent,
             };
         }
 
         private void InitRouteMap()
         {
-            routeMap = new Dictionary<string, string>();
-            Root = "";
-            routeMap[nameof(MainWindow)] = Root;
-            routeMap[nameof(NotificationView)] = "notification/";
-            routeMap[nameof(ContactsView)] = "contacts/";
-            {
-                routeMap[nameof(OrganizationalStructrureView)] = routeMap[nameof(ContactsView)] + "organizational/";
-                routeMap[nameof(PersonalInfoView)] = routeMap[nameof(ContactsView)] + "personal/";
-            }
-            routeMap[nameof(CloudFileView)] = "cloudfile/";
-            routeMap[nameof(KalendarView)] = "kalendar/";
-            routeMap[nameof(WorkPlaceView)] = "workplace/";
-            {
-                routeMap[nameof(WorkPlaceMainView)] = routeMap[nameof(WorkPlaceView)] + "main/";
-                routeMap[nameof(MajorEventView)] = routeMap[nameof(WorkPlaceView)] + "major_event/";
-                routeMap[nameof(RecruitmentView)] = routeMap[nameof(WorkPlaceView)] + "recruitment/";
-                {
-                    routeMap[nameof(RequirementsMainView)] = routeMap[nameof(RecruitmentView)] + "main/";
-                    {
-                        routeMap[nameof(ManageRequirementsView)] = routeMap[nameof(RequirementsMainView)] + "manage/";
-                        routeMap[nameof(RecruitmentNavigationView)] = routeMap[nameof(RequirementsMainView)] + "navigation/";
-                        routeMap[nameof(ViewRequirementsView)] = routeMap[nameof(RequirementsMainView)] + "view/";
-                        routeMap[nameof(ActivitiesRequirementsView)] = routeMap[nameof(RequirementsMainView)] + "activities/";
-                        routeMap[nameof(NewRequirementView)] = routeMap[nameof(RequirementsMainView)] + "new/";
-                        routeMap[nameof(TalentPoolView)] = routeMap[nameof(RequirementsMainView)] + "talent_pool/";
-                    }
-                }
-                routeMap[nameof(AttendanceView)] = routeMap[nameof(WorkPlaceView)] + "attendance/";
-                {
-                    routeMap[nameof(AttendanceMainView)] = routeMap[nameof(AttendanceView)] + "main/";
-                    {
-                        routeMap[nameof(AddAttendanceGroupView)] = routeMap[nameof(AttendanceMainView)] + "new/";
-                        routeMap[nameof(AdminSettingView)] = routeMap[nameof(AttendanceMainView)] + "admin_setting/";
-                        routeMap[nameof(AttendanceGroupSettingView)] = routeMap[nameof(AttendanceMainView)] + "group_setting/";
-                        routeMap[nameof(DailyStatisticsView)] = routeMap[nameof(AttendanceMainView)] + "daily_statistics/";
-                        routeMap[nameof(FaceRecognitionView)] = routeMap[nameof(AttendanceMainView)] + "face_recognition/";
-                        routeMap[nameof(ShiftSettingView)] = routeMap[nameof(AttendanceMainView)] + "shift_setting/";
-                    }
-                }
-                routeMap[nameof(EvaluationView)] = routeMap[nameof(WorkPlaceView)] + "evaluation/";
-                {
-                    routeMap[nameof(NewEvaluationRuleView)] = routeMap[nameof(EvaluationView)] + "new/";
-                    routeMap[nameof(EvaluationMainView)] = routeMap[nameof(EvaluationView)] + "main/";
-                    {
-                        routeMap[nameof(FullInEvaluationView)] = routeMap[nameof(EvaluationMainView)] + "fullIn/";
-                        routeMap[nameof(ViewEvaluationView)] = routeMap[nameof(EvaluationMainView)] + "view/";
-                        routeMap[nameof(ManageEvaluationView)] = routeMap[nameof(EvaluationMainView)] + "manage/";
-                    }
-                }
+            routeMap = new Dictionary<Type, string>();
 
-                routeMap[nameof(MajorEventView)] = routeMap[nameof(WorkPlaceView)] + "major_event/";
+            Root = typeof(MainWindow);
+            RootPath = "";
+            routeMap[Root] = RootPath;
+            routeMap[typeof(NotificationView)] = "notification/";
+            routeMap[typeof(ContactsView)] = "contacts/";
+            {
+                routeMap[typeof(OrganizationalStructrureView)] = routeMap[typeof(ContactsView)] + "organizational/";
+                routeMap[typeof(PersonalInfoView)] = routeMap[typeof(ContactsView)] + "personal/";
+            }
+            routeMap[typeof(CloudFileView)] = "cloudfile/";
+            //routeMap[nameof(KalendarView)] = "kalendar/";
+            routeMap[typeof(WorkPlaceView)] = "workplace/";
+            {
+                routeMap[typeof(WorkPlaceMainView)] = routeMap[typeof(WorkPlaceView)] + "main/";
+
+                //routeMap[nameof(RecruitmentView)] = routeMap[nameof(WorkPlaceView)] + "recruitment/";
+                //{
+                //    routeMap[nameof(RequirementsMainView)] = routeMap[nameof(RecruitmentView)] + "main/";
+                //    {
+                //        routeMap[nameof(ManageRequirementsView)] = routeMap[nameof(RequirementsMainView)] + "manage/";
+                //        routeMap[nameof(RecruitmentNavigationView)] = routeMap[nameof(RequirementsMainView)] + "navigation/";
+                //        routeMap[nameof(ViewRequirementsView)] = routeMap[nameof(RequirementsMainView)] + "view/";
+                //        routeMap[nameof(ActivitiesRequirementsView)] = routeMap[nameof(RequirementsMainView)] + "activities/";
+                //        routeMap[nameof(NewRequirementView)] = routeMap[nameof(RequirementsMainView)] + "new/";
+                //        routeMap[nameof(TalentPoolView)] = routeMap[nameof(RequirementsMainView)] + "talent_pool/";
+                //    }
+                //}
+
+                //routeMap[nameof(AttendanceView)] = routeMap[nameof(WorkPlaceView)] + "attendance/";
+                //{
+                //    routeMap[nameof(AttendanceMainView)] = routeMap[nameof(AttendanceView)] + "main/";
+                //    {
+                //        routeMap[nameof(AddAttendanceGroupView)] = routeMap[nameof(AttendanceMainView)] + "new/";
+                //        routeMap[nameof(AdminSettingView)] = routeMap[nameof(AttendanceMainView)] + "admin_setting/";
+                //        routeMap[nameof(AttendanceGroupSettingView)] = routeMap[nameof(AttendanceMainView)] + "group_setting/";
+                //        routeMap[nameof(DailyStatisticsView)] = routeMap[nameof(AttendanceMainView)] + "daily_statistics/";
+                //        routeMap[nameof(FaceRecognitionView)] = routeMap[nameof(AttendanceMainView)] + "face_recognition/";
+                //        routeMap[nameof(ShiftSettingView)] = routeMap[nameof(AttendanceMainView)] + "shift_setting/";
+                //    }
+                //}
+
+                //routeMap[nameof(EvaluationView)] = routeMap[nameof(WorkPlaceView)] + "evaluation/";
+                //{
+                //    routeMap[nameof(NewEvaluationRuleView)] = routeMap[nameof(EvaluationView)] + "new/";
+                //    routeMap[nameof(EvaluationMainView)] = routeMap[nameof(EvaluationView)] + "main/";
+                //    {
+                //        routeMap[nameof(FullInEvaluationView)] = routeMap[nameof(EvaluationMainView)] + "fullIn/";
+                //        routeMap[nameof(ViewEvaluationView)] = routeMap[nameof(EvaluationMainView)] + "view/";
+                //        routeMap[nameof(ManageEvaluationView)] = routeMap[nameof(EvaluationMainView)] + "manage/";
+                //    }
+                //}
+
+                //routeMap[nameof(MajorEventView)] = routeMap[nameof(WorkPlaceView)] + "major_event/";
                 //{
                 //    routeMap[nameof(HonourView)] = routeMap[nameof(MajorEventView)] + "honour/";
                 //    routeMap[nameof(DisciplineView)] = routeMap[nameof(MajorEventView)] + "discipline/";
                 //}
 
-                routeMap[nameof(ApprovalView)] = routeMap[nameof(WorkPlaceView)] + "approval/";
-                {
-                    routeMap[nameof(HonourView)] = routeMap[nameof(ApprovalView)] + "honour/";
-                    routeMap[nameof(DisciplineView)] = routeMap[nameof(ApprovalView)] + "discipline/";
-                }
+                //routeMap[nameof(ApprovalView)] = routeMap[nameof(WorkPlaceView)] + "approval/";
+                //{
+                //    routeMap[nameof(HonourView)] = routeMap[nameof(ApprovalView)] + "honour/";
+                //    routeMap[nameof(DisciplineView)] = routeMap[nameof(ApprovalView)] + "discipline/";
+                //}
             }
         }
 
-        public string GetRegionName(string view)
+        public string GetRegionName(Type view)
         {
             return navigationRegionRegedit[view];
         }
 
-        public string GetViewName(string vewiPath)
+        public Type ConvertViewPathToType(string vewiPath)
         {
             return routeReMap[vewiPath];
         }
 
-        public string GetViewPath(string view)
+        public Type ConverterViewNameToType(string viewName)
         {
-            bool isHas = routeMap.TryGetValue(view, out string viewPath);
-            return isHas ? viewPath : view;
+            return viewTypeMap[viewName];
         }
 
-        public bool IsBackPage(string view)
+        public string GetViewPath(Type view)
+        {
+            bool isHas = routeMap.TryGetValue(view, out string viewPath);
+            return isHas ? viewPath : view.Name;
+        }
+
+        public bool IsBackPage(Type view)
         {
             return backPageViewRegedit.ContainsKey(view);
         }
 
-        public BackPageViewInfo GetBackPageViewInfo(string view)
+        public BackPageViewInfo GetBackPageViewInfo(Type view)
         {
             return backPageViewRegedit[view];
         }

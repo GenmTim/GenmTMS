@@ -1,4 +1,5 @@
 ﻿using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using TMS.DeskTop.Tools.Helper;
@@ -8,14 +9,14 @@ namespace TMS.DeskTop.Tools.Base
     public class RegionManagerControl : UserControl
     {
         protected IRegionManager regionManager;
-        private Dictionary<string, string> regionsDefaultView;
-        private readonly string viewName;
+        private Dictionary<string, Type> regionsDefaultView;
+        private readonly Type view;
 
-        public RegionManagerControl(IRegionManager regionManager, string viewName)
+        public RegionManagerControl(IRegionManager regionManager, Type view)
         {
             this.regionManager = regionManager;
             this.Loaded += LoadDefaultRegionView;
-            this.viewName = viewName;
+            this.view = view;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -29,8 +30,8 @@ namespace TMS.DeskTop.Tools.Base
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            string now_view = viewName;
-            bool needRoute = navigationContext.Parameters.TryGetValue<string>("target_view", out string target_view);
+            Type now_view = view;
+            bool needRoute = navigationContext.Parameters.TryGetValue<Type>("target_view", out Type target_view);
             if (needRoute)
             {
                 RouteHelper.Route(regionManager, now_view, target_view);
@@ -42,16 +43,16 @@ namespace TMS.DeskTop.Tools.Base
         {
             if (regionsDefaultView == null)
             {
-                regionsDefaultView = new Dictionary<string, string>();
+                regionsDefaultView = new Dictionary<string, Type>();
             }
-            regionsDefaultView[regionName] = viewName;
+            regionsDefaultView[regionName] = Router.Instance.ConverterViewNameToType(viewName);
         }
 
         private void LoadDefaultRegionView(object sender, System.Windows.RoutedEventArgs e)
         {
             if (regionsDefaultView != null)
             {
-                foreach (KeyValuePair<string, string> kvp in regionsDefaultView)
+                foreach (KeyValuePair<string, Type> kvp in regionsDefaultView)
                 {
                     RegionHelper.RequestNavigate(regionManager, regionName: kvp.Key, view: kvp.Value);
                 }
