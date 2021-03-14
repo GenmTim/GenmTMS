@@ -12,6 +12,7 @@
     MinWidth="1224"
     MinHeight="720"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    MouseDown="Window_MouseDown"
     Background="White"
     WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -26,12 +27,13 @@
             UseAeroCaptionButtons="False"
             NonClientFrameEdges="None" />
     </WindowChrome.WindowChrome>
-    <Border Effect="{StaticResource EffectShadow1}" Background="Transparent">
+    <Border Background="Transparent">
         <Border
             Margin="2"
             BorderThickness="0"
             CornerRadius="0">
-            <hc:SimplePanel>
+            <hc:SimplePanel x:Name="panel" Focusable="True">
+                <Border Effect="{StaticResource EffectShadow1}" />
                 <DockPanel>
                     <Grid Grid.Column="0"
                         Width="60"
@@ -140,6 +142,22 @@
                                 <uc:MenuRadioButton
                                     IsChecked="True"
                                     Command="{Binding NavigationCommand}"
+                                    CommandParameter="SearchView"
+                                    Padding="0,0,0,0"
+                                    uc:ValueAttach.Integer="0"
+                                    uc:IconFontElement.Geometry="&#xe636;"
+                                    Cursor="Hand">
+                                    <hc:Poptip.Instance>
+                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                            <hc:Poptip.Content>
+                                                <TextBlock Text="搜索" Margin="3" />
+                                            </hc:Poptip.Content>
+                                        </hc:Poptip>
+                                    </hc:Poptip.Instance>
+                                </uc:MenuRadioButton>
+                                <uc:MenuRadioButton
+                                    IsChecked="True"
+                                    Command="{Binding NavigationCommand}"
                                     CommandParameter="NotificationView"
                                     Padding="0,4,0,0"
                                     uc:ValueAttach.Integer="100"
@@ -177,20 +195,6 @@
                                         <hc:Poptip Style="{StaticResource BlockPopTip}">
                                             <hc:Poptip.Content>
                                                 <TextBlock Text="文件" Margin="3" />
-                                            </hc:Poptip.Content>
-                                        </hc:Poptip>
-                                    </hc:Poptip.Instance>
-                                </uc:MenuRadioButton>
-                                <uc:MenuRadioButton
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="KalendarView"
-                                    uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe62f;"
-                                    Cursor="Hand">
-                                    <hc:Poptip.Instance>
-                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                            <hc:Poptip.Content>
-                                                <TextBlock Text="日程表" Margin="3" />
                                             </hc:Poptip.Content>
                                         </hc:Poptip>
                                     </hc:Poptip.Instance>

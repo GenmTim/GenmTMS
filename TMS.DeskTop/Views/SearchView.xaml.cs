@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace TMS.DeskTop.Views
 {
     /// <summary>
-    /// KalendarView.xaml 的交互逻辑
+    /// SearchView.xaml 的交互逻辑
     /// </summary>
-    public partial class KalendarView : UserControl
+    public partial class SearchView : UserControl
     {
-        public KalendarView()
+        public SearchView()
         {
             InitializeComponent();
         }

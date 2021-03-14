@@ -110,6 +110,7 @@
     <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Genm\Genm.csproj" />
     <ProjectReference Include="..\TMS.Core\TMS.Core.csproj" />
   </ItemGroup>
   <ItemGroup>

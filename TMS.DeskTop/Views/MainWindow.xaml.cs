@@ -59,7 +59,6 @@ namespace TMS.DeskTop.Views
             DialogResult = true;
         }
 
-
         /// <summary>
         /// 标题栏双击事件
         /// </summary>
@@ -78,6 +77,11 @@ namespace TMS.DeskTop.Views
                 this.WindowState = this.WindowState == WindowState.Maximized ?
                               WindowState.Normal : WindowState.Maximized;
             }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.panel.Focus();
         }
     }
 }
