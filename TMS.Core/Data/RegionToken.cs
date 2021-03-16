@@ -25,5 +25,7 @@
         public static readonly string KalendarContent = nameof(KalendarContent);
 
         public static readonly string ApprovalContent = nameof(ApprovalContent);
+
+        public static readonly string QuestionContent = nameof(QuestionContent);
     }
 }

@@ -15,7 +15,6 @@ namespace TMS.DeskTop.UserControls.Dialogs.Views
         public CheckItemDialog()
         {
             InitializeComponent();
-
         }
 
     }

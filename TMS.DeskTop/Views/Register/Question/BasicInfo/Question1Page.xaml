@@ -1,0 +1,122 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.Register.Question.BasicInfo.Question1Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.Register.Question"
+    d:Background="White"
+    d:DesignHeight="500"
+    d:DesignWidth="340"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/Styles/Views/Register/QuestionPageStyle.xaml" />
+    </UserControl.Resources>
+    <hc:TransitioningContentControl>
+        <StackPanel Margin="20">
+            <hc:SimplePanel>
+                <TextBlock
+                    Text="&#xe63e;"
+                    Foreground="{StaticResource PrimaryBrush}"
+                    FontSize="40"
+                    Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                <Button
+                    Command="{Binding NextNavigateCmd}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource nextBtnStyle}"
+                    Cursor="Hand" />
+            </hc:SimplePanel>
+            <hc:SimplePanel Margin="10,0">
+                <StackPanel>
+                    <TextBlock
+                        Text="需要填写基础信息完成注册，大约花费1~3分钟"
+                        TextWrapping="Wrap"
+                        Margin="0,20,0,0"
+                        FontWeight="SemiBold"
+                        FontSize="20" />
+                    <TextBlock
+                        Text="所填写的信息讲被受保护，后续你可以随时更新"
+                        TextWrapping="Wrap"
+                        Margin="0,10,0,0"
+                        Foreground="{StaticResource SecondaryTextBrush}" />
+                    <StackPanel Margin="0,20,0,0">
+                        <TextBlock Text="你的姓名" Style="{StaticResource titleTextStyle}" />
+                        <TextBox
+                            Height="50"
+                            Margin="0,20,0,0"
+                            Padding="12"
+                            hc:InfoElement.Placeholder="请输入姓名"
+                            BorderThickness="2"
+                            Style="{StaticResource TextBoxExtend}"
+                            FontSize="16" />
+                    </StackPanel>
+                    <StackPanel Margin="0,20,0,0">
+                        <TextBlock Text="性别" Style="{StaticResource titleTextStyle}" />
+                        <Grid Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources />
+                            <RadioButton Grid.Column="0"
+                                Content="男"
+                                IsChecked="True"
+                                Style="{StaticResource radioBtnStyle}"
+                                GroupName="sex" />
+                            <RadioButton Grid.Column="2"
+                                Content="女"
+                                Style="{StaticResource radioBtnStyle}"
+                                GroupName="sex" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="0,20,0,0">
+                        <TextBlock Text="出生年月" Style="{StaticResource titleTextStyle}" />
+                        <Grid Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources>
+                                <Style BasedOn="{StaticResource TextBoxExtend}" TargetType="TextBox">
+                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                </Style>
+                            </Grid.Resources>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox />
+                                <TextBlock Grid.Column="1"
+                                    Text="年"
+                                    Margin="10,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    FontWeight="SemiBold" />
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox />
+                                <TextBlock Grid.Column="1"
+                                    Text="月"
+                                    Margin="10,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    FontWeight="SemiBold" />
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </hc:SimplePanel>
+        </StackPanel>
+    </hc:TransitioningContentControl>
+</UserControl>

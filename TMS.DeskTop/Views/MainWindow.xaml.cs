@@ -2,8 +2,10 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
+using TMS.Core;
 using TMS.Core.Data;
 using TMS.DeskTop.Tools.Helper;
+using TMS.DeskTop.Views.Register;
 
 namespace TMS.DeskTop.Views
 {

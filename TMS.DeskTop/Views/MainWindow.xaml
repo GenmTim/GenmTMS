@@ -7,6 +7,7 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
     xmlns:popup="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Width="1180"
     Height="720"
     MinWidth="1224"
@@ -22,315 +23,318 @@
         <WindowChrome
             CaptionHeight="0"
             CornerRadius="0"
-            GlassFrameThickness="0"
-            ResizeBorderThickness="4"
+            GlassFrameThickness="1"
+            ResizeBorderThickness="1"
             UseAeroCaptionButtons="False"
             NonClientFrameEdges="None" />
     </WindowChrome.WindowChrome>
     <Border Background="Transparent">
-        <Border
-            Margin="2"
-            BorderThickness="0"
-            CornerRadius="0">
-            <hc:SimplePanel x:Name="panel" Focusable="True">
-                <Border Effect="{StaticResource EffectShadow1}" />
-                <DockPanel>
-                    <Grid Grid.Column="0"
-                        Width="60"
-                        Panel.ZIndex="1"
-                        Background="White">
-                        <!--<Grid Grid.Column="0"
+        <Border BorderThickness="0" CornerRadius="0">
+            <materialDesign:DialogHost Grid.Row="1" Identifier="Root">
+
+                <hc:SimplePanel x:Name="panel"
+                    FocusVisualStyle="{x:Null}"
+                    Focusable="True">
+                    <Border Effect="{StaticResource EffectShadow1}" />
+                    <DockPanel>
+                        <Grid Grid.Column="0"
+                            Width="60"
+                            Panel.ZIndex="1"
+                            Background="White">
+                            <!--<Grid Grid.Column="0"
                         Width="60"
                         Panel.ZIndex="1"
                         Background="#FF37A0EA">-->
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Border
-                            Grid.RowSpan="2"
-                            BorderThickness="0,0,1,0"
-                            BorderBrush="{StaticResource TMS_BorderBrush}" />
-                        <Button Style="{DynamicResource profileBtnStyle}" Cursor="Hand">
-                            <Button.Content>
-                                <Image Source="/Resources/Images/Assets/googledrive.png" />
-                            </Button.Content>
-                        </Button>
-
-                        <!--#region Left Grid - Menu-->
-                        <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="400" />
-                                <RowDefinition Height="20" />
+                                <RowDefinition Height="100" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="20" />
                             </Grid.RowDefinitions>
-                            <StackPanel Margin="0,-15,0,0">
-                                <StackPanel.Resources>
-                                    <Style TargetType="uc:MenuRadioButton">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                        <Setter Property="Foreground" Value="{StaticResource BorderBrush}" />
-                                        <Setter Property="Height" Value="80" />
-                                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                                        <Setter Property="Width" Value="40" />
-                                        <Setter Property="FontSize" Value="28" />
-                                        <Setter Property="BorderThickness" Value="0" />
-                                        <Setter Property="SnapsToDevicePixels" Value="true" />
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="uc:MenuRadioButton">
-                                                    <hc:SimplePanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-                                                        <hc:SimplePanel VerticalAlignment="Center">
-                                                            <Border
-                                                                Width="40"
-                                                                Height="40"
-                                                                Background="{TemplateBinding Background}"
-                                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                                CornerRadius="10">
-                                                                <TextBlock
-                                                                    Text="{TemplateBinding uc:IconFontElement.Geometry}"
-                                                                    Margin="{TemplateBinding Padding}"
-                                                                    HorizontalAlignment="Center"
-                                                                    VerticalAlignment="Center"
-                                                                    Focusable="False"
-                                                                    Foreground="{TemplateBinding Foreground}"
-                                                                    FontSize="{TemplateBinding FontSize}"
-                                                                    Style="{StaticResource MenuIconTextPlusBlockStyle}" />
-                                                            </Border>
-                                                            <hc:Badge x:Name="badge"
-                                                                FontSize="10"
-                                                                BorderThickness="0"
-                                                                BadgeMargin="0,-5,-5,0"
-                                                                Style="{StaticResource BadgeDanger}"
-                                                                Value="{TemplateBinding uc:ValueAttach.Integer}" />
-                                                        </hc:SimplePanel>
-                                                    </hc:SimplePanel>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger SourceName="badge" Property="Value" Value="0">
-                                                            <Setter TargetName="badge" Property="Visibility" Value="Collapsed" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsMouseOver" Value="true">
-                                                            <Setter Property="Background" Value="#CC63BCFB" />
-                                                            <Setter Property="Foreground" Value="White" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsChecked" Value="true">
-                                                            <Setter Property="Background" Value="#63BCFB" />
-                                                            <Setter Property="Foreground" Value="White" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                    <Style
-                                        x:Key="BlockPopTip"
-                                        BasedOn="{StaticResource PoptipBaseStyle}"
-                                        TargetType="{x:Type hc:Poptip}">
-                                        <Setter Property="Background" Value="#dd111111" />
-                                        <Setter Property="Focusable" Value="False" />
-                                        <Setter Property="IsHitTestVisible" Value="False" />
-                                        <Setter Property="PlacementType" Value="Right" />
-                                        <Setter Property="BorderThickness" Value="0" />
-                                        <Setter Property="Foreground" Value="White" />
-                                        <Setter Property="FontSize" Value="13" />
-                                        <Setter Property="Offset" Value="7" />
-                                    </Style>
-                                </StackPanel.Resources>
-                                <!--  Adding Menu buttons  -->
-                                <uc:MenuRadioButton
-                                    IsChecked="True"
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="SearchView"
-                                    Padding="0,0,0,0"
-                                    uc:ValueAttach.Integer="0"
-                                    uc:IconFontElement.Geometry="&#xe636;"
-                                    Cursor="Hand">
-                                    <hc:Poptip.Instance>
-                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                            <hc:Poptip.Content>
-                                                <TextBlock Text="搜索" Margin="3" />
-                                            </hc:Poptip.Content>
-                                        </hc:Poptip>
-                                    </hc:Poptip.Instance>
-                                </uc:MenuRadioButton>
-                                <uc:MenuRadioButton
-                                    IsChecked="True"
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="NotificationView"
-                                    Padding="0,4,0,0"
-                                    uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe643;"
-                                    Cursor="Hand">
-                                    <hc:Poptip.Instance>
-                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                            <hc:Poptip.Content>
-                                                <TextBlock Text="通知" Margin="3" />
-                                            </hc:Poptip.Content>
-                                        </hc:Poptip>
-                                    </hc:Poptip.Instance>
-                                </uc:MenuRadioButton>
-                                <uc:MenuRadioButton
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="ContactsView"
-                                    uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe648;"
-                                    Cursor="Hand">
-                                    <hc:Poptip.Instance>
-                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                            <hc:Poptip.Content>
-                                                <TextBlock Text="联系" Margin="3" />
-                                            </hc:Poptip.Content>
-                                        </hc:Poptip>
-                                    </hc:Poptip.Instance>
-                                </uc:MenuRadioButton>
-                                <uc:MenuRadioButton
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="CloudFileView"
-                                    uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe638;"
-                                    Cursor="Hand">
-                                    <hc:Poptip.Instance>
-                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                            <hc:Poptip.Content>
-                                                <TextBlock Text="文件" Margin="3" />
-                                            </hc:Poptip.Content>
-                                        </hc:Poptip>
-                                    </hc:Poptip.Instance>
-                                </uc:MenuRadioButton>
-                                <uc:MenuRadioButton
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="WorkPlaceView"
-                                    uc:ValueAttach.Integer="100"
-                                    uc:IconFontElement.Geometry="&#xe61d;"
-                                    Cursor="Hand">
-                                    <hc:Poptip.Instance>
-                                        <hc:Poptip Style="{StaticResource BlockPopTip}">
-                                            <hc:Poptip.Content>
-                                                <TextBlock Text="工作台" Margin="3" />
-                                            </hc:Poptip.Content>
-                                        </hc:Poptip>
-                                    </hc:Poptip.Instance>
-                                </uc:MenuRadioButton>
-                            </StackPanel>
-                            <StackPanel Grid.Row="2">
-                                <StackPanel.Resources>
-                                    <Style TargetType="RadioButton" BasedOn="{StaticResource RadioButtonIcon}">
-                                        <Setter Property="Foreground" Value="White" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                        <Setter Property="Height" Value="35" />
-                                        <Setter Property="Margin" Value="0,0,0,10" />
-                                        <Setter Property="hc:BorderElement.CornerRadius" Value="8" />
-                                        <Setter Property="BorderThickness" Value="8" />
-                                        <Setter Property="FontSize" Value="14" />
-                                        <Setter Property="FontWeight" Value="SemiBold" />
-                                        <Setter Property="Background">
-                                            <Setter.Value>
-                                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="8,0.5">
-                                                    <GradientStop Offset="0" Color="{StaticResource PrimaryColor}" />
-                                                    <GradientStop Offset="1" Color="White" />
-                                                </LinearGradientBrush>
-                                            </Setter.Value>
-                                        </Setter>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="RadioButton">
-                                                    <hc:SimplePanel>
-                                                        <Border x:Name="selectedBorder"
-                                                            Width="5"
-                                                            Height="35"
-                                                            Margin="-3,0,0,0"
-                                                            HorizontalAlignment="Left"
-                                                            Visibility="Collapsed"
-                                                            CornerRadius="0,5,5,0"
-                                                            Background="{StaticResource PrimaryBrush}" />
-                                                        <hc:SimplePanel
-                                                            Width="35"
-                                                            Height="35"
-                                                            VerticalAlignment="Center">
-                                                            <Border x:Name="border"
-                                                                BorderThickness="2"
-                                                                CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}"
-                                                                Background="{TemplateBinding Background}" />
-                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                        </hc:SimplePanel>
-                                                    </hc:SimplePanel>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource BorderBrush}" />
-                                                            <Setter TargetName="selectedBorder" Property="Visibility" Value="Visible" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </StackPanel.Resources>
+                            <Border
+                                Grid.RowSpan="2"
+                                BorderThickness="0,0,1,0"
+                                BorderBrush="{StaticResource TMS_BorderBrush}" />
+                            <Button Style="{DynamicResource profileBtnStyle}" Cursor="Hand">
+                                <Button.Content>
+                                    <Image Source="/Resources/Images/Assets/googledrive.png" />
+                                </Button.Content>
+                            </Button>
 
-                                <RadioButton
-                                    Content="S"
-                                    Background="#a0d911"
-                                    BorderThickness="0" />
-                                <RadioButton
-                                    Content="S"
-                                    IsChecked="True"
-                                    BorderThickness="0"
-                                    Cursor="Hand" />
-                            </StackPanel>
+                            <!--#region Left Grid - Menu-->
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="400" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <StackPanel Margin="0,-15,0,0">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="uc:MenuRadioButton">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                            <Setter Property="Foreground" Value="{StaticResource BorderBrush}" />
+                                            <Setter Property="Height" Value="80" />
+                                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                            <Setter Property="Width" Value="40" />
+                                            <Setter Property="FontSize" Value="28" />
+                                            <Setter Property="BorderThickness" Value="0" />
+                                            <Setter Property="SnapsToDevicePixels" Value="true" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="uc:MenuRadioButton">
+                                                        <hc:SimplePanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                                                            <hc:SimplePanel VerticalAlignment="Center">
+                                                                <Border
+                                                                    Width="40"
+                                                                    Height="40"
+                                                                    Background="{TemplateBinding Background}"
+                                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                                    CornerRadius="10">
+                                                                    <TextBlock
+                                                                        Text="{TemplateBinding uc:IconFontElement.Geometry}"
+                                                                        Margin="{TemplateBinding Padding}"
+                                                                        HorizontalAlignment="Center"
+                                                                        VerticalAlignment="Center"
+                                                                        Focusable="False"
+                                                                        Foreground="{TemplateBinding Foreground}"
+                                                                        FontSize="{TemplateBinding FontSize}"
+                                                                        Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                                                                </Border>
+                                                                <hc:Badge x:Name="badge"
+                                                                    FontSize="10"
+                                                                    BorderThickness="0"
+                                                                    BadgeMargin="0,-5,-5,0"
+                                                                    Style="{StaticResource BadgeDanger}"
+                                                                    Value="{TemplateBinding uc:ValueAttach.Integer}" />
+                                                            </hc:SimplePanel>
+                                                        </hc:SimplePanel>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger SourceName="badge" Property="Value" Value="0">
+                                                                <Setter TargetName="badge" Property="Visibility" Value="Collapsed" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter Property="Background" Value="#CC63BCFB" />
+                                                                <Setter Property="Foreground" Value="White" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsChecked" Value="true">
+                                                                <Setter Property="Background" Value="#63BCFB" />
+                                                                <Setter Property="Foreground" Value="White" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                        <Style
+                                            x:Key="BlockPopTip"
+                                            BasedOn="{StaticResource PoptipBaseStyle}"
+                                            TargetType="{x:Type hc:Poptip}">
+                                            <Setter Property="Background" Value="#dd111111" />
+                                            <Setter Property="Focusable" Value="False" />
+                                            <Setter Property="IsHitTestVisible" Value="False" />
+                                            <Setter Property="PlacementType" Value="Right" />
+                                            <Setter Property="BorderThickness" Value="0" />
+                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter Property="FontSize" Value="13" />
+                                            <Setter Property="Offset" Value="7" />
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <!--  Adding Menu buttons  -->
+                                    <uc:MenuRadioButton
+                                        IsChecked="True"
+                                        Command="{Binding NavigationCommand}"
+                                        CommandParameter="SearchView"
+                                        Padding="0,0,0,0"
+                                        uc:ValueAttach.Integer="0"
+                                        uc:IconFontElement.Geometry="&#xe636;"
+                                        Cursor="Hand">
+                                        <hc:Poptip.Instance>
+                                            <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                                <hc:Poptip.Content>
+                                                    <TextBlock Text="搜索" Margin="3" />
+                                                </hc:Poptip.Content>
+                                            </hc:Poptip>
+                                        </hc:Poptip.Instance>
+                                    </uc:MenuRadioButton>
+                                    <uc:MenuRadioButton
+                                        IsChecked="True"
+                                        Command="{Binding NavigationCommand}"
+                                        CommandParameter="NotificationView"
+                                        Padding="0,4,0,0"
+                                        uc:ValueAttach.Integer="100"
+                                        uc:IconFontElement.Geometry="&#xe643;"
+                                        Cursor="Hand">
+                                        <hc:Poptip.Instance>
+                                            <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                                <hc:Poptip.Content>
+                                                    <TextBlock Text="通知" Margin="3" />
+                                                </hc:Poptip.Content>
+                                            </hc:Poptip>
+                                        </hc:Poptip.Instance>
+                                    </uc:MenuRadioButton>
+                                    <uc:MenuRadioButton
+                                        Command="{Binding NavigationCommand}"
+                                        CommandParameter="ContactsView"
+                                        uc:ValueAttach.Integer="100"
+                                        uc:IconFontElement.Geometry="&#xe648;"
+                                        Cursor="Hand">
+                                        <hc:Poptip.Instance>
+                                            <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                                <hc:Poptip.Content>
+                                                    <TextBlock Text="联系" Margin="3" />
+                                                </hc:Poptip.Content>
+                                            </hc:Poptip>
+                                        </hc:Poptip.Instance>
+                                    </uc:MenuRadioButton>
+                                    <uc:MenuRadioButton
+                                        Command="{Binding NavigationCommand}"
+                                        CommandParameter="CloudFileView"
+                                        uc:ValueAttach.Integer="100"
+                                        uc:IconFontElement.Geometry="&#xe638;"
+                                        Cursor="Hand">
+                                        <hc:Poptip.Instance>
+                                            <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                                <hc:Poptip.Content>
+                                                    <TextBlock Text="文件" Margin="3" />
+                                                </hc:Poptip.Content>
+                                            </hc:Poptip>
+                                        </hc:Poptip.Instance>
+                                    </uc:MenuRadioButton>
+                                    <uc:MenuRadioButton
+                                        Command="{Binding NavigationCommand}"
+                                        CommandParameter="WorkPlaceView"
+                                        uc:ValueAttach.Integer="100"
+                                        uc:IconFontElement.Geometry="&#xe61d;"
+                                        Cursor="Hand">
+                                        <hc:Poptip.Instance>
+                                            <hc:Poptip Style="{StaticResource BlockPopTip}">
+                                                <hc:Poptip.Content>
+                                                    <TextBlock Text="工作台" Margin="3" />
+                                                </hc:Poptip.Content>
+                                            </hc:Poptip>
+                                        </hc:Poptip.Instance>
+                                    </uc:MenuRadioButton>
+                                </StackPanel>
+                                <StackPanel Grid.Row="2">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="RadioButton" BasedOn="{StaticResource RadioButtonIcon}">
+                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                            <Setter Property="Height" Value="35" />
+                                            <Setter Property="Margin" Value="0,0,0,10" />
+                                            <Setter Property="hc:BorderElement.CornerRadius" Value="8" />
+                                            <Setter Property="BorderThickness" Value="8" />
+                                            <Setter Property="FontSize" Value="14" />
+                                            <Setter Property="FontWeight" Value="SemiBold" />
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="8,0.5">
+                                                        <GradientStop Offset="0" Color="{StaticResource PrimaryColor}" />
+                                                        <GradientStop Offset="1" Color="White" />
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="RadioButton">
+                                                        <hc:SimplePanel>
+                                                            <Border x:Name="selectedBorder"
+                                                                Width="5"
+                                                                Height="35"
+                                                                Margin="-3,0,0,0"
+                                                                HorizontalAlignment="Left"
+                                                                Visibility="Collapsed"
+                                                                CornerRadius="0,5,5,0"
+                                                                Background="{StaticResource PrimaryBrush}" />
+                                                            <hc:SimplePanel
+                                                                Width="35"
+                                                                Height="35"
+                                                                VerticalAlignment="Center">
+                                                                <Border x:Name="border"
+                                                                    BorderThickness="2"
+                                                                    CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}"
+                                                                    Background="{TemplateBinding Background}" />
+                                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                            </hc:SimplePanel>
+                                                        </hc:SimplePanel>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+                                                                <Setter TargetName="selectedBorder" Property="Visibility" Value="Visible" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </StackPanel.Resources>
+
+                                    <RadioButton
+                                        Content="S"
+                                        Background="#a0d911"
+                                        BorderThickness="0" />
+                                    <RadioButton
+                                        Content="S"
+                                        IsChecked="True"
+                                        BorderThickness="0"
+                                        Cursor="Hand" />
+                                </StackPanel>
+                            </Grid>
+                            <!--#endregion-->
                         </Grid>
-                        <!--#endregion-->
-                    </Grid>
-                    <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.MainContent}" />
-                </DockPanel>
-                <!--<popup:ProfilePopup
+                        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.MainContent}" />
+                    </DockPanel>
+                    <!--<popup:ProfilePopup
                     Margin="70,60,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Effect="{StaticResource EffectShadow2}" />-->
-                <!--<popup:UpgradePopup
+                    <!--<popup:UpgradePopup
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Effect="{StaticResource EffectShadow2}" />-->
 
-                <hc:SimplePanel
-                    Height="10"
-                    VerticalAlignment="Top"
-                    Panel.ZIndex="0"
-                    hc:WindowAttach.IsDragElement="True"
-                    MouseDown="TopBar_MouseDown"
-                    Background="Transparent" />
+                    <hc:SimplePanel
+                        Height="10"
+                        VerticalAlignment="Top"
+                        Panel.ZIndex="0"
+                        hc:WindowAttach.IsDragElement="True"
+                        MouseDown="TopBar_MouseDown"
+                        Background="Transparent" />
 
-                <hc:SimplePanel
-                    Height="25"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Panel.ZIndex="0"
-                    hc:WindowAttach.IsDragElement="True"
-                    MouseDown="TopBar_MouseDown"
-                    Background="Transparent">
-                    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,0" />
-                    <WrapPanel Grid.Column="1"
+                    <hc:SimplePanel
+                        Height="25"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Style="{x:Null}"
-                        Orientation="Horizontal">
-                        <Button
-                            Content="&#xe61c;"
-                            Click="btn_min_Click"
-                            Style="{StaticResource MainViewMinBtnStyle}" />
-                        <Button
-                            Content="&#xe61b;"
-                            Click="btn_max_Click"
-                            Style="{StaticResource MainViewMaxBtnStyle}" />
-                        <Button
-                            Content="&#xe61a;"
-                            hc:BackgroundSwitchElement.MouseDownBackground="Red"
-                            Click="btn_close_Click"
-                            Style="{StaticResource MainViewCloseBtnStyle}" />
-                    </WrapPanel>
+                        VerticalAlignment="Top"
+                        Panel.ZIndex="0"
+                        hc:WindowAttach.IsDragElement="True"
+                        MouseDown="TopBar_MouseDown"
+                        Background="Transparent">
+                        <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,0" />
+                        <WrapPanel Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Style="{x:Null}"
+                            Orientation="Horizontal">
+                            <Button
+                                Content="&#xe61c;"
+                                Click="btn_min_Click"
+                                Style="{StaticResource MainViewMinBtnStyle}" />
+                            <Button
+                                Content="&#xe61b;"
+                                Click="btn_max_Click"
+                                Style="{StaticResource MainViewMaxBtnStyle}" />
+                            <Button
+                                Content="&#xe61a;"
+                                hc:BackgroundSwitchElement.MouseDownBackground="Red"
+                                Click="btn_close_Click"
+                                Style="{StaticResource MainViewCloseBtnStyle}" />
+                        </WrapPanel>
+                    </hc:SimplePanel>
+
                 </hc:SimplePanel>
-            </hc:SimplePanel>
+            </materialDesign:DialogHost>
         </Border>
     </Border>
 </Window>

@@ -29,11 +29,13 @@
         <Grid Width="600">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
+                <RowDefinition Height="40" />
                 <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
             <TextBox
                 Width="600"
                 Height="50"
+                Padding="20,0,0,0"
                 VerticalAlignment="Bottom"
                 hc:InfoElement.Placeholder="张三#[身份证号]、张三#[手机号]、张三#[邮箱]"
                 hc:BorderElement.CornerRadius="15"
@@ -56,9 +58,7 @@
                     Background="Transparent"
                     FontSize="18" />
             </Border>-->
-            <hc:SimplePanel Grid.Row="1"
-                Margin="0,20,0,0"
-                VerticalAlignment="Top">
+            <hc:SimplePanel Grid.Row="2" VerticalAlignment="Top">
                 <hc:SimplePanel Height="150">
                     <Border
                         Background="White"

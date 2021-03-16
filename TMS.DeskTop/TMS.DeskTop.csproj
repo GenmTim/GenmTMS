@@ -217,6 +217,31 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="UserControls\
+             s\Views\NewUserQuestions\BasicInfo\Question1Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question1Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question2Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\QuestionEndPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\QuestionMainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\WorkExperience\Question1Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\WorkExperience\Question2Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\NewUserQuestionDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
@@ -232,6 +257,38 @@
   <ItemGroup>
     <Page Update="Resources\Styles\Views\Recruitment\Requirements\ManageRequirementsViewStyle.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\BasicInfo\Question1Page.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question1Page.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question2Page.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\QuestionEndPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\QuestionMainPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\WorkExperience\Question1Page.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\WorkExperience\Question2Page.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\NewUserQuestionDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 </Project>
