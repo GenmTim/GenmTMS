@@ -1,18 +1,6 @@
 ﻿using HandyControl.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using Prism.Events;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TMS.DeskTop.UserControls.ViewModels;
 
 namespace TMS.DeskTop.UserControls.Views
@@ -24,9 +12,8 @@ namespace TMS.DeskTop.UserControls.Views
     {
         private ScrollViewer _scrollViewer;
 
-        public ChatBox()
+        public ChatBox(IEventAggregator eventaggrator)
         {
-            DataContext = new ChatBoxViewModel();
             InitializeComponent();
             ListBoxChat.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
         }

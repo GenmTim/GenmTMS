@@ -1,10 +1,6 @@
 ﻿using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Windows;
 using TMS.Core.Data;
 using TMS.DeskTop.Tools.Base;
-using TMS.DeskTop.ViewModels;
 using TMS.DeskTop.Views.Contacts;
 
 namespace TMS.DeskTop.Views

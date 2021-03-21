@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TMS.DeskTop.UserControls.Popup.ViewModels
+﻿namespace TMS.DeskTop.UserControls.Popup.ViewModels
 {
     public class UploadInfoPopupModel
     {

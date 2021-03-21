@@ -9,7 +9,7 @@ namespace TMS.DeskTop.Tools.Helper
     {
         public static void RegisterToContainer(IContainerRegistry containerRegistry)
         {
-            foreach(KeyValuePair<Type, string> kv in Router.Instance.GetRouteMap())
+            foreach (KeyValuePair<Type, string> kv in Router.Instance.GetRouteMap())
             {
                 containerRegistry.RegisterForNavigation(kv.Key, kv.Value);
             }

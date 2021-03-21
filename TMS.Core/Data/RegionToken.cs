@@ -27,5 +27,9 @@
         public static readonly string ApprovalContent = nameof(ApprovalContent);
 
         public static readonly string QuestionContent = nameof(QuestionContent);
+
+        public static readonly string AuthContent = nameof(AuthContent);
+
+        public static readonly string ChatRegion = nameof(ChatRegion);
     }
 }

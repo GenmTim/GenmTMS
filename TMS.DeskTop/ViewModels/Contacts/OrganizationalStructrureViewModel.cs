@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using TMS.Core.Data;
 
 namespace TMS.DeskTop.ViewModels.Contacts
@@ -11,10 +6,43 @@ namespace TMS.DeskTop.ViewModels.Contacts
     public class OrganizationalStructrureViewModel
     {
         public ObservableCollection<TreeNodeItem> TreeViewData { get; set; } = new ObservableCollection<TreeNodeItem>();
+        public ObservableCollection<User> UserList { get; set; } = new ObservableCollection<User>();
+
+
 
         public OrganizationalStructrureViewModel()
         {
-            SimulationData();   
+            SimulationData();
+            SimulationUserList();
+        }
+
+        private void SimulationUserList()
+        {
+            UserList.Add(new User
+            {
+                Name = "蔡承龙",
+                Icon = "/Resources/Images/Assets/image1.jpg"
+            });
+            UserList.Add(new User
+            {
+                Name = "金泽权",
+                Icon = "/Resources/Images/Assets/image2.jpg"
+            });
+            UserList.Add(new User
+            {
+                Name = "鲁佳栋",
+                Icon = "/Resources/Images/Assets/image3.jpg"
+            });
+            UserList.Add(new User
+            {
+                Name = "余浩臻",
+                Icon = "/Resources/Images/Assets/image4.jpg"
+            });
+            UserList.Add(new User
+            {
+                Name = "何升鸿",
+                Icon = "/Resources/Images/Assets/image5.jpg"
+            });
         }
 
         private void SimulationData()

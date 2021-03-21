@@ -18,16 +18,6 @@
                 Id="asd1"
                 Style="{StaticResource GravatarCircleImg}" />
             <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
-                <!--<Path
-                    Name="Tail"
-                    Width="15"
-                    Height="15"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Data="{StaticResource BubbleTailGeometry}"
-                    Fill="{TemplateBinding Background}"
-                    Stretch="Uniform"
-                    RenderTransformOrigin="0.5,0.5" />-->
                 <Border
                     Name="Body"
                     Margin="0,0,3,0"
@@ -44,20 +34,10 @@
             </hc:SimplePanel>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="Role" Value="Receiver">
+            <Trigger Property="Role" Value="Other">
                 <Setter TargetName="Gravatar" Property="Grid.Column" Value="0" />
                 <Setter TargetName="MessageCarrier" Property="Grid.Column" Value="1" />
                 <Setter TargetName="Body" Property="Effect" Value="{StaticResource EffectShadow1}" />
-                <!--<Setter TargetName="Tail" Property="Grid.Column" Value="1" />
-                <Setter TargetName="Tail" Property="HorizontalAlignment" Value="Left" />
-                <Setter TargetName="Tail" Property="RenderTransform">
-                    <Setter.Value>
-                        <TransformGroup>
-                            <ScaleTransform ScaleY="1" ScaleX="-1" />
-                        </TransformGroup>
-                    </Setter.Value>
-                </Setter>-->
-                <!--<Setter TargetName="Body" Property="Margin" Value="0,0,0,0" />-->
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -76,16 +56,6 @@
                 Id="asd1"
                 Style="{StaticResource GravatarCircleImg}" />
             <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
-                <!--<Path
-                    Name="Tail"
-                    Width="15"
-                    Height="15"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Data="{StaticResource BubbleTailGeometry}"
-                    Fill="{TemplateBinding Background}"
-                    Stretch="Uniform"
-                    RenderTransformOrigin="0.5,0.5" />-->
                 <Border
                     Name="Body"
                     Margin="0,0,3,0"
@@ -96,18 +66,47 @@
             </hc:SimplePanel>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="Role" Value="Receiver">
+            <Trigger Property="Role" Value="Other">
                 <Setter TargetName="Gravatar" Property="Grid.Column" Value="0" />
                 <Setter TargetName="MessageCarrier" Property="Grid.Column" Value="1" />
-                <!--<Setter TargetName="Tail" Property="HorizontalAlignment" Value="Left" />
-                <Setter TargetName="Tail" Property="RenderTransform">
-                    <Setter.Value>
-                        <TransformGroup>
-                            <ScaleTransform ScaleY="1" ScaleX="-1" />
-                        </TransformGroup>
-                    </Setter.Value>
-                </Setter>-->
-                <!--<Setter TargetName="Body" Property="Margin" Value="0,0,0,0" />-->
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ChatBubbleFileBaseTemplate" TargetType="uc:ChatBubble">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <hc:Gravatar x:Name="Gravatar" Grid.Column="1"
+                Width="35"
+                Height="35"
+                Margin="10,0"
+                VerticalAlignment="Top"
+                Id="asd1"
+                Style="{StaticResource GravatarCircleImg}" />
+            <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
+                <Border
+                    Name="Body"
+                    Margin="0,0,3,0"
+                    Background="{TemplateBinding Background}"
+                    UseLayoutRounding="True"
+                    CornerRadius="8">
+                    <Image x:Name="fileIcon" Grid.Column="1"
+                        Width="35"
+                        Height="35"
+                        Margin="10,0"
+                        VerticalAlignment="Top"
+                        Source="/Resources/Images/Icon/FileType/PDF.png" />
+                </Border>
+            </hc:SimplePanel>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Role" Value="Other">
+                <Setter TargetName="Gravatar" Property="Grid.Column" Value="0" />
+                <Setter TargetName="MessageCarrier" Property="Grid.Column" Value="1" />
+                <Setter TargetName="Body" Property="Effect" Value="{StaticResource EffectShadow1}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -125,7 +124,7 @@
         <Setter Property="IsRead" Value="{Binding IsSelected, RelativeSource={RelativeSource Self}}" />
         <Setter Property="MaxWidth" Value="280" />
         <Style.Triggers>
-            <Trigger Property="Role" Value="Receiver">
+            <Trigger Property="Role" Value="Other">
                 <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
                 <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
                 <Setter Property="HorizontalAlignment" Value="Left" />
@@ -136,6 +135,9 @@
             </Trigger>
             <Trigger Property="Type" Value="Custom">
                 <Setter Property="Template" Value="{StaticResource ChatBubbleCustomBaseTemplate}" />
+            </Trigger>
+            <Trigger Property="Type" Value="File">
+                <Setter Property="Template" Value="{StaticResource ChatBubbleAudioBaseTemplate}" />
             </Trigger>
         </Style.Triggers>
     </Style>

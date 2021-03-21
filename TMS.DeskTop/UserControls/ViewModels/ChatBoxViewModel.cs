@@ -1,64 +1,53 @@
 ﻿using HandyControl.Controls;
 using HandyControl.Tools;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TMS.Core.Data.Enums;
+using TMS.Core.Event;
 
 namespace TMS.DeskTop.UserControls.ViewModels
 {
     public class ChatBoxViewModel : BindableBase
     {
         private readonly string _id = Guid.NewGuid().ToString();
+        private readonly IEventAggregator eventAggregator;
 
-        public ChatBoxViewModel()
+        public ObservableCollection<ChatInfoModel> ChatInfos { get; set; } = new ObservableCollection<ChatInfoModel>();
+
+        public DelegateCommand<RoutedEventArgs> ReadMessageCmd { get; private set; }
+        public DelegateCommand<RoutedEventArgs> SendStringCmd { get; private set; }
+        public DelegateCommand SendCmd { get; private set; }
+
+
+        public ChatBoxViewModel(IEventAggregator eventAggregator)
         {
+            this.eventAggregator = eventAggregator;
+            eventAggregator.GetEvent<NotificationEvent>().Subscribe(ReceiveMessage);
+
             this.SendStringCmd = new DelegateCommand<RoutedEventArgs>(SendString);
             this.SendCmd = new DelegateCommand(Send);
             this.ReadMessageCmd = new DelegateCommand<RoutedEventArgs>(ReadMessage);
         }
 
-        private void ReceiveMessage(ChatInfoModel info)
+        // 数据消费者
+        private void ReceiveMessage(object data)
         {
-            if (_id.Equals(info.SenderId)) return;
-            info.Role = ChatRoleType.Receiver;
+            ChatInfoModel info = (ChatInfoModel)data;
             ChatInfos.Add(info);
         }
 
-
-        private string _chatString;
-
-        public string ChatString
+        // 数据生成者
+        private void SendString(RoutedEventArgs e)
         {
-            get { return _chatString; }
-            set { _chatString = value; RaisePropertyChanged(); }
-        }
-
-        public ObservableCollection<ChatInfoModel> ChatInfos { get; set; } = new ObservableCollection<ChatInfoModel>();
-
-        public DelegateCommand<RoutedEventArgs> SendStringCmd { get; private set; }
-
-        public DelegateCommand SendCmd { get; private set; }
-
-        private void Send()
-        {
-            if (string.IsNullOrEmpty(ChatString)) return;
-            var info = new ChatInfoModel
+            if (e is KeyEventArgs keyE && keyE.Key == Key.Enter)
             {
-                Message = ChatString,
-                SenderId = _id,
-                Type = ChatMessageType.String,
-                Role = ChatRoleType.Sender
-            };
-            ChatInfos.Add(info);
-            ChatString = string.Empty;
+                SendString();
+            }
         }
 
         private void SendString()
@@ -69,22 +58,13 @@ namespace TMS.DeskTop.UserControls.ViewModels
                 Message = ChatString,
                 SenderId = _id,
                 Type = ChatMessageType.String,
-                Role = ChatRoleType.Receiver
+                Role = ChatRoleType.Other
             };
-            ChatInfos.Add(info);
             ChatString = string.Empty;
+            eventAggregator.GetEvent<NotificationEvent>().Publish(info);
         }
 
-        private void SendString(RoutedEventArgs e)
-        {
-            if (e is KeyEventArgs keyE && keyE.Key == Key.Enter)
-            {
-                SendString();
-            }
-        }
 
-        public DelegateCommand<RoutedEventArgs> ReadMessageCmd { get; private set; }
-        
         private void ReadMessage(RoutedEventArgs e)
         {
             if (e.OriginalSource is FrameworkElement element && element.Tag is ChatInfoModel info)
@@ -97,6 +77,33 @@ namespace TMS.DeskTop.UserControls.ViewModels
                     }.Show();
                 }
             }
+        }
+
+
+        /// <summary>
+        /// 下方为测试用
+        /// </summary>
+        private string _chatString;
+
+        public string ChatString
+        {
+            get { return _chatString; }
+            set { _chatString = value; RaisePropertyChanged(); }
+        }
+
+
+        private void Send()
+        {
+            if (string.IsNullOrEmpty(ChatString)) return;
+            var info = new ChatInfoModel
+            {
+                Message = ChatString,
+                SenderId = _id,
+                Type = ChatMessageType.String,
+                Role = ChatRoleType.Me
+            };
+            ChatString = string.Empty;
+            eventAggregator.GetEvent<NotificationEvent>().Publish(info);
         }
 
 

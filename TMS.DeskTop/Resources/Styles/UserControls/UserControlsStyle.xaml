@@ -227,6 +227,9 @@
         <Setter Property="hc:IconElement.Width" Value="12" />
         <Setter Property="hc:IconElement.Height" Value="12" />
     </Style>
+    <!--<Style TargetType="">
+
+    </Style>-->
     <Style TargetType="hc:SearchBar" BasedOn="{StaticResource SearchBarExtendBaseStyle}">
         <Setter Property="FontSize" Value="14" />
     </Style>

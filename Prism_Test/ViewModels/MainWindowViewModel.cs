@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
-using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using Prism_Test.Views;
 using TMS.Core.Api;
 using TMS.Core.Data.Dto;
 
@@ -20,20 +18,20 @@ namespace Prism_Test.ViewModels
 
         public string LogString { get; set; } = "";
 
-		public MainWindowViewModel(IRegionManager regionManager)
-		{
-			this.regionManager = regionManager;
-			
-            
+        public MainWindowViewModel(IRegionManager regionManager)
+        {
+            this.regionManager = regionManager;
+
+
             HttpClient serviceApi = HttpClient.Instance;
             HttpClient serviceApi2 = HttpClient.GetInstance();
 
-			EvaluationGroupDto evaluationGroupDto = new EvaluationGroupDto();
+            EvaluationGroupDto evaluationGroupDto = new EvaluationGroupDto();
             evaluationGroupDto.ExaminerId = 122;
-            evaluationGroupDto.Subject="asdsad";
+            evaluationGroupDto.Subject = "asdsad";
             JObject jObject = JObject.FromObject(evaluationGroupDto);
-			string v = jObject.ToString();
-            JObject jObject1=new JObject();
+            string v = jObject.ToString();
+            JObject jObject1 = new JObject();
             //ApiResponse apiResponse = serviceApi2.PostEvaluationGroup(evaluationGroupDto);
 
             //         ApiResponse apiResponse = serviceApi.LoginUserEmail("123@qq.com", "qzj");

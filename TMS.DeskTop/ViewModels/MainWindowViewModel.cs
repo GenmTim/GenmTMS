@@ -2,8 +2,6 @@
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
-using TMS.Core.Data;
-using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.Views;
 
@@ -20,15 +18,13 @@ namespace TMS.DeskTop.ViewModels
 
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
-        private readonly IDialogHostService dialogHostService;
 
-        public MainWindowViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog, IDialogHostService dialogHostService)
+        public MainWindowViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
         {
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;
-            this.dialogHostService = dialogHostService;
             NavigationCommand = new DelegateCommand<string>(NavigationPage);
-   
+
         }
 
         public DelegateCommand<string> NavigationCommand { get; private set; }
@@ -36,10 +32,6 @@ namespace TMS.DeskTop.ViewModels
         private void NavigationPage(string viewName)
         {
             RouteHelper.Route(regionManager, typeof(MainWindow), Router.Instance.ConverterViewNameToType(viewName));
-            if (true)
-            {
-                this.dialogHostService.ShowDialog("NewUserQuestionDialog");
-            }
         }
     }
 }

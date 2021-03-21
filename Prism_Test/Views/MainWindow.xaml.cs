@@ -1,6 +1,4 @@
-﻿using Prism.Commands;
-using Prism.Regions;
-using System;
+﻿using Prism.Regions;
 using System.Windows;
 
 namespace Prism_Test.Views

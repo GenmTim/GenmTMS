@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TMS.Core
+﻿namespace TMS.Core
 {
     public class Session
     {
         private static Session instance;
         public static Session Instance
         {
-            get 
-            { 
+            get
+            {
                 if (instance == null)
                 {
                     instance = new Session();
@@ -23,9 +17,11 @@ namespace TMS.Core
 
         private Session()
         {
-            
+
         }
 
         public bool IsInitInfoComplete { get; set; } = false;
+
+        public long Id { get; set; } = 0;
     }
 }

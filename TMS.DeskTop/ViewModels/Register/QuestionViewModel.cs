@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TMS.DeskTop.ViewModels.Register
+﻿namespace TMS.DeskTop.ViewModels.Register
 {
     public struct Birthday
     {
@@ -38,7 +32,7 @@ namespace TMS.DeskTop.ViewModels.Register
 
     public struct InitialUserInfo
     {
-         
+
     }
 
     public class QuestionViewModel

@@ -8,6 +8,8 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:interactive="http://schemas.microsoft.com/expression/2010/interactions"
     xmlns:genm="clr-namespace:Genm;assembly=Genm"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:genmUc="clr-namespace:TMS.UserControls;assembly=TMS.UserControls"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -58,29 +60,317 @@
                     Background="Transparent"
                     FontSize="18" />
             </Border>-->
-            <hc:SimplePanel Grid.Row="2" VerticalAlignment="Top">
-                <hc:SimplePanel Height="150">
+            <!--  人才档案入口  -->
+            <hc:SimplePanel Grid.Row="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
                     <Border
+                        Grid.RowSpan="4"
+                        Effect="{StaticResource EffectShadow1}"
+                        BorderThickness="1"
+                        BorderBrush="{StaticResource TMS_BorderBrush}"
                         Background="White"
-                        CornerRadius="10"
-                        Effect="{StaticResource EffectShadow4}" />
-                    <Grid>
+                        CornerRadius="5" />
+                    <Border Grid.Row="1"
+                        BorderThickness="0,0,0,1"
+                        BorderBrush="{StaticResource TMS_BorderBrush}" />
+                    <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200" />
                             <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <hc:Gravatar Grid.Column="0"
-                            Style="{StaticResource GravatarCircleImg}"
-                            Id="User123" />
-                        <TextBlock Grid.Column="1"
-                            Text="蔡承龙"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            FontWeight="Bold"
-                            FontSize="20" />
+
+                        <StackPanel Orientation="Horizontal">
+                            <hc:Gravatar
+                                Width="40"
+                                Height="40"
+                                Margin="20,0,0,0"
+                                Style="{StaticResource GravatarCircleImg}"
+                                Id="User123" />
+                            <StackPanel Margin="15,0,0,0" VerticalAlignment="Center">
+                                <TextBlock
+                                    Text="蔡承龙"
+                                    Margin="0,0,0,10"
+                                    FontWeight="SemiBold"
+                                    FontSize="16" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="从事游戏服务端开发，精通C++、C#、Go" Foreground="#a9abb1" />
+                                    <TextBlock
+                                        Text="·"
+                                        Margin="5,0"
+                                        VerticalAlignment="Center"
+                                        Foreground="#bcbcc8"
+                                        FontSize="14"
+                                        FontWeight="Bold" />
+                                    <TextBlock Text="米哈游" Foreground="#cfc0b7" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                            Margin="0,0,10,0"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#f4f5fa" />
+                                    <Setter Property="Width" Value="110" />
+                                    <Setter Property="Margin" Value="0,0,20,0" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                    <Setter Property="Height" Value="33" />
+                                    <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+                                    <Setter Property="BorderThickness" Value="1" />
+                                    <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+                                    <Setter Property="hc:BorderElement.CornerRadius" Value="5" />
+                                    <Setter Property="Padding" Value="10,0,0,0" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <hc:SimplePanel>
+                                                    <Border
+                                                        Background="{TemplateBinding Background}"
+                                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                                        CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}">
+                                                        <StackPanel
+                                                            Margin="{TemplateBinding Padding}"
+                                                            HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"
+                                                            Orientation="Horizontal">
+                                                            <TextBlock
+                                                                Text="{TemplateBinding uc:IconFontElement.Geometry}"
+                                                                FontSize="14"
+                                                                Style="{StaticResource FIconTextPlusBlockStyle}" />
+                                                            <ContentPresenter
+                                                                Name="ContentPresenterMain"
+                                                                Margin="6,0,0,0"
+                                                                VerticalAlignment="Center"
+                                                                RecognizesAccessKey="True"
+                                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                        </StackPanel>
+                                                    </Border>
+                                                </hc:SimplePanel>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button uc:IconFontElement.Geometry="&#xe738; " Cursor="Hand">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="简历" FontWeight="SemiBold" />
+                                    <TextBlock Text=" (.pdf)" />
+                                </StackPanel>
+                            </Button>
+                            <Button
+                                Content="链接他（她）"
+                                uc:IconFontElement.Geometry="&#xe70d;"
+                                FontWeight="SemiBold" />
+                        </StackPanel>
                     </Grid>
-                </hc:SimplePanel>
+                    <Border Grid.Row="2"
+                        BorderThickness="0,0,0,1"
+                        BorderBrush="{StaticResource TMS_BorderBrush}" />
+                    <StackPanel Grid.Row="2" Margin="20,20,0,0">
+                        <StackPanel.Resources>
+                            <Style x:Key="titleTextStyle" TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#c2c5cb" />
+                                <Setter Property="FontWeight" Value="SemiBold" />
+                            </Style>
+                            <Style
+                                x:Key="labelStyle"
+                                BasedOn="{StaticResource LabelBaseStyle}"
+                                TargetType="Label">
+                                <Setter Property="Padding" Value="10,3" />
+                                <Setter Property="Background" Value="#edf3fe" />
+                                <Setter Property="Foreground" Value="#7f8593" />
+                                <Setter Property="FontSize" Value="10" />
+                                <Setter Property="Margin" Value="0,0,10,0" />
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Style>
+                            <Style
+                                x:Key="fieldBlockStyle"
+                                BasedOn="{StaticResource TitleControlBoxBaseStyle}"
+                                TargetType="{x:Type uc:TitleControlBox}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="uc:TitleControlBox">
+                                            <Grid Background="{TemplateBinding Background}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="60" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock
+                                                    Text="{TemplateBinding Title}"
+                                                    Margin="0,0,10,0"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center"
+                                                    Style="{StaticResource titleTextStyle}"
+                                                    FontSize="12" />
+                                                <ContentPresenter Grid.Column="1"
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                            <SolidColorBrush x:Key="ContentTextBrush" Color="#999ba6" />
+                        </StackPanel.Resources>
+                        <uc:TitleControlBox
+                            Title="评价"
+                            Margin="0,0,0,20"
+                            Style="{StaticResource fieldBlockStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Label
+                                    Content="积极"
+                                    Style="{StaticResource labelStyle}"
+                                    Background="#edf3ff" />
+                                <Label
+                                    Content="乐观向上"
+                                    Style="{StaticResource labelStyle}"
+                                    Background="#f1eeea" />
+                            </StackPanel>
+                        </uc:TitleControlBox>
+                        <uc:TitleControlBox
+                            Title="个人介绍"
+                            Margin="0,0,0,20"
+                            Style="{StaticResource fieldBlockStyle}"
+                            FontWeight="SemiBold">
+                            <TextBlock
+                                Text="乐于学习，敢于挑战"
+                                TextWrapping="WrapWithOverflow"
+                                FontWeight="Medium"
+                                Foreground="{StaticResource ContentTextBrush}" />
+                        </uc:TitleControlBox>
+                        <hc:SimplePanel Margin="0,0,0,20">
+                            <uc:TitleControlBox
+                                Title="经验"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource fieldBlockStyle}">
+                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="Golang游戏服务端工程师"
+                                        FontWeight="SemiBold"
+                                        Foreground="{StaticResource ContentTextBrush}" />
+                                    <TextBlock
+                                        Text="(10-15 years)"
+                                        Margin="10,0,0,0"
+                                        FontWeight="SemiBold"
+                                        Foreground="#b4b8c0" />
+                                </StackPanel>
+                            </uc:TitleControlBox>
+                            <uc:TitleControlBox
+                                Title="技能"
+                                Margin="0,0,20,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource fieldBlockStyle}">
+                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                    <Label
+                                        Content="积极"
+                                        Style="{StaticResource labelStyle}"
+                                        Background="#edf3ff" />
+                                    <Label
+                                        Content="乐观向上"
+                                        Style="{StaticResource labelStyle}"
+                                        Background="#f1eeea" />
+                                </StackPanel>
+                            </uc:TitleControlBox>
+                        </hc:SimplePanel>
+                    </StackPanel>
+                    <hc:SimplePanel Grid.Row="3" Height="50">
+                        <StackPanel
+                            Margin="20,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+                            <TextBlock Text="更新于 30 分钟前" Foreground="#dadae2" />
+                        </StackPanel>
+                        <StackPanel
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
+                                    <Setter Property="hc:BorderElement.CornerRadius" Value="5" />
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button
+                                Margin="0,0,20,0"
+                                Padding="20,0"
+                                FontWeight="SemiBold">
+                                <TextBlock>
+                                    <Run Text="&#xe708;" FontFamily="/Resources/Fonts/Plus/#iconfont" />
+                                    <Run Text=" 查看" />
+                                </TextBlock>
+                            </Button>
+                            <Button
+                                Margin="0,0,20,0"
+                                Padding="20,0"
+                                Background="#faad14">
+                                <TextBlock>
+                                    <Run Text="&#xe796;" FontFamily="/Resources/Fonts/Plus/#iconfont" />
+                                    <Run Text="购买" />
+                                </TextBlock>
+                            </Button>
+                        </StackPanel>
+                    </hc:SimplePanel>
+                    <hc:SimplePanel Grid.RowSpan="4">
+                        <Border Background="#AAf0f5ff" CornerRadius="8">
+                            <Border.Effect>
+                                <BlurEffect Radius="10" />
+                            </Border.Effect>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <hc:SimplePanel Width="55" Height="55">
+                                <Border
+                                    Style="{StaticResource BorderCircularClip}"
+                                    Effect="{StaticResource EffectShadow5}"
+                                    Background="#fadb14" />
+                                <TextBlock
+                                    Text="&#xe72b;"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    FontSize="28"
+                                    Style="{StaticResource FIconTextPlusBlockStyle}" />
+                            </hc:SimplePanel>
+                            <Button
+                                Width="120"
+                                Height="33"
+                                Margin="0,20,0,0"
+                                FontSize="16"
+                                Cursor="Hand"
+                                Style="{StaticResource ButtonPrimary}">
+                                <TextBlock>
+                                    <Run Text="&#xe7a9;" FontFamily="/Resources/Fonts/Plus/#iconfont" />
+                                    <Run Text="请求授权" />
+                                </TextBlock>
+                            </Button>
+                        </StackPanel>
+                    </hc:SimplePanel>
+                </Grid>
             </hc:SimplePanel>
         </Grid>
+
+        <!--  授权Dialog  -->
+        <genmUc:DataDialog Grid.Row="1"
+            Title="授权申请"
+            PositiveText="发送"
+            NegativeText="取消">
+            <TextBlock>
+                <Run Text="你将向 " />
+                <Run Text="蔡承龙" Foreground="{StaticResource PrimaryBrush}" />
+                <Run Text=" 发送授权请求" />
+            </TextBlock>
+        </genmUc:DataDialog>
     </hc:SimplePanel>
 </UserControl>

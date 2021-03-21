@@ -48,11 +48,11 @@
                             Background="#FFEFF0F1"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="10, 10, 0, 0">
+                            CornerRadius="3, 3, 0, 0">
                             <Border x:Name="innerBorder"
                                 Margin="0,0,0,-1"
                                 Background="{DynamicResource RegionBrush}"
-                                CornerRadius="10, 10, 0, 0"
+                                CornerRadius="3, 3, 0, 0"
                                 Visibility="Collapsed" />
                         </Border>
                         <Border x:Name="PathMain"

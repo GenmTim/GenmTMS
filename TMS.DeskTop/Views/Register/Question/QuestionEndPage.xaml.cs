@@ -1,6 +1,5 @@
 ﻿using Prism.Commands;
 using Prism.Events;
-using Prism.Regions;
 using System.Windows.Controls;
 using TMS.Core.Event;
 

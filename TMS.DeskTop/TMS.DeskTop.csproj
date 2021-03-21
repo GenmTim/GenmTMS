@@ -8,6 +8,7 @@
   <ItemGroup>
     <None Remove="Resources\Fonts\iconfont.ttf" />
     <None Remove="Resources\Fonts\iconfontplus.ttf" />
+    <None Remove="Resources\Fonts\Plus\Doc\iconfont.ttf" />
     <None Remove="Resources\Fonts\Plus\Menu\iconfontmenu.ttf" />
     <None Remove="Resources\Images\Assets\applogoexample.png" />
     <None Remove="Resources\Images\Assets\apps.png" />
@@ -76,6 +77,7 @@
     <None Remove="Resources\Images\Assets\trash.png" />
     <None Remove="Resources\Images\Assets\video.png" />
     <None Remove="Resources\Images\Assets\zip.png" />
+    <None Remove="Resources\Images\cool-background.png" />
     <None Remove="Resources\Images\designer_and_client_2__dribbble__1.gif" />
     <None Remove="Resources\Images\empty_record.png" />
     <None Remove="Resources\Images\Icon\1 %281%29.png" />
@@ -93,6 +95,12 @@
     <None Remove="Resources\Images\Icon\1 %287%29.png" />
     <None Remove="Resources\Images\Icon\1 %288%29.png" />
     <None Remove="Resources\Images\Icon\1 %289%29.png" />
+    <None Remove="Resources\Images\Icon\FileType\Excel.png" />
+    <None Remove="Resources\Images\Icon\FileType\Exe.png" />
+    <None Remove="Resources\Images\Icon\FileType\Other.png" />
+    <None Remove="Resources\Images\Icon\FileType\PDF.png" />
+    <None Remove="Resources\Images\Icon\FileType\PPT.png" />
+    <None Remove="Resources\Images\Icon\FileType\Word.png" />
     <None Remove="Resources\Images\illustrations\1.png" />
     <None Remove="Resources\Images\illustrations\2.png" />
     <None Remove="Resources\Images\illustrations\3.png" />
@@ -112,9 +120,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Genm\Genm.csproj" />
     <ProjectReference Include="..\TMS.Core\TMS.Core.csproj" />
+    <ProjectReference Include="..\TMS.ImportData\TMS.ImportData.csproj" />
+    <ProjectReference Include="..\TMS.UserControls\TMS.UserControls.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Fonts\iconfont.ttf" />
+    <Resource Include="Resources\Fonts\Plus\Doc\iconfont.ttf" />
     <Resource Include="Resources\Fonts\Plus\iconfontplus.ttf" />
     <Resource Include="Resources\Fonts\Plus\Menu\iconfontmenu.ttf" />
     <Resource Include="Resources\Images\Assets\applogoexample.png" />
@@ -178,6 +189,7 @@
     <Resource Include="Resources\Images\Assets\sms.png" />
     <Resource Include="Resources\Images\Assets\star.png" />
     <Resource Include="Resources\Images\Assets\testprofile.jpg" />
+    <Resource Include="Resources\Images\cool-background.png" />
     <Resource Include="Resources\Images\Icon\1 %2816%29.png" />
     <Resource Include="Resources\Images\Assets\todobw.png" />
     <Resource Include="Resources\Images\Assets\todocolor.png" />
@@ -201,6 +213,12 @@
     <Resource Include="Resources\Images\Icon\1 (7).png" />
     <Resource Include="Resources\Images\Icon\1 (8).png" />
     <Resource Include="Resources\Images\Icon\1 (9).png" />
+    <Resource Include="Resources\Images\Icon\FileType\Excel.png" />
+    <Resource Include="Resources\Images\Icon\FileType\Exe.png" />
+    <Resource Include="Resources\Images\Icon\FileType\Other.png" />
+    <Resource Include="Resources\Images\Icon\FileType\PDF.png" />
+    <Resource Include="Resources\Images\Icon\FileType\PPT.png" />
+    <Resource Include="Resources\Images\Icon\FileType\Word.png" />
     <Resource Include="Resources\Images\illustrations\1.png" />
     <Resource Include="Resources\Images\illustrations\3.png" />
     <Resource Include="Resources\Images\illustrations\2.png" />
@@ -217,8 +235,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\
-             s\Views\NewUserQuestions\BasicInfo\Question1Page.xaml.cs">
+    <Compile Update="UserControls\&#xD;&#xA;             s\Views\NewUserQuestions\BasicInfo\Question1Page.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question1Page.xaml.cs">
@@ -250,6 +267,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\Styles\UserControls\Base\Complex\" />
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="Tools\Converter\" />
     <Folder Include="Session\" />
@@ -289,6 +307,21 @@
     <Page Update="UserControls\Dialogs\Views\NewUserQuestionDialog.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\Auth\AuthMainView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\WorkPlace\Auth\FullInEvaluationView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\WorkPlace\Auth\ManageEvaluationView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\WorkPlace\Auth\NewEvaluationRuleView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\WorkPlace\Auth\ViewEvaluationView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>
 </Project>

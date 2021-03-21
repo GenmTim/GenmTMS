@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using TMS.Core.Data;
-using TMS.DeskTop.Resources.Styles.Views.Recruitment;
 using TMS.DeskTop.Views;
 using TMS.DeskTop.Views.Contacts;
 using TMS.DeskTop.Views.Recruitment.Requirements;
 using TMS.DeskTop.Views.Recruitment.Requirements.Subitem;
 using TMS.DeskTop.Views.WorkPlace;
-using TMS.DeskTop.Views.WorkPlace.Approval;
 using TMS.DeskTop.Views.WorkPlace.Attendance;
-using TMS.DeskTop.Views.WorkPlace.Attendance.Subitem;
+using TMS.DeskTop.Views.WorkPlace.AttendanceData;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
 
 namespace TMS.DeskTop.Tools.Helper
@@ -69,7 +67,7 @@ namespace TMS.DeskTop.Tools.Helper
         private void InitViewTypeMap()
         {
             viewTypeMap = new Dictionary<string, Type>();
-            foreach(Type type in routeMap.Keys)
+            foreach (Type type in routeMap.Keys)
             {
                 viewTypeMap[type.Name] = type;
             }
@@ -121,6 +119,9 @@ namespace TMS.DeskTop.Tools.Helper
             routeMap[typeof(WorkPlaceView)] = "workplace/";
             {
                 routeMap[typeof(WorkPlaceMainView)] = routeMap[typeof(WorkPlaceView)] + "main/";
+                routeMap[typeof(AttendanceDataView)] = routeMap[typeof(WorkPlaceView)] + "attendanceData/";
+                routeMap[typeof(AttendanceDataEntryView)] = routeMap[typeof(WorkPlaceView)] + "attendanceDataEntry/";
+                routeMap[typeof(ApprovalView)] = routeMap[typeof(WorkPlaceView)] + "approval/";
             }
         }
 

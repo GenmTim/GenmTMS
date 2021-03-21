@@ -264,7 +264,7 @@ namespace TMS.DeskTop.UserControls.Views
         }
 
         private void OnIsOpenChanged(bool isOpen)
-         {
+        {
             if (Content == null || DesignerHelper.IsInDesignMode) return;
 
             _window = VisualHelper.GetParent<UserControl>(this);
