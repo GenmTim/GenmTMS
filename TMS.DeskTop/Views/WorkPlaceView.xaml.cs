@@ -1,8 +1,7 @@
 ﻿using Prism.Regions;
-using TMS.Core.Data;
 using TMS.Core.Data.Token;
 using TMS.DeskTop.Tools.Base;
-using TMS.DeskTop.Views.WorkPlace;
+using TMS.DeskTop.UserControls.Common.Views;
 
 namespace TMS.DeskTop.Views
 {
@@ -17,7 +16,7 @@ namespace TMS.DeskTop.Views
         {
             InitializeComponent();
             //this.regionManager = regionManager;
-            RegisterDefaultRegionView(RegionToken.WorkPlaceTabContent, nameof(WorkPlaceMainView));
+            RegisterDefaultRegionView(RegionToken.WorkPlaceTabContent, nameof(EmptyContentView));
         }
     }
 }

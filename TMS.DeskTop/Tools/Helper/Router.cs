@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using TMS.Core.Data;
 using TMS.Core.Data.Token;
+using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.Views;
 using TMS.DeskTop.Views.Contacts;
 using TMS.DeskTop.Views.WorkPlace;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData;
+using TMS.DeskTop.Views.WorkPlace.Auth;
+using TMS.DeskTop.Views.WorkPlace.Auth.Subitem;
+using TMS.DeskTop.Views.WorkPlace.Evaluation;
 
 namespace TMS.DeskTop.Tools.Helper
 {
@@ -74,6 +77,7 @@ namespace TMS.DeskTop.Tools.Helper
         {
             backPageViewRegedit = new Dictionary<Type, BackPageViewInfo>
             {
+                [typeof(NewEvaluationRuleView)] = new BackPageViewInfo { Title = NewEvaluationRuleView.Title, View = typeof(NewEvaluationRuleView) },
             };
         }
 
@@ -84,6 +88,10 @@ namespace TMS.DeskTop.Tools.Helper
                 [typeof(MainWindow)] = RegionToken.MainContent,
                 [typeof(WorkPlaceView)] = RegionToken.WorkPlaceTabContent,
                 [typeof(ContactsView)] = RegionToken.ContactsContent,
+                [typeof(AuthView)] = RegionToken.AuthContent,
+                [typeof(AuthMainView)] = RegionToken.AuthMainContent,
+                [typeof(EvaluationView)] = RegionToken.EvaluationContent,
+                [typeof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
             };
         }
 
@@ -100,6 +108,8 @@ namespace TMS.DeskTop.Tools.Helper
             {
                 routeMap[typeof(OrganizationalStructrureView)] = routeMap[typeof(ContactsView)] + "organizational/";
                 routeMap[typeof(PersonalInfoView)] = routeMap[typeof(ContactsView)] + "personal/";
+                routeMap[typeof(MyGroupView)] = routeMap[typeof(ContactsView)] + "mygroup/";
+                routeMap[typeof(LinkManView)] = routeMap[typeof(ContactsView)] + "linkMan/";
             }
             routeMap[typeof(CloudFileView)] = "cloudfile/";
             routeMap[typeof(SearchView)] = "search/";
@@ -109,8 +119,26 @@ namespace TMS.DeskTop.Tools.Helper
                 routeMap[typeof(WorkPlaceMainView)] = routeMap[typeof(WorkPlaceView)] + "main/";
                 routeMap[typeof(AttendanceDataView)] = routeMap[typeof(WorkPlaceView)] + "attendanceData/";
                 routeMap[typeof(AttendanceDataEntryView)] = routeMap[typeof(WorkPlaceView)] + "attendanceDataEntry/";
-                //routeMap[typeof(ApprovalView)] = routeMap[typeof(WorkPlaceView)] + "approval/";
+                routeMap[typeof(AuthView)] = routeMap[typeof(WorkPlaceView)] + "auth/";
+                {
+                    routeMap[typeof(AuthMainView)] = routeMap[typeof(AuthView)] + "main/";
+                    {
+                        routeMap[typeof(ApplyForView)] = routeMap[typeof(AuthMainView)] + "applyfor/";
+                        routeMap[typeof(AuthorisedView)] = routeMap[typeof(AuthMainView)] + "authorised/";
+                    }
+                }
+                routeMap[typeof(EvaluationView)] = routeMap[typeof(WorkPlaceView)] + "evaluation/";
+                {
+                    routeMap[typeof(EvaluationMainView)] = routeMap[typeof(EvaluationView)] + "main/";
+                    routeMap[typeof(NewEvaluationRuleView)] = routeMap[typeof(EvaluationView)] + "new/";
+                    routeMap[typeof(ViewEvaluationView)] = routeMap[typeof(EvaluationView)] + "view/";
+                    routeMap[typeof(FullInEvaluationView)] = routeMap[typeof(EvaluationView)] + "fullIn/";
+                    routeMap[typeof(ManageEvaluationView)] = routeMap[typeof(EvaluationView)] + "manage/";
+                }
             }
+
+            routeMap[typeof(BackNavigationView)] = nameof(BackNavigationView);
+            routeMap[typeof(EmptyContentView)] = nameof(EmptyContentView);
         }
 
         public string GetRegionName(Type view)

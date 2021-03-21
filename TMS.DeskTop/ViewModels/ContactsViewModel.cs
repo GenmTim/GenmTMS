@@ -1,6 +1,5 @@
 ﻿using Prism.Commands;
 using Prism.Regions;
-using TMS.Core.Data;
 using TMS.Core.Data.Token;
 using TMS.DeskTop.Tools.Helper;
 
@@ -21,10 +20,10 @@ namespace TMS.DeskTop.ViewModels
         public ContactsViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
-            this.NavigationCommand = new DelegateCommand<string>(NavigationPage);
+            this.NavigationCmd = new DelegateCommand<string>(NavigationPage);
         }
 
-        public DelegateCommand<string> NavigationCommand { get; private set; }
+        public DelegateCommand<string> NavigationCmd { get; private set; }
 
         private void NavigationPage(string view)
         {

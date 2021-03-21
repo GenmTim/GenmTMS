@@ -205,7 +205,7 @@
                                     HorizontalAlignment="Center"
                                     FontSize="50"
                                     Foreground="{StaticResource PrimaryBrush}"
-                                    Style="{StaticResource FIconTextBlockStyle}" />
+                                    FontFamily="{StaticResource FIconFontFamily}" />
                                 <TextBlock
                                     Text="将文件拖拽至此区域或选择文件上传"
                                     Margin="0,8,0,0"

@@ -1,0 +1,150 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.WorkPlace.Auth.Subitem.ApplyForView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace.Auth.Subitem"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <hc:SimplePanel>
+        <hc:SimplePanel.Resources>
+            <Style BasedOn="{StaticResource EmptyRadioBtnStyle}" TargetType="RadioButton">
+                <Setter Property="hc:BorderElement.CornerRadius" Value="0,12,12,0" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Height" Value="38" />
+                <Setter Property="Padding" Value="30,0" />
+                <Setter Property="Margin" Value="0,8" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="Background" Value="AliceBlue" />
+                        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                        <Setter Property="FontWeight" Value="SemiBold" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </hc:SimplePanel.Resources>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <hc:SimplePanel>
+                <StackPanel Margin="0,30,0,0">
+                    <RadioButton
+                        IsChecked="True"
+                        Command="{Binding ChangeSubjectCmd}"
+                        CommandParameter="我发起的">
+                        <hc:SimplePanel>
+                            <TextBlock>
+                                <Run Text="&#xe731;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                <Run Text="我发起的" />
+                            </TextBlock>
+                            <!--<TextBlock Text="1" HorizontalAlignment="Right" />-->
+                        </hc:SimplePanel>
+                    </RadioButton>
+                    <!--<RadioButton>
+                        <hc:SimplePanel>
+                            <TextBlock>
+                                <Run Text="&#xe731;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                <Run Text="已授权" />
+                            </TextBlock>
+                    -->
+                    <!--<TextBlock Text="1" HorizontalAlignment="Right" />-->
+                    <!--
+                        </hc:SimplePanel>
+                    </RadioButton>-->
+                </StackPanel>
+                <!--<hc:SimplePanel>
+                                <Border Background="" />
+                                <TextBlock Text="待授权" />
+                            </hc:SimplePanel>-->
+            </hc:SimplePanel>
+            <hc:SimplePanel Grid.Column="1" Margin="20">
+                <Border
+                    Background="White"
+                    CornerRadius="5"
+                    Effect="{StaticResource EffectShadowCom}" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <hc:SimplePanel>
+                        <Border
+                            Width="3"
+                            Height="15"
+                            HorizontalAlignment="Left"
+                            Background="{StaticResource PrimaryBrush}" />
+                        <TextBlock
+                            Text="{Binding Subject}"
+                            Margin="15,0,0,0"
+                            VerticalAlignment="Center"
+                            FontWeight="SemiBold"
+                            FontSize="14" />
+                        <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                    </hc:SimplePanel>
+                    <StackPanel Grid.Row="1">
+                        <!--  标题，谁，内容，操作  -->
+                        <hc:SimplePanel Margin="15">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="55" />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Text="请假"
+                                    FontWeight="SemiBold"
+                                    FontSize="14" />
+                                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                    <hc:Gravatar
+                                        Width="20"
+                                        Height="20"
+                                        Style="{StaticResource GravatarCircleImg}"
+                                        Id="User1" />
+                                    <TextBlock
+                                        Text="蔡承龙"
+                                        Margin="10,0,0,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="14" />
+                                </StackPanel>
+                                <hc:SimplePanel Grid.Row="2">
+                                    <TextBlock Text="请求获取你的人才档案" FontSize="16" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Grid.Row="3">
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
+                                                <Setter Property="FontSize" Value="14" />
+                                                <Setter Property="Cursor" Value="Hand" />
+                                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                                <Setter Property="Width" Value="80" />
+                                                <Setter Property="Margin" Value="20,0,0,0" />
+                                                <Setter Property="Height" Value="30" />
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <Button Content="授权" Background="{StaticResource PrimaryBrush}" />
+                                        <Button
+                                            Content="拒绝"
+                                            Foreground="Black"
+                                            BorderThickness="1" />
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                            </Grid>
+                        </hc:SimplePanel>
+                    </StackPanel>
+
+                </Grid>
+            </hc:SimplePanel>
+        </Grid>
+    </hc:SimplePanel>
+</UserControl>

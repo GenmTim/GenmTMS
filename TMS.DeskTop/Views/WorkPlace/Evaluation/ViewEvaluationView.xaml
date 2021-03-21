@@ -1,0 +1,318 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.WorkPlace.Evaluation.ViewEvaluationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace.Evaluation"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    d:DesignHeight="800"
+    d:DesignWidth="1440"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/Styles/Views/WorkPlace/Evaluation/ViewEvaluationViewStyle.xaml" />
+    </UserControl.Resources>
+    <Grid Grid.Row="1" Background="#FFF8F9FA">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="225" />
+            <ColumnDefinition Width="330" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <hc:SearchBar
+                    Height="35"
+                    Margin="10,0"
+                    hc:BorderElement.CornerRadius="20"
+                    hc:InfoElement.Placeholder="  搜索"
+                    Style="{StaticResource SearchBarPlus}" />
+                <StackPanel Grid.Row="1" Orientation="Vertical">
+                    <RadioButton Style="{StaticResource classifyRadioBtnStyle}">
+                        <RadioButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Text="&#xe6ef;"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="22"
+                                    FontFamily="{StaticResource FIconFontFamily}" />
+                                <TextBlock Grid.Column="1"
+                                    Text="全部"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="15" />
+                            </Grid>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource classifyRadioBtnStyle}">
+                        <RadioButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Text="&#xe631;"
+                                    Margin="0,0,2,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    FontFamily="{StaticResource FIconFontFamily}" />
+                                <TextBlock Grid.Column="1"
+                                    Text="最近一周"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="15" />
+                            </Grid>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource classifyRadioBtnStyle}">
+                        <RadioButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Text="&#xe6ef;"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="22"
+                                    FontFamily="{StaticResource FIconFontFamily}" />
+                                <TextBlock Grid.Column="1"
+                                    Text="我提交的"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="15" />
+                            </Grid>
+                        </RadioButton.Content>
+                    </RadioButton>
+                </StackPanel>
+                <Border Grid.Row="2"
+                    Height="1"
+                    Margin="20,0"
+                    VerticalAlignment="Center"
+                    BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="0,0,0,0.5" />
+                <Border Grid.Row="3"
+                    Margin="0,5,0,0"
+                    BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="0,0,0,1">
+                    <Expander Style="{DynamicResource expanderStyle}">
+                        <Expander.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Text="&#xe608;"
+                                    Margin="0,0,2,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    FontFamily="{StaticResource FIconFontFamily}" />
+                                <TextBlock Grid.Column="1"
+                                    Text="汇报规则"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="14" />
+                            </Grid>
+                        </Expander.Header>
+                        <ListBox Style="{StaticResource classifyListBoxStyle}">
+                            <ListBoxItem>
+                                <Grid Margin="38,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="30" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
+                                        Text="360度绩效评估"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        FontSize="14"
+                                        Foreground="Black" />
+                                    <Label Grid.Column="1"
+                                        Content="已删除"
+                                        Margin="5,0,0,0"
+                                        Padding="5,1"
+                                        HorizontalAlignment="Left"
+                                        hc:BorderElement.CornerRadius="0"
+                                        Background="#FFFEEAD2"
+                                        BorderThickness="0"
+                                        FontSize="12"
+                                        Foreground="#FFE07F0E" />
+                                    <Button Grid.Column="2"
+                                        Content="&#xe643;"
+                                        HorizontalAlignment="Left"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        FontFamily="/Resources/Fonts/#iconfont" />
+                                </Grid>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <Grid Margin="38,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="30" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
+                                        Text="360度绩效评估"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        FontSize="14"
+                                        Foreground="Black" />
+                                    <Label Grid.Column="1"
+                                        Content="已删除"
+                                        Margin="5,0,0,0"
+                                        Padding="5,1"
+                                        HorizontalAlignment="Left"
+                                        hc:BorderElement.CornerRadius="0"
+                                        Background="#FFFEEAD2"
+                                        BorderThickness="0"
+                                        FontSize="12"
+                                        Foreground="#FFE07F0E" />
+                                    <Button Grid.Column="2"
+                                        Content="&#xe643;"
+                                        HorizontalAlignment="Left"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        FontFamily="/Resources/Fonts/#iconfont" />
+                                </Grid>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <Grid Margin="38,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="41" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Text="Test"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="Black" />
+                                        <Label
+                                            Content="已删除"
+                                            Margin="5,0,0,0"
+                                            Padding="5,1"
+                                            HorizontalAlignment="Left"
+                                            hc:BorderElement.CornerRadius="0"
+                                            Background="#FFFEEAD2"
+                                            BorderThickness="0"
+                                            FontSize="12"
+                                            Foreground="#FFE07F0E" />
+                                    </StackPanel>
+                                    <Button Grid.Column="2"
+                                        Content="&#xe643;"
+                                        HorizontalAlignment="Left"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        FontFamily="/Resources/Fonts/#iconfont" />
+                                </Grid>
+                            </ListBoxItem>
+                        </ListBox>
+                    </Expander>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Grid.Column="1"
+            Background="White"
+            BorderBrush="{StaticResource BorderBrush}"
+            BorderThickness="0,0,1,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
+                            <Border
+                                Width="35"
+                                Height="35"
+                                Margin="0,0,6,0"
+                                hc:BorderElement.Circular="True"
+                                Background="#FFFF8800">
+                                <TextBlock
+                                    Text="&#xe610;"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    Foreground="White"
+                                    FontFamily="{StaticResource FIconFontFamily}" />
+                            </Border>
+                            <TextBlock
+                                Text="全部"
+                                VerticalAlignment="Center"
+                                FontSize="16" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                            Margin="0,0,30,0"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                            <TextBlock
+                                Text="&#xe64b;"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontFamily="{StaticResource FIconFontFamily}" />
+                            <TextBlock
+                                Text="未读"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1">
+                    <ListBox
+                        ItemsSource="{Binding EvaluationList}"
+                        Style="{StaticResource evaluationListBoxStyle}"
+                        Visibility="{Binding IsHasEvaluationItem, Converter={StaticResource Boolean2VisibilityConverter}}" />
+                    <TextBlock Grid.Row="1"
+                        Text="&#xe600;"
+                        Margin="0,80,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        FontSize="200"
+                        Foreground="#FFD6DAE1"
+                        FontFamily="{StaticResource FIconFontFamily}"
+                        Visibility="{Binding IsHasEvaluationItem, Converter={StaticResource Boolean2VisibilityReConverter}}" />
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Grid.Column="2" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical">
+                <Image
+                    Width="256"
+                    Height="256"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Source="/Resources/Images/empty_record.png" />
+                <TextBlock
+                    Text="请选择一篇考评"
+                    Margin="0,-50,0,0"
+                    HorizontalAlignment="Center"
+                    FontSize="14"
+                    Foreground="{StaticResource SecondaryTextBrush}" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

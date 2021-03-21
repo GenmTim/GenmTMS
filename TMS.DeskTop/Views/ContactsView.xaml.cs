@@ -1,5 +1,4 @@
 ﻿using Prism.Regions;
-using TMS.Core.Data;
 using TMS.Core.Data.Token;
 using TMS.DeskTop.Tools.Base;
 using TMS.DeskTop.Views.Contacts;

@@ -4,6 +4,7 @@
     xmlns:hc="https://handyorg.github.io/handycontrol">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style
         x:Key="WindowFuncBtnBaseStyle"

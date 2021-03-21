@@ -5,7 +5,7 @@
     <DropShadowEffect
         x:Key="EffectShadowCom"
         BlurRadius="10"
-        ShadowDepth="3"
+        ShadowDepth="1"
         Direction="270"
         Opacity=".1"
         RenderingBias="Performance"

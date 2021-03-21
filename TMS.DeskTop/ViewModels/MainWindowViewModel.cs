@@ -23,11 +23,11 @@ namespace TMS.DeskTop.ViewModels
         {
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;
-            NavigationCommand = new DelegateCommand<string>(NavigationPage);
+            NavigationCmd = new DelegateCommand<string>(NavigationPage);
 
         }
 
-        public DelegateCommand<string> NavigationCommand { get; private set; }
+        public DelegateCommand<string> NavigationCmd { get; private set; }
 
         private void NavigationPage(string viewName)
         {

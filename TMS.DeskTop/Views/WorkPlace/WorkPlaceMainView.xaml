@@ -37,8 +37,8 @@
         Columns="3">
         <StackPanel>
             <Button
-                Command="{Binding NavigationCommand}"
-                CommandParameter="AttendanceDataEntryView"
+                Command="{Binding NavigationCmd}"
+                CommandParameter="AttendanceDataView"
                 Style="{StaticResource entryBtnStyle}"
                 Cursor="Hand">
                 <TextBlock
@@ -57,8 +57,8 @@
         </StackPanel>
         <StackPanel>
             <Button
-                Command="{Binding NavigationCommand}"
-                CommandParameter="ApprovalView"
+                Command="{Binding NavigationCmd}"
+                CommandParameter="EvaluationView"
                 Style="{StaticResource entryBtnStyle}"
                 Cursor="Hand">
                 <TextBlock
@@ -76,7 +76,11 @@
                 FontWeight="SemiBold" />
         </StackPanel>
         <StackPanel>
-            <Button Style="{StaticResource entryBtnStyle}">
+            <Button
+                Command="{Binding NavigationCmd}"
+                CommandParameter="AuthView"
+                Style="{StaticResource entryBtnStyle}"
+                Cursor="Hand">
                 <TextBlock
                     Text="&#xe681;"
                     HorizontalAlignment="Center"

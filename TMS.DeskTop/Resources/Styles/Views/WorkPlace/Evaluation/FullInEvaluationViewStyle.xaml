@@ -43,7 +43,7 @@
                                     VerticalAlignment="Center"
                                     FontSize="30"
                                     Foreground="White"
-                                    Style="{StaticResource FIconTextBlockStyle}" />
+                                    FontFamily="{StaticResource FIconFontFamily}" />
                             </Border>
                             <TextBlock Grid.Row="0" Grid.Column="1"
                                 Text="360度绩效评估"

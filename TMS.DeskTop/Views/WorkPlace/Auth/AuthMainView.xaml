@@ -1,5 +1,5 @@
 ﻿<base:RegionManagerControl
-    x:Class="TMS.DeskTop.Views.WorkPlace.Auth.EvaluationMainView"
+    x:Class="TMS.DeskTop.Views.WorkPlace.Auth.AuthMainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:base="clr-namespace:TMS.DeskTop.Tools.Base"
@@ -7,9 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:hc="https://handyorg.github.io/handycontrol"
-    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
-    xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace"
     prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="840"
     d:DesignWidth="1440"
@@ -18,7 +17,7 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="40" />
                 <RowDefinition />
             </Grid.RowDefinitions>
             <!--#region top nav-->
@@ -29,8 +28,26 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource UnderlineRadioBtnStyle}">
+                                <Setter Property="FontWeight" Value="SemiBold" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="Margin" Value="25,10,0,0" />
+                            </Style>
+                        </StackPanel.Resources>
                         <RadioButton
-                            Command="{Binding NavigationCommand}"
+                            IsChecked="True"
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="AuthorisedView"
+                            hc:TitleElement.Title="我授权的"
+                            attach:ValueAttach.Text="1" />
+                        <RadioButton
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="ApplyForView"
+                            hc:TitleElement.Title="我发起的"
+                            Cursor="Hand" />
+                        <!--<RadioButton
+                            Command="{Binding NavigationCmd}"
                             Style="{StaticResource NavRadioBtnStyle}"
                             Tag="FullIn">
                             <RadioButton.Content>
@@ -39,7 +56,7 @@
                                         Text="&#xe632;"
                                         VerticalAlignment="Center"
                                         FontSize="16"
-                                        Style="{StaticResource FIconTextBlockStyle}" />
+                                        FontFamily="{StaticResource FIconFontFamily}" />
                                     <TextBlock
                                         Text="我授权的"
                                         Margin="5,0,0,0"
@@ -50,7 +67,7 @@
                         </RadioButton>
                         <RadioButton
                             IsChecked="True"
-                            Command="{Binding NavigationCommand}"
+                            Command="{Binding NavigationCmd}"
                             Style="{StaticResource NavRadioBtnStyle}"
                             Tag="View">
                             <RadioButton.Content>
@@ -59,7 +76,7 @@
                                         Text="&#xe633;"
                                         VerticalAlignment="Center"
                                         FontSize="16"
-                                        Style="{StaticResource FIconTextBlockStyle}" />
+                                        FontFamily="{StaticResource FIconFontFamily}" />
                                     <TextBlock
                                         Text="我发起的"
                                         Margin="5,0,0,0"
@@ -67,53 +84,13 @@
                                         FontSize="14" />
                                 </StackPanel>
                             </RadioButton.Content>
-                        </RadioButton>
+                        </RadioButton>-->
                     </StackPanel>
                 </Grid>
             </Border>
             <!--#endregion-->
             <hc:SimplePanel Grid.Row="1">
-                <!--<ContentControl x:Name="evaluationMainContent" Grid.Row="1"
-                    prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.EvaluationMainContent}" />-->
-                <hc:SimplePanel>
-                    <hc:SimplePanel.Resources>
-                        <Style BasedOn="{StaticResource EmptyRadioBtnStyle}" TargetType="RadioButton">
-                            <Setter Property="hc:BorderElement.CornerRadius" Value="0,8,8,0" />
-                            <Setter Property="BorderThickness" Value="0" />
-                            <Style.Triggers>
-                                <Trigger Property="IsChecked" Value="True">
-                                    <Setter Property="Background" Value="AliceBlue" />
-                                    <Setter Property="Padding" Value="20,0" />
-                                    <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
-                                    <Setter Property="FontWeight" Value="SemiBold" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </hc:SimplePanel.Resources>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <hc:SimplePanel>
-                            <StackPanel>
-                                <RadioButton IsChecked="True">
-                                    <TextBlock>
-                                        <Run Text="&#xe731;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                        <Run Text="待审批" />
-                                    </TextBlock>
-                                </RadioButton>
-                                <RadioButton Content="测试" />
-
-
-                            </StackPanel>
-                            <!--<hc:SimplePanel>
-                                <Border Background="" />
-                                <TextBlock Text="待授权" />
-                            </hc:SimplePanel>-->
-                        </hc:SimplePanel>
-                    </Grid>
-                </hc:SimplePanel>
+                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.AuthMainContent}" />
             </hc:SimplePanel>
         </Grid>
     </Grid>

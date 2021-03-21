@@ -54,7 +54,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
         {
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;
-            NavigationCommand = new DelegateCommand<string>(NavigationPage);
+            NavigationCmd = new DelegateCommand<string>(NavigationPage);
 
             appGroupMap["人事管理"] = new ObservableCollection<AppItem>
             {
@@ -97,7 +97,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
             //}
         }
 
-        public DelegateCommand<string> NavigationCommand { get; private set; }
+        public DelegateCommand<string> NavigationCmd { get; private set; }
 
         private void NavigationPage(string obj)
         {

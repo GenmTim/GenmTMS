@@ -100,29 +100,31 @@
                             <RadioButton
                                 Content="个人信息"
                                 IsChecked="True"
-                                Command="{Binding NavigationCommand}"
+                                Command="{Binding NavigationCmd}"
                                 CommandParameter="PersonalInfoView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xe7b8;"
                                 attach:IconFontElement.IconColor="White"
                                 Cursor="Hand" />
                             <RadioButton
-                                Content="外部联系人"
-                                Command="{Binding NavigationCommand}"
+                                Content="联系人"
+                                Command="{Binding NavigationCmd}"
+                                CommandParameter="LinkManView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xe799;"
                                 attach:IconFontElement.IconColor="White"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="组织架构"
-                                Command="{Binding NavigationCommand}"
+                                Command="{Binding NavigationCmd}"
                                 CommandParameter="OrganizationalStructrureView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xe70b;"
                                 attach:IconFontElement.IconColor="White" />
                             <RadioButton
                                 Content="我的群组"
-                                Command="{Binding NavigationCommand}"
+                                Command="{Binding NavigationCmd}"
+                                CommandParameter="MyGroupView"
                                 attach:IconFontElement.Geometry="&#xe78d;"
                                 attach:IconFontElement.IconColor="White"
                                 Cursor="Hand" />

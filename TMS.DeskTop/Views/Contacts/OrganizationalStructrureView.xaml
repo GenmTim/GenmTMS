@@ -341,7 +341,7 @@
                             <RowDefinition Height="40" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />
+                        <!--<Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />-->
                         <TextBlock
                             Text="研发部"
                             Margin="20,0,0,0"
