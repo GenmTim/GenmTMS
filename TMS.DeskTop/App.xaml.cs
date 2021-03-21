@@ -3,14 +3,9 @@ using Prism.Modularity;
 using System.Windows;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
-using TMS.DeskTop.UserControls.Dialogs.ViewModels;
-using TMS.DeskTop.UserControls.Dialogs.Views;
-using TMS.DeskTop.UserControls.Dialogs.Views.NewUserQuestions;
-using TMS.DeskTop.UserControls.Dialogs.Views.NewUserQuestions.BasicInfo;
-using TMS.DeskTop.UserControls.ViewModels;
-using TMS.DeskTop.UserControls.Views;
+using TMS.DeskTop.UserControls.Common.ViewModels;
+using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.Views;
-using TMS.DeskTop.Views.Register;
 
 namespace TMS.DeskTop
 {
@@ -40,7 +35,6 @@ namespace TMS.DeskTop
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<ImportData.ImportDataModule>();
         }
 
         protected override void OnInitialized()
@@ -52,12 +46,12 @@ namespace TMS.DeskTop
             //{
             //    var registerInfoEntry = Container.Resolve<NewUserQuestion>();
             //    result = registerInfoEntry.ShowDialog();
-                if (result.Value)
-                {
-                    base.OnInitialized();
-                }
-                else
-                    Application.Current.Shutdown();
+            if (result.Value)
+            {
+                base.OnInitialized();
+            }
+            else
+                Application.Current.Shutdown();
             //}
         }
     }

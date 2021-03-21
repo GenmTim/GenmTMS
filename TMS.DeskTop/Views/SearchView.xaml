@@ -7,9 +7,9 @@
     xmlns:local="clr-namespace:TMS.DeskTop.Views"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:interactive="http://schemas.microsoft.com/expression/2010/interactions"
-    xmlns:genm="clr-namespace:Genm;assembly=Genm"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
-    xmlns:genmUc="clr-namespace:TMS.UserControls;assembly=TMS.UserControls"
+    xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -142,9 +142,9 @@
                                                             VerticalAlignment="Center"
                                                             Orientation="Horizontal">
                                                             <TextBlock
-                                                                Text="{TemplateBinding uc:IconFontElement.Geometry}"
+                                                                Text="{TemplateBinding attach:IconFontElement.Geometry}"
                                                                 FontSize="14"
-                                                                Style="{StaticResource FIconTextPlusBlockStyle}" />
+                                                                FontFamily="{StaticResource FIconPlusFontFamily}" />
                                                             <ContentPresenter
                                                                 Name="ContentPresenterMain"
                                                                 Margin="6,0,0,0"
@@ -159,7 +159,7 @@
                                     </Setter>
                                 </Style>
                             </StackPanel.Resources>
-                            <Button uc:IconFontElement.Geometry="&#xe738; " Cursor="Hand">
+                            <Button attach:IconFontElement.Geometry="&#xe738; " Cursor="Hand">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="简历" FontWeight="SemiBold" />
                                     <TextBlock Text=" (.pdf)" />
@@ -167,7 +167,7 @@
                             </Button>
                             <Button
                                 Content="链接他（她）"
-                                uc:IconFontElement.Geometry="&#xe70d;"
+                                attach:IconFontElement.Geometry="&#xe70d;"
                                 FontWeight="SemiBold" />
                         </StackPanel>
                     </Grid>
@@ -191,13 +191,10 @@
                                 <Setter Property="Margin" Value="0,0,10,0" />
                                 <Setter Property="BorderThickness" Value="0" />
                             </Style>
-                            <Style
-                                x:Key="fieldBlockStyle"
-                                BasedOn="{StaticResource TitleControlBoxBaseStyle}"
-                                TargetType="{x:Type uc:TitleControlBox}">
+                            <Style x:Key="fieldBlockStyle" TargetType="{x:Type genm:TitleControlBox}">
                                 <Setter Property="Template">
                                     <Setter.Value>
-                                        <ControlTemplate TargetType="uc:TitleControlBox">
+                                        <ControlTemplate TargetType="genm:TitleControlBox">
                                             <Grid Background="{TemplateBinding Background}">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="60" />
@@ -220,7 +217,7 @@
                             </Style>
                             <SolidColorBrush x:Key="ContentTextBrush" Color="#999ba6" />
                         </StackPanel.Resources>
-                        <uc:TitleControlBox
+                        <genm:TitleControlBox
                             Title="评价"
                             Margin="0,0,0,20"
                             Style="{StaticResource fieldBlockStyle}">
@@ -234,8 +231,8 @@
                                     Style="{StaticResource labelStyle}"
                                     Background="#f1eeea" />
                             </StackPanel>
-                        </uc:TitleControlBox>
-                        <uc:TitleControlBox
+                        </genm:TitleControlBox>
+                        <genm:TitleControlBox
                             Title="个人介绍"
                             Margin="0,0,0,20"
                             Style="{StaticResource fieldBlockStyle}"
@@ -245,9 +242,9 @@
                                 TextWrapping="WrapWithOverflow"
                                 FontWeight="Medium"
                                 Foreground="{StaticResource ContentTextBrush}" />
-                        </uc:TitleControlBox>
+                        </genm:TitleControlBox>
                         <hc:SimplePanel Margin="0,0,0,20">
-                            <uc:TitleControlBox
+                            <genm:TitleControlBox
                                 Title="经验"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource fieldBlockStyle}">
@@ -262,8 +259,8 @@
                                         FontWeight="SemiBold"
                                         Foreground="#b4b8c0" />
                                 </StackPanel>
-                            </uc:TitleControlBox>
-                            <uc:TitleControlBox
+                            </genm:TitleControlBox>
+                            <genm:TitleControlBox
                                 Title="技能"
                                 Margin="0,0,20,0"
                                 HorizontalAlignment="Right"
@@ -279,7 +276,7 @@
                                         Style="{StaticResource labelStyle}"
                                         Background="#f1eeea" />
                                 </StackPanel>
-                            </uc:TitleControlBox>
+                            </genm:TitleControlBox>
                         </hc:SimplePanel>
                     </StackPanel>
                     <hc:SimplePanel Grid.Row="3" Height="50">
@@ -341,7 +338,7 @@
                                     VerticalAlignment="Center"
                                     Foreground="White"
                                     FontSize="28"
-                                    Style="{StaticResource FIconTextPlusBlockStyle}" />
+                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
                             </hc:SimplePanel>
                             <Button
                                 Width="120"
@@ -362,7 +359,7 @@
         </Grid>
 
         <!--  授权Dialog  -->
-        <genmUc:DataDialog Grid.Row="1"
+        <genm:DataDialog Grid.Row="1"
             Title="授权申请"
             PositiveText="发送"
             NegativeText="取消">
@@ -371,6 +368,6 @@
                 <Run Text="蔡承龙" Foreground="{StaticResource PrimaryBrush}" />
                 <Run Text=" 发送授权请求" />
             </TextBlock>
-        </genmUc:DataDialog>
+        </genm:DataDialog>
     </hc:SimplePanel>
 </UserControl>

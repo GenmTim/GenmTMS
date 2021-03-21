@@ -1,5 +1,6 @@
 ﻿using Prism.Regions;
 using TMS.Core.Data;
+using TMS.Core.Data.Token;
 using TMS.DeskTop.Tools.Base;
 
 namespace TMS.DeskTop.Views.WorkPlace.Auth
@@ -13,7 +14,7 @@ namespace TMS.DeskTop.Views.WorkPlace.Auth
         public EvaluationMainView(IRegionManager regionManager) : base(regionManager, typeof(EvaluationMainView))
         {
             InitializeComponent();
-            RegisterDefaultRegionView(RegionToken.EvaluationMainContent, nameof(ViewEvaluationView));
+            //RegisterDefaultRegionView(RegionToken.EvaluationMainContent, nameof(ViewEvaluationView));
         }
     }
 }

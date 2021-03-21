@@ -1,0 +1,10 @@
+﻿<RadioButton x:Name="root"
+    x:Class="TMS.DeskTop.UserControls.Common.Views.MenuRadioButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    d:DesignHeight="100"
+    d:DesignWidth="60"
+    mc:Ignorable="d" />

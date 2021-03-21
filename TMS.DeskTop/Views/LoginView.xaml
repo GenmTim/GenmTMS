@@ -27,7 +27,7 @@
     </WindowChrome.WindowChrome>
     <Window.Resources>
         <Style
-            x:Key="MainViewBtnBaseStyle"
+            x:Key="WindowFuncBtnBaseStyle"
             BasedOn="{StaticResource ButtonCustom}"
             TargetType="Button">
             <Setter Property="Foreground" Value="Black" />
@@ -42,24 +42,24 @@
         </Style>
 
         <Style
-            x:Key="MainViewMaxBtnStyle"
-            BasedOn="{StaticResource MainViewBtnBaseStyle}"
+            x:Key="WindowMaxBtnStyle"
+            BasedOn="{StaticResource WindowFuncBtnBaseStyle}"
             TargetType="Button">
             <Setter Property="hc:BackgroundSwitchElement.MouseHoverBackground" Value="#5FC0C0C0" />
             <Setter Property="hc:BackgroundSwitchElement.MouseDownBackground" Value="#5FC0C0C0" />
         </Style>
 
         <Style
-            x:Key="MainViewMinBtnStyle"
-            BasedOn="{StaticResource MainViewBtnBaseStyle}"
+            x:Key="WindowMinBtnStyle"
+            BasedOn="{StaticResource WindowFuncBtnBaseStyle}"
             TargetType="Button">
             <Setter Property="hc:BackgroundSwitchElement.MouseHoverBackground" Value="#5FC0C0C0" />
             <Setter Property="hc:BackgroundSwitchElement.MouseDownBackground" Value="#5FC0C0C0" />
         </Style>
 
         <Style
-            x:Key="MainViewCloseBtnStyle"
-            BasedOn="{StaticResource MainViewBtnBaseStyle}"
+            x:Key="WindowCloseBtnStyle"
+            BasedOn="{StaticResource WindowFuncBtnBaseStyle}"
             TargetType="Button">
             <Setter Property="hc:BackgroundSwitchElement.MouseHoverBackground" Value="#BFFF0000" />
             <Setter Property="hc:BackgroundSwitchElement.MouseDownBackground" Value="#BFFF0000" />
@@ -78,16 +78,16 @@
                 <Button
                     Content="&#xe61c;"
                     Click="btn_min_Click"
-                    Style="{StaticResource MainViewMinBtnStyle}" />
+                    Style="{StaticResource WindowMinBtnStyle}" />
                 <Button
                     Content="&#xe61b;"
                     Click="btn_max_Click"
-                    Style="{StaticResource MainViewMaxBtnStyle}" />
+                    Style="{StaticResource WindowMaxBtnStyle}" />
                 <Button
                     Content="&#xe61a;"
                     hc:BackgroundSwitchElement.MouseDownBackground="Red"
                     Click="btn_close_Click"
-                    Style="{StaticResource MainViewCloseBtnStyle}" />
+                    Style="{StaticResource WindowCloseBtnStyle}" />
             </WrapPanel>
         </hc:SimplePanel>
         <hc:SimplePanel>

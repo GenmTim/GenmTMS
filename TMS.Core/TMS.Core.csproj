@@ -14,7 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Entity\" />
+    <Folder Include="Data\Enums\" />
     <Folder Include="Data\Type\" />
+    <Folder Include="Tools\Helper\" />
   </ItemGroup>
 
 </Project>

@@ -54,7 +54,7 @@
                         Text="&#xe6f1;"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Style="{StaticResource FIconTextPlusBlockStyle}" />
+                        FontFamily="{StaticResource FIconPlusFontFamily}" />
                 </Grid>-->
             </hc:SimplePanel>
             <StackPanel Grid.Row="1" Margin="20,0">
@@ -80,13 +80,13 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             Foreground="#7780af"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource MenuIconFontFamily}" />
                         <TextBlock
                             Text="&#xe638;"
                             Margin="5,0,0,0"
                             VerticalAlignment="Center"
                             Foreground="#aaafcd"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource MenuIconFontFamily}"
                             FontSize="18" />
                         <TextBlock
                             Text="市场分析"
@@ -105,13 +105,13 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             Foreground="#7780af"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource MenuIconFontFamily}" />
                         <TextBlock
                             Text="&#xe638;"
                             Margin="5,0,0,0"
                             VerticalAlignment="Center"
                             Foreground="#aaafcd"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource MenuIconFontFamily}"
                             FontSize="18" />
                         <TextBlock
                             Text="资源"
@@ -130,13 +130,13 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             Foreground="#7780af"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource MenuIconFontFamily}" />
                         <TextBlock
                             Text="&#xe638;"
                             Margin="5,0,0,0"
                             VerticalAlignment="Center"
                             Foreground="#aaafcd"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource MenuIconFontFamily}"
                             FontSize="18" />
                         <TextBlock
                             Text="推销方案"
@@ -155,13 +155,13 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             Foreground="#7780af"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource MenuIconFontFamily}" />
                         <TextBlock
                             Text="&#xe638;"
                             Margin="5,0,0,0"
                             VerticalAlignment="Center"
                             Foreground="#aaafcd"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource MenuIconFontFamily}"
                             FontSize="18" />
                         <TextBlock
                             Text="视频模板"
@@ -180,13 +180,13 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             Foreground="#7780af"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource MenuIconFontFamily}" />
                         <TextBlock
                             Text="&#xe638;"
                             Margin="5,0,0,0"
                             VerticalAlignment="Center"
                             Foreground="#aaafcd"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource MenuIconFontFamily}"
                             FontSize="18" />
                         <TextBlock
                             Text="项目记录"
@@ -205,13 +205,13 @@
                             VerticalAlignment="Center"
                             FontSize="14"
                             Foreground="#7780af"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource MenuIconFontFamily}" />
                         <TextBlock
                             Text="&#xe638;"
                             Margin="5,0,0,0"
                             VerticalAlignment="Center"
                             Foreground="#aaafcd"
-                            Style="{StaticResource MenuIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource MenuIconFontFamily}"
                             FontSize="18" />
                         <TextBlock
                             Text="客户文件"
@@ -236,7 +236,7 @@
                         <TextBlock
                             Text="&#xe7ab;"
                             VerticalAlignment="Center"
-                            Style="{StaticResource FIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource FIconPlusFontFamily}" />
                         <TextBlock
                             Text="分享给我的"
                             Margin="10,0,0,0"
@@ -246,7 +246,7 @@
                         <TextBlock
                             Text="&#xe6fd;"
                             VerticalAlignment="Center"
-                            Style="{StaticResource FIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource FIconPlusFontFamily}" />
                         <TextBlock
                             Text="最近的文件"
                             Margin="10,0,0,0"
@@ -256,7 +256,7 @@
                         <TextBlock
                             Text="&#xe799;"
                             VerticalAlignment="Center"
-                            Style="{StaticResource FIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource FIconPlusFontFamily}" />
                         <TextBlock
                             Text="收藏"
                             Margin="10,0,0,0"
@@ -266,7 +266,7 @@
                         <TextBlock
                             Text="&#xe7ab;"
                             VerticalAlignment="Center"
-                            Style="{StaticResource FIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource FIconPlusFontFamily}" />
                         <TextBlock
                             Text="垃圾桶"
                             Margin="10,0,0,0"
@@ -282,10 +282,8 @@
                     Background="#f0f5ff">
                     <StackPanel Margin="15">
                         <StackPanel.Resources>
-                            <Style
-                                x:Key="iconTextBlockStyle"
-                                BasedOn="{StaticResource FIconTextPlusBlockStyle}"
-                                TargetType="TextBlock">
+                            <Style x:Key="iconTextBlockStyle" TargetType="TextBlock">
+                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
                                 <Setter Property="VerticalAlignment" Value="Center" />
                                 <Setter Property="FontSize" Value="16" />
                                 <Setter Property="Foreground" Value="#2f54eb" />
@@ -297,10 +295,8 @@
                                 <Setter Property="FontSize" Value="12" />
                                 <Setter Property="FontWeight" Value="SemiBold" />
                             </Style>
-                            <Style
-                                x:Key="arrowTextBlockStyle"
-                                BasedOn="{StaticResource FIconTextPlusBlockStyle}"
-                                TargetType="TextBlock">
+                            <Style x:Key="arrowTextBlockStyle" TargetType="TextBlock">
+                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
                                 <Setter Property="Text" Value="&#xe6f3;" />
                                 <Setter Property="HorizontalAlignment" Value="Right" />
                                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -372,7 +368,7 @@
                                                         HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontSize="18"
-                                                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                                                        FontFamily="{StaticResource FIconPlusFontFamily}"
                                                         Foreground="#84c8f8" />
                                                 </Border>
                                             </Grid>

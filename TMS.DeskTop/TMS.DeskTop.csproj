@@ -120,8 +120,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Genm\Genm.csproj" />
     <ProjectReference Include="..\TMS.Core\TMS.Core.csproj" />
-    <ProjectReference Include="..\TMS.ImportData\TMS.ImportData.csproj" />
-    <ProjectReference Include="..\TMS.UserControls\TMS.UserControls.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Fonts\iconfont.ttf" />
@@ -238,27 +236,6 @@
     <Compile Update="UserControls\&#xD;&#xA;             s\Views\NewUserQuestions\BasicInfo\Question1Page.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question1Page.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question2Page.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\QuestionEndPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\QuestionMainPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\WorkExperience\Question1Page.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UserControls\Dialogs\Views\NewUserQuestions\WorkExperience\Question2Page.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UserControls\Dialogs\Views\NewUserQuestionDialog.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
@@ -267,60 +244,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Styles\UserControls\Base\Complex\" />
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="Tools\Converter\" />
-    <Folder Include="Session\" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Resources\Styles\Views\Recruitment\Requirements\ManageRequirementsViewStyle.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\BasicInfo\Question1Page.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question1Page.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\EducationExperience\Question2Page.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\QuestionEndPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\QuestionMainPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\WorkExperience\Question1Page.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UserControls\Dialogs\Views\NewUserQuestions\WorkExperience\Question2Page.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UserControls\Dialogs\Views\NewUserQuestionDialog.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Views\WorkPlace\Auth\AuthMainView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\WorkPlace\Auth\FullInEvaluationView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\WorkPlace\Auth\ManageEvaluationView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\WorkPlace\Auth\NewEvaluationRuleView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\WorkPlace\Auth\ViewEvaluationView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>

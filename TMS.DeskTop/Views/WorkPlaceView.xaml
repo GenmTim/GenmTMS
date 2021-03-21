@@ -7,9 +7,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:hc="https://handyorg.github.io/handycontrol"
-    xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
-    xmlns:page="clr-namespace:TMS.DeskTop.Views.WorkPlace"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     d:DesignHeight="900"
     d:DesignWidth="1440"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -35,7 +35,7 @@
                 <hc:TabControl x:Name="tabControl"
                     Margin="0,10,0,0"
                     Panel.ZIndex="10"
-                    prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.WorkPlaceTabContent}"
+                    prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.WorkPlaceTabContent}"
                     BorderThickness="0"
                     IsAnimationEnabled="True"
                     IsTabFillEnabled="False">
@@ -43,7 +43,7 @@
                         <Style BasedOn="{StaticResource tabItemStyle}" TargetType="{x:Type hc:TabItem}">
                             <Setter Property="Header" Value="{Binding DataContext.ViewInfo.Title}" />
                             <Setter Property="Cursor" Value="Hand" />
-                            <Setter Property="uc:IconFontElement.Geometry" Value="{Binding DataContext.ViewInfo.IconFont}" />
+                            <Setter Property="attach:IconFontElement.Geometry" Value="{Binding DataContext.ViewInfo.IconFont}" />
                             <Style.Triggers>
                                 <Trigger Property="Header" Value="工作台">
                                     <Setter Property="ShowCloseButton" Value="False" />

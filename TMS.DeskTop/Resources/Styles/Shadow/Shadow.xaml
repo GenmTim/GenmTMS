@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <DropShadowEffect
+        x:Key="EffectShadowCom"
+        BlurRadius="10"
+        ShadowDepth="3"
+        Direction="270"
+        Opacity=".1"
+        RenderingBias="Performance"
+        Color="{StaticResource EffectShadowColor}" />
+
+    <!--  单方向阴影  -->
+    <!--<DropShadowEffect
+        x:Key="EffectShadow_Left"
+        BlurRadius="10"
+        ShadowDepth="3"
+        Direction="180"
+        Opacity=".1"
+        RenderingBias="Performance"
+        Color="{StaticResource EffectShadowColor}" />-->
+
+</ResourceDictionary>

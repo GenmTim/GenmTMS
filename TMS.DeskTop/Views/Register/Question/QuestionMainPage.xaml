@@ -86,7 +86,7 @@
                                 VerticalAlignment="Bottom"
                                 FontSize="34"
                                 Foreground="#531dab"
-                                Style="{StaticResource FIconTextPlusBlockStyle}" />
+                                FontFamily="{StaticResource FIconPlusFontFamily}" />
                         </hc:SimplePanel>
                     </Button>
                     <Button
@@ -115,7 +115,7 @@
                                 VerticalAlignment="Bottom"
                                 FontSize="34"
                                 Foreground="#08979c"
-                                Style="{StaticResource FIconTextPlusBlockStyle}" />
+                                FontFamily="{StaticResource FIconPlusFontFamily}" />
                         </hc:SimplePanel>
                     </Button>
                     <Button
@@ -143,7 +143,7 @@
                                 VerticalAlignment="Bottom"
                                 FontSize="34"
                                 Foreground="#1d39c4"
-                                Style="{StaticResource FIconTextPlusBlockStyle}" />
+                                FontFamily="{StaticResource FIconPlusFontFamily}" />
                         </hc:SimplePanel>
                     </Button>
 

@@ -2,11 +2,12 @@
     x:Class="TMS.DeskTop.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
+    xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:popup="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Width="1180"
     Height="720"
@@ -92,21 +93,21 @@
                                                                     BorderThickness="{TemplateBinding BorderThickness}"
                                                                     CornerRadius="10">
                                                                     <TextBlock
-                                                                        Text="{TemplateBinding uc:IconFontElement.Geometry}"
+                                                                        Text="{TemplateBinding attach:IconFontElement.Geometry}"
                                                                         Margin="{TemplateBinding Padding}"
                                                                         HorizontalAlignment="Center"
                                                                         VerticalAlignment="Center"
                                                                         Focusable="False"
                                                                         Foreground="{TemplateBinding Foreground}"
                                                                         FontSize="{TemplateBinding FontSize}"
-                                                                        Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                                                                        FontFamily="{StaticResource MenuIconFontFamily}" />
                                                                 </Border>
                                                                 <hc:Badge x:Name="badge"
                                                                     FontSize="10"
                                                                     BorderThickness="0"
                                                                     BadgeMargin="0,-5,-5,0"
                                                                     Style="{StaticResource BadgeDanger}"
-                                                                    Value="{TemplateBinding uc:ValueAttach.Integer}" />
+                                                                    Value="{TemplateBinding attach:ValueAttach.Integer}" />
                                                             </hc:SimplePanel>
                                                         </hc:SimplePanel>
                                                         <ControlTemplate.Triggers>
@@ -146,8 +147,8 @@
                                         Command="{Binding NavigationCommand}"
                                         CommandParameter="SearchView"
                                         Padding="0,0,0,0"
-                                        uc:ValueAttach.Integer="0"
-                                        uc:IconFontElement.Geometry="&#xe636;"
+                                        attach:ValueAttach.Integer="0"
+                                        attach:IconFontElement.Geometry="&#xe636;"
                                         Cursor="Hand">
                                         <hc:Poptip.Instance>
                                             <hc:Poptip Style="{StaticResource BlockPopTip}">
@@ -162,8 +163,8 @@
                                         Command="{Binding NavigationCommand}"
                                         CommandParameter="NotificationView"
                                         Padding="0,4,0,0"
-                                        uc:ValueAttach.Integer="100"
-                                        uc:IconFontElement.Geometry="&#xe643;"
+                                        attach:ValueAttach.Integer="100"
+                                        attach:IconFontElement.Geometry="&#xe643;"
                                         Cursor="Hand">
                                         <hc:Poptip.Instance>
                                             <hc:Poptip Style="{StaticResource BlockPopTip}">
@@ -176,8 +177,8 @@
                                     <uc:MenuRadioButton
                                         Command="{Binding NavigationCommand}"
                                         CommandParameter="ContactsView"
-                                        uc:ValueAttach.Integer="100"
-                                        uc:IconFontElement.Geometry="&#xe648;"
+                                        attach:ValueAttach.Integer="100"
+                                        attach:IconFontElement.Geometry="&#xe648;"
                                         Cursor="Hand">
                                         <hc:Poptip.Instance>
                                             <hc:Poptip Style="{StaticResource BlockPopTip}">
@@ -190,8 +191,8 @@
                                     <uc:MenuRadioButton
                                         Command="{Binding NavigationCommand}"
                                         CommandParameter="CloudFileView"
-                                        uc:ValueAttach.Integer="100"
-                                        uc:IconFontElement.Geometry="&#xe638;"
+                                        attach:ValueAttach.Integer="100"
+                                        attach:IconFontElement.Geometry="&#xe638;"
                                         Cursor="Hand">
                                         <hc:Poptip.Instance>
                                             <hc:Poptip Style="{StaticResource BlockPopTip}">
@@ -204,8 +205,8 @@
                                     <uc:MenuRadioButton
                                         Command="{Binding NavigationCommand}"
                                         CommandParameter="WorkPlaceView"
-                                        uc:ValueAttach.Integer="100"
-                                        uc:IconFontElement.Geometry="&#xe61d;"
+                                        attach:ValueAttach.Integer="100"
+                                        attach:IconFontElement.Geometry="&#xe61d;"
                                         Cursor="Hand">
                                         <hc:Poptip.Instance>
                                             <hc:Poptip Style="{StaticResource BlockPopTip}">
@@ -283,7 +284,7 @@
                             </Grid>
                             <!--#endregion-->
                         </Grid>
-                        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.MainContent}" />
+                        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.MainContent}" />
                     </DockPanel>
                     <!--<popup:ProfilePopup
                     Margin="70,60,0,0"
@@ -320,16 +321,16 @@
                             <Button
                                 Content="&#xe61c;"
                                 Click="btn_min_Click"
-                                Style="{StaticResource MainViewMinBtnStyle}" />
+                                Style="{StaticResource WindowMinBtnStyle}" />
                             <Button
                                 Content="&#xe61b;"
                                 Click="btn_max_Click"
-                                Style="{StaticResource MainViewMaxBtnStyle}" />
+                                Style="{StaticResource WindowMaxBtnStyle}" />
                             <Button
                                 Content="&#xe61a;"
                                 hc:BackgroundSwitchElement.MouseDownBackground="Red"
                                 Click="btn_close_Click"
-                                Style="{StaticResource MainViewCloseBtnStyle}" />
+                                Style="{StaticResource WindowCloseBtnStyle}" />
                         </WrapPanel>
                     </hc:SimplePanel>
 

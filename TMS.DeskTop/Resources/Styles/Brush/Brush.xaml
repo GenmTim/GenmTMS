@@ -1,0 +1,13 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+    <SolidColorBrush
+        x:Key="TMS_BorderBrush"
+        o:Freeze="True"
+        Color="#10000000" />
+    <SolidColorBrush
+        x:Key="TMS_TransparencyRegionBrush"
+        o:Freeze="True"
+        Color="#01FFFFFF" />
+</ResourceDictionary>

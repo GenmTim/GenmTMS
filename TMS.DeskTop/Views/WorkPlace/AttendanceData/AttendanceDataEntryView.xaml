@@ -5,9 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
-    xmlns:genmUc="clr-namespace:TMS.UserControls;assembly=TMS.UserControls"
-    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace.AttendanceData"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -50,7 +48,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             FontSize="20"
-                            Style="{StaticResource FIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource FIconPlusFontFamily}"
                             Foreground="White" />
                     </hc:SimplePanel>
                     <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
@@ -89,7 +87,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             FontSize="20"
-                            Style="{StaticResource FIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource FIconPlusFontFamily}"
                             Foreground="White" />
                     </hc:SimplePanel>
                     <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
@@ -128,7 +126,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             FontSize="20"
-                            Style="{StaticResource FIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource FIconPlusFontFamily}"
                             Foreground="White" />
                     </hc:SimplePanel>
                     <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
@@ -167,7 +165,7 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             FontSize="20"
-                            Style="{StaticResource FIconTextPlusBlockStyle}"
+                            FontFamily="{StaticResource FIconPlusFontFamily}"
                             Foreground="White" />
                     </hc:SimplePanel>
                     <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">

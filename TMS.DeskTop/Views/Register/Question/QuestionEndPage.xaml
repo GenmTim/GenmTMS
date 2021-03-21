@@ -80,7 +80,7 @@
                         Text="&#xe63f;"
                         FontSize="30"
                         Foreground="{StaticResource PrimaryBrush}"
-                        Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                        FontFamily="{StaticResource MenuIconFontFamily}" />
                     <TextBlock
                         Text="最后一步，添加头像"
                         Margin="0,20,0,0"
@@ -103,7 +103,7 @@
                         VerticalAlignment="Center"
                         Foreground="White"
                         FontSize="30"
-                        Style="{StaticResource FIconTextPlusBlockStyle}" />
+                        FontFamily="{StaticResource FIconPlusFontFamily}" />
                 </Button>
                 <hc:SimplePanel Grid.Row="2">
                     <StackPanel Grid.Row="2" HorizontalAlignment="Center">

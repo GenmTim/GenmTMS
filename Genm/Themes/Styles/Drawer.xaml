@@ -1,0 +1,10 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:genm="clr-namespace:Genm.Controls">
+    <Style x:Key="DrawerBaseStyle" TargetType="genm:Drawer">
+        <Setter Property="Dock" Value="Right" />
+        <Setter Property="MaskBrush" Value="{DynamicResource DarkOpacityBrush}" />
+    </Style>
+    <Style BasedOn="{StaticResource DrawerBaseStyle}" TargetType="genm:Drawer" />
+</ResourceDictionary>

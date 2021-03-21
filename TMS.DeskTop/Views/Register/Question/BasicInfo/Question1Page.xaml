@@ -20,7 +20,7 @@
                     Text="&#xe63e;"
                     Foreground="{StaticResource PrimaryBrush}"
                     FontSize="40"
-                    Style="{StaticResource MenuIconTextPlusBlockStyle}" />
+                    FontFamily="{StaticResource MenuIconFontFamily}" />
                 <Button
                     Command="{Binding NextNavigateCmd}"
                     HorizontalAlignment="Right"

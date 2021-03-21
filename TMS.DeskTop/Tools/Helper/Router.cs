@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using TMS.Core.Data;
+using TMS.Core.Data.Token;
 using TMS.DeskTop.Views;
 using TMS.DeskTop.Views.Contacts;
-using TMS.DeskTop.Views.Recruitment.Requirements;
-using TMS.DeskTop.Views.Recruitment.Requirements.Subitem;
 using TMS.DeskTop.Views.WorkPlace;
-using TMS.DeskTop.Views.WorkPlace.Attendance;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData;
-using TMS.DeskTop.Views.WorkPlace.Evaluation;
 
 namespace TMS.DeskTop.Tools.Helper
 {
@@ -77,9 +74,6 @@ namespace TMS.DeskTop.Tools.Helper
         {
             backPageViewRegedit = new Dictionary<Type, BackPageViewInfo>
             {
-                [typeof(NewEvaluationRuleView)] = new BackPageViewInfo { Title = NewEvaluationRuleView.Title, View = typeof(NewEvaluationRuleView) },
-                [typeof(TalentPoolView)] = new BackPageViewInfo { Title = TalentPoolView.Title, View = typeof(TalentPoolView) },
-                [typeof(NewRequirementView)] = new BackPageViewInfo { Title = NewRequirementView.Title, View = typeof(NewRequirementView) },
             };
         }
 
@@ -89,12 +83,6 @@ namespace TMS.DeskTop.Tools.Helper
             {
                 [typeof(MainWindow)] = RegionToken.MainContent,
                 [typeof(WorkPlaceView)] = RegionToken.WorkPlaceTabContent,
-                [typeof(RecruitmentView)] = RegionToken.RecruitmentContent,
-                [typeof(RequirementsMainView)] = RegionToken.RecruitmentRequirementsMainContent,
-                [typeof(AttendanceView)] = RegionToken.AttendanceContent,
-                [typeof(AttendanceMainView)] = RegionToken.AttendanceMainContent,
-                [typeof(EvaluationView)] = RegionToken.EvaluationContent,
-                [typeof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
                 [typeof(ContactsView)] = RegionToken.ContactsContent,
             };
         }
@@ -121,7 +109,7 @@ namespace TMS.DeskTop.Tools.Helper
                 routeMap[typeof(WorkPlaceMainView)] = routeMap[typeof(WorkPlaceView)] + "main/";
                 routeMap[typeof(AttendanceDataView)] = routeMap[typeof(WorkPlaceView)] + "attendanceData/";
                 routeMap[typeof(AttendanceDataEntryView)] = routeMap[typeof(WorkPlaceView)] + "attendanceDataEntry/";
-                routeMap[typeof(ApprovalView)] = routeMap[typeof(WorkPlaceView)] + "approval/";
+                //routeMap[typeof(ApprovalView)] = routeMap[typeof(WorkPlaceView)] + "approval/";
             }
         }
 

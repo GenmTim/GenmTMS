@@ -7,8 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:hc="https://handyorg.github.io/handycontrol"
-    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Views"
-    xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace"
     prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="840"
@@ -74,10 +74,10 @@
             <!--#endregion-->
             <hc:SimplePanel Grid.Row="1">
                 <!--<ContentControl x:Name="evaluationMainContent" Grid.Row="1"
-                    prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.EvaluationMainContent}" />-->
+                    prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.EvaluationMainContent}" />-->
                 <hc:SimplePanel>
                     <hc:SimplePanel.Resources>
-                        <Style BasedOn="{StaticResource EmptyRadioButtonStyle}" TargetType="RadioButton">
+                        <Style BasedOn="{StaticResource EmptyRadioBtnStyle}" TargetType="RadioButton">
                             <Setter Property="hc:BorderElement.CornerRadius" Value="0,8,8,0" />
                             <Setter Property="BorderThickness" Value="0" />
                             <Style.Triggers>
@@ -99,7 +99,7 @@
                             <StackPanel>
                                 <RadioButton IsChecked="True">
                                     <TextBlock>
-                                        <Run Text="&#xe731;" FontFamily="{StaticResource FIconPlusStyle}" />
+                                        <Run Text="&#xe731;" FontFamily="{StaticResource FIconPlusFontFamily}" />
                                         <Run Text="待审批" />
                                     </TextBlock>
                                 </RadioButton>

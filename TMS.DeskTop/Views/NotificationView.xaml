@@ -7,8 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
-    xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -40,7 +40,7 @@
                                     VerticalAlignment="Center"
                                     Foreground="{TemplateBinding Foreground}"
                                     FontSize="20"
-                                    Style="{StaticResource FIconTextPlusBlockStyle}" />
+                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -145,7 +145,7 @@
                     Width="2"
                     HorizontalAlignment="Center" />-->
                 <hc:SimplePanel Grid.Column="2" Background="#F5F6F8">
-                    <ContentControl prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.ChatRegion}" />
+                    <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.ChatRegion}" />
                 </hc:SimplePanel>
 
                 <hc:SimplePanel Grid.Column="2" Margin="0,20,0,0">

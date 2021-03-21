@@ -1,6 +1,6 @@
 ﻿using Prism.Regions;
 using System;
-using TMS.DeskTop.UserControls.Views;
+using TMS.DeskTop.UserControls.Common.Views;
 
 namespace TMS.DeskTop.Tools.Helper
 {

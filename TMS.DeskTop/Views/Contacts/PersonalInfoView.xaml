@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts.Personal"
     xmlns:hc="https://handyorg.github.io/handycontrol"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"

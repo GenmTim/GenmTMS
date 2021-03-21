@@ -5,9 +5,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts.Personal"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:controls="clr-namespace:FileManagerUI.Custom_Controls"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -29,11 +30,11 @@
             TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black" />
         </Style>
-        <Style TargetType="uc:TitleControlBox">
+        <Style TargetType="genm:TitleControlBox">
             <Setter Property="Margin" Value="0,0,0,20" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="uc:TitleControlBox">
+                    <ControlTemplate TargetType="genm:TitleControlBox">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150" />
@@ -124,7 +125,7 @@
                                 VerticalAlignment="Center"
                                 Foreground="{StaticResource SecondaryTextBrush}"
                                 FontSize="14"
-                                Style="{StaticResource FIconTextPlusBlockStyle}"
+                                FontFamily="{StaticResource FIconPlusFontFamily}"
                                 IsHitTestVisible="False" />
                         </Grid>
                     </ToggleButton>
@@ -185,7 +186,7 @@
                         Text="&#xe786;"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                        FontFamily="{StaticResource FIconPlusFontFamily}"
                         Foreground="{StaticResource DarkWarningBrush}" />
                     <Border Grid.Column="0"
                         BorderThickness="0,0,2,0"
@@ -233,7 +234,7 @@
                                         Text="&#xe7ac;"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                                        FontFamily="{StaticResource FIconPlusFontFamily}"
                                         Foreground="{StaticResource DarkWarningBrush}" />
                                     <Border Grid.Column="0"
                                         BorderThickness="0,0,2,0"
@@ -290,7 +291,7 @@
                                         Text="&#xe71c;"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                                        FontFamily="{StaticResource FIconPlusFontFamily}"
                                         Foreground="{StaticResource DarkWarningBrush}" />
                                     <Border Grid.Column="0"
                                         BorderThickness="0,0,2,0"
@@ -327,7 +328,7 @@
                                         Text="&#xe6f7;"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                                        FontFamily="{StaticResource FIconPlusFontFamily}"
                                         Foreground="{StaticResource DarkWarningBrush}" />
                                     <Border Grid.Column="0"
                                         BorderThickness="0,0,2,0"
@@ -363,7 +364,7 @@
                                         Text="&#xe6fd;"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                                        FontFamily="{StaticResource FIconPlusFontFamily}"
                                         Foreground="{StaticResource DarkWarningBrush}" />
                                     <Border Grid.Column="0"
                                         BorderThickness="0,0,2,0"

@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DialogHost.xaml" />
+        <ResourceDictionary Source="/Resources/Converters/Converter.xaml" />
+        <ResourceDictionary Source="/Resources/Styles/Brush/Brush.xaml" />
+        <ResourceDictionary Source="/Resources/Styles/RadioButton/RadioButton.xaml" />
+        <ResourceDictionary Source="/UserControls/Styles/UserControlsStyle.xaml" />
+        <ResourceDictionary Source="/Resources/Styles/Grid/HollowOutDataGridStyle.xaml" />
+        <ResourceDictionary Source="/Resources/Styles/Button/CommonButtonStyle.xaml" />
+        <ResourceDictionary Source="/Resources/Styles/Shadow/Shadow.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <FontFamily x:Key="FIconFontFamily">/Resources/Fonts/#iconfont</FontFamily>
+    <FontFamily x:Key="FIconPlusFontFamily">/Resources/Fonts/Plus/#iconfont</FontFamily>
+    <FontFamily x:Key="MenuIconFontFamily">/Resources/Fonts/Plus/Menu/#iconfont</FontFamily>
+    <FontFamily x:Key="DocIconFontFamily">/Resources/Fonts/Plus/Doc/#iconfont</FontFamily>
+
+</ResourceDictionary>

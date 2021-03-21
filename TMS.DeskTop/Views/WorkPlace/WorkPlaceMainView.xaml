@@ -3,12 +3,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
+    xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:system="clr-namespace:System;assembly=netstandard"
     d:DesignHeight="1000"
     d:DesignWidth="1160"
@@ -47,7 +47,7 @@
                     VerticalAlignment="Center"
                     Foreground="#722ed1"
                     FontSize="50"
-                    Style="{StaticResource DocTextStyle}" />
+                    FontFamily="{StaticResource DocIconFontFamily}" />
             </Button>
             <TextBlock
                 Text="考勤数据入口"
@@ -67,7 +67,7 @@
                     VerticalAlignment="Center"
                     Foreground="#2f54eb"
                     FontSize="50"
-                    Style="{StaticResource DocTextStyle}" />
+                    FontFamily="{StaticResource DocIconFontFamily}" />
             </Button>
             <TextBlock
                 Text="绩效数据入口"
@@ -83,7 +83,7 @@
                     VerticalAlignment="Center"
                     Foreground="#eb2f96"
                     FontSize="50"
-                    Style="{StaticResource DocTextStyle}" />
+                    FontFamily="{StaticResource DocIconFontFamily}" />
             </Button>
             <TextBlock
                 Text="违纪数据入口"

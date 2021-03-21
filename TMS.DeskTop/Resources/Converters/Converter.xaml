@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:TMS.DeskTop.Resources.Converters">
-    <local:FetchFirstCharConverter x:Key="FetchFirstCharConverter" />
-    <local:LinearGradientConverter x:Key="LinearGradientConverter" />
+    xmlns:converter="clr-namespace:TMS.DeskTop.Resources.Converters">
+    <converter:FetchFirstCharConverter x:Key="FetchFirstCharConverter" />
+    <converter:LinearGradientConverter x:Key="LinearGradientConverter" />
 </ResourceDictionary>

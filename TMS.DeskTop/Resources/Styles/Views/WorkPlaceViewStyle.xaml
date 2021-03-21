@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:hc="https://handyorg.github.io/handycontrol">
     <Style
         x:Key="tabItemCloseBtnStyle"
@@ -63,10 +64,10 @@
                             Background="{StaticResource PrimaryBrush}"
                             CornerRadius="5">
                             <TextBlock
-                                Text="{TemplateBinding uc:IconFontElement.Geometry}"
+                                Text="{TemplateBinding attach:IconFontElement.Geometry}"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Style="{StaticResource FIconTextPlusBlockStyle}"
+                                FontFamily="{StaticResource FIconPlusFontFamily}"
                                 FontSize="14"
                                 Foreground="White" />
                         </Border>
@@ -111,7 +112,7 @@
                             <Setter TargetName="innerBorder" Property="Visibility" Value="Visible" />
                             <Setter TargetName="innerBorder" Property="Background" Value="{DynamicResource RegionBrush}" />
                         </Trigger>
-                        <Trigger Property="uc:IconFontElement.Geometry" Value="{x:Null}">
+                        <Trigger Property="attach:IconFontElement.Geometry" Value="{x:Null}">
                             <Setter TargetName="PathMain" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>

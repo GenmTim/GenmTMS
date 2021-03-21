@@ -30,7 +30,7 @@
                         VerticalAlignment="Center"
                         FontSize="18"
                         Foreground="{TemplateBinding Foreground}"
-                        Style="{StaticResource FIconTextPlusBlockStyle}" />
+                        FontFamily="{StaticResource FIconPlusFontFamily}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

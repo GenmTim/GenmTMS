@@ -5,10 +5,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace"
-    xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
+    xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <ContentControl prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.AuthContent}" />
+    <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.AuthContent}" />
 </UserControl>

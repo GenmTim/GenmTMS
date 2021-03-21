@@ -7,6 +7,7 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
+    xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts"
     prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
@@ -239,7 +240,7 @@
                             Text="&#xe721;"
                             VerticalAlignment="Center"
                             FontSize="18"
-                            Style="{StaticResource FIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource FIconPlusFontFamily}" />
                         <TextBlock
                             Text="组织架构"
                             Margin="10,0,0,0"

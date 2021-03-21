@@ -1,8 +1,8 @@
 ﻿using Prism.Regions;
 using System.Windows.Controls;
 using TMS.Core.Data;
+using TMS.Core.Data.Token;
 using TMS.DeskTop.Tools.Base;
-using TMS.DeskTop.UserControls.Views;
 
 namespace TMS.DeskTop.Views
 {

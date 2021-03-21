@@ -4,10 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:base="clr-namespace:TMS.DeskTop.Tools.Base"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
+    xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:hc="https://handyorg.github.io/handycontrol"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
-    xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     d:DesignHeight="900"
@@ -37,12 +36,12 @@
                                     CornerRadius="5"
                                     Background="#1890ff">
                                     <TextBlock
-                                        Text="{TemplateBinding uc:IconFontElement.Geometry}"
+                                        Text="{TemplateBinding attach:IconFontElement.Geometry}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                                        FontFamily="{StaticResource FIconPlusFontFamily}"
                                         FontSize="16"
-                                        Foreground="{TemplateBinding uc:IconFontElement.IconColor}" />
+                                        Foreground="{TemplateBinding attach:IconFontElement.IconColor}" />
                                 </Border>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <ContentPresenter
@@ -104,34 +103,34 @@
                                 Command="{Binding NavigationCommand}"
                                 CommandParameter="PersonalInfoView"
                                 Margin="0,0,0,20"
-                                uc:IconFontElement.Geometry="&#xe7b8;"
-                                uc:IconFontElement.IconColor="White"
+                                attach:IconFontElement.Geometry="&#xe7b8;"
+                                attach:IconFontElement.IconColor="White"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="外部联系人"
                                 Command="{Binding NavigationCommand}"
                                 Margin="0,0,0,20"
-                                uc:IconFontElement.Geometry="&#xe799;"
-                                uc:IconFontElement.IconColor="White"
+                                attach:IconFontElement.Geometry="&#xe799;"
+                                attach:IconFontElement.IconColor="White"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="组织架构"
                                 Command="{Binding NavigationCommand}"
                                 CommandParameter="OrganizationalStructrureView"
                                 Margin="0,0,0,20"
-                                uc:IconFontElement.Geometry="&#xe70b;"
-                                uc:IconFontElement.IconColor="White" />
+                                attach:IconFontElement.Geometry="&#xe70b;"
+                                attach:IconFontElement.IconColor="White" />
                             <RadioButton
                                 Content="我的群组"
                                 Command="{Binding NavigationCommand}"
-                                uc:IconFontElement.Geometry="&#xe78d;"
-                                uc:IconFontElement.IconColor="White"
+                                attach:IconFontElement.Geometry="&#xe78d;"
+                                attach:IconFontElement.IconColor="White"
                                 Cursor="Hand" />
                         </StackPanel>
                     </hc:SimplePanel>
                 </Grid>
                 <hc:SimplePanel Grid.Column="1">
-                    <ContentControl prism:RegionManager.RegionName="{x:Static Member=data:RegionToken.ContactsContent}" />
+                    <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.ContactsContent}" />
                 </hc:SimplePanel>
             </Grid>
         </Border>

@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Views"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     Width="250"
     d:DesignHeight="470"
@@ -66,7 +66,7 @@
                             VerticalAlignment="Center"
                             Foreground="#bbbfc4"
                             FontSize="16"
-                            Style="{StaticResource FIconTextPlusBlockStyle}" />
+                            FontFamily="{StaticResource FIconPlusFontFamily}" />
                         <hc:TextBox Grid.Column="1"
                             Margin="-5,0,10,0"
                             VerticalAlignment="Center"
@@ -98,7 +98,7 @@
                                                             Text="&#xe780; "
                                                             Margin="20,0,0,0"
                                                             VerticalAlignment="Center"
-                                                            Style="{StaticResource FIconTextPlusBlockStyle}" />-->
+                                                            FontFamily="{StaticResource FIconPlusFontFamily}" />-->
                                                         <ContentPresenter
                                                             Margin="20,0,0,0"
                                                             HorizontalAlignment="Left"
@@ -116,7 +116,7 @@
                                                         HorizontalAlignment="Right"
                                                         VerticalAlignment="Center"
                                                         FontSize="16"
-                                                        Style="{StaticResource FIconTextPlusBlockStyle}"
+                                                        FontFamily="{StaticResource FIconPlusFontFamily}"
                                                         Foreground="#797e87" />
                                                 </hc:SimplePanel>
                                             </hc:SimplePanel>

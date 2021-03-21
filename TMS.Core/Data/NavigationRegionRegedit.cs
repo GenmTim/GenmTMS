@@ -1,3 +1,0 @@
-﻿namespace TMS.Core.Data
-{
-}
