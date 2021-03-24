@@ -4,13 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:TMS.DeskTop.Views"
-    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:interactive="http://schemas.microsoft.com/expression/2010/interactions"
     xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
-    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -341,6 +339,7 @@
                                     FontFamily="{StaticResource FIconPlusFontFamily}" />
                             </hc:SimplePanel>
                             <Button
+                                Command="{Binding GoAuthCmd}"
                                 Width="120"
                                 Height="33"
                                 Margin="0,20,0,0"

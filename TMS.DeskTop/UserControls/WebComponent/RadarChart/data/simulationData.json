@@ -1,0 +1,18 @@
+{
+  "size": [
+    500,
+    400
+  ],
+  "step": 1,
+  "title": "数据标题 Title",
+  "values": {
+    "JavaScript": 4.1,
+    "Node.js": 3.5,
+    "WPF": 4.3,
+    "PHP": 3,
+    "C++": 2.5,
+    "Problem Solving": 3.5,
+    "DHTML": 3.5
+  },
+  "showAxisLabels": true
+}

@@ -157,7 +157,7 @@
                 <hc:SimplePanel Grid.Column="1"
                     Width="240"
                     Margin="20">
-                    <uc:HalfRoundProgress
+                    <uc:RoundProgress
                         Width="240"
                         Height="127.5"
                         Rate="100" />

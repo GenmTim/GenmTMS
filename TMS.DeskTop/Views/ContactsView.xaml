@@ -34,13 +34,13 @@
                                     Width="33"
                                     Height="33"
                                     CornerRadius="5"
-                                    Background="#1890ff">
+                                    Background="Transparent">
                                     <TextBlock
                                         Text="{TemplateBinding attach:IconFontElement.Geometry}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        FontFamily="{StaticResource FIconPlusFontFamily}"
-                                        FontSize="16"
+                                        FontFamily="{StaticResource SurfaceIconFontFamily}"
+                                        FontSize="18"
                                         Foreground="{TemplateBinding attach:IconFontElement.IconColor}" />
                                 </Border>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
@@ -88,7 +88,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock
-                        Text="通讯"
+                        Text="信息"
                         Margin="20,0,0,0"
                         VerticalAlignment="Center"
                         FontSize="16" />
@@ -103,30 +103,54 @@
                                 Command="{Binding NavigationCmd}"
                                 CommandParameter="PersonalInfoView"
                                 Margin="0,0,0,20"
-                                attach:IconFontElement.Geometry="&#xe7b8;"
-                                attach:IconFontElement.IconColor="White"
+                                attach:IconFontElement.Geometry="&#xeeca;"
+                                attach:IconFontElement.IconColor="#34bdef"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="联系人"
                                 Command="{Binding NavigationCmd}"
                                 CommandParameter="LinkManView"
                                 Margin="0,0,0,20"
-                                attach:IconFontElement.Geometry="&#xe799;"
-                                attach:IconFontElement.IconColor="White"
+                                attach:IconFontElement.Geometry="&#xee9e;"
+                                attach:IconFontElement.IconColor="#34bdef"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="组织架构"
                                 Command="{Binding NavigationCmd}"
                                 CommandParameter="OrganizationalStructrureView"
                                 Margin="0,0,0,20"
-                                attach:IconFontElement.Geometry="&#xe70b;"
-                                attach:IconFontElement.IconColor="White" />
+                                attach:IconFontElement.Geometry="&#xeea7;"
+                                attach:IconFontElement.IconColor="#34bdef" />
                             <RadioButton
                                 Content="我的群组"
                                 Command="{Binding NavigationCmd}"
                                 CommandParameter="MyGroupView"
-                                attach:IconFontElement.Geometry="&#xe78d;"
-                                attach:IconFontElement.IconColor="White"
+                                Margin="0,0,0,20"
+                                attach:IconFontElement.Geometry="&#xee95;"
+                                attach:IconFontElement.IconColor="#34bdef"
+                                Cursor="Hand" />
+                            <RadioButton
+                                Content="我的钱包"
+                                Command="{Binding NavigationCmd}"
+                                CommandParameter="MyWalletView"
+                                Margin="0,0,0,20"
+                                attach:IconFontElement.Geometry="&#xee8a;"
+                                attach:IconFontElement.IconColor="#ffba27"
+                                Cursor="Hand" />
+                            <RadioButton
+                                Content="我的收藏"
+                                Command="{Binding NavigationCmd}"
+                                CommandParameter="MyFavoriteView"
+                                Margin="0,0,0,20"
+                                attach:IconFontElement.Geometry="&#xee99;"
+                                attach:IconFontElement.IconColor="#ff577c"
+                                Cursor="Hand" />
+                            <RadioButton
+                                Content="我的客服"
+                                Command="{Binding NavigationCmd}"
+                                CommandParameter="CustomerServiceView"
+                                attach:IconFontElement.Geometry="&#xeeb4;"
+                                attach:IconFontElement.IconColor="#25bfeb"
                                 Cursor="Hand" />
                         </StackPanel>
                     </hc:SimplePanel>

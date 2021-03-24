@@ -5,14 +5,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:TMS_UI_Design"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     Title="MainWindow"
-    Width="450"
-    Height="450"
+    Width="500"
+    Height="500"
     mc:Ignorable="d">
-    <DockPanel FocusManager.FocusedElement="{Binding ElementName=content}">
-        <RadioButton x:Name="content" Content="测试" />
-        <RadioButton Content="测试" />
-        <RadioButton Content="测试" />
-        <RadioButton Content="测试" />
-    </DockPanel>
+    <Grid
+        Width="500"
+        Height="500"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <uc:HalfRoundProgress
+            VerticalAlignment="Center"
+            StrokeThickness="15"
+            Rate="59"
+            IsHalf="True"
+            Size="240" />
+    </Grid>
+
 </Window>

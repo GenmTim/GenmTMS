@@ -20,5 +20,6 @@
     <FontFamily x:Key="FIconPlusFontFamily">/Resources/Fonts/Plus/#iconfont</FontFamily>
     <FontFamily x:Key="MenuIconFontFamily">/Resources/Fonts/Plus/Menu/#iconfont</FontFamily>
     <FontFamily x:Key="DocIconFontFamily">/Resources/Fonts/Plus/Doc/#iconfont</FontFamily>
+    <FontFamily x:Key="SurfaceIconFontFamily">/Resources/Fonts/Plus/Surface/#iconfont</FontFamily>
 
 </ResourceDictionary>

@@ -16,6 +16,9 @@ namespace TMS.DeskTop.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        private double windowWidth = 1224;
+        public double WindowWidth { get => windowWidth; set { SetProperty(ref windowWidth, value);  } }
+
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
 

@@ -16,9 +16,9 @@
     </UserControl.Resources>
     <Grid Grid.Row="1" Background="#FFF8F9FA">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="225" />
-            <ColumnDefinition Width="330" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="235" />
+            <ColumnDefinition Width="1.8*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
             <Grid>
@@ -197,27 +197,26 @@
                             <ListBoxItem>
                                 <Grid Margin="38,0,0,0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="41" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="30" />
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock
-                                            Text="Test"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Center"
-                                            FontSize="14"
-                                            Foreground="Black" />
-                                        <Label
-                                            Content="已删除"
-                                            Margin="5,0,0,0"
-                                            Padding="5,1"
-                                            HorizontalAlignment="Left"
-                                            hc:BorderElement.CornerRadius="0"
-                                            Background="#FFFEEAD2"
-                                            BorderThickness="0"
-                                            FontSize="12"
-                                            Foreground="#FFE07F0E" />
-                                    </StackPanel>
+                                    <TextBlock Grid.Column="0"
+                                        Text="360度绩效评估"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        FontSize="14"
+                                        Foreground="Black" />
+                                    <Label Grid.Column="1"
+                                        Content="已删除"
+                                        Margin="5,0,0,0"
+                                        Padding="5,1"
+                                        HorizontalAlignment="Left"
+                                        hc:BorderElement.CornerRadius="0"
+                                        Background="#FFFEEAD2"
+                                        BorderThickness="0"
+                                        FontSize="12"
+                                        Foreground="#FFE07F0E" />
                                     <Button Grid.Column="2"
                                         Content="&#xe643;"
                                         HorizontalAlignment="Left"

@@ -208,6 +208,7 @@
                                             <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
                                                 <Setter Property="FontSize" Value="12" />
                                                 <Setter Property="Margin" Value="0,0,10,0" />
+                                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
                                             </Style>
                                         </StackPanel.Resources>
                                         <Button Content="&#xe718;" />
@@ -219,7 +220,7 @@
                         </hc:SimplePanel>
 
                         <!--  文件块  -->
-                        <hc:SimplePanel Grid.Row="1"
+                        <!--<hc:SimplePanel Grid.Row="1"
                             Width="250"
                             Height="100">
                             <Border
@@ -265,7 +266,7 @@
                                     </StackPanel>
                                 </hc:SimplePanel>
                             </Grid>
-                        </hc:SimplePanel>
+                        </hc:SimplePanel>-->
 
 
 

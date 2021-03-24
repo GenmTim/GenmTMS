@@ -46,12 +46,12 @@ namespace TMS.DeskTop
             //{
             //    var registerInfoEntry = Container.Resolve<NewUserQuestion>();
             //    result = registerInfoEntry.ShowDialog();
-            if (result.Value)
-            {
+            //    if (result.Value)
+            //{
                 base.OnInitialized();
-            }
-            else
-                Application.Current.Shutdown();
+            //}
+            //else
+            //    Application.Current.Shutdown();
             //}
         }
     }

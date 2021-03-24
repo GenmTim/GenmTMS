@@ -1,12 +1,13 @@
 ﻿using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Controls;
 using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.Tools.Base
 {
-    public class RegionManagerControl : UserControl
+    public class RegionManagerControl : UserControl, INavigationAware
     {
         protected IRegionManager regionManager;
         private Dictionary<string, Type> regionsDefaultView;
@@ -54,6 +55,7 @@ namespace TMS.DeskTop.Tools.Base
             {
                 foreach (KeyValuePair<string, Type> kvp in regionsDefaultView)
                 {
+                    if (regionManager.Regions[kvp.Key].Views.Any()) continue;
                     RegionHelper.RequestNavigate(regionManager, regionName: kvp.Key, view: kvp.Value);
                 }
             }

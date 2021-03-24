@@ -1,4 +1,4 @@
-﻿namespace TMS.DeskTop.Session
+﻿namespace TMS.DeskTop.Cache
 {
     public class Session
     {

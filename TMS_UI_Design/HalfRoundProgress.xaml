@@ -1,40 +1,35 @@
 ﻿<UserControl x:Name="_halfRoundProgress"
-    x:Class="TMS_UI_Design.HalfRoundProgress"
+    x:Class="TMS.DeskTop.UserControls.Common.Views.HalfRoundProgress"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:TMS_UI_Design"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     d:DesignWidth="240"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <local:HalfValueConverter x:Key="HalfValueConverter" />
+        <uc:HalfValueConverter x:Key="HalfValueConverter" />
     </UserControl.Resources>
-    <StackPanel x:Name="container" Height="127.5">
-        <Grid x:Name="innerContainer">
-            <Rectangle x:Name="chasiss"
-                Width="{Binding ElementName=_halfRoundProgress, Path=Width}"
-                Height="{Binding ElementName=_halfRoundProgress, Path=Width}"
+    <hc:SimplePanel x:Name="container">
+        <Canvas x:Name="canvas">
+            <!--<Rectangle x:Name="chasiss"
+                Width="{Binding ElementName=_halfRoundProgress, Path=Size}"
+                Height="{Binding ElementName=_halfRoundProgress, Path=Size}"
                 Stroke="#eff0f1"
                 StrokeThickness="15"
                 StrokeDashCap="Round"
                 RadiusX="120"
                 RadiusY="120" />
             <Rectangle x:Name="progressBar"
-                Width="{Binding ElementName=_halfRoundProgress, Path=Width}"
-                Height="{Binding ElementName=_halfRoundProgress, Path=Width}"
+                Width="{Binding ElementName=_halfRoundProgress, Path=Size}"
+                Height="{Binding ElementName=_halfRoundProgress, Path=Size}"
                 Stroke="#3370ff"
                 StrokeDashArray="0, 1000"
                 RadiusX="{Binding ElementName=_halfRoundProgress, Path=Width, Converter={StaticResource HalfValueConverter}}"
                 RadiusY="{Binding ElementName=_halfRoundProgress, Path=Width, Converter={StaticResource HalfValueConverter}}"
                 StrokeThickness="15"
-                StrokeDashCap="Round" />
-            <TextBox x:Name="txt"
-                Width="50"
-                Height="30"
-                TextChanged="txt_TextChanged"
-                FontSize="22"
-                TextAlignment="Center" />
-        </Grid>
-    </StackPanel>
+                StrokeDashCap="Round" />-->
+        </Canvas>
+    </hc:SimplePanel>
 </UserControl>

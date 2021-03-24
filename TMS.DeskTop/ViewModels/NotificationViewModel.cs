@@ -11,11 +11,13 @@ namespace TMS.DeskTop.ViewModels
 
         public NotificationViewModel()
         {
-            testList = new List<NotificationItemEntity>();
-            testList.Add(new NotificationItemEntity("img1", "登录操作通知", "SuperGame团队", "1月24日"));
-            testList.Add(new NotificationItemEntity("img2", "文件夹共享提醒", "云文档助手", "1月21日"));
-            testList.Add(new NotificationItemEntity("image3", "写汇报提醒", "汇报", "14:13"));
-            testList.Add(new NotificationItemEntity("image4", "消息惺惺惜惺惺", "SuperGame", "10:34"));
+            testList = new List<NotificationItemEntity>
+            {
+                new NotificationItemEntity("img1", "登录操作通知", "SuperGame团队", "1月24日"),
+                new NotificationItemEntity("img2", "文件夹共享提醒", "云文档助手", "1月21日"),
+                new NotificationItemEntity("image3", "写汇报提醒", "汇报", "14:13"),
+                new NotificationItemEntity("image4", "消息惺惺惜惺惺", "SuperGame", "10:34")
+            };
         }
     }
 }

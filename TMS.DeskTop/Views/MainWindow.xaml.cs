@@ -1,9 +1,12 @@
-﻿using Prism.Regions;
+﻿using Prism.Events;
+using Prism.Regions;
 using System;
 using System.Windows;
 using System.Windows.Input;
 using TMS.Core.Data.Token;
+using TMS.Core.Event;
 using TMS.DeskTop.Tools.Helper;
+using TMS.DeskTop.Views.PersonalFile;
 
 namespace TMS.DeskTop.Views
 {
@@ -13,14 +16,30 @@ namespace TMS.DeskTop.Views
     public partial class MainWindow : Window
     {
 
-        private IRegionManager regionManager;
+        private readonly IRegionManager regionManager;
+        private readonly IEventAggregator eventAggregator;
         private static int i = 0;
 
-        public MainWindow(IRegionManager regionManager)
+        public MainWindow(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             InitializeComponent();
             this.regionManager = regionManager;
+            this.eventAggregator = eventAggregator;
+            InitSubscribeEvent();
             RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.MainContent, typeof(NotificationView));
+        }
+
+        private void InitSubscribeEvent()
+        {
+            eventAggregator.GetEvent<SashEvent>().Subscribe((data) => 
+            {
+                RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.SashRegion, typeof(PersonalFileView));
+                drawer.IsOpen = true;
+            });
+            //eventAggregator.GetEvent<CloseSashEvent>().Subscribe(() =>
+            //{
+            //    drawer.IsOpen = false;
+            //});
         }
 
         /// <summary>

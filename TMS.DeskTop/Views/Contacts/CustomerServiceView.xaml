@@ -1,0 +1,104 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.Contacts.CustomerServiceView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <hc:SimplePanel>
+        <Grid Margin="0,30,0,0">
+            <StackPanel
+                Width="800"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <TextBlock
+                    Text="请问需要什么帮助吗？"
+                    FontSize="20"
+                    FontWeight="SemiBold" />
+                <hc:SearchBar
+                    Height="40"
+                    Margin="0,20,0,0"
+                    hc:InfoElement.Placeholder="请输入关键词"
+                    FontSize="14"
+                    Style="{StaticResource SearchBarExtend}" />
+                <hc:SimplePanel Margin="0,20,0,0">
+                    <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="1" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />
+                        <StackPanel Margin="30,0,0,0" Orientation="Horizontal">
+                            <RadioButton hc:TitleElement.Title="热门问题" Style="{StaticResource UnderlineRadioBtnStyle}" />
+                            <RadioButton
+                                Margin="20,0,0,0"
+                                hc:TitleElement.Title="最近更新"
+                                Style="{StaticResource UnderlineRadioBtnStyle}" />
+                        </StackPanel>
+                        <hc:SimplePanel Grid.Row="1">
+                            <UniformGrid Columns="1">
+                                <UniformGrid.Resources>
+                                    <Style x:Key="contentTextStyle" TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="20,0,0,0" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="FontSize" Value="14" />
+                                    </Style>
+                                    <Style
+                                        x:Key="jumpBtnStyle"
+                                        BasedOn="{StaticResource TextBtnStyle}"
+                                        TargetType="Button">
+                                        <Setter Property="Margin" Value="0,0,20,0" />
+                                        <Setter Property="HorizontalAlignment" Value="Right" />
+                                        <Setter Property="FontSize" Value="14" />
+                                        <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                    </Style>
+                                </UniformGrid.Resources>
+                                <hc:SimplePanel Height="50">
+                                    <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
+                                    <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Height="50">
+                                    <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
+                                    <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Height="50">
+                                    <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
+                                    <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Height="50">
+                                    <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
+                                    <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Height="50">
+                                    <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
+                                    <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Height="50">
+                                    <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
+                                    <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Height="50">
+                                    <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
+                                    <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
+                                </hc:SimplePanel>
+                            </UniformGrid>
+                        </hc:SimplePanel>
+                    </Grid>
+                </hc:SimplePanel>
+                <Button
+                    Content="在线客服"
+                    Margin="0,20,20,20"
+                    HorizontalAlignment="Right"
+                    Cursor="Hand"
+                    FontSize="14"
+                    Style="{StaticResource ButtonPrimary}" />
+            </StackPanel>
+        </Grid>
+
+    </hc:SimplePanel>
+</UserControl>

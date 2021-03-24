@@ -33,5 +33,7 @@
         public static readonly string AuthMainContent = nameof(AuthMainContent);
 
         public static readonly string ChatRegion = nameof(ChatRegion);
+
+        public static readonly string SashRegion = nameof(SashRegion);
     }
 }

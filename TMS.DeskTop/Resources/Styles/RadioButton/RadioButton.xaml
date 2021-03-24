@@ -9,8 +9,7 @@
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="TextRadioBtnStyle" TargetType="RadioButton">
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Padding" Value="0,8" />
-        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Height" Value="48" />
         <Setter Property="Foreground" Value="Black" />
@@ -34,12 +33,12 @@
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Foreground" Value="#63BCFB" />
-                            <Setter Property="BorderThickness" Value="0,0,0,1" />
-                        </Trigger>
+
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Foreground" Value="#63BCFB" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -102,7 +101,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                            <hc:SimplePanel Margin="0,0">
+                            <hc:SimplePanel Margin="{TemplateBinding Padding}">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock
                                         Text="{TemplateBinding hc:TitleElement.Title}"

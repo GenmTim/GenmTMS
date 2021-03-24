@@ -4,6 +4,7 @@ using TMS.Core.Data.Token;
 using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.Views;
 using TMS.DeskTop.Views.Contacts;
+using TMS.DeskTop.Views.PersonalFile;
 using TMS.DeskTop.Views.WorkPlace;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData;
 using TMS.DeskTop.Views.WorkPlace.Auth;
@@ -108,8 +109,11 @@ namespace TMS.DeskTop.Tools.Helper
             {
                 routeMap[typeof(OrganizationalStructrureView)] = routeMap[typeof(ContactsView)] + "organizational/";
                 routeMap[typeof(PersonalInfoView)] = routeMap[typeof(ContactsView)] + "personal/";
-                routeMap[typeof(MyGroupView)] = routeMap[typeof(ContactsView)] + "mygroup/";
+                routeMap[typeof(MyGroupView)] = routeMap[typeof(ContactsView)] + "myGroup/";
                 routeMap[typeof(LinkManView)] = routeMap[typeof(ContactsView)] + "linkMan/";
+                routeMap[typeof(MyWalletView)] = routeMap[typeof(ContactsView)] + "myWallet/";
+                routeMap[typeof(CustomerServiceView)] = routeMap[typeof(ContactsView)] + "customer_service/";
+                routeMap[typeof(MyFavoriteView)] = routeMap[typeof(ContactsView)] + "myFavorite/";
             }
             routeMap[typeof(CloudFileView)] = "cloudfile/";
             routeMap[typeof(SearchView)] = "search/";
@@ -136,6 +140,8 @@ namespace TMS.DeskTop.Tools.Helper
                     routeMap[typeof(ManageEvaluationView)] = routeMap[typeof(EvaluationView)] + "manage/";
                 }
             }
+
+            routeMap[typeof(PersonalFileView)] = nameof(PersonalFileView);
 
             routeMap[typeof(BackNavigationView)] = nameof(BackNavigationView);
             routeMap[typeof(EmptyContentView)] = nameof(EmptyContentView);

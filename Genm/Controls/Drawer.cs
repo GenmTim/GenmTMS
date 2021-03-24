@@ -26,6 +26,8 @@ namespace Genm.Controls
 
         private TranslateTransform _translateTransform;
 
+
+        
         private double _animationLength;
 
         private string _animationPropertyName;
@@ -310,6 +312,12 @@ namespace Genm.Controls
                 var drawerAnimation = AnimationHelper.CreateAnimation(0);
                 Storyboard.SetTarget(drawerAnimation, _animationControl);
                 Storyboard.SetTargetProperty(drawerAnimation, new PropertyPath(_animationPropertyName));
+
+                var fadeAnimation = AnimationHelper.CreateAnimation(1);
+                Storyboard.SetTarget(fadeAnimation, _animationControl);
+                Storyboard.SetTargetProperty(fadeAnimation, new PropertyPath(OpacityProperty.Name));
+
+                _storyboard.Children.Add(fadeAnimation);
                 _storyboard.Children.Add(drawerAnimation);
                 _layer.Remove(_container);
                 _layer.Add(_container);
@@ -327,6 +335,12 @@ namespace Genm.Controls
                 var drawerAnimation = AnimationHelper.CreateAnimation(_animationLength);
                 Storyboard.SetTarget(drawerAnimation, _animationControl);
                 Storyboard.SetTargetProperty(drawerAnimation, new PropertyPath(_animationPropertyName));
+
+                var fadeAnimation = AnimationHelper.CreateAnimation(0);
+                Storyboard.SetTarget(fadeAnimation, _animationControl);
+                Storyboard.SetTargetProperty(fadeAnimation, new PropertyPath(OpacityProperty.Name));
+
+                _storyboard.Children.Add(fadeAnimation);
                 _storyboard.Children.Add(drawerAnimation);
             }
             _storyboard.Begin();

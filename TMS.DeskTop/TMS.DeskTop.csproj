@@ -4,12 +4,14 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>TMS.DeskTop</AssemblyName>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\iconfont.ttf" />
     <None Remove="Resources\Fonts\iconfontplus.ttf" />
     <None Remove="Resources\Fonts\Plus\Doc\iconfont.ttf" />
     <None Remove="Resources\Fonts\Plus\Menu\iconfontmenu.ttf" />
+    <None Remove="Resources\Fonts\Plus\Surface\iconfont.ttf" />
     <None Remove="Resources\Images\Assets\applogoexample.png" />
     <None Remove="Resources\Images\Assets\apps.png" />
     <None Remove="Resources\Images\Assets\bell.png" />
@@ -111,9 +113,12 @@
     <None Remove="Resources\Images\illustrations\test3.png" />
     <None Remove="Resources\Images\ngc6960.jpg" />
     <None Remove="Resources\Images\office.png" />
+    <None Remove="Resources\Images\target.jpg" />
+    <None Remove="Resources\Images\wallet.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="HandyControl" Version="3.0.0" />
+    <PackageReference Include="CefSharp.Wpf" Version="88.2.90" />
+    <PackageReference Include="HandyControl" Version="3.1.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
     <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
@@ -127,6 +132,7 @@
     <Resource Include="Resources\Fonts\Plus\Doc\iconfont.ttf" />
     <Resource Include="Resources\Fonts\Plus\iconfontplus.ttf" />
     <Resource Include="Resources\Fonts\Plus\Menu\iconfontmenu.ttf" />
+    <Resource Include="Resources\Fonts\Plus\Surface\iconfont.ttf" />
     <Resource Include="Resources\Images\Assets\applogoexample.png" />
     <Resource Include="Resources\Images\Assets\apps.png" />
     <Resource Include="Resources\Images\Assets\bell.png" />
@@ -228,6 +234,8 @@
     <Resource Include="Resources\Images\illustrations\test3.png" />
     <Resource Include="Resources\Images\ngc6960.jpg" />
     <Resource Include="Resources\Images\office.png" />
+    <Resource Include="Resources\Images\target.jpg" />
+    <Resource Include="Resources\Images\wallet.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -236,6 +244,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Update="UserControls\&#xD;&#xA;             s\Views\NewUserQuestions\BasicInfo\Question1Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Common\Views\RoundProgress.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -248,13 +259,30 @@
   <ItemGroup>
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="Tools\Converter\" />
+    <Folder Include="UserControls\WebComponent\" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Resources\Styles\Views\Recruitment\Requirements\ManageRequirementsViewStyle.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+    <Page Update="UserControls\Common\Views\RoundProgress.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\WorkPlace\Auth\AuthMainView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Update="CefSharp">
+      <Private>true</Private>
+    </Reference>
+    <Reference Update="CefSharp.Core">
+      <Private>true</Private>
+    </Reference>
+    <Reference Update="CefSharp.WPF">
+      <Private>true</Private>
+    </Reference>
   </ItemGroup>
 </Project>

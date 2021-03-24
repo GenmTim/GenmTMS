@@ -1,0 +1,52 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.Contacts.MyWalletView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel VerticalAlignment="Center">
+        <StackPanel>
+            <TextBlock
+                Text="总余额"
+                HorizontalAlignment="Center"
+                Foreground="{StaticResource SecondaryTextBrush}" />
+            <Image
+                Width="140"
+                Margin="0,10,0,0"
+                Source="/Resources/Images/wallet.png"
+                RenderOptions.BitmapScalingMode="HighQuality" />
+            <TextBlock
+                Text="20"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Foreground="{StaticResource PrimaryBrush}"
+                FontSize="40"
+                FontWeight="SemiBold" />
+        </StackPanel>
+        <!--<hc:SimplePanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+             </Grid>
+
+
+        </hc:SimplePanel>-->
+        <Button
+            Content="立即获取"
+            Command="{Binding NavigationCmd}"
+            CommandParameter="ApplyForView"
+            Width="300"
+            Height="50"
+            Margin="0,20,0,0"
+            Style="{StaticResource ButtonPrimary}"
+            Cursor="Hand"
+            FontSize="14" />
+    </StackPanel>
+</UserControl>

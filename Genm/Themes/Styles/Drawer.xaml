@@ -7,4 +7,10 @@
         <Setter Property="MaskBrush" Value="{DynamicResource DarkOpacityBrush}" />
     </Style>
     <Style BasedOn="{StaticResource DrawerBaseStyle}" TargetType="genm:Drawer" />
+
+    <Style x:Key="WindowDrawerBaseStyle" TargetType="genm:WindowDrawer">
+        <Setter Property="Dock" Value="Right" />
+        <Setter Property="MaskBrush" Value="{DynamicResource DarkOpacityBrush}" />
+    </Style>
+    <Style BasedOn="{StaticResource WindowDrawerBaseStyle}" TargetType="genm:WindowDrawer" />
 </ResourceDictionary>
