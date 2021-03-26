@@ -9,6 +9,52 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="ToggleBtnBaseStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="starBtnStyle"
+            BasedOn="{StaticResource ButtonCustom}"
+            TargetType="Button">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Content" Value="&#xe640;" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Foreground" Value="#ffcc76" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontFamily" Value="{StaticResource MenuIconFontFamily}" />
+        </Style>
+    </UserControl.Resources>
     <hc:SimplePanel>
         <Grid Margin="0,20,0,0">
             <Grid.RowDefinitions>
@@ -29,13 +75,261 @@
                         GroupName="classify"
                         Style="{StaticResource TextRadioBtnStyle}" />
                 </hc:SimplePanel>
-                <hc:SimplePanel Width="100">
-                    <RadioButton
-                        Content="链接"
-                        GroupName="classify"
-                        Style="{StaticResource TextRadioBtnStyle}" />
-                </hc:SimplePanel>
             </StackPanel>
+            <hc:SimplePanel Grid.Row="1" Margin="20,10,20,10">
+                <StackPanel Orientation="Vertical">
+                    <hc:SimplePanel Height="50" Margin="0,20,0,0">
+                        <hc:SimplePanel.Style>
+                            <Style TargetType="hc:SimplePanel">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Effect" Value="{StaticResource EffectShadowCom}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </hc:SimplePanel.Style>
+                        <Border
+                            CornerRadius="3"
+                            BorderThickness="1"
+                            Background="White"
+                            BorderBrush="{StaticResource BorderBrush}" />
+                        <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
+                            <Label
+                                Content="BLOG"
+                                Margin="10,0"
+                                Padding="3,0"
+                                Foreground="{StaticResource SecondaryTextBrush}" />
+                            <TextBlock
+                                Text="WPF自定自定义带尖括号和阴影的POP UP框"
+                                VerticalAlignment="Center"
+                                FontSize="14">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource starBtnStyle}" />
+                    </hc:SimplePanel>
+                    <hc:SimplePanel Height="50" Margin="0,20,0,0">
+                        <hc:SimplePanel.Style>
+                            <Style TargetType="hc:SimplePanel">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Effect" Value="{StaticResource EffectShadowCom}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </hc:SimplePanel.Style>
+                        <Border
+                            CornerRadius="3"
+                            BorderThickness="1"
+                            Background="White"
+                            BorderBrush="{StaticResource BorderBrush}" />
+                        <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
+                            <Label
+                                Content="BLOG"
+                                Margin="10,0"
+                                Padding="3,0"
+                                Foreground="{StaticResource SecondaryTextBrush}" />
+                            <TextBlock
+                                Text="WPF自定自定义带尖括号和阴影的POP UP框"
+                                VerticalAlignment="Center"
+                                FontSize="14">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource starBtnStyle}" />
+                    </hc:SimplePanel>
+                    <hc:SimplePanel Margin="0,20,0,0">
+                        <hc:UniformSpacingPanel Spacing="34">
+                            <hc:SimplePanel Width="200" Height="200">
+                                <Border
+                                    CornerRadius="5"
+                                    Background="White"
+                                    Effect="{StaticResource EffectShadowCom}" />
+                                <Button
+                                    Margin="0,5,10,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Style="{StaticResource starBtnStyle}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <hc:Gravatar Style="{StaticResource GravatarCircleImg}" Id="User1" />
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <StackPanel HorizontalAlignment="Center">
+                                            <TextBlock
+                                                Text="蔡承龙"
+                                                HorizontalAlignment="Center"
+                                                FontSize="18"
+                                                FontWeight="SemiBold" />
+                                            <hc:UniformSpacingPanel
+                                                Margin="0,20,0,0"
+                                                Spacing="20"
+                                                Orientation="Horizontal">
+                                                <hc:UniformSpacingPanel.Resources>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
+                                                        <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                    </Style>
+                                                </hc:UniformSpacingPanel.Resources>
+                                                <Button Content="&#xe6d0;" />
+                                                <Button Content="&#xe6df;" />
+                                                <Button Content="&#xe6ee;" />
+                                            </hc:UniformSpacingPanel>
+                                        </StackPanel>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Width="200" Height="200">
+                                <Border
+                                    CornerRadius="5"
+                                    Background="White"
+                                    Effect="{StaticResource EffectShadowCom}" />
+                                <Button
+                                    Margin="0,5,10,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Style="{StaticResource starBtnStyle}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <hc:Gravatar Style="{StaticResource GravatarCircleImg}" Id="User1" />
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <StackPanel HorizontalAlignment="Center">
+                                            <TextBlock
+                                                Text="蔡承龙"
+                                                HorizontalAlignment="Center"
+                                                FontSize="18"
+                                                FontWeight="SemiBold" />
+                                            <hc:UniformSpacingPanel
+                                                Margin="0,20,0,0"
+                                                Spacing="20"
+                                                Orientation="Horizontal">
+                                                <hc:UniformSpacingPanel.Resources>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
+                                                        <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                    </Style>
+                                                </hc:UniformSpacingPanel.Resources>
+                                                <Button Content="&#xe6d0;" />
+                                                <Button Content="&#xe6df;" />
+                                                <Button Content="&#xe6ee;" />
+                                            </hc:UniformSpacingPanel>
+                                        </StackPanel>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Width="200" Height="200">
+                                <Border
+                                    CornerRadius="5"
+                                    Background="White"
+                                    Effect="{StaticResource EffectShadowCom}" />
+                                <Button
+                                    Margin="0,5,10,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Style="{StaticResource starBtnStyle}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <hc:Gravatar Style="{StaticResource GravatarCircleImg}" Id="User1" />
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <StackPanel HorizontalAlignment="Center">
+                                            <TextBlock
+                                                Text="蔡承龙"
+                                                HorizontalAlignment="Center"
+                                                FontSize="18"
+                                                FontWeight="SemiBold" />
+                                            <hc:UniformSpacingPanel
+                                                Margin="0,20,0,0"
+                                                Spacing="20"
+                                                Orientation="Horizontal">
+                                                <hc:UniformSpacingPanel.Resources>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
+                                                        <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                    </Style>
+                                                </hc:UniformSpacingPanel.Resources>
+                                                <Button Content="&#xe6d0;" />
+                                                <Button Content="&#xe6df;" />
+                                                <Button Content="&#xe6ee;" />
+                                            </hc:UniformSpacingPanel>
+                                        </StackPanel>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Width="200" Height="200">
+                                <Border
+                                    CornerRadius="5"
+                                    Background="White"
+                                    Effect="{StaticResource EffectShadowCom}" />
+                                <Button
+                                    Margin="0,5,10,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Style="{StaticResource starBtnStyle}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <hc:Gravatar Style="{StaticResource GravatarCircleImg}" Id="User1" />
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <StackPanel HorizontalAlignment="Center">
+                                            <TextBlock
+                                                Text="蔡承龙"
+                                                HorizontalAlignment="Center"
+                                                FontSize="18"
+                                                FontWeight="SemiBold" />
+                                            <hc:UniformSpacingPanel
+                                                Margin="0,20,0,0"
+                                                Spacing="20"
+                                                Orientation="Horizontal">
+                                                <hc:UniformSpacingPanel.Resources>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
+                                                        <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                    </Style>
+                                                </hc:UniformSpacingPanel.Resources>
+                                                <Button Content="&#xe6d0;" />
+                                                <Button Content="&#xe6df;" />
+                                                <Button Content="&#xe6ee;" />
+                                            </hc:UniformSpacingPanel>
+                                        </StackPanel>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </hc:SimplePanel>
+                        </hc:UniformSpacingPanel>
+                    </hc:SimplePanel>
+                </StackPanel>
+            </hc:SimplePanel>
         </Grid>
     </hc:SimplePanel>
 </UserControl>

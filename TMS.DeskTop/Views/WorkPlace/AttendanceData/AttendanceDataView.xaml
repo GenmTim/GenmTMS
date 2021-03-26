@@ -123,7 +123,7 @@
         </Style>
     </UserControl.Resources>
     <DockPanel>
-        <hc:SimplePanel Height="40" DockPanel.Dock="Top">
+        <hc:SimplePanel DockPanel.Dock="Top">
             <Border
                 Background="White"
                 BorderBrush="{StaticResource TMS_BorderBrush}"
@@ -169,7 +169,7 @@
                     <RowDefinition Height="100" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <hc:StepBar Width="1000" StepIndex="{Binding StepIndex}">
+                <hc:StepBar StepIndex="{Binding StepIndex}">
                     <hc:StepBarItem Content="上传考勤数据" />
                     <hc:StepBarItem Content="核对数据" />
                     <hc:StepBarItem Content="设置并发布" />

@@ -35,5 +35,7 @@
         public static readonly string ChatRegion = nameof(ChatRegion);
 
         public static readonly string SashRegion = nameof(SashRegion);
+
+        public static readonly string PersonalFileDetailRegion = nameof(PersonalFileDetailRegion);
     }
 }

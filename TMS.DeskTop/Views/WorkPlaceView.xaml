@@ -96,7 +96,7 @@
                                         FontSize="12" />
                                 </StackPanel>
                             </Button>
-                            <Button CommandParameter="AttendanceDataEntryView" Cursor="Hand">
+                            <Button CommandParameter="AttendanceDataView" Cursor="Hand">
                                 <StackPanel>
                                     <hc:Gravatar
                                         Width="40"
