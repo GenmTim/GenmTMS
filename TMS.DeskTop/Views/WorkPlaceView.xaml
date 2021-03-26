@@ -8,8 +8,10 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
     xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
     d:DesignHeight="900"
     d:DesignWidth="1440"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -19,6 +21,28 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/Views/WorkPlaceViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="appItemTemplate">
+                <hc:SimplePanel HorizontalAlignment="Stretch">
+                    <Button
+                        Command="{Binding Command}"
+                        CommandParameter="{Binding Url}"
+                        Cursor="Hand"
+                        Style="{StaticResource ButtonCustom}">
+                        <StackPanel>
+                            <hc:Gravatar
+                                Width="40"
+                                Height="40"
+                                Id="{Binding Url}"
+                                Style="{StaticResource GravatarCircleImg}" />
+                            <TextBlock
+                                Text="{Binding Name}"
+                                Margin="0,8,0,0"
+                                HorizontalAlignment="Center"
+                                FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                </hc:SimplePanel>
+            </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
     <Border Background="Transparent">
@@ -56,160 +80,26 @@
                                     Style="{StaticResource TextBtnStyle}" />
                             </StackPanel>
                         </hc:SimplePanel>
-                        <UniformGrid Grid.Row="1"
-                            Margin="0,20,0,0"
-                            VerticalAlignment="Top"
-                            Columns="4">
-                            <UniformGrid.Resources>
-                                <Style BasedOn="{StaticResource ButtonCustom}" TargetType="Button">
-                                    <Setter Property="Cursor" Value="Hand" />
-                                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                                    <Setter Property="Margin" Value="0,0,0,15" />
-                                    <Setter Property="Command" Value="{Binding NavigationCmd}" />
-                                </Style>
-                            </UniformGrid.Resources>
-                            <Button CommandParameter="AuthView">
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="User1"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="考勤数据"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button CommandParameter="EvaluationView" Cursor="Hand">
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="Usbr1"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="绩效数据"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button CommandParameter="AttendanceDataView" Cursor="Hand">
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="rser1"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="违纪数据"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="U5er1"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="调查问卷"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="Use31"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="日报"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="Us7r1"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="日报"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="Use61"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="日报"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="Us5r1"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="日报"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="Us2r1"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="日报"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <StackPanel>
-                                    <hc:Gravatar
-                                        Width="40"
-                                        Height="40"
-                                        Id="User3"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                    <TextBlock
-                                        Text="日报"
-                                        Margin="0,8,0,0"
-                                        HorizontalAlignment="Center"
-                                        FontSize="12" />
-                                </StackPanel>
-                            </Button>
-                        </UniformGrid>
-                        <hc:SimplePanel Grid.Row="2" Margin="0,5,0,0">
+                        <hc:SimplePanel Grid.Row="1" VerticalAlignment="Top">
+                            <ListView
+                                Margin="0,20,0,0"
+                                Style="{StaticResource ListBoxCustom}"
+                                ItemsSource="{Binding OftenUseAppList}"
+                                ItemTemplate="{StaticResource appItemTemplate}"
+                                BorderThickness="0">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <hc:UniformSpacingPanel
+                                            VerticalAlignment="Top"
+                                            ItemWidth="50"
+                                            Spacing="12"
+                                            ItemHeight="80"
+                                            ChildWrapping="Wrap" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                        </hc:SimplePanel>
+                        <hc:SimplePanel Grid.Row="2" Margin="0,30,0,0">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -236,169 +126,55 @@
                                         IsInertiaEnabled="True">
                                         <StackPanel Orientation="Horizontal">
                                             <StackPanel.Resources>
-                                                <Style BasedOn="{StaticResource UnderlineRadioBtnStyle}" TargetType="RadioButton">
+                                                <Style
+                                                    x:Key="classifyRadioBtnStyle"
+                                                    BasedOn="{StaticResource UnderlineRadioBtnStyle}"
+                                                    TargetType="RadioButton">
                                                     <Setter Property="Margin" Value="0,0,20,0" />
+                                                    <Setter Property="Cursor" Value="Hand" />
                                                 </Style>
                                             </StackPanel.Resources>
-                                            <RadioButton hc:TitleElement.Title="数据油站" />
-                                            <RadioButton hc:TitleElement.Title="终极时刻" />
-                                            <RadioButton hc:TitleElement.Title="心灵驿站" />
+                                            <ListView
+                                                BorderThickness="0"
+                                                ItemsSource="{Binding ClassifyItemList}"
+                                                Style="{StaticResource ListBoxCustom}">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <RadioButton
+                                                            Command="{Binding Command}"
+                                                            CommandParameter="{Binding Name}"
+                                                            hc:TitleElement.Title="{Binding Name}"
+                                                            GroupName="classify"
+                                                            Style="{StaticResource classifyRadioBtnStyle}" />
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                                <ListView.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ListView.ItemsPanel>
+                                            </ListView>
                                         </StackPanel>
                                     </hc:ScrollViewer>
                                 </hc:SimplePanel>
                                 <hc:SimplePanel Grid.Row="2">
-                                    <UniformGrid
+                                    <ListView
                                         Margin="0,20,0,0"
-                                        VerticalAlignment="Top"
-                                        Columns="4">
-                                        <UniformGrid.Resources>
-                                            <Style BasedOn="{StaticResource ButtonCustom}" TargetType="Button">
-                                                <Setter Property="Cursor" Value="Hand" />
-                                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                                                <Setter Property="Margin" Value="0,0,0,15" />
-                                            </Style>
-                                        </UniformGrid.Resources>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="User1"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="Usbr1"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="rser1"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="U5er1"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="Use31"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="Us7r1"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="Use61"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="Us5r1"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="Us2r1"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                        <Button>
-                                            <StackPanel>
-                                                <hc:Gravatar
-                                                    Width="40"
-                                                    Height="40"
-                                                    Id="User3"
-                                                    Style="{StaticResource GravatarCircleImg}" />
-                                                <TextBlock
-                                                    Text="日报"
-                                                    Margin="0,8,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="12" />
-                                            </StackPanel>
-                                        </Button>
-                                    </UniformGrid>
+                                        Style="{StaticResource ListBoxCustom}"
+                                        ItemsSource="{Binding ViewAppList}"
+                                        ItemTemplate="{StaticResource appItemTemplate}"
+                                        BorderThickness="0">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <hc:UniformSpacingPanel
+                                                    VerticalAlignment="Top"
+                                                    ItemWidth="50"
+                                                    Spacing="12"
+                                                    ItemHeight="80"
+                                                    ChildWrapping="Wrap" />
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                    </ListView>
                                 </hc:SimplePanel>
                             </Grid>
                         </hc:SimplePanel>
@@ -423,31 +199,6 @@
                             <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.WorkPlaceTabContent}" />
                         </hc:SimplePanel>
                     </Grid>
-                    <!--<hc:Interaction.Triggers>
-                        <hc:RoutedEventTrigger RoutedEvent="hc:TabItem.Closed">
-                            <hc:EventToCommand Command="{Binding TabClosedCommand}" PassEventArgsToCommand="True" />
-                        </hc:RoutedEventTrigger>
-                    </hc:Interaction.Triggers>
-                    <hc:TabControl x:Name="tabControl"
-                        Margin="0,10,0,0"
-                        Panel.ZIndex="10"
-                        prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.WorkPlaceTabContent}"
-                        BorderThickness="0"
-                        IsAnimationEnabled="True"
-                        IsTabFillEnabled="False">
-                        <hc:TabControl.Resources>
-                            <Style BasedOn="{StaticResource tabItemStyle}" TargetType="{x:Type hc:TabItem}">
-                                <Setter Property="Header" Value="{Binding DataContext.ViewInfo.Title}" />
-                                <Setter Property="Cursor" Value="Hand" />
-                                <Setter Property="attach:IconFontElement.Geometry" Value="{Binding DataContext.ViewInfo.IconFont}" />
-                                <Style.Triggers>
-                                    <Trigger Property="Header" Value="工作台">
-                                        <Setter Property="ShowCloseButton" Value="False" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </hc:TabControl.Resources>
-                    </hc:TabControl>-->
                 </hc:SimplePanel>
 
             </Grid>

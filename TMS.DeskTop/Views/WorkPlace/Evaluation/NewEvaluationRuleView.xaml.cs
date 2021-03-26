@@ -16,6 +16,5 @@ namespace TMS.DeskTop.Views.WorkPlace.Evaluation
         {
             InitializeComponent();
         }
-
     }
 }

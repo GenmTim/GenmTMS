@@ -7,6 +7,7 @@ using TMS.DeskTop.Views.Contacts;
 using TMS.DeskTop.Views.PersonalFile;
 using TMS.DeskTop.Views.WorkPlace;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData;
+using TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering;
 using TMS.DeskTop.Views.WorkPlace.Auth;
 using TMS.DeskTop.Views.WorkPlace.Auth.Subitem;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
@@ -121,8 +122,11 @@ namespace TMS.DeskTop.Tools.Helper
             routeMap[typeof(WorkPlaceView)] = "workplace/";
             {
                 routeMap[typeof(WorkPlaceMainView)] = routeMap[typeof(WorkPlaceView)] + "main/";
-                routeMap[typeof(AttendanceDataView)] = routeMap[typeof(WorkPlaceView)] + "attendanceData/";
-                routeMap[typeof(AttendanceDataEntryView)] = routeMap[typeof(WorkPlaceView)] + "attendanceDataEntry/";
+                routeMap[typeof(AttendanceDataEnteringView)] = routeMap[typeof(WorkPlaceView)] + "attendanceDataEntering/";
+                {
+                    routeMap[typeof(CheckDataView)] = routeMap[typeof(AttendanceDataEnteringView)] + "checkData/";
+                    routeMap[typeof(EnteringDataView)] = routeMap[typeof(AttendanceDataEnteringView)] + "enteringData/";
+                }
                 routeMap[typeof(AuthView)] = routeMap[typeof(WorkPlaceView)] + "auth/";
                 {
                     routeMap[typeof(AuthMainView)] = routeMap[typeof(AuthView)] + "main/";

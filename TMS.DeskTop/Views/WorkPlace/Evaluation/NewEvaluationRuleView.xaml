@@ -8,7 +8,6 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
-    d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
@@ -135,13 +134,13 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Border
-        Width="725"
-        Background="{StaticResource RegionBrush}"
-        CornerRadius="10"
-        Effect="{StaticResource EffectShadow1}"
-        Focusable="True"
-        UseLayoutRounding="True">
+    <hc:SimplePanel>
+
+        <Border
+            Background="{StaticResource RegionBrush}"
+            CornerRadius="10"
+            Effect="{StaticResource EffectShadow1}"
+            Focusable="True" />
         <StackPanel Margin="20,0,20,20" Orientation="Vertical">
             <Grid Margin="0,25,0,0">
                 <Grid.RowDefinitions>
@@ -165,7 +164,7 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
-                                Text="汇报名称"
+                                Text="名称"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource titleTextBlockStyle}" />
                             <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
@@ -175,7 +174,7 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
-                                Text="汇报图标"
+                                Text="图标"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource titleTextBlockStyle}" />
                             <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
@@ -193,16 +192,6 @@
                                 Content="&#xe61d;"
                                 Background="#FF7F3BF5"
                                 Style="{StaticResource tmsIconRadioButtonStyle}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="时区"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource titleTextBlockStyle}" />
-                                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
-                            </StackPanel>
-                            <hc:TextBox Style="{StaticResource tmsTextBoxStyle}" />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -366,14 +355,23 @@
                 <StackPanel Grid.Row="1"
                     Margin="10,0"
                     Orientation="Vertical">
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel.Resources>
+                        <DataTemplate x:Key="fieldListTemplate">
+                            <uc:FieldTypeCheckBox Margin="0,20,0,0" />
+                        </DataTemplate>
+                    </StackPanel.Resources>
+                    <ItemsControl ItemTemplate="{StaticResource fieldListTemplate}" ItemsSource="{Binding FieldDataList}" />
+                    <!--<hc:SimpleItemsControl>
+                        <sys:String>sdad</sys:String>
+                    </hc:SimpleItemsControl>-->
+                    <!--<StackPanel Orientation="Vertical">
                         <StackPanel.Resources>
                             <Style TargetType="uc:FieldTypeCheckBox">
                                 <Setter Property="Margin" Value="0,20,0,0" />
                             </Style>
                         </StackPanel.Resources>
                         <uc:FieldTypeCheckBox />
-                    </StackPanel>
+                    </StackPanel>-->
                 </StackPanel>
             </Grid>
             <Grid Margin="0,25,0,0">
@@ -399,37 +397,7 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
-                                    Text="谁需要考评"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource titleTextBlockStyle}" />
-                                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
-                            </StackPanel>
-                            <uc:VariableListBox />
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="考评人"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource titleTextBlockStyle}" />
-                                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
-                            </StackPanel>
-                            <uc:VariableListBox />
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="审核人"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource titleTextBlockStyle}" />
-                                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
-                            </StackPanel>
-                            <uc:VariableListBox />
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="谁可以管理这个规则"
+                                    Text="问券接收人"
                                     VerticalAlignment="Center"
                                     Style="{StaticResource titleTextBlockStyle}" />
                                 <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
@@ -452,5 +420,6 @@
                 FontSize="16"
                 Style="{StaticResource ButtonPrimary}" />
         </StackPanel>
-    </Border>
+    </hc:SimplePanel>
+
 </UserControl>

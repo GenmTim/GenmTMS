@@ -37,5 +37,7 @@
         public static readonly string SashRegion = nameof(SashRegion);
 
         public static readonly string PersonalFileDetailRegion = nameof(PersonalFileDetailRegion);
+
+        public static readonly string AttendaceDataEnteringContent = nameof(AttendaceDataEnteringContent);
     }
 }

@@ -206,9 +206,8 @@
         </Style.Triggers>
     </Style>
 
-
     <Style x:Key="TextBtnStyle" TargetType="Button">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -219,5 +218,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
 </ResourceDictionary>

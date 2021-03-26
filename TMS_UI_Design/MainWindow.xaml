@@ -10,18 +10,8 @@
     Width="500"
     Height="500"
     mc:Ignorable="d">
-    <Window.Resources />
-    <Grid
-        Width="500"
-        Height="500"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center">
-        <!--<uc:HalfRoundProgress
-            VerticalAlignment="Center"
-            StrokeThickness="15"
-            Rate="59"
-            IsHalf="True"
-            Size="240" />-->
+    <Grid>
+        <ListView ItemsSource="{Binding DataList}" />
     </Grid>
 
 </Window>

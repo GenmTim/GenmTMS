@@ -5,6 +5,7 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:TMS.DeskTop"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:enums="clr-namespace:TMS.Core.Data.Enums;assembly=TMS.Core"
     xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
     xmlns:prism="http://prismlibrary.com/">
     <Application.Resources>
@@ -16,6 +17,7 @@
             <Style x:Key="FocusVisual">
                 <Setter Property="Control.Template" Value="{x:Null}" />
             </Style>
+            <hc:EnumDataProvider x:Key="FieldTypes" Type="enums:FieldType" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
