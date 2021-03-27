@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Entity\" />
+    <Folder Include="Data\Interface\" />
     <Folder Include="Data\Type\" />
     <Folder Include="Event\AttendanceData\" />
     <Folder Include="Tools\Helper\" />

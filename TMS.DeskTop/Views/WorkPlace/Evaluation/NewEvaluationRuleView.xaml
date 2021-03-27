@@ -1,4 +1,4 @@
-﻿<UserControl
+﻿<UserControl x:Name="_newEvaluationRuleView"
     x:Class="TMS.DeskTop.Views.WorkPlace.Evaluation.NewEvaluationRuleView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,6 +8,8 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:ucVM="clr-namespace:TMS.DeskTop.UserControls.Common.ViewModels"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
@@ -135,7 +137,6 @@
         </Style>
     </UserControl.Resources>
     <hc:SimplePanel>
-
         <Border
             Background="{StaticResource RegionBrush}"
             CornerRadius="10"
@@ -355,12 +356,13 @@
                 <StackPanel Grid.Row="1"
                     Margin="10,0"
                     Orientation="Vertical">
-                    <StackPanel.Resources>
-                        <DataTemplate x:Key="fieldListTemplate">
-                            <uc:FieldTypeCheckBox Margin="0,20,0,0" />
-                        </DataTemplate>
-                    </StackPanel.Resources>
-                    <ItemsControl ItemTemplate="{StaticResource fieldListTemplate}" ItemsSource="{Binding FieldDataList}" />
+                    <ItemsControl ItemsSource="{Binding FieldDataList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <uc:FieldTypeCheckBox Margin="0,20,0,0" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                     <!--<hc:SimpleItemsControl>
                         <sys:String>sdad</sys:String>
                     </hc:SimpleItemsControl>-->
@@ -421,5 +423,4 @@
                 Style="{StaticResource ButtonPrimary}" />
         </StackPanel>
     </hc:SimplePanel>
-
 </UserControl>

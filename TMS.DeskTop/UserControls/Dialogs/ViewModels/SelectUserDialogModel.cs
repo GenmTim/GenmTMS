@@ -20,8 +20,8 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
         public ObservableCollection<TreeNodeItem> TreeNodeList { get => treeNodeList; set => treeNodeList = value; }
         public string IdentifierName { get; set; } = "Root";
 
-        public DelegateCommand SaveCommand { get; private set; }
-        public DelegateCommand CancelCommand { get; private set; }
+        public DelegateCommand SaveCmd { get; private set; }
+        public DelegateCommand CancelCmd { get; private set; }
 
         public SelectUserDialogModel()
         {
@@ -35,8 +35,8 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
             {
                 Name = "金泽权"
             });
-            this.SaveCommand = new DelegateCommand(Save);
-            this.CancelCommand = new DelegateCommand(Cancel);
+            this.SaveCmd = new DelegateCommand(Save);
+            this.CancelCmd = new DelegateCommand(Cancel);
         }
 
 

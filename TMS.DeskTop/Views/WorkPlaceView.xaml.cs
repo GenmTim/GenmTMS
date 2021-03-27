@@ -2,6 +2,7 @@
 using Prism.Regions;
 using TMS.Core.Data.Token;
 using TMS.DeskTop.Tools.Base;
+using TMS.DeskTop.UserControls.Common.ViewModels;
 using TMS.DeskTop.UserControls.Common.Views;
 
 namespace TMS.DeskTop.Views

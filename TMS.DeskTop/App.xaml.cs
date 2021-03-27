@@ -5,6 +5,8 @@ using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Common.ViewModels;
 using TMS.DeskTop.UserControls.Common.Views;
+using TMS.DeskTop.UserControls.Dialogs.ViewModels;
+using TMS.DeskTop.UserControls.Dialogs.Views;
 using TMS.DeskTop.Views;
 
 namespace TMS.DeskTop
@@ -28,6 +30,9 @@ namespace TMS.DeskTop
         {
             containerRegistry.Register<IDialogHostService, DialogHostService>();
             containerRegistry.RegisterForNavigation<ChatBox, ChatBoxViewModel>();
+            containerRegistry.RegisterForNavigation<StringItemsControl, StringItemsControlModel>();
+            containerRegistry.RegisterForNavigation<SelectUserDialog, SelectUserDialogModel>();
+            //containerRegistry.RegisterForNavigation<ChatBox, ChatBoxViewModel>();
 
             RouteHelper.RegisterToContainer(containerRegistry);
 

@@ -1,10 +1,15 @@
 ﻿using Prism.Commands;
 using Prism.Events;
+using Prism.Ioc;
 using Prism.Mvvm;
+using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using TMS.Core.Data.Enums;
 using TMS.Core.Service;
+using TMS.DeskTop.UserControls.Common.ViewModels;
 using TMS.DeskTop.UserControls.Common.Views;
+using TMS.DeskTop.UserControls.Dialogs.Views;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 {
@@ -13,63 +18,60 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
     class NewEvaluationRuleViewModel : BindableBase
     {
         private readonly IDialogHostService dialogHost;
-        private readonly IEventAggregator aggregator;
+        private readonly IEventAggregator eventAggregator;
 
-        public NewEvaluationRuleViewModel(IDialogHostService dialogHost, IEventAggregator aggregator)
+        #region 视图属性
+        private ObservableCollection<FieldTypeCheckBoxModel> fieldDataList;
+        public ObservableCollection<FieldTypeCheckBoxModel> FieldDataList
         {
-            this.dialogHost = dialogHost;
-            this.aggregator = aggregator;
-            this.ExecuteCommand = new DelegateCommand<string>(Execute);
-            this.RemoveItemCmd = new DelegateCommand<FieldData>(RemoveItem);
-            this.AppendNewFieldItemCmd = new DelegateCommand<FieldData>(AppendNewFieldItem);
-
-            fieldDataList = new ObservableCollection<FieldData>
-            {
-                new FieldData{Key= "测试", Type=FieldType.文本, RemoveSelfCmd=RemoveItemCmd, AppendNewFieldCmd=AppendNewFieldItemCmd},
-                new FieldData{Key= "发布", Type=FieldType.单选, IsMust=true, RemoveSelfCmd=RemoveItemCmd, AppendNewFieldCmd=AppendNewFieldItemCmd},
-            };
-        }
-
-
-
-        public DelegateCommand<string> ExecuteCommand { get; private set; }
-
-        private ObservableCollection<FieldData> fieldDataList;
-        public ObservableCollection<FieldData> FieldDataList 
-        { 
             get => fieldDataList;
             set
             {
                 SetProperty(ref fieldDataList, value);
-            }  
+            }
         }
+        #endregion
+
+        public NewEvaluationRuleViewModel(IDialogHostService dialogHost, IEventAggregator eventAggregator)
+        {
+            this.dialogHost = dialogHost;
+            this.eventAggregator = eventAggregator;
+            this.ExecuteCommand = new DelegateCommand<string>(Execute);
+
+
+            this.eventAggregator.GetEvent<FieldTypeCheckBoxModel.RemoveSelfEvent>().Subscribe(RemoveOneField);
+            this.eventAggregator.GetEvent<FieldTypeCheckBoxModel.AppendNewFieldEvent>().Subscribe(AppendOneField);
+
+            fieldDataList = new ObservableCollection<FieldTypeCheckBoxModel>
+            {
+                new FieldTypeCheckBoxModel(dialogHost, eventAggregator){ Key="测试", Type=FieldType.文本 },
+                new FieldTypeCheckBoxModel(dialogHost, eventAggregator){ Key="检测", Type=FieldType.文本 },
+            };
+        }
+
+        private void AppendOneField(FieldTypeCheckBoxModel data)
+        {
+            FieldDataList.Insert(FieldDataList.IndexOf(data) + 1, new FieldTypeCheckBoxModel(dialogHost, eventAggregator));
+        }
+
+        private void RemoveOneField(FieldTypeCheckBoxModel data)
+        {
+            FieldDataList.Remove(data);
+        }
+
+        public DelegateCommand<string> ExecuteCommand { get; private set; }
 
         private void Execute(string obj)
         {
             switch (obj)
             {
-                case "Save": NavigationPage("CheckItemDialog"); break;
+                case "Save": NavigationPage("SelectUserDialog"); break;
             }
         }
-
 
         void NavigationPage(string pageName)
         {
             dialogHost.ShowDialog(pageName);
-        }
-
-        public DelegateCommand<FieldData> RemoveItemCmd { get; private set; }
-
-        private void RemoveItem(FieldData data)
-        {
-            FieldDataList.Remove(data);
-        }
-
-        public DelegateCommand<FieldData> AppendNewFieldItemCmd { get; private set; }
-
-        private void AppendNewFieldItem(FieldData data)
-        {
-            FieldDataList.Insert(FieldDataList.IndexOf(data), new FieldData { RemoveSelfCmd = RemoveItemCmd, AppendNewFieldCmd = AppendNewFieldItemCmd });
         }
     }
 }

@@ -33,7 +33,7 @@
     </WindowChrome.WindowChrome>
     <Border Background="Transparent">
         <Border BorderThickness="0" CornerRadius="0">
-            <materialDesign:DialogHost Grid.Row="1" Identifier="Root">
+            <materialDesign:DialogHost Grid.Row="1" Identifier="WindowRoot">
                 <hc:SimplePanel x:Name="panel"
                     FocusVisualStyle="{x:Null}"
                     Focusable="True">

@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Services.Dialogs;
+using System;
 using System.Threading.Tasks;
 
 namespace TMS.Core.Service
@@ -10,8 +11,10 @@ namespace TMS.Core.Service
 
         Task OnDialogOpenedAsync(IDialogParameters parameters);
 
-        DelegateCommand SaveCommand { get; }
+        //event Action<IDialogResult> RequestClose;
 
-        DelegateCommand CancelCommand { get; }
+        DelegateCommand SaveCmd { get; }
+
+        DelegateCommand CancelCmd { get; }
     }
 }

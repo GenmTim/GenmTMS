@@ -46,5 +46,6 @@ namespace TMS.Core.Service
 
             return (IDialogResult)await DialogHost.Show(dialogContent, viewModel.IdentifierName, eventHandler);
         }
+
     }
 }

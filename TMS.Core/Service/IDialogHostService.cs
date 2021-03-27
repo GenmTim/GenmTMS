@@ -1,4 +1,5 @@
 ﻿using Prism.Services.Dialogs;
+using System;
 using System.Threading.Tasks;
 
 namespace TMS.Core.Service
@@ -9,5 +10,6 @@ namespace TMS.Core.Service
     public interface IDialogHostService : IDialogService
     {
         Task<IDialogResult> ShowDialog(string name, IDialogParameters parameters = null, string IdentifierName = "Root");
+        //new void ShowDialog(string name, IDialogParameters parameters = null, Action<IDialogResult> callback = null);
     }
 }
