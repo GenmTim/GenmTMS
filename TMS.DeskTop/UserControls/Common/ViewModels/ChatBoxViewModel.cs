@@ -1,18 +1,20 @@
-﻿using HandyControl.Controls;
+﻿using Genm.Data.Enums;
+using HandyControl.Controls;
 using HandyControl.Tools;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using TMS.Core.Data.Enums;
+using TMS.Core.Data;
 using TMS.Core.Event;
 
 namespace TMS.DeskTop.UserControls.Common.ViewModels
 {
-    public class ChatBoxViewModel : BindableBase
+    public class ChatBoxViewModel : BindableBase, INavigationAware
     {
         private readonly string _id = Guid.NewGuid().ToString();
         private readonly IEventAggregator eventAggregator;
@@ -22,6 +24,17 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
         public DelegateCommand<RoutedEventArgs> ReadMessageCmd { get; private set; }
         public DelegateCommand<RoutedEventArgs> SendStringCmd { get; private set; }
         public DelegateCommand SendCmd { get; private set; }
+
+        private string title = "SuperGame团队";
+        public string Title 
+        { 
+            get => title; 
+            set
+            {
+                title = value;
+                RaisePropertyChanged();
+            }
+        }
 
 
         public ChatBoxViewModel(IEventAggregator eventAggregator)
@@ -106,7 +119,21 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
             eventAggregator.GetEvent<NotificationEvent>().Publish(info);
         }
 
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            var data = navigationContext.Parameters.GetValue<NotificationItemEntity>("Data");
+            Title = data.Title;
+           
+        }
 
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
 
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+
+        }
     }
 }

@@ -95,6 +95,19 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <Style x:Key="TextBtnStyle" TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style
                 x:Key="OptBtnStyle"
                 BasedOn="{StaticResource TextBtnStyle}"
@@ -108,6 +121,20 @@
                         <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
                     </Trigger>
                 </Style.Triggers>
+            </Style>
+            <!--  纯粹的文字图标按钮  -->
+            <Style x:Key="FIconTextBtnStyle" TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
             <hc:EnumDataProvider x:Key="FieldTypes" Type="enums:FieldType" />
         </ResourceDictionary>

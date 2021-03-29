@@ -1,4 +1,4 @@
-﻿using TMS.Core.Data.Enums;
+﻿using Genm.Data.Enums;
 
 namespace TMS.DeskTop.UserControls.Common.ViewModels
 {

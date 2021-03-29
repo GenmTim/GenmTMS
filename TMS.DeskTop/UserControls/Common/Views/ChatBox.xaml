@@ -21,7 +21,7 @@
                 BorderBrush="{StaticResource TMS_BorderBrush}" />
             <hc:SimplePanel Grid.Row="1">
                 <TextBlock
-                    Text="SuperGame团队"
+                    Text="{Binding Title}"
                     Margin="20,0,0,0"
                     VerticalAlignment="Center"
                     Foreground="#000235"
@@ -42,7 +42,6 @@
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
-
                     </StackPanel.Resources>
                     <Button Content="&#xe7bb;" FontSize="14" />
                     <Button Content="&#xe780;" FontSize="14" />
@@ -72,7 +71,7 @@
                             <genm:ChatBubble
                                 Content="{Binding Message}"
                                 MaxWidth="300"
-                                Style="{StaticResource ChatBubbleBaseStyle}"
+                                Style="{StaticResource GChatBubbleBaseStyle}"
                                 Role="{Binding Role}"
                                 Type="{Binding Type}"
                                 Tag="{Binding}" />
