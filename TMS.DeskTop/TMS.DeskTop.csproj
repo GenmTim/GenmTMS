@@ -246,6 +246,9 @@
     <Compile Update="UserControls\&#xD;&#xA;             s\Views\NewUserQuestions\BasicInfo\Question1Page.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\Common\Views\MultiValueComboBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\Common\Views\RoundProgress.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -264,6 +267,10 @@
   <ItemGroup>
     <Page Update="Resources\Styles\Views\Recruitment\Requirements\ManageRequirementsViewStyle.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="UserControls\Common\Views\MultiValueComboBox.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\Common\Views\RoundProgress.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>

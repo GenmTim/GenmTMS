@@ -41,7 +41,7 @@
                                         VerticalAlignment="Center"
                                         FontFamily="{StaticResource SurfaceIconFontFamily}"
                                         FontSize="18"
-                                        Foreground="{TemplateBinding attach:IconFontElement.IconColor}" />
+                                        Foreground="{TemplateBinding attach:IconFontElement.Color}" />
                                 </Border>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <ContentPresenter
@@ -104,7 +104,7 @@
                                 CommandParameter="PersonalInfoView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xeeca;"
-                                attach:IconFontElement.IconColor="#34bdef"
+                                attach:IconFontElement.Color="#34bdef"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="联系人"
@@ -112,7 +112,7 @@
                                 CommandParameter="LinkManView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xee9e;"
-                                attach:IconFontElement.IconColor="#34bdef"
+                                attach:IconFontElement.Color="#34bdef"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="组织架构"
@@ -120,14 +120,14 @@
                                 CommandParameter="OrganizationalStructrureView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xeea7;"
-                                attach:IconFontElement.IconColor="#34bdef" />
+                                attach:IconFontElement.Color="#34bdef" />
                             <RadioButton
                                 Content="我的群组"
                                 Command="{Binding NavigationCmd}"
                                 CommandParameter="MyGroupView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xee95;"
-                                attach:IconFontElement.IconColor="#34bdef"
+                                attach:IconFontElement.Color="#34bdef"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="我的钱包"
@@ -135,7 +135,7 @@
                                 CommandParameter="MyWalletView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xee8a;"
-                                attach:IconFontElement.IconColor="#ffba27"
+                                attach:IconFontElement.Color="#ffba27"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="我的收藏"
@@ -143,14 +143,14 @@
                                 CommandParameter="MyFavoriteView"
                                 Margin="0,0,0,20"
                                 attach:IconFontElement.Geometry="&#xee99;"
-                                attach:IconFontElement.IconColor="#ff577c"
+                                attach:IconFontElement.Color="#ff577c"
                                 Cursor="Hand" />
                             <RadioButton
                                 Content="我的客服"
                                 Command="{Binding NavigationCmd}"
                                 CommandParameter="CustomerServiceView"
                                 attach:IconFontElement.Geometry="&#xeeb4;"
-                                attach:IconFontElement.IconColor="#25bfeb"
+                                attach:IconFontElement.Color="#25bfeb"
                                 Cursor="Hand" />
                         </StackPanel>
                     </hc:SimplePanel>

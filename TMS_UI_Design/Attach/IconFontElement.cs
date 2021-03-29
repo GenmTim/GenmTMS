@@ -25,16 +25,16 @@ namespace TMS.DeskTop.UserControls.Attach
             => (string)element.GetValue(NameProperty);
 
         public static readonly DependencyProperty ColorProperty = DependencyProperty.RegisterAttached(
-    "Color", typeof(Brush), typeof(IconFontElement), new PropertyMetadata(default(Brush)));
+            "Color", typeof(Brush), typeof(IconFontElement), new PropertyMetadata(default(Brush)));
 
         public static void SetColor(DependencyObject element, Brush value)
-            => element.SetValue(NameProperty, value);
+            => element.SetValue(ColorProperty, value);
 
         public static Brush GetColor(DependencyObject element)
-            => (Brush)element.GetValue(NameProperty);
+            => (Brush)element.GetValue(ColorProperty);
 
         public static readonly DependencyProperty SizeProperty =
-    DependencyProperty.RegisterAttached("Size", typeof(double), typeof(IconFontElement));
+            DependencyProperty.RegisterAttached("Size", typeof(double), typeof(IconFontElement));
 
         public static double GetSize(DependencyObject obj)
         {

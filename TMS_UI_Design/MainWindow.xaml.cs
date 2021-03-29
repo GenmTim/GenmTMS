@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -18,6 +19,10 @@ namespace TMS_UI_Design
         {
             InitializeComponent();
             DataContext = this;
+            dayComponent.DataContext = new MultiValueComboBoxModel
+            {
+                OneValueList = new List<string> { "sadsd", "asdasd" }
+            };
         }
 
     }

@@ -21,29 +21,28 @@ namespace TMS.DeskTop.UserControls.Common.Views
     /// </summary>
     public partial class VariableListBox : UserControl
     {
-        private ObservableCollection<User> userList = new ObservableCollection<User>();
-        public ObservableCollection<User> UserList { get => userList; set => userList = value; }
+        //private ObservableCollection<User> userList = new ObservableCollection<User>();
+        //public ObservableCollection<User> UserList { get => userList; set => userList = value; }
 
         public VariableListBox()
         {
-
             InitializeComponent();
-            DataContext = this;
-            userList.Add(new User
-            {
-                Name = "蔡承龙",
-                Color = "#FF00C4A8"
-            });
-            userList.Add(new User
-            {
-                Name = "金泽权",
-                Color = "#FF8142E6"
-            });
-            userList.Add(new User
-            {
-                Name = "何升鸿",
-                Color = "#FF2F68F3"
-            });
+            //DataContext = this;
+            //userList.Add(new User
+            //{
+            //    Name = "蔡承龙",
+            //    Color = "#FF00C4A8"
+            //});
+            //userList.Add(new User
+            //{
+            //    Name = "金泽权",
+            //    Color = "#FF8142E6"
+            //});
+            //userList.Add(new User
+            //{
+            //    Name = "何升鸿",
+            //    Color = "#FF2F68F3"
+            //});
         }
 
     }

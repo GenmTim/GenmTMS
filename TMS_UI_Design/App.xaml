@@ -4,5 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TMS_UI_Design"
     StartupUri="MainWindow.xaml">
-    <Application.Resources />
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="FIconFontFamily">/Resources/Fonts/#iconfont</FontFamily>
+            <FontFamily x:Key="FIconPlusFontFamily">/Resources/Fonts/Plus/#iconfont</FontFamily>
+            <FontFamily x:Key="MenuIconFontFamily">/Resources/Fonts/Plus/Menu/#iconfont</FontFamily>
+            <FontFamily x:Key="DocIconFontFamily">/Resources/Fonts/Plus/Doc/#iconfont</FontFamily>
+            <FontFamily x:Key="SurfaceIconFontFamily">/Resources/Fonts/Plus/Surface/#iconfont</FontFamily>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

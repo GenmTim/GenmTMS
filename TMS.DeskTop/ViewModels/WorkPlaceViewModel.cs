@@ -148,6 +148,7 @@ namespace TMS.DeskTop.ViewModels
                 new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe6e7", Url = "", Command=NavigationCmd },
                 new AppItem { Tag="特别工具", Name = "授权", IconFont = "\xe703", Url = "AuthMainView", Command=NavigationCmd },
                 new AppItem { Tag="特别工具", Name = "调查问券", IconFont = "\xe703", Url = "EvaluationView", Command=NavigationCmd },
+                new AppItem { Tag="特别工具", Name = "汇报", IconFont = "\xe703", Url = "ReportView", Command=NavigationCmd },
                 new AppItem { Tag="心灵驿站", Name = "员工关怀", IconFont = "\xe703", Url = "EvaluationView", Command=NavigationCmd },
             };
 

@@ -10,8 +10,7 @@
     Width="500"
     Height="500"
     mc:Ignorable="d">
-    <Grid>
-        <ListView ItemsSource="{Binding DataList}" />
+    <Grid Margin="10">
+        <local:MultiValueComboBox x:Name="dayComponent" />
     </Grid>
-
 </Window>

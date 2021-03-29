@@ -11,6 +11,7 @@ using TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering;
 using TMS.DeskTop.Views.WorkPlace.Auth;
 using TMS.DeskTop.Views.WorkPlace.Auth.Subitem;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
+using TMS.DeskTop.Views.WorkPlace.Report;
 
 namespace TMS.DeskTop.Tools.Helper
 {
@@ -94,6 +95,7 @@ namespace TMS.DeskTop.Tools.Helper
                 [typeof(AuthMainView)] = RegionToken.AuthMainContent,
                 [typeof(EvaluationView)] = RegionToken.EvaluationContent,
                 [typeof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
+                [typeof(ReportView)] = RegionToken.ReportContent,
             };
         }
 
@@ -142,6 +144,10 @@ namespace TMS.DeskTop.Tools.Helper
                     routeMap[typeof(ViewEvaluationView)] = routeMap[typeof(EvaluationView)] + "view/";
                     routeMap[typeof(FullInEvaluationView)] = routeMap[typeof(EvaluationView)] + "fullIn/";
                     routeMap[typeof(ManageEvaluationView)] = routeMap[typeof(EvaluationView)] + "manage/";
+                }
+                routeMap[typeof(ReportView)] = routeMap[typeof(WorkPlaceView)] + "report/";
+                {
+                    routeMap[typeof(ReportMainView)] = routeMap[typeof(ReportView)] + "main/";
                 }
             }
 

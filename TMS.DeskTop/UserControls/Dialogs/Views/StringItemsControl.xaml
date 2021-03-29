@@ -29,7 +29,7 @@
                             <DataTemplate>
                                 <Grid Margin="0,15,0,0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <TextBox Text="{Binding Value, Mode=TwoWay}" Height="33" />

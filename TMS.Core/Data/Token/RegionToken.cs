@@ -39,5 +39,7 @@
         public static readonly string PersonalFileDetailRegion = nameof(PersonalFileDetailRegion);
 
         public static readonly string AttendaceDataEnteringContent = nameof(AttendaceDataEnteringContent);
+
+        public static readonly string ReportContent = nameof(ReportContent);
     }
 }

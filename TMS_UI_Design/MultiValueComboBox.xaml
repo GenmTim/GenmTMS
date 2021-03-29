@@ -1,0 +1,177 @@
+﻿<UserControl
+    x:Class="TMS_UI_Design.MultiValueComboBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TMS_UI_Design"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:ContentConverter x:Key="ContentConverter" />
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Height" Value="33" />
+            <Setter Property="hc:BorderElement.CornerRadius" Value="5" />
+            <Setter Property="attach:IconFontElement.Size" Value="18" />
+            <Setter Property="attach:IconFontElement.Geometry" Value="&#xe6f1;" />
+            <Setter Property="attach:IconFontElement.Color" Value="#9ca2a9" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <hc:SimplePanel>
+                            <Border x:Name="border"
+                                CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                SnapsToDevicePixels="true">
+                                <hc:SimplePanel>
+                                    <ContentPresenter x:Name="contentPresenter"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Focusable="False"
+                                        RecognizesAccessKey="True"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    <TextBlock x:Name="arrow"
+                                        Text="{TemplateBinding attach:IconFontElement.Geometry}"
+                                        Margin="0,0,5,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Foreground="{TemplateBinding attach:IconFontElement.Color}"
+                                        FontSize="{TemplateBinding attach:IconFontElement.Size}"
+                                        FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                </hc:SimplePanel>
+                            </Border>
+                        </hc:SimplePanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="arrow" Property="Text" Value="&#xe6f9;" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <hc:SimplePanel>
+        <ToggleButton x:Name="toggleBtn"
+            Padding="15,0,0,0"
+            HorizontalContentAlignment="Left">
+            <ToggleButton.Content>
+                <TextBlock FontSize="14">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource ContentConverter}">
+                            <Binding Path="OneValue" />
+                            <Binding Path="TwoValue" />
+                            <Binding Path="ThreeValue" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </ToggleButton.Content>
+        </ToggleButton>
+        <genm:Popup
+            PopupAnimation="Fade"
+            AllowsTransparency="True"
+            VerticalOffset="5"
+            PlacementTarget="{Binding ElementName=toggleBtn}"
+            IsOpen="{Binding ElementName=toggleBtn, Path=IsChecked}">
+            <Border Background="Transparent">
+                <hc:SimplePanel
+                    Width="{Binding ElementName=toggleBtn, Path=ActualWidth}"
+                    MinHeight="100"
+                    MaxHeight="180">
+                    <Border
+                        CornerRadius="5"
+                        Background="White"
+                        BorderBrush="{StaticResource BorderBrush}"
+                        BorderThickness="1" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style
+                                x:Key="listBoxStyle"
+                                BasedOn="{StaticResource ListBoxItemCustom}"
+                                TargetType="ListBoxItem">
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style BasedOn="{StaticResource ListBoxCustom}" TargetType="ListBox">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+                                <Setter Property="ItemContainerStyle" Value="{StaticResource listBoxStyle}" />
+                                <Setter Property="ItemTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <hc:SimplePanel Height="35" Cursor="Hand">
+                                                <Border x:Name="border" />
+                                                <TextBlock
+                                                    Text="{Binding}"
+                                                    Margin="20,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="14" />
+                                            </hc:SimplePanel>
+                                            <DataTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#eff0f1" />
+                                                </Trigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="SelectedValue" Value="{x:Null}">
+                                        <Setter Property="SelectedIndex" Value="0" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Resources>
+                        <ListBox
+                            hc:ScrollViewer.IsInertiaEnabled="True"
+                            SelectedValue="{Binding OneValue, Mode=TwoWay}"
+                            ScrollViewer.VerticalScrollBarVisibility="Visible"
+                            BorderThickness="0"
+                            ItemsSource="{Binding OneValueList}" />
+                        <ListBox Grid.Column="1"
+                            hc:ScrollViewer.IsInertiaEnabled="True"
+                            SelectedValue="{Binding TwoValue, Mode=TwoWay}"
+                            ScrollViewer.VerticalScrollBarVisibility="Visible"
+                            BorderThickness="1,0,1,0"
+                            ItemsSource="{Binding TwoValueList}" />
+                        <ListBox Grid.Column="2"
+                            BorderThickness="0"
+                            SelectedValue="{Binding ThreeValue, Mode=TwoWay}"
+                            ItemsSource="{Binding ThreeValueList}" />
+                    </Grid>
+                </hc:SimplePanel>
+            </Border>
+        </genm:Popup>
+    </hc:SimplePanel>
+</UserControl>

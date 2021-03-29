@@ -1001,45 +1001,5 @@
             </Style>
         </Style.BasedOn>
     </Style>
-    <DataTemplate x:Key="checkedItemTemplate">
-        <Grid Margin="0,15,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Border
-                Width="30"
-                Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                hc:BorderElement.Circular="True">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0, 0.5" EndPoint="8,0.5">
-                        <GradientStop Offset="0" Color="#FF00C4AA" />
-                        <GradientStop Offset="1" Color="White" />
-                    </LinearGradientBrush>
-                </Border.Background>
-                <TextBlock
-                    Text="{Binding Name, Converter={StaticResource FetchFirstCharConverter}}"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontSize="10"
-                    Foreground="White" />
-            </Border>
-            <TextBlock Grid.Column="1"
-                Text="{Binding Name}"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center" />
-            <Button Grid.Column="2"
-                Content="&#xe61a;"
-                Width="14"
-                Height="14"
-                Padding="4"
-                HorizontalAlignment="Right"
-                hc:IconElement.Geometry="{StaticResource CloseGeometry}"
-                Cursor="Hand"
-                Style="{StaticResource ButtonIconCircular}" />
-        </Grid>
-    </DataTemplate>
+
 </ResourceDictionary>

@@ -26,8 +26,6 @@ namespace Genm.Controls
 
         private TranslateTransform _translateTransform;
 
-
-        
         private double _animationLength;
 
         private string _animationPropertyName;
