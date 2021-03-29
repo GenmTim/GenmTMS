@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
+    <PackageReference Include="WebSocketSharp" Version="1.0.3-rc11" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TMS.Core\TMS.Core.csproj" />

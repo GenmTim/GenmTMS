@@ -12,6 +12,7 @@
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="106.11.7" />
+    <PackageReference Include="WebSocketSharp" Version="1.0.3-rc11" />
   </ItemGroup>
 
 </Project>
