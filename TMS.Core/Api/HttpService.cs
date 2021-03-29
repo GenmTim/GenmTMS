@@ -7,42 +7,42 @@ using TMS.Core.Data.Dto;
 
 namespace TMS.Core.Api
 {
-    public class HttpClient
+    public class HttpService
     {
-        private static HttpClient instance;
-        public static HttpClient Instance
+        private static HttpService instance;
+        public static HttpService Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new HttpClient();
+                    instance = new HttpService();
                 }
                 return instance;
             }
         }
 
-        public static HttpClient GetInstance()
+        public static HttpService GetInstance()
         {
             if (instance == null)
             {
-                instance = new HttpClient();
+                instance = new HttpService();
             }
             return instance;
         }
 
-        public static HttpClient GetConn()
+        public static HttpService GetConn()
         {
             if (instance == null)
             {
-                instance = new HttpClient();
+                instance = new HttpService();
             }
             return instance;
         }
 
         private RestClient restClient;
 
-        private HttpClient()
+        private HttpService()
         {
             restClient = new RestClient("http://47.101.157.194:8081");
         }
