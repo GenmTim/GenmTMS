@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Prism.Events;
+using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using TMS.Core.Api;
+using TMS.Core.Event;
 using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.Views
@@ -10,12 +14,18 @@ namespace TMS.DeskTop.Views
     /// </summary>
     public partial class LoginView : Window
     {
+        private readonly IEventAggregator eventAggregator;
         public string UserName { get; set; } = "";
         public string PassWord { get; set; } = "";
 
-        public LoginView()
+        public LoginView(IEventAggregator eventAggregator)
         {
             InitializeComponent();
+            this.eventAggregator = eventAggregator;
+            eventAggregator.GetEvent<LoginEvent>().Subscribe((obj) =>
+            {
+                DialogResult = true;
+            });
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)
@@ -67,14 +77,25 @@ namespace TMS.DeskTop.Views
             string username = this.usernameBox.Text;
             string password = this.passwordBox.Password;
 
+            //Task.Factory.StartNew(async () =>
+            //{
+            //    var result = await HttpService.GetConn().LoginUserTel(username, password);
+            //    if (result.StatusCode == 200)
+            //    {
+            //        Application.Current.Dispatcher.Invoke(new Action(() => { this.DialogResult = true; }));
+            //    }
+            //    else
+            //    {
+            //        Application.Current.Dispatcher.Invoke(new Action(() =>
+            //        {
+            //            usernameBox.IsError = true;
+            //            passwordBox.IsError = true;
+            //        }));
+            //    }
+            //});
+            this.DialogResult = true;
 
-            //HttpClient serviceApi = new HttpClient();
 
-            //serviceApi.LoginUser("123456", "15858102098");
-
-
-
-            DialogResult = true;
         }
     }
 }

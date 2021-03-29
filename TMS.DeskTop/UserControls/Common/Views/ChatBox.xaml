@@ -110,7 +110,10 @@
                                 VerticalAlignment="Center"
                                 Orientation="Horizontal">
                                 <StackPanel.Resources>
-                                    <Style TargetType="Button" BasedOn="{StaticResource FIconTextBtnStyle}">
+                                    <Style
+                                        x:Key="optBtnStyle"
+                                        TargetType="Button"
+                                        BasedOn="{StaticResource FIconTextBtnStyle}">
                                         <Setter Property="Width" Value="33" />
                                         <Setter Property="Cursor" Value="Hand" />
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -151,8 +154,8 @@
                                         </Style.Triggers>
                                     </Style>
                                 </StackPanel.Resources>
-                                <Button Content="&#xe758;" />
-                                <Button Content="&#xe792; " />
+                                <Button Content="&#xe758;" Style="{StaticResource optBtnStyle}" />
+                                <Button Content="&#xe792; " Style="{StaticResource optBtnStyle}" />
                                 <Button
                                     Command="{Binding SendCmd}"
                                     Style="{StaticResource SendBtnStyle}"

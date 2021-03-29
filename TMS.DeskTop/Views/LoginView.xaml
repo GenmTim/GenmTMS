@@ -151,18 +151,21 @@
                                 FontSize="25"
                                 FontWeight="Bold"
                                 UseLayoutRounding="True" />
-                            <hc:TextBox x:Name="usernameBox"
-                                Text="{Binding UserName}"
-                                Height="40"
-                                Margin="30,0,30,30"
-                                hc:InfoElement.Placeholder="请输入手机号码"
-                                FontSize="12" />
-                            <hc:PasswordBox x:Name="passwordBox"
-                                Height="40"
-                                Margin="30,0,30,30"
-                                hc:InfoElement.Placeholder="请输入密码"
-                                ShowEyeButton="True" />
-
+                            <hc:SimplePanel>
+                                <StackPanel>
+                                    <hc:TextBox x:Name="usernameBox"
+                                        Text="{Binding UserName}"
+                                        Height="40"
+                                        Margin="30,0,30,30"
+                                        hc:InfoElement.Placeholder="请输入手机号码"
+                                        FontSize="12" />
+                                    <hc:PasswordBox x:Name="passwordBox"
+                                        Height="40"
+                                        Margin="30,0,30,30"
+                                        hc:InfoElement.Placeholder="请输入密码"
+                                        ShowEyeButton="True" />
+                                </StackPanel>
+                            </hc:SimplePanel>
                             <Grid Margin="30,0,30,30">
                                 <Button
                                     Content="登录"
