@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
 using Prism.Mvvm;
 using Prism.Regions;
+using System;
 using TMS.Core.Api;
 using TMS.Core.Data.Dto;
+using WebSocketSharp;
 
 namespace Prism_Test.ViewModels
 {
@@ -21,17 +23,28 @@ namespace Prism_Test.ViewModels
         public MainWindowViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
+            WebSocket ws = new WebSocket("ws://121.40.165.18:8800");
+            ws.OnMessage += (sender, e) =>
+            {
+                Console.WriteLine("Laputa says: " + e.Data);
+				LogString = "dfdh：" + e.Data;
+			};
+            ws.OnOpen += (sender, e) => {
 
+                Console.WriteLine("lianjiechengg");
+                ws.Send("BALUS");
+            };
+            ws.Connect();
 
-            HttpClient serviceApi = HttpClient.Instance;
-            HttpClient serviceApi2 = HttpClient.GetInstance();
+            //HttpService serviceApi = HttpService.Instance;
+            //HttpService serviceApi2 = HttpService.GetInstance();
 
-            EvaluationGroupDto evaluationGroupDto = new EvaluationGroupDto();
-            evaluationGroupDto.ExaminerId = 122;
-            evaluationGroupDto.Subject = "asdsad";
-            JObject jObject = JObject.FromObject(evaluationGroupDto);
-            string v = jObject.ToString();
-            JObject jObject1 = new JObject();
+            //EvaluationGroupDto evaluationGroupDto = new EvaluationGroupDto();
+            //evaluationGroupDto.ExaminerId = 122;
+            //evaluationGroupDto.Subject = "asdsad";
+            //JObject jObject = JObject.FromObject(evaluationGroupDto);
+            //string v = jObject.ToString();
+            //JObject jObject1 = new JObject();
             //ApiResponse apiResponse = serviceApi2.PostEvaluationGroup(evaluationGroupDto);
 
             //         ApiResponse apiResponse = serviceApi.LoginUserEmail("123@qq.com", "qzj");
