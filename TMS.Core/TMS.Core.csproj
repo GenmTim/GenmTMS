@@ -14,11 +14,4 @@
     <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="106.11.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\Interface\" />
-    <Folder Include="Data\Type\" />
-    <Folder Include="Event\AttendanceData\" />
-    <Folder Include="Tools\Helper\" />
-  </ItemGroup>
-
 </Project>

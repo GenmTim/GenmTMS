@@ -261,7 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
-    <Folder Include="Tools\Converter\" />
     <Folder Include="UserControls\WebComponent\" />
   </ItemGroup>
   <ItemGroup>
