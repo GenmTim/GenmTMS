@@ -13,6 +13,7 @@ namespace TMS.Core.Data
         public int Type;
         public int SubType;
         public object Data;
+        public long Timestamp;
     }
 
 }
