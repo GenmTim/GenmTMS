@@ -8,13 +8,13 @@ using WebSocketSharp;
 
 namespace TMS.Core.Api
 {
-	public static class WebSocketConnect
+	public static class WebSocketService
 	{
 		private static WebSocket conn = new WebSocket("ws://121.40.165.18:8800");
 
 		private static bool isConnect = false;
 
-		static WebSocketConnect()
+		static WebSocketService()
 		{
 			conn.OnOpen += Conn_OnOpen;
 			conn.OnMessage += Conn_OnMessage;
