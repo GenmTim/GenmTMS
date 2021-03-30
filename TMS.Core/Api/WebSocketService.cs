@@ -1,64 +1,154 @@
-﻿using System;
+﻿using SuperSocket.ClientEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TMS.Core.Data;
-using WebSocketSharp;
+using WebSocket4Net;
 
 namespace TMS.Core.Api
 {
-	public static class WebSocketService
+	public class WebSocketService
 	{
-		private static WebSocket conn = new WebSocket("ws://121.40.165.18:8800");
-
-		private static bool isConnect = false;
-
-		static WebSocketService()
+		private static WebSocketService instance;
+		public static WebSocketService Instance
 		{
-			conn.OnOpen += Conn_OnOpen;
-			conn.OnMessage += Conn_OnMessage;
-			conn.OnError += Conn_OnError;
-			conn.OnClose += Conn_OnClose;
-			conn.Connect();
+			get
+			{
+				if (instance == null)
+				{
+					instance = new WebSocketService();
+				}
+				return instance;
+			}
 		}
 
-		public static void Conn_SendMessage()
+		public static WebSocketService GetInstance()
 		{
-
+			if (instance == null)
+			{
+				instance = new WebSocketService();
+			}
+			return instance;
 		}
 
-		public static void SendMessage(NotificationData data)
+		public static WebSocketService GetConn()
+		{
+			if (instance == null)
+			{
+				instance = new WebSocketService();
+			}
+			return instance;
+		}
+
+		private WebSocketService()
+		{
+			conn = new WebSocket("ws://123.207.136.134:9010/ajaxchattest");
+			conn.Opened += new EventHandler(OnOpened);
+			conn.MessageReceived += new EventHandler<MessageReceivedEventArgs>(OnReceived);
+			conn.Error += new EventHandler<ErrorEventArgs>(OnError);
+			conn.Closed += new EventHandler(OnClosed);
+			conn.Open();
+		}
+
+		private WebSocket conn = null;
+
+		private bool isConnect = false;
+
+		private Queue<NotificationData> dataQueue = new Queue<NotificationData>();
+
+		private Queue<string> strQueue = new Queue<string>();
+
+		public void SendMessage()
+		{
+			if (isConnect)
+			{
+
+			}
+		}
+
+		public void Send(string str)
+		{
+			if (isConnect)
+			{
+				conn.Send(str);
+			}
+			else
+			{
+				strQueue.Enqueue(str);
+			}
+		}
+
+		public void SendMessage(NotificationData data)
 		{
 			if (isConnect)
 			{
 				//已连接
+				//data处理
+				string v = data.ToString();
+				conn.Send(v);
 			}
 			else
 			{
 				//未连接
+				dataQueue.Enqueue(data);
 			}
 		}
 
-		private static void Conn_OnOpen(object sender, EventArgs e)
+		public void ConnClose()
 		{
+			conn.Close();
+		}
+
+		private void OnOpened(object sender, EventArgs e)
+		{
+			Console.WriteLine("WebSocket连接成功");
 			isConnect = true;
+			try
+			{
+				NotificationData data = dataQueue.Dequeue();
+				while (null != data)
+				{
+					//data处理
+					conn.Send(data.ToString());
+
+					//
+					data = dataQueue.Dequeue();
+
+				}
+
+				string str = strQueue.Dequeue();
+				while (!string.IsNullOrEmpty(str))
+				{
+					//data处理
+					conn.Send(str);
+
+					str = strQueue.Dequeue();
+
+				}
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("Queue没有内容");
+			}
+
 		}
 
-		private static void Conn_OnMessage(object sender, MessageEventArgs e)
+		private void OnReceived(object sender, MessageReceivedEventArgs e)
 		{
+			Console.WriteLine(e.Message);
 
 		}
 
-		private static void Conn_OnError(object sender, ErrorEventArgs e)
+		private void OnError(object sender, ErrorEventArgs e)
 		{
-
+			Console.WriteLine(e.Exception);
 		}
 
-		private static void Conn_OnClose(object sender, CloseEventArgs e)
+		private void OnClosed(object sender, EventArgs e)
 		{
-
+			Console.WriteLine("OnClose:");
 		}
-
 	}
 }
