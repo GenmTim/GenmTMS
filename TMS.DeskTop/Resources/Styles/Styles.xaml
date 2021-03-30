@@ -11,10 +11,10 @@
         <ResourceDictionary Source="/Resources/Converters/Converter.xaml" />
         <ResourceDictionary Source="/Resources/Styles/Brush/Brush.xaml" />
         <ResourceDictionary Source="/Resources/Styles/RadioButton/RadioButton.xaml" />
-        <ResourceDictionary Source="/UserControls/Styles/UserControlsStyle.xaml" />
         <ResourceDictionary Source="/Resources/Styles/Grid/HollowOutDataGridStyle.xaml" />
         <ResourceDictionary Source="/Resources/Styles/Button/CommonButtonStyle.xaml" />
         <ResourceDictionary Source="/Resources/Styles/Shadow/Shadow.xaml" />
+        <ResourceDictionary Source="/UserControls/Styles/UserControlsStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <FontFamily x:Key="FIconFontFamily">/Resources/Fonts/#iconfont</FontFamily>
     <FontFamily x:Key="FIconPlusFontFamily">/Resources/Fonts/Plus/#iconfont</FontFamily>

@@ -21,7 +21,7 @@
                 BorderBrush="{StaticResource TMS_BorderBrush}" />
             <hc:SimplePanel Grid.Row="1">
                 <TextBlock
-                    Text="SuperGame团队"
+                    Text="{Binding Title}"
                     Margin="20,0,0,0"
                     VerticalAlignment="Center"
                     Foreground="#000235"
@@ -42,7 +42,6 @@
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
-
                     </StackPanel.Resources>
                     <Button Content="&#xe7bb;" FontSize="14" />
                     <Button Content="&#xe780;" FontSize="14" />
@@ -72,7 +71,7 @@
                             <genm:ChatBubble
                                 Content="{Binding Message}"
                                 MaxWidth="300"
-                                Style="{StaticResource ChatBubbleBaseStyle}"
+                                Style="{StaticResource GChatBubbleBaseStyle}"
                                 Role="{Binding Role}"
                                 Type="{Binding Type}"
                                 Tag="{Binding}" />
@@ -110,7 +109,10 @@
                                 VerticalAlignment="Center"
                                 Orientation="Horizontal">
                                 <StackPanel.Resources>
-                                    <Style TargetType="Button" BasedOn="{StaticResource FIconTextBtnStyle}">
+                                    <Style
+                                        x:Key="optBtnStyle"
+                                        TargetType="Button"
+                                        BasedOn="{StaticResource FIconTextBtnStyle}">
                                         <Setter Property="Width" Value="33" />
                                         <Setter Property="Cursor" Value="Hand" />
                                         <Setter Property="VerticalAlignment" Value="Center" />
@@ -151,8 +153,8 @@
                                         </Style.Triggers>
                                     </Style>
                                 </StackPanel.Resources>
-                                <Button Content="&#xe758;" />
-                                <Button Content="&#xe792; " />
+                                <Button Content="&#xe758;" Style="{StaticResource optBtnStyle}" />
+                                <Button Content="&#xe792; " Style="{StaticResource optBtnStyle}" />
                                 <Button
                                     Command="{Binding SendCmd}"
                                     Style="{StaticResource SendBtnStyle}"

@@ -29,6 +29,7 @@ namespace TMS.DeskTop
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IDialogHostService, DialogHostService>();
+            containerRegistry.Register<LoginView>();
             containerRegistry.RegisterForNavigation<ChatBox, ChatBoxViewModel>();
             containerRegistry.RegisterForNavigation<StringItemsControl, StringItemsControlModel>();
             containerRegistry.RegisterForNavigation<SelectUserDialog, SelectUserDialogModel>();

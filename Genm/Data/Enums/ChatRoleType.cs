@@ -1,4 +1,4 @@
-﻿namespace TMS.Core.Data.Enums
+﻿namespace Genm.Data.Enums
 {
     public enum ChatRoleType
     {

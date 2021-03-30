@@ -1,8 +1,6 @@
-﻿
-
-using Genm.Data;
+﻿using Genm.Data;
+using Genm.Data.Enums;
 using HandyControl.Controls;
-using HandyControl.Data;
 using System;
 using System.Windows;
 
