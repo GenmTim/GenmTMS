@@ -28,7 +28,7 @@ namespace TMS.Core.Api
 
 		}
 
-		public static void Conn_SendMessage(NotificationData data)
+		public static void SendMessage(NotificationData data)
 		{
 			if (isConnect)
 			{
