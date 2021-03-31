@@ -8,7 +8,7 @@ using WebSocketSharp;
 
 namespace Prism_Test.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+	public class MainWindowViewModel : BindableBase
     {
         private readonly IRegionManager regionManager;
         private string _title = "Prism Application";
@@ -23,18 +23,27 @@ namespace Prism_Test.ViewModels
         public MainWindowViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
-            WebSocket ws = new WebSocket("ws://121.40.165.18:8800");
-            ws.OnMessage += (sender, e) =>
-            {
-                Console.WriteLine("Laputa says: " + e.Data);
-				LogString = "dfdh：" + e.Data;
-			};
-            ws.OnOpen += (sender, e) => {
 
-                Console.WriteLine("lianjiechengg");
-                ws.Send("BALUS");
-            };
-            ws.Connect();
+            LoggerService.Debug("这是一次Debug");
+            LoggerService.Debug("这是一次Debug");
+            LoggerService.Info("这是一次Info");
+            LoggerService.Debug("这是一次Debug");
+            LoggerService.Info("这是一次Info");
+            LoggerService.Error("这是一次Error");
+            LoggerService.Debug("这是一次Debug");
+
+            //         WebSocket ws = new WebSocket("ws://121.40.165.18:8800");
+            //         ws.OnMessage += (sender, e) =>
+            //         {
+            //             Console.WriteLine("Laputa says: " + e.Data);
+            //	LogString = "dfdh：" + e.Data;
+            //};
+            //         ws.OnOpen += (sender, e) => {
+
+            //             Console.WriteLine("lianjiechengg");
+            //             ws.Send("BALUS");
+            //         };
+            //         ws.Connect();
 
             //HttpService serviceApi = HttpService.Instance;
             //HttpService serviceApi2 = HttpService.GetInstance();
