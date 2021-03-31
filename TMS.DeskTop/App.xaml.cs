@@ -17,6 +17,8 @@ namespace TMS.DeskTop
     /// </summary>
     public partial class App
     {
+        private IContainerRegistry containerRegistry;
+
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
@@ -29,6 +31,8 @@ namespace TMS.DeskTop
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            this.containerRegistry = containerRegistry;
+
             // 注册服务
             containerRegistry.Register<IDialogHostService, DialogHostService>();
 
@@ -72,9 +76,13 @@ namespace TMS.DeskTop
 
             if (result.Value)
             {
+                Container.Resolve<WebSocketService>();
                 base.OnInitialized();
             }
-
+            else
+            {
+                Application.Current.Shutdown();
+            }
             //if (result.Value)
             //{
             //    var registerInfoEntry = Container.Resolve<NewUserQuestion>();

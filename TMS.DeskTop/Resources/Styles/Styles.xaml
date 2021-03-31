@@ -434,7 +434,8 @@
                 Height="35"
                 Margin="10,0"
                 VerticalAlignment="Top"
-                Id="asd1"
+                RenderOptions.BitmapScalingMode="HighQuality"
+                Source="{Binding Avatar}"
                 Style="{StaticResource GravatarCircleImg}" />
             <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
                 <Border
@@ -472,7 +473,8 @@
                 Height="35"
                 Margin="10,0"
                 VerticalAlignment="Top"
-                Id="asd1"
+                RenderOptions.BitmapScalingMode="HighQuality"
+                Source="{Binding Avatar}"
                 Style="{StaticResource GravatarCircleImg}" />
             <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
                 <Border
@@ -503,7 +505,8 @@
                 Height="35"
                 Margin="10,0"
                 VerticalAlignment="Top"
-                Id="asd1"
+                Source="{Binding Avatar}"
+                RenderOptions.BitmapScalingMode="HighQuality"
                 Style="{StaticResource GravatarCircleImg}" />
             <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
                 <Border

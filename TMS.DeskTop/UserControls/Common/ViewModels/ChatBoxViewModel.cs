@@ -1,4 +1,5 @@
-﻿using Genm.Data.Enums;
+﻿using Genm.Data;
+using Genm.Data.Enums;
 using HandyControl.Controls;
 using HandyControl.Tools;
 using Prism.Commands;
@@ -14,6 +15,8 @@ using TMS.Core.Api;
 using TMS.Core.Data;
 using TMS.Core.Data.Entity;
 using TMS.Core.Event;
+using TMS.Core.Event.WebSocket;
+using TMS.Core.Service;
 using TMS.DeskTop.Cache;
 using TMS.DeskTop.Tools.Helper;
 
@@ -24,7 +27,16 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
         //private readonly string _id = Guid.NewGuid().ToString();
         private readonly IEventAggregator eventAggregator;
 
-        public ObservableCollection<ChatInfoModel> ChatInfos { get; set; } = new ObservableCollection<ChatInfoModel>();
+        private ObservableCollection<ChatInfoModel> chatInfos;
+        public ObservableCollection<ChatInfoModel> ChatInfos 
+        { 
+            get => chatInfos;
+            set
+            {
+                chatInfos = value;
+                RaisePropertyChanged();
+            }
+        }
 
         #region Property
         public DelegateCommand<RoutedEventArgs> ReadMessageCmd { get; private set; }
@@ -43,6 +55,7 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
         }
 
         private string _chatString;
+
         public string ChatString
         {
             get { return _chatString; }
@@ -51,58 +64,59 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
 
         #endregion
 
-
-
         public ChatBoxViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
-            this.SendStringCmd = new DelegateCommand<RoutedEventArgs>(SendString);
-            //this.SendCmd = new DelegateCommand(Send);
+            this.SendStringCmd = new DelegateCommand<RoutedEventArgs>(SendMessage);
             this.ReadMessageCmd = new DelegateCommand<RoutedEventArgs>(ReadMessage);
 
-            eventAggregator.GetEvent<NotificationEvent>().Subscribe(ReceiveMessage);
-
-
+            //this.SendCmd = new DelegateCommand(Send);
+            //eventAggregator.GetEvent<NotificationEvent>().Subscribe(ReceiveMessage);
         }
 
-        // 数据消费者
-        private void ReceiveMessage(object data)
-        {
-            ChatInfoModel info = (ChatInfoModel)data;
-            ChatInfos.Add(info);
-        }
+        //// 数据消费者
+        //private void ReceiveMessage(object data)
+        //{
+        //    ChatInfoModel info = (ChatInfoModel)data;
+        //    ChatInfos.Add(info);
+        //}
 
         // 数据生成者
-        private void SendString(RoutedEventArgs e)
+        private void SendMessage(RoutedEventArgs e)
         {
             if (e is KeyEventArgs keyE && keyE.Key == Key.Enter)
             {
-                //SendString();
+                if (string.IsNullOrEmpty(_chatString)) return;
+
+                long timestamp = TimeHelper.GetNowTimeStamp();
+
+                // 更新视图数据
+                var chatInfo = new ChatInfoModel()
+                {
+                    Message = _chatString,
+                    SenderId = (long)SessionService.User.UserId,
+                    Role = ChatRoleType.Me,
+                    Timestamp = timestamp,
+                    Avatar = new Uri(SessionService.User.Avatar)
+                };
+
+                ChatInfos.Add(chatInfo);
+
+                // 发送新数据
+                var notificationData = new NotificationData()
+                {
+                    Sender = SessionService.User,
+                    Receiver = Context.User,
+                    Data = _chatString,
+                    Timestamp = timestamp
+                };
+
+                eventAggregator.GetEvent<WebSocketSendEvent>().Publish(notificationData);
+                ChatString = "";
             }
         }
 
-        //private void SendString()
-        //{
-        //    if (string.IsNullOrEmpty(ChatString)) return;
-        //    var info = new ChatInfoModel
-        //    {
-        //        Message = ChatString,
-        //        SenderId = _id,
-        //        Type = ChatMessageType.String,
-        //        Role = ChatRoleType.Other
-        //    };
-        //    ChatString = string.Empty;
-        //    eventAggregator.GetEvent<NotificationEvent>().Publish(info);
-
-        //    var dtoData = new NotificationData
-        //    {
-        //        Receiver = Data.User,
-        //        //Sender = Session.User,
-        //        Timestamp = TimeHelper.GetNowTimeStamp(),
-        //        Data = ChatString
-        //    };
-        //}
-
+        // 阅读消息事件
         private void ReadMessage(RoutedEventArgs e)
         {
             if (e.OriginalSource is FrameworkElement element && element.Tag is ChatInfoModel info)
@@ -117,31 +131,12 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
             }
         }
 
-        /// <summary>
-        /// 下方为测试用
-        /// </summary>
-
-
-
-        //private void Send()
-        //{
-        //    if (string.IsNullOrEmpty(ChatString)) return;
-        //    var info = new ChatInfoModel
-        //    {
-        //        Message = ChatString,
-        //        SenderId = _id,
-        //        Type = ChatMessageType.String,
-        //        Role = ChatRoleType.Me
-        //    };
-        //    ChatString = string.Empty;
-        //    eventAggregator.GetEvent<NotificationEvent>().Publish(info);
-        //}
-
         #region Navigation
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             var chatBoxData = navigationContext.Parameters.GetValue<ChatBoxContext>("ChatBoxContext");
             Context = chatBoxData;
+            ChatInfos = chatBoxData.ChatInfoList;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

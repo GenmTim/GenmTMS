@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Genm.Data;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TMS.Core.Data.Dto;
-using TMS.Core.Data.Enums;
+using System.Collections.ObjectModel;
 
 namespace TMS.Core.Data.Entity
 {
     public class ChatBoxContext
     {
-        public UserDto User { get; set; }
+        public User User { get; set; }
+        public ObservableCollection<ChatInfoModel> ChatInfoList { get; set; }
     }
 }

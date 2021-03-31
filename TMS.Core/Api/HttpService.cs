@@ -4,6 +4,7 @@ using RestSharp;
 using System;
 using System.Threading.Tasks;
 using TMS.Core.Data.Dto;
+using TMS.Core.Data.Entity;
 
 namespace TMS.Core.Api
 {
@@ -422,8 +423,8 @@ namespace TMS.Core.Api
                 if (code.Equals("0000"))
                 {
                     string data = jObjects["data"].ToString();
-                    UserDto userDto = JsonConvert.DeserializeObject<UserDto>(data);
-                    return new ApiResponse(200, userDto);
+                    User user = JsonConvert.DeserializeObject<User>(data);
+                    return new ApiResponse(200, user);
                 }
                 else
                 {
@@ -462,8 +463,8 @@ namespace TMS.Core.Api
                 if (code.Equals("0000"))
                 {
                     string data = jObjects["data"].ToString();
-                    UserDto userDto = JsonConvert.DeserializeObject<UserDto>(data);
-                    return new ApiResponse(200, userDto);
+                    User user = JsonConvert.DeserializeObject<User>(data);
+                    return new ApiResponse(200, user);
                 }
                 else
                 {
@@ -507,8 +508,8 @@ namespace TMS.Core.Api
                 if (code.Equals("0000"))
                 {
                     string data = jObjects["data"].ToString();
-                    UserDto userDto = JsonConvert.DeserializeObject<UserDto>(data);
-                    return new ApiResponse(201, userDto);
+                    User user = JsonConvert.DeserializeObject<User>(data);
+                    return new ApiResponse(201, user);
                 }
                 else
                 {

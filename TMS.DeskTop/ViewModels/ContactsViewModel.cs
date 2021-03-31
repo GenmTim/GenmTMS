@@ -5,12 +5,6 @@ using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels
 {
-    public class User
-    {
-        public string Name { get; set; }
-        public string Icon { get; set; }
-    }
-
     public class ContactsViewModel
     {
         private IRegionManager regionManager;

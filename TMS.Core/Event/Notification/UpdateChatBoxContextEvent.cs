@@ -9,7 +9,7 @@ using TMS.Core.Data.Entity;
 
 namespace TMS.Core.Event.Notification
 {
-    public class UpdateChatBoxContextEvent : PubSubEvent<ChatBoxContext>
+    public class UpdateChatBoxContextEvent : PubSubEvent<long>
     {
     }
 }

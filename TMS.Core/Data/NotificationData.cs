@@ -12,10 +12,10 @@ namespace TMS.Core.Data
     public class NotificationData
     {
         [JsonProperty("sender")]
-        public UserDto Sender;
+        public User Sender;
 
         [JsonProperty("receiver")]
-        public UserDto Receiver;
+        public User Receiver;
 
         [JsonProperty("type")]
         public int Type;
