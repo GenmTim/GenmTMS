@@ -4,28 +4,5 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/UserControls/Styles/Base/ChatBubbleBaseStyle.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="TitleControlBoxBaseStyle" TargetType="genm:TitleControlBox">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="genm:TitleControlBox">
-                    <Grid Background="{TemplateBinding Background}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2.5*" />
-                            <ColumnDefinition Width="7*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Text="{TemplateBinding Title}"
-                            Margin="0,0,10,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            FontSize="14" />
-                        <ContentPresenter Grid.Column="1" />
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    <ResourceDictionary.MergedDictionaries />
 </ResourceDictionary>

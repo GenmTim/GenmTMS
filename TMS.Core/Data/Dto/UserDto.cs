@@ -9,7 +9,7 @@ namespace TMS.Core.Data.Dto
         /// 用户id
         /// </summary>
         [JsonProperty("user_id", NullValueHandling = NullValueHandling.Ignore)]
-        public int? UserId { get; set; }
+        public long? UserId { get; set; }
 
         /// <summary>
         /// 名称

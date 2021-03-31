@@ -5,7 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -21,7 +23,7 @@
                 BorderBrush="{StaticResource TMS_BorderBrush}" />
             <hc:SimplePanel Grid.Row="1">
                 <TextBlock
-                    Text="{Binding Title}"
+                    Text="{Binding Context.User.Name}"
                     Margin="20,0,0,0"
                     VerticalAlignment="Center"
                     Foreground="#000235"
@@ -38,7 +40,7 @@
                             <Setter Property="Foreground" Value="#C8D5DD" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -61,11 +63,6 @@
                     BorderThickness="0"
                     Style="{StaticResource StackPanelVerticalListBox}"
                     ItemsSource="{Binding ChatInfos}">
-                    <hc:Interaction.Triggers>
-                        <hc:RoutedEventTrigger RoutedEvent="genm:ChatBubble.Selected">
-                            <hc:EventToCommand Command="{Binding ReadMessageCmd}" PassEventArgsToCommand="True" />
-                        </hc:RoutedEventTrigger>
-                    </hc:Interaction.Triggers>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <genm:ChatBubble

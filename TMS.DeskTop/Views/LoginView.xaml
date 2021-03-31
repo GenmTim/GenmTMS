@@ -4,24 +4,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:helper="clr-namespace:TMS.DeskTop.Tools.Helper"
     xmlns:gif="http://wpfanimatedgif.codeplex.com"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:question="clr-namespace:TMS.DeskTop.Views.Register"
     Width="1366"
     Height="720"
     MinWidth="960"
     MinHeight="640"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     WindowStartupLocation="CenterScreen"
     WindowState="Normal"
-    WindowStyle="None"
-    SourceInitialized="Window_SourceInitialized"
     mc:Ignorable="d">
     <WindowChrome.WindowChrome>
         <WindowChrome
             CaptionHeight="0"
             CornerRadius="0"
-            GlassFrameThickness="0"
-            ResizeBorderThickness="4"
+            GlassFrameThickness="1"
+            ResizeBorderThickness="1"
             UseAeroCaptionButtons="False"
             NonClientFrameEdges="None" />
     </WindowChrome.WindowChrome>
@@ -67,9 +69,10 @@
     </Window.Resources>
     <DockPanel>
         <hc:SimplePanel
+            helper:WindowHelper.IsTopBarMouseDown="True"
+            hc:WindowAttach.IsDragElement="True"
             DockPanel.Dock="Top"
-            Background="#FFFFFF"
-            MouseMove="Grid_MouseMove">
+            Background="#FFFFFF">
             <WrapPanel Grid.Column="1"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
@@ -77,17 +80,19 @@
                 Orientation="Horizontal">
                 <Button
                     Content="&#xe61c;"
-                    Click="btn_min_Click"
+                    helper:WindowHelper.IsMinWindow="True"
                     Style="{StaticResource WindowMinBtnStyle}" />
                 <Button
                     Content="&#xe61b;"
-                    Click="btn_max_Click"
-                    Style="{StaticResource WindowMaxBtnStyle}" />
+                    helper:WindowHelper.IsMaxTrigger="True"
+                    Style="{StaticResource WindowMaxBtnStyle}"
+                    Cursor="Hand" />
                 <Button
                     Content="&#xe61a;"
+                    helper:WindowHelper.IsClose="True"
                     hc:BackgroundSwitchElement.MouseDownBackground="Red"
-                    Click="btn_close_Click"
-                    Style="{StaticResource WindowCloseBtnStyle}" />
+                    Style="{StaticResource WindowCloseBtnStyle}"
+                    Cursor="Hand" />
             </WrapPanel>
         </hc:SimplePanel>
         <hc:SimplePanel>
@@ -162,6 +167,7 @@
                                     <hc:PasswordBox x:Name="passwordBox"
                                         Height="40"
                                         Margin="30,0,30,30"
+                                        helper:PasswordBoxHelper.Password="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         hc:InfoElement.Placeholder="请输入密码"
                                         ShowEyeButton="True" />
                                 </StackPanel>
@@ -169,12 +175,12 @@
                             <Grid Margin="30,0,30,30">
                                 <Button
                                     Content="登录"
+                                    Command="{Binding LoginCmd}"
                                     Height="40"
                                     HorizontalAlignment="Stretch"
                                     Cursor="Hand"
                                     FontSize="16"
-                                    Style="{StaticResource ButtonPrimary}"
-                                    Click="LoginBtn_Click" />
+                                    Style="{StaticResource ButtonPrimary}" />
                             </Grid>
                             <StackPanel Margin="30,0,30,30" Orientation="Horizontal">
                                 <CheckBox Content="15天内自动登录" Foreground="Gray" />

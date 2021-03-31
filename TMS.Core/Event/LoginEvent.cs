@@ -17,4 +17,7 @@ namespace TMS.Core.Event
     {
         
     }
+
+    public class LoginedEvent : PubSubEvent { }
+
 }

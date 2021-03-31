@@ -13,13 +13,13 @@ using TMS.Core.Service;
 
 namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
 {
-    public class StringItemsControlModel : BindableBase, IDialogHostAware
+    public class StringItemsDialogModel : BindableBase, IDialogHostAware
     {
         public string IdentifierName { get; set; }
 
         //public event Action<IDialogResult> RequestClose;
 
-        public StringItemsControlModel()
+        public StringItemsDialogModel()
         {
             this.AddOneItemCmd = new DelegateCommand<StringBox>(AddOneItem);
             this.RemoveOneItemCmd = new DelegateCommand<StringBox>(RemoveOneItem);

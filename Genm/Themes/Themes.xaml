@@ -2,13 +2,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:hc="https://handyorg.github.io/handycontrol">
+    <Style TargetType="hc:SearchBar" BasedOn="{StaticResource SearchBarExtendBaseStyle}">
+        <Setter Property="FontSize" Value="14" />
+    </Style>
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Genm;component/Themes/Styles/DataDialog.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Genm;component/Themes/Styles/Drawer.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Genm;component/Themes/Styles/CheckTreeView.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Genm;component/Themes/Styles/ChatBubble.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style TargetType="hc:SearchBar" BasedOn="{StaticResource SearchBarExtendBaseStyle}">
-        <Setter Property="FontSize" Value="14" />
-    </Style>
 </ResourceDictionary>

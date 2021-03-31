@@ -3,23 +3,757 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DialogHost.xaml" />
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DialogHost.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Genm;component/Themes/Themes.xaml" />
         <ResourceDictionary Source="/Resources/Converters/Converter.xaml" />
-        <ResourceDictionary Source="/Resources/Styles/Brush/Brush.xaml" />
-        <ResourceDictionary Source="/Resources/Styles/RadioButton/RadioButton.xaml" />
-        <ResourceDictionary Source="/Resources/Styles/Grid/HollowOutDataGridStyle.xaml" />
-        <ResourceDictionary Source="/Resources/Styles/Button/CommonButtonStyle.xaml" />
-        <ResourceDictionary Source="/Resources/Styles/Shadow/Shadow.xaml" />
-        <ResourceDictionary Source="/UserControls/Styles/UserControlsStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <!--#region FocusVisual-->
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template" Value="{x:Null}" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region DropShadowEffect-->
+    <DropShadowEffect
+        x:Key="EffectShadowCom"
+        BlurRadius="10"
+        ShadowDepth="1"
+        Direction="270"
+        Opacity=".1"
+        RenderingBias="Performance"
+        Color="{StaticResource EffectShadowColor}" />
+    <!--#endregion-->
+
+    <!--#region Brush-->
+    <SolidColorBrush
+        x:Key="TMS_BorderBrush"
+        o:Freeze="True"
+        Color="#10000000" />
+    <SolidColorBrush
+        x:Key="TMS_TransparencyRegionBrush"
+        o:Freeze="True"
+        Color="#01FFFFFF" />
+    <!--#endregion-->
+
+    <!--#region Font-->
     <FontFamily x:Key="FIconFontFamily">/Resources/Fonts/#iconfont</FontFamily>
     <FontFamily x:Key="FIconPlusFontFamily">/Resources/Fonts/Plus/#iconfont</FontFamily>
     <FontFamily x:Key="MenuIconFontFamily">/Resources/Fonts/Plus/Menu/#iconfont</FontFamily>
     <FontFamily x:Key="DocIconFontFamily">/Resources/Fonts/Plus/Doc/#iconfont</FontFamily>
     <FontFamily x:Key="SurfaceIconFontFamily">/Resources/Fonts/Plus/Surface/#iconfont</FontFamily>
+    <!--#endregion-->
 
+    <!--#region Button-->
+    <Style
+        x:Key="WindowFuncBtnBaseStyle"
+        BasedOn="{StaticResource ButtonCustom}"
+        TargetType="Button">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#iconfont" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="#01FFFFFF" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    </Style>
+
+    <Style
+        x:Key="WindowMaxBtnStyle"
+        BasedOn="{StaticResource WindowFuncBtnBaseStyle}"
+        TargetType="Button">
+        <Setter Property="hc:BackgroundSwitchElement.MouseHoverBackground" Value="#5FC0C0C0" />
+        <Setter Property="hc:BackgroundSwitchElement.MouseDownBackground" Value="#5FC0C0C0" />
+    </Style>
+
+    <Style
+        x:Key="WindowMinBtnStyle"
+        BasedOn="{StaticResource WindowFuncBtnBaseStyle}"
+        TargetType="Button">
+        <Setter Property="hc:BackgroundSwitchElement.MouseHoverBackground" Value="#5FC0C0C0" />
+        <Setter Property="hc:BackgroundSwitchElement.MouseDownBackground" Value="#5FC0C0C0" />
+    </Style>
+
+    <Style
+        x:Key="WindowCloseBtnStyle"
+        BasedOn="{StaticResource WindowFuncBtnBaseStyle}"
+        TargetType="Button">
+        <Setter Property="hc:BackgroundSwitchElement.MouseHoverBackground" Value="#BFFF0000" />
+        <Setter Property="hc:BackgroundSwitchElement.MouseDownBackground" Value="#BFFF0000" />
+    </Style>
+
+    <Style
+        x:Key="ButtonCircular"
+        BasedOn="{StaticResource ButtonBaseStyle}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="33" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Style="{StaticResource BorderCircular}"
+                        Background="{TemplateBinding Background}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  基础圆形文字图标按钮  -->
+    <Style
+        x:Key="IconFontCircularBtnBaseStyle"
+        BasedOn="{StaticResource ButtonIconCircular}"
+        TargetType="Button">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Style="{DynamicResource BorderCircular}"
+                        Background="{TemplateBinding Background}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  渐变的圆形文字图标按钮  -->
+    <Style
+        x:Key="PIconFontBtnStyle"
+        BasedOn="{StaticResource IconFontCircularBtnBaseStyle}"
+        TargetType="Button">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="8, 0.5">
+                    <GradientStop Offset="0" Color="{DynamicResource ThirdlyTextColor}" />
+                    <GradientStop Offset="1" Color="White" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0, 0.5" EndPoint="8, 0.5">
+                            <GradientStop Offset="0" Color="{DynamicResource PrimaryColor}" />
+                            <GradientStop Offset="1" Color="White" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="TextBtnStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
+        x:Key="OptBtnStyle"
+        BasedOn="{StaticResource TextBtnStyle}"
+        TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--  纯粹的文字图标按钮  -->
+    <Style x:Key="FIconTextBtnStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region RadioButton-->
+    <Style x:Key="TextRadioBtnStyle" TargetType="RadioButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#iconfont" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid VerticalAlignment="Center">
+                        <Border
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Focusable="False"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="#63BCFB" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EmptyRadioBtnStyle" TargetType="{x:Type RadioButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <hc:SimplePanel x:Name="templateRoot"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="Transparent"
+                        SnapsToDevicePixels="True">
+                        <Border
+                            CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </hc:SimplePanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style
+        x:Key="UnderlineRadioBtnStyle"
+        BasedOn="{StaticResource EmptyRadioBtnStyle}"
+        TargetType="{x:Type RadioButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="attach:ValueAttach.Text" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <hc:SimplePanel x:Name="templateRoot"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="Transparent"
+                        SnapsToDevicePixels="True">
+                        <Border
+                            CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <hc:SimplePanel Margin="{TemplateBinding Padding}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Text="{TemplateBinding hc:TitleElement.Title}"
+                                        VerticalAlignment="Center"
+                                        FontSize="14"
+                                        Foreground="{TemplateBinding Foreground}" />
+                                    <hc:SimplePanel x:Name="numBorder" Margin="5,0,0,0">
+                                        <Border
+                                            Width="20"
+                                            Height="16"
+                                            Background="{StaticResource PrimaryBrush}"
+                                            CornerRadius="5" />
+                                        <TextBlock x:Name="num"
+                                            Text="{TemplateBinding attach:ValueAttach.Text}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Foreground="White" />
+                                    </hc:SimplePanel>
+                                </StackPanel>
+                            </hc:SimplePanel>
+                        </Border>
+                    </hc:SimplePanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="BorderThickness" Value="0,0,0,3" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="BorderThickness" Value="0,0,0,3" />
+                            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                        </Trigger>
+                        <Trigger Property="attach:ValueAttach.Text" Value="0">
+                            <Setter TargetName="numBorder" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NavRadioBtnStyle" TargetType="{x:Type RadioButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Margin" Value="24,0,0,0" />
+        <Setter Property="Height" Value="39" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid VerticalAlignment="Center">
+                        <Border
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Focusable="False"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="BorderThickness" Value="0,0,0,2" />
+                            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region TitleControlBox-->
+    <Style x:Key="TitleControlBoxBaseStyle" TargetType="genm:TitleControlBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="genm:TitleControlBox">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2.5*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Text="{TemplateBinding Title}"
+                            Margin="0,0,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            FontSize="14" />
+                        <ContentPresenter Grid.Column="1" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ChatBubble-->
+    <DropShadowEffect
+        x:Key="ChatBubbleEffectShadow"
+        BlurRadius="10"
+        ShadowDepth="1"
+        Direction="270"
+        Opacity=".1"
+        RenderingBias="Performance"
+        Color="{StaticResource EffectShadowColor}" />
+    <ControlTemplate x:Key="GChatBubbleStringBaseTemplate" TargetType="genm:ChatBubble">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <hc:Gravatar x:Name="Gravatar" Grid.Column="1"
+                Width="35"
+                Height="35"
+                Margin="10,0"
+                VerticalAlignment="Top"
+                Id="asd1"
+                Style="{StaticResource GravatarCircleImg}" />
+            <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
+                <Border
+                    Name="Body"
+                    Margin="0,0,3,0"
+                    Background="{TemplateBinding Background}"
+                    UseLayoutRounding="True"
+                    CornerRadius="8">
+                    <TextBlock
+                        Text="{TemplateBinding Content}"
+                        MaxWidth="225"
+                        TextWrapping="Wrap"
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="Center" />
+                </Border>
+            </hc:SimplePanel>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Role" Value="Other">
+                <Setter TargetName="Gravatar" Property="Grid.Column" Value="0" />
+                <Setter TargetName="MessageCarrier" Property="Grid.Column" Value="1" />
+                <Setter TargetName="Body" Property="Effect" Value="{StaticResource ChatBubbleEffectShadow}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="GChatBubbleCustomBaseTemplate" TargetType="genm:ChatBubble">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <hc:Gravatar x:Name="Gravatar" Grid.Column="1"
+                Width="35"
+                Height="35"
+                Margin="10,0"
+                VerticalAlignment="Top"
+                Id="asd1"
+                Style="{StaticResource GravatarCircleImg}" />
+            <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
+                <Border
+                    Name="Body"
+                    Margin="0,0,3,0"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="8">
+                    <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="Center" />
+                </Border>
+            </hc:SimplePanel>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Role" Value="Other">
+                <Setter TargetName="Gravatar" Property="Grid.Column" Value="0" />
+                <Setter TargetName="MessageCarrier" Property="Grid.Column" Value="1" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="GChatBubbleFileBaseTemplate" TargetType="genm:ChatBubble">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <hc:Gravatar x:Name="Gravatar" Grid.Column="1"
+                Width="35"
+                Height="35"
+                Margin="10,0"
+                VerticalAlignment="Top"
+                Id="asd1"
+                Style="{StaticResource GravatarCircleImg}" />
+            <hc:SimplePanel x:Name="MessageCarrier" Grid.Column="0">
+                <Border
+                    Name="Body"
+                    Margin="0,0,3,0"
+                    Background="{TemplateBinding Background}"
+                    UseLayoutRounding="True"
+                    CornerRadius="8">
+                    <Image x:Name="fileIcon" Grid.Column="1"
+                        Width="35"
+                        Height="35"
+                        Margin="10,0"
+                        VerticalAlignment="Top"
+                        Source="/Resources/Images/Icon/FileType/PDF.png" />
+                </Border>
+            </hc:SimplePanel>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Role" Value="Other">
+                <Setter TargetName="Gravatar" Property="Grid.Column" Value="0" />
+                <Setter TargetName="MessageCarrier" Property="Grid.Column" Value="1" />
+                <Setter TargetName="Body" Property="Effect" Value="{StaticResource EffectShadow1}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="GChatBubbleBaseStyle" TargetType="genm:ChatBubble">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Background" Value="#D1D3E4" />
+        <Setter Property="Foreground" Value="#303853" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="MinWidth" Value="20" />
+        <Setter Property="Template" Value="{StaticResource GChatBubbleStringBaseTemplate}" />
+        <Setter Property="IsRead" Value="{Binding IsSelected, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="MaxWidth" Value="280" />
+        <Style.Triggers>
+            <Trigger Property="Role" Value="Other">
+                <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+            </Trigger>
+            <Trigger Property="Type" Value="Custom">
+                <Setter Property="Template" Value="{StaticResource GChatBubbleCustomBaseTemplate}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region CheckTreeView-->
+    <Style
+        x:Key="treeViewItemStyle"
+        BasedOn="{StaticResource BaseStyle}"
+        TargetType="{x:Type TreeViewItem}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="30" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Border x:Name="Bd"
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                            SnapsToDevicePixels="True">
+                            <DockPanel LastChildFill="True">
+                                <DockPanel.Margin>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}">
+                                        <Binding.Converter>
+                                            <hc:TreeViewItemMarginConverter />
+                                        </Binding.Converter>
+                                    </Binding>
+                                </DockPanel.Margin>
+                                <ToggleButton x:Name="Expander"
+                                    IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Margin="0,0,5,0"
+                                    ClickMode="Press">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Focusable" Value="False" />
+                                            <Setter Property="Width" Value="16" />
+                                            <Setter Property="Height" Value="16" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Border
+                                                            Width="16"
+                                                            Height="16"
+                                                            Padding="4"
+                                                            Background="Transparent">
+                                                            <Path x:Name="ExpandPath"
+                                                                Data="M508.89325,762.93166 A65.039498,65.039498,0,0,1,462.47259,743.44582 L97.125746,371.00402 C71.982728,345.3697 72.372878,304.18717 98.007197,279.04415 123.65597,253.87946 164.81682,254.29851 189.96706,279.92561 L508.90047,605.05084 827.83388,279.92561 A65.025048,65.025048,0,0,1,920.6752,371.00402 L555.31391,743.44582 A65.025048,65.025048,0,0,1,508.89325,762.93166 z"
+                                                                Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type TreeViewItem}}}"
+                                                                RenderTransformOrigin="0.5,0.5"
+                                                                Stretch="Uniform">
+                                                                <Path.RenderTransform>
+                                                                    <RotateTransform Angle="-90" />
+                                                                </Path.RenderTransform>
+                                                            </Path>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="ExpandPath" Property="RenderTransform">
+                                                                    <Setter.Value>
+                                                                        <RotateTransform Angle="0" />
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <ContentPresenter x:Name="PART_Header"
+                                    Content="{TemplateBinding Header}"
+                                    VerticalAlignment="Center"
+                                    ContentSource="Header"
+                                    ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </DockPanel>
+                        </Border>
+                        <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="Bd" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="#FFEFF0F1" />
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+                        <Trigger Property="IsExpanded" Value="False">
+                            <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="#FF6D6D6D" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="genm:CheckTreeView">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource treeViewItemStyle}" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <HierarchicalDataTemplate DataType="{x:Type genm:CheckTreeView}" ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox
+                            IsChecked="{Binding IsChecked}"
+                            Command="{Binding ClickCommand}"
+                            Margin="1,1,8,1"
+                            Style="{StaticResource CheckBoxBaseStyle}"
+                            FlowDirection="LeftToRight" />
+                        <UserControl Content="{Binding Content}" DataContext="{Binding ContentData}" />
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region DataDialog-->
+    <DropShadowEffect
+        x:Key="DialogShadow"
+        BlurRadius="10"
+        ShadowDepth="1"
+        Direction="270"
+        Opacity=".1"
+        RenderingBias="Performance"
+        Color="{StaticResource EffectShadowColor}" />
+    <Style TargetType="genm:DataDialog">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="genm:DataDialog">
+                    <StackPanel
+                        Width="400"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Border
+                                Grid.RowSpan="3"
+                                Effect="{StaticResource DialogShadow}"
+                                Background="White"
+                                CornerRadius="10" />
+                            <TextBlock
+                                Text="{TemplateBinding Title}"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18" />
+                            <Button
+                                Content="&#xe61a;"
+                                Margin="0,10,10,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Style="{DynamicResource TextBtnStyle}"
+                                FontFamily="/TMS.DeskTop;component/Resources/Fonts/#iconfont" />
+                            <StackPanel Grid.Row="1"
+                                Margin="20"
+                                VerticalAlignment="Center">
+                                <ContentPresenter />
+                            </StackPanel>
+                            <StackPanel Grid.Row="2"
+                                Margin="0,0,20,0"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                                <Button
+                                    Command="{Binding CancelCommand}"
+                                    Width="55"
+                                    Height="30"
+                                    Margin="0,0,10,0"
+                                    Cursor="Hand"
+                                    FontSize="14">
+                                    <TextBlock Text="{TemplateBinding NegativeText}" />
+                                </Button>
+                                <Button
+                                    Command="{Binding SaveCommand}"
+                                    Width="55"
+                                    Height="30"
+                                    Cursor="Hand"
+                                    FontSize="14"
+                                    Style="{DynamicResource ButtonPrimary}">
+                                    <TextBlock Text="{TemplateBinding PositiveText}" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
 </ResourceDictionary>

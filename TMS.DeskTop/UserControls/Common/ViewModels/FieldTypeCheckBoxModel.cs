@@ -70,7 +70,7 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
             {
                 { "StringDataList", TabDataList }
             };
-            var result = await dialogHost.ShowDialog(nameof(StringItemsControl), param);
+            var result = await dialogHost.ShowDialog(nameof(StringItemsDialog), param);
             if (result != null && result.Result == ButtonResult.OK)
             {
                 var dataList = result.Parameters.GetValue<ObservableCollection<StringBox>>("StringDataList");

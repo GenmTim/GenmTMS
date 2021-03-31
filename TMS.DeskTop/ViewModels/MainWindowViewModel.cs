@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -7,7 +8,7 @@ using TMS.DeskTop.Views;
 
 namespace TMS.DeskTop.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+    public class MainWindowViewModel : BaseDialogViewModel
     {
         private string _title = "Prism Application";
         public string Title
@@ -22,7 +23,7 @@ namespace TMS.DeskTop.ViewModels
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
 
-        public MainWindowViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
+        public MainWindowViewModel(IRegionManager regionManager, IEventAggregator eventAggregator, IModuleCatalog moduleCatalog) : base(eventAggregator)
         {
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;

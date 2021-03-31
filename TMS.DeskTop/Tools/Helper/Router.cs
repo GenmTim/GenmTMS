@@ -108,6 +108,9 @@ namespace TMS.DeskTop.Tools.Helper
             routeMap[Root] = RootPath;
 
             routeMap[typeof(NotificationView)] = "notification/";
+            {
+                routeMap[typeof(ChatBox)] = routeMap[typeof(NotificationView)] + "chatBox/";
+            }
             routeMap[typeof(ContactsView)] = "contacts/";
             {
                 routeMap[typeof(OrganizationalStructrureView)] = routeMap[typeof(ContactsView)] + "organizational/";

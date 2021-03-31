@@ -74,7 +74,7 @@
                     <StackPanel Grid.Row="0" Grid.Column="0"
                         Orientation="Horizontal">
                         <TextBlock x:Name="imgTitle"
-                            Text="{Binding Path=Title}"
+                            Text="{Binding User.Name}"
                             Margin="0,2"
                             VerticalAlignment="Center"
                             FontSize="14" />
@@ -89,7 +89,7 @@
                             Foreground="#DC9B04" />
                     </StackPanel>
                     <TextBlock Grid.Row="1" Grid.Column="0"
-                        Text="{Binding Path=Content}"
+                        Text="{Binding Path=NewMessage}"
                         Margin="0,2"
                         FontSize="12"
                         Foreground="#777"

@@ -2,8 +2,11 @@
 using Prism.Regions;
 using System.Windows.Controls;
 using TMS.Core.Data;
+using TMS.Core.Data.Entity;
 using TMS.Core.Data.Token;
+using TMS.Core.Event.Notification;
 using TMS.DeskTop.Tools.Base;
+using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Common.Views;
 using static TMS.DeskTop.ViewModels.NotificationViewModel;
 
@@ -19,29 +22,17 @@ namespace TMS.DeskTop.Views
         {
             InitializeComponent();
             this.eventAggregator = eventAggregator;
-            //eventAggregator.GetEvent<ConnectionEvent>().Subscribe((data) => 
-            //{
-            //    RegionManager.SetRegionName(chatRegion, "ChatBox" + data.Id);
-            //regionManager.RequestNavigate(RegionToken.ChatRegion, "ChatBox");
-
-            //});
         }
 
-        private void listView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void NotificationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListView list = sender as ListView;
-            if (list != null)
+            if (sender is ListView list)
             {
-                var data= list.SelectedValue as NotificationItemEntity;
-                //if (listView.SelectedValue )
-                if (data != null)
+                if (list.SelectedValue is NotificationItemEntity data)
                 {
-                    var param = new NavigationParameters();
-                    param.Add("Data", data);
-                    regionManager.RequestNavigate(RegionToken.ChatRegion, nameof(ChatBox), param);
+                    eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Publish(new ChatBoxContext { User = data.User });
                 }
             }
-
             e.Handled = true;
         }
     }

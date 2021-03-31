@@ -6,8 +6,8 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
-    xmlns:popup="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
     xmlns:helper="clr-namespace:TMS.DeskTop.Tools.Helper"
+    xmlns:popup="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
     xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -37,9 +37,7 @@
                 <hc:SimplePanel x:Name="panel"
                     FocusVisualStyle="{x:Null}"
                     Focusable="True">
-                    <genm:WindowDrawer x:Name="drawer"
-                        ShowMode="Cover"
-                        MaskCanClose="True">
+                    <genm:WindowDrawer x:Name="drawer" MaskCanClose="True">
                         <Border Width="{Binding WindowWidth}" Background="{StaticResource RegionBrush}">
                             <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.SashRegion}" />
                         </Border>
@@ -67,9 +65,9 @@
                                 Cursor="Hand">
                                 <Image Source="/Resources/Images/Assets/googledrive.png" />
                             </ToggleButton>
-                            <genm:Popup
+                            <Popup
+                                StaysOpen="False"
                                 Placement="Right"
-                                StaysOpen="True"
                                 PopupAnimation="Fade"
                                 HorizontalOffset="10"
                                 AllowsTransparency="True"
@@ -88,7 +86,7 @@
                                         </hc:SimplePanel>
                                     </Border>
                                 </Grid>
-                            </genm:Popup>
+                            </Popup>
 
 
                             <!--#region Left Grid - Menu-->
@@ -327,11 +325,11 @@
                     Effect="{StaticResource EffectShadow2}" />-->
 
                     <hc:SimplePanel
-                        Height="10"
+                        Height="20"
                         VerticalAlignment="Top"
                         Panel.ZIndex="0"
                         hc:WindowAttach.IsDragElement="True"
-                        MouseDown="TopBar_MouseDown"
+                        helper:WindowHelper.IsTopBarMouseDown="True"
                         Background="Transparent" />
 
                     <hc:SimplePanel
@@ -340,7 +338,7 @@
                         VerticalAlignment="Top"
                         Panel.ZIndex="0"
                         hc:WindowAttach.IsDragElement="True"
-                        MouseDown="TopBar_MouseDown"
+                        helper:WindowHelper.IsTopBarMouseDown="True"
                         Background="Transparent">
                         <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,0" />
                         <WrapPanel Grid.Column="1"
@@ -350,16 +348,16 @@
                             Orientation="Horizontal">
                             <Button
                                 Content="&#xe61c;"
-                                Click="btn_min_Click"
+                                helper:WindowHelper.IsMinWindow="True"
                                 Style="{StaticResource WindowMinBtnStyle}" />
                             <Button
                                 Content="&#xe61b;"
-                                Click="btn_max_Click"
+                                helper:WindowHelper.IsMaxTrigger="True"
                                 Style="{StaticResource WindowMaxBtnStyle}" />
                             <Button
                                 Content="&#xe61a;"
+                                helper:WindowHelper.IsClose="True"
                                 hc:BackgroundSwitchElement.MouseDownBackground="Red"
-                                Click="btn_close_Click"
                                 Style="{StaticResource WindowCloseBtnStyle}" />
                         </WrapPanel>
                     </hc:SimplePanel>

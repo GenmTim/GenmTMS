@@ -1,6 +1,7 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
+using TMS.Core.Api;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Common.ViewModels;
@@ -28,15 +29,21 @@ namespace TMS.DeskTop
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            // 注册服务
             containerRegistry.Register<IDialogHostService, DialogHostService>();
+
+            // 注册全局单例服务
+            containerRegistry.RegisterSingleton<WebSocketService>();
+
+            // 注册视图
             containerRegistry.Register<LoginView>();
-            containerRegistry.RegisterForNavigation<ChatBox, ChatBoxViewModel>();
-            containerRegistry.RegisterForNavigation<StringItemsControl, StringItemsControlModel>();
+
+            // 注册对话框视图
+            containerRegistry.RegisterForNavigation<StringItemsDialog, StringItemsDialogModel>();
             containerRegistry.RegisterForNavigation<SelectUserDialog, SelectUserDialogModel>();
-            //containerRegistry.RegisterForNavigation<ChatBox, ChatBoxViewModel>();
 
+            // 注册导航视图
             RouteHelper.RegisterToContainer(containerRegistry);
-
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -48,13 +55,32 @@ namespace TMS.DeskTop
             var login = Container.Resolve<LoginView>();
             var result = login.ShowDialog();
 
+            // 判断是否是刚注册，如若刚注册，则需要填写相关问券
+
+
+            // 记录Session
+
+
+
+            // 初始化当前用户信息
+
+
+
+            // 获取最新通知消息记录
+
+
+
+            if (result.Value)
+            {
+                base.OnInitialized();
+            }
+
             //if (result.Value)
             //{
             //    var registerInfoEntry = Container.Resolve<NewUserQuestion>();
             //    result = registerInfoEntry.ShowDialog();
             //    if (result.Value)
             //{
-                base.OnInitialized();
             //}
             //else
             //    Application.Current.Shutdown();

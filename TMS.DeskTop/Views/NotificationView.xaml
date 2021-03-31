@@ -129,11 +129,11 @@
                     <ListView x:Name="listView1" Grid.Row="2"
                         Margin="0,5,0,0"
                         HorizontalAlignment="Stretch"
-                        SelectionChanged="listView1_SelectionChanged"
+                        SelectionChanged="NotificationList_SelectionChanged"
                         ItemTemplate="{StaticResource myLVItemTemplate}"
                         Template="{StaticResource myLVTemplate}"
                         ItemContainerStyle="{StaticResource ItemContainerStyle}"
-                        ItemsSource="{Binding Path=TestList}">
+                        ItemsSource="{Binding Path=NotificationMap.Keys}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Vertical" />
