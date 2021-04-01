@@ -585,10 +585,10 @@ namespace TMS.Core.Api
                     string data = jObjects["data"].ToString();
                     //debug 调整输出类
                     User user = JsonConvert.DeserializeObject<User>(data);
-                    UserDto userDto = JsonConvert.DeserializeObject<UserDto>(data);
-                    UserInfoDto userInfoDto = JsonConvert.DeserializeObject<UserInfoDto>(data);
+                    //UserDto userDto = JsonConvert.DeserializeObject<UserDto>(data);
+                    //UserInfoDto userInfoDto = JsonConvert.DeserializeObject<UserInfoDto>(data);
                     //debug 两个类合并
-                    return new ApiResponse(200, userInfoDto);
+                    return new ApiResponse(200, user);
                 }
                 else
                 {
