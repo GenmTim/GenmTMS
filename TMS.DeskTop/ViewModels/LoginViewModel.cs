@@ -1,22 +1,23 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
 using TMS.Core.Api;
 using TMS.Core.Data.Dto;
+using TMS.Core.Data.Entity;
 using TMS.Core.Event;
+using TMS.Core.Service;
 using static TMS.DeskTop.Views.LoginView;
 
 namespace TMS.DeskTop.ViewModels
 {
     public class LoginViewModel : BaseDialogViewModel
     {
-        private WebSocketService webSocket;
-
         public LoginViewModel(IContainerExtension container, IEventAggregator eventAggregator) : base(eventAggregator)
         {
             LoginCmd = new DelegateCommand(Login);
-            webSocket = container.Resolve<WebSocketService>();
+            ExitCmd = new DelegateCommand(Exit);
         }
 
         #region Property
@@ -39,10 +40,17 @@ namespace TMS.DeskTop.ViewModels
 
         #region Command
         public DelegateCommand LoginCmd { get; private set; }
+        public DelegateCommand ExitCmd { get; private set; }
 
-        private void Login()
+        private async void Login()
         {
-            eventAggregator.GetEvent<LoginedEvent>().Publish();
+            var result = await HttpService.GetConn().LoginUserTel(UserName, PassWord);
+            if (result.StatusCode == 200)
+            {
+                User user = (User)result.Data;
+                SessionService.User = user;
+                eventAggregator.GetEvent<LoginedEvent>().Publish();
+            }
         }
 
         #endregion

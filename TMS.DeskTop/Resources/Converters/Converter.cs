@@ -39,4 +39,21 @@ namespace TMS.DeskTop.Resources.Converters
             return null;
         }
     }
+
+    class String2UriConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is null) return "";
+            String str = (String)value;
+            return new Uri(str);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Uri uri = (Uri)value;
+            return uri.ToString();
+        }
+    }
+
 }

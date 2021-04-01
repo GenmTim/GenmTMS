@@ -24,11 +24,17 @@ namespace TMS.DeskTop.Views
             InitializeComponent();
             this.eventAggregator = eventAggregator;
             this.eventAggregator.GetEvent<LoginedEvent>().Subscribe(Logined);
+            this.eventAggregator.GetEvent<ExitEvent>().Subscribe(Exit);
         }
 
         private void Logined()
         {
             this.DialogResult = true;
+        }
+
+        private void Exit()
+        {
+            this.Close();
         }
     }
 }

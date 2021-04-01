@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMS.DeskTop", "TMS.DeskTop\TMS.DeskTop.csproj", "{7A7B4944-03B5-4716-B7A2-3DE0E3C59375}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMS.Core", "TMS.Core\TMS.Core.csproj", "{FCC727C8-F919-4122-BB6A-1E6F4E475D81}"
+	ProjectSection(ProjectDependencies) = postProject
+		{173F79F0-9166-48B6-8808-4A456DCE3D03} = {173F79F0-9166-48B6-8808-4A456DCE3D03}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prism_Test", "Prism_Test\Prism_Test.csproj", "{C115EC0B-EFCA-48FE-861D-398157708F20}"
 EndProject

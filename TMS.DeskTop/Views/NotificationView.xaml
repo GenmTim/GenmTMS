@@ -122,7 +122,7 @@
                                     </Setter>
                                 </Style>
                             </StackPanel.Resources>
-                            <Button />
+                            <Button Click="Button_Click" Cursor="Hand" />
                             <Button />
                         </StackPanel>
                     </hc:ScrollViewer>
@@ -133,7 +133,7 @@
                         ItemTemplate="{StaticResource myLVItemTemplate}"
                         Template="{StaticResource myLVTemplate}"
                         ItemContainerStyle="{StaticResource ItemContainerStyle}"
-                        ItemsSource="{Binding Path=NotificationMap.Keys}">
+                        ItemsSource="{Binding Path=MsgObjList}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Vertical" />

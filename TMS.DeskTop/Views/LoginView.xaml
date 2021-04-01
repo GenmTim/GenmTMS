@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:helper="clr-namespace:TMS.DeskTop.Tools.Helper"
     xmlns:gif="http://wpfanimatedgif.codeplex.com"
@@ -89,7 +90,7 @@
                     Cursor="Hand" />
                 <Button
                     Content="&#xe61a;"
-                    helper:WindowHelper.IsClose="True"
+                    Command="{Binding ExitCmd}"
                     hc:BackgroundSwitchElement.MouseDownBackground="Red"
                     Style="{StaticResource WindowCloseBtnStyle}"
                     Cursor="Hand" />
@@ -164,12 +165,15 @@
                                         Margin="30,0,30,30"
                                         hc:InfoElement.Placeholder="请输入手机号码"
                                         FontSize="12" />
-                                    <hc:PasswordBox x:Name="passwordBox"
+                                    <PasswordBox x:Name="passwordBox"
                                         Height="40"
                                         Margin="30,0,30,30"
                                         helper:PasswordBoxHelper.Password="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        hc:InfoElement.Placeholder="请输入密码"
-                                        ShowEyeButton="True" />
+                                        hc:InfoElement.Placeholder="请输入密码">
+                                        <i:Interaction.Behaviors>
+                                            <helper:PasswordBoxBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </PasswordBox>
                                 </StackPanel>
                             </hc:SimplePanel>
                             <Grid Margin="30,0,30,30">

@@ -55,11 +55,12 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <hc:Gravatar Grid.Column="0"
-                    Width="33"
-                    Height="33"
-                    Margin="5,0"
-                    Style="{StaticResource GravatarCircleImg}"
-                    Id="{Binding Path=ImgName}" />
+                    Width="43"
+                    Height="43"
+                    Margin="5,0,10,0"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Source="{Binding Avatar}"
+                    Style="{StaticResource GravatarCircleImg}" />
                 <Grid Grid.Column="1"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center">
@@ -74,10 +75,10 @@
                     <StackPanel Grid.Row="0" Grid.Column="0"
                         Orientation="Horizontal">
                         <TextBlock x:Name="imgTitle"
-                            Text="{Binding User.Name}"
+                            Text="{Binding ObjectName}"
                             Margin="0,2"
                             VerticalAlignment="Center"
-                            FontSize="14" />
+                            FontSize="16" />
                         <TextBlock
                             Text="BOT"
                             Margin="8,0"
@@ -89,13 +90,13 @@
                             Foreground="#DC9B04" />
                     </StackPanel>
                     <TextBlock Grid.Row="1" Grid.Column="0"
-                        Text="{Binding Path=NewMessage}"
+                        Text="{Binding NewMessage}"
                         Margin="0,2"
                         FontSize="12"
                         Foreground="#777"
                         DockPanel.Dock="Bottom" />
                     <TextBlock x:Name="timeText" Grid.Column="1"
-                        Text="{Binding Path=Date}"
+                        Text="{Binding NewMessageDate}"
                         Margin="10,0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
@@ -109,7 +110,7 @@
                         Style="{StaticResource BadgeBaseStyle}"
                         Background="#1890FF"
                         BadgeMargin="0,0,10,0"
-                        Value="1" />
+                        Value="{Binding BadgeNumber}" />
                     <hc:SimplePanel x:Name="extendTool" Grid.Column="1"
                         Grid.RowSpan="2"
                         Width="40"

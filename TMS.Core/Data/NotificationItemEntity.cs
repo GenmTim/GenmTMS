@@ -1,11 +1,13 @@
-﻿using TMS.Core.Data.Dto;
+﻿using System;
+using TMS.Core.Data.Dto;
+using TMS.Core.Data.Entity;
 
 namespace TMS.Core.Data
 {
     public class NotificationItemEntity
     {
-        public UserDto User {get; set;}
-        public string ImgUrl { get; set; }
+        public User User {get; set;}
+        public Uri ImgUrl { get; set; }
         public string NewMessage { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xaml.Behaviors;
+
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,7 +16,9 @@ namespace TMS.DeskTop.Tools.Helper
         {
             string password = (string)e.NewValue;
             if (sender is PasswordBox passwordBox && passwordBox.Password != password)
+            {
                 passwordBox.Password = password;
+            }
         }
 
         public static string GetPassword(DependencyObject dp)
@@ -31,6 +30,28 @@ namespace TMS.DeskTop.Tools.Helper
         {
             dp.SetValue(PasswordProperty, value);
         }
+    }
 
+    public class PasswordBoxBehavior : Behavior<PasswordBox>
+    {
+        protected override void OnAttached()
+        {
+            base.OnAttached();
+            AssociatedObject.PasswordChanged += OnPasswordChanged;
+        }
+
+        private static void OnPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            var passwordBox = sender as PasswordBox;
+            string password = PasswordBoxHelper.GetPassword(passwordBox);
+            if (passwordBox != null && passwordBox.Password != password)
+                PasswordBoxHelper.SetPassword(passwordBox, passwordBox.Password);
+        }
+
+        protected override void OnDetaching()
+        {
+            base.OnDetaching();
+            AssociatedObject.PasswordChanged -= OnPasswordChanged;
+        }
     }
 }

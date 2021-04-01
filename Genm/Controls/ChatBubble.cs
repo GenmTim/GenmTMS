@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace Genm.Controls
 {
-    public class ChatBubble : ContentControl
+    public class ChatBubble : SelectableItem
     {
         public static readonly DependencyProperty RoleProperty =
             DependencyProperty.Register("Role", typeof(ChatRoleType), typeof(ChatBubble), new PropertyMetadata(default(ChatRoleType)));
@@ -33,12 +33,12 @@ namespace Genm.Controls
         }
         public Action<object> ReadAction { get; set; }
 
-        //protected override void OnSelected(RoutedEventArgs e)
-        //{
-        //    base.OnSelected(e);
+        protected override void OnSelected(RoutedEventArgs e)
+        {
+            base.OnSelected(e);
 
-        //    IsRead = true;
-        //    ReadAction?.Invoke(Content);
-        //}
+            IsRead = true;
+            ReadAction?.Invoke(Content);
+        }
     }
 }

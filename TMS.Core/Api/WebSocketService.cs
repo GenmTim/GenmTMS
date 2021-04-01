@@ -55,11 +55,17 @@ namespace TMS.Core.Api
 		private void OnReceived(object sender, MessageReceivedEventArgs e)
 		{
 			var data = e.Message;
-			if (!string.IsNullOrEmpty(data)) return;
+			if (string.IsNullOrEmpty(data)) return;
 
-			NotificationData notificationData = JsonConvert.DeserializeObject<NotificationData>(data);
-
-			eventAggregator.GetEvent<WebSocketRecvEvent>().Publish(notificationData);
+			try
+			{
+				NotificationData notificationData = JsonConvert.DeserializeObject<NotificationData>(data);
+				eventAggregator.GetEvent<WebSocketRecvEvent>().Publish(notificationData);
+			}
+			catch (Exception) 
+			{
+				
+			}
 		}
 
 		/// <summary>

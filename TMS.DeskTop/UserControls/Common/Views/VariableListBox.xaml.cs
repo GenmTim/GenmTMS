@@ -4,12 +4,6 @@ using System.Windows.Controls;
 
 namespace TMS.DeskTop.UserControls.Common.Views
 {
-    public class User
-    {
-        public String Name { get; set; }
-        public String Color { get; set; }
-
-    }
 
     public class AddTagMenuItem
     {
