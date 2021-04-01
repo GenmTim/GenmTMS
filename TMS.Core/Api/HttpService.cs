@@ -561,6 +561,46 @@ namespace TMS.Core.Api
         }
 
         /// <summary>
+        /// 查询用户信息
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> GetUserInfo(int user_id)
+		{
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("/user/allInfo");//debug
+                restRequest.AddParameter("user_id", user_id);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    string data = jObjects["data"].ToString();
+                    //debug 调整输出类
+                    User user = JsonConvert.DeserializeObject<User>(data);
+                    UserDto userDto = JsonConvert.DeserializeObject<UserDto>(data);
+                    UserInfoDto userInfoDto = JsonConvert.DeserializeObject<UserInfoDto>(data);
+                    //debug 两个类合并
+                    return new ApiResponse(200, userInfoDto);
+                }
+                else
+                {
+                    return new ApiResponse(201, "获取用户信息失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
         /// 获取考勤组信息
         /// </summary>
         /// <returns></returns>
