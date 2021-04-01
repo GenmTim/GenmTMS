@@ -9,8 +9,6 @@ namespace TMS.DeskTop.ViewModels
     {
         private IRegionManager regionManager;
 
-
-
         public ContactsViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;

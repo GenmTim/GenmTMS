@@ -2,12 +2,16 @@
 using Genm.Data.Enums;
 using Prism.Commands;
 using Prism.Events;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+using TMS.Core.Api;
 using TMS.Core.Data;
 using TMS.Core.Data.Dto;
 using TMS.Core.Data.Entity;
@@ -17,12 +21,13 @@ using TMS.Core.Event.Notification;
 using TMS.Core.Event.WebSocket;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
+using TMS.DeskTop.UserControls.Card.Views;
 using TMS.DeskTop.UserControls.Common.ViewModels;
 using TMS.DeskTop.UserControls.Common.Views;
 
 namespace TMS.DeskTop.ViewModels
 {
-    class NotificationViewModel : BindableBase
+    class NotificationViewModel : BindableBase, INavigationAware
     {
         public class ConnectionEvent : PubSubEvent<NotificationItemEntity> { }
 
@@ -53,8 +58,8 @@ namespace TMS.DeskTop.ViewModels
 
 
         private ObservableCollection<MsgObjVO> msgObjList;
-        public ObservableCollection<MsgObjVO> MsgObjList 
-        { 
+        public ObservableCollection<MsgObjVO> MsgObjList
+        {
             get => msgObjList;
             set
             {
@@ -63,41 +68,47 @@ namespace TMS.DeskTop.ViewModels
             }
         }
 
+        private MsgObjVO selectedValue;
+        public MsgObjVO SelectedValue
+        {
+            get => selectedValue;
+            set
+            {
+                selectedValue = value;
+                RaisePropertyChanged();
+            }
+        }
         #endregion
-
 
         private readonly IRegionManager regionManager;
         private readonly IEventAggregator eventAggregator;
 
-
-        public NotificationViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
+        public NotificationViewModel(IRegionManager regionManager, IEventAggregator eventAggregator, IContainerExtension container)
         {
             this.regionManager = regionManager;
             this.eventAggregator = eventAggregator;
             this.NotificationDataListMap = new Dictionary<long, ObservableCollection<ChatInfoModel>>();
-            //this.MsgObjMap = new Dictionary<long, MsgObjVO>();
+
             this.MsgObjList = new ObservableCollection<MsgObjVO>();
 
-            //this.MsgObjMap[23] = new MsgObjVO
-            //{
-            //    ObjectId = 23,
-            //    ObjectName = "测试",
-            //    Avatar = new Uri("http://47.101.157.194:8081/static/avatar/target4.jpg"),
-            //    NewMessage = "测试数据",
-            //    NewMessageDate = "1月24日",
-            //};
-            //this.notificationMap = new Dictionary<MsgObjVO, List<NotificationData>>();
+            this.eventAggregator.GetEvent<WebSocketRecvEvent>().Subscribe(NewMessage, ThreadOption.UIThread, false);
 
-            eventAggregator.GetEvent<WebSocketRecvEvent>().Subscribe(NewMessage, ThreadOption.UIThread, false);
+            this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Subscribe(UpdateChatBoxContext, ThreadOption.UIThread);
 
-            this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Subscribe(UpdateChatBoxContext);
+            this.SaveCommand = new DelegateCommand(() =>
+            {
+                NameCard.Show(container);
+            });
         }
 
         private void UpdateChatBoxContext(long id)
         {
             // 附加上消息队列的数据
-
             var msgObj = MsgObjList.First(x => x.ObjectId == id);
+            if (!NotificationDataListMap.ContainsKey(msgObj.ObjectId))
+            {
+                NotificationDataListMap[msgObj.ObjectId] = new ObservableCollection<ChatInfoModel>();
+            }
             var chatBoxContext = new ChatBoxContext()
             {
                 User = new User
@@ -106,7 +117,7 @@ namespace TMS.DeskTop.ViewModels
                     Name = msgObj.ObjectName,
                     Avatar = msgObj.Avatar.ToString()
                 },
-                ChatInfoList = NotificationDataListMap[id],
+                ChatInfoList = NotificationDataListMap[msgObj.ObjectId],
             };
 
             var param = new NavigationParameters
@@ -121,42 +132,92 @@ namespace TMS.DeskTop.ViewModels
 
         public void NewMessage(NotificationData data)
         {
+            long id = (long)data.Sender.UserId;
+
             // 构建最新的消息对象数据
             var msgObj = new MsgObjVO
             {
-                ObjectId = (long)data.Sender.UserId,
+                ObjectId = id,
                 ObjectName = data.Sender.Name,
                 Avatar = new Uri(data.Sender.Avatar),
                 NewMessage = (string)data.Data,
-                NewMessageDate = "1月24日",
+                NewMessageTimestamp = 12312312,
             };
-
-            long id = msgObj.ObjectId;
 
             // 删除旧的数据对象，并更新的数据对象
             try
             {
-                MsgObjList.Remove(MsgObjList.First(x => x.ObjectId == id));
+                MsgObjList.Remove(MsgObjList.First(x => x.ObjectId == msgObj.ObjectId));
             }
-            catch(Exception){}
+            catch (Exception) { }
             MsgObjList.Insert(0, msgObj);
 
             // 构建新的前端消息数据，并添加到对应Id的消息队列数据
             var chatInfo = new ChatInfoModel
             {
-                Message = (string)data.Data,
-                SenderId = (long)data.Sender.UserId,
-                Role = ((long)data.Sender.UserId == (long)SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other),
+                Message = msgObj.NewMessage,
+                SenderId = msgObj.ObjectId,
+                Role = (msgObj.ObjectId == (long)SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other),
                 Type = ChatMessageType.String,
                 Avatar = msgObj.Avatar,
-                Timestamp = data.Timestamp
+                Timestamp = msgObj.NewMessageTimestamp
             };
 
-            if (!NotificationDataListMap.ContainsKey(id))
+            if (!NotificationDataListMap.ContainsKey(msgObj.ObjectId))
             {
-                NotificationDataListMap[id] = new ObservableCollection<ChatInfoModel>();
+                NotificationDataListMap[msgObj.ObjectId] = new ObservableCollection<ChatInfoModel>();
             }
-            NotificationDataListMap[id].Add(chatInfo);
+            NotificationDataListMap[msgObj.ObjectId].Add(chatInfo);
+
+            msgObj.BadgeNumber = notificationDataListMap[msgObj.ObjectId].Count + 1;
         }
+
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            // 获取传输的用户Id
+            User user = navigationContext.Parameters.GetValue<User>("User");
+
+            // 如果存在UserId的参数传入，则进行聊天室的导向
+            if (user != null && user.UserId != 0)
+            {
+                // 获取用户基本信息
+                Task.Factory.StartNew(async () =>
+                {
+                    var result = await HttpService.GetConn().GetUserInfo((long)user.UserId);
+                    if (result.StatusCode == 200)
+                    {
+                        var data = (User)result.Data;
+                        var msgObj = new MsgObjVO
+                        {
+                            ObjectId = (long)user.UserId,
+                            ObjectName = data.Name,
+                            Avatar = new Uri(data.Avatar),
+                            NewMessage = "",
+                            NewMessageTimestamp = 0,
+                        };
+                        Application.Current.Dispatcher.Invoke(new Action(() =>
+                        {
+                            MsgObjList.Add(msgObj);
+                            SelectedValue = msgObj;
+                            // 进行导航
+                            this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Publish((long)user.UserId);
+                        }));
+                    }
+                });
+            }
+
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+        }
+
+        public DelegateCommand SaveCommand { get; private set; }
     }
 }

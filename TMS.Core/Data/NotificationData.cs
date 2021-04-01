@@ -28,6 +28,11 @@ namespace TMS.Core.Data
 
         [JsonProperty("timestamp")]
         public long Timestamp;
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 
 }

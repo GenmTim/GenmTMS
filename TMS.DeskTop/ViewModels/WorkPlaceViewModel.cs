@@ -13,8 +13,6 @@ using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels
 {
-
-
     class WorkPlaceViewModel : BindableBase
     {
         public class AppItem

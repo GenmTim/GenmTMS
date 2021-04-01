@@ -202,6 +202,11 @@ namespace TMS.Core.Api
             }
         }
 
+        public Task GetUserInfo(long? userId)
+        {
+            throw new NotImplementedException();
+        }
+
 
         /// <summary>
         /// 获取企业所有员工
@@ -566,7 +571,7 @@ namespace TMS.Core.Api
         /// </summary>
         /// <param name="user_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> GetUserInfo(int user_id)
+        public async Task<ApiResponse> GetUserInfo(long user_id)
 		{
             //debug
             try

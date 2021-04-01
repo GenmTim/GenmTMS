@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Genm.Controls
 {
@@ -11,7 +12,6 @@ namespace Genm.Controls
             set { SetValue(TitleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(DataDialog), new PropertyMetadata(default(string)));
 
@@ -25,6 +25,29 @@ namespace Genm.Controls
 
         public static readonly DependencyProperty PositiveTextProperty =
             DependencyProperty.Register("PositiveText", typeof(string), typeof(DataDialog), new PropertyMetadata(default(string)));
+
+
+
+        public ICommand PositiveCmd
+        {
+            get { return (ICommand)GetValue(PositiveCmdProperty); }
+            set { SetValue(PositiveCmdProperty, value); }
+        }
+
+        public static readonly DependencyProperty PositiveCmdProperty =
+            DependencyProperty.Register("PositiveCmd", typeof(ICommand), typeof(DataDialog));
+
+
+        public ICommand NegativeCmd
+        {
+            get { return (ICommand)GetValue(NegativeCmdProperty); }
+            set { SetValue(NegativeCmdProperty, value); }
+        }
+
+        public static readonly DependencyProperty NegativeCmdProperty =
+            DependencyProperty.Register("NegativeCmd", typeof(ICommand), typeof(DataDialog));
+
+
 
 
         public string NegativeText

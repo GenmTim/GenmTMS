@@ -12,13 +12,6 @@ namespace TMS.Core.Api
 	{
 		private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
-		static LoggerService()
-		{
-			Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
-			LogManager.Configuration = new XmlLoggingConfiguration(
-				System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "\\NLog.config");
-		}
-
 		public static void Debug(string message)
 		{
 			logger.Debug(message);

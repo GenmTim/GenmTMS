@@ -5,6 +5,7 @@
     xmlns:base="clr-namespace:TMS.DeskTop.Tools.Base"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
@@ -19,9 +20,10 @@
                 <ResourceDictionary Source="/Resources/Styles/Views/NotificationViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style
-                x:Key="addBtnStyle"
-                BasedOn="{StaticResource ButtonCustom}"
-                TargetType="Button">
+                x:Key="menuBtnStyle"
+                BasedOn="{StaticResource ToggleButtonCustom}"
+                TargetType="ToggleButton">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                 <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
                 <Setter Property="Foreground" Value="#8b8f96" />
                 <Setter Property="Cursor" Value="Hand" />
@@ -86,11 +88,117 @@
                             hc:InfoElement.Placeholder="搜索"
                             FontSize="14"
                             Style="{StaticResource SearchBarExtend}" />
-                        <Button Grid.Column="1"
+                        <ToggleButton x:Name="menuControlBtn" Grid.Column="1"
                             Width="33"
                             Height="33"
                             Margin="10,0,0,0"
-                            Style="{StaticResource addBtnStyle}" />
+                            Style="{StaticResource menuBtnStyle}"
+                            Cursor="Hand" />
+                        <genm:Popup x:Name="menuPopup"
+                            HorizontalOffset="33"
+                            StaysOpen="False"
+                            Placement="Left"
+                            PopupAnimation="Fade"
+                            VerticalOffset="38"
+                            AllowsTransparency="True"
+                            IsOpen="{Binding ElementName=menuControlBtn, Path=IsChecked}"
+                            PlacementTarget="{Binding ElementName=menuControlBtn}">
+                            <hc:SimplePanel Width="160">
+                                <Border CornerRadius="5" Background="Transparent" />
+                                <hc:SimplePanel Margin="3">
+                                    <Border
+                                        CornerRadius="5"
+                                        Background="White"
+                                        Effect="{StaticResource EffectShadowCom}" />
+                                    <hc:SimplePanel>
+                                        <hc:SimplePanel.Resources>
+                                            <Style x:Key="fIconTextStyle" TargetType="TextBlock">
+                                                <Setter Property="Foreground" Value="Black" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="FontSize" Value="20" />
+                                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                <Setter Property="Margin" Value="15,0" />
+                                            </Style>
+                                            <Style x:Key="textStyle" TargetType="TextBlock">
+                                                <Setter Property="Foreground" Value="Black" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="FontSize" Value="14" />
+                                            </Style>
+                                            <Style x:Key="menuItemStyle" TargetType="MenuItem">
+                                                <Setter Property="Cursor" Value="Hand" />
+                                                <Setter Property="Height" Value="50" />
+                                                <Setter Property="Width" Value="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Menu, Mode=FindAncestor}}" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type MenuItem}">
+                                                            <Border
+                                                                Name="Bd"
+                                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                                Background="{TemplateBinding Background}"
+                                                                CornerRadius="5"
+                                                                SnapsToDevicePixels="True">
+                                                                <hc:SimplePanel Margin="{TemplateBinding Padding}">
+                                                                    <ContentPresenter
+                                                                        Name="ContentPresenter"
+                                                                        Margin="0,3"
+                                                                        ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                                        ContentSource="Header"
+                                                                        RecognizesAccessKey="True"
+                                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                                </hc:SimplePanel>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="{StaticResource BorderBrush}" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </hc:SimplePanel.Resources>
+                                        <Menu
+                                            HorizontalAlignment="Stretch"
+                                            Background="Transparent"
+                                            Style="{StaticResource MenuBaseStyle}">
+                                            <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
+                                                <MenuItem.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="&#xe788;" Style="{StaticResource fIconTextStyle}" />
+                                                        <TextBlock Text="创建文档" Style="{StaticResource textStyle}" />
+                                                    </StackPanel>
+                                                </MenuItem.Header>
+                                            </MenuItem>
+                                            <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
+                                                <MenuItem.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="&#xe7ac;" Style="{StaticResource fIconTextStyle}" />
+                                                        <TextBlock Text="添加联系人" Style="{StaticResource textStyle}" />
+                                                    </StackPanel>
+                                                </MenuItem.Header>
+                                            </MenuItem>
+                                            <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
+                                                <MenuItem.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="&#xe7b8;" Style="{StaticResource fIconTextStyle}" />
+                                                        <TextBlock Text="创建群组" Style="{StaticResource textStyle}" />
+                                                    </StackPanel>
+                                                </MenuItem.Header>
+                                            </MenuItem>
+                                            <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
+                                                <MenuItem.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="&#xe7bd;" Style="{StaticResource fIconTextStyle}" />
+                                                        <TextBlock Text="添加团队成员" Style="{StaticResource textStyle}" />
+                                                    </StackPanel>
+                                                </MenuItem.Header>
+                                            </MenuItem>
+                                        </Menu>
+                                    </hc:SimplePanel>
+                                </hc:SimplePanel>
+                            </hc:SimplePanel>
+                        </genm:Popup>
                     </Grid>
                     <hc:ScrollViewer Grid.Row="1"
                         Margin="4,5,8,8"
@@ -132,6 +240,7 @@
                         SelectionChanged="NotificationList_SelectionChanged"
                         ItemTemplate="{StaticResource myLVItemTemplate}"
                         Template="{StaticResource myLVTemplate}"
+                        SelectedValue="{Binding SelectedValue, Mode=TwoWay}"
                         ItemContainerStyle="{StaticResource ItemContainerStyle}"
                         ItemsSource="{Binding Path=MsgObjList}">
                         <ItemsControl.ItemsPanel>
@@ -270,11 +379,23 @@
                                 </hc:SimplePanel>
                             </Grid>
                         </hc:SimplePanel>-->
-
-
-
                     </Grid>
+                    <hc:SimplePanel>
+                        <genm:DataDialog
+                            Title="添加新联系人"
+                            PositiveText="查找"
+                            NegativeText="取消">
+                            <TextBox
+                                Text="测试"
+                                Height="33"
+                                hc:InfoElement.Placeholder="请输入手机号码"
+                                Style="{StaticResource TextBoxExtend}" />
+                        </genm:DataDialog>
+                    </hc:SimplePanel>
+
+
                 </hc:SimplePanel>
+
 
             </Grid>
         </Border>

@@ -41,5 +41,7 @@
         public static readonly string AttendaceDataEnteringContent = nameof(AttendaceDataEnteringContent);
 
         public static readonly string ReportContent = nameof(ReportContent);
+
+        public static readonly string NameCardContent = nameof(NameCardContent);
     }
 }

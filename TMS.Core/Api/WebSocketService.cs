@@ -34,7 +34,8 @@ namespace TMS.Core.Api
         public void SendNotification(NotificationData notificationData)
         {
             string data = JsonConvert.SerializeObject(notificationData);
-            conn.Send(data);
+			LoggerService.Info("WebSocketService: " + data);
+			conn.Send(data);
         }
 
 		/// <summary>
@@ -60,12 +61,19 @@ namespace TMS.Core.Api
 			try
 			{
 				NotificationData notificationData = JsonConvert.DeserializeObject<NotificationData>(data);
-				eventAggregator.GetEvent<WebSocketRecvEvent>().Publish(notificationData);
+				if (notificationData.Type == 0)
+                {
+					if (notificationData.SubType == 0)
+                    {
+						eventAggregator.GetEvent<WebSocketRecvEvent>().Publish(notificationData);
+					}
+					else
+                    {
+
+                    }
+                }
 			}
-			catch (Exception) 
-			{
-				
-			}
+			catch (Exception) {}
 		}
 
 		/// <summary>
@@ -76,6 +84,7 @@ namespace TMS.Core.Api
 		private void OnError(object sender, ErrorEventArgs e)
 		{
 			// pass
+			LoggerService.Error("WebSocketService: " + e.ToString());
 		}
 
 		/// <summary>
@@ -86,6 +95,7 @@ namespace TMS.Core.Api
 		private void OnClosed(object sender, EventArgs e)
 		{
 			// pass
+			LoggerService.Warn("WebSocketService: " + "Close");
 		}
 	}
 }
