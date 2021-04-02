@@ -25,6 +25,11 @@ namespace TMS.DeskTop.Tools.Helper
         /// <param name="targetView"></param>
         public static void Goto(IRegionManager regionManager, Type nowView, Type targetView)
         {
+            Goto(regionManager, nowView, targetView, null);
+        }
+
+        public static void Goto(IRegionManager regionManager, Type nowView, Type targetView, NavigationParameters param)
+        {
             // 寻找公共视图
             Type common_view = FindCommonView(nowView, targetView);
 
@@ -37,7 +42,7 @@ namespace TMS.DeskTop.Tools.Helper
             // 发送导航请求
             if (!next_route.Equals(""))
             {
-                NavigationParameters param = new NavigationParameters();
+                param ??= new NavigationParameters();
                 param.Add("target_view", targetView);
 
                 RegionHelper.RequestNavigate(regionManager, common_region, ConverterViewPathToType(next_route), param);

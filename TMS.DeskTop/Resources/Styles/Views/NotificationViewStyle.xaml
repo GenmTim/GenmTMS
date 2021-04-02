@@ -136,6 +136,9 @@
                 <!--<Setter TargetName="itemBorder" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />-->
                 <Setter TargetName="itemBorder" Property="Background" Value="#EBEBEB" />
             </DataTrigger>
+            <DataTrigger Binding="{Binding BadgeNumber}" Value="0">
+                <Setter TargetName="badge" Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
     <!--  下面这段代码不用，选中的时候边框有些边会变成蓝色（不是你希望的颜色）  -->

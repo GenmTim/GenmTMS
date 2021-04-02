@@ -4,6 +4,8 @@ using System.Windows;
 using TMS.Core.Api;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
+using TMS.DeskTop.UserControls.Card.ViewModels;
+using TMS.DeskTop.UserControls.Card.Views;
 using TMS.DeskTop.UserControls.Common.ViewModels;
 using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.UserControls.Dialogs.ViewModels;
@@ -45,6 +47,11 @@ namespace TMS.DeskTop
             // 注册对话框视图
             containerRegistry.RegisterForNavigation<StringItemsDialog, StringItemsDialogModel>();
             containerRegistry.RegisterForNavigation<SelectUserDialog, SelectUserDialogModel>();
+
+            // 注册卡片
+            containerRegistry.Register<NameCard>();
+            containerRegistry.Register<FriendCard>();
+            containerRegistry.Register<NoFriendCard>();
 
             // 注册导航视图
             RouteHelper.RegisterToContainer(containerRegistry);

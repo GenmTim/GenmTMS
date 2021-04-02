@@ -82,5 +82,11 @@ namespace TMS.DeskTop.Views
         #region SimulationData
 
         #endregion
+
+        private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            menuPopup.IsOpen = false;
+            e.Handled = true;
+        }
     }
 }

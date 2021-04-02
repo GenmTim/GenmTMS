@@ -147,7 +147,7 @@
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0, 0.5" EndPoint="8, 0.5">
-                    <GradientStop Offset="0" Color="{DynamicResource ThirdlyTextColor}" />
+                    <GradientStop Offset="0" Color="#9FBDBDBD" />
                     <GradientStop Offset="1" Color="White" />
                 </LinearGradientBrush>
             </Setter.Value>
@@ -206,6 +206,18 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style
+        x:Key="TextBtnExStyle"
+        BasedOn="{StaticResource TextBtnStyle}"
+        TargetType="Button">
+        <Setter Property="Foreground" Value="#C8D5DD" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <!--#endregion-->
 

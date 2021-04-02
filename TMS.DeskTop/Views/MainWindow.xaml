@@ -65,7 +65,7 @@
                                 Cursor="Hand">
                                 <Image Source="/Resources/Images/Assets/googledrive.png" />
                             </ToggleButton>
-                            <Popup
+                            <genm:Popup
                                 StaysOpen="False"
                                 Placement="Right"
                                 PopupAnimation="Fade"
@@ -74,7 +74,7 @@
                                 Effect="{StaticResource EffectShadowCom}"
                                 PlacementTarget="{Binding ElementName=profile}"
                                 IsOpen="{Binding ElementName=profile, Path=IsChecked}">
-                                <Grid>
+                                <hc:SimplePanel>
                                     <Border
                                         Margin="0,0,15,15"
                                         BorderThickness="1"
@@ -85,8 +85,8 @@
                                             <popup:ProfilePopup />
                                         </hc:SimplePanel>
                                     </Border>
-                                </Grid>
-                            </Popup>
+                                </hc:SimplePanel>
+                            </genm:Popup>
 
 
                             <!--#region Left Grid - Menu-->
