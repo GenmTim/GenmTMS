@@ -5,6 +5,7 @@
     xmlns:base="clr-namespace:TMS.DeskTop.Tools.Base"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
@@ -57,282 +58,289 @@
         </ResourceDictionary>
 
     </UserControl.Resources>
-    <Border Grid.Column="1" Background="Transparent">
-        <Border Background="White" CornerRadius="0">
-            <Grid x:Name="main">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="272" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Border Grid.Column="1"
-                    BorderBrush="{StaticResource TMS_BorderBrush}"
-                    BorderThickness="0,0,1,0" />
-                <Grid Grid.Column="0"
-                    Margin="0,15,0,5"
-                    Background="White">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="8,0,12,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <hc:SearchBar
-                            Height="30"
-                            Padding="15,0,0,0"
-                            hc:BorderElement.CornerRadius="15"
-                            hc:InfoElement.Placeholder="搜索"
-                            FontSize="14"
-                            Style="{StaticResource SearchBarExtend}" />
-                        <ToggleButton x:Name="menuControlBtn" Grid.Column="1"
-                            Width="33"
-                            Height="33"
-                            Margin="10,0,0,0"
-                            Style="{StaticResource menuBtnStyle}"
-                            Cursor="Hand" />
-                        <genm:Popup x:Name="menuPopup"
-                            HorizontalOffset="33"
-                            StaysOpen="False"
-                            Placement="Left"
-                            PopupAnimation="Fade"
-                            VerticalOffset="38"
-                            AllowsTransparency="True"
-                            IsOpen="{Binding ElementName=menuControlBtn, Path=IsChecked}"
-                            PlacementTarget="{Binding ElementName=menuControlBtn}">
-                            <hc:SimplePanel Width="160">
-                                <Border CornerRadius="5" Background="Transparent" />
-                                <hc:SimplePanel Margin="3">
-                                    <Border
-                                        CornerRadius="5"
-                                        Background="White"
-                                        Effect="{StaticResource EffectShadowCom}" />
-                                    <hc:SimplePanel>
-                                        <hc:SimplePanel.Resources>
-                                            <Style x:Key="fIconTextStyle" TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black" />
-                                                <Setter Property="VerticalAlignment" Value="Center" />
-                                                <Setter Property="FontSize" Value="20" />
-                                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
-                                                <Setter Property="Margin" Value="15,0" />
-                                            </Style>
-                                            <Style x:Key="textStyle" TargetType="TextBlock">
-                                                <Setter Property="Foreground" Value="Black" />
-                                                <Setter Property="VerticalAlignment" Value="Center" />
-                                                <Setter Property="FontSize" Value="14" />
-                                            </Style>
-                                            <Style x:Key="menuItemStyle" TargetType="MenuItem">
-                                                <Setter Property="Cursor" Value="Hand" />
-                                                <Setter Property="Height" Value="50" />
-                                                <Setter Property="Width" Value="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Menu, Mode=FindAncestor}}" />
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate TargetType="{x:Type MenuItem}">
-                                                            <Border
-                                                                Name="Bd"
-                                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                                Background="{TemplateBinding Background}"
-                                                                CornerRadius="5"
-                                                                SnapsToDevicePixels="True">
-                                                                <hc:SimplePanel Margin="{TemplateBinding Padding}">
-                                                                    <ContentPresenter
-                                                                        Name="ContentPresenter"
-                                                                        Margin="0,3"
-                                                                        ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                                                        ContentSource="Header"
-                                                                        RecognizesAccessKey="True"
-                                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                                                </hc:SimplePanel>
-                                                            </Border>
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Background" Value="{StaticResource BorderBrush}" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </hc:SimplePanel.Resources>
-                                        <Menu
-                                            HorizontalAlignment="Stretch"
-                                            Background="Transparent"
-                                            Style="{StaticResource MenuBaseStyle}">
-                                            <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
-                                                <MenuItem.Header>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="&#xe788;" Style="{StaticResource fIconTextStyle}" />
-                                                        <TextBlock Text="创建文档" Style="{StaticResource textStyle}" />
-                                                    </StackPanel>
-                                                </MenuItem.Header>
-                                            </MenuItem>
-                                            <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
-                                                <MenuItem.Header>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="&#xe7ac;" Style="{StaticResource fIconTextStyle}" />
-                                                        <TextBlock Text="添加联系人" Style="{StaticResource textStyle}" />
-                                                    </StackPanel>
-                                                </MenuItem.Header>
-                                            </MenuItem>
-                                            <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
-                                                <MenuItem.Header>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="&#xe7b8;" Style="{StaticResource fIconTextStyle}" />
-                                                        <TextBlock Text="创建群组" Style="{StaticResource textStyle}" />
-                                                    </StackPanel>
-                                                </MenuItem.Header>
-                                            </MenuItem>
-                                            <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
-                                                <MenuItem.Header>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="&#xe7bd;" Style="{StaticResource fIconTextStyle}" />
-                                                        <TextBlock Text="添加团队成员" Style="{StaticResource textStyle}" />
-                                                    </StackPanel>
-                                                </MenuItem.Header>
-                                            </MenuItem>
-                                        </Menu>
+    <materialDesign:DialogHost
+        CloseOnClickAway="True"
+        OverlayBackground="{StaticResource TMS_TransparencyRegionBrush}"
+        Identifier="NotificationRoot">
+        <Border Grid.Column="1" Background="Transparent">
+            <Border Background="White" CornerRadius="0">
+                <Grid x:Name="main">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="272" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="1"
+                        BorderBrush="{StaticResource TMS_BorderBrush}"
+                        BorderThickness="0,0,1,0" />
+                    <Grid Grid.Column="0"
+                        Margin="0,15,0,5"
+                        Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="8,0,12,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <hc:SearchBar
+                                Height="30"
+                                Padding="15,0,0,0"
+                                hc:BorderElement.CornerRadius="15"
+                                hc:InfoElement.Placeholder="搜索"
+                                FontSize="14"
+                                Style="{StaticResource SearchBarExtend}" />
+                            <ToggleButton x:Name="menuControlBtn" Grid.Column="1"
+                                Width="33"
+                                Height="33"
+                                Margin="10,0,0,0"
+                                Style="{StaticResource menuBtnStyle}"
+                                Cursor="Hand" />
+                            <genm:Popup x:Name="menuPopup"
+                                HorizontalOffset="33"
+                                StaysOpen="False"
+                                Placement="Left"
+                                PopupAnimation="Fade"
+                                VerticalOffset="38"
+                                AllowsTransparency="True"
+                                IsOpen="{Binding ElementName=menuControlBtn, Path=IsChecked}"
+                                PlacementTarget="{Binding ElementName=menuControlBtn}">
+                                <hc:SimplePanel Width="160">
+                                    <Border CornerRadius="5" Background="Transparent" />
+                                    <hc:SimplePanel Margin="3">
+                                        <Border
+                                            CornerRadius="5"
+                                            Background="White"
+                                            Effect="{StaticResource EffectShadowCom}" />
+                                        <hc:SimplePanel>
+                                            <hc:SimplePanel.Resources>
+                                                <Style x:Key="fIconTextStyle" TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black" />
+                                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                                    <Setter Property="FontSize" Value="20" />
+                                                    <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                    <Setter Property="Margin" Value="15,0" />
+                                                </Style>
+                                                <Style x:Key="textStyle" TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black" />
+                                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                                    <Setter Property="FontSize" Value="14" />
+                                                </Style>
+                                                <Style x:Key="menuItemStyle" TargetType="MenuItem">
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                    <Setter Property="Height" Value="50" />
+                                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Menu, Mode=FindAncestor}}" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type MenuItem}">
+                                                                <Border
+                                                                    Name="Bd"
+                                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                                    Background="{TemplateBinding Background}"
+                                                                    CornerRadius="5"
+                                                                    SnapsToDevicePixels="True">
+                                                                    <hc:SimplePanel Margin="{TemplateBinding Padding}">
+                                                                        <ContentPresenter
+                                                                            Name="ContentPresenter"
+                                                                            Margin="0,3"
+                                                                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                                            ContentSource="Header"
+                                                                            RecognizesAccessKey="True"
+                                                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                                    </hc:SimplePanel>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="{StaticResource BorderBrush}" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </hc:SimplePanel.Resources>
+                                            <Menu
+                                                HorizontalAlignment="Stretch"
+                                                Background="Transparent"
+                                                Style="{StaticResource MenuBaseStyle}">
+                                                <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
+                                                    <MenuItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="&#xe788;" Style="{StaticResource fIconTextStyle}" />
+                                                            <TextBlock Text="创建文档" Style="{StaticResource textStyle}" />
+                                                        </StackPanel>
+                                                    </MenuItem.Header>
+                                                </MenuItem>
+                                                <MenuItem
+                                                    Click="MenuItem_Click"
+                                                    Tag="AddNewContacter"
+                                                    Style="{StaticResource menuItemStyle}">
+                                                    <MenuItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="&#xe7ac;" Style="{StaticResource fIconTextStyle}" />
+                                                            <TextBlock Text="添加联系人" Style="{StaticResource textStyle}" />
+                                                        </StackPanel>
+                                                    </MenuItem.Header>
+                                                </MenuItem>
+                                                <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
+                                                    <MenuItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="&#xe7b8;" Style="{StaticResource fIconTextStyle}" />
+                                                            <TextBlock Text="创建群组" Style="{StaticResource textStyle}" />
+                                                        </StackPanel>
+                                                    </MenuItem.Header>
+                                                </MenuItem>
+                                                <MenuItem Click="MenuItem_Click" Style="{StaticResource menuItemStyle}">
+                                                    <MenuItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="&#xe7bd;" Style="{StaticResource fIconTextStyle}" />
+                                                            <TextBlock Text="添加团队成员" Style="{StaticResource textStyle}" />
+                                                        </StackPanel>
+                                                    </MenuItem.Header>
+                                                </MenuItem>
+                                            </Menu>
+                                        </hc:SimplePanel>
                                     </hc:SimplePanel>
                                 </hc:SimplePanel>
-                            </hc:SimplePanel>
-                        </genm:Popup>
+                            </genm:Popup>
+                        </Grid>
+                        <hc:ScrollViewer Grid.Row="1"
+                            Margin="4,5,8,8"
+                            Orientation="Horizontal"
+                            HorizontalScrollBarVisibility="Auto"
+                            IsInertiaEnabled="True">
+                            <StackPanel Margin="0,15" Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style BasedOn="{StaticResource GravatarCircleImg}" TargetType="hc:Gravatar">
+                                        <Setter Property="Width" Value="33" />
+                                        <Setter Property="Height" Value="33" />
+                                    </Style>
+                                    <Style BasedOn="{StaticResource ButtonCustom}" TargetType="Button">
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <hc:SimplePanel>
+                                                        <hc:Gravatar Margin="5,3" Id="User2131a" />
+                                                        <hc:Badge
+                                                            BadgeMargin="0,-4,-2,0"
+                                                            Style="{StaticResource BadgeDanger}"
+                                                            BorderThickness="0"
+                                                            FontSize="8"
+                                                            Value="1" />
+                                                    </hc:SimplePanel>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Button Click="Button_Click" Cursor="Hand" />
+                                <Button />
+                            </StackPanel>
+                        </hc:ScrollViewer>
+                        <ListView x:Name="listView1" Grid.Row="2"
+                            Margin="0,5,0,0"
+                            HorizontalAlignment="Stretch"
+                            SelectionChanged="NotificationList_SelectionChanged"
+                            ItemTemplate="{StaticResource myLVItemTemplate}"
+                            Template="{StaticResource myLVTemplate}"
+                            SelectedValue="{Binding SelectedValue, Mode=TwoWay}"
+                            ItemContainerStyle="{StaticResource ItemContainerStyle}"
+                            ItemsSource="{Binding Path=MsgObjList}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ListView>
                     </Grid>
-                    <hc:ScrollViewer Grid.Row="1"
-                        Margin="4,5,8,8"
-                        Orientation="Horizontal"
-                        HorizontalScrollBarVisibility="Auto"
-                        IsInertiaEnabled="True">
-                        <StackPanel Margin="0,15" Orientation="Horizontal">
-                            <StackPanel.Resources>
-                                <Style BasedOn="{StaticResource GravatarCircleImg}" TargetType="hc:Gravatar">
-                                    <Setter Property="Width" Value="33" />
-                                    <Setter Property="Height" Value="33" />
-                                </Style>
-                                <Style BasedOn="{StaticResource ButtonCustom}" TargetType="Button">
-                                    <Setter Property="Cursor" Value="Hand" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate>
-                                                <hc:SimplePanel>
-                                                    <hc:Gravatar Margin="5,3" Id="User2131a" />
-                                                    <hc:Badge
-                                                        BadgeMargin="0,-4,-2,0"
-                                                        Style="{StaticResource BadgeDanger}"
-                                                        BorderThickness="0"
-                                                        FontSize="8"
-                                                        Value="1" />
-                                                </hc:SimplePanel>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </StackPanel.Resources>
-                            <Button Click="Button_Click" Cursor="Hand" />
-                            <Button />
-                        </StackPanel>
-                    </hc:ScrollViewer>
-                    <ListView x:Name="listView1" Grid.Row="2"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Stretch"
-                        SelectionChanged="NotificationList_SelectionChanged"
-                        ItemTemplate="{StaticResource myLVItemTemplate}"
-                        Template="{StaticResource myLVTemplate}"
-                        SelectedValue="{Binding SelectedValue, Mode=TwoWay}"
-                        ItemContainerStyle="{StaticResource ItemContainerStyle}"
-                        ItemsSource="{Binding Path=MsgObjList}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Vertical" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ListView>
-                </Grid>
-                <!--<GridSplitter Grid.Column="1"
+                    <!--<GridSplitter Grid.Column="1"
                     Width="2"
                     HorizontalAlignment="Center" />-->
-                <hc:SimplePanel Grid.Column="2" Background="#F5F6F8">
-                    <ContentControl x:Name="chatRegion" prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.ChatRegion}" />
-                </hc:SimplePanel>
+                    <hc:SimplePanel Grid.Column="2" Background="#F5F6F8">
+                        <ContentControl x:Name="chatRegion" prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.ChatRegion}" />
+                    </hc:SimplePanel>
 
-                <hc:SimplePanel Grid.Column="2" Margin="0,20,0,0">
-                    <Grid>
-                        <!--  人才推荐块  -->
-                        <hc:SimplePanel
-                            Width="325"
-                            Height="140"
-                            Visibility="Collapsed">
-                            <Border
-                                Background="White"
-                                CornerRadius="5"
-                                Effect="{StaticResource EffectShadowCom}" />
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="2*" />
-                                    <RowDefinition Height="1*" />
-                                </Grid.RowDefinitions>
-                                <hc:SimplePanel
-                                    Width="50"
-                                    Height="20"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Top">
-                                    <Border Background="#1890ff" CornerRadius="5,0,5,0" />
-                                    <TextBlock
-                                        Text="推荐"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Foreground="White" />
-                                </hc:SimplePanel>
-                                <hc:SimplePanel Grid.Row="1">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <hc:Gravatar
-                                            Width="45"
-                                            Height="45"
-                                            Margin="20,0,15,0"
-                                            Style="{StaticResource GravatarCircleImg}"
-                                            Id="124"
-                                            RenderOptions.BitmapScalingMode="HighQuality" />
-                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                            <TextBlock
-                                                Text="蔡承龙"
-                                                FontSize="14"
-                                                FontWeight="SemiBold" />
-                                            <TextBlock
-                                                Text="从事游戏服务端开发，精通C++"
-                                                Margin="0,5,0,0"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                    <hc:SimplePanel Grid.Column="2" Margin="0,20,0,0">
+                        <Grid>
+                            <!--  人才推荐块  -->
+                            <hc:SimplePanel
+                                Width="325"
+                                Height="140"
+                                Visibility="Collapsed">
+                                <Border
+                                    Background="White"
+                                    CornerRadius="5"
+                                    Effect="{StaticResource EffectShadowCom}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
+                                    <hc:SimplePanel
+                                        Width="50"
+                                        Height="20"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top">
+                                        <Border Background="#1890ff" CornerRadius="5,0,5,0" />
+                                        <TextBlock
+                                            Text="推荐"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Foreground="White" />
+                                    </hc:SimplePanel>
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <hc:Gravatar
+                                                Width="45"
+                                                Height="45"
+                                                Margin="20,0,15,0"
+                                                Style="{StaticResource GravatarCircleImg}"
+                                                Id="124"
+                                                RenderOptions.BitmapScalingMode="HighQuality" />
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                <TextBlock
+                                                    Text="蔡承龙"
+                                                    FontSize="14"
+                                                    FontWeight="SemiBold" />
+                                                <TextBlock
+                                                    Text="从事游戏服务端开发，精通C++"
+                                                    Margin="0,5,0,0"
+                                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </hc:SimplePanel>
+                                    <Border Grid.Row="1"
+                                        BorderThickness="0,0,0,1"
+                                        BorderBrush="{StaticResource BorderBrush}" />
+                                    <hc:SimplePanel Grid.Row="2">
+                                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
+                                                    <Setter Property="FontSize" Value="12" />
+                                                    <Setter Property="Margin" Value="0,0,10,0" />
+                                                    <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <Button Content="&#xe718;" />
+                                            <Button Content="&#xe6d4;" />
+                                            <Button Content="&#xe7ab;" />
                                         </StackPanel>
-                                    </Grid>
-                                </hc:SimplePanel>
-                                <Border Grid.Row="1"
-                                    BorderThickness="0,0,0,1"
-                                    BorderBrush="{StaticResource BorderBrush}" />
-                                <hc:SimplePanel Grid.Row="2">
-                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                        <StackPanel.Resources>
-                                            <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
-                                                <Setter Property="FontSize" Value="12" />
-                                                <Setter Property="Margin" Value="0,0,10,0" />
-                                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
-                                            </Style>
-                                        </StackPanel.Resources>
-                                        <Button Content="&#xe718;" />
-                                        <Button Content="&#xe6d4;" />
-                                        <Button Content="&#xe7ab;" />
-                                    </StackPanel>
-                                </hc:SimplePanel>
-                            </Grid>
-                        </hc:SimplePanel>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </hc:SimplePanel>
 
-                        <!--  文件块  -->
-                        <!--<hc:SimplePanel Grid.Row="1"
+                            <!--  文件块  -->
+                            <!--<hc:SimplePanel Grid.Row="1"
                             Width="250"
                             Height="100">
                             <Border
@@ -379,8 +387,8 @@
                                 </hc:SimplePanel>
                             </Grid>
                         </hc:SimplePanel>-->
-                    </Grid>
-                    <hc:SimplePanel>
+                        </Grid>
+                        <!--<hc:SimplePanel>
                         <genm:DataDialog
                             Title="添加新联系人"
                             PositiveText="查找"
@@ -391,13 +399,65 @@
                                 hc:InfoElement.Placeholder="请输入手机号码"
                                 Style="{StaticResource TextBoxExtend}" />
                         </genm:DataDialog>
+                    </hc:SimplePanel>-->
+
+                        <hc:SimplePanel Grid.Column="1">
+                            <hc:SimplePanel Width="440" Height="180">
+                                <Border
+                                    Background="White"
+                                    CornerRadius="5"
+                                    Effect="{StaticResource ChatBubbleEffectShadow}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <hc:SimplePanel>
+                                        <TextBlock
+                                            Text="联系人请求"
+                                            Margin="15,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="16"
+                                            FontWeight="Bold" />
+                                    </hc:SimplePanel>
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <StackPanel Margin="30,0" Orientation="Horizontal">
+                                            <hc:Gravatar
+                                                Width="40"
+                                                Height="40"
+                                                Id="324"
+                                                Style="{StaticResource GravatarCircleImg}" />
+                                            <TextBlock
+                                                Text="金泽权"
+                                                Margin="20,0,0,0"
+                                                VerticalAlignment="Center"
+                                                FontSize="14" />
+                                        </StackPanel>
+                                    </hc:SimplePanel>
+                                    <hc:SimplePanel Grid.Row="2">
+                                        <UniformGrid Columns="2">
+                                            <Button
+                                                Content="同意"
+                                                Width="100"
+                                                Height="33"
+                                                Cursor="Hand"
+                                                Style="{StaticResource ButtonPrimary}" />
+                                            <Button
+                                                Content="拒绝"
+                                                Width="100"
+                                                Height="33"
+                                                HorizontalAlignment="Stretch"
+                                                Cursor="Hand"
+                                                Style="{StaticResource ButtonDashedInfo}" />
+                                        </UniformGrid>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </hc:SimplePanel>
+                        </hc:SimplePanel>
                     </hc:SimplePanel>
-
-
-                </hc:SimplePanel>
-
-
-            </Grid>
+                </Grid>
+            </Border>
         </Border>
-    </Border>
+    </materialDesign:DialogHost>
 </base:RegionManagerControl>

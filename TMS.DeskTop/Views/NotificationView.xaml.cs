@@ -11,6 +11,7 @@ using TMS.Core.Service;
 using TMS.DeskTop.Tools.Base;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Common.Views;
+using TMS.DeskTop.UserControls.Dialogs.Views;
 using static TMS.DeskTop.ViewModels.NotificationViewModel;
 
 namespace TMS.DeskTop.Views
@@ -21,10 +22,12 @@ namespace TMS.DeskTop.Views
     public partial class NotificationView : RegionManagerControl
     {
         private readonly IEventAggregator eventAggregator;
-        public NotificationView(IRegionManager regionManager, IEventAggregator eventAggregator) : base(regionManager, typeof(NotificationView))
+        private readonly IDialogHostService dialogHost;
+        public NotificationView(IRegionManager regionManager, IDialogHostService dialogHost, IEventAggregator eventAggregator) : base(regionManager, typeof(NotificationView))
         {
             InitializeComponent();
             this.eventAggregator = eventAggregator;
+            this.dialogHost = dialogHost;
         }
 
         private void NotificationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -85,6 +88,13 @@ namespace TMS.DeskTop.Views
 
         private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            if (sender is MenuItem menuItem)
+            {
+                if ((menuItem.Tag != null) && menuItem.Tag.Equals("AddNewContacter"))
+                {
+                    dialogHost.ShowDialog(nameof(AddNewFriendDialog), null, "NotificationRoot");
+                }
+            }
             menuPopup.IsOpen = false;
             e.Handled = true;
         }

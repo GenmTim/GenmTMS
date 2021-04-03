@@ -48,6 +48,14 @@ namespace Genm.Controls
             DependencyProperty.Register("NegativeCmd", typeof(ICommand), typeof(DataDialog));
 
 
+        public ICommand CloseCmd
+        {
+            get { return (ICommand)GetValue(CloseCmdProperty); }
+            set { SetValue(CloseCmdProperty, value); }
+        }
+
+        public static readonly DependencyProperty CloseCmdProperty =
+            DependencyProperty.Register("CloseCmd", typeof(ICommand), typeof(DataDialog));
 
 
         public string NegativeText
@@ -58,7 +66,6 @@ namespace Genm.Controls
 
         public static readonly DependencyProperty NegativeTextProperty =
             DependencyProperty.Register("NegativeText", typeof(string), typeof(DataDialog), new PropertyMetadata(default(string)));
-
 
 
         public DataDialog()

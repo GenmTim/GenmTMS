@@ -94,11 +94,6 @@ namespace TMS.DeskTop.ViewModels
             this.eventAggregator.GetEvent<WebSocketRecvEvent>().Subscribe(NewMessage, ThreadOption.UIThread, false);
 
             this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Subscribe(UpdateChatBoxContext, ThreadOption.UIThread);
-
-            this.SaveCommand = new DelegateCommand(() =>
-            {
-                NameCard.Show(container);
-            });
         }
 
         private void UpdateChatBoxContext(long id)
@@ -131,7 +126,7 @@ namespace TMS.DeskTop.ViewModels
         }
 
         public void NewMessage(NotificationData data)
-        {
+            {
             long id = (long)data.Sender.UserId;
 
             // 构建最新的消息对象数据

@@ -42,6 +42,7 @@ namespace TMS.Core.Api
         }
 
         private RestClient restClient;
+        private string token;
 
         private HttpService()
         {
@@ -422,13 +423,26 @@ namespace TMS.Core.Api
                 restRequest.Method = Method.GET;
                 var response = await restClient.ExecuteAsync(restRequest);
 
+                foreach (var param in response.Headers)
+                {
+                    if (param.Name == "token")
+                    {
+                       
+                    }
+                }
+
                 JObject jObjects = JObject.Parse(response.Content);
                 string code = jObjects["code"].ToString();
 
                 if (code.Equals("0000"))
                 {
-                    string data = jObjects["data"].ToString();
+                    token = (string)jObjects["data"]["token"].ToString();
+                    restClient.AddDefaultHeader("token", token);
+
+
+                    string data = jObjects["data"]["user"].ToString();
                     User user = JsonConvert.DeserializeObject<User>(data);
+                    
                     return new ApiResponse(200, user);
                 }
                 else
@@ -461,6 +475,15 @@ namespace TMS.Core.Api
 
                 restRequest.Method = Method.GET;
                 var response = await restClient.ExecuteAsync(restRequest);
+
+                foreach (var param in response.Headers)
+                {
+                    if (param.Name == "token")
+                    {
+                        token = (string)param.Value;
+                        restClient.AddDefaultHeader("token", token);
+                    }
+                }
 
                 JObject jObjects = JObject.Parse(response.Content);
                 string code = jObjects["code"].ToString();

@@ -709,44 +709,35 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="genm:DataDialog">
-                    <StackPanel
-                        Width="400"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                        <Grid>
+                    <hc:SimplePanel Width="400" Margin="5">
+                        <Border Background="White" CornerRadius="5" />
+                        <Grid Margin="20,10">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition />
-                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Border
-                                Grid.RowSpan="3"
-                                Effect="{StaticResource DialogShadow}"
-                                Background="White"
-                                CornerRadius="10" />
                             <TextBlock
                                 Text="{TemplateBinding Title}"
-                                Margin="20,0,0,0"
                                 VerticalAlignment="Center"
                                 FontSize="18" />
                             <Button
                                 Content="&#xe61a;"
-                                Margin="0,10,10,0"
+                                Command="{TemplateBinding CloseCmd}"
                                 HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-                                Style="{DynamicResource TextBtnStyle}"
+                                VerticalAlignment="Center"
+                                Style="{DynamicResource TextBtnExStyle}"
                                 FontFamily="/TMS.DeskTop;component/Resources/Fonts/#iconfont" />
                             <StackPanel Grid.Row="1"
-                                Margin="20"
+                                Margin="0,30"
                                 VerticalAlignment="Center">
                                 <ContentPresenter />
                             </StackPanel>
                             <StackPanel Grid.Row="2"
-                                Margin="0,0,20,0"
                                 HorizontalAlignment="Right"
                                 Orientation="Horizontal">
                                 <Button
-                                    Command="{Binding CancelCommand}"
+                                    Command="{TemplateBinding NegativeCmd}"
                                     Width="55"
                                     Height="30"
                                     Margin="0,0,10,0"
@@ -755,7 +746,7 @@
                                     <TextBlock Text="{TemplateBinding NegativeText}" />
                                 </Button>
                                 <Button
-                                    Command="{Binding SaveCommand}"
+                                    Command="{TemplateBinding PositiveCmd}"
                                     Width="55"
                                     Height="30"
                                     Cursor="Hand"
@@ -765,7 +756,7 @@
                                 </Button>
                             </StackPanel>
                         </Grid>
-                    </StackPanel>
+                    </hc:SimplePanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

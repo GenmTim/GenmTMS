@@ -31,13 +31,25 @@ namespace TMS.DeskTop.UserControls.Card.Views
     /// </summary>
     public partial class NameCard : UserControl, ISingleOpen
     {
+        private readonly IRegionManager regionManager;
         private readonly IEventAggregator eventAggregator;
 
         public Action Closed;
 
         public bool CanDispose => true;
 
-        public static void Show(IContainerExtension container)
+        private string tel;
+        public string Tel 
+        {
+            get => tel; 
+            set
+            {
+                tel = value;
+                UpdateUser();
+            }
+        }
+
+        public static void Show(IContainerExtension container, string tel)
         {
             var nameCard = container.Resolve<NameCard>();
             var window = new PopupWindow
@@ -51,15 +63,20 @@ namespace TMS.DeskTop.UserControls.Card.Views
                 Title = "NameCard"
             };
             nameCard.Closed += delegate { window.Close(); };
+            nameCard.Tel = tel;
             window.Show();
         }
 
         public NameCard(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             InitializeComponent();
+            this.regionManager = regionManager;
+            this.eventAggregator = eventAggregator;
+            this.eventAggregator.GetEvent<CloseNameCardEvent>().Subscribe(Close);
+        }
 
-            eventAggregator.GetEvent<CloseNameCardEvent>().Subscribe(Close);
-
+        private void UpdateUser()
+        {
             // 判断是否为好友，然后进行相应卡片的注入
             if (true)
             {
