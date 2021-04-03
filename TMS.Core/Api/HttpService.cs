@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMS.Core.Data.Dto;
 using TMS.Core.Data.Entity;
@@ -621,6 +622,164 @@ namespace TMS.Core.Api
                 else
                 {
                     return new ApiResponse(201, "获取用户信息失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 应答联系人请求
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="is_agree"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> ReplyNewContact(int user_id,bool is_agree)
+        {
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("/contacts/addAgree");//debug
+                restRequest.AddParameter("user_id", user_id);
+                restRequest.AddParameter("agree", is_agree);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //成功同意
+                    string data = jObjects["data"].ToString();
+                    //debug 调整输出类
+                    //User user = JsonConvert.DeserializeObject<User>(data);
+                    return new ApiResponse(200, "联系人处理成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "联系人处理失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 删除联系人
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="friend_id"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> DeleteContacter(int user_id,int friend_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/contacts/addAgree");
+                restRequest.AddParameter("user_id", user_id);
+                restRequest.AddParameter("friend_id", friend_id);
+
+                restRequest.Method = Method.DELETE;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    return new ApiResponse(200, "删除联系人成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "删除联系人失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 发起添加联系人
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="friend_id"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> AddNewContacter(int user_id, int friend_id)
+        {
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("/contacts/addInfo");//debug
+                restRequest.AddParameter("user_id", user_id);
+                restRequest.AddParameter("friend_id", friend_id);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //成功发起添加
+                    string data = jObjects["data"].ToString();
+                    return new ApiResponse(200, "发起添加联系人成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "发起添加联系人失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 获取联系人列表
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns>内容类型为：List<User></returns>
+        public async Task<ApiResponse> GetContacterList(int user_id)
+        {
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("/contacts/friends");//debug
+                restRequest.AddParameter("user_id", user_id);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //成功
+                    //string data = jObjects["data"].ToString();
+					JArray jArrays = (JArray)jObjects["data"];
+                    List<User> userList = new List<User>();
+					foreach (var item in jArrays)
+					{
+						string v = item.ToString();
+                        User user = JsonConvert.DeserializeObject<User>(v);
+                        userList.Add(user);
+                    }
+					
+                    return new ApiResponse(200, userList);
+                }
+                else
+                {
+                    return new ApiResponse(201, "获取联系人失败");
                 }
             }
             catch (Exception)
