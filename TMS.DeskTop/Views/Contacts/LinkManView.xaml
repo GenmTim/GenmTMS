@@ -61,7 +61,7 @@
                             Style="{StaticResource UnderlineRadioBtnStyle}" />
                     </Grid>-->
                     <hc:SimplePanel Grid.Row="1" Background="#f2f2f4">
-                        <ItemsControl ItemsSource="{Binding FriendList}">
+                        <ItemsControl ItemsSource="{Binding ContacterList}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <hc:SimplePanel Height="60" Background="White">

@@ -748,12 +748,12 @@ namespace TMS.Core.Api
         /// </summary>
         /// <param name="user_id"></param>
         /// <returns>内容类型为：List<User></returns>
-        public async Task<ApiResponse> GetContacterList(int user_id)
+        public async Task<ApiResponse> GetContacterList(long user_id)
         {
             //debug
             try
             {
-                RestRequest restRequest = new RestRequest("/contacts/friends");//debug
+                RestRequest restRequest = new RestRequest("/contacts");//debug
                 restRequest.AddParameter("user_id", user_id);
 
                 restRequest.Method = Method.GET;
