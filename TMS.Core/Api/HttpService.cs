@@ -477,14 +477,14 @@ namespace TMS.Core.Api
                 restRequest.Method = Method.GET;
                 var response = await restClient.ExecuteAsync(restRequest);
 
-                foreach (var param in response.Headers)
-                {
-                    if (param.Name == "token")
-                    {
-                        token = (string)param.Value;
-                        restClient.AddDefaultHeader("token", token);
-                    }
-                }
+                //foreach (var param in response.Headers)
+                //{
+                //    if (param.Name == "token")
+                //    {
+                //        token = (string)param.Value;
+                //        restClient.AddDefaultHeader("token", token);
+                //    }
+                //}
 
                 JObject jObjects = JObject.Parse(response.Content);
                 string code = jObjects["code"].ToString();
