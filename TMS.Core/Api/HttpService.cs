@@ -676,11 +676,11 @@ namespace TMS.Core.Api
         /// <param name="user_id"></param>
         /// <param name="friend_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> DeleteContacter(int user_id,int friend_id)
+        public async Task<ApiResponse> DeleteContacter(long user_id,long friend_id)
         {
             try
             {
-                RestRequest restRequest = new RestRequest("/contacts/addAgree");
+                RestRequest restRequest = new RestRequest("/contacts");
                 restRequest.AddParameter("user_id", user_id);
                 restRequest.AddParameter("friend_id", friend_id);
 

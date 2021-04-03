@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
@@ -20,13 +21,22 @@ namespace TMS.DeskTop.ViewModels.Contacts
 {
     public class LinkManViewModel : BindableBase
     {
-        private IRegionManager regionManager;
+        public class UpdateContacterListEvent : PubSubEvent { }
 
-        public LinkManViewModel(IRegionManager regionManager)
+        private readonly IRegionManager regionManager;
+        private readonly IEventAggregator eventAggregator;
+
+        public LinkManViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             UpdateContacterList();
             this.regionManager = regionManager;
+            this.eventAggregator = eventAggregator;
             this.GoCommunicationCmd = new DelegateCommand<User>(GoCommunication);
+            this.DeleteContacterCmd = new DelegateCommand<User>(DeleteContacter);
+            this.eventAggregator.GetEvent<UpdateContacterListEvent>().Subscribe(() => 
+            {
+                UpdateContacterList();
+            });
         }
 
         private void UpdateContacterList()
@@ -60,6 +70,8 @@ namespace TMS.DeskTop.ViewModels.Contacts
         }
 
         public DelegateCommand<User> GoCommunicationCmd { get; private set; }
+        public DelegateCommand<User> DeleteContacterCmd { get; private set; }
+
         private void GoCommunication(User user)
         {
             var param = new NavigationParameters
@@ -67,6 +79,18 @@ namespace TMS.DeskTop.ViewModels.Contacts
                 { "User", user }
             };
             RouteHelper.Goto(regionManager, typeof(LinkManView), typeof(NotificationView), param);
+        }
+
+        private void DeleteContacter(User user)
+        {
+            Task.Factory.StartNew(async() => 
+            {
+                var result = await HttpService.GetConn().DeleteContacter((long)SessionService.User.UserId ,(long)user.UserId);
+                if (result.StatusCode == 200)
+                {
+                    eventAggregator.GetEvent<UpdateContacterListEvent>().Publish();
+                }
+            });
         }
         #endregion
     }

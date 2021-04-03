@@ -23,7 +23,7 @@
             <hc:SimplePanel Margin="0,15">
                 <StackPanel Height="50" HorizontalAlignment="Left">
                     <TextBlock
-                        Text="蔡承龙"
+                        Text="{Binding User.Name}"
                         FontWeight="SemiBold"
                         FontSize="18" />
                     <Button
