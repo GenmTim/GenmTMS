@@ -8,6 +8,7 @@ using TMS.DeskTop.UserControls.Card.ViewModels;
 using TMS.DeskTop.UserControls.Card.Views;
 using TMS.DeskTop.UserControls.Common.ViewModels;
 using TMS.DeskTop.UserControls.Common.Views;
+using TMS.DeskTop.UserControls.Common.Views.ChatBubbles;
 using TMS.DeskTop.UserControls.Dialogs.ViewModels;
 using TMS.DeskTop.UserControls.Dialogs.Views;
 using TMS.DeskTop.Views;
@@ -43,6 +44,7 @@ namespace TMS.DeskTop
 
             // 注册视图
             containerRegistry.Register<LoginView>();
+            containerRegistry.Register<Sender_ContacterRequestChatBubble>();
 
             // 注册对话框视图
             containerRegistry.RegisterForNavigation<StringItemsDialog, StringItemsDialogModel>();
@@ -51,8 +53,8 @@ namespace TMS.DeskTop
 
             // 注册卡片
             containerRegistry.Register<NameCard>();
-            containerRegistry.Register<FriendCard>();
-            containerRegistry.Register<NoFriendCard>();
+            containerRegistry.RegisterForNavigation<FriendCard, FriendCardViewModel>();
+            containerRegistry.RegisterForNavigation<NoFriendCard, NoFriendCardViewModel>();
 
             // 注册导航视图
             RouteHelper.RegisterToContainer(containerRegistry);

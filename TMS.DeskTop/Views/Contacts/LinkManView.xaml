@@ -74,12 +74,13 @@
                                             <hc:Gravatar
                                                 Width="40"
                                                 Height="40"
-                                                Style="{StaticResource GravatarCircleImg}"
-                                                Id="User1" />
+                                                Source="{Binding Avatar}"
+                                                RenderOptions.BitmapScalingMode="HighQuality"
+                                                Style="{StaticResource GravatarCircleImg}" />
                                             <hc:SimplePanel Grid.Column="1">
                                                 <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                                 <StackPanel VerticalAlignment="Center">
-                                                    <TextBlock Text="宁波工程学院" FontSize="14" />
+                                                    <TextBlock Text="{Binding Name}" FontSize="14" />
                                                 </StackPanel>
                                                 <StackPanel
                                                     Margin="0,0,30,0"
@@ -90,13 +91,24 @@
                                                             <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
                                                             <Setter Property="Margin" Value="20,0,0,0" />
                                                         </Style>
+                                                        <Style
+                                                            x:Key="dangerBtnStyle"
+                                                            TargetType="Button"
+                                                            BasedOn="{StaticResource DangerFontBtnStyle}">
+                                                            <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                            <Setter Property="Margin" Value="20,0,0,0" />
+                                                        </Style>
                                                     </StackPanel.Resources>
                                                     <Button
                                                         Content="&#xe718;"
                                                         Command="{Binding ElementName=_linkManView, Path=DataContext.GoCommunicationCmd}"
                                                         CommandParameter="{Binding .}" />
                                                     <Button Content="&#xe6df;" />
-                                                    <Button Content="&#xe6ee;" />
+                                                    <Button
+                                                        Content="&#xe7ae;"
+                                                        Command="{Binding ElementName=_linkManView, Path=DataContext.DeleteContacterCmd}"
+                                                        CommandParameter="{Binding .}"
+                                                        Style="{StaticResource dangerBtnStyle}" />
                                                 </StackPanel>
                                             </hc:SimplePanel>
                                         </Grid>

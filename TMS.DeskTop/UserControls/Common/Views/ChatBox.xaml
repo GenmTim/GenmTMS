@@ -67,7 +67,6 @@
                         <DataTemplate>
                             <genm:ChatBubble
                                 Content="{Binding Message}"
-                                MaxWidth="300"
                                 Style="{StaticResource GChatBubbleBaseStyle}"
                                 Role="{Binding Role}"
                                 Type="{Binding Type}"

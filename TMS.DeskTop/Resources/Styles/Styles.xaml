@@ -38,6 +38,26 @@
         x:Key="TMS_TransparencyRegionBrush"
         o:Freeze="True"
         Color="#01FFFFFF" />
+
+    <LinearGradientBrush x:Key="PrimaryGradualBrush" o:Freeze="true" StartPoint="0, 0.5" EndPoint="8, 0.5">
+        <GradientStop Offset="0" Color="{DynamicResource PrimaryColor}" />
+        <GradientStop Offset="1" Color="White" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="DangerGradualBrush" o:Freeze="true" StartPoint="0, 0.5" EndPoint="8, 0.5">
+        <GradientStop Offset="0" Color="{DynamicResource DangerColor}" />
+        <GradientStop Offset="1" Color="White" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="InfoGradualBrush" o:Freeze="true" StartPoint="0, 0.5" EndPoint="8, 0.5">
+        <GradientStop Offset="0" Color="{DynamicResource InfoColor}" />
+        <GradientStop Offset="1" Color="White" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="WarningGradualBrush" o:Freeze="true" StartPoint="0, 0.5" EndPoint="8, 0.5">
+        <GradientStop Offset="0" Color="{DynamicResource WarningColor}" />
+        <GradientStop Offset="1" Color="White" />
+    </LinearGradientBrush>
     <!--#endregion-->
 
     <!--#region Font-->
@@ -166,6 +186,35 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style
+        x:Key="DangerFontBtnStyle"
+        BasedOn="{StaticResource IconFontCircularBtnBaseStyle}"
+        TargetType="Button">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="8, 0.5">
+                    <GradientStop Offset="0" Color="#9FBDBDBD" />
+                    <GradientStop Offset="1" Color="White" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0, 0.5" EndPoint="8, 0.5">
+                            <GradientStop Offset="0" Color="{DynamicResource DangerColor}" />
+                            <GradientStop Offset="1" Color="White" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="TextBtnStyle" TargetType="Button">
         <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
         <Setter Property="Cursor" Value="Hand" />
@@ -494,7 +543,10 @@
                     Margin="0,0,3,0"
                     Background="{TemplateBinding Background}"
                     CornerRadius="8">
-                    <ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="Center" />
+                    <ContentControl
+                        Content="{Binding Message}"
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="Center" />
                 </Border>
             </hc:SimplePanel>
         </Grid>
@@ -556,7 +608,6 @@
         <Setter Property="MinWidth" Value="20" />
         <Setter Property="Template" Value="{StaticResource GChatBubbleStringBaseTemplate}" />
         <Setter Property="IsRead" Value="{Binding IsSelected, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="MaxWidth" Value="280" />
         <Style.Triggers>
             <Trigger Property="Role" Value="Other">
                 <Setter Property="Background" Value="{DynamicResource RegionBrush}" />

@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TMS.Core.Api;
+using TMS.Core.Data.Entity;
 using TMS.Core.Data.Token;
 using TMS.DeskTop.Tools.Helper;
 using static TMS.DeskTop.UserControls.Card.ViewModels.NameCardModel;
@@ -29,8 +30,10 @@ namespace TMS.DeskTop.UserControls.Card.Views
     /// 
     /// 验证是否为当前用户的好友，分为好友和非好友，从而进行对应名片的装载
     /// </summary>
-    public partial class NameCard : UserControl, ISingleOpen
+    public partial class NameCard : UserControl
     {
+        public class UpdateNameCardContentEvent : PubSubEvent<User> { }
+
         private readonly IRegionManager regionManager;
         private readonly IEventAggregator eventAggregator;
 
@@ -77,15 +80,28 @@ namespace TMS.DeskTop.UserControls.Card.Views
 
         private void UpdateUser()
         {
-            // 判断是否为好友，然后进行相应卡片的注入
-            if (true)
+            Task.Factory.StartNew(async() => 
             {
-                RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.NameCardContent, typeof(FriendCard));
-            }
-            else
-            {
-                RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.NameCardContent, typeof(NoFriendCard));
-            }
+                var result = await HttpService.GetConn().GetUserInfo(10005);
+                if (result.StatusCode == 200)
+                {
+                    User user = (User)result.Data;
+                    // 判断是否为好友，然后进行相应卡片的注入
+                    Application.Current.Dispatcher.Invoke(() => 
+                    {
+                        if (true)
+                        {
+                            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.NameCardContent, typeof(NoFriendCard));
+                        }
+                        else
+                        {
+                            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.NameCardContent, typeof(FriendCard));
+                        }
+                        eventAggregator.GetEvent<UpdateNameCardContentEvent>().Publish(user);
+                    });
+                }
+            });
+
         }
 
         private void Close()

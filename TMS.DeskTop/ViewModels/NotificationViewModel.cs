@@ -24,6 +24,7 @@ using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Card.Views;
 using TMS.DeskTop.UserControls.Common.ViewModels;
 using TMS.DeskTop.UserControls.Common.Views;
+using TMS.DeskTop.UserControls.Common.Views.ChatBubbles;
 
 namespace TMS.DeskTop.ViewModels
 {
@@ -82,11 +83,13 @@ namespace TMS.DeskTop.ViewModels
 
         private readonly IRegionManager regionManager;
         private readonly IEventAggregator eventAggregator;
+        private readonly IContainerExtension container;
 
         public NotificationViewModel(IRegionManager regionManager, IEventAggregator eventAggregator, IContainerExtension container)
         {
             this.regionManager = regionManager;
             this.eventAggregator = eventAggregator;
+            this.container = container;
             this.NotificationDataListMap = new Dictionary<long, ObservableCollection<ChatInfoModel>>();
 
             this.MsgObjList = new ObservableCollection<MsgObjVO>();
@@ -191,15 +194,40 @@ namespace TMS.DeskTop.ViewModels
                             NewMessage = "",
                             NewMessageTimestamp = 0,
                         };
+
                         Application.Current.Dispatcher.Invoke(new Action(() =>
                         {
                             MsgObjList.Add(msgObj);
                             SelectedValue = msgObj;
+
+                            if (!NotificationDataListMap.ContainsKey(msgObj.ObjectId))
+                            {
+                                NotificationDataListMap[msgObj.ObjectId] = new ObservableCollection<ChatInfoModel>();
+                            }
+
+                            var data = navigationContext.Parameters.GetValue<NotificationData>("NotificationData");
+                            if (data != null)
+                            {
+                                if (data.Type == 1 && data.SubType == 0 && data.Sender.UserId == SessionService.User.UserId)
+                                {
+                                    notificationDataListMap[msgObj.ObjectId].Add(new ChatInfoModel 
+                                    {
+                                        SenderId = (long)SessionService.User.UserId,
+                                        Avatar = new Uri(SessionService.User.Avatar),
+                                        Message = container.Resolve<Sender_ContacterRequestChatBubble>(),
+                                        Type = ChatMessageType.Custom,
+                                        Role = ChatRoleType.Me,
+                                        Timestamp = data.Timestamp,
+                                    });
+                                }
+                            }
+
                             // 进行导航
                             this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Publish((long)user.UserId);
                         }));
                     }
                 });
+
             }
 
         }

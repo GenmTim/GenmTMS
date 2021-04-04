@@ -401,60 +401,7 @@
                         </genm:DataDialog>
                     </hc:SimplePanel>-->
 
-                        <hc:SimplePanel Grid.Column="1">
-                            <hc:SimplePanel Width="440" Height="180">
-                                <Border
-                                    Background="White"
-                                    CornerRadius="5"
-                                    Effect="{StaticResource ChatBubbleEffectShadow}" />
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <hc:SimplePanel>
-                                        <TextBlock
-                                            Text="联系人请求"
-                                            Margin="15,0,0,0"
-                                            VerticalAlignment="Center"
-                                            FontSize="16"
-                                            FontWeight="Bold" />
-                                    </hc:SimplePanel>
-                                    <hc:SimplePanel Grid.Row="1">
-                                        <StackPanel Margin="30,0" Orientation="Horizontal">
-                                            <hc:Gravatar
-                                                Width="40"
-                                                Height="40"
-                                                Id="324"
-                                                Style="{StaticResource GravatarCircleImg}" />
-                                            <TextBlock
-                                                Text="金泽权"
-                                                Margin="20,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontSize="14" />
-                                        </StackPanel>
-                                    </hc:SimplePanel>
-                                    <hc:SimplePanel Grid.Row="2">
-                                        <UniformGrid Columns="2">
-                                            <Button
-                                                Content="同意"
-                                                Width="100"
-                                                Height="33"
-                                                Cursor="Hand"
-                                                Style="{StaticResource ButtonPrimary}" />
-                                            <Button
-                                                Content="拒绝"
-                                                Width="100"
-                                                Height="33"
-                                                HorizontalAlignment="Stretch"
-                                                Cursor="Hand"
-                                                Style="{StaticResource ButtonDashedInfo}" />
-                                        </UniformGrid>
-                                    </hc:SimplePanel>
-                                </Grid>
-                            </hc:SimplePanel>
-                        </hc:SimplePanel>
+
                     </hc:SimplePanel>
                 </Grid>
             </Border>
