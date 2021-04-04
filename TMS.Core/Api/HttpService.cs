@@ -52,6 +52,7 @@ namespace TMS.Core.Api
 
         private RestSharpCertificateMethod restSharp = new RestSharpCertificateMethod();
 
+        #region 测试
         /// <summary>
         /// 上传文件
         /// </summary>
@@ -74,6 +75,9 @@ namespace TMS.Core.Api
             var responseContent = response.Content;
             return responseContent;
         }
+        #endregion
+
+        #region 企业
 
         /// <summary>
         /// 获取企业信息
@@ -242,7 +246,122 @@ namespace TMS.Core.Api
                 return new ApiResponse(-1, "程序异常");
             }
         }
+        #endregion
 
+        #region 用户与企业
+
+        /// <summary>
+        /// 邀请用户加入企业
+        /// </summary>
+        /// <param name="company_id"></param>
+        /// <param name="receiver_id"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> InviteUserJoinCompany(long company_id,long receiver_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/company/inviteUser");
+                restRequest.AddParameter("company_id", company_id);
+                restRequest.AddParameter("receiver_id", receiver_id);
+
+                restRequest.Method = Method.POST;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //string data = jObjects["data"].ToString();
+                    //AttendanceGroupDto attendanceGroupDto = JsonConvert.DeserializeObject<AttendanceGroupDto>(data);
+                    return new ApiResponse(200, "邀请成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "邀请失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 应答公司邀请
+        /// </summary>
+        /// <param name="company_id"></param>
+        /// <param name="message_id"></param>
+        /// <param name="is_agree"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> ReplyCompanyInvite(long company_id, long message_id,Boolean is_agree)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/company/isAgree");
+                restRequest.AddParameter("company_id", company_id);
+                restRequest.AddParameter("message_id", message_id);
+                restRequest.AddParameter("agree", is_agree);
+
+                restRequest.Method = Method.POST;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //string data = jObjects["data"].ToString();
+                    //AttendanceGroupDto attendanceGroupDto = JsonConvert.DeserializeObject<AttendanceGroupDto>(data);
+                    return new ApiResponse(200, "成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 是否已以加入公司
+        /// </summary>
+        /// <param name="company_id"></param>
+        /// <param name="user_id"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> IsCompanyJoined(long company_id, long user_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/company/isCompanyRole");
+                restRequest.AddParameter("company_id", company_id);
+                restRequest.AddParameter("user_id", user_id);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //string data = jObjects["data"].ToString();
+                    //AttendanceGroupDto attendanceGroupDto = JsonConvert.DeserializeObject<AttendanceGroupDto>(data);
+                    return new ApiResponse(200, "已加入公司");
+                }
+                else
+                {
+                    return new ApiResponse(201, "未加入公司");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
 
         /// <summary>
         /// 用户进入企业
@@ -327,8 +446,9 @@ namespace TMS.Core.Api
                 return new ApiResponse(-1, "程序异常");
             }
         }
+        #endregion
 
-
+        #region 用户与部门
 
         /// <summary>
         /// 用户进入部门
@@ -403,6 +523,9 @@ namespace TMS.Core.Api
                 return new ApiResponse(-1, "程序异常");
             }
         }
+        #endregion
+
+        #region 用户
 
         /// <summary>
         /// 登录用户，手机
@@ -428,7 +551,7 @@ namespace TMS.Core.Api
                 {
                     if (param.Name == "token")
                     {
-                       
+
                     }
                 }
 
@@ -443,7 +566,7 @@ namespace TMS.Core.Api
 
                     string data = jObjects["data"]["user"].ToString();
                     User user = JsonConvert.DeserializeObject<User>(data);
-                    
+
                     return new ApiResponse(200, user);
                 }
                 else
@@ -557,7 +680,7 @@ namespace TMS.Core.Api
         /// <param name="userId">用户id</param>
         /// <param name="newPassword">新密码</param>
         /// <returns></returns>
-        public async Task<ApiResponse> ChangeUserPassword(int userId, string newPassword)
+        public async Task<ApiResponse> ChangeUserPassword(long userId, string newPassword)
         {
             try
             {
@@ -596,7 +719,7 @@ namespace TMS.Core.Api
         /// <param name="user_id"></param>
         /// <returns></returns>
         public async Task<ApiResponse> GetUserInfo(long user_id)
-		{
+        {
             //debug
             try
             {
@@ -631,21 +754,64 @@ namespace TMS.Core.Api
         }
 
         /// <summary>
+        /// 通过手机号查询用户信息
+        /// </summary>
+        /// <param name="tel"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> GetUserInfoByTel(string tel)
+        {
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("/user/userInfo");//debug
+                restRequest.AddParameter("tel", tel);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    string data = jObjects["data"].ToString();
+                    //debug 调整输出类
+                    User user = JsonConvert.DeserializeObject<User>(data);
+                    //UserDto userDto = JsonConvert.DeserializeObject<UserDto>(data);
+                    //UserInfoDto userInfoDto = JsonConvert.DeserializeObject<UserInfoDto>(data);
+                    //debug 两个类合并
+                    return new ApiResponse(200, user);
+                }
+                else
+                {
+                    return new ApiResponse(201, "获取用户信息失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+        #endregion
+
+        #region 联系人
+
+        /// <summary>
         /// 应答联系人请求
         /// </summary>
         /// <param name="user_id"></param>
         /// <param name="is_agree"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> ReplyNewContact(int user_id,bool is_agree)
+        public async Task<ApiResponse> ReplyNewContact(long user_id, bool is_agree)
         {
             //debug
             try
             {
-                RestRequest restRequest = new RestRequest("/contacts/addAgree");//debug
+                RestRequest restRequest = new RestRequest("/contacts");//debug
                 restRequest.AddParameter("user_id", user_id);
                 restRequest.AddParameter("agree", is_agree);
 
-                restRequest.Method = Method.GET;
+                restRequest.Method = Method.POST;
                 var response = await restClient.ExecuteAsync(restRequest);
 
                 JObject jObjects = JObject.Parse(response.Content);
@@ -671,16 +837,54 @@ namespace TMS.Core.Api
         }
 
         /// <summary>
+        /// 判断是否为联系人
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns>返回200是联系人，201不是联系人</returns>
+        public async Task<ApiResponse> IsContact(long user_id)
+        {
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("​/contacts​/isFriend");//debug
+                restRequest.AddParameter("user_id", user_id);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //是联系人
+                    string data = jObjects["data"].ToString();
+                    //debug 调整输出类
+                    //User user = JsonConvert.DeserializeObject<User>(data);
+                    return new ApiResponse(200, "是联系人");
+                }
+                else
+                {
+                    return new ApiResponse(201, "不是联系人");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
         /// 删除联系人
         /// </summary>
         /// <param name="user_id"></param>
         /// <param name="friend_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> DeleteContacter(int user_id,int friend_id)
+        public async Task<ApiResponse> DeleteContacter(long user_id, long friend_id)
         {
             try
             {
-                RestRequest restRequest = new RestRequest("/contacts/addAgree");
+                RestRequest restRequest = new RestRequest("/contacts");
                 restRequest.AddParameter("user_id", user_id);
                 restRequest.AddParameter("friend_id", friend_id);
 
@@ -711,16 +915,16 @@ namespace TMS.Core.Api
         /// <param name="user_id"></param>
         /// <param name="friend_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> AddNewContacter(int user_id, int friend_id)
+        public async Task<ApiResponse> AddNewContacter(long user_id, long friend_id)
         {
             //debug
             try
             {
-                RestRequest restRequest = new RestRequest("/contacts/addInfo");//debug
+                RestRequest restRequest = new RestRequest("​/contacts/requestInfo");//debug
                 restRequest.AddParameter("user_id", user_id);
                 restRequest.AddParameter("friend_id", friend_id);
 
-                restRequest.Method = Method.GET;
+                restRequest.Method = Method.POST;
                 var response = await restClient.ExecuteAsync(restRequest);
 
                 JObject jObjects = JObject.Parse(response.Content);
@@ -766,15 +970,15 @@ namespace TMS.Core.Api
                 {
                     //成功
                     //string data = jObjects["data"].ToString();
-					JArray jArrays = (JArray)jObjects["data"];
+                    JArray jArrays = (JArray)jObjects["data"];
                     List<User> userList = new List<User>();
-					foreach (var item in jArrays)
-					{
-						string v = item.ToString();
+                    foreach (var item in jArrays)
+                    {
+                        string v = item.ToString();
                         User user = JsonConvert.DeserializeObject<User>(v);
                         userList.Add(user);
                     }
-					
+
                     return new ApiResponse(200, userList);
                 }
                 else
@@ -787,12 +991,14 @@ namespace TMS.Core.Api
                 return new ApiResponse(-1, "程序异常");
             }
         }
+        #endregion
 
+        #region 考勤组
         /// <summary>
         /// 获取考勤组信息
         /// </summary>
         /// <returns></returns>
-        public async Task<ApiResponse> GetAttendanceInfo(int attendance_group_id)
+        public async Task<ApiResponse> GetAttendanceInfo(long attendance_group_id)
         {
             try
             {
@@ -832,7 +1038,7 @@ namespace TMS.Core.Api
         /// <param name="attendance_shifts"></param>
         /// <param name="attendance_users"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> PostAttendanceInfo(int company_id, string name, string attendance_methods, string attendance_shifts, string attendance_users)
+        public async Task<ApiResponse> PostAttendanceInfo(long company_id, string name, string attendance_methods, string attendance_shifts, string attendance_users)
         {
 
             try
@@ -880,7 +1086,7 @@ namespace TMS.Core.Api
         /// <param name="attendance_shifts"></param>
         /// <param name="attendance_users"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> PutAttendanceInfo(int attendance_group_id, string name = null, string attendance_methods = null, string attendance_shifts = null, string attendance_users = null)
+        public async Task<ApiResponse> PutAttendanceInfo(long attendance_group_id, string name = null, string attendance_methods = null, string attendance_shifts = null, string attendance_users = null)
         {
             try
             {
@@ -933,7 +1139,7 @@ namespace TMS.Core.Api
         /// </summary>
         /// <param name="attendance_group_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> DelAttendanceInfo(int attendance_group_id)
+        public async Task<ApiResponse> DelAttendanceInfo(long attendance_group_id)
         {
             try
             {
@@ -970,7 +1176,7 @@ namespace TMS.Core.Api
         /// <param name="clock_no"></param>
         /// <param name="clock_type"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> PostAttendanceClockIn(int attendance_group_id, int user_id, int clock_no, int clock_type)
+        public async Task<ApiResponse> PostAttendanceClockIn(long attendance_group_id, long user_id, int clock_no, int clock_type)
         {
             try
             {
@@ -1012,7 +1218,7 @@ namespace TMS.Core.Api
         /// <param name="newprincipal_id"></param>
         /// <param name="oldprincipal_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> PutAttendancePrin(int attendance_group_id, int newprincipal_id, int oldprincipal_id)
+        public async Task<ApiResponse> PutAttendancePrin(long attendance_group_id, long newprincipal_id, long oldprincipal_id)
         {
             try
             {
@@ -1048,7 +1254,7 @@ namespace TMS.Core.Api
         /// <param name="attendance_group_id"></param>
         /// <param name="principal_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> DelAttendancePrin(int attendance_group_id, int principal_id)
+        public async Task<ApiResponse> DelAttendancePrin(long attendance_group_id, long principal_id)
         {
             try
             {
@@ -1076,7 +1282,9 @@ namespace TMS.Core.Api
                 return new ApiResponse(-1, "程序异常");
             }
         }
+        #endregion
 
+        #region 考评组
         /// <summary>
         /// 创建考评组
         /// </summary>
@@ -1156,7 +1364,7 @@ namespace TMS.Core.Api
         /// </summary>
         /// <param name="evaluationgroup_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> DelEvaluationGroup(int evaluationgroup_id)
+        public async Task<ApiResponse> DelEvaluationGroup(long evaluationgroup_id)
         {
             try
             {
@@ -1191,7 +1399,7 @@ namespace TMS.Core.Api
         /// <param name="evaluationGroup_id"></param>
         /// <param name="examiner_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> PutEvaluationExaminer(int evaluationGroup_id, int examiner_id)
+        public async Task<ApiResponse> PutEvaluationExaminer(long evaluationGroup_id, int examiner_id)
         {
             try
             {
@@ -1328,7 +1536,9 @@ namespace TMS.Core.Api
                 return new ApiResponse(-1, "程序异常");
             }
         }
+        #endregion
 
+        #region 重大事件
         /// <summary>
         /// 获取荣耀表信息
         /// </summary>
@@ -1617,7 +1827,9 @@ namespace TMS.Core.Api
                 return new ApiResponse(-1, "程序异常");
             }
         }
+        #endregion
 
+        #region 部门
         /// <summary>
         /// 新建部门
         /// </summary>
@@ -1741,8 +1953,7 @@ namespace TMS.Core.Api
                 return new ApiResponse(-1, "程序异常");
             }
         }
-
-        //------------------------------新增
+        #endregion
 
         #region 文件夹
         /// <summary>
