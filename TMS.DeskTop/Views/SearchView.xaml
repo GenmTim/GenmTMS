@@ -9,8 +9,6 @@
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     mc:Ignorable="d">
     <!--<hc:SimplePanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel>
@@ -360,7 +358,9 @@
         <!--  授权Dialog  -->
         <genm:DataDialog Grid.Row="1"
             Title="授权申请"
+            VerticalAlignment="Center"
             PositiveText="发送"
+            Effect="{StaticResource DialogShadow}"
             NegativeText="取消">
             <TextBlock>
                 <Run Text="你将向 " />

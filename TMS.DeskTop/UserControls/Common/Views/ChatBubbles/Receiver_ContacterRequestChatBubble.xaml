@@ -6,8 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Common.Views.ChatBubbles"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     mc:Ignorable="d">
     <hc:SimplePanel Grid.Column="1">
         <hc:SimplePanel Width="300" Height="150">
@@ -47,12 +45,14 @@
                     <UniformGrid Columns="2">
                         <Button
                             Content="同意"
+                            Command="{Binding AcceptRequestCmd}"
                             Width="100"
                             Height="33"
                             Cursor="Hand"
                             Style="{StaticResource ButtonPrimary}" />
                         <Button
                             Content="拒绝"
+                            Command="{Binding RefuseRequestCmd}"
                             Width="100"
                             Height="33"
                             HorizontalAlignment="Stretch"

@@ -1,5 +1,4 @@
 ﻿using Prism.Commands;
-using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
@@ -69,8 +68,8 @@ namespace TMS.DeskTop.ViewModels
         /// 当前分类显示列表
         /// </summary>
         private ObservableCollection<AppItem> viewAppList = new ObservableCollection<AppItem>();
-        public ObservableCollection<AppItem> ViewAppList 
-        { 
+        public ObservableCollection<AppItem> ViewAppList
+        {
             get => viewAppList;
             set
             {
@@ -82,9 +81,9 @@ namespace TMS.DeskTop.ViewModels
         /// 标签列表
         /// </summary>
         private ObservableCollection<ClassifyItem> classifyItemList = new ObservableCollection<ClassifyItem>();
-        public ObservableCollection<ClassifyItem> ClassifyItemList 
-        { 
-            get => classifyItemList; 
+        public ObservableCollection<ClassifyItem> ClassifyItemList
+        {
+            get => classifyItemList;
             set
             {
                 SetProperty(ref classifyItemList, value);
@@ -150,7 +149,7 @@ namespace TMS.DeskTop.ViewModels
                 new AppItem { Tag="心灵驿站", Name = "员工关怀", IconFont = "\xe703", Url = "EvaluationView", Command=NavigationCmd },
             };
 
-            foreach(var appItem in allAppDataList)
+            foreach (var appItem in allAppDataList)
             {
                 if (!appGroupMap.ContainsKey(appItem.Tag))
                 {

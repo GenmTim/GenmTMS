@@ -312,7 +312,9 @@
                             </Grid>
                             <!--#endregion-->
                         </Grid>
-                        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.MainContent}" />
+                        <hc:SimplePanel>
+                            <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.MainContent}" />
+                        </hc:SimplePanel>
                     </DockPanel>
                     <!--<popup:ProfilePopup
                     Margin="70,60,0,0"
@@ -361,7 +363,14 @@
                                 Style="{StaticResource WindowCloseBtnStyle}" />
                         </WrapPanel>
                     </hc:SimplePanel>
-
+                    <hc:SimplePanel
+                        Margin="0,20,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top">
+                        <genm:Toast x:Name="toast"
+                            Message="测试"
+                            Duration="0:0:0:3" />
+                    </hc:SimplePanel>
                 </hc:SimplePanel>
             </materialDesign:DialogHost>
         </Border>

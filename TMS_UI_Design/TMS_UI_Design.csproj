@@ -17,6 +17,8 @@
 
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="3.0.0" />
+    <PackageReference Include="ToastNotifications" Version="2.5.1" />
+    <PackageReference Include="ToastNotifications.Messages" Version="2.5.1" />
   </ItemGroup>
 
   <ItemGroup>

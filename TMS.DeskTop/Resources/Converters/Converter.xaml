@@ -4,4 +4,9 @@
     xmlns:converter="clr-namespace:TMS.DeskTop.Resources.Converters">
     <converter:FetchFirstCharConverter x:Key="FetchFirstCharConverter" />
     <converter:LinearGradientConverter x:Key="LinearGradientConverter" />
+    <converter:String2FileName x:Key="String2FileName" />
+    <converter:String2FileType x:Key="String2FileType" />
+    <converter:String2FileTypeIconPath x:Key="String2FileTypeIconPath" />
+    <converter:FileSize2String x:Key="FileSize2String" />
+    <converter:Timestamp2String x:Key="Timestamp2String" />
 </ResourceDictionary>

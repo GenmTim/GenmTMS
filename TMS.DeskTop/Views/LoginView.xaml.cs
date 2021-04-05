@@ -1,14 +1,6 @@
 ﻿using Prism.Events;
-using Prism.Ioc;
-using System;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
-using TMS.Core.Api;
-using TMS.Core.Data.Dto;
 using TMS.Core.Event;
-using TMS.DeskTop.Cache;
-using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.Views
 {
@@ -25,6 +17,12 @@ namespace TMS.DeskTop.Views
             this.eventAggregator = eventAggregator;
             this.eventAggregator.GetEvent<LoginedEvent>().Subscribe(Logined);
             this.eventAggregator.GetEvent<ExitEvent>().Subscribe(Exit);
+            this.eventAggregator.GetEvent<ToastShowEvent>().Subscribe(ToastShow, ThreadOption.UIThread);
+        }
+
+        private void ToastShow(string message)
+        {
+            myToast.Show(message);
         }
 
         private void Logined()

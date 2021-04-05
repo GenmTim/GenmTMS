@@ -11,6 +11,9 @@
     Height="500"
     mc:Ignorable="d">
     <Grid Margin="10">
-        <local:MultiValueComboBox x:Name="dayComponent" />
+        <StackPanel>
+            <local:MultiValueComboBox x:Name="dayComponent" />
+            <Button Content="测试" Click="NotificationToast_Show" />
+        </StackPanel>
     </Grid>
 </Window>

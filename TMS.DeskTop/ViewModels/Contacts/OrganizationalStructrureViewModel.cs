@@ -1,6 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using Prism.Commands;
+using System.Collections.ObjectModel;
 using TMS.Core.Data;
 using TMS.Core.Data.Entity;
+using TMS.Core.Service;
+using TMS.DeskTop.UserControls.Dialogs.Views;
 
 namespace TMS.DeskTop.ViewModels.Contacts
 {
@@ -8,13 +11,21 @@ namespace TMS.DeskTop.ViewModels.Contacts
     {
         public ObservableCollection<TreeNodeItem> TreeViewData { get; set; } = new ObservableCollection<TreeNodeItem>();
         public ObservableCollection<User> UserList { get; set; } = new ObservableCollection<User>();
+        private readonly IDialogHostService dialogHost;
 
-
-
-        public OrganizationalStructrureViewModel()
+        public OrganizationalStructrureViewModel(IDialogHostService dialogHost)
         {
             SimulationData();
             SimulationUserList();
+            this.dialogHost = dialogHost;
+            this.AddNewOrganizationMemberCmd = new DelegateCommand(AddNewOrganizationMember);
+        }
+
+        public DelegateCommand AddNewOrganizationMemberCmd { get; private set; }
+
+        private void AddNewOrganizationMember()
+        {
+            dialogHost.ShowDialog(nameof(AddNewOrganizationMemberDialog), null, "ContactRoot");
         }
 
         private void SimulationUserList()

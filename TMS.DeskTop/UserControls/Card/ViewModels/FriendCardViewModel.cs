@@ -2,11 +2,6 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMS.Core.Data.Entity;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.Views;
@@ -20,6 +15,7 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
         private readonly IRegionManager regionManager;
         private readonly IEventAggregator eventAggregator;
         public DelegateCommand GoCommunicationCmd { get; private set; }
+        public DelegateCommand CloseNameCardCmd { get; private set; }
 
         private User user;
         public User User
@@ -37,7 +33,11 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
             this.regionManager = reigonManager;
             this.GoCommunicationCmd = new DelegateCommand(GoCommunication);
             this.eventAggregator = eventAggregator;
-            this.eventAggregator.GetEvent<UpdateNameCardContentEvent>().Subscribe((user) => 
+            this.CloseNameCardCmd = new DelegateCommand(() =>
+            {
+                this.eventAggregator.GetEvent<CloseNameCardEvent>().Publish();
+            });
+            this.eventAggregator.GetEvent<UpdateNameCardContentEvent>().Subscribe((user) =>
             {
                 User = user;
             });

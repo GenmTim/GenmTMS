@@ -1,0 +1,25 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.UserControls.Dialogs.Views.AddNewOrganizationMemberDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
+    xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Dialogs.Views"
+    mc:Ignorable="d">
+    <genm:DataDialog
+        Title="添加新的组织成员"
+        Effect="{StaticResource DialogShadow}"
+        PositiveText="查找"
+        CloseCmd="{Binding CancelCmd}"
+        PositiveCmd="{Binding SaveCmd}"
+        NegativeCmd="{Binding CancelCmd}"
+        NegativeText="取消">
+        <TextBox
+            Text="{Binding Input, Mode=TwoWay}"
+            Height="33"
+            hc:InfoElement.Placeholder="请输入手机号码"
+            Style="{StaticResource TextBoxExtend}" />
+    </genm:DataDialog>
+</UserControl>

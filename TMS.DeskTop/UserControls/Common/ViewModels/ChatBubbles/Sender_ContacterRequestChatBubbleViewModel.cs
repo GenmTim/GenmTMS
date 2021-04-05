@@ -1,9 +1,4 @@
 ﻿using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMS.Core.Data.VO.Notification;
 
 namespace TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles
@@ -17,8 +12,8 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles
 
         private string message;
 
-        public string Message 
-        { 
+        public string Message
+        {
             get => message;
             set
             {
@@ -29,22 +24,22 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles
 
 
         private ContactRequest contactRequest;
-        public ContactRequest ContactRequest 
-        { 
+        public ContactRequest ContactRequest
+        {
             get => contactRequest;
             set
             {
                 contactRequest = value;
                 switch (contactRequest.State)
                 {
-                    case (ContactRequestState.Requesting):
-                        Message = "正在等待对方的处理";
-                        break;
                     case (ContactRequestState.Accept):
                         Message = "对方已经同意你的申请";
                         break;
                     case (ContactRequestState.Refuse):
                         Message = "对方已经拒绝了你的申请";
+                        break;
+                    default:
+                        Message = "正在等待对方的处理";
                         break;
                 }
             }

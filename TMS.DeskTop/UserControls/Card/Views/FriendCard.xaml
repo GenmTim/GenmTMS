@@ -8,11 +8,13 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Card.Views"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    hc:WindowAttach.IsDragElement="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <hc:SimplePanel Width="300" Height="380">
-        <Border Background="White" Effect="{StaticResource EffectShadowCom}" />
+        <Border Background="White" CornerRadius="5" />
+
         <Grid Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -20,10 +22,10 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
-            <hc:SimplePanel Margin="0,15">
+            <hc:SimplePanel Margin="0,10,0,15">
                 <StackPanel Height="50" HorizontalAlignment="Left">
                     <TextBlock
-                        Text="蔡承龙"
+                        Text="{Binding User.Name}"
                         FontWeight="SemiBold"
                         FontSize="18" />
                     <Button
@@ -92,5 +94,31 @@
                     Style="{StaticResource ButtonPrimary}" />
             </hc:SimplePanel>
         </Grid>
+        <hc:SimplePanel HorizontalAlignment="Right" VerticalAlignment="Top">
+            <hc:SimplePanel.Resources>
+                <Style
+                    x:Key="dangerTextBtnStyle"
+                    BasedOn="{StaticResource TextBtnExStyle}"
+                    TargetType="Button">
+                    <Setter Property="Foreground" Value="#2F000000" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#ffa39e" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </hc:SimplePanel.Resources>
+            <Border
+                Width="15"
+                Height="15"
+                CornerRadius="0,5,0,5"
+                Background="#fff1f0" />
+            <Button
+                Content="&#xe7b7;"
+                Command="{Binding CloseNameCardCmd}"
+                FontSize="12"
+                Style="{StaticResource dangerTextBtnStyle}"
+                FontFamily="{StaticResource FIconPlusFontFamily}" />
+        </hc:SimplePanel>
     </hc:SimplePanel>
 </UserControl>

@@ -2,18 +2,15 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TMS.Core.Api;
 using TMS.Core.Data.Entity;
+using TMS.Core.Event;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
-using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.Views;
 using TMS.DeskTop.Views.Contacts;
 
@@ -33,34 +30,37 @@ namespace TMS.DeskTop.ViewModels.Contacts
             this.eventAggregator = eventAggregator;
             this.GoCommunicationCmd = new DelegateCommand<User>(GoCommunication);
             this.DeleteContacterCmd = new DelegateCommand<User>(DeleteContacter);
-            this.eventAggregator.GetEvent<UpdateContacterListEvent>().Subscribe(() => 
-            {
-                UpdateContacterList();
-            });
+            this.eventAggregator.GetEvent<UpdateContacterListEvent>().Subscribe(UpdateContacterList);
         }
 
         private void UpdateContacterList()
         {
-            Task.Factory.StartNew(async() => 
+            Task.Factory.StartNew(async () =>
             {
                 var result = await HttpService.GetConn().GetContacterList((long)SessionService.User.UserId);
                 if (result.StatusCode == 200)
                 {
                     List<User> users = (List<User>)result.Data;
-                    Application.Current.Dispatcher.Invoke(() => 
+                    Application.Current.Dispatcher.Invoke(() =>
                     {
                         contacterList.Clear();
                         users.ForEach((user) => { contacterList.Add(user); });
                     });
-                    
+                }
+                else
+                {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        contacterList.Clear();
+                    });
                 }
             });
         }
 
         #region Property
         private ObservableCollection<User> contacterList = new ObservableCollection<User>();
-        public ObservableCollection<User> ContacterList 
-        { 
+        public ObservableCollection<User> ContacterList
+        {
             get => contacterList;
             set
             {
@@ -83,12 +83,16 @@ namespace TMS.DeskTop.ViewModels.Contacts
 
         private void DeleteContacter(User user)
         {
-            Task.Factory.StartNew(async() => 
+            Task.Factory.StartNew(async () =>
             {
-                var result = await HttpService.GetConn().DeleteContacter((long)SessionService.User.UserId ,(long)user.UserId);
+                var result = await HttpService.GetConn().DeleteContacter((long)SessionService.User.UserId, (long)user.UserId);
                 if (result.StatusCode == 200)
                 {
                     eventAggregator.GetEvent<UpdateContacterListEvent>().Publish();
+                }
+                else
+                {
+                    eventAggregator.GetEvent<ToastShowEvent>().Publish("删除该联系人失败！");
                 }
             });
         }

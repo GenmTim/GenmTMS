@@ -846,8 +846,8 @@ namespace TMS.Core.Api
             //debug
             try
             {
-                RestRequest restRequest = new RestRequest("​/contacts​/isFriend");//debug
-                restRequest.AddParameter("user_id", user_id);
+                RestRequest restRequest = new RestRequest("​/contacts/isFriend");//debug
+                restRequest.AddParameter("friend_id", user_id);
 
                 restRequest.Method = Method.GET;
                 var response = await restClient.ExecuteAsync(restRequest);

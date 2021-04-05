@@ -110,9 +110,6 @@
                                 <Setter TargetName="Bd" Property="Background" Value="#FFF0F4FF" />
                                 <Setter Property="Foreground" Value="#FF4E83FF" />
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Foreground" Value="#FF6D6D6D" />
-                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -252,9 +249,11 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
                         <Button
+                            Command="{Binding AddNewOrganizationMemberCmd}"
                             Background="Transparent"
                             BorderBrush="#FF3370FF"
-                            Style="{StaticResource funcButtonStyle}">
+                            Style="{StaticResource funcButtonStyle}"
+                            Cursor="Hand">
                             <Button.Content>
                                 <StackPanel Margin="5" Orientation="Horizontal">
                                     <TextBlock

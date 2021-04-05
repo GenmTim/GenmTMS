@@ -1,15 +1,10 @@
 ﻿using Prism.Commands;
 using Prism.Events;
-using Prism.Ioc;
 using Prism.Mvvm;
-using System;
 using System.Collections.ObjectModel;
-using System.Windows;
 using TMS.Core.Data.Enums;
 using TMS.Core.Service;
 using TMS.DeskTop.UserControls.Common.ViewModels;
-using TMS.DeskTop.UserControls.Common.Views;
-using TMS.DeskTop.UserControls.Dialogs.Views;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 {

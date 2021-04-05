@@ -1,14 +1,10 @@
-﻿using Newtonsoft.Json;
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
-using Prism.Mvvm;
 using TMS.Core.Api;
-using TMS.Core.Data.Dto;
 using TMS.Core.Data.Entity;
 using TMS.Core.Event;
 using TMS.Core.Service;
-using static TMS.DeskTop.Views.LoginView;
 
 namespace TMS.DeskTop.ViewModels
 {
@@ -50,6 +46,10 @@ namespace TMS.DeskTop.ViewModels
                 User user = (User)result.Data;
                 SessionService.User = user;
                 eventAggregator.GetEvent<LoginedEvent>().Publish();
+            }
+            else
+            {
+                eventAggregator.GetEvent<ToastShowEvent>().Publish("号码或密码错误！");
             }
         }
 

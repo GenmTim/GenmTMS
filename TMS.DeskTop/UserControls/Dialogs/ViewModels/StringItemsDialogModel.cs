@@ -2,11 +2,7 @@
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TMS.Core.Data.Entity;
 using TMS.Core.Service;
@@ -27,15 +23,15 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
         }
 
         private ObservableCollection<StringBox> stringDataList;
-        public ObservableCollection<StringBox> StringDataList 
-        { 
-            get => stringDataList; 
-            set => stringDataList = value; 
+        public ObservableCollection<StringBox> StringDataList
+        {
+            get => stringDataList;
+            set => stringDataList = value;
         }
 
         public DelegateCommand SaveCmd => new DelegateCommand(() =>
         {
-            for(int i = StringDataList.Count - 1; i >= 0; --i)
+            for (int i = StringDataList.Count - 1; i >= 0; --i)
             {
                 var stringBox = StringDataList[i];
                 if (stringBox.Value == null || stringBox.Value.Equals(""))

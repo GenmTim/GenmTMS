@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,22 @@ namespace TMS.Core.Data.VO.Notification
 {
     public enum ContactRequestState
     {
-        Requesting,
+        [JsonProperty("refuse")]
         Refuse,
+
+        [JsonProperty("accept")]
         Accept,
     }
 
     public class ContactRequest
     {
-        public User RequestId { get; set; }
-        public User AccepterId { get; set; }
+        [JsonProperty("requester_id")]
+        public long RequesterId { get; set; }
+
+        [JsonProperty("accepter_id")]
+        public long AccepterId { get; set; }
+
+        [JsonProperty("state")]
         public ContactRequestState State { get; set;}
     }
 }

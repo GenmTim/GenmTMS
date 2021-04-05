@@ -6,7 +6,6 @@ using Prism.Services.Dialogs;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using TMS.Core.Data;
 using TMS.Core.Service;
 
 namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
@@ -23,7 +22,7 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
     {
         public string IdentifierName { get; set; }
 
-        public class TreeNodeItem : CheckTreeView {}
+        public class TreeNodeItem : CheckTreeView { }
 
 
         private ObservableCollection<Item> checkedList = new ObservableCollection<Item>();
@@ -68,23 +67,24 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
             treeNodeList = new ObservableCollection<TreeNodeItem>();
             TreeNodeItem node1 = new TreeNodeItem()
             {
-                ContentData = new Item { Name="研发部", Type="部门" },
+                ContentData = new Item { Name = "研发部", Type = "部门" },
                 StateChange = StateChange
             };
-            node1.Add(new TreeNodeItem() { 
-                ContentData = new Item {  Name="蔡承龙", Type="员工"},
+            node1.Add(new TreeNodeItem()
+            {
+                ContentData = new Item { Name = "蔡承龙", Type = "员工" },
                 StateChange = StateChange
             });
             TreeNodeItem node1tag1 = new TreeNodeItem()
             {
-                ContentData = new Item { Name = "研发一部", Type="部门" },
+                ContentData = new Item { Name = "研发一部", Type = "部门" },
                 StateChange = StateChange
             };
             node1.Add(node1tag1);
 
             TreeNodeItem node2 = new TreeNodeItem()
             {
-                ContentData = new Item { Name = "财政部", Type="部门" },
+                ContentData = new Item { Name = "财政部", Type = "部门" },
                 StateChange = StateChange
             };
             TreeNodeItem node2tag1 = new TreeNodeItem()

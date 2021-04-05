@@ -1,12 +1,4 @@
-﻿using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Controls;
-using TMS.Core.Data.Enums;
-using TMS.DeskTop.Tools.Helper;
-using TMS.DeskTop.ViewModels.WorkPlace.Evaluation;
+﻿using System.Windows.Controls;
 
 namespace TMS.DeskTop.UserControls.Common.Views
 {

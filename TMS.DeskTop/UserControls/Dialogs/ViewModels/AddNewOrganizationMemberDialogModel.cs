@@ -4,19 +4,23 @@ using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using TMS.Core.Service;
 using TMS.DeskTop.UserControls.Card.Views;
 
 namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
 {
-    class AddNewFriendDialogModel : BindableBase, IDialogHostAware
+    class AddNewOrganizationMemberDialogModel : BindableBase, IDialogHostAware
     {
         public string IdentifierName { get; set; }
         private readonly IContainerExtension container;
         private PopupWindow popupWindow;
 
-        public AddNewFriendDialogModel(IContainerExtension container)
+        public AddNewOrganizationMemberDialogModel(IContainerExtension container)
         {
             this.SaveCmd = new DelegateCommand(Searcher);
             this.CancelCmd = new DelegateCommand(Cancel);
@@ -45,11 +49,7 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
 
         private void Searcher()
         {
-            if (popupWindow != null)
-            {
-                popupWindow.Close();
-            }
-            popupWindow = NameCard.Show(container, Input);
+
         }
 
         private void Cancel()

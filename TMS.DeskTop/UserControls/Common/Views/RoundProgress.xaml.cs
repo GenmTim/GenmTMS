@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -66,7 +64,7 @@ namespace TMS.DeskTop.UserControls.Common.Views
         public double Size
         {
             get { return size; }
-            set 
+            set
             {
                 size = value;
                 UpdateSize();
@@ -90,8 +88,8 @@ namespace TMS.DeskTop.UserControls.Common.Views
         }
 
         private double strokeThickness = 15;
-        public double StrokeThickness 
-        { 
+        public double StrokeThickness
+        {
             get => strokeThickness;
             set
             {
@@ -102,8 +100,8 @@ namespace TMS.DeskTop.UserControls.Common.Views
         }
 
         private bool isHalf = false;
-        public bool IsHalf 
-        { 
+        public bool IsHalf
+        {
             get => isHalf;
             set
             {
@@ -142,7 +140,7 @@ namespace TMS.DeskTop.UserControls.Common.Views
 
         private void UpdateSize()
         {
-            if (rect  == null || progressBar == null)
+            if (rect == null || progressBar == null)
             {
                 InitComponent();
             }

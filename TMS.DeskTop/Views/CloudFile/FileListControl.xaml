@@ -10,24 +10,7 @@
     <UserControl.Resources>
         <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="FocusVisualStyle">
-                <Setter.Value>
-                    <Style>
-                        <Setter Property="Control.Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <Rectangle
-                                        Margin="2"
-                                        SnapsToDevicePixels="True"
-                                        Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                                        StrokeThickness="1"
-                                        StrokeDashArray="1 2" />
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Background" Value="White" />
             <Setter Property="BorderBrush" Value="#FF707070" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -37,7 +20,7 @@
             <Setter Property="Padding" Value="1" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Height" Value="60" />
-            <Setter Property="Margin" Value="4,0,0,4" />
+            <Setter Property="Margin" Value="4,0,4,4" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -46,7 +29,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}"
                             SnapsToDevicePixels="True"
-                            CornerRadius="20">
+                            CornerRadius="5">
                             <ContentPresenter x:Name="contentPresenter"
                                 Content="{TemplateBinding Content}"
                                 Margin="{TemplateBinding Padding}"
@@ -116,7 +99,7 @@
                         FontWeight="SemiBold"
                         Foreground="DarkSlateGray" />
                     <TextBlock Grid.Column="1"
-                        Text="文件项"
+                        Text="所有者"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontWeight="SemiBold"
@@ -145,57 +128,94 @@
                     VerticalAlignment="Stretch"
                     Focusable="False">
                     <StackPanel Margin="0,20,0,0" Orientation="Vertical">
-                        <Button Style="{DynamicResource ButtonStyle1}">
-                            <Button.Content>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="140" />
-                                        <ColumnDefinition Width="120" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0"
-                                        Margin="20,0,0,0"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        Orientation="Horizontal">
-                                        <Image
-                                            Width="50"
-                                            Margin="5,0,0,0"
-                                            HorizontalAlignment="Left"
-                                            Stretch="Uniform"
-                                            Source="/Resources/Images/Assets/folder.png" />
-                                        <TextBlock
-                                            Text="文件夹 1"
-                                            Margin="5,0,0,0"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            TextAlignment="Left"
-                                            FontWeight="Bold"
-                                            Foreground="LightSlateGray" />
-                                    </StackPanel>
-                                    <TextBlock Grid.Column="1"
-                                        Text="21 Items"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        TextAlignment="Left"
-                                        Foreground="LightSlateGray" />
-                                    <TextBlock Grid.Column="2"
-                                        Text="2021-03-01"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        TextAlignment="Left"
-                                        Foreground="LightSlateGray" />
-                                    <TextBlock Grid.Column="3"
-                                        Text="15 Gb"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        TextAlignment="Left"
-                                        Foreground="LightSlateGray" />
-                                </Grid>
-                            </Button.Content>
-                        </Button>
-                        <Button Style="{DynamicResource ButtonStyle1}">
+                        <ItemsControl ItemsSource="{Binding FileItemList}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{DynamicResource ButtonStyle1}">
+                                        <Button.ContextMenu>
+                                            <ContextMenu Width="90">
+                                                <MenuItem Header="下载">
+                                                    <MenuItem.Icon>
+                                                        <TextBlock
+                                                            Text="&#xe70e;"
+                                                            VerticalAlignment="Center"
+                                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                    </MenuItem.Icon>
+                                                </MenuItem>
+                                                <MenuItem Header="删除">
+                                                    <MenuItem.Icon>
+                                                        <TextBlock
+                                                            Text="&#xe7ae;"
+                                                            VerticalAlignment="Center"
+                                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                    </MenuItem.Icon>
+                                                </MenuItem>
+                                                <MenuItem Header="移动">
+                                                    <MenuItem.Icon>
+                                                        <TextBlock
+                                                            Text="&#xe733;"
+                                                            VerticalAlignment="Center"
+                                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                    </MenuItem.Icon>
+                                                </MenuItem>
+                                            </ContextMenu>
+                                        </Button.ContextMenu>
+                                        <Button.Content>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="100" />
+                                                    <ColumnDefinition Width="148" />
+                                                    <ColumnDefinition Width="120" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Grid.Column="0"
+                                                    Margin="20,0,0,0"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Orientation="Horizontal">
+                                                    <Image
+                                                        Width="40"
+                                                        Margin="5,0,0,0"
+                                                        HorizontalAlignment="Left"
+                                                        RenderOptions.BitmapScalingMode="HighQuality"
+                                                        Stretch="Uniform"
+                                                        Source="{Binding Name, Converter={StaticResource String2FileTypeIconPath}}" />
+                                                    <TextBlock
+                                                        Text="{Binding Name, Converter={StaticResource String2FileName}}"
+                                                        Margin="10,0,0,0"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="12"
+                                                        TextAlignment="Left"
+                                                        FontWeight="Bold"
+                                                        Foreground="LightSlateGray" />
+                                                </StackPanel>
+                                                <TextBlock Grid.Column="1"
+                                                    Text="{Binding Owner.Name}"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    TextAlignment="Left"
+                                                    Foreground="LightSlateGray" />
+                                                <TextBlock Grid.Column="2"
+                                                    Text="{Binding LastUpdateTimestamp, Converter={StaticResource Timestamp2String}}"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    TextAlignment="Left"
+                                                    Foreground="LightSlateGray" />
+                                                <TextBlock Grid.Column="3"
+                                                    Text="{Binding FileSize, Converter={StaticResource FileSize2String}}"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    TextAlignment="Left"
+                                                    Foreground="LightSlateGray" />
+                                            </Grid>
+                                        </Button.Content>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!--<Button Style="{DynamicResource ButtonStyle1}">
                             <Button.Content>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -444,7 +464,7 @@
                                         Foreground="LightSlateGray" />
                                 </Grid>
                             </Button.Content>
-                        </Button>
+                        </Button>-->
 
                     </StackPanel>
                 </ScrollViewer>

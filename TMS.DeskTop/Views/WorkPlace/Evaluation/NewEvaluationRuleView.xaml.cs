@@ -1,11 +1,7 @@
-﻿
-using Prism.Commands;
-using System.Collections.ObjectModel;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using TMS.Core.Data.Value;
 using TMS.Core.Service;
 using TMS.DeskTop.UserControls.Common.ViewModels;
-using TMS.DeskTop.UserControls.Common.Views;
 
 namespace TMS.DeskTop.Views.WorkPlace.Evaluation
 {

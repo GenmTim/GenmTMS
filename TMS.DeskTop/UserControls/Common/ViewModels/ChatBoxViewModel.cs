@@ -1,23 +1,18 @@
 ﻿using Genm.Data;
 using Genm.Data.Enums;
 using HandyControl.Controls;
-using HandyControl.Tools;
 using Prism.Commands;
 using Prism.Events;
-using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using TMS.Core.Api;
 using TMS.Core.Data;
 using TMS.Core.Data.Entity;
-using TMS.Core.Event;
 using TMS.Core.Event.WebSocket;
 using TMS.Core.Service;
-using TMS.DeskTop.Cache;
 using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.UserControls.Common.ViewModels
@@ -28,8 +23,8 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
         private readonly IEventAggregator eventAggregator;
 
         private ObservableCollection<ChatInfoModel> chatInfos;
-        public ObservableCollection<ChatInfoModel> ChatInfos 
-        { 
+        public ObservableCollection<ChatInfoModel> ChatInfos
+        {
             get => chatInfos;
             set
             {

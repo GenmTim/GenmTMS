@@ -1,7 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Modularity;
-using Prism.Mvvm;
 using Prism.Regions;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.Views;
@@ -18,7 +17,7 @@ namespace TMS.DeskTop.ViewModels
         }
 
         private double windowWidth = 1224;
-        public double WindowWidth { get => windowWidth; set { SetProperty(ref windowWidth, value);  } }
+        public double WindowWidth { get => windowWidth; set { SetProperty(ref windowWidth, value); } }
 
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;

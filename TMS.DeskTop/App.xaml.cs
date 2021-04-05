@@ -6,8 +6,6 @@ using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Card.ViewModels;
 using TMS.DeskTop.UserControls.Card.Views;
-using TMS.DeskTop.UserControls.Common.ViewModels;
-using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.UserControls.Common.Views.ChatBubbles;
 using TMS.DeskTop.UserControls.Dialogs.ViewModels;
 using TMS.DeskTop.UserControls.Dialogs.Views;
@@ -50,6 +48,7 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<StringItemsDialog, StringItemsDialogModel>();
             containerRegistry.RegisterForNavigation<SelectUserDialog, SelectUserDialogModel>();
             containerRegistry.RegisterForNavigation<AddNewFriendDialog, AddNewFriendDialogModel>();
+            containerRegistry.RegisterForNavigation<AddNewOrganizationMemberDialog, AddNewOrganizationMemberDialogModel>();
 
             // 注册卡片
             containerRegistry.Register<NameCard>();

@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:helper="clr-namespace:TMS.DeskTop.Tools.Helper"
     xmlns:gif="http://wpfanimatedgif.codeplex.com"
@@ -97,6 +98,11 @@
             </WrapPanel>
         </hc:SimplePanel>
         <hc:SimplePanel>
+            <hc:SimplePanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                <genm:Toast x:Name="myToast"
+                    Message="测试"
+                    Duration="0:0:0:3" />
+            </hc:SimplePanel>
             <StackPanel
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"

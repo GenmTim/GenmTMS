@@ -94,6 +94,11 @@ namespace TMS.Core.Api
 		/// <param name="e"></param>
 		private void OnClosed(object sender, EventArgs e)
 		{
+			Task.Factory.StartNew(async() => 
+			{
+				await Task.Delay(3);
+				conn.Open();
+			});
 			// pass
 			LoggerService.Warn("WebSocketService: " + "Close");
 		}

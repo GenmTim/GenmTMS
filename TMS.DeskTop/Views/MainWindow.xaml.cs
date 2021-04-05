@@ -1,6 +1,5 @@
 ﻿using Prism.Events;
 using Prism.Regions;
-using System;
 using System.Windows;
 using System.Windows.Input;
 using TMS.Core.Data.Token;
@@ -18,7 +17,6 @@ namespace TMS.DeskTop.Views
 
         private readonly IRegionManager regionManager;
         private readonly IEventAggregator eventAggregator;
-        private static int i = 0;
 
         public MainWindow(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
@@ -27,14 +25,21 @@ namespace TMS.DeskTop.Views
             this.eventAggregator = eventAggregator;
             InitSubscribeEvent();
             RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.MainContent, typeof(NotificationView));
+            eventAggregator.GetEvent<ToastShowEvent>().Subscribe(ToastShow, ThreadOption.UIThread);
         }
 
         private void InitSubscribeEvent()
         {
-            eventAggregator.GetEvent<SashEvent>().Subscribe((data) => 
+            eventAggregator.GetEvent<SashEvent>().Subscribe((data) =>
             {
+                drawer.IsOpen = true;
                 RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.SashRegion, typeof(PersonalFileView));
             });
+        }
+
+        private void ToastShow(string message)
+        {
+            toast.Show(message);
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

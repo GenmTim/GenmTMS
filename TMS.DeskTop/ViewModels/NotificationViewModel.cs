@@ -1,5 +1,6 @@
 ﻿using Genm.Data;
 using Genm.Data.Enums;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Ioc;
@@ -13,7 +14,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using TMS.Core.Api;
 using TMS.Core.Data;
-using TMS.Core.Data.Dto;
 using TMS.Core.Data.Entity;
 using TMS.Core.Data.Token;
 using TMS.Core.Data.VO;
@@ -21,8 +21,7 @@ using TMS.Core.Event.Notification;
 using TMS.Core.Event.WebSocket;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
-using TMS.DeskTop.UserControls.Card.Views;
-using TMS.DeskTop.UserControls.Common.ViewModels;
+using TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles;
 using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.UserControls.Common.Views.ChatBubbles;
 
@@ -129,18 +128,28 @@ namespace TMS.DeskTop.ViewModels
         }
 
         public void NewMessage(NotificationData data)
-            {
+        {
             long id = (long)data.Sender.UserId;
 
-            // 构建最新的消息对象数据
-            var msgObj = new MsgObjVO
+            MsgObjVO msgObj;
+
+            msgObj = new MsgObjVO
             {
                 ObjectId = id,
                 ObjectName = data.Sender.Name,
                 Avatar = new Uri(data.Sender.Avatar),
-                NewMessage = (string)data.Data,
-                NewMessageTimestamp = 12312312,
+                NewMessageTimestamp = data.Timestamp,
             };
+
+            // 构建最新的消息对象数据
+            if (data.Type == 0)
+            {
+                msgObj.NewMessage = (string)data.Data;
+            }
+            else if (data.Type == 1)
+            {
+                msgObj.NewMessage = "好友申请";
+            }
 
             // 删除旧的数据对象，并更新的数据对象
             try
@@ -151,15 +160,27 @@ namespace TMS.DeskTop.ViewModels
             MsgObjList.Insert(0, msgObj);
 
             // 构建新的前端消息数据，并添加到对应Id的消息队列数据
-            var chatInfo = new ChatInfoModel
+            ChatInfoModel chatInfo = new ChatInfoModel
             {
-                Message = msgObj.NewMessage,
                 SenderId = msgObj.ObjectId,
                 Role = (msgObj.ObjectId == (long)SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other),
-                Type = ChatMessageType.String,
                 Avatar = msgObj.Avatar,
                 Timestamp = msgObj.NewMessageTimestamp
             };
+            if (data.Type == 0)
+            {
+                chatInfo.Message = msgObj.NewMessage;
+                chatInfo.Type = ChatMessageType.String;
+            }
+            else if(data.Type == 1)
+            {
+                var receiverContacterRequestChatBubble = container.Resolve<Receiver_ContacterRequestChatBubble>();
+                var vm = receiverContacterRequestChatBubble.DataContext as Receiver_ContacterRequestChatBubbleViewModel;
+                var contactRequest = JsonConvert.DeserializeObject<Core.Data.VO.Notification.ContactRequest>((string)data.Data);
+                vm.ContactRequest = contactRequest;
+                chatInfo.Message = receiverContacterRequestChatBubble;
+                chatInfo.Type = ChatMessageType.Custom;
+            }
 
             if (!NotificationDataListMap.ContainsKey(msgObj.ObjectId))
             {
@@ -185,51 +206,76 @@ namespace TMS.DeskTop.ViewModels
                     var result = await HttpService.GetConn().GetUserInfo((long)user.UserId);
                     if (result.StatusCode == 200)
                     {
-                        var data = (User)result.Data;
-                        var msgObj = new MsgObjVO
+                        var user = (User)result.Data;
+                        // 判断是纯跳转命令，还是数据携带命令
+                        bool hasNotificationData = navigationContext.Parameters.TryGetValue<NotificationData>("NotificationData", out NotificationData notificationData);
+
+                        // 如果不存在通知数据，则为纯跳转命令，构造简单MsgObjVO即可
+                        if (!hasNotificationData)
                         {
-                            ObjectId = (long)user.UserId,
-                            ObjectName = data.Name,
-                            Avatar = new Uri(data.Avatar),
-                            NewMessage = "",
-                            NewMessageTimestamp = 0,
-                        };
-
-                        Application.Current.Dispatcher.Invoke(new Action(() =>
-                        {
-                            MsgObjList.Add(msgObj);
-                            SelectedValue = msgObj;
-
-                            if (!NotificationDataListMap.ContainsKey(msgObj.ObjectId))
+                            long userId = (long)user.UserId;
+                            Application.Current.Dispatcher.Invoke(() =>
                             {
-                                NotificationDataListMap[msgObj.ObjectId] = new ObservableCollection<ChatInfoModel>();
-                            }
-
-                            var data = navigationContext.Parameters.GetValue<NotificationData>("NotificationData");
-                            if (data != null)
-                            {
-                                if (data.Type == 1 && data.SubType == 0 && data.Sender.UserId == SessionService.User.UserId)
+                                if (!IsHasMsgObj(userId))
                                 {
-                                    notificationDataListMap[msgObj.ObjectId].Add(new ChatInfoModel 
+                                    var newMsgObjVO = new MsgObjVO
                                     {
-                                        SenderId = (long)SessionService.User.UserId,
-                                        Avatar = new Uri(SessionService.User.Avatar),
-                                        Message = container.Resolve<Sender_ContacterRequestChatBubble>(),
-                                        Type = ChatMessageType.Custom,
-                                        Role = ChatRoleType.Me,
-                                        Timestamp = data.Timestamp,
-                                    });
+                                        ObjectId = userId,
+                                        ObjectName = user.Name,
+                                        Avatar = new Uri(user.Avatar),
+                                        NewMessage = "",
+                                        NewMessageTimestamp = TimeHelper.GetNowTimeStamp(),
+                                    };
+                                    MsgObjList.Add(newMsgObjVO);
+                                    SelectedValue = newMsgObjVO;
                                 }
-                            }
+                                // 进行导航
+                                this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Publish(userId);
+                            });
+                            return;
+                        }
 
-                            // 进行导航
-                            this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Publish((long)user.UserId);
-                        }));
+                        if (notificationData.Type == 1)
+                        {
+                            Application.Current.Dispatcher.Invoke(() =>
+                            {
+                                long userId = (long)user.UserId;
+
+                                var newMsgObjVO = new MsgObjVO
+                                {
+                                    ObjectId = userId,
+                                    ObjectName = user.Name,
+                                    Avatar = new Uri(user.Avatar),
+                                    NewMessage = "好友申请",
+                                    NewMessageTimestamp = TimeHelper.GetNowTimeStamp(),
+                                };
+                                MsgObjList.Add(newMsgObjVO);
+                                SelectedValue = newMsgObjVO;
+
+                                if (!NotificationDataListMap.ContainsKey(userId))
+                                {
+                                    NotificationDataListMap[userId] = new ObservableCollection<ChatInfoModel>();
+                                }
+                                var sendeContacterRequestChatBubble = container.Resolve<Sender_ContacterRequestChatBubble>();
+                                var vm = sendeContacterRequestChatBubble.DataContext as Sender_ContacterRequestChatBubbleViewModel;
+                                vm.ContactRequest = JsonConvert.DeserializeObject<Core.Data.VO.Notification.ContactRequest>((string)notificationData.Data);
+                                notificationDataListMap[userId].Add(new ChatInfoModel
+                                {
+                                    SenderId = (long)SessionService.User.UserId,
+                                    Avatar = new Uri(SessionService.User.Avatar),
+                                    Message = sendeContacterRequestChatBubble,
+                                    Type = ChatMessageType.Custom,
+                                    Role = ChatRoleType.Me,
+                                    Timestamp = TimeHelper.GetNowTimeStamp(),
+                                });
+                                // websocket推送消息，并进行导航
+                                this.eventAggregator.GetEvent<WebSocketSendEvent>().Publish(notificationData);
+                                this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Publish(userId);
+                            });
+                        }
                     }
                 });
-
             }
-
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -242,5 +288,23 @@ namespace TMS.DeskTop.ViewModels
         }
 
         public DelegateCommand SaveCommand { get; private set; }
+
+
+        private void SendeAddNewContacterMessage()
+        {
+
+        }
+
+        private bool IsHasMsgObj(long id)
+        {
+            foreach (var msg in MsgObjList)
+            {
+                if (msg.ObjectId == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -1,14 +1,11 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMS.Core.Data;
 using TMS.Core.Data.Entity;
+using TMS.Core.Data.VO.Notification;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.Views;
@@ -22,6 +19,7 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
         private readonly IRegionManager regionManager;
         private readonly IEventAggregator eventAggregator;
         public DelegateCommand GoGetNewContacterCmd { get; private set; }
+        public DelegateCommand CloseNameCardCmd { get; private set; }
 
         private User user;
         public User User
@@ -39,6 +37,10 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
             this.regionManager = reigonManager;
             this.eventAggregator = eventAggregator;
             this.GoGetNewContacterCmd = new DelegateCommand(GoGetNewContacter);
+            this.CloseNameCardCmd = new DelegateCommand(() => 
+            {
+                this.eventAggregator.GetEvent<CloseNameCardEvent>().Publish();
+            });
             this.eventAggregator.GetEvent<UpdateNameCardContentEvent>().Subscribe((user) =>
             {
                 User = user;
@@ -47,6 +49,11 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
 
         private void GoGetNewContacter()
         {
+            var contactRequest = new Core.Data.VO.Notification.ContactRequest()
+            {
+                RequesterId = (long)SessionService.User.UserId,
+                AccepterId = (long)user.UserId,
+            };
             NotificationData notificationData = new NotificationData
             {
                 Sender = SessionService.User,
@@ -54,6 +61,7 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
                 Type = 1,
                 SubType = 0,
                 Timestamp = TimeHelper.GetNowTimeStamp(),
+                Data = JsonConvert.SerializeObject(contactRequest),
             };
 
             // 跳转到通知界面，并发送联系人添加申请

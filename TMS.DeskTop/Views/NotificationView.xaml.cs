@@ -3,16 +3,12 @@ using Prism.Regions;
 using System.Windows.Controls;
 using TMS.Core.Data;
 using TMS.Core.Data.Entity;
-using TMS.Core.Data.Token;
 using TMS.Core.Data.VO;
 using TMS.Core.Event.Notification;
 using TMS.Core.Event.WebSocket;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Base;
-using TMS.DeskTop.Tools.Helper;
-using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.UserControls.Dialogs.Views;
-using static TMS.DeskTop.ViewModels.NotificationViewModel;
 
 namespace TMS.DeskTop.Views
 {

@@ -1,25 +1,15 @@
 ﻿using HandyControl.Controls;
-using HandyControl.Tools;
 using Prism.Events;
 using Prism.Ioc;
 using Prism.Regions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TMS.Core.Api;
 using TMS.Core.Data.Entity;
 using TMS.Core.Data.Token;
+using TMS.Core.Event;
 using TMS.DeskTop.Tools.Helper;
 using static TMS.DeskTop.UserControls.Card.ViewModels.NameCardModel;
 
@@ -36,15 +26,16 @@ namespace TMS.DeskTop.UserControls.Card.Views
 
         private readonly IRegionManager regionManager;
         private readonly IEventAggregator eventAggregator;
+        private readonly IContainerProvider container;
 
         public Action Closed;
 
         public bool CanDispose => true;
 
         private string tel;
-        public string Tel 
+        public string Tel
         {
-            get => tel; 
+            get => tel;
             set
             {
                 tel = value;
@@ -52,7 +43,7 @@ namespace TMS.DeskTop.UserControls.Card.Views
             }
         }
 
-        public static void Show(IContainerExtension container, string tel)
+        public static PopupWindow Show(IContainerExtension container, string tel)
         {
             var nameCard = container.Resolve<NameCard>();
             var window = new PopupWindow
@@ -62,40 +53,50 @@ namespace TMS.DeskTop.UserControls.Card.Views
                 AllowsTransparency = true,
                 WindowStyle = WindowStyle.None,
                 MinWidth = 0,
+                ShowTitle = false,
+                ShowBorder = false,
                 MinHeight = 0,
-                Title = "NameCard"
             };
             nameCard.Closed += delegate { window.Close(); };
             nameCard.Tel = tel;
             window.Show();
+            return window;
         }
 
-        public NameCard(IRegionManager regionManager, IEventAggregator eventAggregator)
+        public NameCard(IRegionManager regionManager, IContainerProvider container, IEventAggregator eventAggregator)
         {
             InitializeComponent();
             this.regionManager = regionManager;
             this.eventAggregator = eventAggregator;
+            this.container = container;
             this.eventAggregator.GetEvent<CloseNameCardEvent>().Subscribe(Close);
         }
 
         private void UpdateUser()
         {
-            Task.Factory.StartNew(async() => 
+            Task.Factory.StartNew(async () =>
             {
-                var result = await HttpService.GetConn().GetUserInfo(10005);
+                var result = await HttpService.GetConn().GetUserInfoByTel(Tel);
                 if (result.StatusCode == 200)
                 {
                     User user = (User)result.Data;
-                    // 判断是否为好友，然后进行相应卡片的注入
-                    Application.Current.Dispatcher.Invoke(() => 
+                    if (user == null || user.UserId == null)
                     {
-                        if (true)
+                        eventAggregator.GetEvent<ToastShowEvent>().Publish("查无此联系人");
+                        return;
+                    }
+                    result = await HttpService.GetConn().IsContact((long)user.UserId);
+                    bool isContacter = (result.StatusCode == 200);
+                    // 判断是否为好友，然后进行相应卡片的注入
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        if (isContacter)
                         {
-                            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.NameCardContent, typeof(NoFriendCard));
+                            _cardContent.Content = container.Resolve<FriendCard>();
                         }
                         else
                         {
-                            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.NameCardContent, typeof(FriendCard));
+                            _cardContent.Content = container.Resolve<NoFriendCard>();
                         }
                         eventAggregator.GetEvent<UpdateNameCardContentEvent>().Publish(user);
                     });
