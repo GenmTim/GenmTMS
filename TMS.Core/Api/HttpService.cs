@@ -910,6 +910,94 @@ namespace TMS.Core.Api
         }
 
         /// <summary>
+        /// 获取最近n个联系人
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> GetContactsForNum(int num)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("​/contacts/chatContacts");
+                restRequest.AddParameter("n", num);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //成功返回数据
+                    //string data = jObjects["data"].ToString();
+                    JArray jArrays = (JArray)jObjects["data"];
+                    List<User> userList = new List<User>();
+                    foreach (var item in jArrays)
+                    {
+                        string v = item.ToString();
+                        User user = JsonConvert.DeserializeObject<User>(v);
+                        userList.Add(user);
+                    }
+                    return new ApiResponse(200, userList);
+                }
+                else
+                {
+                    return new ApiResponse(201, "没有获取到联系人");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 获取某个联系人的最近n条聊天记录
+        /// </summary>
+        /// <param name="friend_id"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> GetChatRecordForNum(long friend_id, int num)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/contacts/chatRecord");
+                restRequest.AddParameter("n", num);
+                restRequest.AddParameter("friend_id", friend_id);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //成功返回数据
+                    //string data = jObjects["data"].ToString();
+                    JArray jArrays = (JArray)jObjects["data"];
+                    List<UserMessageDto> userMessageList = new List<UserMessageDto>();
+                    foreach (var item in jArrays)
+                    {
+                        string v = item.ToString();
+                        UserMessageDto userMessage = JsonConvert.DeserializeObject<UserMessageDto>(v);
+                        userMessageList.Add(userMessage);
+                    }
+                    return new ApiResponse(200, userMessageList);
+                }
+                else
+                {
+                    return new ApiResponse(201, "没有获取到联系人聊天记录");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
         /// 发起添加联系人
         /// </summary>
         /// <param name="user_id"></param>
