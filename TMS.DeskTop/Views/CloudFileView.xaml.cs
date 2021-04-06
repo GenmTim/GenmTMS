@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Prism.Events;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using TMS.Core.Data.VO.CloudFile;
+using TMS.Core.Event;
 
 namespace TMS.DeskTop.Views
 {
@@ -30,9 +33,11 @@ namespace TMS.DeskTop.Views
     /// </summary>
     public partial class CloudFileView : UserControl
     {
-        public CloudFileView()
+        private readonly IEventAggregator eventAggregator;
+        public CloudFileView(IEventAggregator eventAggregator)
         {
             InitializeComponent();
+            this.eventAggregator = eventAggregator;
         }
 
         private void OnDragOver(object sender, DragEventArgs e)
@@ -49,6 +54,18 @@ namespace TMS.DeskTop.Views
         private void OnDrop(object sender, DragEventArgs e)
         {
             fileDragMask.Visibility = Visibility.Collapsed;
+
+            var files = e.Data.GetData(DataFormats.FileDrop) as Array;
+            foreach (string fileFullName in files)
+            {
+                var uploadFileItem = new UploadFileItemVO
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    FullName = fileFullName,
+                    Rate = 0,
+                };
+                eventAggregator.GetEvent<UploadFileEvent>().Publish(uploadFileItem);
+            }
             e.Handled = true;
         }
 
@@ -61,7 +78,6 @@ namespace TMS.DeskTop.Views
         private void OnDragEnter(object sender, DragEventArgs e)
         {
             fileDragMask.Visibility = Visibility.Visible;
-
             e.Handled = false;
         }
     }

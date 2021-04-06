@@ -108,7 +108,7 @@ namespace TMS.DeskTop.Resources.Converters
             {
                 suffix = "B";
             }
-            return size.ToString("#0") + " " + suffix;
+            return size.ToString("#0.0") + " " + suffix;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -182,6 +182,34 @@ namespace TMS.DeskTop.Resources.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return null;
+        }
+    }
+
+    public class Number2PercentageConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values == null || values.Length != 2) return .0;
+
+            var obj1 = values[0];
+            var obj2 = values[1];
+
+            if (obj1 == null || obj2 == null) return .0;
+
+            var str1 = values[0].ToString();
+            var str2 = values[1].ToString();
+
+            var v1 = double.Parse(str1);
+            var v2 = double.Parse(str2);
+
+            if (Math.Abs(v2) < 1E-06) return 100.0;
+
+            return Math.Round(v1 / v2 * 100, 0);
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

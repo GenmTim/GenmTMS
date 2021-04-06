@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Prism.Ioc;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
 using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Messages;
@@ -14,41 +20,56 @@ namespace TMS_UI_Design
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<string> Log { get; set; } = new ObservableCollection<string>();
 
-        private ObservableCollection<String> dataList = new ObservableCollection<string>(){ "二十", "大受打击" };
-        public ObservableCollection<string> DataList { get => dataList; set => dataList = value; }
-
-        private Notifier notifier;
-
-        public MainWindow()
+        public MainWindow(IContainerExtension container)
         {
             InitializeComponent();
-            DataContext = this;
-            dayComponent.DataContext = new MultiValueComboBoxModel
-            {
-                OneValueList = new List<string> { "sadsd", "asdasd" }
-            };
+            DataContext = container.Resolve<MainWindowViewModel>();
 
-            //notifier = new Notifier(cfg =>
-            //{
-            //    cfg.PositionProvider = new WindowPositionProvider(
-            //        parentWindow: Application.Current.MainWindow,
-            //        corner: Corner.TopCenter,
-            //        offsetX: 0,
-            //        offsetY: 0);
-
-            //    cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-            //        notificationLifetime: TimeSpan.FromSeconds(3),
-            //        maximumNotificationCount: MaximumNotificationCount.FromCount(5));
-
-            //    cfg.Dispatcher = Application.Current.Dispatcher;
-            //});
         }
 
-        public void NotificationToast_Show(object sender, RoutedEventArgs args)
+        private void OnDragOver(object sender, DragEventArgs e)
         {
-            notifier.ShowInformation("测试");
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effects = DragDropEffects.Copy;
+            else
+                e.Effects = DragDropEffects.None;
+
+            e.Handled = true;
         }
+
+        private void OnDrop(object sender, DragEventArgs e)
+        {
+            var files = e.Data.GetData(DataFormats.FileDrop) as Array;
+            foreach (string fileFullName in files)
+            {
+                if (this.DataContext is MainWindowViewModel vm)
+                {
+                    vm.UploadFileCmd.Execute(new UploadFileItem
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        FullName = fileFullName,
+                        Rate = 0,
+                    });
+                }
+            }
+
+            e.Handled = true;
+        }
+
+        private void OnDragLeave(object sender, DragEventArgs e)
+        {
+
+            e.Handled = true;
+        }
+
+        private void OnDragEnter(object sender, DragEventArgs e)
+        {
+            e.Handled = false;
+        }
+
+
 
     }
 }

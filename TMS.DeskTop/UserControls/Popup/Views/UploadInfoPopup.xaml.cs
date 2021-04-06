@@ -10,6 +10,12 @@ namespace TMS.DeskTop.UserControls.Popup.Views
         public UploadInfoPopup()
         {
             InitializeComponent();
+            listsControl.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
+        }
+
+        private void ItemContainerGenerator_ItemsChanged(object sender, System.Windows.Controls.Primitives.ItemsChangedEventArgs e)
+        {
+            scrollViewer?.ScrollToBottom();
         }
     }
 }

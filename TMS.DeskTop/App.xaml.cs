@@ -25,11 +25,6 @@ namespace TMS.DeskTop
             return Container.Resolve<MainWindow>();
         }
 
-        //private string GetRoutePath(Type view)
-        //{
-        //    return RouteHelper.GetViewPath(view);
-        //}
-
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             this.containerRegistry = containerRegistry;

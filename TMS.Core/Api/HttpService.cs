@@ -63,8 +63,6 @@ namespace TMS.Core.Api
         {
             var url = $"http://127.0.0.1/terminal-tenant/tenant/common/upload";
 
-
-
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.RequestFormat = DataFormat.Json;

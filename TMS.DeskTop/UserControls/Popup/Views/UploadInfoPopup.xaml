@@ -4,11 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
+    xmlns:vo="clr-namespace:TMS.Core.Data.VO.CloudFile;assembly=TMS.Core"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     Width="460"
-    d:DesignHeight="160"
-    d:DesignWidth="420"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -21,25 +22,69 @@
             Effect="{StaticResource EffectShadow1}"
             Background="White" />
         <hc:SimplePanel>
-            <StackPanel
-                Margin="20,0,0,0"
-                VerticalAlignment="Center"
-                Orientation="Horizontal">
-                <StackPanel.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="FontWeight" Value="SemiBold" />
-                        <Setter Property="Foreground" Value="#3b5663" />
-                        <Setter Property="FontSize" Value="16" />
-                    </Style>
-                </StackPanel.Resources>
-                <TextBlock Text="上传 " />
-                <TextBlock Text=" 3 " />
-                <TextBlock Text=" 项中" />
-                <TextBlock
-                    Text="78%"
-                    Margin="20,0,0,0"
-                    Foreground="#1890ff" />
-            </StackPanel>
+            <hc:SimplePanel>
+                <hc:SimplePanel>
+                    <hc:SimplePanel.Style>
+                        <Style TargetType="hc:SimplePanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding UploadFileItemNumber}" Value="0">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </hc:SimplePanel.Style>
+                    <StackPanel
+                        Margin="20,0,0,0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontWeight" Value="SemiBold" />
+                                <Setter Property="Foreground" Value="#3b5663" />
+                                <Setter Property="FontSize" Value="16" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock>
+                            <Run Text="上传  " />
+                            <Run Text="{Binding UploadFileItemNumber}" />
+                            <Run Text="  项中" />
+                        </TextBlock>
+                        <TextBlock Margin="20,0,0,0" Foreground="#1890ff">
+                            <TextBlock.Text>
+                                <MultiBinding Converter="{StaticResource Number2PercentageConverter}" StringFormat="{}{0} %">
+                                    <Binding Path="UploadedFileSumSize " />
+                                    <Binding Path="UploadFileSumSize" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+                </hc:SimplePanel>
+                <hc:SimplePanel>
+                    <hc:SimplePanel.Style>
+                        <Style TargetType="hc:SimplePanel">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding UploadFileItemNumber}" Value="0">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </hc:SimplePanel.Style>
+                    <TextBlock
+                        Margin="20,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Foreground="#3b5663">
+                        <Run
+                            Text="&#xe628;"
+                            FontWeight="Normal"
+                            Foreground="{StaticResource SuccessBrush}"
+                            FontFamily="{StaticResource MenuIconFontFamily}" />
+                        <Run Text="全部上传完成" />
+                    </TextBlock>
+                </hc:SimplePanel>
+            </hc:SimplePanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <StackPanel.Resources>
                     <Style TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
@@ -49,156 +94,105 @@
                         <Setter Property="Foreground" Value="#97a1a5" />
                         <Setter Property="Margin" Value="0,0,15,0" />
                         <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                     </Style>
                 </StackPanel.Resources>
                 <Button Content="&#xe6f8;" />
                 <Button Content="&#xe701;" />
                 <Button Content="&#xe76d;" />
             </StackPanel>
+            <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />
         </hc:SimplePanel>
-        <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
-
+        <Border BorderThickness="0,0,0,1" />
         <hc:SimplePanel Grid.Row="1">
             <StackPanel Margin="0,15">
-                <Grid Height="36">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Grid Margin="20,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#6b7885" />
-                                <Setter Property="FontSize" Value="14" />
-                            </Style>
-                        </Grid.Resources>
-                        <!--<Border
-                        Grid.ColumnSpan="3"
-                        CornerRadius="5"
-                        Background="#f5f5f5" />-->
-                        <TextBlock
-                            Text="SpringBoot项目结构"
-                            Margin="10,0,0,0"
-                            VerticalAlignment="Center" />
-                        <TextBlock Grid.Column="1"
-                            Text="1.2 Mb"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center" />
-                        <Button Grid.Column="2"
-                            Content="&#xe61a;"
-                            Margin="0,0,15,0"
-                            HorizontalAlignment="Right"
-                            Style="{StaticResource ButtonCustom}"
-                            Cursor="Hand"
-                            FontSize="14"
-                            Foreground="#6b7885"
-                            FontWeight="SemiBold"
-                            FontFamily="/Resources/Fonts/#iconfont" />
-                    </Grid>
-                </Grid>
-                <Grid Height="36">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Grid Margin="20,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#eb4d55" />
-                                <Setter Property="FontSize" Value="14" />
-                            </Style>
-                        </Grid.Resources>
-                        <Border
-                            Grid.ColumnSpan="3"
-                            CornerRadius="5"
-                            Background="#ffe7e6" />
-                        <TextBlock
-                            Text="数据库设计——初稿"
-                            Margin="10,0,0,0"
-                            VerticalAlignment="Center" />
-                        <TextBlock Grid.Column="1"
-                            Text="100 Kb"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center" />
-                        <Button Grid.Column="2"
-                            Content="&#xe61a;"
-                            Margin="0,0,15,0"
-                            HorizontalAlignment="Right"
-                            FocusVisualStyle="{x:Null}"
-                            Style="{StaticResource ButtonCustom}"
-                            Cursor="Hand"
-                            FontSize="14"
-                            Foreground="#6b7885"
-                            FontWeight="SemiBold"
-                            FontFamily="/Resources/Fonts/#iconfont" />
-                    </Grid>
-                    <Button Grid.Column="1"
-                        Content="重试"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FocusVisualStyle="{x:Null}"
-                        Style="{StaticResource TextBtnStyle}"
-                        Foreground="#5c7b8a"
-                        FontWeight="SemiBold" />
-                </Grid>
-                <Grid Height="36">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Grid Margin="20,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#6b7885" />
-                                <Setter Property="FontSize" Value="14" />
-                            </Style>
-                        </Grid.Resources>
-                        <!--<Border
-                        Grid.ColumnSpan="3"
-                        CornerRadius="5"
-                        Background="#f5f5f5" />-->
-                        <TextBlock
-                            Text="API文档实例"
-                            Margin="10,0,0,0"
-                            VerticalAlignment="Center" />
-                        <!--<TextBlock Grid.Column="1"
-                            Text="1.2 Mb"
-                            Margin="0,0,20,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center" />-->
-                        <ProgressBar Grid.Column="1"
-                            Width="46"
-                            VerticalAlignment="Center"
-                            Foreground="#1890ff"
-                            Style="{StaticResource ProgressBarFlat}"
-                            Value="20" />
-                        <Button Grid.Column="2"
-                            Content="&#xe61a;"
-                            Margin="0,0,15,0"
-                            HorizontalAlignment="Right"
-                            Style="{StaticResource ButtonCustom}"
-                            Cursor="Hand"
-                            FontSize="14"
-                            Foreground="#6b7885"
-                            FontWeight="SemiBold"
-                            FontFamily="/Resources/Fonts/#iconfont" />
-                    </Grid>
-                </Grid>
+                <hc:ScrollViewer x:Name="scrollViewer" MaxHeight="260">
+                    <ItemsControl x:Name="listsControl" ItemsSource="{Binding UploadFileItemList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <hc:SimplePanel>
+                                    <Grid x:Name="grid" Height="36">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="80" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Margin="20,0,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.Resources>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="#6b7885" />
+                                                    <Setter Property="FontSize" Value="14" />
+                                                </Style>
+                                            </Grid.Resources>
+                                            <Border x:Name="border"
+                                                Grid.ColumnSpan="3"
+                                                CornerRadius="5" />
+                                            <TextBlock
+                                                Text="{Binding Name}"
+                                                Margin="10,0,0,0"
+                                                VerticalAlignment="Center" />
+                                            <hc:SimplePanel Grid.Column="1" Width="100">
+                                                <TextBlock x:Name="fileSizeText"
+                                                    Text="{Binding Size, Converter={StaticResource FileSize2String}}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Visibility="Collapsed" />
+                                                <ProgressBar x:Name="fileUploadProgress"
+                                                    Width="50"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="#1890ff"
+                                                    Style="{StaticResource ProgressBarFlat}"
+                                                    Value="{Binding Rate}" />
+                                            </hc:SimplePanel>
+                                            <Button Grid.Column="2"
+                                                Content="&#xe61a;"
+                                                Margin="0,0,15,0"
+                                                HorizontalAlignment="Right"
+                                                Style="{StaticResource ButtonCustom}"
+                                                Cursor="Hand"
+                                                FontSize="14"
+                                                Foreground="#6b7885"
+                                                FontWeight="SemiBold"
+                                                FontFamily="{StaticResource FIconFontFamily}" />
+                                        </Grid>
+                                        <hc:SimplePanel Grid.Column="1">
+                                            <TextBlock Margin="0,0,0,2" VerticalAlignment="Center">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding State}" Value="{x:Static Member=vo:UploadFileState.上传完成}">
+                                                                <Setter Property="Foreground" Value="{StaticResource SuccessBrush}" />
+                                                                <Setter Property="Text" Value="上传完成" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding State}" Value="{x:Static Member=vo:UploadFileState.上传失败}">
+                                                                <Setter Property="Foreground" Value="{StaticResource DangerBrush}" />
+                                                                <Setter Property="Text" Value="上传失败" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </hc:SimplePanel>
+                                    </Grid>
+                                </hc:SimplePanel>
+                                <DataTemplate.Triggers>
+                                    <Trigger SourceName="grid" Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#f5f5f5" />
+                                    </Trigger>
+                                    <DataTrigger Binding="{Binding Rate}" Value="100">
+                                        <Setter TargetName="fileSizeText" Property="Visibility" Value="Visible" />
+                                        <Setter TargetName="fileUploadProgress" Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </hc:ScrollViewer>
             </StackPanel>
         </hc:SimplePanel>
     </Grid>
