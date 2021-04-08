@@ -795,57 +795,17 @@ namespace TMS.Core.Api
         #region 联系人
 
         /// <summary>
-        /// 应答联系人请求
+        /// 获取联系人
         /// </summary>
         /// <param name="user_id"></param>
-        /// <param name="is_agree"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> ReplyNewContact(long user_id, bool is_agree)
+        public async Task<ApiResponse> GetContact(long user_id)
         {
             //debug
             try
             {
-                RestRequest restRequest = new RestRequest("/contacts");//debug
+                RestRequest restRequest = new RestRequest("​/contacts");//debug
                 restRequest.AddParameter("user_id", user_id);
-                restRequest.AddParameter("agree", is_agree);
-
-                restRequest.Method = Method.POST;
-                var response = await restClient.ExecuteAsync(restRequest);
-
-                JObject jObjects = JObject.Parse(response.Content);
-                string code = jObjects["code"].ToString();
-
-                if (code.Equals("0000"))
-                {
-                    //成功同意
-                    string data = jObjects["data"].ToString();
-                    //debug 调整输出类
-                    //User user = JsonConvert.DeserializeObject<User>(data);
-                    return new ApiResponse(200, "联系人处理成功");
-                }
-                else
-                {
-                    return new ApiResponse(201, "联系人处理失败");
-                }
-            }
-            catch (Exception)
-            {
-                return new ApiResponse(-1, "程序异常");
-            }
-        }
-
-        /// <summary>
-        /// 判断是否为联系人
-        /// </summary>
-        /// <param name="user_id"></param>
-        /// <returns>返回200是联系人，201不是联系人</returns>
-        public async Task<ApiResponse> IsContact(long user_id)
-        {
-            //debug
-            try
-            {
-                RestRequest restRequest = new RestRequest("​/contacts/isFriend");//debug
-                restRequest.AddParameter("friend_id", user_id);
 
                 restRequest.Method = Method.GET;
                 var response = await restClient.ExecuteAsync(restRequest);
@@ -857,13 +817,53 @@ namespace TMS.Core.Api
                 {
                     //是联系人
                     string data = jObjects["data"].ToString();
-                    //debug 调整输出类
-                    //User user = JsonConvert.DeserializeObject<User>(data);
-                    return new ApiResponse(200, "是联系人");
+					//debug 调整输出类
+					User user = JsonConvert.DeserializeObject<User>(data);
+					return new ApiResponse(200, user);
                 }
                 else
                 {
-                    return new ApiResponse(201, "不是联系人");
+                    return new ApiResponse(201, "获取联系人失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 应答联系人请求
+        /// </summary>
+        /// <param name="message_id"></param>
+        /// <param name="is_agree"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> ReplyNewContact(long message_id, bool is_agree)
+        {
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("/contacts");//debug
+                restRequest.AddParameter("message_id", message_id);
+                restRequest.AddParameter("agree", is_agree);
+
+                restRequest.Method = Method.POST;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //成功同意
+                    //string data = jObjects["data"].ToString();
+                    //debug 调整输出类
+                    //User user = JsonConvert.DeserializeObject<User>(data);
+                    return new ApiResponse(200, "联系人处理成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "联系人处理失败");
                 }
             }
             catch (Exception)
@@ -996,6 +996,46 @@ namespace TMS.Core.Api
         }
 
         /// <summary>
+        /// 判断是否为联系人
+        /// </summary>
+        /// <param name="friend_id"></param>
+        /// <returns>返回200是联系人，201不是联系人</returns>
+        public async Task<ApiResponse> IsContact(long friend_id)
+        {
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("​/contacts/isFriend");//debug
+                restRequest.AddParameter("friend_id", friend_id);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //是联系人
+                    //string data = jObjects["data"].ToString();
+                    //debug 调整输出类
+                    //User user = JsonConvert.DeserializeObject<User>(data);
+                    return new ApiResponse(200, "是联系人");
+                }
+                else
+                {
+                    return new ApiResponse(201, "不是联系人");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        
+
+        /// <summary>
         /// 发起添加联系人
         /// </summary>
         /// <param name="user_id"></param>
@@ -1034,7 +1074,79 @@ namespace TMS.Core.Api
         }
 
         /// <summary>
-        /// 获取联系人列表
+        /// 应答联系人请求
+        /// </summary>
+        /// <param name="friend_id"></param>
+        /// <param name="is_agree"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> ReplyNewContactV2(long friend_id,bool is_agree)
+        {
+            //debug
+            try
+            {
+                RestRequest restRequest = new RestRequest("​/contacts/v2");//debug
+                restRequest.AddParameter("friend_id", friend_id);
+                restRequest.AddParameter("is_agree", is_agree);
+
+                restRequest.Method = Method.POST;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //成功发起添加
+                    string data = jObjects["data"].ToString();
+                    return new ApiResponse(200, "联系人处理成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "联系人处理失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 发起联系人请求
+        /// </summary>
+        /// <param name="friend_id"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> AddNewContacterV2(long friend_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/contacts/v2/requestInfo");
+                restRequest.AddParameter("friend_id", friend_id);
+
+                restRequest.Method = Method.POST;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //成功发起添加
+                    return new ApiResponse(200, "发起添加联系人成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "发起添加联系人失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 获取联系人列表 debug
         /// </summary>
         /// <param name="user_id"></param>
         /// <returns>内容类型为：List<User></returns>
