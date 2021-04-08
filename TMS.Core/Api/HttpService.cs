@@ -211,6 +211,39 @@ namespace TMS.Core.Api
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 查询树形企业的部门
+        /// </summary>
+        /// <param name="company_id"></param>
+        /// <returns>类型：List<TreeDept></returns>
+        public async Task<ApiResponse> GetCompanyTreeDept(int company_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/company/treeDept");
+                restRequest.AddParameter("company_id", company_id);
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    string data = jObjects["data"].ToString();
+                    List<TreeDept> treeDepts = JsonConvert.DeserializeObject<List<TreeDept>>(data);
+                    return new ApiResponse(200, treeDepts);
+                }
+                else
+                {
+                    return new ApiResponse(201, "无效企业");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
 
         /// <summary>
         /// 获取企业所有员工
@@ -221,7 +254,7 @@ namespace TMS.Core.Api
         {
             try
             {
-                RestRequest restRequest = new RestRequest("​/company/userList");
+                RestRequest restRequest = new RestRequest("/company/user_info");
                 restRequest.AddParameter("company_id", company_id);
                 restRequest.Method = Method.GET;
                 var response = await restClient.ExecuteAsync(restRequest);
