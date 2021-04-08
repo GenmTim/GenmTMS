@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace TMS.Core.Data.VO.Notification
 {
     public enum ContactRequestState
     {
+        [JsonProperty("pending")]
+        Pending,
+
         [JsonProperty("refuse")]
         Refuse,
 

@@ -8,6 +8,7 @@ using TMS.Core.Event;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.Views.PersonalFile;
+using TMS.DeskTop.Views.Search;
 
 namespace TMS.DeskTop.ViewModels.PersonalFile
 {
@@ -33,6 +34,7 @@ namespace TMS.DeskTop.ViewModels.PersonalFile
             this.GoBackCmd = new DelegateCommand(GoBack);
             this.ShowDetailCommand = new DelegateCommand(ShowDetail);
             this.NavigationCmd = new DelegateCommand<string>(NavigationPage);
+            this.GoHomeCmd = new DelegateCommand(GoHome);
         }
 
         public DelegateCommand GoBackCmd { get; private set; }
@@ -54,6 +56,15 @@ namespace TMS.DeskTop.ViewModels.PersonalFile
         {
             RouteHelper.Goto(regionManager, typeof(PersonalFileView), view);
         }
+
+        public DelegateCommand GoHomeCmd { get; private set; }
+
+        private void GoHome()
+        {
+            RouteHelper.Goto(regionManager, typeof(PersonalFileView) , typeof(SearchMainView));
+        }
+       
+
 
     }
 }

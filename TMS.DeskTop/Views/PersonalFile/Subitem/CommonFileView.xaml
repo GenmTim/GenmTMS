@@ -1,0 +1,639 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.PersonalFile.Subitem.CommonFileView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.PersonalFile.Subitem"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <DropShadowEffect
+            x:Key="dropShadowEffect"
+            BlurRadius="10"
+            ShadowDepth="1"
+            Direction="270"
+            Opacity="0.5"
+            RenderingBias="Performance"
+            Color="#2f54eb" />
+        <sys:Double x:Key="gridWidth">320</sys:Double>
+    </UserControl.Resources>
+    <hc:TransitioningContentControl>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="300" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="210" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,0,8,8">
+                <hc:SimplePanel Margin="0,0,0,12">
+                    <Border
+                        Background="White"
+                        Effect="{StaticResource dropShadowEffect}"
+                        CornerRadius="10" />
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <hc:SimplePanel VerticalAlignment="Center">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Foreground="{StaticResource PrimaryBrush}"
+                                FontWeight="SemiBold">
+                                <Run Text="蔡承龙's" />
+                                <Run Text=" 人才评分" />
+                            </TextBlock>
+                            <!--<Button
+                                                Content="详细"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Style="{StaticResource TextBtnStyle}" />-->
+                        </hc:SimplePanel>
+                        <Grid Grid.Row="1"
+                            Margin="0,10,0,0"
+                            VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="1.5*" />
+                            </Grid.ColumnDefinitions>
+                            <hc:SimplePanel Grid.Column="1" Margin="20,0,0,0">
+                                <uc:RoundProgress
+                                    Rate="50"
+                                    IsHalf="False"
+                                    Size="80"
+                                    StrokeThickness="5" />
+                                <TextBlock
+                                    Text="A+"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="{StaticResource PrimaryBrush}"
+                                    FontSize="24"
+                                    FontWeight="SemiBold" />
+                            </hc:SimplePanel>
+                            <StackPanel>
+                                <hc:SimplePanel Margin="0,10,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Text="&#xe6ce;"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{StaticResource PrimaryBrush}"
+                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                        <TextBlock
+                                            Text="总主观评价："
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontWeight="SemiBold" />
+                                    </StackPanel>
+                                    <TextBlock
+                                        Text="20"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Foreground="#343434" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Margin="0,10,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Text="&#xe705;"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{StaticResource PrimaryBrush}"
+                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                        <TextBlock
+                                            Text="总企业档案："
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontWeight="SemiBold" />
+                                    </StackPanel>
+                                    <TextBlock
+                                        Text="5"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Foreground="#343434" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Margin="0,10,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Text="&#xe79a;"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{StaticResource PrimaryBrush}"
+                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                        <TextBlock
+                                            Text="总高光时刻："
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontWeight="SemiBold" />
+                                    </StackPanel>
+                                    <TextBlock
+                                        Text="10"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Foreground="#343434" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Margin="0,10,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Text="&#xe6fd;"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{StaticResource PrimaryBrush}"
+                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                        <TextBlock
+                                            Text="总考勤记录："
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontWeight="SemiBold" />
+                                    </StackPanel>
+                                    <TextBlock
+                                        Text="10"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Foreground="#343434" />
+                                </hc:SimplePanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </hc:SimplePanel>
+                <!--<hc:SimplePanel Grid.Row="1"
+                                    Grid.RowSpan="2"
+                                    Margin="0,12,0,0">
+                                    <Border
+                                        Background="White"
+                                        Effect="{StaticResource dropShadowEffect}"
+                                        CornerRadius="10" />
+
+                                </hc:SimplePanel>-->
+            </Grid>
+            <hc:SimplePanel Grid.Row="1"
+                Grid.RowSpan="2"
+                Margin="0,0,16,0">
+                <Border
+                    Background="White"
+                    Effect="{StaticResource dropShadowEffect}"
+                    CornerRadius="10" />
+
+                <Grid>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <hc:SimplePanel VerticalAlignment="Center">
+                            <TextBlock
+                                Text="人事记录"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold" />
+
+                        </hc:SimplePanel>
+                        <Grid Grid.Row="1" Margin="0,16,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition MinHeight="170" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Text="考勤记录"
+                                    VerticalAlignment="Center"
+                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                <Button
+                                    Content="详细"
+                                    Command="{Binding ShowDetailCommand}"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="10"
+                                    Style="{StaticResource TextBtnStyle}" />
+                                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                                <hc:SimplePanel Grid.Row="1">
+                                    <uc:AttendanceTotalChart />
+                                </hc:SimplePanel>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="0,8,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Text="违纪情况"
+                                    VerticalAlignment="Center"
+                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                <Button
+                                    Content="详细"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="10"
+                                    Style="{StaticResource TextBtnStyle}" />
+                                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                                <hc:SimplePanel Grid.Row="1">
+                                    <StackPanel>
+                                        <!--<hc:SimplePanel Margin="0,15,0,0">
+                                                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                                        <hc:SimplePanel>
+                                                                            <Border
+                                                                                Width="30"
+                                                                                Height="30"
+                                                                                Background="#f5222d"
+                                                                                Style="{StaticResource BorderCircular}" />
+                                                                            <TextBlock
+                                                                                Text="&#xe746;"
+                                                                                HorizontalAlignment="Center"
+                                                                                VerticalAlignment="Center"
+                                                                                Foreground="White"
+                                                                                FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                                        </hc:SimplePanel>
+                                                                        <StackPanel Margin="15,0,0,0" VerticalAlignment="Center">
+                                                                            <TextBlock Text="严重违纪" FontSize="14" />
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+                                                                    <Button
+                                                                        Content="查看详情"
+                                                                        HorizontalAlignment="Right"
+                                                                        FontSize="12"
+                                                                        Style="{StaticResource TextBtnStyle}" />
+                                                                </hc:SimplePanel>-->
+                                    </StackPanel>
+                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock
+                                            Text="&#xe6e9;"
+                                            HorizontalAlignment="Center"
+                                            FontSize="30"
+                                            Foreground="{StaticResource SecondaryTextBrush}"
+                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                        <TextBlock
+                                            Text="空数据"
+                                            HorizontalAlignment="Center"
+                                            Foreground="{StaticResource SecondaryTextBrush}" />
+                                    </StackPanel>
+
+                                </hc:SimplePanel>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </hc:SimplePanel>
+
+            <hc:SimplePanel Grid.Row="1" Grid.Column="1"
+                Grid.RowSpan="2"
+                Margin="8,0,8,0">
+                <hc:SimplePanel>
+                    <Border
+                        Background="White"
+                        Effect="{StaticResource dropShadowEffect}"
+                        CornerRadius="10" />
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <hc:SimplePanel VerticalAlignment="Center">
+                            <TextBlock
+                                Text="人生经历"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold" />
+                        </hc:SimplePanel>
+                        <Grid Grid.Row="1" Margin="0,16,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Text="教育经历"
+                                    VerticalAlignment="Center"
+                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                <Button
+                                    Content="详细"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="10"
+                                    Style="{StaticResource TextBtnStyle}" />
+                                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                                <hc:SimplePanel Grid.Row="1">
+                                    <StackPanel Margin="0,15,0,0">
+                                        <hc:SimplePanel>
+                                            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                <hc:Gravatar
+                                                    Width="33"
+                                                    Height="33"
+                                                    RenderOptions.BitmapScalingMode="HighQuality"
+                                                    Source="http://47.101.157.194:8081/uploads/image/nbut_icon.jpg" />
+                                                <TextBlock
+                                                    Text="宁波工程学院"
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <Button
+                                                Content="Look"
+                                                Margin="0,2,0,0"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                FontWeight="SemiBold"
+                                                FontSize="12"
+                                                Foreground="{StaticResource SuccessBrush}"
+                                                Style="{StaticResource TextBtnExStyle}" />
+                                        </hc:SimplePanel>
+                                    </StackPanel>
+
+
+                                    <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                <TextBlock
+                                                                    Text="&#xe6e9;"
+                                                                    HorizontalAlignment="Center"
+                                                                    FontSize="30"
+                                                                    Foreground="{StaticResource SecondaryTextBrush}"
+                                                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                                <TextBlock
+                                                                    Text="空数据"
+                                                                    HorizontalAlignment="Center"
+                                                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                                            </StackPanel>-->
+
+                                </hc:SimplePanel>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="0,8,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Text="高光时刻"
+                                    VerticalAlignment="Center"
+                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                <Button
+                                    Content="详细"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontSize="10"
+                                    Style="{StaticResource TextBtnStyle}" />
+                                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                                <hc:SimplePanel Grid.Row="1">
+                                    <StackPanel>
+                                        <hc:SimplePanel Margin="0,15,0,0">
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <hc:SimplePanel>
+                                                    <Border
+                                                        Width="30"
+                                                        Height="30"
+                                                        Background="{StaticResource SuccessBrush}"
+                                                        Style="{StaticResource BorderCircular}" />
+                                                    <TextBlock
+                                                        Text="&#xe6e7;"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="14"
+                                                        Foreground="White"
+                                                        FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                </hc:SimplePanel>
+                                                <StackPanel Margin="15,0,0,0" VerticalAlignment="Center">
+                                                    <TextBlock Text="竞赛奖项" FontSize="14" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <Button
+                                                Content="查看详情"
+                                                HorizontalAlignment="Right"
+                                                FontSize="12"
+                                                Style="{StaticResource TextBtnStyle}" />
+                                        </hc:SimplePanel>
+                                    </StackPanel>
+                                    <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                <TextBlock
+                                                                    Text="&#xe6e9;"
+                                                                    HorizontalAlignment="Center"
+                                                                    FontSize="30"
+                                                                    Foreground="{StaticResource SecondaryTextBrush}"
+                                                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                                <TextBlock
+                                                                    Text="空数据"
+                                                                    HorizontalAlignment="Center"
+                                                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                                            </StackPanel>-->
+                                </hc:SimplePanel>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </hc:SimplePanel>
+            </hc:SimplePanel>
+            <Grid Grid.Column="2"
+                Grid.RowSpan="3"
+                Margin="16,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <hc:SimplePanel Grid.Row="0" Margin="0,0,0,12">
+                    <Border
+                        Background="White"
+                        Effect="{StaticResource dropShadowEffect}"
+                        CornerRadius="10" />
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <hc:SimplePanel VerticalAlignment="Center">
+                            <TextBlock
+                                Text="企业档案"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold" />
+                            <Button
+                                Content="详细"
+                                Command="{Binding NavigationCmd}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource TextBtnStyle}"
+                                Cursor="Hand" />
+                        </hc:SimplePanel>
+                        <hc:SimplePanel Grid.Row="1">
+                            <StackPanel>
+                                <hc:SimplePanel Margin="0,15,0,0" Cursor="Hand">
+                                    <Border CornerRadius="5" Background="{StaticResource RegionBrush}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <hc:Gravatar
+                                            Width="33"
+                                            Height="33"
+                                            VerticalAlignment="Center"
+                                            Effect="{StaticResource EffectShadowCom}"
+                                            Style="{StaticResource GravatarCircleImg}"
+                                            Source="http://47.101.157.194:8081/uploads/image/mihoyo.png" />
+                                        <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                                            <TextBlock
+                                                Text="Golang游戏服务端工程师"
+                                                FontSize="12"
+                                                FontWeight="SemiBold" />
+                                            <TextBlock FontSize="10" Foreground="#191919">
+                                                <Run Text="米哈游 ·" />
+                                                <Run Text="正式" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Margin="0,15,0,0" Cursor="Hand">
+                                    <Border CornerRadius="5" Background="{StaticResource RegionBrush}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <hc:Gravatar
+                                            Width="33"
+                                            Height="33"
+                                            VerticalAlignment="Center"
+                                            Effect="{StaticResource EffectShadowCom}"
+                                            Style="{StaticResource GravatarCircleImg}"
+                                            Source="http://47.101.157.194:8081/uploads/image/mihoyo.png" />
+                                        <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                                            <TextBlock
+                                                Text="Golang游戏服务端工程师"
+                                                FontSize="12"
+                                                FontWeight="SemiBold" />
+                                            <TextBlock FontSize="10" Foreground="#191919">
+                                                <Run Text="米哈游 ·" />
+                                                <Run Text="正式" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                            </StackPanel>
+                            <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <TextBlock
+                                                            Text="&#xe6e9;"
+                                                            HorizontalAlignment="Center"
+                                                            FontSize="30"
+                                                            Foreground="{StaticResource SecondaryTextBrush}"
+                                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                        <TextBlock
+                                                            Text="空数据"
+                                                            HorizontalAlignment="Center"
+                                                            Foreground="{StaticResource SecondaryTextBrush}" />
+                                                    </StackPanel>-->
+                        </hc:SimplePanel>
+                    </Grid>
+                </hc:SimplePanel>
+                <hc:SimplePanel Grid.Row="1" Margin="0,12,0,0">
+                    <Border
+                        Background="White"
+                        Effect="{StaticResource dropShadowEffect}"
+                        CornerRadius="10" />
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <hc:SimplePanel VerticalAlignment="Center">
+                            <TextBlock
+                                Text="相关同事"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold" />
+                            <Button
+                                Content="详细"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource TextBtnStyle}" />
+                        </hc:SimplePanel>
+                        <hc:SimplePanel Grid.Row="1">
+                            <StackPanel>
+                                <hc:SimplePanel Margin="0,20,0,0">
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                        <hc:Gravatar
+                                            Width="30"
+                                            Height="30"
+                                            Style="{StaticResource GravatarCircleImg}"
+                                            Id="121" />
+                                        <StackPanel Margin="15,0,0,0">
+                                            <TextBlock Text="Dropbox" FontSize="14" />
+                                            <TextBlock
+                                                Text="02.08.20"
+                                                FontSize="12"
+                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <Button
+                                            Content="&#xe718;"
+                                            FontFamily="{StaticResource FIconPlusFontFamily}"
+                                            Style="{StaticResource PIconFontBtnStyle}" />
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Margin="0,15,0,0">
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                        <hc:Gravatar
+                                            Width="30"
+                                            Height="30"
+                                            Style="{StaticResource GravatarCircleImg}"
+                                            Id="121" />
+                                        <StackPanel Margin="15,0,0,0">
+                                            <TextBlock Text="Dropbox" FontSize="14" />
+                                            <TextBlock
+                                                Text="02.08.20"
+                                                FontSize="12"
+                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <Button
+                                            Content="&#xe718;"
+                                            FontFamily="{StaticResource FIconPlusFontFamily}"
+                                            Style="{StaticResource PIconFontBtnStyle}" />
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Margin="0,15,0,0">
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                        <hc:Gravatar
+                                            Width="30"
+                                            Height="30"
+                                            Style="{StaticResource GravatarCircleImg}"
+                                            Id="121" />
+                                        <StackPanel Margin="15,0,0,0">
+                                            <TextBlock Text="Dropbox" FontSize="14" />
+                                            <TextBlock
+                                                Text="02.08.20"
+                                                FontSize="12"
+                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <Button
+                                            Content="&#xe718;"
+                                            FontFamily="{StaticResource FIconPlusFontFamily}"
+                                            Style="{StaticResource PIconFontBtnStyle}" />
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                            </StackPanel>
+                        </hc:SimplePanel>
+                    </Grid>
+                </hc:SimplePanel>
+            </Grid>
+        </Grid>
+    </hc:TransitioningContentControl>
+</UserControl>

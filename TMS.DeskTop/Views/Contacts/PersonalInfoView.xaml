@@ -240,7 +240,7 @@
                                         <TextBlock Text="身份证号码" Foreground="{StaticResource SecondaryTextBrush}" />
                                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                                             <TextBlock Grid.Column="1"
-                                                Text="350302200010263134"
+                                                Text="350************134"
                                                 VerticalAlignment="Center" />
                                             <Button
                                                 Content="&#xe708;"

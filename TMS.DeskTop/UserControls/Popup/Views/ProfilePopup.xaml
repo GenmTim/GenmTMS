@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:service="clr-namespace:TMS.Core.Service;assembly=TMS.Core"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     Width="250"
     d:DesignHeight="470"
@@ -33,7 +34,7 @@
                         Grid.ColumnSpan="2"
                         VerticalAlignment="Center">
                         <TextBlock Grid.Row="0"
-                            Text="蔡承龙"
+                            Text="{Binding Source={x:Static Member=service:SessionService.User}, Path=Name}"
                             Margin="0,0,0,5"
                             VerticalAlignment="Center"
                             FontWeight="SemiBold"

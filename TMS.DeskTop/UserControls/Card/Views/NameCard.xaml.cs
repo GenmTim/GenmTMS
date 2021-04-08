@@ -109,10 +109,5 @@ namespace TMS.DeskTop.UserControls.Card.Views
         {
             Closed.Invoke();
         }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,14 +1,22 @@
 ﻿using Prism.Events;
 using Prism.Regions;
+using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Animation;
 using TMS.Core.Data;
 using TMS.Core.Data.Entity;
+using TMS.Core.Data.Token;
 using TMS.Core.Data.VO;
 using TMS.Core.Event.Notification;
 using TMS.Core.Event.WebSocket;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Base;
+using TMS.DeskTop.UserControls.Cmd;
+using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.UserControls.Dialogs.Views;
+using static TMS.DeskTop.ViewModels.NotificationViewModel;
 
 namespace TMS.DeskTop.Views
 {
@@ -24,6 +32,17 @@ namespace TMS.DeskTop.Views
             InitializeComponent();
             this.eventAggregator = eventAggregator;
             this.dialogHost = dialogHost;
+
+            RegisterDefaultRegionView(RegionToken.ChatRegion, nameof(EmptyContentView));
+
+            CommandBindings.Add(new CommandBinding(ControlCommands.CompleteCheckCmd, (s, e) =>
+            {
+                if (e.OriginalSource is Button btn)
+                {
+                    var id = (long)btn.Tag;
+                    eventAggregator.GetEvent<CheckCompleteEvent>().Publish(id);
+                }
+            }));
         }
 
         private void NotificationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -92,6 +111,29 @@ namespace TMS.DeskTop.Views
                 }
             }
             menuPopup.IsOpen = false;
+            e.Handled = true;
+        }
+
+        private void classifyGridToggleBtn_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Storyboard st = new Storyboard();
+            DoubleAnimation height = new DoubleAnimation(33, 110, new Duration(TimeSpan.FromSeconds(0.3)));
+            Storyboard.SetTarget(height, classifyGrid);
+            Storyboard.SetTargetProperty(height, new PropertyPath(HeightProperty.Name));
+            st.Children.Add(height);
+            st.Begin();
+            //classifyGrid.
+            e.Handled = true;
+        }
+
+        private void classifyGridToggleBtn_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Storyboard st = new Storyboard();
+            DoubleAnimation height = new DoubleAnimation(110, 33, new Duration(TimeSpan.FromSeconds(0.3)));
+            Storyboard.SetTarget(height, classifyGrid);
+            Storyboard.SetTargetProperty(height, new PropertyPath(HeightProperty.Name));
+            st.Children.Add(height);
+            st.Begin();
             e.Handled = true;
         }
     }

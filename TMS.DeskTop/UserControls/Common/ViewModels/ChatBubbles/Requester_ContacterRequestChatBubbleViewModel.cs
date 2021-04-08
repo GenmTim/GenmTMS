@@ -3,9 +3,9 @@ using TMS.Core.Data.VO.Notification;
 
 namespace TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles
 {
-    public class Sender_ContacterRequestChatBubbleViewModel : BindableBase
+    public class Requester_ContacterRequestChatBubbleViewModel : BindableBase
     {
-        public Sender_ContacterRequestChatBubbleViewModel()
+        public Requester_ContacterRequestChatBubbleViewModel()
         {
 
         }

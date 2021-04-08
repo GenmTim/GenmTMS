@@ -37,7 +37,8 @@ namespace TMS.DeskTop
 
             // 注册视图
             containerRegistry.Register<LoginView>();
-            containerRegistry.Register<Sender_ContacterRequestChatBubble>();
+            containerRegistry.Register<Requester_ContacterRequestChatBubble>();
+            containerRegistry.Register<Accepter_ContacterRequestChatBubble>();
 
             // 注册对话框视图
             containerRegistry.RegisterForNavigation<StringItemsDialog, StringItemsDialogModel>();

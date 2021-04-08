@@ -43,5 +43,9 @@
         public static readonly string ReportContent = nameof(ReportContent);
 
         public static readonly string NameCardContent = nameof(NameCardContent);
+
+        public static readonly string SearchContent = nameof(SearchContent);
+
+        public static readonly string PersonalFileContent = nameof(PersonalFileContent);
     }
 }

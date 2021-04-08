@@ -5,9 +5,9 @@ namespace TMS.DeskTop.UserControls.Common.Views.ChatBubbles
     /// <summary>
     /// ContacterRequestChatBubble.xaml 的交互逻辑
     /// </summary>
-    public partial class Sender_ContacterRequestChatBubble : UserControl
+    public partial class Requester_ContacterRequestChatBubble : UserControl
     {
-        public Sender_ContacterRequestChatBubble()
+        public Requester_ContacterRequestChatBubble()
         {
             InitializeComponent();
         }

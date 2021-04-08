@@ -185,6 +185,22 @@ namespace TMS.DeskTop.Resources.Converters
         }
     }
 
+    //public class String2UriConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        if (value is null) return "";
+    //        string str = (string)value;
+
+    //        return new Uri(str);
+    //    }
+
+    //    public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
+
     public class Number2PercentageConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

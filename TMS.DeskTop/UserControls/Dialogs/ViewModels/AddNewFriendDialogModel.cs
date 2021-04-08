@@ -1,10 +1,12 @@
 ﻿using HandyControl.Controls;
 using MaterialDesignThemes.Wpf;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System.Threading.Tasks;
+using TMS.Core.Event;
 using TMS.Core.Service;
 using TMS.DeskTop.UserControls.Card.Views;
 
@@ -15,9 +17,11 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
         public string IdentifierName { get; set; }
         private readonly IContainerExtension container;
         private PopupWindow popupWindow;
+        private IEventAggregator eventAggregator;
 
-        public AddNewFriendDialogModel(IContainerExtension container)
+        public AddNewFriendDialogModel(IContainerExtension container, IEventAggregator eventAggregator)
         {
+            this.eventAggregator = eventAggregator; 
             this.SaveCmd = new DelegateCommand(Searcher);
             this.CancelCmd = new DelegateCommand(Cancel);
             this.container = container;
@@ -45,6 +49,11 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
 
         private void Searcher()
         {
+            if (SessionService.User.Tel == Input)
+            {
+                eventAggregator.GetEvent<ToastShowEvent>().Publish("不能添加自己为好友！");
+                return;
+            }
             if (popupWindow != null)
             {
                 popupWindow.Close();

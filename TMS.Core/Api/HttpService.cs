@@ -1120,8 +1120,9 @@ namespace TMS.Core.Api
         {
             try
             {
-                RestRequest restRequest = new RestRequest("/contacts/v2/requestInfo");
+                RestRequest restRequest = new RestRequest("/contacts/v2");
                 restRequest.AddParameter("friend_id", friend_id);
+                restRequest.AddParameter("agree", true);
 
                 restRequest.Method = Method.POST;
                 var response = await restClient.ExecuteAsync(restRequest);
