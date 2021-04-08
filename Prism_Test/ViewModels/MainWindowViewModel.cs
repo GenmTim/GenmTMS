@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
+using System.Collections.Generic;
 using TMS.Core.Api;
 using TMS.Core.Data.Dto;
+using TMS.Core.Data.Entity;
 using WebSocketSharp;
 
 namespace Prism_Test.ViewModels
@@ -23,14 +26,17 @@ namespace Prism_Test.ViewModels
         public MainWindowViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
-
-            LoggerService.Debug("这是一次Debug");
-            LoggerService.Debug("这是一次Debug");
-            LoggerService.Info("这是一次Info");
-            LoggerService.Debug("这是一次Debug");
-            LoggerService.Info("这是一次Info");
-            LoggerService.Error("这是一次Error");
-            LoggerService.Debug("这是一次Debug");
+            
+            //string data = "[{\"companyId\":100,\"ChildDepartments\":[{\"companyId\":100,\"ChildDepartments\":[{\"companyId\":100,\"deptId\":6,\"name\":\"网络安全\",\"updateAt\":\"2021-04-08T08:00:10\",\"parentDept\":3,\"createAt\":\"2021-04-08T08:00:10\"}],\"deptId\":3,\"name\":\"网络\",\"updateAt\":\"2021-04-08T07:59:40\",\"parentDept\":1,\"createAt\":\"2021-02-03T14:01:23\"},{\"companyId\":100,\"deptId\":5,\"name\":\"计科\",\"updateAt\":\"2021-04-08T08:04:13\",\"parentDept\":1,\"createAt\":\"2021-04-08T07:59:01\"}],\"deptId\":1,\"name\":\"电信\",\"updateAt\":\"2021-04-08T07:59:31\",\"createAt\":\"2021-02-03T14:00:36\"},{\"companyId\":100,\"deptId\":4,\"name\":\"材化\",\"updateAt\":\"2021-04-08T07:59:53\",\"createAt\":\"2021-04-08T07:58:40\"}]";
+            //List<TreeDept> treeDepts = JsonConvert.DeserializeObject<List<TreeDept>>(data);
+            //LogString = "dfdh：asdsadsadsad";
+            //LoggerService.Debug("这是一次Debug");
+            //LoggerService.Debug("这是一次Debug");
+            //LoggerService.Info("这是一次Info");
+            //LoggerService.Debug("这是一次Debug");
+            //LoggerService.Info("这是一次Info");
+            //LoggerService.Error("这是一次Error");
+            //LoggerService.Debug("这是一次Debug");
 
             //         WebSocket ws = new WebSocket("ws://121.40.165.18:8800");
             //         ws.OnMessage += (sender, e) =>

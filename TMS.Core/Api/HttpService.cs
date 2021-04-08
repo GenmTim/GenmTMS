@@ -211,6 +211,39 @@ namespace TMS.Core.Api
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 查询树形企业的部门
+        /// </summary>
+        /// <param name="company_id"></param>
+        /// <returns>类型：List<TreeDept></returns>
+        public async Task<ApiResponse> GetCompanyTreeDept(int company_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/company/treeDept");
+                restRequest.AddParameter("company_id", company_id);
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    string data = jObjects["data"].ToString();
+                    List<TreeDept> treeDepts = JsonConvert.DeserializeObject<List<TreeDept>>(data);
+                    return new ApiResponse(200, treeDepts);
+                }
+                else
+                {
+                    return new ApiResponse(201, "无效企业");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
 
         /// <summary>
         /// 获取企业所有员工
@@ -221,7 +254,7 @@ namespace TMS.Core.Api
         {
             try
             {
-                RestRequest restRequest = new RestRequest("​/company/userList");
+                RestRequest restRequest = new RestRequest("/company/user_info");
                 restRequest.AddParameter("company_id", company_id);
                 restRequest.Method = Method.GET;
                 var response = await restClient.ExecuteAsync(restRequest);
@@ -493,7 +526,7 @@ namespace TMS.Core.Api
         /// <param name="dept_id"></param>
         /// <param name="user_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> UserLeaveDept(int dept_id, int user_id)
+        public async Task<ApiResponse> UserLeaveDeptV1(int dept_id, int user_id)
         {
             try
             {
@@ -514,6 +547,114 @@ namespace TMS.Core.Api
                 else
                 {
                     return new ApiResponse(201, "用户离开部门失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 获取部门员工信息列表
+        /// </summary>
+        /// <param name="dept_id"></param>
+        /// <returns>需要调整指定，有公司角色名</returns>
+        public async Task<ApiResponse> GetDeptUserInfoList(int dept_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/bl_dept/userDeptInfo");
+                restRequest.AddParameter("dept_id", dept_id);
+
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    string data = jObjects["data"].ToString();
+                    List<User> users = JsonConvert.DeserializeObject<List<User>>(data);//用户基本信息
+                    List<CompanyRoleDto> companyRoles = JsonConvert.DeserializeObject<List<CompanyRoleDto>>(data);//用户在公司中的角色名 debug
+                    return new ApiResponse(200, users);
+                }
+                else
+                {
+                    return new ApiResponse(201, "获取部门员工失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 员工加入部门v2
+        /// </summary>
+        /// <param name="dept_id"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> UserJoinDept(int dept_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/bl_dept/v2");
+                restRequest.AddParameter("dept_id", dept_id);
+
+                restRequest.Method = Method.POST;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //string data = jObjects["data"].ToString();
+                    //List<User> users = JsonConvert.DeserializeObject<List<User>>(data);//用户基本信息
+                    //List<CompanyRoleDto> companyRoles = JsonConvert.DeserializeObject<List<CompanyRoleDto>>(data);//用户在公司中的角色名 debug
+                    return new ApiResponse(200, "加入部门成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "加入部门失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 员工离开部门v2
+        /// </summary>
+        /// <param name="dept_id"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> UserLeaveDept(int dept_id)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/bl_dept/v2");
+                restRequest.AddParameter("dept_id", dept_id);
+
+                restRequest.Method = Method.DELETE;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    //string data = jObjects["data"].ToString();
+                    //List<User> users = JsonConvert.DeserializeObject<List<User>>(data);//用户基本信息
+                    //List<CompanyRoleDto> companyRoles = JsonConvert.DeserializeObject<List<CompanyRoleDto>>(data);//用户在公司中的角色名 debug
+                    return new ApiResponse(200, "离开部门成功");
+                }
+                else
+                {
+                    return new ApiResponse(201, "离开部门失败");
                 }
             }
             catch (Exception)
