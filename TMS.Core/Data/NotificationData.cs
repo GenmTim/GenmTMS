@@ -11,6 +11,9 @@ namespace TMS.Core.Data
 {
     public class NotificationData
     {
+        [JsonProperty("id")]
+        public long Id;
+
         [JsonProperty("sender")]
         public User Sender;
 

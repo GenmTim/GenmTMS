@@ -5,6 +5,8 @@ using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.Views;
 using TMS.DeskTop.Views.Contacts;
 using TMS.DeskTop.Views.PersonalFile;
+using TMS.DeskTop.Views.PersonalFile.Subitem;
+using TMS.DeskTop.Views.Search;
 using TMS.DeskTop.Views.WorkPlace;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering;
@@ -96,6 +98,8 @@ namespace TMS.DeskTop.Tools.Helper
                 [typeof(EvaluationView)] = RegionToken.EvaluationContent,
                 [typeof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
                 [typeof(ReportView)] = RegionToken.ReportContent,
+                [typeof(SearchView)] = RegionToken.SearchContent,
+                [typeof(PersonalFileView)] = RegionToken.PersonalFileContent,
             };
         }
 
@@ -123,6 +127,15 @@ namespace TMS.DeskTop.Tools.Helper
             }
             routeMap[typeof(CloudFileView)] = "cloudfile/";
             routeMap[typeof(SearchView)] = "search/";
+            {
+                routeMap[typeof(SearchMainView)] = routeMap[typeof(SearchView)] + "main/";
+                routeMap[typeof(PersonalFileView)] = routeMap[typeof(SearchView)] + "personal_file/";
+                {
+                    routeMap[typeof(CommonFileView)] = routeMap[typeof(PersonalFileView)] + "common/";
+                    routeMap[typeof(HRFileView)] = routeMap[typeof(PersonalFileView)] + "hr/";
+                    routeMap[typeof(CustomFileView)] = routeMap[typeof(PersonalFileView)] + "custom/";
+                }
+            }
 
             routeMap[typeof(WorkPlaceView)] = "workplace/";
             {
@@ -153,8 +166,6 @@ namespace TMS.DeskTop.Tools.Helper
                     routeMap[typeof(ReportMainView)] = routeMap[typeof(ReportView)] + "main/";
                 }
             }
-
-            routeMap[typeof(PersonalFileView)] = nameof(PersonalFileView);
 
             routeMap[typeof(BackNavigationView)] = nameof(BackNavigationView);
             routeMap[typeof(EmptyContentView)] = nameof(EmptyContentView);

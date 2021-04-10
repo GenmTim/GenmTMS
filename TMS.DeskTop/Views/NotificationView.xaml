@@ -242,21 +242,181 @@
                                 <Button />
                             </StackPanel>
                         </hc:ScrollViewer>
-                        <ListView x:Name="listView1" Grid.Row="2"
-                            Margin="0,5,0,0"
-                            HorizontalAlignment="Stretch"
-                            SelectionChanged="NotificationList_SelectionChanged"
-                            ItemTemplate="{StaticResource myLVItemTemplate}"
-                            Template="{StaticResource myLVTemplate}"
-                            SelectedValue="{Binding SelectedValue, Mode=TwoWay}"
-                            ItemContainerStyle="{StaticResource ItemContainerStyle}"
-                            ItemsSource="{Binding Path=MsgObjList}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Vertical" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ListView>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ListView x:Name="listView1"
+                                Margin="0,5,0,0"
+                                HorizontalAlignment="Stretch"
+                                SelectionChanged="NotificationList_SelectionChanged"
+                                ItemTemplate="{StaticResource myLVItemTemplate}"
+                                Template="{StaticResource myLVTemplate}"
+                                SelectedValue="{Binding SelectedValue, Mode=TwoWay}"
+                                ItemContainerStyle="{StaticResource ItemContainerStyle}"
+                                ItemsSource="{Binding Path=MsgObjList}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel hc:PanelElement.FluidMoveBehavior="{StaticResource BehaviorXY200}" Orientation="Vertical" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ListView>
+                            <hc:SimplePanel Grid.Row="1">
+                                <Border BorderThickness="0,1,0,0" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                                <Grid x:Name="classifyGrid" Height="33">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="33" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <hc:SimplePanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock
+                                                Text="&#xe718;"
+                                                Margin="20,2,0,0"
+                                                VerticalAlignment="Center"
+                                                FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                            <TextBlock
+                                                Text="已处理"
+                                                Margin="10,0,0,0"
+                                                VerticalAlignment="Center"
+                                                FontWeight="SemiBold" />
+                                        </StackPanel>
+                                        <ToggleButton x:Name="classifyGridToggleBtn"
+                                            HorizontalAlignment="Right"
+                                            Unchecked="classifyGridToggleBtn_Unchecked"
+                                            Checked="classifyGridToggleBtn_Checked"
+                                            FocusVisualStyle="{x:Null}"
+                                            Cursor="Hand">
+                                            <ToggleButton.Style>
+                                                <Style BasedOn="{StaticResource ToggleButtonCustom}" TargetType="ToggleButton">
+                                                    <Setter Property="hc:StatusSwitchElement.HideUncheckedElement" Value="True" />
+                                                    <Setter Property="hc:StatusSwitchElement.CheckedElement">
+                                                        <Setter.Value>
+                                                            <TextBlock Margin="0,0,20,0">
+                                                                <Run Text="全部消息" />
+                                                                <Run Text="&#xe6f1;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                            </TextBlock>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ToggleButton.Style>
+                                            <TextBlock Margin="0,0,20,0">
+                                                <Run Text="全部消息" />
+                                                <Run Text="&#xe6f9;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                            </TextBlock>
+                                        </ToggleButton>
+                                    </hc:SimplePanel>
+                                    <StackPanel Grid.Row="1" Margin="0,0,0,0">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="RadioButton">
+                                                <Setter Property="Cursor" Value="Hand" />
+                                                <Setter Property="Height" Value="38" />
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="BorderBrush" Value="Transparent" />
+                                                <Setter Property="BorderThickness" Value="0" />
+                                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                                                            <hc:SimplePanel>
+                                                                <Border
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Stretch"
+                                                                    Background="{TemplateBinding Background}"
+                                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                                    BorderThickness="{TemplateBinding BorderThickness}" />
+                                                                <ContentPresenter
+                                                                    HorizontalAlignment="Left"
+                                                                    VerticalAlignment="Center"
+                                                                    Focusable="False"
+                                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                                <hc:SimplePanel
+                                                                    Width="33"
+                                                                    Height="33"
+                                                                    Margin="0,0,20,0"
+                                                                    HorizontalAlignment="Right"
+                                                                    VerticalAlignment="Center">
+                                                                    <hc:Badge
+                                                                        VerticalAlignment="Center"
+                                                                        BadgeMargin="0"
+                                                                        BorderThickness="0"
+                                                                        FontSize="8"
+                                                                        Value="19">
+                                                                        <hc:Badge.Style>
+                                                                            <Style BasedOn="{StaticResource BadgeInfo}" TargetType="hc:Badge">
+                                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Value" Value="0">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </hc:Badge.Style>
+                                                                    </hc:Badge>
+                                                                </hc:SimplePanel>
+                                                            </hc:SimplePanel>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="true">
+                                                                    <Setter Property="Background" Value="{StaticResource SecondaryRegionBrush}" />
+                                                                </Trigger>
+                                                                <Trigger Property="IsChecked" Value="true">
+                                                                    <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <!--<ItemsControl>
+                                            <hc:SimplePanel Height="33">
+                                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                    <TextBlock Text="&#xe73a;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                    <TextBlock Text="未处理" />
+                                                </StackPanel>
+                                            </hc:SimplePanel>
+                                            <hc:SimplePanel Height="33">
+                                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                                    <TextBlock Text="&#xe718;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                    <TextBlock Text="已处理" />
+                                                </StackPanel>
+                                            </hc:SimplePanel>
+                                        </ItemsControl>-->
+                                        <RadioButton>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock
+                                                    Text="&#xe73a;"
+                                                    Margin="20,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                <TextBlock
+                                                    Text="未处理"
+                                                    Margin="10,0,0,0"
+                                                    VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </RadioButton>
+                                        <RadioButton Grid.Row="1" IsChecked="True">
+                                            <hc:SimplePanel HorizontalAlignment="Stretch">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock
+                                                        Text="&#xe73a;"
+                                                        Margin="20,0,0,0"
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                    <TextBlock
+                                                        Text="已处理"
+                                                        Margin="10,0,0,0"
+                                                        VerticalAlignment="Center" />
+                                                </StackPanel>
+
+                                            </hc:SimplePanel>
+                                        </RadioButton>
+                                    </StackPanel>
+                                </Grid>
+                            </hc:SimplePanel>
+                        </Grid>
+
                     </Grid>
                     <!--<GridSplitter Grid.Column="1"
                     Width="2"

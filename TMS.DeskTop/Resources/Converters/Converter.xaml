@@ -10,4 +10,5 @@
     <converter:FileSize2String x:Key="FileSize2String" />
     <converter:Timestamp2String x:Key="Timestamp2String" />
     <converter:Number2PercentageConverter x:Key="Number2PercentageConverter" />
+    <converter:String2UriConverter x:Key="String2UriConverter" />
 </ResourceDictionary>

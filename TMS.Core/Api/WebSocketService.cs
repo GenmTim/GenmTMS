@@ -18,6 +18,7 @@ namespace TMS.Core.Api
 	{
 		private readonly IEventAggregator eventAggregator;
 		private readonly WebSocket conn;
+		private int delayTime = 2000;
 
 
 		public WebSocketService(IEventAggregator eventAggregator)
@@ -45,6 +46,7 @@ namespace TMS.Core.Api
 		/// <param name="e"></param>
         private void OnOpened(object sender, EventArgs e)
 		{
+			eventAggregator.GetEvent<ToastShowEvent>().Publish("已与服务器建立连接");
 			eventAggregator.GetEvent<WebSocketSendEvent>().Subscribe(SendNotification);
 		}
 
@@ -61,16 +63,14 @@ namespace TMS.Core.Api
 			try
 			{
 				NotificationData notificationData = JsonConvert.DeserializeObject<NotificationData>(data);
-				if (notificationData.Type == 0)
+	
+				if (notificationData.SubType == 0)
                 {
-					if (notificationData.SubType == 0)
-                    {
-						eventAggregator.GetEvent<WebSocketRecvEvent>().Publish(notificationData);
-					}
-					else
-                    {
+					eventAggregator.GetEvent<WebSocketRecvEvent>().Publish(notificationData);
+				}
+				else
+                {
 
-                    }
                 }
 			}
 			catch (Exception) {}
@@ -85,6 +85,10 @@ namespace TMS.Core.Api
 		{
 			// pass
 			LoggerService.Error("WebSocketService: " + e.ToString());
+			//if (delayTime > 200000)
+   //         {
+
+   //         }
 		}
 
 		/// <summary>
@@ -94,9 +98,10 @@ namespace TMS.Core.Api
 		/// <param name="e"></param>
 		private void OnClosed(object sender, EventArgs e)
 		{
+			eventAggregator.GetEvent<ToastShowEvent>().Publish("服务器连接已断开");
 			Task.Factory.StartNew(async() => 
 			{
-				await Task.Delay(3);
+				await Task.Delay(delayTime);
 				conn.Open();
 			});
 			// pass

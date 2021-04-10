@@ -37,11 +37,11 @@
                 <hc:SimplePanel x:Name="panel"
                     FocusVisualStyle="{x:Null}"
                     Focusable="True">
-                    <genm:WindowDrawer x:Name="drawer" MaskCanClose="True">
+                    <!--<genm:WindowDrawer x:Name="drawer" MaskCanClose="True">
                         <Border Width="{Binding WindowWidth}" Background="{StaticResource RegionBrush}">
                             <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.SashRegion}" />
                         </Border>
-                    </genm:WindowDrawer>
+                    </genm:WindowDrawer>-->
                     <Border Effect="{StaticResource EffectShadow1}" />
                     <DockPanel>
                         <Grid Grid.Column="0"

@@ -6,6 +6,7 @@
         Image,
         Audio,
         Custom,
-        File
+        File,
+        Notification
     }
 }

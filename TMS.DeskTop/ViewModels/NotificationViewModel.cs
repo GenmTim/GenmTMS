@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using TMS.Core.Api;
 using TMS.Core.Data;
 using TMS.Core.Data.Entity;
@@ -21,6 +22,7 @@ using TMS.Core.Event.Notification;
 using TMS.Core.Event.WebSocket;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
+using TMS.DeskTop.UserControls.Cmd;
 using TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles;
 using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.UserControls.Common.Views.ChatBubbles;
@@ -30,7 +32,7 @@ namespace TMS.DeskTop.ViewModels
     class NotificationViewModel : BindableBase, INavigationAware
     {
         public class ConnectionEvent : PubSubEvent<NotificationItemEntity> { }
-
+        public class CheckCompleteEvent : PubSubEvent<long> { }
 
         #region Property
         //private List<NotificationItemEntity> testList;
@@ -96,6 +98,26 @@ namespace TMS.DeskTop.ViewModels
             this.eventAggregator.GetEvent<WebSocketRecvEvent>().Subscribe(NewMessage, ThreadOption.UIThread, false);
 
             this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Subscribe(UpdateChatBoxContext, ThreadOption.UIThread);
+
+            this.eventAggregator.GetEvent<CheckCompleteEvent>().Subscribe(CheckCompleteMsgObjVO);
+        }
+
+        private void CheckCompleteMsgObjVO(long id)
+        {
+            if (!NotificationDataListMap.ContainsKey(id))
+            {
+                NotificationDataListMap.Remove(id);
+            }
+            try
+            {
+                var msgObj = MsgObjList.First(x => x.ObjectId == id);
+                if (SelectedValue == msgObj)
+                {
+                    RegionHelper.RequestNavigate(regionManager, RegionToken.ChatRegion, typeof(EmptyContentView));
+                }
+                MsgObjList.Remove(msgObj);
+            }
+            catch (Exception) { }
         }
 
         private void UpdateChatBoxContext(long id)
@@ -129,17 +151,63 @@ namespace TMS.DeskTop.ViewModels
 
         public void NewMessage(NotificationData data)
         {
-            long id = (long)data.Sender.UserId;
-
-            MsgObjVO msgObj;
-
-            msgObj = new MsgObjVO
+            // 处理NotificationData，转换为MsgObjVO和ChatInfoModel
+            try
             {
-                ObjectId = id,
-                ObjectName = data.Sender.Name,
-                Avatar = new Uri(data.Sender.Avatar),
-                NewMessageTimestamp = data.Timestamp,
-            };
+                MakeNewMessage(data, out MsgObjVO msgObj, out ChatInfoModel chatInfo);
+                // 删除旧的数据对象，并更新的数据对象
+                try
+                {
+                    MsgObjList.Remove(MsgObjList.First(x => x.ObjectId == msgObj.ObjectId));
+                }
+                catch (Exception) { }
+                MsgObjList.Insert(0, msgObj);
+
+                if (!NotificationDataListMap.ContainsKey(msgObj.ObjectId))
+                {
+                    NotificationDataListMap[msgObj.ObjectId] = new ObservableCollection<ChatInfoModel>();
+                }
+                NotificationDataListMap[msgObj.ObjectId].Add(chatInfo);
+
+                msgObj.BadgeNumber = notificationDataListMap[msgObj.ObjectId].Count + 1;
+            }
+            catch (Exception) 
+            {
+                LoggerService.Error("出现不匹配的消息" + JsonConvert.SerializeObject(data).ToString());
+                return; 
+            }
+        }
+
+        private void MakeNewMessage(NotificationData data, out MsgObjVO msgObj, out ChatInfoModel chatInfo)
+        {
+            long id;
+
+            if ((long)data.Sender.UserId != SessionService.User.UserId)
+            {
+                id = (long)data.Sender.UserId;
+                msgObj = new MsgObjVO
+                {
+                    ObjectId = id,
+                    ObjectName = data.Sender.Name,
+                    Avatar = new Uri(data.Sender.Avatar),
+                    NewMessageTimestamp = data.Timestamp,
+                };
+            }
+            else if ((long)data.Receiver.UserId != SessionService.User.UserId)
+            {
+                id = (long)data.Receiver.UserId;
+                msgObj = new MsgObjVO
+                {
+                    ObjectId = id,
+                    ObjectName = data.Receiver.Name,
+                    Avatar = new Uri(data.Receiver.Avatar),
+                    NewMessageTimestamp = data.Timestamp,
+                };
+            }
+            else
+            {
+                throw (new Exception());
+            }
 
             // 构建最新的消息对象数据
             if (data.Type == 0)
@@ -151,45 +219,63 @@ namespace TMS.DeskTop.ViewModels
                 msgObj.NewMessage = "好友申请";
             }
 
-            // 删除旧的数据对象，并更新的数据对象
-            try
-            {
-                MsgObjList.Remove(MsgObjList.First(x => x.ObjectId == msgObj.ObjectId));
-            }
-            catch (Exception) { }
-            MsgObjList.Insert(0, msgObj);
-
             // 构建新的前端消息数据，并添加到对应Id的消息队列数据
-            ChatInfoModel chatInfo = new ChatInfoModel
+            chatInfo = new ChatInfoModel
             {
                 SenderId = msgObj.ObjectId,
                 Role = (msgObj.ObjectId == (long)SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other),
                 Avatar = msgObj.Avatar,
                 Timestamp = msgObj.NewMessageTimestamp
             };
+
             if (data.Type == 0)
             {
-                chatInfo.Message = msgObj.NewMessage;
-                chatInfo.Type = ChatMessageType.String;
+                chatInfo.SenderId = (long)data.Sender.UserId;
+                chatInfo.Role = (chatInfo.SenderId == SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other);
+                ResolveCommonStringMsgInfo(data, ref msgObj, ref chatInfo);
             }
-            else if(data.Type == 1)
+            else if (data.Type == 1)
             {
-                var receiverContacterRequestChatBubble = container.Resolve<Receiver_ContacterRequestChatBubble>();
-                var vm = receiverContacterRequestChatBubble.DataContext as Receiver_ContacterRequestChatBubbleViewModel;
-                var contactRequest = JsonConvert.DeserializeObject<Core.Data.VO.Notification.ContactRequest>((string)data.Data);
+                ResolveContactRequest(data, ref msgObj, ref chatInfo);
+            }
+        }
+
+        private void ResolveCommonStringMsgInfo(NotificationData data, ref MsgObjVO msgObj, ref ChatInfoModel chatInfo)
+        {
+            chatInfo.Message = msgObj.NewMessage;
+            chatInfo.Type = ChatMessageType.String;
+        }
+
+        private void ResolveContactRequest(NotificationData data, ref MsgObjVO msgObj, ref ChatInfoModel chatInfo)
+        {
+
+            var contactRequest = JsonConvert.DeserializeObject<Core.Data.VO.Notification.ContactRequest>((string)data.Data);
+
+            if (contactRequest.RequesterId == SessionService.User.UserId)
+            {
+                var requesterContacterRequestChatBubble = container.Resolve<Requester_ContacterRequestChatBubble>();
+                var vm = requesterContacterRequestChatBubble.DataContext as Requester_ContacterRequestChatBubbleViewModel;
                 vm.ContactRequest = contactRequest;
-                chatInfo.Message = receiverContacterRequestChatBubble;
+
+                chatInfo.Message = requesterContacterRequestChatBubble;
+                chatInfo.Type = ChatMessageType.Custom;
+            }
+            else
+            {
+                var accepterContacterRequestChatBubble = container.Resolve<Accepter_ContacterRequestChatBubble>();
+                var vm = accepterContacterRequestChatBubble.DataContext as Accepter_ContacterRequestChatBubbleViewModel;
+                vm.ContactRequest = contactRequest;
+                vm.MessageId = data.Id;
+
+                chatInfo.Message = accepterContacterRequestChatBubble;
                 chatInfo.Type = ChatMessageType.Custom;
             }
 
-            if (!NotificationDataListMap.ContainsKey(msgObj.ObjectId))
-            {
-                NotificationDataListMap[msgObj.ObjectId] = new ObservableCollection<ChatInfoModel>();
-            }
-            NotificationDataListMap[msgObj.ObjectId].Add(chatInfo);
-
-            msgObj.BadgeNumber = notificationDataListMap[msgObj.ObjectId].Count + 1;
+            chatInfo.SenderId = contactRequest.RequesterId;
+            chatInfo.Role = (chatInfo.SenderId == SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other);
         }
+
+
 
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -241,34 +327,41 @@ namespace TMS.DeskTop.ViewModels
                             {
                                 long userId = (long)user.UserId;
 
-                                var newMsgObjVO = new MsgObjVO
-                                {
-                                    ObjectId = userId,
-                                    ObjectName = user.Name,
-                                    Avatar = new Uri(user.Avatar),
-                                    NewMessage = "好友申请",
-                                    NewMessageTimestamp = TimeHelper.GetNowTimeStamp(),
-                                };
-                                MsgObjList.Add(newMsgObjVO);
-                                SelectedValue = newMsgObjVO;
 
-                                if (!NotificationDataListMap.ContainsKey(userId))
-                                {
-                                    NotificationDataListMap[userId] = new ObservableCollection<ChatInfoModel>();
-                                }
-                                var sendeContacterRequestChatBubble = container.Resolve<Sender_ContacterRequestChatBubble>();
-                                var vm = sendeContacterRequestChatBubble.DataContext as Sender_ContacterRequestChatBubbleViewModel;
-                                vm.ContactRequest = JsonConvert.DeserializeObject<Core.Data.VO.Notification.ContactRequest>((string)notificationData.Data);
-                                notificationDataListMap[userId].Add(new ChatInfoModel
-                                {
-                                    SenderId = (long)SessionService.User.UserId,
-                                    Avatar = new Uri(SessionService.User.Avatar),
-                                    Message = sendeContacterRequestChatBubble,
-                                    Type = ChatMessageType.Custom,
-                                    Role = ChatRoleType.Me,
-                                    Timestamp = TimeHelper.GetNowTimeStamp(),
-                                });
+                                //var newMsgObjVO = new MsgObjVO
+                                //{
+                                //    ObjectId = userId,
+                                //    ObjectName = user.Name,
+                                //    Avatar = new Uri(user.Avatar),
+                                //    NewMessage = "好友申请",
+                                //    NewMessageTimestamp = TimeHelper.GetNowTimeStamp(),
+                                //};
+                                //try
+                                //{
+                                //    MsgObjList.Remove(MsgObjList.First(x => x.ObjectId == newMsgObjVO.ObjectId));
+                                //}
+                                //catch (Exception) { }
+                                //MsgObjList.Insert(0, newMsgObjVO);
+                                //SelectedValue = newMsgObjVO;
+
+                                //if (!NotificationDataListMap.ContainsKey(userId))
+                                //{
+                                //    NotificationDataListMap[userId] = new ObservableCollection<ChatInfoModel>();
+                                //}
+                                //var sendeContacterRequestChatBubble = container.Resolve<Requester_ContacterRequestChatBubble>();
+                                //var vm = sendeContacterRequestChatBubble.DataContext as Requester_ContacterRequestChatBubbleViewModel;
+                                //vm.ContactRequest = JsonConvert.DeserializeObject<Core.Data.VO.Notification.ContactRequest>((string)notificationData.Data);
+                                //notificationDataListMap[userId].Add(new ChatInfoModel
+                                //{
+                                //    SenderId = (long)SessionService.User.UserId,
+                                //    Avatar = new Uri(SessionService.User.Avatar),
+                                //    Message = sendeContacterRequestChatBubble,
+                                //    Type = ChatMessageType.Custom,
+                                //    Role = ChatRoleType.Me,
+                                //    Timestamp = TimeHelper.GetNowTimeStamp(),
+                                //});
                                 // websocket推送消息，并进行导航
+                                this.eventAggregator.GetEvent<WebSocketRecvEvent>().Publish(notificationData);
                                 this.eventAggregator.GetEvent<WebSocketSendEvent>().Publish(notificationData);
                                 this.eventAggregator.GetEvent<UpdateChatBoxContextEvent>().Publish(userId);
                             });

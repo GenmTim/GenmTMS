@@ -53,6 +53,7 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
             {
                 RequesterId = (long)SessionService.User.UserId,
                 AccepterId = (long)user.UserId,
+                State = ContactRequestState.Pending
             };
             NotificationData notificationData = new NotificationData
             {

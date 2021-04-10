@@ -1,11 +1,14 @@
 ﻿<UserControl
-    x:Class="TMS.DeskTop.UserControls.Common.Views.ChatBubbles.Receiver_ContacterRequestChatBubble"
+    x:Class="TMS.DeskTop.UserControls.Common.Views.ChatBubbles.Accepter_ContacterRequestChatBubble"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:vo="clr-namespace:TMS.Core.Data.VO.Notification;assembly=TMS.Core"
     xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Common.Views.ChatBubbles"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <hc:SimplePanel Grid.Column="1">
         <hc:SimplePanel Width="300" Height="150">
@@ -32,10 +35,10 @@
                         <hc:Gravatar
                             Width="40"
                             Height="40"
-                            Id="324"
+                            Source="{Binding Requester.Avatar, Converter={StaticResource String2UriConverter}}"
                             Style="{StaticResource GravatarCircleImg}" />
                         <TextBlock
-                            Text="金泽权"
+                            Text="{Binding Requester.Name}"
                             Margin="20,0,0,0"
                             VerticalAlignment="Center"
                             FontSize="14" />
@@ -43,6 +46,16 @@
                 </hc:SimplePanel>
                 <hc:SimplePanel Grid.Row="2">
                     <UniformGrid Columns="2">
+                        <UniformGrid.Style>
+                            <Style TargetType="UniformGrid">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding State}" Value="{x:Static Member=vo:ContactRequestState.Pending}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </UniformGrid.Style>
                         <Button
                             Content="同意"
                             Command="{Binding AcceptRequestCmd}"
@@ -59,6 +72,23 @@
                             Cursor="Hand"
                             Style="{StaticResource ButtonDashedInfo}" />
                     </UniformGrid>
+                    <TextBlock Margin="20,0,0,0" VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding State}" Value="{x:Static Member=vo:ContactRequestState.Accept}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                        <Setter Property="Text" Value="你已经同意了该请求" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding State}" Value="{x:Static Member=vo:ContactRequestState.Refuse}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                        <Setter Property="Text" Value="你已经拒绝了该请求" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </hc:SimplePanel>
             </Grid>
         </hc:SimplePanel>

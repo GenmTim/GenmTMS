@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="TMS.DeskTop.UserControls.Common.Views.ChatBubbles.Sender_ContacterRequestChatBubble"
+    x:Class="TMS.DeskTop.UserControls.Common.Views.ChatBubbles.Requester_ContacterRequestChatBubble"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:hc="https://handyorg.github.io/handycontrol"
@@ -33,7 +33,7 @@
                 </hc:SimplePanel>
                 <hc:SimplePanel Grid.Row="1" Grid.RowSpan="2">
                     <TextBlock
-                        Text="正在等待对方的响应"
+                        Text="{Binding Message}"
                         Margin="20,0,0,0"
                         VerticalAlignment="Center" />
                 </hc:SimplePanel>
