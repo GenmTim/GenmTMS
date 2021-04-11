@@ -11,10 +11,9 @@ namespace TMS.Core.Api
 {
 	public class FileShardService
 	{
-		private static async Task UploadFileShardAsync(int shardIndex, FileInfo file)
+		private static async Task<string> UploadFileShardAsync(int shardIndex, FileInfo file)
 		{
-
-			FileStream fileStream = file.OpenRead();
+			FileShard shard = new FileShard();
 
 			int shardSize = 5 * 1024 * 1024;//分片大小5MB
 
@@ -24,47 +23,57 @@ namespace TMS.Core.Api
 
 			byte[] fileShard = new byte[end - start];//分片文件二进制流
 
-			fileStream.Position = start;
-			_ = fileStream.Read(fileShard, 0, fileShard.Length);
+			using (FileStream fileStream = file.OpenRead())
+			{
+				fileStream.Position = start;
+				_ = fileStream.Read(fileShard, 0, fileShard.Length);
 
-			int size = (int)file.Length;
+				int size = (int)file.Length;
 
-			int shardTotal = (int)Math.Ceiling((double)size / shardSize);
+				int shardTotal = (int)Math.Ceiling((double)size / shardSize);
 
-			string fileName = file.Name;
+				string fileName = file.Name;
 
-			string suffix = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
+				string suffix = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
 
-			string filedetails = file.Name + file.Length + file.LastWriteTime;
+				string filedetails = file.Name + file.Length + file.LastWriteTime;
 
-			string key = GenerateMD5(filedetails);
+				string key = GenerateMD5(filedetails);
 
-			FileShard shard = new FileShard();
-			shard.name = fileName;
-			shard.suffix = suffix;
-			shard.size = size;
-			shard.shardIndex = shardIndex;
-			shard.shardTotal = shardTotal;
-			shard.shardSize = shardSize;
-			shard.fileKey = key;
+
+				shard.name = fileName;
+				shard.suffix = suffix;
+				shard.size = size;
+				shard.shardIndex = shardIndex;
+				shard.shardTotal = shardTotal;
+				shard.shardSize = shardSize;
+				shard.fileKey = key;
+
+			}
+
+
+
 
 
 			ApiResponse apiResponse = await HttpService.Instance.FileUpload(shard, fileShard);
 			if (apiResponse.StatusCode==200)
 			{
 				//上传分片成功
-				if (shardIndex<shardTotal)
+				if (shard.shardIndex < shard.shardTotal)
 				{
-					await UploadFileShardAsync(shardIndex + 1,file);
+					return await UploadFileShardAsync(shardIndex + 1,file);
 				}
 				else
 				{
 					//上传完毕
+					string data = apiResponse.Message;
+					return data;
 				}
 			}
 			else
 			{
 				//上传失败
+				return "上传失败";
 			}
 		}
 
@@ -91,15 +100,19 @@ namespace TMS.Core.Api
 				}
 				else
 				{
-					await UploadFileShardAsync(shard.shardIndex, file);
+					string v = await UploadFileShardAsync(shard.shardIndex, file);
+					string[] vs = v.Split("\"");
+					return vs[3];
 				}
 			}
 			else
 			{
 				//数据库中没有记录，新文件
-				await UploadFileShardAsync(1, file);
+				string v = await UploadFileShardAsync(1, file);
+				string[] vs = v.Split("\"");
+				return vs[3];
 			}
-			return "上传成功";
+			//return "上传成功";
 		}
 
 		/// <summary>

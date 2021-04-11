@@ -30,7 +30,7 @@ namespace Prism_Test.ViewModels
 
 			Task task = new Task(async () =>
 			{
-				string str = await FileShardService.FileUploadAsync("D:\\=开发项目\\2020服务外包\\2020服务外包Download.zip");
+				string str = await FileShardService.FileUploadAsync("E:\\文件\\临时\\Hailar.wld");
 				str = "";
 			});
 			task.Start();
