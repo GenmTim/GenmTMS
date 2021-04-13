@@ -4,15 +4,37 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TMS.Core.Data.Entity;
 
 namespace TMS.Core.Api
 {
-	public class FileShardService
+	public class FileService
 	{
-		private static async Task<string> UploadFileShardAsync(int shardIndex, FileInfo file)
+		private ManualResetEvent resetEvent =null;
+
+		public delegate void SendingProgress(double progress);
+
+		public SendingProgress OnSendingProgress;
+
+		public FileService()
 		{
+			this.resetEvent = new ManualResetEvent(true);
+		}
+
+		public FileService(ManualResetEvent resetEvent)
+		{
+			this.resetEvent = resetEvent;
+		}
+
+		private async Task<string> UploadFileShardAsync(int shardIndex, FileInfo file, CancellationTokenSource tokenSource = null)
+		{
+			if (tokenSource != null && tokenSource.Token.IsCancellationRequested)
+			{
+				return "停止";
+			}
+			resetEvent.WaitOne();
 			FileShard shard = new FileShard();
 
 			int shardSize = 5 * 1024 * 1024;//分片大小5MB
@@ -31,7 +53,7 @@ namespace TMS.Core.Api
 				int size = (int)file.Length;
 
 				int shardTotal = (int)Math.Ceiling((double)size / shardSize);
-
+				OnSendingProgress(shard.shardIndex / shard.shardTotal);
 				string fileName = file.Name;
 
 				string suffix = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
@@ -50,18 +72,24 @@ namespace TMS.Core.Api
 				shard.fileKey = key;
 
 			}
-
-
-
-
-
+			if (tokenSource != null && tokenSource.Token.IsCancellationRequested)
+			{
+				return "停止";
+			}
+			resetEvent.WaitOne();
 			ApiResponse apiResponse = await HttpService.Instance.FileUpload(shard, fileShard);
+			if (tokenSource != null && tokenSource.Token.IsCancellationRequested)
+			{
+				return "停止";
+			}
+			resetEvent.WaitOne();
 			if (apiResponse.StatusCode==200)
 			{
 				//上传分片成功
 				if (shard.shardIndex < shard.shardTotal)
 				{
-					return await UploadFileShardAsync(shardIndex + 1,file);
+					OnSendingProgress(shard.shardIndex / shard.shardTotal);
+					return await UploadFileShardAsync(shardIndex + 1,file,tokenSource);
 				}
 				else
 				{
@@ -77,8 +105,13 @@ namespace TMS.Core.Api
 			}
 		}
 
-		public static async Task<string> FileUploadAsync(string filePath)
+		public async Task<string> FileUploadAsync(string filePath, CancellationTokenSource tokenSource=null)
 		{
+			if (tokenSource!=null && tokenSource.Token.IsCancellationRequested)
+			{
+				return "停止";
+			}
+			resetEvent.WaitOne();
 			FileInfo file = new FileInfo(filePath);
 			if (!file.Exists)
 			{
@@ -89,7 +122,11 @@ namespace TMS.Core.Api
 			string key = GenerateMD5(filedetails);
 
 			ApiResponse apiResponse = await HttpService.Instance.FileCheck(key);
-
+			if (tokenSource != null && tokenSource.Token.IsCancellationRequested)
+			{
+				return "停止";
+			}
+			resetEvent.WaitOne();
 			if (apiResponse.StatusCode==200)
 			{
 				//数据库中有记录
@@ -100,7 +137,8 @@ namespace TMS.Core.Api
 				}
 				else
 				{
-					string v = await UploadFileShardAsync(shard.shardIndex, file);
+					OnSendingProgress(shard.shardIndex / shard.shardTotal);
+					string v = await UploadFileShardAsync(shard.shardIndex, file,tokenSource);
 					string[] vs = v.Split("\"");
 					return vs[3];
 				}
@@ -108,12 +146,14 @@ namespace TMS.Core.Api
 			else
 			{
 				//数据库中没有记录，新文件
-				string v = await UploadFileShardAsync(1, file);
+				string v = await UploadFileShardAsync(1, file, tokenSource);
 				string[] vs = v.Split("\"");
 				return vs[3];
 			}
 			//return "上传成功";
 		}
+
+
 
 		/// <summary>
 		/// MD5加密
