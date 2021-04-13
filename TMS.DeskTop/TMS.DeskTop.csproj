@@ -253,6 +253,24 @@
     <Compile Update="UserControls\Common\Views\RoundProgress.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\WorkPlace\PerformanceData\PerformanceDataEnteringView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\PerformanceData\Entering\PerformanceDataCheckView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\PerformanceData\Entering\PerformanceDataEnteringDataView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\ViolateData\Entering\ViolateDataCheckView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\ViolateData\Entering\ViolateDataEnteringDataView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\ViolateData\ViolateDataEnteringView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
@@ -287,8 +305,32 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Update="Views\WorkPlace\PerformanceData\PerformanceDataEnteringView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\PerformanceData\Entering\PerformanceDataCheckView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\PerformanceData\Entering\PerformanceDataEnteringDataView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\WorkPlace\Auth\AuthMainView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\WorkPlace\ViolateData\Entering\ViolateDataCheckView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\ViolateData\Entering\ViolateDataEnteringDataView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\ViolateData\ViolateDataEnteringView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

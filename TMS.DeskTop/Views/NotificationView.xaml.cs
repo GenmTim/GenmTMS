@@ -68,7 +68,7 @@ namespace TMS.DeskTop.Views
                     Avatar = "http://47.101.157.194:8081/static/avatar/target2.jpg",
                 },
                 Data = "你好，我是Jzq",
-                Receiver = SessionService.User
+                Receiver = SessionService.Instance.User
             };
 
             NotificationData CclNotificationData = new NotificationData
@@ -80,11 +80,11 @@ namespace TMS.DeskTop.Views
                     Avatar = "http://47.101.157.194:8081/static/avatar/target4.jpg",
                 },
                 Data = "你好，我是Ccl",
-                Receiver = SessionService.User
+                Receiver = SessionService.Instance.User
             };
 
 
-            if (SessionService.User.UserId == CclNotificationData.Sender.UserId)
+            if (SessionService.Instance.User.UserId == CclNotificationData.Sender.UserId)
             {
                 this.eventAggregator.GetEvent<WebSocketRecvEvent>().Publish(JzqNotificationData);
             }

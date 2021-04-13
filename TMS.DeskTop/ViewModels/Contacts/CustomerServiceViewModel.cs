@@ -1,10 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TMS.Core.Api;
@@ -21,9 +17,9 @@ namespace TMS.DeskTop.ViewModels.Contacts
         public CustomerServiceViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
-            GoCustomerServiceCmd = new DelegateCommand(() => 
+            GoCustomerServiceCmd = new DelegateCommand(() =>
             {
-                Task.Factory.StartNew(async() => 
+                Task.Factory.StartNew(async () =>
                 {
                     var result = await HttpService.GetConn().GetUserInfo(10006);
                     if (result.StatusCode == 200)
@@ -33,8 +29,8 @@ namespace TMS.DeskTop.ViewModels.Contacts
                         {
                             { "User", user }
                         };
-                        Application.Current.Dispatcher.Invoke(() => 
-                        { 
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
                             RouteHelper.Goto(regionManager, typeof(CustomerServiceViewModel), typeof(NotificationView), param);
                         });
                     }

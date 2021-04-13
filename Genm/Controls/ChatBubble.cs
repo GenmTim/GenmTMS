@@ -3,7 +3,6 @@ using Genm.Data.Enums;
 using HandyControl.Controls;
 using System;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Genm.Controls
 {

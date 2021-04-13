@@ -139,15 +139,21 @@ namespace TMS.DeskTop.ViewModels
 
             allAppDataList = new List<AppItem>()
             {
-                new AppItem { Tag="数据农场", Name = "考勤数据", IconFont = "\xe6fd", Url = "AttendanceDataEnteringView", Command=NavigationCmd },
-                new AppItem { Tag="数据农场", Name = "违纪数据", IconFont = "\xe6f7", Url = "", Command=NavigationCmd },
-                new AppItem { Tag="数据农场", Name = "绩效数据", IconFont = "\xe6e7", Url = "", Command=NavigationCmd },
-                new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe6e7", Url = "", Command=NavigationCmd },
-                new AppItem { Tag="特别工具", Name = "授权", IconFont = "\xe703", Url = "AuthMainView", Command=NavigationCmd },
-                new AppItem { Tag="特别工具", Name = "调查问券", IconFont = "\xe703", Url = "EvaluationView", Command=NavigationCmd },
-                new AppItem { Tag="特别工具", Name = "汇报", IconFont = "\xe703", Url = "ReportView", Command=NavigationCmd },
-                new AppItem { Tag="心灵驿站", Name = "员工关怀", IconFont = "\xe703", Url = "EvaluationView", Command=NavigationCmd },
+                new AppItem { Tag="数据农场", Name = "考勤数据", IconFont = "\xe6e1", Url = "AttendanceDataEnteringView", Command=NavigationCmd },
+                new AppItem { Tag="数据农场", Name = "违纪数据", IconFont = "\xe6e3", Url = "ViolateDataEnteringView", Command=NavigationCmd },
+                new AppItem { Tag="数据农场", Name = "绩效数据", IconFont = "\xe6f2", Url = "PerformanceDataEnteringView", Command=NavigationCmd },
+                new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe717", Url = "SubjectiveDataView", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "授权", IconFont = "\xe730", Url = "AuthMainView", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "调查问券", IconFont = "\xe740", Url = "EvaluationView", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "员工关怀", IconFont = "\xe782", Url = "StaffCareView", Command=NavigationCmd },
             };
+
+            ClassifyItemList.Add(new ClassifyItem { Name = "全部", Command = ClassifyCmd });
+            appGroupMap["全部"] = new List<AppItem>();
+            foreach (var appItem in allAppDataList)
+            {
+                appGroupMap["全部"].Add(appItem);
+            }
 
             foreach (var appItem in allAppDataList)
             {
@@ -159,8 +165,16 @@ namespace TMS.DeskTop.ViewModels
                 appGroupMap[appItem.Tag].Add(appItem);
             }
 
+            OftenUseAppList = new ObservableCollection<AppItem>()
+            {
+                new AppItem { Tag="数据农场", Name = "绩效数据", IconFont = "\xe6f2", Url = "PerformanceDataEnteringView", Command=NavigationCmd },
+                new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe717", Url = "", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "授权", IconFont = "\xe730", Url = "AuthMainView", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "调查问券", IconFont = "\xe740", Url = "EvaluationView", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "员工关怀", IconFont = "\xe782", Url = "EvaluationView", Command=NavigationCmd },
+            };
+
             allAppDataList.ForEach(appItem => viewAppList.Add(appItem));
-            allAppDataList.ForEach(appItem => oftenUseAppList.Add(appItem));
         }
     }
 }

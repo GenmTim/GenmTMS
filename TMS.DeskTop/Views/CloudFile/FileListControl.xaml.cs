@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace FileManagerUI.Custom_Controls
+namespace TMS.DeskTop.Views.CloudFile
 {
     /// <summary>
     /// Interaction logic for FileListControl.xaml

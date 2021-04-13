@@ -12,7 +12,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using TMS.Core.Api;
 using TMS.Core.Data;
 using TMS.Core.Data.Entity;
@@ -22,7 +21,6 @@ using TMS.Core.Event.Notification;
 using TMS.Core.Event.WebSocket;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
-using TMS.DeskTop.UserControls.Cmd;
 using TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles;
 using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.UserControls.Common.Views.ChatBubbles;
@@ -171,10 +169,10 @@ namespace TMS.DeskTop.ViewModels
 
                 msgObj.BadgeNumber = notificationDataListMap[msgObj.ObjectId].Count + 1;
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 LoggerService.Error("出现不匹配的消息" + JsonConvert.SerializeObject(data).ToString());
-                return; 
+                return;
             }
         }
 
@@ -182,7 +180,7 @@ namespace TMS.DeskTop.ViewModels
         {
             long id;
 
-            if ((long)data.Sender.UserId != SessionService.User.UserId)
+            if ((long)data.Sender.UserId != SessionService.Instance.User.UserId)
             {
                 id = (long)data.Sender.UserId;
                 msgObj = new MsgObjVO
@@ -193,7 +191,7 @@ namespace TMS.DeskTop.ViewModels
                     NewMessageTimestamp = data.Timestamp,
                 };
             }
-            else if ((long)data.Receiver.UserId != SessionService.User.UserId)
+            else if ((long)data.Receiver.UserId != SessionService.Instance.User.UserId)
             {
                 id = (long)data.Receiver.UserId;
                 msgObj = new MsgObjVO
@@ -223,7 +221,7 @@ namespace TMS.DeskTop.ViewModels
             chatInfo = new ChatInfoModel
             {
                 SenderId = msgObj.ObjectId,
-                Role = (msgObj.ObjectId == (long)SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other),
+                Role = (msgObj.ObjectId == (long)SessionService.Instance.User.UserId ? ChatRoleType.Me : ChatRoleType.Other),
                 Avatar = msgObj.Avatar,
                 Timestamp = msgObj.NewMessageTimestamp
             };
@@ -231,7 +229,7 @@ namespace TMS.DeskTop.ViewModels
             if (data.Type == 0)
             {
                 chatInfo.SenderId = (long)data.Sender.UserId;
-                chatInfo.Role = (chatInfo.SenderId == SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other);
+                chatInfo.Role = (chatInfo.SenderId == SessionService.Instance.User.UserId ? ChatRoleType.Me : ChatRoleType.Other);
                 ResolveCommonStringMsgInfo(data, ref msgObj, ref chatInfo);
             }
             else if (data.Type == 1)
@@ -251,7 +249,7 @@ namespace TMS.DeskTop.ViewModels
 
             var contactRequest = JsonConvert.DeserializeObject<Core.Data.VO.Notification.ContactRequest>((string)data.Data);
 
-            if (contactRequest.RequesterId == SessionService.User.UserId)
+            if (contactRequest.RequesterId == SessionService.Instance.User.UserId)
             {
                 var requesterContacterRequestChatBubble = container.Resolve<Requester_ContacterRequestChatBubble>();
                 var vm = requesterContacterRequestChatBubble.DataContext as Requester_ContacterRequestChatBubbleViewModel;
@@ -272,7 +270,7 @@ namespace TMS.DeskTop.ViewModels
             }
 
             chatInfo.SenderId = contactRequest.RequesterId;
-            chatInfo.Role = (chatInfo.SenderId == SessionService.User.UserId ? ChatRoleType.Me : ChatRoleType.Other);
+            chatInfo.Role = (chatInfo.SenderId == SessionService.Instance.User.UserId ? ChatRoleType.Me : ChatRoleType.Other);
         }
 
 

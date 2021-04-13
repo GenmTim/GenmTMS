@@ -1,5 +1,4 @@
-﻿using HandyControl.Tools;
-using Prism.Events;
+﻿using Prism.Events;
 using Prism.Regions;
 using System.Windows.Controls;
 

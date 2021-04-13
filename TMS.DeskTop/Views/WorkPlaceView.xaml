@@ -29,11 +29,20 @@
                         Cursor="Hand"
                         Style="{StaticResource ButtonCustom}">
                         <StackPanel>
-                            <hc:Gravatar
-                                Width="40"
-                                Height="40"
-                                Id="{Binding Url}"
-                                Style="{StaticResource GravatarCircleImg}" />
+                            <hc:SimplePanel>
+                                <Border
+                                    Width="40"
+                                    Height="40"
+                                    Background="{StaticResource PrimaryBrush}"
+                                    Style="{StaticResource BorderCircular}" />
+                                <TextBlock
+                                    Text="{Binding IconFont}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="White"
+                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
+                            </hc:SimplePanel>
                             <TextBlock
                                 Text="{Binding Name}"
                                 Margin="0,8,0,0"

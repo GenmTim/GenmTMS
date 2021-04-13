@@ -21,7 +21,7 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
 
         public AddNewFriendDialogModel(IContainerExtension container, IEventAggregator eventAggregator)
         {
-            this.eventAggregator = eventAggregator; 
+            this.eventAggregator = eventAggregator;
             this.SaveCmd = new DelegateCommand(Searcher);
             this.CancelCmd = new DelegateCommand(Cancel);
             this.container = container;
@@ -49,7 +49,7 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
 
         private void Searcher()
         {
-            if (SessionService.User.Tel == Input)
+            if (SessionService.Instance.User.Tel == Input)
             {
                 eventAggregator.GetEvent<ToastShowEvent>().Publish("不能添加自己为好友！");
                 return;

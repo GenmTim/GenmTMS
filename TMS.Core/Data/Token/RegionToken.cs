@@ -40,6 +40,10 @@
 
         public static readonly string AttendaceDataEnteringContent = nameof(AttendaceDataEnteringContent);
 
+        public static readonly string PerformanceDataEnteringContent = nameof(PerformanceDataEnteringContent);
+
+        public static readonly string ViolateDataEnteringContent = nameof(ViolateDataEnteringContent);
+
         public static readonly string ReportContent = nameof(ReportContent);
 
         public static readonly string NameCardContent = nameof(NameCardContent);
@@ -47,5 +51,11 @@
         public static readonly string SearchContent = nameof(SearchContent);
 
         public static readonly string PersonalFileContent = nameof(PersonalFileContent);
+
+        public static readonly string SubjectiveDataContent = nameof(SubjectiveDataContent);
+
+        public static readonly string SubjectiveDataDetailContent = nameof(SubjectiveDataDetailContent);
+
+        public static readonly string CloudFileContent = nameof(CloudFileContent);
     }
 }

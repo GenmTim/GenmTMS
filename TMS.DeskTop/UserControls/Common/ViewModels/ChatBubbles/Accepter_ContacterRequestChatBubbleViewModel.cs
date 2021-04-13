@@ -33,14 +33,14 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles
         }
 
         private ContactRequest contactRequest;
-        public ContactRequest ContactRequest 
+        public ContactRequest ContactRequest
         {
             get => contactRequest;
             set
             {
                 contactRequest = value;
                 State = value.State;
-                Task.Run(async() => 
+                Task.Run(async () =>
                 {
                     var result = await HttpService.GetConn().GetUserInfo((long)contactRequest.RequesterId);
                     if (result.StatusCode == 200)
@@ -58,7 +58,7 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles
         {
             get => requester;
             set
-            { 
+            {
                 requester = value;
                 RaisePropertyChanged();
             }
@@ -79,19 +79,19 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles
             State = ContactRequestState.Accept;
             NotificationData notificationData = new NotificationData()
             {
-                Sender = SessionService.User,
+                Sender = SessionService.Instance.User,
                 Receiver = new Core.Data.Entity.User { UserId = ContactRequest.RequesterId },
                 Type = 1,
                 SubType = 0,
                 Id = MessageId,
                 Data = JsonConvert.SerializeObject(ContactRequest),
             };
-            Task.Run(async() => 
+            Task.Run(async () =>
             {
                 var result = await HttpService.GetConn().AddNewContacterV2(contactRequest.RequesterId);
                 if (result.StatusCode == 200)
                 {
-                    Application.Current.Dispatcher.Invoke(new System.Action(() => 
+                    Application.Current.Dispatcher.Invoke(new System.Action(() =>
                     {
                         eventAggregator.GetEvent<ToastShowEvent>().Publish("成功添加联系人");
                     }));
@@ -112,7 +112,7 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels.ChatBubbles
             State = ContactRequestState.Refuse;
             NotificationData notificationData = new NotificationData()
             {
-                Sender = SessionService.User,
+                Sender = SessionService.Instance.User,
                 Receiver = new Core.Data.Entity.User { UserId = ContactRequest.RequesterId },
                 Type = 1,
                 SubType = 0,

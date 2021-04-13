@@ -4,13 +4,8 @@ using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TMS.Core.Service;
-using TMS.DeskTop.UserControls.Card.Views;
 
 namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
 {

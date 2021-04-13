@@ -50,6 +50,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <RadioButton
+                            IsChecked="True"
                             HorizontalAlignment="Center"
                             hc:TitleElement.Title="我创建的"
                             Style="{StaticResource UnderlineRadioBtnStyle}"
@@ -71,8 +72,8 @@
                                     <hc:Gravatar
                                         Width="40"
                                         Height="40"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Id="User1" />
+                                        Source="http://47.101.157.194:8081/uploads/image/1.png"
+                                        Style="{StaticResource GravatarCircleImg}" />
                                     <hc:SimplePanel Grid.Column="1">
                                         <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                         <StackPanel VerticalAlignment="Center">
@@ -96,8 +97,8 @@
                                     <hc:Gravatar
                                         Width="40"
                                         Height="40"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Id="Use1" />
+                                        Source="http://47.101.157.194:8081/uploads/image/2.png"
+                                        Style="{StaticResource GravatarCircleImg}" />
                                     <hc:SimplePanel Grid.Column="1">
                                         <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                         <StackPanel VerticalAlignment="Center">
@@ -121,8 +122,8 @@
                                     <hc:Gravatar
                                         Width="40"
                                         Height="40"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Id="Us1" />
+                                        Source="http://47.101.157.194:8081/uploads/image/3.png"
+                                        Style="{StaticResource GravatarCircleImg}" />
                                     <hc:SimplePanel Grid.Column="1">
                                         <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                         <StackPanel VerticalAlignment="Center">
@@ -146,8 +147,8 @@
                                     <hc:Gravatar
                                         Width="40"
                                         Height="40"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Id="Use" />
+                                        Source="http://47.101.157.194:8081/uploads/image/4.png"
+                                        Style="{StaticResource GravatarCircleImg}" />
                                     <hc:SimplePanel Grid.Column="1">
                                         <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                         <StackPanel VerticalAlignment="Center">
@@ -171,8 +172,8 @@
                                     <hc:Gravatar
                                         Width="40"
                                         Height="40"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Id="r1" />
+                                        Source="http://47.101.157.194:8081/uploads/image/5.png"
+                                        Style="{StaticResource GravatarCircleImg}" />
                                     <hc:SimplePanel Grid.Column="1">
                                         <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                         <StackPanel VerticalAlignment="Center">
@@ -196,8 +197,8 @@
                                     <hc:Gravatar
                                         Width="40"
                                         Height="40"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Id="q" />
+                                        Source="http://47.101.157.194:8081/uploads/image/6.png"
+                                        Style="{StaticResource GravatarCircleImg}" />
                                     <hc:SimplePanel Grid.Column="1">
                                         <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                         <StackPanel VerticalAlignment="Center">

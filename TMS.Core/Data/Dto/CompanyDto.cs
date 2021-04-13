@@ -8,7 +8,7 @@ namespace TMS.Core.Data.Dto
         /// <summary>
         /// 企业ID
         /// </summary>
-        [JsonProperty("company_id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("companyId", NullValueHandling = NullValueHandling.Ignore)]
         public int? CompanyId { get; set; }
 
         /// <summary>

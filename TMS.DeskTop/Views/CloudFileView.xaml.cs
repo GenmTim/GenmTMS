@@ -1,11 +1,15 @@
 ﻿using Prism.Events;
+using Prism.Regions;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using TMS.Core.Data.Token;
 using TMS.Core.Data.VO.CloudFile;
-using TMS.Core.Event;
+using TMS.DeskTop.Tools.Base;
+using TMS.DeskTop.UserControls.Common.Views;
+using static TMS.DeskTop.ViewModels.CloudFileViewModel;
 
 namespace TMS.DeskTop.Views
 {
@@ -31,54 +35,31 @@ namespace TMS.DeskTop.Views
     /// <summary>
     /// CloudFileView.xaml 的交互逻辑
     /// </summary>
-    public partial class CloudFileView : UserControl
+    public partial class CloudFileView : RegionManagerControl
     {
         private readonly IEventAggregator eventAggregator;
-        public CloudFileView(IEventAggregator eventAggregator)
+        public CloudFileView(IRegionManager regionManager, IEventAggregator eventAggregator) : base(regionManager, typeof(CloudFileView))
         {
             InitializeComponent();
             this.eventAggregator = eventAggregator;
+            this.Loaded += CloudFileView_Loaded;
+            RegisterDefaultRegionView(RegionToken.CloudFileContent, nameof(EmptyContentView));
         }
 
-        private void OnDragOver(object sender, DragEventArgs e)
+        private void CloudFileView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effects = DragDropEffects.Copy;
-            else
-                e.Effects = DragDropEffects.None;
-
-            fileDragMask.Visibility = Visibility.Visible;
-            e.Handled = true;
+            this.eventAggregator.GetEvent<UpdateFolderTreeEvent>().Publish();
         }
 
-        private void OnDrop(object sender, DragEventArgs e)
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            fileDragMask.Visibility = Visibility.Collapsed;
-
-            var files = e.Data.GetData(DataFormats.FileDrop) as Array;
-            foreach (string fileFullName in files)
+            if (sender is TreeView treeView)
             {
-                var uploadFileItem = new UploadFileItemVO
+                if (treeView.SelectedItem is FolderTreeNodeItemVO treeNodeItem)
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    FullName = fileFullName,
-                    Rate = 0,
-                };
-                eventAggregator.GetEvent<UploadFileEvent>().Publish(uploadFileItem);
+                    eventAggregator.GetEvent<UpdateFolderViewEvent>().Publish(treeNodeItem);
+                }
             }
-            e.Handled = true;
-        }
-
-        private void OnDragLeave(object sender, DragEventArgs e)
-        {
-            fileDragMask.Visibility = Visibility.Collapsed;
-            e.Handled = true;
-        }
-
-        private void OnDragEnter(object sender, DragEventArgs e)
-        {
-            fileDragMask.Visibility = Visibility.Visible;
-            e.Handled = false;
         }
     }
 }

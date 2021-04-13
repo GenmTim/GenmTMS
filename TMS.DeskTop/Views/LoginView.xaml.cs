@@ -1,6 +1,7 @@
 ﻿using Prism.Events;
 using System.Windows;
 using TMS.Core.Event;
+using TMS.DeskTop.ViewModels;
 
 namespace TMS.DeskTop.Views
 {
@@ -28,6 +29,7 @@ namespace TMS.DeskTop.Views
         private void Logined()
         {
             this.DialogResult = true;
+            eventAggregator.GetEvent<UpdateMyCompanyItemList>().Publish();
         }
 
         private void Exit()

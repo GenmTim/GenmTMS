@@ -1,11 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TMS.Core.Data.Entity;
 
 namespace TMS.Core.Data.VO.Notification
 {
@@ -30,6 +23,6 @@ namespace TMS.Core.Data.VO.Notification
         public long AccepterId { get; set; }
 
         [JsonProperty("state")]
-        public ContactRequestState State { get; set;}
+        public ContactRequestState State { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace TMS.DeskTop.ViewModels.Contacts
         {
             Task.Factory.StartNew(async () =>
             {
-                var result = await HttpService.GetConn().GetContacterList((long)SessionService.User.UserId);
+                var result = await HttpService.GetConn().GetContacterList((long)SessionService.Instance.User.UserId);
                 if (result.StatusCode == 200)
                 {
                     List<User> users = (List<User>)result.Data;
@@ -85,7 +85,7 @@ namespace TMS.DeskTop.ViewModels.Contacts
         {
             Task.Factory.StartNew(async () =>
             {
-                var result = await HttpService.GetConn().DeleteContacter((long)SessionService.User.UserId, (long)user.UserId);
+                var result = await HttpService.GetConn().DeleteContacter((long)SessionService.Instance.User.UserId, (long)user.UserId);
                 if (result.StatusCode == 200)
                 {
                     eventAggregator.GetEvent<UpdateContacterListEvent>().Publish();

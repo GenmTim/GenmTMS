@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMS.Core.Data.Token;
 using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.Views;
+using TMS.DeskTop.Views.CloudFile;
 using TMS.DeskTop.Views.Contacts;
 using TMS.DeskTop.Views.PersonalFile;
 using TMS.DeskTop.Views.PersonalFile.Subitem;
@@ -13,7 +14,14 @@ using TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering;
 using TMS.DeskTop.Views.WorkPlace.Auth;
 using TMS.DeskTop.Views.WorkPlace.Auth.Subitem;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
+using TMS.DeskTop.Views.WorkPlace.PerformanceData;
+using TMS.DeskTop.Views.WorkPlace.PerformanceData.Entering;
 using TMS.DeskTop.Views.WorkPlace.Report;
+using TMS.DeskTop.Views.WorkPlace.StaffCare;
+using TMS.DeskTop.Views.WorkPlace.SubjectiveData;
+using TMS.DeskTop.Views.WorkPlace.SubjectiveData.Subitem;
+using TMS.DeskTop.Views.WorkPlace.ViolateData;
+using TMS.DeskTop.Views.WorkPlace.ViolateData.Entering;
 
 namespace TMS.DeskTop.Tools.Helper
 {
@@ -100,6 +108,7 @@ namespace TMS.DeskTop.Tools.Helper
                 [typeof(ReportView)] = RegionToken.ReportContent,
                 [typeof(SearchView)] = RegionToken.SearchContent,
                 [typeof(PersonalFileView)] = RegionToken.PersonalFileContent,
+                [typeof(CloudFileView)] = RegionToken.CloudFileContent,
             };
         }
 
@@ -126,6 +135,9 @@ namespace TMS.DeskTop.Tools.Helper
                 routeMap[typeof(MyFavoriteView)] = routeMap[typeof(ContactsView)] + "myFavorite/";
             }
             routeMap[typeof(CloudFileView)] = "cloudfile/";
+            {
+                routeMap[typeof(CloudFileMainView)] = routeMap[typeof(CloudFileView)] + "main/";
+            }
             routeMap[typeof(SearchView)] = "search/";
             {
                 routeMap[typeof(SearchMainView)] = routeMap[typeof(SearchView)] + "main/";
@@ -140,10 +152,25 @@ namespace TMS.DeskTop.Tools.Helper
             routeMap[typeof(WorkPlaceView)] = "workplace/";
             {
                 routeMap[typeof(WorkPlaceMainView)] = routeMap[typeof(WorkPlaceView)] + "main/";
+                routeMap[typeof(StaffCareView)] = routeMap[typeof(WorkPlaceView)] + "staff_care/";
+                routeMap[typeof(SubjectiveDataView)] = routeMap[typeof(WorkPlaceView)] + "subjective_data/";
+                {
+                    routeMap[typeof(SubjectiveDataMainView)] = routeMap[typeof(SubjectiveDataView)] + "main/";
+                }
                 routeMap[typeof(AttendanceDataEnteringView)] = routeMap[typeof(WorkPlaceView)] + "attendanceDataEntering/";
                 {
                     routeMap[typeof(CheckDataView)] = routeMap[typeof(AttendanceDataEnteringView)] + "checkData/";
                     routeMap[typeof(EnteringDataView)] = routeMap[typeof(AttendanceDataEnteringView)] + "enteringData/";
+                }
+                routeMap[typeof(PerformanceDataEnteringView)] = routeMap[typeof(WorkPlaceView)] + "performanceDataEntering/";
+                {
+                    routeMap[typeof(PerformanceDataEnteringDataView)] = routeMap[typeof(PerformanceDataEnteringView)] + "checkData/";
+                    routeMap[typeof(PerformanceDataCheckView)] = routeMap[typeof(PerformanceDataEnteringView)] + "enteringData/";
+                }
+                routeMap[typeof(ViolateDataEnteringView)] = routeMap[typeof(WorkPlaceView)] + "violateDataEnteringView/";
+                {
+                    routeMap[typeof(ViolateDataCheckView)] = routeMap[typeof(ViolateDataEnteringView)] + "checkData/";
+                    routeMap[typeof(ViolateDataEnteringDataView)] = routeMap[typeof(ViolateDataEnteringView)] + "enteringData/";
                 }
                 routeMap[typeof(AuthView)] = routeMap[typeof(WorkPlaceView)] + "auth/";
                 {

@@ -10,6 +10,7 @@
     xmlns:popup="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
     xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:session="clr-namespace:TMS.Core.Service;assembly=TMS.Core"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     Width="{Binding WindowWidth, Mode=TwoWay}"
     Height="720"
@@ -63,7 +64,7 @@
                             <ToggleButton x:Name="profile"
                                 Style="{DynamicResource profileBtnStyle}"
                                 Cursor="Hand">
-                                <Image Source="/Resources/Images/Assets/googledrive.png" />
+                                <Image Source="{Binding Source={x:Static Member=session:SessionService.Instance}, Path=User.Avatar, Converter={StaticResource String2UriConverter}}" />
                             </ToggleButton>
                             <genm:Popup
                                 StaysOpen="False"
@@ -87,7 +88,6 @@
                                     </Border>
                                 </hc:SimplePanel>
                             </genm:Popup>
-
 
                             <!--#region Left Grid - Menu-->
                             <Grid Grid.Row="1">
@@ -298,16 +298,30 @@
                                             </Setter>
                                         </Style>
                                     </StackPanel.Resources>
-
-                                    <RadioButton
-                                        Content="S"
-                                        Background="#a0d911"
-                                        BorderThickness="0" />
-                                    <RadioButton
-                                        Content="S"
-                                        IsChecked="True"
+                                    <ListBox
                                         BorderThickness="0"
-                                        Cursor="Hand" />
+                                        SelectedIndex="0"
+                                        Style="{StaticResource ListBoxCustom}"
+                                        SelectedValue="{Binding NowCompanyEnv}"
+                                        ItemsSource="{Binding MyCompanyList}">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style BasedOn="{StaticResource ListBoxItemCustom}" TargetType="ListBoxItem">
+                                                <Setter Property="BorderThickness" Value="0" />
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <RadioButton
+                                                    Content="{Binding Name[0]}"
+                                                    IsChecked="True"
+                                                    FocusVisualStyle="{x:Null}"
+                                                    Tag="{Binding Id}"
+                                                    GroupName="company"
+                                                    BorderThickness="0"
+                                                    Cursor="Hand" />
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ListBox>
                                 </StackPanel>
                             </Grid>
                             <!--#endregion-->

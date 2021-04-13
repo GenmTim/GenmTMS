@@ -57,10 +57,9 @@
                                 </Style.Triggers>
                             </Style>
                         </hc:UniformSpacingPanel.Resources>
-                        <Button Content="关注" />
-                        <Button Content="跟随" />
+                        <Button Content="个人档案" />
                     </hc:UniformSpacingPanel>
-                    <hc:SimplePanel Margin="0,40,0,0">
+                    <hc:SimplePanel Margin="0,40,0,0" Visibility="{Binding IsHasResumeFile, Converter={StaticResource Boolean2VisibilityReConverter}}">
                         <hc:SimplePanel
                             Width="100"
                             Height="100"
@@ -89,7 +88,7 @@
                         <hc:SimplePanel
                             Width="100"
                             Height="100"
-                            Visibility="Collapsed">
+                            Visibility="{Binding IsHasResumeFile, Converter={StaticResource Boolean2VisibilityConverter}}">
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Image
                                     Width="50"
@@ -118,6 +117,7 @@
                     <hc:SimplePanel Margin="20,0,0,20">
                         <hc:UniformSpacingPanel Spacing="50">
                             <RadioButton
+                                IsChecked="True"
                                 Height="35"
                                 hc:TitleElement.Title="基本信息"
                                 Style="{StaticResource UnderlineRadioBtnStyle}" />

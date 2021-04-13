@@ -159,6 +159,7 @@
                         </hc:SideMenuItem.Header>
                         <hc:SideMenuItem Height="50" Header="考勤记录录入" />
                         <hc:SideMenuItem Height="50" Header="考勤数据管理" />
+                        <hc:SideMenuItem Height="50" Header="数据接口设置" />
                     </hc:SideMenuItem>
                 </hc:SideMenu>
                 <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,1,0" />
