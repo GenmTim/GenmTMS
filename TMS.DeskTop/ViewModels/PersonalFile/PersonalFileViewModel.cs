@@ -61,9 +61,9 @@ namespace TMS.DeskTop.ViewModels.PersonalFile
 
         private void GoHome()
         {
-            RouteHelper.Goto(regionManager, typeof(PersonalFileView) , typeof(SearchMainView));
+            RouteHelper.Goto(regionManager, typeof(PersonalFileView), typeof(SearchMainView));
         }
-       
+
 
 
     }

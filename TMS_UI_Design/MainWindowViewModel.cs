@@ -1,12 +1,9 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -14,14 +11,14 @@ using System.Windows.Data;
 namespace TMS_UI_Design
 {
     public class UploadFileItem : BindableBase
-    { 
+    {
         public string Id { get; set; }
         public string FullName { get; set; }
         public string Name { get; set; }
         public long Size { get; set; }
 
         private double rate;
-        public double Rate 
+        public double Rate
         {
             get => rate;
             set
@@ -92,14 +89,14 @@ namespace TMS_UI_Design
         }
 
         private long uploadedFileSumSize;
-        public long UploadedFileSumSize 
-        { 
+        public long UploadedFileSumSize
+        {
             get => uploadedFileSumSize;
-            set 
-            { 
+            set
+            {
                 uploadedFileSumSize = value;
                 RaisePropertyChanged();
-            } 
+            }
         }
 
 
@@ -161,7 +158,7 @@ namespace TMS_UI_Design
                         }
                     }));
                 }
-                Application.Current.Dispatcher.Invoke(new Action(() => 
+                Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
                     UploadFileItemNumber -= 1;
                 }));

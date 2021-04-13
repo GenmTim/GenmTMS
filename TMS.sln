@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMS_UI_Design", "TMS_UI_Des
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genm", "Genm\Genm.csproj", "{173F79F0-9166-48B6-8808-4A456DCE3D03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "login_test", "login_test\login_test.csproj", "{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,14 @@ Global
 		{173F79F0-9166-48B6-8808-4A456DCE3D03}.Release|Any CPU.Build.0 = Release|Any CPU
 		{173F79F0-9166-48B6-8808-4A456DCE3D03}.Release|x64.ActiveCfg = Release|x64
 		{173F79F0-9166-48B6-8808-4A456DCE3D03}.Release|x64.Build.0 = Release|x64
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}.Debug|x64.Build.0 = Debug|Any CPU
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}.Release|x64.ActiveCfg = Release|Any CPU
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +83,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C115EC0B-EFCA-48FE-861D-398157708F20} = {C882846C-C7E3-441F-912C-70B55A59C03C}
 		{CB6C8263-CABE-4EC7-8929-E1AEED333607} = {C882846C-C7E3-441F-912C-70B55A59C03C}
+		{F3BC725B-2F95-45C4-A5F4-EDD7009FF8ED} = {C882846C-C7E3-441F-912C-70B55A59C03C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {38016A3C-9F6D-437B-A6C5-A8F26564812E}

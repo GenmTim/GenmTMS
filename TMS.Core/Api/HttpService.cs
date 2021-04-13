@@ -114,6 +114,72 @@ namespace TMS.Core.Api
         }
 
         /// <summary>
+        /// 请求我的企业列表
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ApiResponse> GetMyCompanyList()
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/company_role/myCompanys");
+                restRequest.Method = Method.GET;
+
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    string data = jObjects["data"].ToString();
+                    List<CompanyDto> companyDto = JsonConvert.DeserializeObject<List<CompanyDto>>(data);
+                    return new ApiResponse(200, companyDto);
+                }
+                else
+                {
+                    return new ApiResponse(201, "查询失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 请求我的文件树形列表
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ApiResponse> GetMyFileTreeStruct()
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/mybatis_plus/folder/treeFolderList");
+                restRequest.Method = Method.GET;
+
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    string data = jObjects["data"].ToString();
+                    List<TreeFolder> folderTreeDto = JsonConvert.DeserializeObject<List<TreeFolder>>(data);
+                    return new ApiResponse(200, folderTreeDto);
+                }
+                else
+                {
+                    return new ApiResponse(201, "查询失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
         /// 注册企业
         /// </summary>
         /// <param name="industry"></param>
@@ -216,7 +282,7 @@ namespace TMS.Core.Api
         /// </summary>
         /// <param name="company_id"></param>
         /// <returns>类型：List<TreeDept></returns>
-        public async Task<ApiResponse> GetCompanyTreeDept(int company_id)
+        public async Task<ApiResponse> GetCompanyTreeDept(long company_id)
         {
             try
             {
@@ -287,7 +353,7 @@ namespace TMS.Core.Api
         /// <param name="company_id"></param>
         /// <param name="receiver_id"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> InviteUserJoinCompany(long company_id,long receiver_id)
+        public async Task<ApiResponse> InviteUserJoinCompany(long company_id, long receiver_id)
         {
             try
             {
@@ -325,7 +391,7 @@ namespace TMS.Core.Api
         /// <param name="message_id"></param>
         /// <param name="is_agree"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> ReplyCompanyInvite(long company_id, long message_id,Boolean is_agree)
+        public async Task<ApiResponse> ReplyCompanyInvite(long company_id, long message_id, Boolean is_agree)
         {
             try
             {
@@ -560,7 +626,7 @@ namespace TMS.Core.Api
         /// </summary>
         /// <param name="dept_id"></param>
         /// <returns>需要调整指定，有公司角色名</returns>
-        public async Task<ApiResponse> GetDeptUserInfoList(int dept_id)
+        public async Task<ApiResponse> GetDeptUserInfoList(long dept_id)
         {
             try
             {
@@ -958,9 +1024,9 @@ namespace TMS.Core.Api
                 {
                     //是联系人
                     string data = jObjects["data"].ToString();
-					//debug 调整输出类
-					User user = JsonConvert.DeserializeObject<User>(data);
-					return new ApiResponse(200, user);
+                    //debug 调整输出类
+                    User user = JsonConvert.DeserializeObject<User>(data);
+                    return new ApiResponse(200, user);
                 }
                 else
                 {
@@ -1174,7 +1240,7 @@ namespace TMS.Core.Api
             }
         }
 
-        
+
 
         /// <summary>
         /// 发起添加联系人
@@ -1220,7 +1286,7 @@ namespace TMS.Core.Api
         /// <param name="friend_id"></param>
         /// <param name="is_agree"></param>
         /// <returns></returns>
-        public async Task<ApiResponse> ReplyNewContactV2(long friend_id,bool is_agree)
+        public async Task<ApiResponse> ReplyNewContactV2(long friend_id, bool is_agree)
         {
             //debug
             try
@@ -2341,11 +2407,11 @@ namespace TMS.Core.Api
         {
             try
             {
-                RestRequest restRequest = new RestRequest("/folder");
+                RestRequest restRequest = new RestRequest("/mybatis_plus/folder");
 
                 JObject jObject = JObject.FromObject(folderDto);
-
-                restRequest.AddJsonBody(jObject.ToString());
+                restRequest.AddParameter("name", folderDto.Name);
+                restRequest.AddParameter("parentFolder", folderDto.ParentFolder);
 
                 restRequest.Method = Method.POST;
                 var response = await restClient.ExecuteAsync(restRequest);
@@ -2355,9 +2421,7 @@ namespace TMS.Core.Api
 
                 if (code.Equals("0000"))
                 {
-                    string data = jObjects["data"].ToString();
-                    FolderDto folderDto1 = JsonConvert.DeserializeObject<FolderDto>(data);
-                    return new ApiResponse(200, folderDto1);
+                    return new ApiResponse(200, "新建成功");
                 }
                 else
                 {

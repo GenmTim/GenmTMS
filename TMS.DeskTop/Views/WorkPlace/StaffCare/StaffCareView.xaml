@@ -1,0 +1,53 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.WorkPlace.StaffCare.StaffCareView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace.StaffCare"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel Margin="20,0">
+            <hc:SimplePanel>
+                <Border
+                    Background="White"
+                    CornerRadius="5"
+                    Effect="{StaticResource EffectShadowCom}" />
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <hc:SimplePanel>
+                        <hc:Gravatar
+                            Width="50"
+                            Height="50"
+                            Id="asdas"
+                            Style="{StaticResource GravatarCircleImg}" />
+                    </hc:SimplePanel>
+                    <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
+                        <StackPanel>
+                            <TextBlock Text="蔡承龙" FontSize="16" />
+                            <TextBlock>
+                                <Run Text="生日: " />
+                                <Run Text="2020-10-26" />
+                            </TextBlock>
+                        </StackPanel>
+                    </hc:SimplePanel>
+                    <hc:SimplePanel Grid.Column="2">
+                        <hc:UniformSpacingPanel VerticalAlignment="Center">
+                            <Button
+                                Content="送上祝福"
+                                Style="{StaticResource ButtonPrimary}"
+                                Background="#eb2f96" />
+                        </hc:UniformSpacingPanel>
+                    </hc:SimplePanel>
+                </Grid>
+            </hc:SimplePanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

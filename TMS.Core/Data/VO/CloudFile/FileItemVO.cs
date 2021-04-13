@@ -1,12 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Prism.Mvvm;
+using System.Collections.ObjectModel;
 using TMS.Core.Data.Entity;
 
 namespace TMS.Core.Data.VO.CloudFile
 {
+    public class FolderTreeNodeItemVO : BindableBase
+    {
+        private long id;
+        public long Id 
+        {
+            get => id; 
+            set
+            {
+                id = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private string name;
+        public string Name 
+        {
+            get => name; 
+            set
+            {
+                name = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private ObservableCollection<FolderTreeNodeItemVO> children;
+        public ObservableCollection<FolderTreeNodeItemVO> Children 
+        {
+            get => children;
+            set
+            {
+                children = value;
+                RaisePropertyChanged();
+            }
+        }
+    }
+
     public class FileItemVO
     {
         public string Name { get; set; }

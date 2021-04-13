@@ -127,7 +127,7 @@ namespace TMS.DeskTop.Resources.Converters
             string basePath = "pack://application:,,,/Resources/Images/Icon/FileType/";
             string path = basePath;
 
-            switch(fileTypeName)
+            switch (fileTypeName)
             {
                 case "ppt":
                 case "PPT":

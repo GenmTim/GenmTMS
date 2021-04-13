@@ -44,7 +44,7 @@ namespace TMS.DeskTop.ViewModels
             if (result.StatusCode == 200)
             {
                 User user = (User)result.Data;
-                SessionService.User = user;
+                SessionService.Instance.User = user;
                 eventAggregator.GetEvent<LoginedEvent>().Publish();
             }
             else

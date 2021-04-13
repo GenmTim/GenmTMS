@@ -89,10 +89,10 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
                 var chatInfo = new ChatInfoModel()
                 {
                     Message = _chatString,
-                    SenderId = (long)SessionService.User.UserId,
+                    SenderId = (long)SessionService.Instance.User.UserId,
                     Role = ChatRoleType.Me,
                     Timestamp = timestamp,
-                    Avatar = new Uri(SessionService.User.Avatar)
+                    Avatar = new Uri(SessionService.Instance.User.Avatar)
                 };
 
                 ChatInfos.Add(chatInfo);
@@ -100,7 +100,7 @@ namespace TMS.DeskTop.UserControls.Common.ViewModels
                 // 发送新数据
                 var notificationData = new NotificationData()
                 {
-                    Sender = SessionService.User,
+                    Sender = SessionService.Instance.User,
                     Receiver = Context.User,
                     Data = _chatString,
                     Timestamp = timestamp

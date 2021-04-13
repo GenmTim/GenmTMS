@@ -8,9 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using TMS.Core.Api;
 using TMS.Core.Data.Entity;
-using TMS.Core.Data.Token;
 using TMS.Core.Event;
-using TMS.DeskTop.Tools.Helper;
 using static TMS.DeskTop.UserControls.Card.ViewModels.NameCardModel;
 
 namespace TMS.DeskTop.UserControls.Card.Views

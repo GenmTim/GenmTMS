@@ -32,7 +32,6 @@ namespace TMS.DeskTop.Views
         {
             eventAggregator.GetEvent<SashEvent>().Subscribe((data) =>
             {
-                //drawer.IsOpen = true;
                 RegionHelper.RequestNavigate(regionManager, RegionToken.MainContent, typeof(PersonalFileView));
             });
         }

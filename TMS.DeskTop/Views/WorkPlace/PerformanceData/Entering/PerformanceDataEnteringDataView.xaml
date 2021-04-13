@@ -1,0 +1,71 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.WorkPlace.PerformanceData.Entering.PerformanceDataEnteringDataView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <hc:SimplePanel>
+        <StackPanel Width="600">
+            <Grid>
+                <Grid.Resources>
+                    <Style BasedOn="{StaticResource TextBoxExtend}" TargetType="hc:TextBox">
+                        <Setter Property="hc:InfoElement.Necessary" Value="True" />
+                        <Setter Property="FontSize" Value="14" />
+                    </Style>
+                </Grid.Resources>
+                <hc:TextBox hc:TitleElement.Title="绩效时间" />
+            </Grid>
+            <StackPanel Margin="0,50,0,0">
+                <TextBlock Text="上传绩效数据" FontSize="14" />
+                <hc:SimplePanel Margin="0,10,0,0">
+                    <Border
+                        Height="200"
+                        CornerRadius="10"
+                        Background="#f7f8ff" />
+                    <hc:DashedBorder
+                        Margin="20,30"
+                        hc:BorderElement.CornerRadius="8"
+                        BorderDashArray="3,2"
+                        CornerRadius="8"
+                        BorderThickness="1"
+                        BorderBrush="{StaticResource PrimaryBrush}"
+                        Background="#CFFFFFFF" />
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock
+                            Text="&#xe628;"
+                            HorizontalAlignment="Center"
+                            FontSize="50"
+                            Foreground="{StaticResource PrimaryBrush}"
+                            FontFamily="{StaticResource FIconFontFamily}" />
+                        <TextBlock
+                            Text="将文件拖拽至此区域或选择文件上传"
+                            Margin="0,8,0,0"
+                            HorizontalAlignment="Center"
+                            FontSize="14" />
+                        <TextBlock
+                            Text="Excel绩效表中的[姓名]为必填且[手机号码]、[邮箱]、[身份证号码]至少填写一项"
+                            Width="260"
+                            TextWrapping="Wrap"
+                            Margin="0,2,0,0"
+                            HorizontalAlignment="Center"
+                            TextAlignment="Center"
+                            Foreground="#51000000"
+                            FontSize="12" />
+                    </StackPanel>
+                </hc:SimplePanel>
+                <Button
+                    Content="下一步"
+                    Command="{Binding NextStepCmd}"
+                    Width="100"
+                    Margin="0,30,0,0"
+                    Cursor="Hand"
+                    Style="{StaticResource ButtonPrimary}" />
+            </StackPanel>
+        </StackPanel>
+    </hc:SimplePanel>
+</UserControl>

@@ -37,7 +37,7 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
             this.regionManager = reigonManager;
             this.eventAggregator = eventAggregator;
             this.GoGetNewContacterCmd = new DelegateCommand(GoGetNewContacter);
-            this.CloseNameCardCmd = new DelegateCommand(() => 
+            this.CloseNameCardCmd = new DelegateCommand(() =>
             {
                 this.eventAggregator.GetEvent<CloseNameCardEvent>().Publish();
             });
@@ -51,13 +51,13 @@ namespace TMS.DeskTop.UserControls.Card.ViewModels
         {
             var contactRequest = new Core.Data.VO.Notification.ContactRequest()
             {
-                RequesterId = (long)SessionService.User.UserId,
+                RequesterId = (long)SessionService.Instance.User.UserId,
                 AccepterId = (long)user.UserId,
                 State = ContactRequestState.Pending
             };
             NotificationData notificationData = new NotificationData
             {
-                Sender = SessionService.User,
+                Sender = SessionService.Instance.User,
                 Receiver = user,
                 Type = 1,
                 SubType = 0,

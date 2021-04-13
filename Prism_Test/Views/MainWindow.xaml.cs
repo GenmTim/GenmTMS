@@ -1,7 +1,5 @@
 ﻿using Prism.Regions;
-using System;
 using System.Windows;
-using WebSocketSharp;
 
 namespace Prism_Test.Views
 {

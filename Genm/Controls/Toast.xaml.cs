@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Genm.Controls
 {
@@ -75,7 +64,8 @@ namespace Genm.Controls
 
             DoubleAnimation anim = new DoubleAnimation(0d, 1d, this.DurationAnimation);
 
-            anim.Completed += delegate {
+            anim.Completed += delegate
+            {
                 DelayedClose();
             };
 
@@ -84,7 +74,8 @@ namespace Genm.Controls
             {
                 DoubleAnimation fadeOut = new DoubleAnimation(this.Opacity, 0d, TimeSpan.FromMilliseconds(150));
 
-                fadeOut.Completed += delegate {
+                fadeOut.Completed += delegate
+                {
                     this.BeginAnimation(UserControl.OpacityProperty, anim);
                 };
 
@@ -124,12 +115,14 @@ namespace Genm.Controls
 
         private void DelayedClose()
         {
-            _waitThread = new Thread(() => {
+            _waitThread = new Thread(() =>
+            {
                 try
                 {
                     Thread.Sleep(this.Duration);
 
-                    Application.Current.Dispatcher.Invoke(() => {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
                         Hide();
                     });
                 }

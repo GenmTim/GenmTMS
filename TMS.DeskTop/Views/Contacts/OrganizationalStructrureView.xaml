@@ -134,7 +134,7 @@
                                 <hc:Gravatar
                                     Width="50"
                                     Height="50"
-                                    Source="{Binding Icon}"
+                                    Source="{Binding Avatar, Converter={StaticResource String2UriConverter}}"
                                     Style="{StaticResource GravatarCircleImg}" />
                                 <TextBlock Grid.Column="1"
                                     Text="{Binding Name}"
@@ -316,9 +316,10 @@
                             hc:BorderElement.CornerRadius="0"
                             ItemsSource="{Binding TreeViewData}"
                             Background="Transparent"
+                            SelectedItemChanged="TreeView_SelectedItemChanged"
                             BorderThickness="0">
                             <TreeView.ItemTemplate>
-                                <HierarchicalDataTemplate DataType="{x:Type data:TreeNodeItem}" ItemsSource="{Binding Children}">
+                                <HierarchicalDataTemplate DataType="{x:Type data:DeptTreeNodeItemVO}" ItemsSource="{Binding Children}">
                                     <StackPanel Height="40" Orientation="Horizontal">
                                         <TextBlock
                                             Text="&#xe74b;"
@@ -342,13 +343,12 @@
                         </Grid.RowDefinitions>
                         <!--<Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />-->
                         <TextBlock
-                            Text="研发部"
+                            Text="{Binding NowDeptName}"
                             Margin="20,0,0,0"
                             VerticalAlignment="Center"
                             Foreground="{StaticResource SecondaryTextBrush}"
                             FontSize="16" />
                         <ListBox Grid.Row="1" ItemsSource="{Binding UserList}" />
-
                     </Grid>
                 </Grid>
             </Grid>

@@ -1,13 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMS.Core.Data.Token;
-using TMS.Core.Event;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.Views.PersonalFile;
 

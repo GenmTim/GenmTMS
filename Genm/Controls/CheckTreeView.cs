@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -71,9 +67,9 @@ namespace Genm.Controls
         public bool? IsChecked
         {
             get => _IsChecked;
-            set 
-            { 
-                _IsChecked = value; 
+            set
+            {
+                _IsChecked = value;
                 OnPropertyChanged("IsChecked");
                 StateChange?.Invoke(this);
             }

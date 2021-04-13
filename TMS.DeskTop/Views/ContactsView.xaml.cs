@@ -13,7 +13,7 @@ namespace TMS.DeskTop.Views
         public ContactsView(IRegionManager regionManager) : base(regionManager, typeof(ContactsView))
         {
             InitializeComponent();
-            RegisterDefaultRegionView(RegionToken.ContactsContent, nameof(OrganizationalStructrureView));
+            RegisterDefaultRegionView(RegionToken.ContactsContent, nameof(PersonalInfoView));
         }
     }
 }

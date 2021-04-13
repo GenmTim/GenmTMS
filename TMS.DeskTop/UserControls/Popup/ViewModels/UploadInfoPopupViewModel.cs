@@ -1,5 +1,4 @@
-﻿using Prism.Commands;
-using Prism.Events;
+﻿using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
@@ -14,7 +13,7 @@ namespace TMS.DeskTop.UserControls.Popup.ViewModels
 
     public class UploadInfoPopupViewModel : BindableBase
     {
-        private readonly IEventAggregator eventAggregator; 
+        private readonly IEventAggregator eventAggregator;
         public UploadInfoPopupViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;

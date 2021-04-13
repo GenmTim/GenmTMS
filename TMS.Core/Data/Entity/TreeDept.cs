@@ -1,14 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TMS.Core.Data.Entity
 {
-	public class TreeDept
-	{
+    public class TreeDept
+    {
         /// <summary>
         /// 部门ID
         /// </summary>
