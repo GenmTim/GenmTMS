@@ -8,11 +8,6 @@ namespace login_test
     {
         public DateTime StartTime;
         public DateTime EndTime;
-
-        //public DateTime FindInTimeSpacePosition(List<>, DateTime datetime)
-        //      {
-
-        //      }
     }
 
 
