@@ -1,0 +1,152 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.WorkPlace.Activity.Component.ActivityCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace.Activity.Component"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <hc:SimplePanel
+        Width="400"
+        Height="200"
+        Margin="0,0,20,20">
+        <Border Background="{StaticResource RegionBrush}" Effect="{StaticResource EffectShadowCom}" />
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="15" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <hc:SimplePanel Grid.Row="0" Grid.RowSpan="2">
+                <Border>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0" Color="#2e92e9" />
+                            <GradientStop Offset="1" Color="#05dcfb" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Image
+                    Width="150"
+                    Height="150"
+                    Margin="40,15,0,0"
+                    HorizontalAlignment="Left"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Source="http://47.101.157.194:8081/uploads/image/i1.png" />
+                <hc:SimplePanel
+                    Width="85"
+                    Height="33"
+                    Margin="0,0,0,50"
+                    HorizontalAlignment="Right">
+                    <Border
+                        CornerRadius="15,0,0,15"
+                        Effect="{StaticResource EffectShadow1}"
+                        Background="{StaticResource SuccessBrush}"
+                        BorderThickness="1,1,0,1" />
+                    <TextBlock
+                        Text="活动进行中"
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold"
+                        Foreground="White" />
+                </hc:SimplePanel>
+            </hc:SimplePanel>
+            <hc:SimplePanel Grid.Row="1"
+                Grid.RowSpan="2"
+                Margin="0,0,20,0"
+                HorizontalAlignment="Right">
+                <Button Opacity="1">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource ButtonCustom}" TargetType="Button">
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Effect" Value="{StaticResource EffectShadow2}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <hc:SimplePanel Height="30">
+                        <Border
+                            Width="100"
+                            Background="White"
+                            CornerRadius="15"
+                            Effect="{StaticResource EffectShadowCom}" />
+                        <hc:SimplePanel HorizontalAlignment="Left">
+                            <Border
+                                Width="30"
+                                Style="{StaticResource BorderCircular}"
+                                Background="{StaticResource PrimaryBrush}" />
+                            <TextBlock
+                                Text="&#xe786;"
+                                Margin="2,2,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                Foreground="White"
+                                FontFamily="{StaticResource FIconPlusFontFamily}" />
+                        </hc:SimplePanel>
+                        <StackPanel Margin="8,0,0,0" VerticalAlignment="Center">
+                            <TextBlock
+                                Text="进入"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="{StaticResource PrimaryBrush}" />
+                        </StackPanel>
+                    </hc:SimplePanel>
+                </Button>
+            </hc:SimplePanel>
+            <hc:SimplePanel Grid.Row="2"
+                Grid.RowSpan="2"
+                Margin="10,20,10,0">
+                <Border Background="White" />
+                <StackPanel>
+                    <TextBlock
+                        Text="UX UI Designer"
+                        FontWeight="SemiBold"
+                        FontSize="16" />
+                    <TextBlock
+                        Text="informotion Techonoiogy"
+                        Margin="0,5,0,0"
+                        FontWeight="SemiBold"
+                        FontSize="14" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <hc:Gravatar
+                        Width="35"
+                        Height="35"
+                        Margin="0,0,-5,0"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        BorderThickness="2"
+                        BorderBrush="White"
+                        Source="http://47.101.157.194:8081/uploads/image/target1.jpg"
+                        Style="{StaticResource GravatarCircleImg}" />
+                    <hc:Gravatar
+                        Width="35"
+                        Height="35"
+                        Margin="0,0,-5,0"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        BorderThickness="2"
+                        BorderBrush="White"
+                        Source="http://47.101.157.194:8081/uploads/image/target2.jpg"
+                        Style="{StaticResource GravatarCircleImg}" />
+                    <hc:Gravatar
+                        Width="35"
+                        Height="35"
+                        Margin="0,0,-5,0"
+                        BorderThickness="2"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        BorderBrush="White"
+                        Source="http://47.101.157.194:8081/uploads/image/target3.jpg"
+                        Style="{StaticResource GravatarCircleImg}" />
+                </StackPanel>
+            </hc:SimplePanel>
+        </Grid>
+    </hc:SimplePanel>
+</UserControl>

@@ -20,7 +20,7 @@ namespace TMS.DeskTop.ViewModels
             public string IconFont { get; set; }
             public string Url { get; set; }
             public string Tag { get; set; }
-            public DelegateCommand<string> Command { get; set; }
+            public DelegateCommand<object> Command { get; set; }
         }
 
         public class ClassifyItem
@@ -36,7 +36,7 @@ namespace TMS.DeskTop.ViewModels
         {
             this.regionManager = regionManager;
             this.ClassifyCmd = new DelegateCommand<string>(ClassifyViewAppList);
-            NavigationCmd = new DelegateCommand<string>(NavigationPage);
+            NavigationCmd = new DelegateCommand<object>(NavigationPage);
             TabClosedCommand = new DelegateCommand<RoutedEventArgs>(CloseTabItem);
             SimulationData();
         }
@@ -48,7 +48,7 @@ namespace TMS.DeskTop.ViewModels
         private Dictionary<string, List<AppItem>> appGroupMap;
 
 
-        public DelegateCommand<string> NavigationCmd { get; private set; }
+        public DelegateCommand<object> NavigationCmd { get; private set; }
         public DelegateCommand<RoutedEventArgs> TabClosedCommand { get; private set; }
 
         /// <summary>
@@ -90,10 +90,12 @@ namespace TMS.DeskTop.ViewModels
             }
         }
 
-        private void NavigationPage(string view)
+        private void NavigationPage(object view)
         {
-            if (view == null || view == "") return;
-            RegionHelper.RequestNavigate(regionManager, RegionToken.WorkPlaceTabContent, view);
+            if (view == null) return;
+            AppItem app = (AppItem)view;
+            AppName = app.Name;
+            RegionHelper.RequestNavigate(regionManager, RegionToken.WorkPlaceTabContent, app.Url);
         }
 
         public void CloseTabItem(RoutedEventArgs e)
@@ -144,8 +146,11 @@ namespace TMS.DeskTop.ViewModels
                 new AppItem { Tag="数据农场", Name = "绩效数据", IconFont = "\xe6f2", Url = "PerformanceDataEnteringView", Command=NavigationCmd },
                 new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe717", Url = "SubjectiveDataView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "授权", IconFont = "\xe730", Url = "AuthMainView", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "人才推荐", IconFont = "\xe730", Url = "RecommendView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "调查问券", IconFont = "\xe740", Url = "EvaluationView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "员工关怀", IconFont = "\xe782", Url = "StaffCareView", Command=NavigationCmd },
+                new AppItem { Tag="气氛组", Name = "社区", IconFont = "\xe730", Url = "CommunityView", Command=NavigationCmd },
+                new AppItem { Tag="气氛组", Name = "活动", IconFont = "\xe730", Url = "ActivityView", Command=NavigationCmd },
             };
 
             ClassifyItemList.Add(new ClassifyItem { Name = "全部", Command = ClassifyCmd });
@@ -168,10 +173,10 @@ namespace TMS.DeskTop.ViewModels
             OftenUseAppList = new ObservableCollection<AppItem>()
             {
                 new AppItem { Tag="数据农场", Name = "绩效数据", IconFont = "\xe6f2", Url = "PerformanceDataEnteringView", Command=NavigationCmd },
-                new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe717", Url = "", Command=NavigationCmd },
+                new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe717", Url = "SubjectiveDataView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "授权", IconFont = "\xe730", Url = "AuthMainView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "调查问券", IconFont = "\xe740", Url = "EvaluationView", Command=NavigationCmd },
-                new AppItem { Tag="人事工具", Name = "员工关怀", IconFont = "\xe782", Url = "EvaluationView", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "员工关怀", IconFont = "\xe782", Url = "StaffCareView", Command=NavigationCmd },
             };
 
             allAppDataList.ForEach(appItem => viewAppList.Add(appItem));

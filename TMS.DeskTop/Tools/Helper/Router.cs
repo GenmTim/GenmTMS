@@ -9,6 +9,7 @@ using TMS.DeskTop.Views.PersonalFile;
 using TMS.DeskTop.Views.PersonalFile.Subitem;
 using TMS.DeskTop.Views.Search;
 using TMS.DeskTop.Views.WorkPlace;
+using TMS.DeskTop.Views.WorkPlace.Activity;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering;
 using TMS.DeskTop.Views.WorkPlace.Auth;
@@ -16,6 +17,7 @@ using TMS.DeskTop.Views.WorkPlace.Auth.Subitem;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
 using TMS.DeskTop.Views.WorkPlace.PerformanceData;
 using TMS.DeskTop.Views.WorkPlace.PerformanceData.Entering;
+using TMS.DeskTop.Views.WorkPlace.Recommend;
 using TMS.DeskTop.Views.WorkPlace.Report;
 using TMS.DeskTop.Views.WorkPlace.StaffCare;
 using TMS.DeskTop.Views.WorkPlace.SubjectiveData;
@@ -105,7 +107,7 @@ namespace TMS.DeskTop.Tools.Helper
                 [typeof(AuthMainView)] = RegionToken.AuthMainContent,
                 [typeof(EvaluationView)] = RegionToken.EvaluationContent,
                 [typeof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
-                [typeof(ReportView)] = RegionToken.ReportContent,
+                [typeof(CommunityView)] = RegionToken.ReportContent,
                 [typeof(SearchView)] = RegionToken.SearchContent,
                 [typeof(PersonalFileView)] = RegionToken.PersonalFileContent,
                 [typeof(CloudFileView)] = RegionToken.CloudFileContent,
@@ -188,10 +190,9 @@ namespace TMS.DeskTop.Tools.Helper
                     routeMap[typeof(FullInEvaluationView)] = routeMap[typeof(EvaluationView)] + "fullIn/";
                     routeMap[typeof(ManageEvaluationView)] = routeMap[typeof(EvaluationView)] + "manage/";
                 }
-                routeMap[typeof(ReportView)] = routeMap[typeof(WorkPlaceView)] + "report/";
-                {
-                    routeMap[typeof(ReportMainView)] = routeMap[typeof(ReportView)] + "main/";
-                }
+                routeMap[typeof(CommunityView)] = routeMap[typeof(WorkPlaceView)] + "community/";
+                routeMap[typeof(ActivityView)] = routeMap[typeof(WorkPlaceView)] + "activity/";
+                routeMap[typeof(RecommendView)] = routeMap[typeof(WorkPlaceView)] + "recommend/";
             }
 
             routeMap[typeof(BackNavigationView)] = nameof(BackNavigationView);

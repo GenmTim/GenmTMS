@@ -48,7 +48,6 @@ namespace TMS.Core.Api
 				shard.shardTotal = shardTotal;
 				shard.shardSize = shardSize;
 				shard.fileKey = key;
-
 			}
 			
 			ApiResponse apiResponse = await HttpService.Instance.FileUpload(shard, fileShard);

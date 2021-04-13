@@ -8,9 +8,9 @@ namespace TMS.DeskTop.Views.WorkPlace
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
     /// </summary>
-    public partial class ReportView : RegionManagerControl
+    public partial class CommunityView : RegionManagerControl
     {
-        public ReportView(IRegionManager regionManager) : base(regionManager, typeof(ReportView))
+        public CommunityView(IRegionManager regionManager) : base(regionManager, typeof(CommunityView))
         {
             InitializeComponent();
             RegisterDefaultRegionView(RegionToken.ReportContent, nameof(ReportMainView));
