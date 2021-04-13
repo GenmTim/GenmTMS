@@ -2795,6 +2795,83 @@ namespace TMS.Core.Api
         #endregion
 
         #region 文件
+
+        /// <summary>
+        /// 上传文件分片
+        /// </summary>
+        /// <param name="shard"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> FileUpload(FileShard shard, byte[] file)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/mybatis_plus/file/upload");
+                restRequest.AddParameter("key", shard.fileKey);
+                restRequest.AddParameter("shardIndex", shard.shardIndex);
+                restRequest.AddParameter("shardSize", shard.shardSize);
+                restRequest.AddParameter("shardTotal", shard.shardTotal);
+                restRequest.AddParameter("size", shard.size);
+                restRequest.AddParameter("suffix", shard.suffix);
+                //restRequest.
+                restRequest.AddFileBytes("file", file, shard.name);
+                //restRequest.AddParameter("file",file, "multipart/form-data", ParameterType.RequestBody);
+                restRequest.Method = Method.POST;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+                    string data = jObjects["data"].ToString();
+                    return new ApiResponse(200, data);
+                }
+                else
+                {
+                    return new ApiResponse(201, "文件上传失败");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
+        /// <summary>
+        /// 检查文件是否数据库有记录
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public async Task<ApiResponse> FileCheck(string key)
+        {
+            try
+            {
+                RestRequest restRequest = new RestRequest("/mybatis_plus/file/check");
+                restRequest.AddParameter("key", key);
+                restRequest.Method = Method.GET;
+                var response = await restClient.ExecuteAsync(restRequest);
+
+                JObject jObjects = JObject.Parse(response.Content);
+                string code = jObjects["code"].ToString();
+
+                if (code.Equals("0000"))
+                {
+					string data = jObjects["data"].ToString();
+                    FileShard fileShard = JsonConvert.DeserializeObject<FileShard>(data);
+					return new ApiResponse(200, fileShard);
+                }
+                else
+                {
+                    return new ApiResponse(201, "没有key，可以直接添加");
+                }
+            }
+            catch (Exception)
+            {
+                return new ApiResponse(-1, "程序异常");
+            }
+        }
+
         /// <summary>
         /// 获取文件
         /// </summary>
