@@ -103,7 +103,6 @@
                                 HorizontalOffset="33"
                                 StaysOpen="False"
                                 Placement="Left"
-                                PopupAnimation="Fade"
                                 VerticalOffset="38"
                                 AllowsTransparency="True"
                                 IsOpen="{Binding ElementName=menuControlBtn, Path=IsChecked}"

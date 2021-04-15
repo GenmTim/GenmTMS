@@ -14,7 +14,7 @@
     <Grid>
         <Border
             CornerRadius="5"
-            Background="#666666"
+            Background="#292b2d"
             Opacity="0.6" />
         <TextBlock x:Name="ToastContent"
             Text="Hello"

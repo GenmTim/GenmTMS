@@ -9,12 +9,215 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
     prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <hc:SimplePanel Background="#f3f4f6">
-        <Grid Margin="30">
+        <hc:SimplePanel Margin="40">
+            <Border Background="White" Effect="{StaticResource EffectShadowCom}" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />
+                <hc:SimplePanel Margin="30,0">
+                    <hc:UniformSpacingPanel
+                        VerticalAlignment="Center"
+                        Spacing="40"
+                        Orientation="Horizontal">
+                        <RadioButton
+                            Content="个人基本信息"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource TextRadioBtnStyle}"
+                            FontWeight="SemiBold" />
+                        <RadioButton
+                            Content="档案信息"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource TextRadioBtnStyle}"
+                            FontWeight="SemiBold" />
+                    </hc:UniformSpacingPanel>
+
+                </hc:SimplePanel>
+                <hc:SimplePanel Grid.Row="1" Margin="30,15">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <hc:SimplePanel>
+                            <StackPanel Orientation="Horizontal">
+                                <hc:Gravatar Source="http://47.101.157.194:8081/static/avatar/target4.jpg" Style="{StaticResource GravatarCircleImg}" />
+                                <StackPanel Margin="20,0,0,0" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Text="蔡承龙"
+                                        Foreground="{StaticResource PrimaryBrush}"
+                                        FontSize="18"
+                                        FontWeight="SemiBold" />
+                                    <TextBlock
+                                        Text="Golang 游戏服务端"
+                                        Margin="0,5,0,0"
+                                        Foreground="#b6b2c9" />
+                                </StackPanel>
+                            </StackPanel>
+                            <hc:UniformSpacingPanel
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Spacing="15"
+                                Orientation="Horizontal">
+                                <Button
+                                    Width="33"
+                                    Height="33"
+                                    hc:BorderElement.CornerRadius="5"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource BorderBrush}"
+                                    Style="{StaticResource ButtonCustom}">
+                                    <TextBlock Text="" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                </Button>
+                                <Button
+                                    Width="33"
+                                    Height="33"
+                                    hc:BorderElement.CornerRadius="5"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource BorderBrush}"
+                                    Style="{StaticResource ButtonCustom}">
+                                    <TextBlock Text="" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                </Button>
+                                <Button
+                                    Width="33"
+                                    Height="33"
+                                    hc:BorderElement.CornerRadius="5"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource BorderBrush}"
+                                    Style="{StaticResource ButtonCustom}">
+                                    <TextBlock Text="" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                </Button>
+                            </hc:UniformSpacingPanel>
+                        </hc:SimplePanel>
+                        <hc:SimplePanel Grid.Row="1" Margin="0,15,0,0">
+                            <ListView
+                                HorizontalAlignment="Left"
+                                BorderBrush="Transparent"
+                                Style="{StaticResource ListBoxCustom}"
+                                Background="Transparent">
+                                <ListView.ItemsSource>
+                                    <x:Array Type="system:String">
+                                        <system:String>C#</system:String>
+                                        <system:String>JavaScript</system:String>
+                                        <system:String>Java</system:String>
+                                        <system:String>TypeScript</system:String>
+                                        <system:String>C++</system:String>
+                                        <system:String>Go</system:String>
+                                        <system:String>Docker</system:String>
+                                        <system:String>Redis</system:String>
+                                        <system:String>Lua</system:String>
+                                        <system:String>C</system:String>
+                                    </x:Array>
+                                </ListView.ItemsSource>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label
+                                            Content="{Binding .}"
+                                            Margin="0,0,15,15"
+                                            FontWeight="SemiBold"
+                                            BorderBrush="Transparent"
+                                            Background="#fafafe"
+                                            Foreground="#726f8d" />
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </hc:SimplePanel>
+                    </Grid>
+                </hc:SimplePanel>
+                <hc:SimplePanel Grid.Row="2" Margin="30,0">
+                    <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,1,0,0" />
+                    <StackPanel>
+                        <TextBlock
+                            Text="基本信息"
+                            Margin="0,30"
+                            Foreground="#35315a"
+                            FontSize="18"
+                            FontWeight="SemiBold" />
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="hc:SimplePanel">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="Margin" Value="0,0,80,0" />
+                                </Style>
+                            </Grid.Resources>
+                            <hc:SimplePanel>
+                                <TextBlock Text="性别" Foreground="#a29ebb" />
+                                <TextBlock
+                                    Text="男"
+                                    HorizontalAlignment="Right"
+                                    FontWeight="SemiBold"
+                                    Foreground="#4d496e" />
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Grid.Column="1">
+                                <TextBlock Text="年龄" Foreground="#a29ebb" />
+                                <TextBlock
+                                    Text="21"
+                                    HorizontalAlignment="Right"
+                                    FontWeight="SemiBold"
+                                    Foreground="#4d496e" />
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Grid.Row="1">
+                                <TextBlock Text="出生年月" Foreground="#a29ebb" />
+                                <TextBlock
+                                    Text="2020-10"
+                                    HorizontalAlignment="Right"
+                                    FontWeight="SemiBold"
+                                    Foreground="#4d496e" />
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Grid.Row="1" Grid.Column="1"
+                                VerticalAlignment="Center">
+                                <TextBlock Text="从事行业" Foreground="#a29ebb" />
+                                <TextBlock
+                                    Text="游戏"
+                                    HorizontalAlignment="Right"
+                                    FontWeight="SemiBold"
+                                    Foreground="#4d496e" />
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Grid.Row="2">
+                                <TextBlock Text="工作城市" Foreground="#a29ebb" />
+                                <TextBlock
+                                    Text="上海"
+                                    HorizontalAlignment="Right"
+                                    FontWeight="SemiBold"
+                                    Foreground="#4d496e" />
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Grid.Row="2" Grid.Column="1">
+                                <TextBlock Text="联系电话" Foreground="#a29ebb" />
+                                <TextBlock
+                                    Text="158******98"
+                                    HorizontalAlignment="Right"
+                                    FontWeight="SemiBold"
+                                    Foreground="#4d496e" />
+                            </hc:SimplePanel>
+                        </Grid>
+                    </StackPanel>
+                </hc:SimplePanel>
+            </Grid>
+        </hc:SimplePanel>
+
+        <!--<Grid Margin="30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="2.2*" />
@@ -355,6 +558,6 @@
                     </Grid>
                 </Grid>
             </hc:SimplePanel>
-        </Grid>
+        </Grid>-->
     </hc:SimplePanel>
 </UserControl>
