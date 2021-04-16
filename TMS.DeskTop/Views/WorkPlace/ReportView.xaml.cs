@@ -13,7 +13,6 @@ namespace TMS.DeskTop.Views.WorkPlace
         public CommunityView(IRegionManager regionManager) : base(regionManager, typeof(CommunityView))
         {
             InitializeComponent();
-            RegisterDefaultRegionView(RegionToken.ReportContent, nameof(ReportMainView));
         }
     }
 }

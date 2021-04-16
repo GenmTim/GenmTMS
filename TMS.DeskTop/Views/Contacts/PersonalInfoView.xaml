@@ -33,7 +33,7 @@
                             Content="个人基本信息"
                             VerticalAlignment="Center"
                             Style="{StaticResource TextRadioBtnStyle}"
-                            FontWeight="SemiBold" />
+                            FontWeight="SemiBold" Cursor="Hand" />
                         <RadioButton
                             Content="档案信息"
                             VerticalAlignment="Center"
