@@ -3,6 +3,7 @@ using Prism.Events;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using TMS.Core.Event;
 using TMS.Core.Tools.Execl;
@@ -38,7 +39,16 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.AttendanceData.Entering
 				{
 					//内容正确
 					TableExcelData tableExcelData = result.tableExcelData;
-					DataList = tableExcelData.Rows;
+					DataTable dataTable = new DataTable();
+					foreach (var item in tableExcelData.Headers)
+					{
+						dataTable.Columns.Add(item.FieldName);
+					}
+					for (int i = 0; i < tableExcelData.Rows.Count; i++)
+					{
+						dataTable.Rows.Add(tableExcelData.Rows[i].StrList.ToArray());
+					}
+					DataList = dataTable;
 				}
 				else
 				{
@@ -67,6 +77,6 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.AttendanceData.Entering
             eventAggregator.GetEvent<PrevStepEvent>().Publish();
         }
 
-		public List<TableExcelRow> DataList { get; set; }
+		public DataTable DataList { get; set; }
 	}
 }

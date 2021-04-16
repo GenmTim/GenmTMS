@@ -16,18 +16,8 @@
                 HeadersVisibility="All"
                 RowHeaderWidth="60"
                 IsReadOnly="True"
-                AutoGenerateColumns="False"
-                ItemsSource="{Binding DataList}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="行号" Binding="{Binding Path=StrList[0]}" />
-                    <DataGridTextColumn Header="姓名" Binding="{Binding Path=StrList[1]}" />
-                    <DataGridTextColumn Header="实发金额" Binding="{Binding Path=StrList[2]}" />
-                    <DataGridTextColumn Header="手机号" Binding="{Binding Path=StrList[3]}" />
-                    <DataGridTextColumn Header="邮箱" Binding="{Binding Path=StrList[4]}" />
-                    <DataGridTextColumn Header="基本工资" Binding="{Binding Path=StrList[5]}" />
-                    <DataGridTextColumn Header="岗位绩效" Binding="{Binding Path=StrList[6]}" />
-                </DataGrid.Columns>
-            </DataGrid>
+                AutoGenerateColumns="True"
+                ItemsSource="{Binding DataList}" />
             <hc:UniformSpacingPanel
                 Margin="0,20,0,0"
                 HorizontalAlignment="Center"
