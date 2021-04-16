@@ -32,6 +32,7 @@ namespace TMS.DeskTop.ViewModels.CloudFile
         private readonly IEventAggregator eventAggregator;
 
         public DelegateCommand AddNewFolderCmd { get; private set; }
+        public DelegateCommand OpenFileCmd { get; private set; }
 
 
         public CloudFileMainViewModel(IEventAggregator eventAggregator, IDialogHostService dialogHost)
@@ -50,6 +51,25 @@ namespace TMS.DeskTop.ViewModels.CloudFile
                 {
                     string folderName = result.Parameters.GetValue<string>("value");
                     AddNewFolderToServer(folderName);
+                }
+            });
+            this.OpenFileCmd = new DelegateCommand(() => 
+            {
+                //打开文件对话框              
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+                dlg.FileName = "Document"; // Default file name              
+                dlg.DefaultExt = ".txt"; // Default file extension              
+                dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension                
+                                                            // Show open file dialog box             
+                                                            dlg.Multiselect = true;
+                Nullable<bool> result = dlg.ShowDialog();
+                // Process open file dialog box results              
+                if (result == true)
+                {
+                    foreach (var name in dlg.FileNames )
+                    {
+                        LoggerService.Info(name);
+                    }
                 }
             });
         }

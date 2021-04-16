@@ -28,6 +28,7 @@
                     FontWeight="SemiBold" />
                 <hc:UniformSpacingPanel HorizontalAlignment="Right" Spacing="20">
                     <Button
+                        Command="{Binding OpenFileCmd}"
                         Content="上传"
                         Width="80"
                         Height="33"
