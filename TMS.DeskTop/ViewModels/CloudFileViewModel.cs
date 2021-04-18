@@ -47,7 +47,7 @@ namespace TMS.DeskTop.ViewModels
             var newTreeFolders = newTreeFolderList.ToArray();
 
 
-            for (int i = 0;  i < newTreeFolders.Length; ++i)
+            for (int i = 0; i < newTreeFolders.Length; ++i)
             {
                 if (i <= folderTreeList.Count - 1)
                 {

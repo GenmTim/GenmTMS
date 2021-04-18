@@ -46,6 +46,7 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<AddNewFriendDialog, AddNewFriendDialogModel>();
             containerRegistry.RegisterForNavigation<AddNewOrganizationMemberDialog, AddNewOrganizationMemberDialogModel>();
             containerRegistry.RegisterForNavigation<TextBoxDialog, TextBoxDialogModel>();
+            containerRegistry.RegisterForNavigation<QuestionDialog, QuestionDialogModel>();
 
             // 注册卡片
             containerRegistry.Register<NameCard>();

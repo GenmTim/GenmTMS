@@ -10,9 +10,15 @@
     xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
-    <hc:SimplePanel>
-        <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.SearchContent}" />
-    </hc:SimplePanel>
+    <materialDesign:DialogHost
+        CloseOnClickAway="True"
+        OverlayBackground="{StaticResource TMS_TransparencyRegionBrush}"
+        Identifier="SearchViewRoot">
+        <hc:SimplePanel>
+            <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.SearchContent}" />
+        </hc:SimplePanel>
+    </materialDesign:DialogHost>
 </base:RegionManagerControl>

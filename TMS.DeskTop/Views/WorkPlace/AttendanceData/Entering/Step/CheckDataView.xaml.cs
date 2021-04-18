@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering
+namespace TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering.Step
 {
     /// <summary>
     /// CheckDataView.xaml 的交互逻辑

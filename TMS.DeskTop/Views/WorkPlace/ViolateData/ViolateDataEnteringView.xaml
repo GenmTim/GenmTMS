@@ -19,6 +19,7 @@
             TargetType="hc:SideMenuItem">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Background" Value="White" />
+            <Setter Property="TextElement.Foreground" Value="#3e4759" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="hc:SideMenuItem">
@@ -154,6 +155,7 @@
                                 <TextBlock
                                     Text="绩效设置"
                                     VerticalAlignment="Center"
+                                    Foreground="#3e4759"
                                     FontSize="16" />
                             </StackPanel>
                         </hc:SideMenuItem.Header>

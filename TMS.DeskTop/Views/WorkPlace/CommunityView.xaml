@@ -1,0 +1,123 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.Views.WorkPlace.CommunityView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid Background="#f3f2ef">
+        <ListView
+            HorizontalAlignment="Stretch"
+            BorderBrush="Transparent"
+            Style="{StaticResource ListBoxCustom}"
+            Background="Transparent">
+            <ListView.ItemsSource>
+                <x:Array Type="system:String">
+                    <system:String>测试</system:String>
+                    <system:String>测试</system:String>
+                    <system:String>测试</system:String>
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <hc:UniformSpacingPanel
+                        Margin="0,20,0,20"
+                        HorizontalAlignment="Center"
+                        Orientation="Vertical"
+                        Spacing="20" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <hc:SimplePanel Width="550">
+                        <Border
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Background="White"
+                            BorderBrush="{StaticResource BorderBrush}" />
+                        <Grid Margin="15,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80" />
+                                <RowDefinition />
+                                <RowDefinition Height="60" />
+                            </Grid.RowDefinitions>
+                            <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                            <hc:SimplePanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <hc:Gravatar
+                                        Width="45"
+                                        Height="45"
+                                        Style="{StaticResource GravatarCircleImg}"
+                                        Id="jijfd" />
+                                    <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                                        <TextBlock FontSize="14" FontWeight="SemiBold">
+                                            <Run Text="#实习日记" />
+                                            <Run Text="·" />
+                                            <Run Text="已关注" Foreground="{StaticResource SecondaryTextBrush}" />
+                                        </TextBlock>
+                                        <TextBlock Margin="0,2,0,0">
+                                            <Run Text="4 天前" />
+                                            <Run Text="·" />
+                                            <Run Text="职场练习生的动态" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Grid.Row="1" Margin="0,20,0,0">
+                                <StackPanel>
+                                    <TextBlock
+                                        TextWrapping="Wrap"
+                                        FontSize="14"
+                                        LineHeight="22">
+                                        <Run
+                                            Text="#实习日记"
+                                            Cursor="Hand"
+                                            Foreground="{StaticResource PrimaryBrush}"
+                                            FontWeight="SemiBold" />
+                                        <Run Text="无论是运营、产品经理还是许多相关岗位中，用户访谈和调查都是后期提高工作效率、更好地完成项目的基础和保证。而看似简单直白的设计问卷的过程，其实涉及到很多实用技巧和工作思路。那么，新手小白如何做出一份高质量的问卷和访谈设计？北京大学研究生Yinhe C. 同学就分享了自己在知乎做用户运营时的关于设计问卷的一些收获和感悟，快来看看能不能帮到你！" />
+                                    </TextBlock>
+                                    <Image Margin="0,10,0,0" Source="http://47.101.157.194:8081/uploads/image/1617912008513.jpg" />
+                                </StackPanel>
+
+                            </hc:SimplePanel>
+                            <hc:SimplePanel Grid.Row="2">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel.Resources>
+                                        <Style BasedOn="{StaticResource ButtonDefault}" TargetType="Button">
+                                            <Setter Property="BorderThickness" Value="0" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Button>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="&#xe7a1;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                            <TextBlock Text=" 点赞" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="&#xe718;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                            <TextBlock Text=" 评论" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="&#xe729;" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                            <TextBlock Text=" 分享" />
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </hc:SimplePanel>
+                        </Grid>
+                    </hc:SimplePanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

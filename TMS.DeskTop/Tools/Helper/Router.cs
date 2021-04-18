@@ -5,6 +5,7 @@ using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.Views;
 using TMS.DeskTop.Views.CloudFile;
 using TMS.DeskTop.Views.Contacts;
+using TMS.DeskTop.Views.Contacts.Group;
 using TMS.DeskTop.Views.PersonalFile;
 using TMS.DeskTop.Views.PersonalFile.Subitem;
 using TMS.DeskTop.Views.Search;
@@ -12,13 +13,14 @@ using TMS.DeskTop.Views.WorkPlace;
 using TMS.DeskTop.Views.WorkPlace.Activity;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData;
 using TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering;
+using TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering.Step;
+using TMS.DeskTop.Views.WorkPlace.AttendanceData.Manager;
 using TMS.DeskTop.Views.WorkPlace.Auth;
 using TMS.DeskTop.Views.WorkPlace.Auth.Subitem;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
 using TMS.DeskTop.Views.WorkPlace.PerformanceData;
 using TMS.DeskTop.Views.WorkPlace.PerformanceData.Entering;
 using TMS.DeskTop.Views.WorkPlace.Recommend;
-using TMS.DeskTop.Views.WorkPlace.Report;
 using TMS.DeskTop.Views.WorkPlace.StaffCare;
 using TMS.DeskTop.Views.WorkPlace.SubjectiveData;
 using TMS.DeskTop.Views.WorkPlace.SubjectiveData.Subitem;
@@ -107,10 +109,11 @@ namespace TMS.DeskTop.Tools.Helper
                 [typeof(AuthMainView)] = RegionToken.AuthMainContent,
                 [typeof(EvaluationView)] = RegionToken.EvaluationContent,
                 [typeof(EvaluationMainView)] = RegionToken.EvaluationMainContent,
-                [typeof(CommunityView)] = RegionToken.ReportContent,
+                [typeof(ReportView)] = RegionToken.ReportContent,
                 [typeof(SearchView)] = RegionToken.SearchContent,
                 [typeof(PersonalFileView)] = RegionToken.PersonalFileContent,
                 [typeof(CloudFileView)] = RegionToken.CloudFileContent,
+                [typeof(MyGroupView)] = RegionToken.MyGroupContent,
             };
         }
 
@@ -131,6 +134,10 @@ namespace TMS.DeskTop.Tools.Helper
                 routeMap[typeof(OrganizationalStructrureView)] = routeMap[typeof(ContactsView)] + "organizational/";
                 routeMap[typeof(PersonalInfoView)] = routeMap[typeof(ContactsView)] + "personal/";
                 routeMap[typeof(MyGroupView)] = routeMap[typeof(ContactsView)] + "myGroup/";
+                {
+                    routeMap[typeof(ICreateView)] = routeMap[typeof(MyGroupView)] + "my_create/";
+                    routeMap[typeof(IJoinedView)] = routeMap[typeof(MyGroupView)] + "my_joined/";
+                }
                 routeMap[typeof(LinkManView)] = routeMap[typeof(ContactsView)] + "linkMan/";
                 routeMap[typeof(MyWalletView)] = routeMap[typeof(ContactsView)] + "myWallet/";
                 routeMap[typeof(CustomerServiceView)] = routeMap[typeof(ContactsView)] + "customer_service/";
@@ -150,7 +157,6 @@ namespace TMS.DeskTop.Tools.Helper
                     routeMap[typeof(CustomFileView)] = routeMap[typeof(PersonalFileView)] + "custom/";
                 }
             }
-
             routeMap[typeof(WorkPlaceView)] = "workplace/";
             {
                 routeMap[typeof(WorkPlaceMainView)] = routeMap[typeof(WorkPlaceView)] + "main/";
@@ -161,8 +167,13 @@ namespace TMS.DeskTop.Tools.Helper
                 }
                 routeMap[typeof(AttendanceDataEnteringView)] = routeMap[typeof(WorkPlaceView)] + "attendanceDataEntering/";
                 {
-                    routeMap[typeof(CheckDataView)] = routeMap[typeof(AttendanceDataEnteringView)] + "checkData/";
-                    routeMap[typeof(EnteringDataView)] = routeMap[typeof(AttendanceDataEnteringView)] + "enteringData/";
+                    routeMap[typeof(ManageDataView)] = routeMap[typeof(AttendanceDataEnteringView)] + "manageData/";
+                    routeMap[typeof(EnteringStepView)] = routeMap[typeof(AttendanceDataEnteringView)] + "enteringStep/";
+                    {
+                        routeMap[typeof(CheckDataView)] = routeMap[typeof(EnteringStepView)] + "checkData/";
+                        routeMap[typeof(EnteringDataView)] = routeMap[typeof(EnteringStepView)] + "enteringData/";
+                        routeMap[typeof(CompleteEntryDataView)] = routeMap[typeof(EnteringStepView)] + "complete/";
+                    }
                 }
                 routeMap[typeof(PerformanceDataEnteringView)] = routeMap[typeof(WorkPlaceView)] + "performanceDataEntering/";
                 {
@@ -193,6 +204,7 @@ namespace TMS.DeskTop.Tools.Helper
                 routeMap[typeof(CommunityView)] = routeMap[typeof(WorkPlaceView)] + "community/";
                 routeMap[typeof(ActivityView)] = routeMap[typeof(WorkPlaceView)] + "activity/";
                 routeMap[typeof(RecommendView)] = routeMap[typeof(WorkPlaceView)] + "recommend/";
+                routeMap[typeof(ReportView)] = routeMap[typeof(WorkPlaceView)] + "report/";
             }
 
             routeMap[typeof(BackNavigationView)] = nameof(BackNavigationView);

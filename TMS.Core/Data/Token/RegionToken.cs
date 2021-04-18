@@ -57,5 +57,9 @@
         public static readonly string SubjectiveDataDetailContent = nameof(SubjectiveDataDetailContent);
 
         public static readonly string CloudFileContent = nameof(CloudFileContent);
+
+        public static readonly string MyGroupContent = nameof(MyGroupContent);
+
+        public static readonly string AttendanceEnteringStepContent = nameof(AttendanceEnteringStepContent);
     }
 }

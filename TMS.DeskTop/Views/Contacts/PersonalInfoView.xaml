@@ -11,8 +11,6 @@
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:system="clr-namespace:System;assembly=netstandard"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     mc:Ignorable="d">
     <hc:SimplePanel Background="#f3f4f6">
         <hc:SimplePanel Margin="40">
@@ -22,6 +20,7 @@
                     <RowDefinition Height="60" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />
                 <hc:SimplePanel Margin="30,0">
@@ -31,9 +30,11 @@
                         Orientation="Horizontal">
                         <RadioButton
                             Content="个人基本信息"
+                            IsChecked="True"
                             VerticalAlignment="Center"
                             Style="{StaticResource TextRadioBtnStyle}"
-                            FontWeight="SemiBold" Cursor="Hand" />
+                            FontWeight="SemiBold"
+                            Cursor="Hand" />
                         <RadioButton
                             Content="档案信息"
                             VerticalAlignment="Center"
@@ -75,7 +76,7 @@
                                     BorderThickness="1"
                                     BorderBrush="{StaticResource BorderBrush}"
                                     Style="{StaticResource ButtonCustom}">
-                                    <TextBlock Text="" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                    <TextBlock Text="&#xe79a;" FontFamily="{StaticResource FIconPlusFontFamily}" />
                                 </Button>
                                 <Button
                                     Width="33"
@@ -84,7 +85,7 @@
                                     BorderThickness="1"
                                     BorderBrush="{StaticResource BorderBrush}"
                                     Style="{StaticResource ButtonCustom}">
-                                    <TextBlock Text="" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                    <TextBlock Text="&#xe7a1;" FontFamily="{StaticResource FIconPlusFontFamily}" />
                                 </Button>
                                 <Button
                                     Width="33"
@@ -93,7 +94,7 @@
                                     BorderThickness="1"
                                     BorderBrush="{StaticResource BorderBrush}"
                                     Style="{StaticResource ButtonCustom}">
-                                    <TextBlock Text="" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                    <TextBlock Text="&#xe79c;" FontFamily="{StaticResource FIconPlusFontFamily}" />
                                 </Button>
                             </hc:UniformSpacingPanel>
                         </hc:SimplePanel>
@@ -213,6 +214,58 @@
                             </hc:SimplePanel>
                         </Grid>
                     </StackPanel>
+                </hc:SimplePanel>
+                <hc:SimplePanel Grid.Row="3"
+                    Margin="30,0"
+                    AllowDrop="True"
+                    Drop="SimplePanel_Drop"
+                    DragLeave="OnDragOver">
+                    <hc:SimplePanel
+                        Height="100"
+                        Margin="0,20,0,20"
+                        Visibility="{Binding IsHasResume, Converter={StaticResource Boolean2VisibilityReConverter}}">
+                        <hc:DashedBorder
+                            BorderThickness="2"
+                            BorderDashArray="3,2"
+                            CornerRadius="10"
+                            Background="Transparent"
+                            BorderBrush="{StaticResource PrimaryBrush}" />
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock
+                                Text="&#xe7b6;"
+                                HorizontalAlignment="Center"
+                                Foreground="{StaticResource PrimaryBrush}"
+                                FontSize="20"
+                                FontFamily="{StaticResource FIconPlusFontFamily}" />
+                            <TextBlock
+                                Text="上传你的简历"
+                                Margin="0,10,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="{StaticResource PrimaryBrush}" />
+                        </StackPanel>
+                    </hc:SimplePanel>
+                    <hc:SimplePanel
+                        Height="100"
+                        Margin="0,20,0,20"
+                        Visibility="{Binding IsHasResume, Converter={StaticResource Boolean2VisibilityConverter}}">
+                        <Border
+                            BorderThickness="2"
+                            CornerRadius="10"
+                            Background="Transparent"
+                            BorderBrush="{StaticResource PrimaryBrush}" />
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Height="40" Source="/Resources/Images/Icon/FileType/PDF.png" />
+                            <hc:UniformSpacingPanel
+                                Margin="0,10,0,0"
+                                Spacing="15"
+                                Orientation="Horizontal">
+                                <Button Content="下载" Style="{StaticResource TextBtnStyle}" />
+                                <Button Content="取消" Style="{StaticResource TextBtnStyle}" />
+                            </hc:UniformSpacingPanel>
+
+                        </StackPanel>
+                    </hc:SimplePanel>
                 </hc:SimplePanel>
             </Grid>
         </hc:SimplePanel>

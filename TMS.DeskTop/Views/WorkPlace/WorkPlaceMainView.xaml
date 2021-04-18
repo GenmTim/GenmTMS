@@ -26,8 +26,6 @@
             <Setter Property="Background" Value="White" />
             <Setter Property="Effect" Value="{StaticResource EffectShadowCom}" />
             <Setter Property="Cursor" Value="Hand" />
-
-
         </Style>
     </UserControl.Resources>
     <UniformGrid

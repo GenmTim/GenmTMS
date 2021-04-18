@@ -2857,9 +2857,9 @@ namespace TMS.Core.Api
 
                 if (code.Equals("0000"))
                 {
-					string data = jObjects["data"].ToString();
+                    string data = jObjects["data"].ToString();
                     FileShard fileShard = JsonConvert.DeserializeObject<FileShard>(data);
-					return new ApiResponse(200, fileShard);
+                    return new ApiResponse(200, fileShard);
                 }
                 else
                 {

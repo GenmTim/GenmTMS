@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Regions;
 using TMS.DeskTop.Tools.Helper;
+using TMS.DeskTop.Views.Contacts;
 
 namespace TMS.DeskTop.ViewModels.Contacts
 {
@@ -18,7 +19,7 @@ namespace TMS.DeskTop.ViewModels.Contacts
 
         private void NavigationPage(string view)
         {
-            RouteHelper.Goto(regionManager, typeof(MyWalletViewModel), view);
+            RouteHelper.Goto(regionManager, typeof(MyWalletView), view);
         }
     }
 }

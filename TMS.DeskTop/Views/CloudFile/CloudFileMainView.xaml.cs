@@ -20,17 +20,6 @@ namespace TMS.DeskTop.Views.CloudFile
             this.eventAggregator = eventAggregator;
         }
 
-        private void OnDragOver(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effects = DragDropEffects.Copy;
-            else
-                e.Effects = DragDropEffects.None;
-
-            fileDragMask.Visibility = Visibility.Visible;
-            e.Handled = true;
-        }
-
         private void OnDrop(object sender, DragEventArgs e)
         {
             fileDragMask.Visibility = Visibility.Collapsed;
@@ -46,6 +35,17 @@ namespace TMS.DeskTop.Views.CloudFile
                 };
                 eventAggregator.GetEvent<UploadFileEvent>().Publish(uploadFileItem);
             }
+            e.Handled = true;
+        }
+
+        private void OnDragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effects = DragDropEffects.Copy;
+            else
+                e.Effects = DragDropEffects.None;
+
+            fileDragMask.Visibility = Visibility.Visible;
             e.Handled = true;
         }
 

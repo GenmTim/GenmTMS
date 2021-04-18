@@ -13,6 +13,7 @@ using TMS.Core.Event.Notification;
 using TMS.Core.Event.WebSocket;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Base;
+using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Cmd;
 using TMS.DeskTop.UserControls.Common.Views;
 using TMS.DeskTop.UserControls.Dialogs.Views;
@@ -68,6 +69,7 @@ namespace TMS.DeskTop.Views
                     Avatar = "http://47.101.157.194:8081/static/avatar/target2.jpg",
                 },
                 Data = "你好，我是Jzq",
+                Timestamp = TimeHelper.GetNowTimeStamp(),
                 Receiver = SessionService.Instance.User
             };
 
@@ -80,6 +82,7 @@ namespace TMS.DeskTop.Views
                     Avatar = "http://47.101.157.194:8081/static/avatar/target4.jpg",
                 },
                 Data = "你好，我是Ccl",
+                Timestamp = TimeHelper.GetNowTimeStamp(),
                 Receiver = SessionService.Instance.User
             };
 
@@ -94,8 +97,6 @@ namespace TMS.DeskTop.Views
             }
             e.Handled = true;
         }
-
-
 
         #region SimulationData
 

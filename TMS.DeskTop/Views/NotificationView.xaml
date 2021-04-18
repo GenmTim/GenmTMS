@@ -9,6 +9,7 @@
     xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -207,7 +208,7 @@
                                 </hc:SimplePanel>
                             </genm:Popup>
                         </Grid>
-                        <hc:ScrollViewer Grid.Row="1"
+                        <!--<hc:ScrollViewer Grid.Row="1"
                             Margin="4,5,8,8"
                             Orientation="Horizontal"
                             HorizontalScrollBarVisibility="Auto"
@@ -225,23 +226,50 @@
                                                 <ControlTemplate>
                                                     <hc:SimplePanel>
                                                         <hc:Gravatar Margin="5,3" Id="User2131a" />
-                                                        <hc:Badge
-                                                            BadgeMargin="0,-4,-2,0"
-                                                            Style="{StaticResource BadgeDanger}"
-                                                            BorderThickness="0"
-                                                            FontSize="8"
-                                                            Value="1" />
+                                                        <hc:SimplePanel>
+                                                            <hc:Badge
+                                                                Height="33"
+                                                                BadgeMargin="0,-4,-2,0"
+                                                                Style="{StaticResource BadgeDanger}"
+                                                                BorderThickness="0"
+                                                                FontSize="8"
+                                                                Value="1" />
+                                                        </hc:SimplePanel>
                                                     </hc:SimplePanel>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
                                     </Style>
                                 </StackPanel.Resources>
-                                <Button Click="Button_Click" Cursor="Hand" />
-                                <Button />
+                        -->
+                        <!--<ListView
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    Style="{StaticResource ListBoxCustom}">
+                                    <ListView.ItemsSource>
+                                        <x:Array Type="sys:String">
+                                            <sys:String>asdasd</sys:String>
+                                            <sys:String>asdasd</sys:String>
+                                        </x:Array>
+                                    </ListView.ItemsSource>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <hc:UniformSpacingPanel
+                                                ItemHeight="60"
+                                                ItemWidth="50"
+                                                Spacing="20" />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                </ListView>-->
+                        <!--
                             </StackPanel>
-                        </hc:ScrollViewer>
-                        <Grid Grid.Row="2">
+                        </hc:ScrollViewer>-->
+                        <Grid Grid.Row="2" Margin="0,20,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />

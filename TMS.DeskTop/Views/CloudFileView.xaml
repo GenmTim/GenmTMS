@@ -146,51 +146,52 @@
                         FontWeight="Bold"
                         FontSize="16"
                         Foreground="{StaticResource PrimaryBrush}" />
-                    <StackPanel Margin="0,15,0,0">
-                        <TreeView
-                            Margin="0,0,0,0"
-                            hc:BorderElement.CornerRadius="0"
-                            Foreground="#333f87"
-                            ItemsSource="{Binding FileTreeNodeItemList}"
-                            Background="Transparent"
-                            SelectedItemChanged="TreeView_SelectedItemChanged"
-                            BorderThickness="0">
-                            <TreeView.ItemContainerStyle>
-                                <Style TargetType="TreeViewItem" BasedOn="{StaticResource cloudTreeViewItemStyle}">
-                                    <Setter Property="ContextMenu">
-                                        <Setter.Value>
-                                            <ContextMenu Width="150">
-                                                <MenuItem
-                                                    Command="{Binding DataContext.AddNewFolderCmd, RelativeSource={RelativeSource AncestorType=TreeView, Mode=FindAncestor}}"
-                                                    CommandParameter="{Binding Id}"
-                                                    Header="新建文件夹" />
-                                            </ContextMenu>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </TreeView.ItemContainerStyle>
-                            <TreeView.ItemTemplate>
-                                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                                    <StackPanel Height="40" Orientation="Horizontal">
-                                        <TextBlock
-                                            Text="&#xe638;"
-                                            Margin="5,0,0,0"
-                                            VerticalAlignment="Center"
-                                            Foreground="{Binding Path=(attach:IconFontElement.Color), RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
-                                            FontFamily="{StaticResource MenuIconFontFamily}"
-                                            FontSize="18" />
-                                        <TextBlock
-                                            Text="{Binding Name}"
-                                            Margin="10,0,0,0"
-                                            VerticalAlignment="Center"
-                                            FontWeight="{Binding Path=FontWeight, RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
-                                            Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
-                                            FontSize="14" />
-                                    </StackPanel>
-                                </HierarchicalDataTemplate>
-                            </TreeView.ItemTemplate>
-                        </TreeView>
-                        <!--<StackPanel
+                    <hc:ScrollViewer>
+                        <StackPanel Margin="0,15,0,0">
+                            <TreeView
+                                Margin="0,0,0,0"
+                                hc:BorderElement.CornerRadius="0"
+                                Foreground="#333f87"
+                                ItemsSource="{Binding FileTreeNodeItemList}"
+                                Background="Transparent"
+                                SelectedItemChanged="TreeView_SelectedItemChanged"
+                                BorderThickness="0">
+                                <TreeView.ItemContainerStyle>
+                                    <Style TargetType="TreeViewItem" BasedOn="{StaticResource cloudTreeViewItemStyle}">
+                                        <Setter Property="ContextMenu">
+                                            <Setter.Value>
+                                                <ContextMenu Width="150">
+                                                    <MenuItem
+                                                        Command="{Binding DataContext.AddNewFolderCmd, RelativeSource={RelativeSource AncestorType=TreeView, Mode=FindAncestor}}"
+                                                        CommandParameter="{Binding Id}"
+                                                        Header="新建文件夹" />
+                                                </ContextMenu>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </TreeView.ItemContainerStyle>
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                        <StackPanel Height="40" Orientation="Horizontal">
+                                            <TextBlock
+                                                Text="&#xe638;"
+                                                Margin="5,0,0,0"
+                                                VerticalAlignment="Center"
+                                                Foreground="{Binding Path=(attach:IconFontElement.Color), RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
+                                                FontFamily="{StaticResource MenuIconFontFamily}"
+                                                FontSize="18" />
+                                            <TextBlock
+                                                Text="{Binding Name}"
+                                                Margin="10,0,0,0"
+                                                VerticalAlignment="Center"
+                                                FontWeight="{Binding Path=FontWeight, RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
+                                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
+                                                FontSize="14" />
+                                        </StackPanel>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                            <!--<StackPanel
                         Margin="0,0,0,15"
                         Cursor="Hand"
                         Orientation="Horizontal">
@@ -215,7 +216,7 @@
                             FontSize="14" />
                         <TextBlock />
                     </StackPanel>-->
-                        <!--<StackPanel
+                            <!--<StackPanel
                         Margin="0,0,0,15"
                         Cursor="Hand"
                         Orientation="Horizontal">
@@ -340,7 +341,8 @@
                             FontSize="14" />
                         <TextBlock />
                     </StackPanel>-->
-                    </StackPanel>
+                        </StackPanel>
+                    </hc:ScrollViewer>
                     <!--<StackPanel Margin="5,10,0,0">
                     <StackPanel.Resources>
                         <Style x:Key="icon" TargetType="TextBlock">

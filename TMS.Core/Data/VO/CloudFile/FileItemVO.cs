@@ -7,9 +7,9 @@ namespace TMS.Core.Data.VO.CloudFile
     public class FolderTreeNodeItemVO : BindableBase
     {
         private long id;
-        public long Id 
+        public long Id
         {
-            get => id; 
+            get => id;
             set
             {
                 id = value;
@@ -18,9 +18,9 @@ namespace TMS.Core.Data.VO.CloudFile
         }
 
         private string name;
-        public string Name 
+        public string Name
         {
-            get => name; 
+            get => name;
             set
             {
                 name = value;
@@ -29,7 +29,7 @@ namespace TMS.Core.Data.VO.CloudFile
         }
 
         private ObservableCollection<FolderTreeNodeItemVO> children;
-        public ObservableCollection<FolderTreeNodeItemVO> Children 
+        public ObservableCollection<FolderTreeNodeItemVO> Children
         {
             get => children;
             set

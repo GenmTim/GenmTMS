@@ -8,6 +8,7 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:data="clr-namespace:TMS.Core.Data;assembly=TMS.Core"
     xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts"
     prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
@@ -349,6 +350,9 @@
                             Foreground="{StaticResource SecondaryTextBrush}"
                             FontSize="16" />
                         <ListBox Grid.Row="1" ItemsSource="{Binding UserList}" />
+                        <uc:EmptyContentView Grid.Row="1"
+                            Margin="0,0,0,20"
+                            Visibility="{Binding UserList.Count, Converter={StaticResource Boolean2VisibilityConverter}}" />
                     </Grid>
                 </Grid>
             </Grid>

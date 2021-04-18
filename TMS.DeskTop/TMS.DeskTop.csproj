@@ -5,6 +5,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>TMS.DeskTop</AssemblyName>
     <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon>h_aid.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\iconfont.ttf" />
@@ -103,6 +104,7 @@
     <None Remove="Resources\Images\Icon\FileType\PDF.png" />
     <None Remove="Resources\Images\Icon\FileType\PPT.png" />
     <None Remove="Resources\Images\Icon\FileType\Word.png" />
+    <None Remove="Resources\Images\Icon\h-aid.png" />
     <None Remove="Resources\Images\illustrations\1.png" />
     <None Remove="Resources\Images\illustrations\2.png" />
     <None Remove="Resources\Images\illustrations\3.png" />
@@ -225,6 +227,7 @@
     <Resource Include="Resources\Images\Icon\FileType\PDF.png" />
     <Resource Include="Resources\Images\Icon\FileType\PPT.png" />
     <Resource Include="Resources\Images\Icon\FileType\Word.png" />
+    <Resource Include="Resources\Images\Icon\h-aid.png" />
     <Resource Include="Resources\Images\illustrations\1.png" />
     <Resource Include="Resources\Images\illustrations\3.png" />
     <Resource Include="Resources\Images\illustrations\2.png" />
@@ -281,6 +284,8 @@
   <ItemGroup>
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="UserControls\WebComponent\" />
+    <Folder Include="Views\Contacts\Favorite\" />
+    <Folder Include="Views\WorkPlace\Community\" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Update="App.xaml">

@@ -1,0 +1,21 @@
+﻿<UserControl
+    x:Class="TMS.DeskTop.UserControls.Dialogs.Views.QuestionDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:genm="clr-namespace:Genm.Controls;assembly=Genm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Dialogs.Views"
+    mc:Ignorable="d">
+    <genm:DataDialog
+        Title="{Binding Title}"
+        Effect="{StaticResource DialogShadow}"
+        PositiveText="{Binding PositiveText}"
+        CloseCmd="{Binding CancelCmd}"
+        PositiveCmd="{Binding SaveCmd}"
+        NegativeCmd="{Binding CancelCmd}"
+        NegativeText="{Binding NegativeText}">
+        <TextBlock Text="{Binding Question, Mode=TwoWay}" Height="33" />
+    </genm:DataDialog>
+</UserControl>

@@ -1,8 +1,10 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Events;
+using Prism.Mvvm;
+using System.IO;
 
 namespace TMS.DeskTop.ViewModels.Contacts
 {
-    public class ResumeFile
+    public class Resume
     {
         public string Name;
         public string Url;
@@ -10,34 +12,47 @@ namespace TMS.DeskTop.ViewModels.Contacts
 
     public class PersonalInfoViewModel : BindableBase
     {
-        private ResumeFile resumeFile;
-        public ResumeFile ResumeFile
+        public class UpdateResumeEvent : PubSubEvent<FileInfo> { }
+
+        private Resume resume;
+        public Resume Resume
         {
-            get => resumeFile;
+            get => resume;
             set
             {
-                resumeFile = value;
-                if (resumeFile != null)
+                resume = value;
+                if (resume == null)
                 {
-                    IsHasResumeFile = true;
+                    IsHasResume = false;
+                }
+                else
+                {
+                    IsHasResume = true;
                 }
                 RaisePropertyChanged();
             }
         }
 
-        private bool isHasResumeFile;
-        public bool IsHasResumeFile
+        private bool isHasResume;
+        public bool IsHasResume
         {
-            get => isHasResumeFile;
+            get => isHasResume;
             set
             {
-                isHasResumeFile = value;
+                isHasResume = value;
                 RaisePropertyChanged();
             }
         }
 
-        public PersonalInfoViewModel()
+        private readonly IEventAggregator eventAggregator;
+
+        public PersonalInfoViewModel(IEventAggregator eventAggregator)
         {
+            this.eventAggregator = eventAggregator;
+            this.eventAggregator.GetEvent<UpdateResumeEvent>().Subscribe((resume) =>
+            {
+                Resume = new Resume { Name = resume.Name };
+            });
         }
     }
 }

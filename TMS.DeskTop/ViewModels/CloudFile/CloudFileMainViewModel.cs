@@ -4,12 +4,11 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
-using System.Threading.Tasks;
 using TMS.Core.Api;
 using TMS.Core.Data.VO.CloudFile;
 using TMS.Core.Event;
 using TMS.Core.Service;
-using TMS.DeskTop.UserControls.Dialogs.Views;
+using TMS.DeskTop.Tools.Helper;
 using static TMS.DeskTop.ViewModels.CloudFileViewModel;
 
 namespace TMS.DeskTop.ViewModels.CloudFile
@@ -39,21 +38,16 @@ namespace TMS.DeskTop.ViewModels.CloudFile
         {
             this.dialogHost = dialogHost;
             this.eventAggregator = eventAggregator;
-            this.AddNewFolderCmd = new DelegateCommand(async() =>
+            this.AddNewFolderCmd = new DelegateCommand(async () =>
             {
-                var param = new DialogParameters();
-                param.Add("title", "添加新文件夹");
-                param.Add("positive_text", "添加");
-                param.Add("negative_text", "取消");
-                param.Add("input_hint", "请输入新的文件夹名字");
-                var result = await this.dialogHost.ShowDialog(nameof(TextBoxDialog), param, "CloudFileRoot");
+                var result = await DialogHelper.ShowTextBoxDialog(dialogHost, "CloudFileRoot", "添加新文件夹", "添加", "取消", "请输入新的文件夹名字");
                 if (result != null && result.Result == ButtonResult.OK)
                 {
                     string folderName = result.Parameters.GetValue<string>("value");
                     AddNewFolderToServer(folderName);
                 }
             });
-            this.OpenFileCmd = new DelegateCommand(() => 
+            this.OpenFileCmd = new DelegateCommand(() =>
             {
                 //打开文件对话框              
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -61,12 +55,12 @@ namespace TMS.DeskTop.ViewModels.CloudFile
                 dlg.DefaultExt = ".txt"; // Default file extension              
                 dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension                
                                                             // Show open file dialog box             
-                                                            dlg.Multiselect = true;
+                dlg.Multiselect = true;
                 Nullable<bool> result = dlg.ShowDialog();
                 // Process open file dialog box results              
                 if (result == true)
                 {
-                    foreach (var name in dlg.FileNames )
+                    foreach (var name in dlg.FileNames)
                     {
                         LoggerService.Info(name);
                     }

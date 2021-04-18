@@ -18,6 +18,7 @@
             BasedOn="{StaticResource SideMenuItemBaseStyle}"
             TargetType="hc:SideMenuItem">
             <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextElement.Foreground" Value="#3e4759" />
             <Setter Property="Background" Value="White" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -154,32 +155,26 @@
                                 <TextBlock
                                     Text="考勤设置"
                                     VerticalAlignment="Center"
+                                    Foreground="#3e4759"
                                     FontSize="16" />
                             </StackPanel>
                         </hc:SideMenuItem.Header>
-                        <hc:SideMenuItem Height="50" Header="考勤记录录入" />
-                        <hc:SideMenuItem Height="50" Header="考勤数据管理" />
-                        <hc:SideMenuItem Height="50" Header="数据接口设置" />
+                        <hc:SideMenuItem
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="EnteringStepView"
+                            Height="50"
+                            Header="考勤记录录入" />
+                        <hc:SideMenuItem
+                            Command="{Binding NavigationCmd}"
+                            Height="50"
+                            Header="考勤数据管理" />
                     </hc:SideMenuItem>
                 </hc:SideMenu>
                 <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,1,0" />
             </hc:SimplePanel>
-            <Grid Grid.Column="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <hc:StepBar x:Name="stepBar" StepIndex="{Binding StepIndex}">
-                    <hc:StepBarItem Content="上传考勤数据" />
-                    <hc:StepBarItem Content="核对数据" />
-                    <hc:StepBarItem Content="设置并发布" />
-                </hc:StepBar>
-                <hc:SimplePanel Grid.Row="1">
-                    <ContentControl prism:RegionManager.RegionName="{x:Static token:RegionToken.AttendaceDataEnteringContent}" />
-                </hc:SimplePanel>
-            </Grid>
+            <hc:SimplePanel Grid.Column="1">
+                <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.AttendaceDataEnteringContent}" />
+            </hc:SimplePanel>
         </Grid>
     </DockPanel>
 </base:RegionManagerControl>

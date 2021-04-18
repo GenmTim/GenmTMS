@@ -60,7 +60,7 @@
                             hc:TitleElement.Title="我加入的"
                             Style="{StaticResource UnderlineRadioBtnStyle}" />
                     </Grid>-->
-                    <hc:SimplePanel Grid.Row="1" Background="#f2f2f4">
+                    <hc:SimplePanel Grid.Row="1" Background="White">
                         <ItemsControl ItemsSource="{Binding ContacterList}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -103,7 +103,6 @@
                                                         Content="&#xe718;"
                                                         Command="{Binding ElementName=_linkManView, Path=DataContext.GoCommunicationCmd}"
                                                         CommandParameter="{Binding .}" />
-                                                    <Button Content="&#xe6df;" />
                                                     <Button
                                                         Content="&#xe7ae;"
                                                         Command="{Binding ElementName=_linkManView, Path=DataContext.DeleteContacterCmd}"
