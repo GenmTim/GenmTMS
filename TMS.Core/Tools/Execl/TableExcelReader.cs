@@ -606,14 +606,14 @@ namespace TMS.Core.Tools.Execl
 				for (int c = 1; c <= end.Column - 1; c++)
 				{
 					string val = _convertCellToString(sheet.Cells[i, c]);
-					if (string.IsNullOrEmpty(val))
-					{
-						sheet.Cells[i, c].Style.Fill.PatternType = ExcelFillStyle.Solid;
-						sheet.Cells[i, c].Style.Fill.BackgroundColor.SetColor(1, 255, 182, 193);
-						//flag = true;
+					//if (string.IsNullOrEmpty(val))
+					//{
+					//	sheet.Cells[i, c].Style.Fill.PatternType = ExcelFillStyle.Solid;
+					//	sheet.Cells[i, c].Style.Fill.BackgroundColor.SetColor(1, 255, 182, 193);
+					//	//flag = true;
 
-						yield return null;
-					}
+					//	yield return null;
+					//}
 					if (!string.IsNullOrEmpty(val))
 						is_all_empty = false;
 					ds.Add(val);
