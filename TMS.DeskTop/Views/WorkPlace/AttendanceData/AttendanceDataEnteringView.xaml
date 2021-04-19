@@ -143,7 +143,7 @@
                     BorderThickness="0"
                     ExpandMode="ShowAll"
                     ItemContainerStyle="{StaticResource SideMenuItemHeaderAccordionBaseStyle}">
-                    <hc:SideMenuItem>
+                    <hc:SideMenuItem Cursor="Hand">
                         <hc:SideMenuItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
@@ -166,8 +166,19 @@
                             Header="考勤记录录入" />
                         <hc:SideMenuItem
                             Command="{Binding NavigationCmd}"
+                            CommandParameter="ManageDataView"
                             Height="50"
                             Header="考勤数据管理" />
+                        <hc:SideMenuItem
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="AttendanceRuleView"
+                            Height="50"
+                            Header="考勤规则设置" />
+                        <!--<hc:SideMenuItem
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="ManageDataView"
+                            Height="50"
+                            Header="考勤数据管理" />-->
                     </hc:SideMenuItem>
                 </hc:SideMenu>
                 <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,1,0" />

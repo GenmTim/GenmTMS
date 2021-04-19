@@ -75,40 +75,87 @@
                                 <Grid Grid.Row="1" Margin="10,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <TextBlock
                                         Text="金泽权"
                                         FontWeight="SemiBold"
                                         FontSize="16" />
-                                    <TextBlock Grid.Row="1"
-                                        Text="风暴降生丹尼莉丝、不焚者、弥林女王、安达尔人，罗伊那人和先民的女王、七国君王、疆域守护者、多斯拉克大草原的卡丽熙、打碎镣铐者、 龙之母丹妮莉丝·塔格利亚"
-                                        Height="56"
-                                        TextWrapping="Wrap"
+                                    <hc:UniformSpacingPanel Grid.Row="1"
                                         Margin="0,5,0,0"
-                                        TextTrimming="CharacterEllipsis"
-                                        FontSize="14"
-                                        Foreground="{StaticResource SecondaryTextBrush}" />
-                                    <TextBlock Grid.Row="2"
-                                        Text="975位关注着"
-                                        Margin="0,5,0,0"
-                                        Foreground="{StaticResource SecondaryTextBrush}" />
+                                        VerticalAlignment="Center"
+                                        Spacing="5"
+                                        Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock
+                                                Text="职位  "
+                                                VerticalAlignment="Center"
+                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                                            <TextBlock Grid.Row="1"
+                                                Text="Golang游戏服务端工程师"
+                                                TextWrapping="Wrap"
+                                                VerticalAlignment="Center"
+                                                TextTrimming="CharacterEllipsis"
+                                                FontSize="14" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock
+                                                Text="工龄  "
+                                                VerticalAlignment="Center"
+                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                                            <TextBlock Grid.Row="1"
+                                                Text="3年"
+                                                TextWrapping="Wrap"
+                                                VerticalAlignment="Center"
+                                                TextTrimming="CharacterEllipsis"
+                                                FontSize="14" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock
+                                                Text="常驻城市  "
+                                                VerticalAlignment="Center"
+                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                                            <TextBlock Grid.Row="1"
+                                                Text="上海"
+                                                TextWrapping="Wrap"
+                                                VerticalAlignment="Center"
+                                                TextTrimming="CharacterEllipsis"
+                                                FontSize="14" />
+                                        </StackPanel>
+                                    </hc:UniformSpacingPanel>
                                 </Grid>
                                 <hc:SimplePanel Grid.Row="2" Margin="10,0">
-                                    <hc:UniformSpacingPanel
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Spacing="20">
-                                        <Button Content="不感兴趣" Style="{StaticResource TextBtnStyle}" />
-                                        <Button
-                                            Content="沟通"
-                                            Width="80"
-                                            Height="33"
-                                            Cursor="Hand"
-                                            FontSize="14"
-                                            Style="{StaticResource ButtonPrimary}" />
-                                    </hc:UniformSpacingPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <hc:SimplePanel>
+                                            <TextBlock
+                                                Text="共 975 位关注者"
+                                                VerticalAlignment="Center"
+                                                FontSize="10"
+                                                Foreground="{StaticResource SecondaryTextBrush}" />
+                                        </hc:SimplePanel>
+                                        <hc:SimplePanel Grid.Column="1">
+                                            <hc:UniformSpacingPanel
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Spacing="15">
+                                                <Button
+                                                    Content="不感兴趣"
+                                                    FontSize="10"
+                                                    Style="{StaticResource TextBtnStyle}" />
+                                                <Button
+                                                    Content="沟通"
+                                                    Width="80"
+                                                    Height="30"
+                                                    Cursor="Hand"
+                                                    FontSize="12"
+                                                    Style="{StaticResource ButtonPrimary}" />
+                                            </hc:UniformSpacingPanel>
+                                        </hc:SimplePanel>
+                                    </Grid>
                                     <!--<Button
                                         Content="关注"
                                         Width="100"

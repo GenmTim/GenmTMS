@@ -1,6 +1,10 @@
-﻿using Prism.Events;
+﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
+using Prism.Regions;
 using System.IO;
+using TMS.Core.Data.Token;
+using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels.Contacts
 {
@@ -45,14 +49,30 @@ namespace TMS.DeskTop.ViewModels.Contacts
         }
 
         private readonly IEventAggregator eventAggregator;
+        private readonly IRegionManager regionManager;
 
-        public PersonalInfoViewModel(IEventAggregator eventAggregator)
+        public PersonalInfoViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
+            this.regionManager = regionManager;
+            this.NavigationCmd = new DelegateCommand<string>(NavigationPage);
             this.eventAggregator.GetEvent<UpdateResumeEvent>().Subscribe((resume) =>
             {
                 Resume = new Resume { Name = resume.Name };
             });
         }
+
+
+        public DelegateCommand<string> NavigationCmd { get; private set; }
+
+        private void NavigationPage(string view)
+        {
+            if (view == null)
+            {
+                return;
+            }
+            RegionHelper.RequestNavigate(regionManager, RegionToken.PersonalInfoContent, view);
+        }
+
     }
 }

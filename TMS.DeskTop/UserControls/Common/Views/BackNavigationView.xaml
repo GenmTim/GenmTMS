@@ -87,7 +87,14 @@
         </Border>
         <materialDesign:DialogHost Grid.Row="1" Identifier="Root">
             <hc:ScrollViewer IsInertiaEnabled="True">
-                <ContentControl x:Name="backNavigationView" Margin="100,30" />
+                <!--<Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                </Grid>-->
+                <ContentControl x:Name="backNavigationView" Margin="0,0" />
             </hc:ScrollViewer>
         </materialDesign:DialogHost>
     </Grid>

@@ -1,14 +1,14 @@
 ﻿using System.Windows.Controls;
 
-namespace TMS.DeskTop.Views.WorkPlace.PerformanceData.Entering
+namespace TMS.DeskTop.Views.WorkPlace.ViolateData.Entering.Step
 {
     /// <summary>
     /// CheckDataView.xaml 的交互逻辑
     /// </summary>
-    public partial class PerformanceDataCheckView : UserControl
+    public partial class CheckDataView : UserControl
     {
 
-        public PerformanceDataCheckView()
+        public CheckDataView()
         {
             InitializeComponent();
         }

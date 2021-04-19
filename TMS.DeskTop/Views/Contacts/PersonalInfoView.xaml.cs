@@ -1,43 +1,23 @@
 ﻿using Prism.Events;
-using System;
-using System.IO;
-using System.Windows;
-using System.Windows.Controls;
-using static TMS.DeskTop.ViewModels.Contacts.PersonalInfoViewModel;
+using Prism.Regions;
+using TMS.Core.Data.Token;
+using TMS.DeskTop.Tools.Base;
+using TMS.DeskTop.Views.Contacts.Personal;
 
 namespace TMS.DeskTop.Views.Contacts
 {
     /// <summary>
     /// PersonalInfoView.xaml 的交互逻辑
     /// </summary>
-    public partial class PersonalInfoView : UserControl
+    public partial class PersonalInfoView : RegionManagerControl
     {
         private readonly IEventAggregator eventAggregator;
-        public PersonalInfoView(IEventAggregator eventAggregator)
+        public PersonalInfoView(IRegionManager regionManager, IEventAggregator eventAggregator) : base(regionManager, typeof(PersonalInfoView))
         {
             InitializeComponent();
             this.eventAggregator = eventAggregator;
+            RegisterDefaultRegionView(RegionToken.PersonalInfoContent, nameof(BasicInfoView));
         }
 
-        private void SimplePanel_Drop(object sender, System.Windows.DragEventArgs e)
-        {
-
-            var files = e.Data.GetData(DataFormats.FileDrop) as Array;
-            foreach (string fileFullName in files)
-            {
-                eventAggregator.GetEvent<UpdateResumeEvent>().Publish(new FileInfo(fileFullName));
-                break;
-            }
-            e.Handled = true;
-        }
-
-        private void OnDragOver(object sender, System.Windows.DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effects = DragDropEffects.Copy;
-            else
-                e.Effects = DragDropEffects.None;
-            e.Handled = true;
-        }
     }
 }

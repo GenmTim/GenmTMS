@@ -14,6 +14,7 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:popup="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
     mc:Ignorable="d">
     <UserControl.Resources>
         <Style
@@ -146,52 +147,58 @@
                         FontWeight="Bold"
                         FontSize="16"
                         Foreground="{StaticResource PrimaryBrush}" />
-                    <hc:ScrollViewer>
-                        <StackPanel Margin="0,15,0,0">
-                            <TreeView
-                                Margin="0,0,0,0"
-                                hc:BorderElement.CornerRadius="0"
-                                Foreground="#333f87"
-                                ItemsSource="{Binding FileTreeNodeItemList}"
-                                Background="Transparent"
-                                SelectedItemChanged="TreeView_SelectedItemChanged"
-                                BorderThickness="0">
-                                <TreeView.ItemContainerStyle>
-                                    <Style TargetType="TreeViewItem" BasedOn="{StaticResource cloudTreeViewItemStyle}">
-                                        <Setter Property="ContextMenu">
-                                            <Setter.Value>
-                                                <ContextMenu Width="150">
-                                                    <MenuItem
-                                                        Command="{Binding DataContext.AddNewFolderCmd, RelativeSource={RelativeSource AncestorType=TreeView, Mode=FindAncestor}}"
-                                                        CommandParameter="{Binding Id}"
-                                                        Header="新建文件夹" />
-                                                </ContextMenu>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </TreeView.ItemContainerStyle>
-                                <TreeView.ItemTemplate>
-                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                                        <StackPanel Height="40" Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="&#xe638;"
-                                                Margin="5,0,0,0"
-                                                VerticalAlignment="Center"
-                                                Foreground="{Binding Path=(attach:IconFontElement.Color), RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
-                                                FontFamily="{StaticResource MenuIconFontFamily}"
-                                                FontSize="18" />
-                                            <TextBlock
-                                                Text="{Binding Name}"
-                                                Margin="10,0,0,0"
-                                                VerticalAlignment="Center"
-                                                FontWeight="{Binding Path=FontWeight, RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
-                                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
-                                                FontSize="14" />
-                                        </StackPanel>
-                                    </HierarchicalDataTemplate>
-                                </TreeView.ItemTemplate>
-                            </TreeView>
-                            <!--<StackPanel
+                </StackPanel>
+                <TreeView Grid.Row="2"
+                    Margin="0,15,0,0"
+                    hc:BorderElement.CornerRadius="0"
+                    Foreground="#333f87"
+                    ItemsSource="{Binding FileTreeNodeItemList}"
+                    Background="Transparent"
+                    SelectedItemChanged="TreeView_SelectedItemChanged"
+                    BorderThickness="0">
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="TreeViewItem" BasedOn="{StaticResource cloudTreeViewItemStyle}">
+                            <Setter Property="ContextMenu">
+                                <Setter.Value>
+                                    <ContextMenu Width="150">
+                                        <MenuItem
+                                            Command="{Binding DataContext.AddNewFolderCmd, RelativeSource={RelativeSource AncestorType=TreeView, Mode=FindAncestor}}"
+                                            CommandParameter="{Binding Id}"
+                                            Header="新建文件夹" />
+                                    </ContextMenu>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel Height="40" Orientation="Horizontal">
+                                <TextBlock
+                                    Text="&#xe638;"
+                                    Margin="5,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="{Binding Path=(attach:IconFontElement.Color), RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
+                                    FontFamily="{StaticResource MenuIconFontFamily}"
+                                    FontSize="18" />
+                                <TextBlock
+                                    Text="{Binding Name}"
+                                    Margin="10,0,0,0"
+                                    VerticalAlignment="Center"
+                                    FontWeight="{Binding Path=FontWeight, RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
+                                    Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=TreeViewItem, Mode=FindAncestor}}"
+                                    FontSize="14" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </Grid>
+            <hc:SimplePanel Grid.Column="1">
+                <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.CloudFileContent}" />
+            </hc:SimplePanel>
+        </Grid>
+    </materialDesign:DialogHost>
+</base:RegionManagerControl>
+<!--<StackPanel
                         Margin="0,0,0,15"
                         Cursor="Hand"
                         Orientation="Horizontal">
@@ -216,7 +223,7 @@
                             FontSize="14" />
                         <TextBlock />
                     </StackPanel>-->
-                            <!--<StackPanel
+<!--<StackPanel
                         Margin="0,0,0,15"
                         Cursor="Hand"
                         Orientation="Horizontal">
@@ -341,171 +348,3 @@
                             FontSize="14" />
                         <TextBlock />
                     </StackPanel>-->
-                        </StackPanel>
-                    </hc:ScrollViewer>
-                    <!--<StackPanel Margin="5,10,0,0">
-                    <StackPanel.Resources>
-                        <Style x:Key="icon" TargetType="TextBlock">
-                            <Setter Property="FontSize" Value="15" />
-                            <Setter Property="Foreground" Value="#10239e" />
-                            <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="Margin" Value="0,0,0,20" />
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                        </Style>
-                    </StackPanel.Resources>
-                    <StackPanel Margin="0,0,0,15" Orientation="Horizontal">
-                        <TextBlock
-                            Text="&#xe7ab;"
-                            VerticalAlignment="Center"
-                            FontFamily="{StaticResource FIconPlusFontFamily}" />
-                        <TextBlock
-                            Text="分享给我的"
-                            Margin="10,0,0,0"
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Margin="0,0,0,15" Orientation="Horizontal">
-                        <TextBlock
-                            Text="&#xe6fd;"
-                            VerticalAlignment="Center"
-                            FontFamily="{StaticResource FIconPlusFontFamily}" />
-                        <TextBlock
-                            Text="最近的文件"
-                            Margin="10,0,0,0"
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Margin="0,0,0,15" Orientation="Horizontal">
-                        <TextBlock
-                            Text="&#xe799;"
-                            VerticalAlignment="Center"
-                            FontFamily="{StaticResource FIconPlusFontFamily}" />
-                        <TextBlock
-                            Text="收藏"
-                            Margin="10,0,0,0"
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Margin="0,0,0,15" Orientation="Horizontal">
-                        <TextBlock
-                            Text="&#xe7ab;"
-                            VerticalAlignment="Center"
-                            FontFamily="{StaticResource FIconPlusFontFamily}" />
-                        <TextBlock
-                            Text="垃圾桶"
-                            Margin="10,0,0,0"
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                </StackPanel>-->
-                </StackPanel>
-
-                <!--<StackPanel Grid.Row="2" VerticalAlignment="Bottom">
-                <Border
-                    Margin="20,0"
-                    VerticalAlignment="Top"
-                    CornerRadius="8"
-                    Background="#f0f5ff">
-                    <StackPanel Margin="15">
-                        <StackPanel.Resources>
-                            <Style x:Key="iconTextBlockStyle" TargetType="TextBlock">
-                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                                <Setter Property="FontSize" Value="16" />
-                                <Setter Property="Foreground" Value="#2f54eb" />
-                            </Style>
-                            <Style x:Key="normalTextBlockStyle" TargetType="TextBlock">
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                                <Setter Property="Foreground" Value="#CF030852" />
-                                <Setter Property="Margin" Value="12,0,0,0" />
-                                <Setter Property="FontSize" Value="12" />
-                                <Setter Property="FontWeight" Value="SemiBold" />
-                            </Style>
-                            <Style x:Key="arrowTextBlockStyle" TargetType="TextBlock">
-                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
-                                <Setter Property="Text" Value="&#xe6f3;" />
-                                <Setter Property="HorizontalAlignment" Value="Right" />
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                                <Setter Property="Foreground" Value="#597ef7" />
-                            </Style>
-                        </StackPanel.Resources>
-                        <hc:SimplePanel Margin="0,0,0,15">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xe739;" Style="{StaticResource iconTextBlockStyle}" />
-                                <TextBlock Text="文件夹" Style="{StaticResource normalTextBlockStyle}" />
-                            </StackPanel>
-                            <TextBlock Style="{StaticResource arrowTextBlockStyle}" />
-                        </hc:SimplePanel>
-                        <hc:SimplePanel Margin="0,0,0,15">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xe738;" Style="{StaticResource iconTextBlockStyle}" />
-                                <TextBlock Text="文本文档" Style="{StaticResource normalTextBlockStyle}" />
-                            </StackPanel>
-                            <TextBlock Style="{StaticResource arrowTextBlockStyle}" />
-                        </hc:SimplePanel>
-                        <hc:SimplePanel Margin="0,0,0,15">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xe731;" Style="{StaticResource iconTextBlockStyle}" />
-                                <TextBlock Text="表格文件" Style="{StaticResource normalTextBlockStyle}" />
-                            </StackPanel>
-                            <TextBlock Style="{StaticResource arrowTextBlockStyle}" />
-                        </hc:SimplePanel>
-                        <hc:SimplePanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xe709;" Style="{StaticResource iconTextBlockStyle}" />
-                                <TextBlock Text="更多" Style="{StaticResource normalTextBlockStyle}" />
-                            </StackPanel>
-                            <TextBlock Style="{StaticResource arrowTextBlockStyle}" />
-                        </hc:SimplePanel>
-                    </StackPanel>
-                </Border>
-                <Button Margin="20,8" VerticalAlignment="Bottom">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Cursor" Value="Hand" />
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border
-                                            Height="45"
-                                            CornerRadius="8"
-                                            Background="#58b0ed">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                    <ColumnDefinition Width="50" />
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock
-                                                    Text="新建文件"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    FontSize="16"
-                                                    FontWeight="Bold"
-                                                    Foreground="White" />
-                                                <Border Grid.Column="1"
-                                                    Width="33"
-                                                    Height="33"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Background="#2b88c9"
-                                                    CornerRadius="8">
-                                                    <TextBlock
-                                                        Text="&#xe773;"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        FontSize="18"
-                                                        FontFamily="{StaticResource FIconPlusFontFamily}"
-                                                        Foreground="#84c8f8" />
-                                                </Border>
-                                            </Grid>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Button.Style>
-                </Button>
-            </StackPanel>-->
-            </Grid>
-            <hc:SimplePanel Grid.Column="1">
-                <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.CloudFileContent}" />
-            </hc:SimplePanel>
-        </Grid>
-    </materialDesign:DialogHost>
-</base:RegionManagerControl>

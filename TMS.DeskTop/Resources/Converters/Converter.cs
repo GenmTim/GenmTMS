@@ -141,6 +141,9 @@ namespace TMS.DeskTop.Resources.Converters
                 case "docx":
                     path += "Word.png";
                     break;
+                case "pdf":
+                    path += "PDF.png";
+                    break;
                 default:
                     path += "Other.png";
                     break;

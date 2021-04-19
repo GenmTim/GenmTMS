@@ -25,7 +25,7 @@
                 <hc:StepBarItem Content="设置并发布" />
             </hc:StepBar>
             <hc:SimplePanel Grid.Row="1">
-                <ContentControl prism:RegionManager.RegionName="{x:Static token:RegionToken.AttendanceEnteringStepContent}" />
+                <ContentControl prism:RegionManager.RegionName="{x:Static token:RegionToken.AttendanceDataEnteringStepContent}" />
             </hc:SimplePanel>
         </Grid>
     </hc:SimplePanel>

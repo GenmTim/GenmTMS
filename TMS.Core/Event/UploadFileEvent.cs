@@ -6,4 +6,8 @@ namespace TMS.Core.Event
     public class UploadFileEvent : PubSubEvent<UploadFileItemVO>
     {
     }
+
+    public class UploadedFileEvent : PubSubEvent<UploadFileItemVO>
+    {
+    }
 }

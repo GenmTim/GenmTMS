@@ -188,7 +188,10 @@
                             </Grid>
                         </hc:SimplePanel>
                     </Grid>
-                    <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,1,0" />
+                    <Border
+                        BorderBrush="{StaticResource TMS_BorderBrush}"
+                        BorderThickness="0,0,1,0"
+                        Cursor="Hand" />
                 </hc:SimplePanel>
                 <hc:SimplePanel Grid.Column="1">
                     <Border Background="White" />

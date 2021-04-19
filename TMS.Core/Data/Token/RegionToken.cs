@@ -60,6 +60,14 @@
 
         public static readonly string MyGroupContent = nameof(MyGroupContent);
 
-        public static readonly string AttendanceEnteringStepContent = nameof(AttendanceEnteringStepContent);
+        public static readonly string AttendanceDataEnteringStepContent = nameof(AttendanceDataEnteringStepContent);
+
+        public static readonly string ViolateDataEnteringStepContent = nameof(ViolateDataEnteringStepContent);
+
+        public static readonly string PerformanceDataEnteringStepContent = nameof(PerformanceDataEnteringStepContent);
+
+        public static readonly string PersonalInfoContent = nameof(PersonalInfoContent);
+
+        public static readonly string GloryDataEnteringContent = nameof(GloryDataEnteringContent);
     }
 }

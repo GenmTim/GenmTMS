@@ -4,6 +4,8 @@ using Prism.Mvvm;
 using Prism.Regions;
 using TMS.Core.Data.Token;
 using TMS.DeskTop.Tools.Helper;
+using TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering;
+using TMS.DeskTop.Views.WorkPlace.AttendanceData.Manager;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.AttendanceData
 {
@@ -27,7 +29,18 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.AttendanceData
             {
                 return;
             }
-            RegionHelper.RequestNavigate(regionManager, RegionToken.AttendaceDataEnteringContent, obj);
+            if (obj.Equals("EnteringStepView"))
+            {
+                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendaceDataEnteringContent, typeof(EnteringStepView));
+            }
+            else if (obj.Equals("ManageDataView"))
+            {
+                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendaceDataEnteringContent, typeof(ManageDataView));
+            }
+            else
+            {
+                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendaceDataEnteringContent, obj);
+            }
         }
     }
 }

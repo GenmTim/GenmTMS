@@ -19,9 +19,16 @@
         DragEnter="OnDragEnter"
         Drop="OnDrop"
         AllowDrop="True">
-        <StackPanel Margin="0,25,0,0">
-            <Border BorderThickness="0,1,0,0" BorderBrush="{StaticResource TMS_BorderBrush}" />
-            <hc:SimplePanel Margin="20,20,20,20">
+        <Grid Margin="0,25,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border
+                Grid.RowSpan="2"
+                BorderThickness="0,1,0,0"
+                BorderBrush="{StaticResource TMS_BorderBrush}" />
+            <hc:SimplePanel Grid.Row="0" Margin="20,20,20,20">
                 <TextBlock
                     Text="{Binding Context.Name}"
                     FontSize="20"
@@ -44,8 +51,8 @@
                         Style="{StaticResource ButtonPrimary}" />
                 </hc:UniformSpacingPanel>
             </hc:SimplePanel>
-            <local:FileListControl Margin="10,0" />
-        </StackPanel>
+            <local:FileListControl Grid.Row="1" Margin="10,0" />
+        </Grid>
         <popup:UploadInfoPopup
             Margin="0,0,20,20"
             HorizontalAlignment="Right"
@@ -114,7 +121,7 @@
                         VerticalAlignment="Center"
                         Foreground="{StaticResource SecondaryTextBrush}" />
                     <TextBlock
-                        Text="我的控件"
+                        Text="{Binding Context.Name}"
                         VerticalAlignment="Center"
                         Foreground="#1890ff" />
                     <TextBlock Text=" 中" Foreground="{StaticResource SecondaryTextBrush}" />

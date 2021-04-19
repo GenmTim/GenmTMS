@@ -363,12 +363,11 @@
                                     FontWeight="SemiBold" />
                                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                                     <Button
-                                        Content="Go主界面"
-                                        FontSize="12"
-                                        Style="{StaticResource TextBtnStyle}" />
-                                    <Button
                                         Content="发起新的评价"
+                                        Command="{Binding NavigationCmd}"
+                                        CommandParameter="NewSubjectiveRuleView"
                                         Margin="20,0,0,0"
+                                        Cursor="Hand"
                                         Style="{StaticResource ButtonPrimary}" />
                                 </StackPanel>
 

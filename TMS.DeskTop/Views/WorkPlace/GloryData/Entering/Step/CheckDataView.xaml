@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="TMS.DeskTop.Views.WorkPlace.PerformanceData.Entering.PerformanceDataCheckView"
+    x:Class="TMS.DeskTop.Views.WorkPlace.GloryData.Entering.Step.CheckDataView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"

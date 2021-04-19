@@ -49,6 +49,15 @@ namespace TMS.DeskTop.Tools.Base
             regionsDefaultView[regionName] = Router.Instance.ConverterViewNameToType(viewName);
         }
 
+        protected void RegisterDefaultRegionView(string regionName, Type viewType)
+        {
+            if (regionsDefaultView == null)
+            {
+                regionsDefaultView = new Dictionary<string, Type>();
+            }
+            regionsDefaultView[regionName] = viewType;
+        }
+
         private void LoadDefaultRegionView(object sender, System.Windows.RoutedEventArgs e)
         {
             if (regionsDefaultView != null)

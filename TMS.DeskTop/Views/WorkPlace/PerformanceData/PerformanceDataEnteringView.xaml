@@ -8,6 +8,7 @@
     xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="White"
@@ -143,7 +144,7 @@
                     BorderThickness="0"
                     ExpandMode="ShowAll"
                     ItemContainerStyle="{StaticResource SideMenuItemHeaderAccordionBaseStyle}">
-                    <hc:SideMenuItem>
+                    <hc:SideMenuItem Cursor="Hand">
                         <hc:SideMenuItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
@@ -159,29 +160,30 @@
                                     FontSize="16" />
                             </StackPanel>
                         </hc:SideMenuItem.Header>
-                        <hc:SideMenuItem Height="50" Header="绩效数据录入" />
-                        <hc:SideMenuItem Height="50" Header="绩效数据管理" />
-                        <hc:SideMenuItem Height="50" Header="数据接口设置" />
+                        <hc:SideMenuItem
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="EnteringStepView"
+                            Height="50"
+                            Header="绩效数据录入" />
+                        <hc:SideMenuItem
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="ManageDataView"
+                            Height="50"
+                            Header="绩效数据管理" />
+                        <!--<hc:SideMenuItem
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="EnteringStepView"
+                            Height="50"
+                            Header="绩效 API 接口" />-->
+                        <!--<hc:SideMenuItem Height="50" Header="绩效数据管理" />
+                        <hc:SideMenuItem Height="50" Header="数据接口设置" />-->
                     </hc:SideMenuItem>
                 </hc:SideMenu>
                 <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,1,0" />
             </hc:SimplePanel>
-            <Grid Grid.Column="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <hc:StepBar x:Name="stepBar" StepIndex="{Binding StepIndex}">
-                    <hc:StepBarItem Content="上传绩效数据" />
-                    <hc:StepBarItem Content="核对数据" />
-                    <hc:StepBarItem Content="设置并发布" />
-                </hc:StepBar>
-                <hc:SimplePanel Grid.Row="1">
-                    <ContentControl prism:RegionManager.RegionName="{x:Static token:RegionToken.PerformanceDataEnteringContent}" />
-                </hc:SimplePanel>
-            </Grid>
+            <hc:SimplePanel Grid.Column="1">
+                <ContentControl prism:RegionManager.RegionName="{x:Static token:RegionToken.PerformanceDataEnteringContent}" />
+            </hc:SimplePanel>
         </Grid>
     </DockPanel>
 </base:RegionManagerControl>

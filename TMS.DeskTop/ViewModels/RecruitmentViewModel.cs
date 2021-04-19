@@ -32,6 +32,10 @@ namespace TMS.DeskTop.ViewModels
 
         private void NavigationPage(string view)
         {
+            if (view == null)
+            {
+                return;
+            }
             RegionHelper.RequestNavigate(regionManager, RegionToken.RecruitmentContent, view);
         }
     }

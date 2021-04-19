@@ -157,9 +157,11 @@
                                         </Style>
                                     </hc:UniformSpacingPanel.Resources>
                                     <RadioButton
+                                        IsChecked="True"
                                         Command="{Binding NavigationCmd}"
                                         CommandParameter="CommonFileView"
-                                        hc:TitleElement.Title="通用档案" />
+                                        hc:TitleElement.Title="通用档案"
+                                        Cursor="Hand" />
                                     <RadioButton
                                         Command="{Binding NavigationCmd}"
                                         CommandParameter="HRFileView"

@@ -1,6 +1,5 @@
 ﻿using Prism.Events;
 using Prism.Regions;
-using System.Windows.Controls;
 using TMS.Core.Data.Token;
 using TMS.Core.Event;
 using TMS.DeskTop.Tools.Base;
@@ -21,7 +20,7 @@ namespace TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering
         {
             InitializeComponent();
             this.eventAggregator = eventAggregator;
-            RegisterDefaultRegionView(RegionToken.AttendanceEnteringStepContent, nameof(EnteringDataView));
+            RegisterDefaultRegionView(RegionToken.AttendanceDataEnteringStepContent, typeof(EnteringDataView));
             this.Loaded += Event_Loaded;
             this.Unloaded += Event_Unloaded;
         }
@@ -64,7 +63,7 @@ namespace TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering
         {
             if (stepBar.StepIndex == 0)
             {
-                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendanceEnteringStepContent, typeof(EnteringDataView));
+                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendanceDataEnteringStepContent, typeof(EnteringDataView));
             }
             else if (stepBar.StepIndex == 1)
             {
@@ -73,11 +72,11 @@ namespace TMS.DeskTop.Views.WorkPlace.AttendanceData.Entering
                 {
                     param.Add("entry_file", vm.EntryFileInfo);
                 }
-                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendanceEnteringStepContent, typeof(CheckDataView), param);
+                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendanceDataEnteringStepContent, typeof(CheckDataView), param);
             }
             else if (stepBar.StepIndex == 2)
             {
-                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendanceEnteringStepContent, typeof(CompleteEntryDataView));
+                RegionHelper.RequestNavigate(regionManager, RegionToken.AttendanceDataEnteringStepContent, typeof(CompleteEntryDataView));
             }
         }
     }

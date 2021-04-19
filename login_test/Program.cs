@@ -8,6 +8,10 @@ namespace login_test
     {
         public DateTime StartTime;
         public DateTime EndTime;
+        public override string ToString()
+        {
+            return String.Format("{0} - {1}", StartTime.ToString("yyyy-MM-dd"), EndTime.ToString("yyyy-MM-dd"));
+        }
     }
 
 
@@ -29,6 +33,7 @@ namespace login_test
             return datetime.AddDays(1);
         }
 
+        // 获取今年所有周的时间区间
         public static List<DateTimeSpace> GetYearAllWeakTimeSpace()
         {
             List<DateTimeSpace> timeSpaceOfWeakList = new List<DateTimeSpace>();
@@ -60,12 +65,12 @@ namespace login_test
             var findedVal = timeSpaceOfWeakList.FirstOrDefault((timespace) => { return timespace.StartTime <= datetime && datetime <= timespace.EndTime; });
             Console.WriteLine(findedVal.StartTime.ToString("yyyy-MM-dd"));
 
-            //int index = 0;
-            //foreach (var dateTimeSpace in weakDaySpace)
-            //         {
-            //	++index;
-            //	Console.WriteLine("第{0}周，{1} - {2}", index, dateTimeSpace.StartTime.ToString("yyyy-MM-dd"), dateTimeSpace.EndTime.ToString("yyyy-MM-dd"));
-            //         }
+            int index = 0;
+            foreach (var dateTimeSpace in timeSpaceOfWeakList)
+            {
+                ++index;
+                Console.WriteLine("第{0}周 {1} - {2}", index, dateTimeSpace.StartTime.ToString("yyyy-MM-dd"), dateTimeSpace.EndTime.ToString("yyyy-MM-dd"));
+            }
         }
     }
 }

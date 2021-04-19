@@ -256,19 +256,43 @@
     <Compile Update="UserControls\Common\Views\RoundProgress.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\WorkPlace\GloryData\Entering\EnteringStepView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\GloryData\Entering\Step\CheckDataView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\GloryData\Entering\Step\EnteringDataView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\GloryData\Manage\ManageDataView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\GloryData\GloryDataEnteringView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\PerformanceData\Entering\EnteringStepView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\PerformanceData\Manage\ManageDataView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\WorkPlace\PerformanceData\PerformanceDataEnteringView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\WorkPlace\PerformanceData\Entering\PerformanceDataCheckView.xaml.cs">
+    <Compile Update="Views\WorkPlace\PerformanceData\Entering\Step\CheckDataView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\WorkPlace\PerformanceData\Entering\PerformanceDataEnteringDataView.xaml.cs">
+    <Compile Update="Views\WorkPlace\PerformanceData\Entering\Step\EnteringDataView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\WorkPlace\ViolateData\Entering\ViolateDataCheckView.xaml.cs">
+    <Compile Update="Views\WorkPlace\ViolateData\Entering\Step\CheckDataView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\WorkPlace\ViolateData\Entering\ViolateDataEnteringDataView.xaml.cs">
+    <Compile Update="Views\WorkPlace\ViolateData\Entering\Step\EnteringDataView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WorkPlace\ViolateData\Manage\ManageDataView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\WorkPlace\ViolateData\ViolateDataEnteringView.xaml.cs">
@@ -284,6 +308,7 @@
   <ItemGroup>
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="UserControls\WebComponent\" />
+    <Folder Include="ViewModels\WorkPlace\PerformanceData\Manager\" />
     <Folder Include="Views\Contacts\Favorite\" />
     <Folder Include="Views\WorkPlace\Community\" />
   </ItemGroup>
@@ -310,26 +335,61 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Update="Views\WorkPlace\GloryData\Entering\EnteringStepView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\GloryData\Entering\Step\CheckDataView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\GloryData\Entering\Step\EnteringDataView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\GloryData\Manage\ManageDataView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\GloryData\GloryDataEnteringView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\PerformanceData\Entering\EnteringStepView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\PerformanceData\Manage\ManageDataView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\WorkPlace\PerformanceData\PerformanceDataEnteringView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\WorkPlace\PerformanceData\Entering\PerformanceDataCheckView.xaml">
+    <Page Update="Views\WorkPlace\PerformanceData\Entering\Step\CheckDataView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\WorkPlace\PerformanceData\Entering\PerformanceDataEnteringDataView.xaml">
+    <Page Update="Views\WorkPlace\PerformanceData\Entering\Step\EnteringDataView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\WorkPlace\Auth\AuthMainView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-    <Page Update="Views\WorkPlace\ViolateData\Entering\ViolateDataCheckView.xaml">
+    <Page Update="Views\WorkPlace\SubjectiveData\Subitem\NewSubjectiveRuleView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Views\WorkPlace\ViolateData\Entering\Step\CheckDataView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\WorkPlace\ViolateData\Entering\ViolateDataEnteringDataView.xaml">
+    <Page Update="Views\WorkPlace\ViolateData\Entering\Step\EnteringDataView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\WorkPlace\ViolateData\Manage\ManageDataView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

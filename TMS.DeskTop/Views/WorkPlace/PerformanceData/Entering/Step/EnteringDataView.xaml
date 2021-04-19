@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="TMS.DeskTop.Views.WorkPlace.ViolateData.Entering.ViolateDataEnteringDataView"
+    x:Class="TMS.DeskTop.Views.WorkPlace.PerformanceData.Entering.Step.EnteringDataView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -18,10 +18,10 @@
                         <Setter Property="FontSize" Value="14" />
                     </Style>
                 </Grid.Resources>
-                <hc:TextBox hc:TitleElement.Title="违纪时间" />
+                <hc:TextBox hc:TitleElement.Title="绩效时间" />
             </Grid>
             <StackPanel Margin="0,50,0,0">
-                <TextBlock Text="上传违纪数据" FontSize="14" />
+                <TextBlock Text="上传绩效数据" FontSize="14" />
                 <hc:SimplePanel Margin="0,10,0,0">
                     <Border
                         Height="200"
@@ -63,6 +63,7 @@
                     Command="{Binding NextStepCmd}"
                     Width="100"
                     Margin="0,30,0,0"
+                    IsEnabled="False"
                     Cursor="Hand"
                     Style="{StaticResource ButtonPrimary}" />
             </StackPanel>

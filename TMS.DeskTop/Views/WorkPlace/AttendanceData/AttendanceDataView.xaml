@@ -10,6 +10,4 @@
     d:Background="White"
     d:DesignWidth="800"
     Background="White"
-    mc:Ignorable="d">
-  
-</UserControl>
+    mc:Ignorable="d" />

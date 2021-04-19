@@ -4,6 +4,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
+using System.Collections.ObjectModel;
 using TMS.Core.Api;
 using TMS.Core.Data.VO.CloudFile;
 using TMS.Core.Event;
@@ -32,6 +33,18 @@ namespace TMS.DeskTop.ViewModels.CloudFile
 
         public DelegateCommand AddNewFolderCmd { get; private set; }
         public DelegateCommand OpenFileCmd { get; private set; }
+
+        private ObservableCollection<FileItemVO> fileItemVOList;
+        public ObservableCollection<FileItemVO> FileItemVOList
+        {
+            get => fileItemVOList;
+            set
+            {
+                fileItemVOList = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
 
         public CloudFileMainViewModel(IEventAggregator eventAggregator, IDialogHostService dialogHost)
@@ -65,6 +78,17 @@ namespace TMS.DeskTop.ViewModels.CloudFile
                         LoggerService.Info(name);
                     }
                 }
+            });
+            this.eventAggregator.GetEvent<UploadedFileEvent>().Subscribe((item) =>
+            {
+                FileItemVOList ??= new ObservableCollection<FileItemVO>();
+                FileItemVOList.Add(new FileItemVO
+                {
+                    Name = item.Name,
+                    Owner = SessionService.Instance.User,
+                    LastUpdateTimestamp = TimeHelper.GetNowTimeStamp(),
+                    FileSize = item.Size
+                });
             });
         }
 

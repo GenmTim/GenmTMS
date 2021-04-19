@@ -143,11 +143,13 @@ namespace TMS.DeskTop.ViewModels
             {
                 new AppItem { Tag="数据农场", Name = "考勤数据", IconFont = "\xe6e1", Url = "AttendanceDataEnteringView", Command=NavigationCmd },
                 new AppItem { Tag="数据农场", Name = "违纪数据", IconFont = "\xe6e3", Url = "ViolateDataEnteringView", Command=NavigationCmd },
+                new AppItem { Tag="数据农场", Name = "荣耀数据", IconFont = "\xe6e3", Url = "GloryDataEnteringView", Command=NavigationCmd },
                 new AppItem { Tag="数据农场", Name = "绩效数据", IconFont = "\xe6f2", Url = "PerformanceDataEnteringView", Command=NavigationCmd },
                 new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe717", Url = "SubjectiveDataView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "授权", IconFont = "\xe730", Url = "AuthMainView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "人才推荐", IconFont = "\xe730", Url = "RecommendView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "调查问券", IconFont = "\xe740", Url = "EvaluationView", Command=NavigationCmd },
+                new AppItem { Tag="人事工具", Name = "招聘", IconFont = "\xe740", Url = "RecruitmentView", Command=NavigationCmd },
                 new AppItem { Tag="人事工具", Name = "员工关怀", IconFont = "\xe782", Url = "StaffCareView", Command=NavigationCmd },
                 new AppItem { Tag="气氛组", Name = "社区", IconFont = "\xe730", Url = "CommunityView", Command=NavigationCmd },
                 new AppItem { Tag="气氛组", Name = "活动", IconFont = "\xe730", Url = "ActivityView", Command=NavigationCmd },

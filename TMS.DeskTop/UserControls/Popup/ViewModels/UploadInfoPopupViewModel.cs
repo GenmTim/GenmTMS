@@ -85,7 +85,6 @@ namespace TMS.DeskTop.UserControls.Popup.ViewModels
             UploadFileSumSize += fileItem.Size;
             UploadFileItemNumber += 1;
 
-
             Task.Run(() =>
             {
                 FileStream fs = File.OpenRead(fileItem.FullName);
@@ -95,9 +94,7 @@ namespace TMS.DeskTop.UserControls.Popup.ViewModels
                 {
                     int readSize = fs.Read(buffer, 0, buffer.Length);
                     readedSize += readSize;
-
                     // 发送到服务端
-
 
                     // 计算上传比例，传递到UI上
                     long nowRate = readedSize * 100 / fileSize;
@@ -117,6 +114,7 @@ namespace TMS.DeskTop.UserControls.Popup.ViewModels
                 {
                     UploadFileItemNumber -= 1;
                     fileItem.State = UploadFileState.上传完成;
+                    this.eventAggregator.GetEvent<UploadedFileEvent>().Publish(fileItem);
                 }));
                 fs.Close();
             });
