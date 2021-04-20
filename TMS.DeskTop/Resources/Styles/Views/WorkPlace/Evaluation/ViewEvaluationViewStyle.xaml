@@ -276,7 +276,7 @@
                                         </LinearGradientBrush>
                                     </Border.Background>
                                     <TextBlock
-                                        Text="{Binding Name, Converter={StaticResource FetchFirstCharConverter}}"
+                                        Text="{Binding Job, Converter={StaticResource FetchFirstCharConverter}}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Foreground="White" />
@@ -288,19 +288,22 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock
-                                        Text="{Binding Name}"
+                                        Text="{Binding Job}"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
+                                        TextTrimming="CharacterEllipsis"
                                         FontSize="15" />
                                     <TextBlock Grid.Column="1"
-                                        Text="{Binding LastUpdateTime}"
+                                        Text="{Binding ArrivalTime}"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Foreground="{StaticResource SecondaryTextBrush}" />
                                 </Grid>
                                 <TextBlock Grid.Row="1" Grid.Column="1"
-                                    Text="{Binding Content}"
+                                    Text="{Binding Require}"
+                                    TextWrapping="Wrap"
                                     Margin="5,5,0,0"
+                                    TextTrimming="CharacterEllipsis"
                                     FontSize="14"
                                     Foreground="{StaticResource SecondaryTextBrush}" />
                             </Grid>

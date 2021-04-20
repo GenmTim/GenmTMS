@@ -67,10 +67,11 @@
                     BorderThickness="0"
                     FocusVisualStyle="{x:Null}"
                     ItemContainerStyle="{StaticResource ListViewItemBaseStyle}"
-                    ItemsSource="{Binding EvaluationRuleList}">
+                    ItemsSource="{Binding RequirementVOList}">
                     <ListView.Resources>
                         <Style TargetType="TextBlock">
                             <Setter Property="FontSize" Value="14" />
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
                         </Style>
                     </ListView.Resources>
                     <ListView.View>
@@ -105,10 +106,11 @@
                                                     <RowDefinition />
                                                 </Grid.RowDefinitions>
                                                 <TextBlock Grid.Column="1"
-                                                    Text="{Binding Name}"
+                                                    Text="{Binding Job}"
+                                                    TextTrimming="CharacterEllipsis"
                                                     FontSize="15" />
                                                 <TextBlock Grid.Row="1" Grid.Column="1"
-                                                    Text="{Binding Name}"
+                                                    Text="{Binding Job}"
                                                     Margin="0,4,0,0"
                                                     Foreground="{StaticResource SecondaryTextBrush}" />
                                             </Grid>
@@ -118,15 +120,15 @@
                             </GridViewColumn>
                             <GridViewColumn
                                 Width="150"
-                                DisplayMemberBinding="{Binding Examiner}"
-                                Header="经验要求" />
+                                DisplayMemberBinding="{Binding WorkAge}"
+                                Header="工龄要求" />
                             <GridViewColumn
                                 Width="120"
-                                DisplayMemberBinding="{Binding Time}"
-                                Header="截止日期" />
+                                DisplayMemberBinding="{Binding ArrivalTime}"
+                                Header="期望到岗日期" />
                             <GridViewColumn
                                 Width="160"
-                                DisplayMemberBinding="{Binding Content}"
+                                DisplayMemberBinding="{Binding Require}"
                                 Header="职位描述" />
                             <GridViewColumn CellTemplate="{StaticResource evaluationRuleItemOptCell}" Header="操作" />
                         </GridView>

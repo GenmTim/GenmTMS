@@ -45,14 +45,12 @@
                 <Button
                     Content="进入招聘流程"
                     Command="{Binding NavigationCommand}"
-                    CommandParameter=""
                     Margin="60,0,0,0"
                     Cursor="Hand" />
                 <Button
                     Content="进入管理后台"
                     Command="{Binding NavigationCommand}"
-                    CommandParameter=""
-                    Margin="60,0,0,0" />
+                    Margin="60,0,0,0" Cursor="Hand" />
             </StackPanel>
         </StackPanel>
     </Grid>

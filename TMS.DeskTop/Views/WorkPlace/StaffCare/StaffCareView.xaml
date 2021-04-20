@@ -14,13 +14,14 @@
         <hc:ScrollViewer>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="20" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <StackPanel
+                <!--<StackPanel
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
+
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
                             Text="&#xe640;"
@@ -43,129 +44,84 @@
                             Margin="10,0,0,0"
                             Foreground="#722ed1" />
                     </StackPanel>
-                </StackPanel>
+                </StackPanel>-->
                 <hc:SimplePanel Grid.Row="1">
-                    <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
                         <TextBlock
-                            Text="近期10天内"
+                            Text="近期"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             FontWeight="SemiBold" />
-                        <hc:SimplePanel Margin="50,15">
-                            <Border
-                                Background="White"
-                                CornerRadius="5"
-                                Effect="{StaticResource EffectShadowCom}" />
-                            <Border
-                                Width="8"
-                                Height="8"
-                                Margin="-4"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Style="{StaticResource BorderCircular}"
-                                Background="Red" />
-                            <Grid Margin="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <hc:SimplePanel>
-                                    <hc:Gravatar
-                                        Width="50"
-                                        Height="50"
-                                        Id="asdas"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                </hc:SimplePanel>
-                                <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
-                                    <StackPanel>
-                                        <TextBlock
-                                            Text="蔡承龙"
-                                            FontWeight="SemiBold"
-                                            FontSize="16" />
-                                        <TextBlock Margin="0,5,0,0">
-                                            <Run Text="生日 " Foreground="#eb2f96" />
-                                            <Run Text="2020-10-26" />
-                                        </TextBlock>
-                                    </StackPanel>
-                                </hc:SimplePanel>
-                                <hc:SimplePanel Grid.Column="2">
-                                    <hc:UniformSpacingPanel
-                                        Margin="0,0,20,0"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center">
-                                        <Button
-                                            Content="送上祝福"
-                                            Width="150"
-                                            hc:BorderElement.CornerRadius="15"
-                                            Cursor="Hand"
-                                            BorderThickness="1"
-                                            Foreground="#eb2f96"
-                                            Background="Transparent"
-                                            BorderBrush="#eb2f96"
-                                            Style="{StaticResource ButtonPrimary}" />
-                                    </hc:UniformSpacingPanel>
-                                </hc:SimplePanel>
-                            </Grid>
-                        </hc:SimplePanel>
-                        <hc:SimplePanel Margin="50,15">
-                            <Border
-                                Background="White"
-                                CornerRadius="5"
-                                Effect="{StaticResource EffectShadowCom}" />
-                            <Border
-                                Width="8"
-                                Height="8"
-                                Margin="-4"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Style="{StaticResource BorderCircular}"
-                                Background="Red" />
-                            <Grid Margin="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <hc:SimplePanel>
-                                    <hc:Gravatar
-                                        Width="50"
-                                        Height="50"
-                                        Id="ass"
-                                        Style="{StaticResource GravatarCircleImg}" />
-                                </hc:SimplePanel>
-                                <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
-                                    <StackPanel>
-                                        <TextBlock
-                                            Text="夏晓瑜"
-                                            FontWeight="SemiBold"
-                                            FontSize="16" />
-                                        <TextBlock Margin="0,5,0,0">
-                                            <Run Text="生日 " Foreground="#eb2f96" />
-                                            <Run Text="2020-03-14" />
-                                        </TextBlock>
-                                    </StackPanel>
-                                </hc:SimplePanel>
-                                <hc:SimplePanel Grid.Column="2">
-                                    <hc:UniformSpacingPanel
-                                        Margin="0,0,20,0"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center">
-                                        <Button
-                                            Content="送上祝福"
-                                            Width="150"
-                                            hc:BorderElement.CornerRadius="15"
-                                            Cursor="Hand"
-                                            BorderThickness="1"
-                                            Foreground="#eb2f96"
-                                            Background="Transparent"
-                                            BorderBrush="#eb2f96"
-                                            Style="{StaticResource ButtonPrimary}" />
-                                    </hc:UniformSpacingPanel>
-                                </hc:SimplePanel>
-                            </Grid>
-                        </hc:SimplePanel>
-                        <hc:SimplePanel Margin="50,15">
+                        <ItemsControl Grid.Row="1" ItemsSource="{Binding StaffCareList}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <hc:SimplePanel Margin="50,15">
+                                        <Border
+                                            Background="White"
+                                            CornerRadius="5"
+                                            Effect="{StaticResource EffectShadowCom}" />
+                                        <Border
+                                            Width="8"
+                                            Height="8"
+                                            Margin="-4"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Style="{StaticResource BorderCircular}"
+                                            Background="Red" />
+                                        <Grid Margin="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <hc:SimplePanel>
+                                                <hc:Gravatar
+                                                    Width="50"
+                                                    Height="50"
+                                                    Source="{Binding Avatar, Converter={StaticResource String2UriConverter}}"
+                                                    Style="{StaticResource GravatarCircleImg}" />
+                                            </hc:SimplePanel>
+                                            <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
+                                                <StackPanel>
+                                                    <TextBlock
+                                                        Text="{Binding Name}"
+                                                        FontWeight="SemiBold"
+                                                        FontSize="16" />
+                                                    <TextBlock Margin="0,5,0,0">
+                                                        <Run Text="生日 " Foreground="#eb2f96" />
+                                                        <Run Text="{Binding Birth}" />
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </hc:SimplePanel>
+                                            <hc:SimplePanel Grid.Column="2">
+                                                <hc:UniformSpacingPanel
+                                                    Margin="0,0,20,0"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center">
+                                                    <Button
+                                                        Content="送上祝福"
+                                                        Width="150"
+                                                        hc:BorderElement.CornerRadius="15"
+                                                        Cursor="Hand"
+                                                        BorderThickness="1"
+                                                        Foreground="#eb2f96"
+                                                        Background="Transparent"
+                                                        BorderBrush="#eb2f96"
+                                                        Style="{StaticResource ButtonPrimary}" />
+                                                </hc:UniformSpacingPanel>
+                                            </hc:SimplePanel>
+                                        </Grid>
+                                    </hc:SimplePanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+
+                        <!--<hc:SimplePanel Margin="50,15">
                             <Border
                                 Background="White"
                                 CornerRadius="5"
@@ -194,12 +150,12 @@
                                 <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
                                     <StackPanel>
                                         <TextBlock
-                                            Text="金泽权"
+                                            Text="徐长元"
                                             FontWeight="SemiBold"
                                             FontSize="16" />
                                         <TextBlock Margin="0,5,0,0">
                                             <Run Text="生日 " Foreground="#eb2f96" />
-                                            <Run Text="2020-04-13" />
+                                            <Run Text="06-23" />
                                         </TextBlock>
                                     </StackPanel>
                                 </hc:SimplePanel>
@@ -245,7 +201,7 @@
                                     <hc:Gravatar
                                         Width="50"
                                         Height="50"
-                                        Id="a56s"
+                                        Source="{Binding Avatar, Converter={StaticResource String2UriConverter}}"
                                         Style="{StaticResource GravatarCircleImg}" />
                                 </hc:SimplePanel>
                                 <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
@@ -256,7 +212,7 @@
                                             FontSize="16" />
                                         <TextBlock Margin="0,5,0,0">
                                             <Run Text="生日 " Foreground="#eb2f96" />
-                                            <Run Text="2020-05-10" />
+                                            <Run Text="06-24" />
                                         </TextBlock>
                                     </StackPanel>
                                 </hc:SimplePanel>
@@ -313,7 +269,7 @@
                                             FontSize="16" />
                                         <TextBlock Margin="0,5,0,0">
                                             <Run Text="生日 " Foreground="#eb2f96" />
-                                            <Run Text="2020-05-18" />
+                                            <Run Text="07-18" />
                                         </TextBlock>
                                     </StackPanel>
                                 </hc:SimplePanel>
@@ -359,18 +315,18 @@
                                     <hc:Gravatar
                                         Width="50"
                                         Height="50"
-                                        Id="asdasyy"
+                                        Id="asd99"
                                         Style="{StaticResource GravatarCircleImg}" />
                                 </hc:SimplePanel>
                                 <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
                                     <StackPanel>
                                         <TextBlock
-                                            Text="柳依依"
+                                            Text="李欣欣"
                                             FontWeight="SemiBold"
                                             FontSize="16" />
                                         <TextBlock Margin="0,5,0,0">
                                             <Run Text="生日 " Foreground="#eb2f96" />
-                                            <Run Text="2020-06-06" />
+                                            <Run Text="08-18" />
                                         </TextBlock>
                                     </StackPanel>
                                 </hc:SimplePanel>
@@ -393,6 +349,65 @@
                                 </hc:SimplePanel>
                             </Grid>
                         </hc:SimplePanel>
+                        <hc:SimplePanel Margin="50,15">
+                            <Border
+                                Background="White"
+                                CornerRadius="5"
+                                Effect="{StaticResource EffectShadowCom}" />
+                            <Border
+                                Width="8"
+                                Height="8"
+                                Margin="-4"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource BorderCircular}"
+                                Background="Red" />
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <hc:SimplePanel>
+                                    <hc:Gravatar
+                                        Width="50"
+                                        Height="50"
+                                        Id="asdas"
+                                        Style="{StaticResource GravatarCircleImg}" />
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Grid.Column="1" VerticalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock
+                                            Text="蔡承龙"
+                                            FontWeight="SemiBold"
+                                            FontSize="16" />
+                                        <TextBlock Margin="0,5,0,0">
+                                            <Run Text="生日 " Foreground="#eb2f96" />
+                                            <Run Text="10-26" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                                <hc:SimplePanel Grid.Column="2">
+                                    <hc:UniformSpacingPanel
+                                        Margin="0,0,20,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center">
+                                        <Button
+                                            Content="送上祝福"
+                                            Width="150"
+                                            hc:BorderElement.CornerRadius="15"
+                                            Cursor="Hand"
+                                            BorderThickness="1"
+                                            Foreground="#eb2f96"
+                                            Background="Transparent"
+                                            BorderBrush="#eb2f96"
+                                            Style="{StaticResource ButtonPrimary}" />
+                                    </hc:UniformSpacingPanel>
+                                </hc:SimplePanel>
+                            </Grid>
+                        </hc:SimplePanel>-->
+
+
                         <!--<ItemsControl Margin="50,15">
                             <ItemsControl.ItemsSource>
                                 <x:Array Type="system:String">
@@ -464,7 +479,7 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>-->
-                    </StackPanel>
+                    </Grid>
                 </hc:SimplePanel>
             </Grid>
         </hc:ScrollViewer>

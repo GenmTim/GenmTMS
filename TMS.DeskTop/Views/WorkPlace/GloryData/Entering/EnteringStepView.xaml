@@ -113,11 +113,7 @@
                                 Style="{StaticResource titleTextBlockStyle}" />
                             <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
                         </StackPanel>
-                        <hc:TimePicker>
-                            <hc:TimePicker.Clock>
-                                <hc:ListClock />
-                            </hc:TimePicker.Clock>
-                        </hc:TimePicker>
+                        <DatePicker />
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">

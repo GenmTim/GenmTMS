@@ -35,29 +35,30 @@
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     hc:BorderElement.Circular="True"
-                                    Background="#FF00D6B9"
+                                    Background="#1890ff"
                                     UseLayoutRounding="True">
                                     <Border.Effect>
                                         <DropShadowEffect
-                                            BlurRadius="12"
+                                            BlurRadius="5"
                                             Direction="270"
                                             Opacity=".5"
                                             RenderingBias="Performance"
                                             ShadowDepth="1"
-                                            Color="#FF18DAC0" />
+                                            Color="#1890ff" />
                                     </Border.Effect>
                                     <TextBlock
-                                        Text="&#xe62c;"
+                                        Text="&#xe77b;"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         FontSize="30"
                                         Foreground="White"
-                                        FontFamily="{StaticResource FIconFontFamily}" />
+                                        FontFamily="{StaticResource AppIconFontFamily}" />
                                 </Border>
                                 <TextBlock Grid.Row="0" Grid.Column="1"
-                                    Text="360度绩效评估"
+                                    Text="{Binding Job}"
                                     Margin="8"
                                     Panel.ZIndex="1"
+                                    TextTrimming="CharacterEllipsis"
                                     FontSize="16" />
                                 <Grid Grid.Row="1"
                                     Grid.ColumnSpan="2"
@@ -68,19 +69,29 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0"
-                                        Text="汇报对象：蔡承龙"
                                         FontSize="14"
-                                        Foreground="{StaticResource SecondaryTextBrush}" />
+                                        TextTrimming="CharacterEllipsis"
+                                        Foreground="{StaticResource SecondaryTextBrush}">
+                                        <Run Text="招聘工作: " />
+                                        <Run Text="{Binding Job}" />
+                                    </TextBlock>
                                     <TextBlock Grid.Row="1"
-                                        Text="汇报内容：员工姓名、业绩、做得好的具体..."
+                                        TextWrapping="Wrap"
+                                        TextTrimming="CharacterEllipsis"
                                         FontSize="14"
-                                        Foreground="{StaticResource SecondaryTextBrush}" />
+                                        Foreground="{StaticResource SecondaryTextBrush}">
+                                        <Run Text="招聘需求: " />
+                                        <Run Text="{Binding Require}" />
+                                    </TextBlock>
                                     <TextBlock Grid.Row="2"
-                                        Text="截止时间：2月19日 18:00"
                                         Margin="0,20,0,0"
                                         VerticalAlignment="Top"
+                                        TextTrimming="CharacterEllipsis"
                                         FontSize="14"
-                                        Foreground="{StaticResource SecondaryTextBrush}" />
+                                        Foreground="{StaticResource SecondaryTextBrush}">
+                                        <Run Text="期望到岗时间: " />
+                                        <Run Text="{Binding ArrivalTime}" />
+                                    </TextBlock>
                                 </Grid>
                             </Grid>
                             <Border x:Name="border"
@@ -148,7 +159,7 @@
             <ListView
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                 Style="{StaticResource ListBoxCustom}"
-                ItemsSource="{Binding EvaluationRuleList}"
+                ItemsSource="{Binding RequirementVOList}"
                 Background="Transparent"
                 BorderThickness="0">
                 <ListView.ItemTemplate>
@@ -156,6 +167,7 @@
                         <Button
                             Command="{Binding RelativeSource={RelativeSource AncestorType=ListView, Mode=FindAncestor}, Path=DataContext.NavigationCommand}"
                             CommandParameter="TalentPoolView"
+                            DataContext="{Binding .}"
                             Style="{StaticResource evaluationItemBtnStyle}"
                             Cursor="Hand" />
                     </DataTemplate>

@@ -88,7 +88,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Thickness x:Key="DefaultControlPadding">10,6</Thickness>
+    <Thickness x:Key="DefaultControlPadding">0,6</Thickness>
     <DataTemplate x:Key="evaluationRuleItemOptCell">
         <hc:SimplePanel>
             <StackPanel Orientation="Horizontal">

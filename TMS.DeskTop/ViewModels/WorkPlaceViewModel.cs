@@ -148,7 +148,7 @@ namespace TMS.DeskTop.ViewModels
                 new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe668", Url = "SubjectiveDataView", Command=NavigationCmd },
                 new AppItem { Tag="人事帮手", Name = "授权", IconFont = "\xe639", Url = "AuthMainView", Command=NavigationCmd },
                 new AppItem { Tag="人事帮手", Name = "人才推荐", IconFont = "\xe6cb", Url = "RecommendView", Command=NavigationCmd },
-                new AppItem { Tag="人事帮手", Name = "调查问券", IconFont = "\xe6d2", Url = "EvaluationView", Command=NavigationCmd },
+                new AppItem { Tag="人事帮手", Name = "调查问卷", IconFont = "\xe6d2", Url = "EvaluationView", Command=NavigationCmd },
                 new AppItem { Tag="人事帮手", Name = "招聘", IconFont = "\xe77b", Url = "RecruitmentView", Command=NavigationCmd },
                 new AppItem { Tag="人事帮手", Name = "员工关怀", IconFont = "\xe7af", Url = "StaffCareView", Command=NavigationCmd },
                 new AppItem { Tag="气氛组", Name = "社区", IconFont = "\xe6a0", Url = "CommunityView", Command=NavigationCmd },
@@ -178,7 +178,7 @@ namespace TMS.DeskTop.ViewModels
                 new AppItem { Tag="气氛组", Name = "活动", IconFont = "\xe600", Url = "ActivityView", Command=NavigationCmd },
                 new AppItem { Tag="数据农场", Name = "主观评价", IconFont = "\xe668", Url = "SubjectiveDataView", Command=NavigationCmd },
                 new AppItem { Tag="人事帮手", Name = "招聘", IconFont = "\xe77b", Url = "RecruitmentView", Command=NavigationCmd },
-                new AppItem { Tag="人事帮手", Name = "调查问券", IconFont = "\xe6d2", Url = "EvaluationView", Command=NavigationCmd },
+                new AppItem { Tag="人事帮手", Name = "调查问卷", IconFont = "\xe6d2", Url = "EvaluationView", Command=NavigationCmd },
             };
 
             allAppDataList.ForEach(appItem => viewAppList.Add(appItem));

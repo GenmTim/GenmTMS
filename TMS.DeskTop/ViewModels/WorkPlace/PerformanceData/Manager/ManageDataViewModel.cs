@@ -22,10 +22,10 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.PerformanceData.Manager
 			new Performance{ Name="夏晓瑜", PerformanceLevel="B+"},
 			new Performance{ Name="江益川", PerformanceLevel="C-"},
 			new Performance{ Name="方汉易", PerformanceLevel="D"},
-			new Performance{ Name="黎星画", PerformanceLevel="B"},
-			new Performance{ Name="沈玉华", PerformanceLevel="C+"},
-			new Performance{ Name="黄军达", PerformanceLevel="C"},
-			new Performance{ Name="萧筱默", PerformanceLevel="A+"}
+			//new Performance{ Name="黎星画", PerformanceLevel="B"},
+			//new Performance{ Name="沈玉华", PerformanceLevel="C+"},
+			//new Performance{ Name="黄军达", PerformanceLevel="C"},
+			//new Performance{ Name="萧筱默", PerformanceLevel="A+"}
 		};
 		public ObservableCollection<Performance> DataList
 		{

@@ -24,13 +24,6 @@
                             Content="批量设置"
                             Height="33"
                             FontSize="14" />
-                        <Button
-                            Content="新建绩效记录"
-                            Command="{Binding NavigationCmd}"
-                            CommandParameter="AddNewAttendanceRuleView"
-                            Margin="15,0,0,0"
-                            Style="{StaticResource AddPrimaryBtnStyle}"
-                            Cursor="Hand" />
                     </DockPanel>
                 </hc:SimplePanel>
                 <DataGrid
@@ -46,9 +39,9 @@
                     RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
                     <DataGrid.Columns>
                         <DataGridTextColumn
+                            Width="*"
                             Binding="{Binding Name}"
                             Foreground="Black"
-                            Width="100"
                             Header="名字" />
                         <DataGridTextColumn
                             Width="*"

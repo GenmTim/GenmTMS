@@ -172,12 +172,12 @@
                                 hc:BorderElement.Circular="True"
                                 Background="#FFFF8800">
                                 <TextBlock
-                                    Text="&#xe610;"
+                                    Text="&#xe71c;"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="20"
                                     Foreground="White"
-                                    FontFamily="{StaticResource FIconFontFamily}" />
+                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
                             </Border>
                             <TextBlock
                                 Text="全部"
@@ -202,10 +202,10 @@
                 </Border>
                 <Grid Grid.Row="1">
                     <ListBox
-                        ItemsSource="{Binding EvaluationList}"
+                        ItemsSource="{Binding RequirementVOList}"
                         Style="{StaticResource evaluationListBoxStyle}"
                         Visibility="{Binding IsHasEvaluationItem, Converter={StaticResource Boolean2VisibilityConverter}}" />
-                    <TextBlock Grid.Row="1"
+                    <!--<TextBlock Grid.Row="1"
                         Text="&#xe600;"
                         Margin="0,80,0,0"
                         HorizontalAlignment="Center"
@@ -213,7 +213,7 @@
                         FontSize="200"
                         Foreground="#FFD6DAE1"
                         FontFamily="{StaticResource FIconFontFamily}"
-                        Visibility="{Binding IsHasEvaluationItem, Converter={StaticResource Boolean2VisibilityReConverter}}" />
+                        Visibility="{Binding IsHasEvaluationItem, Converter={StaticResource Boolean2VisibilityReConverter}}" />-->
                 </Grid>
             </Grid>
         </Border>
@@ -225,7 +225,7 @@
                     RenderOptions.BitmapScalingMode="HighQuality"
                     Source="/Resources/Images/empty_record.png" />
                 <TextBlock
-                    Text="请选择一篇考评"
+                    Text="请选择一个招聘需求"
                     Margin="0,-50,0,0"
                     HorizontalAlignment="Center"
                     FontSize="14"

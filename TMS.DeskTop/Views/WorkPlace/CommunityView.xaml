@@ -7,6 +7,8 @@
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:system="clr-namespace:System;assembly=netstandard"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -15,14 +17,8 @@
             HorizontalAlignment="Stretch"
             BorderBrush="Transparent"
             Style="{StaticResource ListBoxCustom}"
+            ItemsSource="{Binding CommunityVOList}"
             Background="Transparent">
-            <ListView.ItemsSource>
-                <x:Array Type="system:String">
-                    <system:String>测试</system:String>
-                    <system:String>测试</system:String>
-                    <system:String>测试</system:String>
-                </x:Array>
-            </ListView.ItemsSource>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <hc:UniformSpacingPanel
@@ -52,18 +48,18 @@
                                     <hc:Gravatar
                                         Width="45"
                                         Height="45"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Id="jijfd" />
+                                        Source="{Binding Avatar, Converter={StaticResource String2UriConverter}}"
+                                        Style="{StaticResource GravatarCircleImg}" />
                                     <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
                                         <TextBlock FontSize="14" FontWeight="SemiBold">
-                                            <Run Text="#实习日记" />
+                                            <Run Text="{Binding Name}" />
                                             <Run Text="·" />
                                             <Run Text="已关注" Foreground="{StaticResource SecondaryTextBrush}" />
                                         </TextBlock>
                                         <TextBlock Margin="0,2,0,0">
-                                            <Run Text="4 天前" />
+                                            <Run Text="{Binding Time}" />
                                             <Run Text="·" />
-                                            <Run Text="职场练习生的动态" />
+                                            <Run Text="{Binding Classify}" />
                                         </TextBlock>
                                     </StackPanel>
                                 </StackPanel>
@@ -75,13 +71,13 @@
                                         FontSize="14"
                                         LineHeight="22">
                                         <Run
-                                            Text="#实习日记"
+                                            Text="{Binding Tab}"
                                             Cursor="Hand"
                                             Foreground="{StaticResource PrimaryBrush}"
                                             FontWeight="SemiBold" />
-                                        <Run Text="无论是运营、产品经理还是许多相关岗位中，用户访谈和调查都是后期提高工作效率、更好地完成项目的基础和保证。而看似简单直白的设计问卷的过程，其实涉及到很多实用技巧和工作思路。那么，新手小白如何做出一份高质量的问卷和访谈设计？北京大学研究生Yinhe C. 同学就分享了自己在知乎做用户运营时的关于设计问卷的一些收获和感悟，快来看看能不能帮到你！" />
+                                        <Run Text="{Binding Content}" />
                                     </TextBlock>
-                                    <Image Margin="0,10,0,0" Source="http://47.101.157.194:8081/uploads/image/1617912008513.jpg" />
+                                    <Image Margin="0,10,0,0" Source="{Binding BackgroundUri, Converter={StaticResource String2UriConverter}}" />
                                 </StackPanel>
 
                             </hc:SimplePanel>

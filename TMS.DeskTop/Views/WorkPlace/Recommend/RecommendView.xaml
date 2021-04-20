@@ -11,152 +11,151 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <ListView
-            HorizontalAlignment="Center"
-            Style="{StaticResource ListBoxCustom}"
-            Background="Transparent"
-            BorderThickness="0">
-            <ListView.ItemsSource>
-                <x:Array Type="system:String">
-                    <system:String>测试</system:String>
-                    <system:String>测试</system:String>
-                    <system:String>测试</system:String>
-                </x:Array>
-            </ListView.ItemsSource>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Margin="0,20,0,20" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="20,0">
-                        <hc:SimplePanel Width="250" Height="250">
-                            <hc:SimplePanel.Clip>
-                                <RectangleGeometry
-                                    RadiusX="5"
-                                    RadiusY="5"
-                                    Rect="0,0,250,250" />
-                            </hc:SimplePanel.Clip>
-                            <Border
-                                BorderThickness="1"
-                                BorderBrush="{StaticResource BorderBrush}"
-                                CornerRadius="5" />
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="90" />
-                                    <RowDefinition />
-                                    <RowDefinition Height="50" />
-                                </Grid.RowDefinitions>
-                                <hc:SimplePanel>
-                                    <Border
-                                        Height="60"
-                                        VerticalAlignment="Top"
-                                        Background="#a0b4b7">
-                                        <Border.Clip>
-                                            <RectangleGeometry Rect="0,0,250,60" />
-                                        </Border.Clip>
-                                        <Image
-                                            Height="70"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Source="http://47.101.157.194:8081/uploads/image/line1.jpg" />
-                                    </Border>
-                                    <hc:Gravatar
-                                        Width="70"
-                                        Height="70"
-                                        Margin="10,0,0,0"
-                                        HorizontalAlignment="Left"
-                                        BorderThickness="0.5"
-                                        BorderBrush="White"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Source="http://47.101.157.194:8081/static/avatar/target2.jpg" />
-                                </hc:SimplePanel>
-                                <Grid Grid.Row="1" Margin="10,0">
+        <StackPanel>
+            <ListView
+                HorizontalAlignment="Center"
+                Style="{StaticResource ListBoxCustom}"
+                Background="Transparent"
+                ItemsSource="{Binding RecommendPeopleVOList}"
+                BorderThickness="0">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Margin="0,30,0,0" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0,0,30,30">
+                            <hc:SimplePanel Width="250" Height="250">
+                                <hc:SimplePanel.Clip>
+                                    <RectangleGeometry
+                                        RadiusX="5"
+                                        RadiusY="5"
+                                        Rect="0,0,250,250" />
+                                </hc:SimplePanel.Clip>
+                                <Border
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource BorderBrush}"
+                                    CornerRadius="5" />
+                                <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="90" />
+                                        <RowDefinition />
+                                        <RowDefinition Height="50" />
                                     </Grid.RowDefinitions>
-                                    <TextBlock
-                                        Text="金泽权"
-                                        FontWeight="SemiBold"
-                                        FontSize="16" />
-                                    <hc:UniformSpacingPanel Grid.Row="1"
-                                        Margin="0,5,0,0"
-                                        VerticalAlignment="Center"
-                                        Spacing="5"
-                                        Orientation="Vertical">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="职位  "
+                                    <hc:SimplePanel>
+                                        <Border
+                                            Height="60"
+                                            VerticalAlignment="Top"
+                                            Background="#a0b4b7">
+                                            <Border.Clip>
+                                                <RectangleGeometry Rect="0,0,250,60" />
+                                            </Border.Clip>
+                                            <Image
+                                                Width="260"
+                                                Height="180"
+                                                HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
-                                            <TextBlock Grid.Row="1"
-                                                Text="Golang游戏服务端工程师"
-                                                TextWrapping="Wrap"
-                                                VerticalAlignment="Center"
-                                                TextTrimming="CharacterEllipsis"
-                                                FontSize="14" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="工龄  "
-                                                VerticalAlignment="Center"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
-                                            <TextBlock Grid.Row="1"
-                                                Text="3年"
-                                                TextWrapping="Wrap"
-                                                VerticalAlignment="Center"
-                                                TextTrimming="CharacterEllipsis"
-                                                FontSize="14" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Text="常驻城市  "
-                                                VerticalAlignment="Center"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
-                                            <TextBlock Grid.Row="1"
-                                                Text="上海"
-                                                TextWrapping="Wrap"
-                                                VerticalAlignment="Center"
-                                                TextTrimming="CharacterEllipsis"
-                                                FontSize="14" />
-                                        </StackPanel>
-                                    </hc:UniformSpacingPanel>
-                                </Grid>
-                                <hc:SimplePanel Grid.Row="2" Margin="10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <hc:SimplePanel>
-                                            <TextBlock
-                                                Text="共 975 位关注者"
-                                                VerticalAlignment="Center"
-                                                FontSize="10"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
-                                        </hc:SimplePanel>
-                                        <hc:SimplePanel Grid.Column="1">
-                                            <hc:UniformSpacingPanel
-                                                HorizontalAlignment="Right"
-                                                VerticalAlignment="Center"
-                                                Spacing="15">
-                                                <Button
-                                                    Content="不感兴趣"
-                                                    FontSize="10"
-                                                    Style="{StaticResource TextBtnStyle}" />
-                                                <Button
-                                                    Content="沟通"
-                                                    Width="80"
-                                                    Height="30"
-                                                    Cursor="Hand"
-                                                    FontSize="12"
-                                                    Style="{StaticResource ButtonPrimary}" />
-                                            </hc:UniformSpacingPanel>
-                                        </hc:SimplePanel>
+                                                Source="{Binding BackgroundUrl, Converter={StaticResource String2UriConverter}}" />
+                                        </Border>
+                                        <hc:Gravatar
+                                            Width="70"
+                                            Height="70"
+                                            Margin="10,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            BorderThickness="0.5"
+                                            BorderBrush="White"
+                                            Style="{StaticResource GravatarCircleImg}"
+                                            Source="{Binding Avatar, Converter={StaticResource String2UriConverter}}" />
+                                    </hc:SimplePanel>
+                                    <Grid Grid.Row="1" Margin="10,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            Text="{Binding Name}"
+                                            FontWeight="SemiBold"
+                                            FontSize="16" />
+                                        <hc:UniformSpacingPanel Grid.Row="1"
+                                            Margin="0,5,0,0"
+                                            VerticalAlignment="Center"
+                                            Spacing="5"
+                                            Orientation="Vertical">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock
+                                                    Text="职位  "
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                                <TextBlock Grid.Row="1"
+                                                    Text="{Binding Job}"
+                                                    TextWrapping="Wrap"
+                                                    VerticalAlignment="Center"
+                                                    TextTrimming="CharacterEllipsis"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock
+                                                    Text="工龄  "
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                                <TextBlock Grid.Row="1"
+                                                    Text="{Binding WorkAge}"
+                                                    TextWrapping="Wrap"
+                                                    VerticalAlignment="Center"
+                                                    TextTrimming="CharacterEllipsis"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock
+                                                    Text="常驻城市  "
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{StaticResource SecondaryTextBrush}" />
+                                                <TextBlock Grid.Row="1"
+                                                    Text="{Binding City}"
+                                                    TextWrapping="Wrap"
+                                                    VerticalAlignment="Center"
+                                                    TextTrimming="CharacterEllipsis"
+                                                    FontSize="14" />
+                                            </StackPanel>
+                                        </hc:UniformSpacingPanel>
                                     </Grid>
-                                    <!--<Button
+                                    <hc:SimplePanel Grid.Row="2" Margin="10,0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <hc:SimplePanel>
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontSize="10"
+                                                    Foreground="{StaticResource SecondaryTextBrush}">
+                                                    <Run Text="共 " />
+                                                    <Run Text="{Binding GZNum}" />
+                                                    <Run Text=" 位关注者" />
+                                                </TextBlock>
+                                            </hc:SimplePanel>
+                                            <hc:SimplePanel Grid.Column="1">
+                                                <hc:UniformSpacingPanel
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center"
+                                                    Spacing="15">
+                                                    <Button
+                                                        Content="不感兴趣"
+                                                        FontSize="10"
+                                                        Style="{StaticResource TextBtnStyle}" />
+                                                    <Button
+                                                        Content="沟通"
+                                                        Width="80"
+                                                        Height="30"
+                                                        Cursor="Hand"
+                                                        FontSize="12"
+                                                        Style="{StaticResource ButtonPrimary}" />
+                                                </hc:UniformSpacingPanel>
+                                            </hc:SimplePanel>
+                                        </Grid>
+                                        <!--<Button
                                         Content="关注"
                                         Width="100"
                                         Height="34"
@@ -167,12 +166,19 @@
                                         BorderBrush="{StaticResource PrimaryBrush}"
                                         Style="{StaticResource ButtonDefault}"
                                         Foreground="{StaticResource PrimaryBrush}" />-->
-                                </hc:SimplePanel>
-                            </Grid>
-                        </hc:SimplePanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </hc:SimplePanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<hc:Pagination
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                MaxPageCount="10"
+                IsJumpEnabled="True"
+                PageIndex="{Binding PageIndex}" />-->
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -51,6 +51,16 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock
+                    Text="工龄要求"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource titleTextBlockStyle}" />
+                <TextBlock Style="{StaticResource titleAttachTextBlockStyle}" />
+            </StackPanel>
+            <TextBox />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
                     Text="岗位要求"
                     VerticalAlignment="Center"
                     Style="{StaticResource titleTextBlockStyle}" />
