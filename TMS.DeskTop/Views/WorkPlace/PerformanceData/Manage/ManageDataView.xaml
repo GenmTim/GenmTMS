@@ -48,8 +48,10 @@
                         <DataGridTextColumn
                             Binding="{Binding Name}"
                             Foreground="Black"
+                            Width="100"
                             Header="名字" />
                         <DataGridTextColumn
+                            Width="*"
                             Binding="{Binding PerformanceLevel}"
                             Foreground="Black"
                             Header="绩效等级" />
