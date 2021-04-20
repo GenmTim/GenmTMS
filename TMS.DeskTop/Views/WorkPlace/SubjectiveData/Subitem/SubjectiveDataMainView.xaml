@@ -10,6 +10,7 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:token="clr-namespace:TMS.Core.Data.Token;assembly=TMS.Core"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace.SubjectiveData.Subitem"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -616,7 +617,7 @@
                                             Foreground="White">
                                             <Run Text="    " />
                                             <Run Text="举例评价一个人的身高：阿门王身高1.8米，这是客观；阿门王是高是矮？这是主观。在普通人看来是高，在姚明看来就是矮了。然而同时必须看到。" />
-                                        </TextBlock>
+                                        </TextBlock>d
                                     </hc:SimplePanel>
                                 </hc:SimplePanel>
                                 <hc:SimplePanel Grid.Row="2" Margin="0,6">

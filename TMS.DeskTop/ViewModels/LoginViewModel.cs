@@ -17,7 +17,7 @@ namespace TMS.DeskTop.ViewModels
         }
 
         #region Property
-        private string userName = "18401200122";
+        private string userName = "16666666666";
         private string passWord = "123456";
 
         public string UserName

@@ -61,11 +61,16 @@
                                 Grid.RowSpan="2"
                                 BorderThickness="0,0,1,0"
                                 BorderBrush="{StaticResource TMS_BorderBrush}" />
+                            <hc:Gravatar
+                                Width="40"
+                                Height="40"
+                                RenderOptions.BitmapScalingMode="HighQuality"
+                                Style="{StaticResource GravatarCircleImg}"
+                                Source="{Binding Source={x:Static Member=session:SessionService.Instance}, Path=User.Avatar, Converter={StaticResource String2UriConverter}}" />
                             <ToggleButton x:Name="profile"
+                                Background="Transparent"
                                 Style="{DynamicResource profileBtnStyle}"
-                                Cursor="Hand">
-                                <Image Source="{Binding Source={x:Static Member=session:SessionService.Instance}, Path=User.Avatar, Converter={StaticResource String2UriConverter}}" />
-                            </ToggleButton>
+                                Cursor="Hand" />
                             <genm:Popup
                                 StaysOpen="False"
                                 Placement="Right"

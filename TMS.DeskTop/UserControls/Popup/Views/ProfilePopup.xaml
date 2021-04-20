@@ -135,7 +135,11 @@
                         </StackPanel.Resources>
                         <Button Content="设置" />
                         <Button Content="我的二维码与链接" />
-                        <Button Content="管理后台" />
+                        <Button
+                            Content="管理后台"
+                            Command="hc:ControlCommands.OpenLink"
+                            CommandParameter="https://www.baidu.com"
+                            Cursor="Hand" />
                         <Button Content="申请加入或创建团队" />
                     </StackPanel>
 

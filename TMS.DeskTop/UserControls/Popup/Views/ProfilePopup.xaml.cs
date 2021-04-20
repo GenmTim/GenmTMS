@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Diagnostics;
+using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace TMS.DeskTop.UserControls.Popup.Views
 {
@@ -10,6 +12,16 @@ namespace TMS.DeskTop.UserControls.Popup.Views
         public ProfilePopup()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Hyperlink link = new Hyperlink
+            {
+                NavigateUri = new System.Uri("www.baidu.com"),
+            };
+            Process.Start(new ProcessStartInfo(link.NavigateUri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

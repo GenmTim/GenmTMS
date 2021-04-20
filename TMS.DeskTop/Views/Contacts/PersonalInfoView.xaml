@@ -13,7 +13,6 @@
     xmlns:attach="clr-namespace:TMS.DeskTop.UserControls.Attach"
     xmlns:system="clr-namespace:System;assembly=netstandard"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Cursor="Hand"
     mc:Ignorable="d">
     <hc:SimplePanel Background="#f3f4f6">
         <hc:SimplePanel Margin="40">

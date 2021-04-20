@@ -10,6 +10,7 @@ using TMS.DeskTop.UserControls.Common.Views.ChatBubbles;
 using TMS.DeskTop.UserControls.Dialogs.ViewModels;
 using TMS.DeskTop.UserControls.Dialogs.Views;
 using TMS.DeskTop.Views;
+using TMS.DeskTop.Views.Register;
 
 namespace TMS.DeskTop
 {
@@ -47,6 +48,8 @@ namespace TMS.DeskTop
             containerRegistry.RegisterForNavigation<AddNewOrganizationMemberDialog, AddNewOrganizationMemberDialogModel>();
             containerRegistry.RegisterForNavigation<TextBoxDialog, TextBoxDialogModel>();
             containerRegistry.RegisterForNavigation<QuestionDialog, QuestionDialogModel>();
+            containerRegistry.RegisterForNavigation<CreateTemplateDialog, CreateTemplateDialogModel>();
+            containerRegistry.RegisterForNavigation<CreateSubjectiveTemplateDialog, CreateSubjectiveTemplateDialogModel>();
 
             // 注册卡片
             containerRegistry.Register<NameCard>();
@@ -81,25 +84,33 @@ namespace TMS.DeskTop
 
 
 
+            //if (result.Value)
+            //{
+            //    Container.Resolve<WebSocketService>();
+            //    base.OnInitialized();
+            //}
+            //else
+            //{
+            //    Application.Current.Shutdown();
+            //}
             if (result.Value)
             {
-                Container.Resolve<WebSocketService>();
-                base.OnInitialized();
+                var registerInfoEntry = Container.Resolve<NewUserQuestion>();
+                result = registerInfoEntry.ShowDialog();
+                if (result.Value)
+                {
+                    Container.Resolve<WebSocketService>();
+                    base.OnInitialized();
+                }
+                else
+                {
+                    Application.Current.Shutdown();
+                }
             }
             else
             {
                 Application.Current.Shutdown();
             }
-            //if (result.Value)
-            //{
-            //    var registerInfoEntry = Container.Resolve<NewUserQuestion>();
-            //    result = registerInfoEntry.ShowDialog();
-            //    if (result.Value)
-            //{
-            //}
-            //else
-            //    Application.Current.Shutdown();
-            //}
         }
     }
 }

@@ -41,7 +41,7 @@
                                     VerticalAlignment="Center"
                                     FontSize="18"
                                     Foreground="White"
-                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                    FontFamily="{StaticResource AppIconFontFamily}" />
                             </hc:SimplePanel>
                             <TextBlock
                                 Text="{Binding Name}"

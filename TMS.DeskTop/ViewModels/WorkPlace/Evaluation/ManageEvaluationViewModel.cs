@@ -4,7 +4,9 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System.Collections.ObjectModel;
 using TMS.Core.Data;
+using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
+using TMS.DeskTop.UserControls.Dialogs.Views;
 using TMS.DeskTop.Views.WorkPlace.Evaluation;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
@@ -27,13 +29,15 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 
         private readonly IRegionManager regionManager;
         private readonly IModuleCatalog moduleCatalog;
+        private readonly IDialogHostService dialogHostService;
         //private IRegionNavigationJournal journal;
 
 
-        public ManageEvaluationViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog)
+        public ManageEvaluationViewModel(IRegionManager regionManager, IModuleCatalog moduleCatalog, IDialogHostService dialogHostService)
         {
             this.moduleCatalog = moduleCatalog;
             this.regionManager = regionManager;
+            this.dialogHostService = dialogHostService;
             NavigationCmd = new DelegateCommand<string>(NavigationPage);
 
             evaluationRuleList.Add(new EvaluationRule
@@ -67,9 +71,13 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
 
         public DelegateCommand<string> NavigationCmd { get; private set; }
 
-        private void NavigationPage(string view)
+        private async void NavigationPage(string view)
         {
-            RouteHelper.Goto(regionManager, typeof(ManageEvaluationView), view);
+            var result = await dialogHostService.ShowDialog(nameof(CreateTemplateDialog), null, "EvaluationManageRoot");
+            if (result != null && result.Result == Prism.Services.Dialogs.ButtonResult.OK)
+            {
+                RouteHelper.Goto(regionManager, typeof(ManageEvaluationView), view);
+            }
         }
     }
 }

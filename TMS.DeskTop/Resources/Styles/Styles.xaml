@@ -19,6 +19,8 @@
     </Style>
     <!--#endregion-->
 
+    <SolidColorBrush x:Key="OverlayBackground" Color="#3F000000" />
+
     <!--#region DropShadowEffect-->
     <DropShadowEffect
         x:Key="EffectShadowCom"
@@ -67,6 +69,7 @@
     <FontFamily x:Key="MenuIconFontFamily">/Resources/Fonts/Plus/Menu/#iconfont</FontFamily>
     <FontFamily x:Key="DocIconFontFamily">/Resources/Fonts/Plus/Doc/#iconfont</FontFamily>
     <FontFamily x:Key="SurfaceIconFontFamily">/Resources/Fonts/Plus/Surface/#iconfont</FontFamily>
+    <FontFamily x:Key="AppIconFontFamily">/Resources/Fonts/Plus/App/#iconfont</FontFamily>
     <!--#endregion-->
 
     <!--#region Button-->
