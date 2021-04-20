@@ -1,0 +1,107 @@
+﻿<UserControl x:Name="_createTemplateDialog"
+    x:Class="TMS.DeskTop.UserControls.Dialogs.Views.CreateTemplateDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:TMS.DeskTop.UserControls.Popup.Views"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <hc:SimplePanel Width="600" Height="490">
+        <Border Background="White" CornerRadius="5" />
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <hc:SimplePanel>
+                <TextBlock Text="创建规则" FontSize="18" />
+                <Button
+                    Content="&#xe7b7;"
+                    Command="{Binding CancelCmd}"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource TextBtnStyle}"
+                    Foreground="#2b2f36"
+                    FontFamily="{StaticResource FIconPlusFontFamily}"
+                    FontSize="18" />
+            </hc:SimplePanel>
+            <hc:SimplePanel Grid.Row="1"
+                Margin="0,20"
+                HorizontalAlignment="Left">
+                <Button
+                    Content="新建空白规则"
+                    Command="{Binding SaveCmd}"
+                    Padding="15,5"
+                    Cursor="Hand"
+                    FontSize="14"
+                    Style="{StaticResource ButtonPrimary}" />
+            </hc:SimplePanel>
+            <hc:SimplePanel Grid.Row="2">
+                <ListView
+                    Style="{StaticResource ListBoxCustom}"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <ListView.ItemsSource>
+                        <x:Array Type="system:String">
+                            <system:String>测试</system:String>
+                            <system:String>测试</system:String>
+                            <system:String>测试</system:String>
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding DataContext.SaveCmd, ElementName=_createTemplateDialog}" Margin="0,0,10,10">
+                                <Button.Style>
+                                    <Style BasedOn="{StaticResource ButtonCustom}" TargetType="Button">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Effect" Value="{StaticResource EffectShadow2}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <hc:SimplePanel Width="268">
+                                    <Border CornerRadius="5" Background="#f8f9fa" />
+                                    <StackPanel Margin="15,10" Orientation="Horizontal">
+                                        <hc:SimplePanel>
+                                            <Border
+                                                Width="33"
+                                                Height="33"
+                                                Style="{StaticResource BorderCircular}"
+                                                Background="#ff8800" />
+                                            <TextBlock
+                                                Text="&#xe738;"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="20"
+                                                Foreground="White"
+                                                FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                        </hc:SimplePanel>
+                                        <StackPanel Margin="5,0,0,0" VerticalAlignment="Center">
+                                            <TextBlock Text="360度绩效评估" FontSize="13" />
+                                            <TextBlock
+                                                Text="员工姓名，业绩，做得好的具体示例"
+                                                FontSize="11"
+                                                Foreground="{StaticResource SecondaryTextBrush}"
+                                                TextTrimming="CharacterEllipsis" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </hc:SimplePanel>
+                            </Button>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </hc:SimplePanel>
+        </Grid>
+    </hc:SimplePanel>
+</UserControl>

@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Resources\Fonts\iconfont.ttf" />
     <None Remove="Resources\Fonts\iconfontplus.ttf" />
+    <None Remove="Resources\Fonts\Plus\App\iconfont.ttf" />
     <None Remove="Resources\Fonts\Plus\Doc\iconfont.ttf" />
     <None Remove="Resources\Fonts\Plus\Menu\iconfontmenu.ttf" />
     <None Remove="Resources\Fonts\Plus\Surface\iconfont.ttf" />
@@ -132,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Fonts\iconfont.ttf" />
+    <Resource Include="Resources\Fonts\Plus\App\iconfont.ttf" />
     <Resource Include="Resources\Fonts\Plus\Doc\iconfont.ttf" />
     <Resource Include="Resources\Fonts\Plus\iconfontplus.ttf" />
     <Resource Include="Resources\Fonts\Plus\Menu\iconfontmenu.ttf" />
@@ -256,6 +258,20 @@
     <Compile Update="UserControls\Common\Views\RoundProgress.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\Dialogs\Views\CreateTemplateDialog - 复制 - 复制.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>CreateTemplateDialog - 复制.xaml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\CreateSubjectiveTemplateDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\CreateTemplateDialog - 复制.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>CreateTemplateDialog.xaml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\Dialogs\Views\CreateTemplateDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\WorkPlace\GloryData\Entering\EnteringStepView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -333,6 +349,14 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\CreateSubjectiveTemplateDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\Dialogs\Views\CreateTemplateDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\WorkPlace\GloryData\Entering\EnteringStepView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
