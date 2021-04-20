@@ -11,17 +11,17 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.AttendanceData.Manager
 {
     class ManageDataViewModel
     {
-        public List<Payroll> DataList { get; set; } = new List<Payroll>() {
-            new Payroll{ Name="234", Month="2021-02",Number=2,Money=2813734.37,
-                Currency="CNY",Unpublished=0,Published=2,Withdrawn=1,CreateTime="2021-01-19"},
-            new Payroll{ Name="ghk", Month="2020-02",Number=26,Money=435734.37,
-                Currency="USD",Unpublished=2,Published=5,Withdrawn=0,CreateTime="2021-02-22"},
-            new Payroll{ Name="876g", Month="2021-01",Number=12,Money=2898734.37,
-                Currency="USD",Unpublished=3,Published=3,Withdrawn=2,CreateTime="2021-03-02"},
-            new Payroll{ Name="909k", Month="2020-12",Number=9,Money=993734.37,
-                Currency="CNY",Unpublished=1,Published=1,Withdrawn=2,CreateTime="2021-02-07"},
-            new Payroll{ Name="bg5h", Month="2020-11",Number=15,Money=1234734.37,
-                Currency="CNY",Unpublished=1,Published=4,Withdrawn=0,CreateTime="2021-01-31"}
+        public List<Attendance> DataList { get; set; } = new List<Attendance>() {
+            new Attendance{ Name="金泽权", AttendanceNumber=10, ActualAttendance=9, Late=1
+                ,LeaveEarly=4,Absent=6,Repair=5,Leave=10},
+            new Attendance{ Name="黄军达", AttendanceNumber=12, ActualAttendance=8, Late=2
+                ,LeaveEarly=3,Absent=4,Repair=7,Leave=6},
+            new Attendance{ Name="李新添", AttendanceNumber=11, ActualAttendance=7, Late=3
+                ,LeaveEarly=2,Absent=2,Repair=6,Leave=4},
+            new Attendance{ Name="张风", AttendanceNumber=17, ActualAttendance=5, Late=4
+                ,LeaveEarly=1,Absent=3,Repair=4,Leave=5},
+            new Attendance{ Name="蔡承龙", AttendanceNumber=11, ActualAttendance=6, Late=5
+                ,LeaveEarly=2,Absent=5,Repair=5,Leave=7}
         };
 
         private readonly IRegionManager regionManager;
@@ -33,7 +33,6 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.AttendanceData.Manager
 
 
         public DelegateCommand<string> NavigationCmd { get; private set; }
-
         private void NavigationPage(string obj)
         {
             if (obj == null)

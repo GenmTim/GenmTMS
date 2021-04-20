@@ -42,39 +42,42 @@
                     CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
                     ColumnHeaderStyle="{StaticResource HollowOut_NonBorderDataGridColumnHeaderStyle}"
                     FontSize="14"
-                    ItemsSource="{Binding RuleList}"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding DataList}"
                     RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Binding="{Binding Name}"
                             Foreground="Black"
-                            Header="考勤组名称"
-                            IsReadOnly="True" />
+                            Header="姓名" />
                         <DataGridTextColumn
-                            Binding="{Binding NumberOfPeople}"
+                            Binding="{Binding AttendanceNumber}"
                             Foreground="Black"
-                            Header="人数"
-                            IsReadOnly="True" />
+                            Header="应出勤" />
                         <DataGridTextColumn
-                            Binding="{Binding Type}"
+                            Binding="{Binding ActualAttendance}"
                             Foreground="Black"
-                            Header="类型"
-                            IsReadOnly="True" />
+                            Header="实际出勤" />
                         <DataGridTextColumn
-                            Binding="{Binding AttendanceTime}"
+                            Binding="{Binding Late}"
                             Foreground="Black"
-                            Header="考勤时间"
-                            IsReadOnly="True" />
+                            Header="迟到" />
                         <DataGridTextColumn
-                            Binding="{Binding Principal}"
+                            Binding="{Binding LeaveEarly}"
                             Foreground="Black"
-                            Header="负责人"
-                            IsReadOnly="True" />
+                            Header="早退" />
                         <DataGridTextColumn
-                            Binding="{Binding LastUpdateTime}"
+                            Binding="{Binding Absent}"
                             Foreground="Black"
-                            Header="最后更新时间"
-                            IsReadOnly="True" />
+                            Header="缺卡" />
+                        <DataGridTextColumn
+                            Binding="{Binding Repair}"
+                            Foreground="Black"
+                            Header="补勤" />
+                        <DataGridTextColumn
+                            Binding="{Binding Leave}"
+                            Foreground="Black"
+                            Header="请假" />
                         <DataGridTemplateColumn
                             CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
                             Header="操作"

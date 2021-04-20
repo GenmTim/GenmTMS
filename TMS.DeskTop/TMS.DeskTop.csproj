@@ -308,7 +308,6 @@
   <ItemGroup>
     <Folder Include="Resources\Styles\Views\Recruitment\Process\" />
     <Folder Include="UserControls\WebComponent\" />
-    <Folder Include="ViewModels\WorkPlace\PerformanceData\Manager\" />
     <Folder Include="Views\Contacts\Favorite\" />
     <Folder Include="Views\WorkPlace\Community\" />
   </ItemGroup>

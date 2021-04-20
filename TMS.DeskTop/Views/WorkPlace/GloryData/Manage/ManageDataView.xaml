@@ -41,44 +41,54 @@
                     CellStyle="{StaticResource HollowOut_DataGridCellStyle}"
                     ColumnHeaderStyle="{StaticResource HollowOut_NonBorderDataGridColumnHeaderStyle}"
                     FontSize="14"
-                    ItemsSource="{Binding RuleList}"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding DataList}"
                     RowStyle="{StaticResource HollowOut_DataGridRowStyle}">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Binding="{Binding Name}"
                             Foreground="Black"
-                            Header="考勤组名称"
-                            IsReadOnly="True" />
+                            Header="表彰人员" />
                         <DataGridTextColumn
-                            Binding="{Binding NumberOfPeople}"
+                            Binding="{Binding Jobtitle}"
                             Foreground="Black"
-                            Header="人数"
-                            IsReadOnly="True" />
+                            Header="职称" />
                         <DataGridTextColumn
-                            Binding="{Binding Type}"
+                            Binding="{Binding DeptName}"
                             Foreground="Black"
-                            Header="类型"
-                            IsReadOnly="True" />
+                            Header="部门" />
                         <DataGridTextColumn
-                            Binding="{Binding AttendanceTime}"
+                            Binding="{Binding GloryType}"
                             Foreground="Black"
-                            Header="考勤时间"
-                            IsReadOnly="True" />
+                            Header="荣誉类型" />
                         <DataGridTextColumn
-                            Binding="{Binding Principal}"
+                            Binding="{Binding Time}"
                             Foreground="Black"
-                            Header="负责人"
-                            IsReadOnly="True" />
+                            Header="荣誉时间" />
                         <DataGridTextColumn
-                            Binding="{Binding LastUpdateTime}"
+                            Binding="{Binding Deeds}"
                             Foreground="Black"
-                            Header="最后更新时间"
-                            IsReadOnly="True" />
+                            Header="主要事迹" />
+                        <DataGridTextColumn
+                            Binding="{Binding Remark}"
+                            Foreground="Black"
+                            Header="备注" />
+                        <DataGridTemplateColumn
+                            CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
+                            Header="下载纸质文件"
+                            HeaderStyle="{StaticResource HollowOut_NoBorderRightDataGridColumnRowHeaderStyle}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <hc:UniformSpacingPanel Spacing="20" Orientation="Horizontal">
+                                        <Button Content="下载" Style="{StaticResource TextBtnStyle}" />
+                                    </hc:UniformSpacingPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn
                             CellStyle="{StaticResource HollowOut_RightAlignmentDataGridCellStyle}"
                             Header="操作"
-                            HeaderStyle="{StaticResource HollowOut_NoBorderRightDataGridColumnRowHeaderStyle}"
-                            IsReadOnly="True">
+                            HeaderStyle="{StaticResource HollowOut_NoBorderRightDataGridColumnRowHeaderStyle}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <hc:UniformSpacingPanel Spacing="20" Orientation="Horizontal">
