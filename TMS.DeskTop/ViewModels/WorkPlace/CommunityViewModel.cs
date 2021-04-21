@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -42,5 +43,9 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
                 new CommunityVO { Avatar="http://47.101.157.194:8081/static/avatar/target7.jpg", Name="李立清", Time="2 天前", Classify="天禅集团", Tab="鸽子", Content="无论是运营、产品经理还是许多相关岗位中，用户访谈和调查都是后期提高工作效率、更好地完成项目的基础和保证。而看似简单直白的设计问卷的过程，其实涉及到很多实用技巧和工作思路。那么，新手小白如何做出一份高质量的问卷和访谈设计？北京大学研究生Yinhe C. 同学就分享了自己在知乎做用户运营时的关于设计问卷的一些收获和感悟，快来看看能不能帮到你", BackgroundUri="http://47.101.157.194:8081/static/background/i1.jpg" },
             };
         }
+
+        public DelegateCommand OpenDetailCmd;
+        
+
     }
 }

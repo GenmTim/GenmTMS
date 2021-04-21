@@ -9,6 +9,7 @@ using TMS.Core.Data.Token;
 using TMS.Core.Service;
 using TMS.DeskTop.Tools.Helper;
 using TMS.DeskTop.UserControls.Dialogs.Views;
+using TMS.DeskTop.Views.WorkPlace.SubjectiveData.Subitem.Detail;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.SubjectiveData.Subitem
 {
@@ -47,6 +48,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.SubjectiveData.Subitem
 
         private void ShowDetail()
         {
+            RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.SubjectiveDetailContent, typeof(SubjectiveDetailView));
             DetailDrawerIsOpen = true;
         }
 
