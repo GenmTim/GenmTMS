@@ -38,16 +38,16 @@
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
                                     hc:BorderElement.Circular="True"
-                                    Background="#FF00D6B9"
+                                    Background="#87CEFA"
                                     UseLayoutRounding="True">
                                     <Border.Effect>
                                         <DropShadowEffect
-                                            BlurRadius="12"
+                                            BlurRadius="5"
                                             Direction="270"
                                             Opacity=".5"
                                             RenderingBias="Performance"
                                             ShadowDepth="1"
-                                            Color="#FF18DAC0" />
+                                            Color="#87CEFA" />
                                     </Border.Effect>
                                     <TextBlock
                                         Text="&#xe668;"
