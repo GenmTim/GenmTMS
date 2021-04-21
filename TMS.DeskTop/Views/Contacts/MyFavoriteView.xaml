@@ -5,8 +5,10 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.Contacts"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -79,8 +81,7 @@
                 </hc:SimplePanel>-->
             </StackPanel>
             <hc:SimplePanel Grid.Row="1" Margin="20,10,20,10">
-                <StackPanel Orientation="Vertical">
-                    <!--<hc:SimplePanel Height="50" Margin="0,20,0,0">
+                <!--<hc:SimplePanel Height="50" Margin="0,20,0,0">
                         <hc:SimplePanel.Style>
                             <Style TargetType="hc:SimplePanel">
                                 <Style.Triggers>
@@ -166,67 +167,65 @@
                             VerticalAlignment="Center"
                             Style="{StaticResource starBtnStyle}" />
                     </hc:SimplePanel>-->
-                    <hc:SimplePanel Margin="0,20,0,0">
-                        <ListView
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Style="{StaticResource ListBoxCustom}">
-                            <ListView.ItemsSource>
-                                <x:Array Type="sys:String">
-                                    <sys:String>asdsd</sys:String>
-                                </x:Array>
-                            </ListView.ItemsSource>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <hc:SimplePanel Width="200" Height="200">
-                                        <Border
-                                            CornerRadius="5"
-                                            Background="White"
-                                            Effect="{StaticResource EffectShadowCom}" />
-                                        <Button
-                                            Margin="0,5,10,0"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Top"
-                                            Style="{StaticResource starBtnStyle}" />
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition />
-                                                <RowDefinition />
-                                            </Grid.RowDefinitions>
-                                            <hc:Gravatar Style="{StaticResource GravatarCircleImg}" Id="User1" />
-                                            <hc:SimplePanel Grid.Row="1">
-                                                <StackPanel HorizontalAlignment="Center">
-                                                    <TextBlock
-                                                        Text="蔡承龙"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="18"
-                                                        FontWeight="SemiBold" />
-                                                    <hc:UniformSpacingPanel
-                                                        Margin="0,20,0,0"
-                                                        Spacing="20"
-                                                        Orientation="Horizontal">
-                                                        <hc:UniformSpacingPanel.Resources>
-                                                            <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
-                                                                <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
-                                                            </Style>
-                                                        </hc:UniformSpacingPanel.Resources>
-                                                        <Button Content="&#xe718;" />
-                                                        <Button Content="&#xe7ae;" />
-                                                    </hc:UniformSpacingPanel>
-                                                </StackPanel>
-                                            </hc:SimplePanel>
-                                        </Grid>
-                                    </hc:SimplePanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <hc:UniformSpacingPanel Margin="20" Spacing="34" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
-                    </hc:SimplePanel>
-                </StackPanel>
+                <hc:SimplePanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <ListView
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        ItemsSource="{Binding FavoriteVOList}"
+                        Style="{StaticResource ListBoxCustom}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <hc:SimplePanel
+                                    Width="200"
+                                    Height="200"
+                                    Margin="40,0,40,40">
+                                    <Border
+                                        CornerRadius="5"
+                                        Background="White"
+                                        Effect="{StaticResource EffectShadowCom}" />
+                                    <Button
+                                        Margin="0,5,10,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Style="{StaticResource starBtnStyle}" />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <hc:Gravatar Style="{StaticResource GravatarCircleImg}" Source="{Binding Uri, Converter={StaticResource String2UriConverter}}" />
+                                        <hc:SimplePanel Grid.Row="1">
+                                            <StackPanel HorizontalAlignment="Center">
+                                                <TextBlock
+                                                    Text="{Binding Name}"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="18"
+                                                    FontWeight="SemiBold" />
+                                                <hc:UniformSpacingPanel
+                                                    Margin="0,20,0,0"
+                                                    Spacing="20"
+                                                    Orientation="Horizontal">
+                                                    <hc:UniformSpacingPanel.Resources>
+                                                        <Style TargetType="Button" BasedOn="{StaticResource PIconFontBtnStyle}">
+                                                            <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
+                                                        </Style>
+                                                    </hc:UniformSpacingPanel.Resources>
+                                                    <Button Content="&#xe718;" />
+                                                    <Button Content="&#xe7ae;" />
+                                                </hc:UniformSpacingPanel>
+                                            </StackPanel>
+                                        </hc:SimplePanel>
+                                    </Grid>
+                                </hc:SimplePanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="20" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </hc:SimplePanel>
             </hc:SimplePanel>
         </Grid>
     </hc:SimplePanel>

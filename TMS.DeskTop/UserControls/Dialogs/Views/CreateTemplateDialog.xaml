@@ -44,14 +44,8 @@
                 <ListView
                     Style="{StaticResource ListBoxCustom}"
                     Background="Transparent"
+                    ItemsSource="{Binding TemplateVOList}"
                     BorderBrush="Transparent">
-                    <ListView.ItemsSource>
-                        <x:Array Type="system:String">
-                            <system:String>测试</system:String>
-                            <system:String>测试</system:String>
-                            <system:String>测试</system:String>
-                        </x:Array>
-                    </ListView.ItemsSource>
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -77,19 +71,19 @@
                                                 Width="33"
                                                 Height="33"
                                                 Style="{StaticResource BorderCircular}"
-                                                Background="#ff8800" />
+                                                Background="{Binding IconColor}" />
                                             <TextBlock
-                                                Text="&#xe738;"
+                                                Text="{Binding Icon}"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 FontSize="20"
                                                 Foreground="White"
                                                 FontFamily="{StaticResource FIconPlusFontFamily}" />
                                         </hc:SimplePanel>
-                                        <StackPanel Margin="5,0,0,0" VerticalAlignment="Center">
-                                            <TextBlock Text="360度绩效评估" FontSize="13" />
+                                        <StackPanel Margin="15,0,0,0" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Name}" FontSize="13" />
                                             <TextBlock
-                                                Text="员工姓名，业绩，做得好的具体示例"
+                                                Text="{Binding Content}"
                                                 FontSize="11"
                                                 Foreground="{StaticResource SecondaryTextBrush}"
                                                 TextTrimming="CharacterEllipsis" />

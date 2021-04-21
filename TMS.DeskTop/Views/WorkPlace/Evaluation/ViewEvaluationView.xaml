@@ -377,7 +377,10 @@
                     hc:InfoElement.Placeholder="  搜索"
                     Style="{StaticResource SearchBarPlus}" />
                 <StackPanel Grid.Row="1" Orientation="Vertical">
-                    <RadioButton Style="{StaticResource classifyRadioBtnStyle}">
+                    <RadioButton
+                        IsChecked="True"
+                        Style="{StaticResource classifyRadioBtnStyle}"
+                        Cursor="Hand">
                         <RadioButton.Content>
                             <Grid>
                                 <Grid.ColumnDefinitions>

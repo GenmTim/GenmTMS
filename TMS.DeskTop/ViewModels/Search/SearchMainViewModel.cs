@@ -50,9 +50,6 @@ namespace TMS.DeskTop.ViewModels.Search
             }
         }
 
-
-
-
         public DelegateCommand LookTalentFileCmd { get; private set; }
         public DelegateCommand ExchangeTalentFileCmd { get; private set; }
         public DelegateCommand SearchCmd { get; private set; }
@@ -69,9 +66,9 @@ namespace TMS.DeskTop.ViewModels.Search
             });
             this.ExchangeTalentFileCmd = new DelegateCommand(async () =>
             {
-                var result = await DialogHelper.ShowQuestionDialog(dialogService, "SearchViewRoot", "兑换请求", "兑换", "取消", "你将兑换 蔡承龙 的人才档案");
-                this.eventAggregator.GetEvent<ToastShowEvent>().Publish("成功兑换 蔡承龙 的人才档案");
-                if (result.Result == ButtonResult.OK)
+                var result = await DialogHelper.ShowQuestionDialog(dialogService, "SearchViewRoot", "兑换请求", "兑换", "取消", "你将兑换 李新添 的人才档案");
+                this.eventAggregator.GetEvent<ToastShowEvent>().Publish("成功兑换 李新添 的人才档案");
+                if (result != null && result.Result == ButtonResult.OK)
                 {
                     Exchanged = true;
                 }
@@ -86,7 +83,7 @@ namespace TMS.DeskTop.ViewModels.Search
 
         private async void GoAuth()
         {
-            var result = await DialogHelper.ShowQuestionDialog(dialogService, "SearchViewRoot", "授权申请", "发送", "取消", "你将向 蔡承龙 发送授权请求");
+            var result = await DialogHelper.ShowQuestionDialog(dialogService, "SearchViewRoot", "授权申请", "发送", "取消", "你将向 李新添 发送授权请求");
             if (result.Result == ButtonResult.OK)
             {
                 IsLock = false;

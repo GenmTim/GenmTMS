@@ -52,20 +52,20 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <RadioButton
+                        <RadioButton Grid.Column="1"
                             IsChecked="True"
+                            Command="{Binding NavigationCmd}"
+                            CommandParameter="IJoinedView"
+                            HorizontalAlignment="Center"
+                            hc:TitleElement.Title="我加入的"
+                            Style="{StaticResource UnderlineRadioBtnStyle}" Cursor="Hand" />
+                        <RadioButton
                             Command="{Binding NavigationCmd}"
                             CommandParameter="ICreateView"
                             HorizontalAlignment="Center"
                             hc:TitleElement.Title="我创建的"
                             Style="{StaticResource UnderlineRadioBtnStyle}"
                             Cursor="Hand" />
-                        <RadioButton Grid.Column="1"
-                            Command="{Binding NavigationCmd}"
-                            CommandParameter="IJoinedView"
-                            HorizontalAlignment="Center"
-                            hc:TitleElement.Title="我加入的"
-                            Style="{StaticResource UnderlineRadioBtnStyle}" />
                     </Grid>
                     <hc:SimplePanel Grid.Row="1" Background="White">
                         <ContentControl prism:RegionManager.RegionName="{x:Static Member=token:RegionToken.MyGroupContent}" />

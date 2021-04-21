@@ -17,10 +17,10 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.SubjectiveData.Subitem.Detail
 
         public List<ActivityCardEntity> ActivityCardEntitieList { get; set; } = new List<ActivityCardEntity>()
         {
-            new ActivityCardEntity() {Name="江益川",DateTime="                               35分钟前",Content="添加评价：有他带着我们，就没有解决不了\n的难题"},
-            new ActivityCardEntity() {Name="蔡承龙",DateTime="                                  6小时前",Content="添加评价：平时工作很认真"},
-            new ActivityCardEntity() {Name="蔡承龙",DateTime="                                  6小时前",Content="审核通过"},
-            new ActivityCardEntity() {Name="金泽权",DateTime="                                    1天前",Content="发起评价审核"}
+            new ActivityCardEntity() {Name="江益川",DateTime="                               35分钟前",Content="添加评价：有他带着我们，就没有解决不了\n的难题", Uri="http://47.101.157.194:8081/static/avatar/target5.jpg"},
+            new ActivityCardEntity() {Name="蔡承龙",DateTime="                                  6小时前",Content="添加评价：平时工作很认真", Uri="http://47.101.157.194:8081/static/avatar/target6.jpg"},
+            new ActivityCardEntity() {Name="李新添",DateTime="                                  6小时前",Content="审核通过", Uri="http://47.101.157.194:8081/static/avatar/target8.jpg"},
+            new ActivityCardEntity() {Name="金泽权",DateTime="                                    1天前",Content="发起评价审核", Uri="http://47.101.157.194:8081/static/avatar/target7.jpg"},
         };
 
         private Boolean detailDrawerIsOpen = false;

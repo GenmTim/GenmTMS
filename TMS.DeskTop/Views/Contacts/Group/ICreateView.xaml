@@ -2,10 +2,46 @@
     x:Class="TMS.DeskTop.Views.Contacts.Group.ICreateView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid />
+    <hc:SimplePanel>
+        <ItemsControl Background="White" ItemsSource="{Binding GroupList}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <hc:SimplePanel Height="60">
+                        <Border />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <hc:Gravatar
+                                Width="40"
+                                Height="40"
+                                RenderOptions.BitmapScalingMode="HighQuality"
+                                Source="{Binding Uri}"
+                                Style="{StaticResource GravatarCircleImg}" />
+                            <hc:SimplePanel Grid.Column="1">
+                                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Name}" FontSize="14" />
+                                    <TextBlock
+                                        Margin="0,2,0,0"
+                                        FontSize="12"
+                                        Foreground="{StaticResource SecondaryTextBrush}">
+                                        <Run Text="{Binding Number}" />
+                                        <Run Text=" 人" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </hc:SimplePanel>
+                        </Grid>
+                    </hc:SimplePanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </hc:SimplePanel>
 </UserControl>

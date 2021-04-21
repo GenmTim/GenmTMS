@@ -8,8 +8,6 @@
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.PersonalFile.Subitem"
     xmlns:sys="clr-namespace:System;assembly=netstandard"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     mc:Ignorable="d">
     <UserControl.Resources>
         <DropShadowEffect
@@ -53,7 +51,7 @@
                                 FontSize="18"
                                 Foreground="{StaticResource PrimaryBrush}"
                                 FontWeight="SemiBold">
-                                <Run Text="蔡承龙's" />
+                                <Run Text="李新添's" />
                                 <Run Text=" 人才评分" />
                             </TextBlock>
                             <!--<Button
@@ -312,7 +310,7 @@
                         </hc:SimplePanel>
                         <Grid Grid.Row="1" Margin="0,16,0,0">
                             <Grid.RowDefinitions>
-                                <RowDefinition />
+                                <RowDefinition Height="*" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <Grid>
@@ -339,9 +337,9 @@
                                                     Width="33"
                                                     Height="33"
                                                     RenderOptions.BitmapScalingMode="HighQuality"
-                                                    Source="http://47.101.157.194:8081/uploads/image/nbut_icon.jpg" />
+                                                    Source="http://47.101.157.194:8081/static/avatar/ksr.jpg" />
                                                 <TextBlock
-                                                    Text="宁波工程学院"
+                                                    Text="卡塞尔学院"
                                                     Margin="10,0,0,0"
                                                     VerticalAlignment="Center"
                                                     FontSize="14" />
@@ -380,7 +378,7 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <TextBlock
-                                    Text="高光时刻"
+                                    Text="荣耀时刻"
                                     VerticalAlignment="Center"
                                     Foreground="{StaticResource SecondaryTextBrush}" />
                                 <Button
@@ -391,34 +389,59 @@
                                     Style="{StaticResource TextBtnStyle}" />
                                 <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                 <hc:SimplePanel Grid.Row="1">
-                                    <StackPanel>
-                                        <hc:SimplePanel Margin="0,15,0,0">
-                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                <hc:SimplePanel>
-                                                    <Border
-                                                        Width="30"
-                                                        Height="30"
-                                                        Background="{StaticResource SuccessBrush}"
-                                                        Style="{StaticResource BorderCircular}" />
-                                                    <TextBlock
-                                                        Text="&#xe6e7;"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center"
-                                                        FontSize="14"
-                                                        Foreground="White"
-                                                        FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                    <ItemsControl ItemsSource="{Binding GloryDataVOList}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <hc:SimplePanel Margin="0,15,0,0">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid HorizontalAlignment="Left">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition />
+                                                            </Grid.ColumnDefinitions>
+                                                            <hc:SimplePanel>
+                                                                <!--<Border
+                                                            Width="30"
+                                                            Height="30"
+                                                            Background="{StaticResource SuccessBrush}"
+                                                            Style="{StaticResource BorderCircular}" />
+                                                        <TextBlock
+                                                            Text="&#xe6e7;"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            FontSize="14"
+                                                            Foreground="White"
+                                                            FontFamily="{StaticResource FIconPlusFontFamily}" />-->
+                                                                <hc:Gravatar
+                                                                    Width="33"
+                                                                    Height="33"
+                                                                    Style="{StaticResource GravatarCircleImg}"
+                                                                    Source="{Binding Uri}" />
+                                                            </hc:SimplePanel>
+                                                            <StackPanel Grid.Column="1"
+                                                                Margin="15,0,0,0"
+                                                                VerticalAlignment="Center">
+                                                                <TextBlock
+                                                                    Text="{Binding Name}"
+                                                                    TextTrimming="CharacterEllipsis"
+                                                                    FontSize="14" />
+                                                            </StackPanel>
+                                                        </Grid>
+                                                        <Button Grid.Column="1"
+                                                            Content="查看详情"
+                                                            Margin="15,0,0,0"
+                                                            HorizontalAlignment="Right"
+                                                            FontSize="12"
+                                                            Style="{StaticResource TextBtnStyle}" />
+                                                    </Grid>
                                                 </hc:SimplePanel>
-                                                <StackPanel Margin="15,0,0,0" VerticalAlignment="Center">
-                                                    <TextBlock Text="竞赛奖项" FontSize="14" />
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <Button
-                                                Content="查看详情"
-                                                HorizontalAlignment="Right"
-                                                FontSize="12"
-                                                Style="{StaticResource TextBtnStyle}" />
-                                        </hc:SimplePanel>
-                                    </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                     <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                                                 <TextBlock
                                                                     Text="&#xe6e9;"
@@ -469,7 +492,7 @@
                                 Cursor="Hand" />
                         </hc:SimplePanel>
                         <hc:SimplePanel Grid.Row="1">
-                            <StackPanel>
+                            <ItemsControl>
                                 <hc:SimplePanel Margin="0,15,0,0" Cursor="Hand">
                                     <Border CornerRadius="5" Background="{StaticResource RegionBrush}" />
                                     <StackPanel Orientation="Horizontal">
@@ -492,29 +515,7 @@
                                         </StackPanel>
                                     </StackPanel>
                                 </hc:SimplePanel>
-                                <hc:SimplePanel Margin="0,15,0,0" Cursor="Hand">
-                                    <Border CornerRadius="5" Background="{StaticResource RegionBrush}" />
-                                    <StackPanel Orientation="Horizontal">
-                                        <hc:Gravatar
-                                            Width="33"
-                                            Height="33"
-                                            VerticalAlignment="Center"
-                                            Effect="{StaticResource EffectShadowCom}"
-                                            Style="{StaticResource GravatarCircleImg}"
-                                            Source="http://47.101.157.194:8081/uploads/image/mihoyo.png" />
-                                        <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                                            <TextBlock
-                                                Text="Golang游戏服务端工程师"
-                                                FontSize="12"
-                                                FontWeight="SemiBold" />
-                                            <TextBlock FontSize="10" Foreground="#191919">
-                                                <Run Text="米哈游 ·" />
-                                                <Run Text="正式" />
-                                            </TextBlock>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </hc:SimplePanel>
-                            </StackPanel>
+                            </ItemsControl>
                             <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                                         <TextBlock
                                                             Text="&#xe6e9;"
@@ -553,83 +554,37 @@
                                 Style="{StaticResource TextBtnStyle}" />
                         </hc:SimplePanel>
                         <hc:SimplePanel Grid.Row="1">
-                            <StackPanel>
-                                <hc:SimplePanel Margin="0,20,0,0">
-                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                        <hc:Gravatar
-                                            Width="30"
-                                            Height="30"
-                                            Style="{StaticResource GravatarCircleImg}"
-                                            Id="121" />
-                                        <StackPanel Margin="15,0,0,0">
-                                            <TextBlock Text="Dropbox" FontSize="14" />
-                                            <TextBlock
-                                                Text="02.08.20"
-                                                FontSize="12"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                    <StackPanel
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Orientation="Horizontal">
-                                        <Button
-                                            Content="&#xe718;"
-                                            FontFamily="{StaticResource FIconPlusFontFamily}"
-                                            Style="{StaticResource PIconFontBtnStyle}" />
-                                    </StackPanel>
-                                </hc:SimplePanel>
-                                <hc:SimplePanel Margin="0,15,0,0">
-                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                        <hc:Gravatar
-                                            Width="30"
-                                            Height="30"
-                                            Style="{StaticResource GravatarCircleImg}"
-                                            Id="121" />
-                                        <StackPanel Margin="15,0,0,0">
-                                            <TextBlock Text="Dropbox" FontSize="14" />
-                                            <TextBlock
-                                                Text="02.08.20"
-                                                FontSize="12"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                    <StackPanel
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Orientation="Horizontal">
-                                        <Button
-                                            Content="&#xe718;"
-                                            FontFamily="{StaticResource FIconPlusFontFamily}"
-                                            Style="{StaticResource PIconFontBtnStyle}" />
-                                    </StackPanel>
-                                </hc:SimplePanel>
-                                <hc:SimplePanel Margin="0,15,0,0">
-                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                        <hc:Gravatar
-                                            Width="30"
-                                            Height="30"
-                                            Style="{StaticResource GravatarCircleImg}"
-                                            Id="121" />
-                                        <StackPanel Margin="15,0,0,0">
-                                            <TextBlock Text="Dropbox" FontSize="14" />
-                                            <TextBlock
-                                                Text="02.08.20"
-                                                FontSize="12"
-                                                Foreground="{StaticResource SecondaryTextBrush}" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                    <StackPanel
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Orientation="Horizontal">
-                                        <Button
-                                            Content="&#xe718;"
-                                            FontFamily="{StaticResource FIconPlusFontFamily}"
-                                            Style="{StaticResource PIconFontBtnStyle}" />
-                                    </StackPanel>
-                                </hc:SimplePanel>
-                            </StackPanel>
+                            <ItemsControl ItemsSource="{Binding ColleagueList}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <hc:SimplePanel Margin="0,20,0,0">
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <hc:Gravatar
+                                                    Width="30"
+                                                    Height="30"
+                                                    Source="{Binding Avatar}"
+                                                    Style="{StaticResource GravatarCircleImg}" />
+                                                <StackPanel Margin="15,0,0,0">
+                                                    <TextBlock Text="{Binding Name}" FontSize="14" />
+                                                    <TextBlock
+                                                        Text="{Binding Date}"
+                                                        FontSize="12"
+                                                        Foreground="{StaticResource SecondaryTextBrush}" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal">
+                                                <Button
+                                                    Content="&#xe718;"
+                                                    FontFamily="{StaticResource FIconPlusFontFamily}"
+                                                    Style="{StaticResource PIconFontBtnStyle}" />
+                                            </StackPanel>
+                                        </hc:SimplePanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </hc:SimplePanel>
                     </Grid>
                 </hc:SimplePanel>

@@ -21,6 +21,8 @@ namespace TMS.Core.Data.Entity
 
         public int OuterRectSize { get; set; }
 
+        public string Uri { get; set; }
+
         public int InnerRectSize { get; set; }
 
         public int CardWidth { get; set; }

@@ -68,7 +68,8 @@
                                             Width="230"
                                             Height="230"
                                             Style="{StaticResource GravatarCircleImg}"
-                                            Source="/Resources/Images/target.jpg" />
+                                            Source="http://47.101.157.194:8081/static/avatar/target6.jpg"
+                                            Cursor="Hand" />
                                         <hc:SimplePanel
                                             Width="35"
                                             Height="35"
@@ -92,7 +93,7 @@
                                 <hc:SimplePanel Grid.Row="1" Margin="0,20,0,0">
                                     <StackPanel HorizontalAlignment="Stretch">
                                         <TextBlock
-                                            Text="蔡承龙"
+                                            Text="李新添"
                                             FontSize="20"
                                             Foreground="{StaticResource SecondaryTextBrush}" />
                                         <TextBlock
@@ -107,29 +108,30 @@
                                             HorizontalAlignment="Stretch"
                                             Cursor="Hand"
                                             FontWeight="SemiBold" />
-                                        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                                            <StackPanel.Resources>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontSize" Value="14" />
-                                                </Style>
-                                            </StackPanel.Resources>
-                                            <TextBlock>
-                                                <Run Text="&#xe7b8;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                                <Run Text=" 7 " FontWeight="SemiBold" />
-                                                <Run Text="followers" Foreground="{StaticResource SecondaryBorderBrush}" />
+                                        <Grid Margin="0,20,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Run
+                                                    Text="&#xe7b8; "
+                                                    Foreground="#2f54eb"
+                                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                <Run Text="7" />
+                                                <Run Text=" 好友" Foreground="{StaticResource SecondaryBorderBrush}" />
                                             </TextBlock>
-                                            <TextBlock
-                                                Text="&#xe6d2;"
-                                                Margin="5"
-                                                VerticalAlignment="Center"
-                                                FontFamily="{StaticResource FIconPlusFontFamily}"
-                                                FontSize="8" />
-                                            <TextBlock>
-                                                <Run Text="&#xe799;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                                <Run Text=" 7 " FontWeight="SemiBold" />
-                                                <Run Text="followers" Foreground="{StaticResource SecondaryBorderBrush}" />
+                                            <TextBlock Grid.Column="1"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                                <Run
+                                                    Text="&#xe799; "
+                                                    Foreground="#fa541c"
+                                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                <Run Text="7" />
+                                                <Run Text=" 关注" Foreground="{StaticResource SecondaryBorderBrush}" />
                                             </TextBlock>
-                                        </StackPanel>
+                                        </Grid>
                                         <hc:SimplePanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                                         <hc:SimplePanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <uc:Web

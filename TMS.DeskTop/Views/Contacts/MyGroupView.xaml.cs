@@ -14,7 +14,7 @@ namespace TMS.DeskTop.Views.Contacts
         {
             InitializeComponent();
             //RegionHelper.RegisterViewWithRegion(regionManager, RegionToken.MyGroupContent, typeof(EmptyView));
-            RegisterDefaultRegionView(RegionToken.MyGroupContent, nameof(ICreateView));
+            RegisterDefaultRegionView(RegionToken.MyGroupContent, nameof(IJoinedView));
         }
     }
 }

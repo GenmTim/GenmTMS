@@ -86,11 +86,11 @@
                                         Width="40"
                                         Height="40"
                                         Margin="20,0,0,0"
-                                        Style="{StaticResource GravatarCircleImg}"
-                                        Id="User123" />
+                                        Source="http://47.101.157.194:8081/static/avatar/target6.jpg"
+                                        Style="{StaticResource GravatarCircleImg}" />
                                     <StackPanel Margin="15,0,0,0" VerticalAlignment="Center">
                                         <TextBlock
-                                            Text="蔡承龙"
+                                            Text="李新添"
                                             Margin="0,0,0,10"
                                             FontWeight="SemiBold"
                                             FontSize="16" />

@@ -144,6 +144,7 @@
                                                 </Style>
                                             </StackPanel.Resources>
                                             <ListView
+                                                SelectedIndex="0"
                                                 BorderThickness="0"
                                                 ItemsSource="{Binding ClassifyItemList}"
                                                 Style="{StaticResource ListBoxCustom}">

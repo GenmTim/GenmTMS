@@ -299,7 +299,7 @@
                                     </LinearGradientBrush>
                                 </Border.Background>
                                 <TextBlock
-                                    Text="宁"
+                                    Text="S"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="20"
@@ -307,7 +307,7 @@
                                     Foreground="White" />
                             </Border>
                             <TextBlock Grid.Column="1"
-                                Text="宁波工程学院"
+                                Text="SuperGame"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 FontSize="20" />

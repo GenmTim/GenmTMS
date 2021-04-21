@@ -86,7 +86,7 @@
                 Width="25"
                 Height="25"
                 Margin="0,3,8,0"
-                Id="{Binding DateTime}"
+                Source="{Binding Uri, Converter={StaticResource String2UriConverter}}"
                 Style="{StaticResource GravatarCircleImg}" />
             <TextBlock Grid.Row="0" Grid.Column="1"
                 VerticalAlignment="Center"

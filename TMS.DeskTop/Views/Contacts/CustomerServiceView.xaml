@@ -60,7 +60,17 @@
                                         <Setter Property="FontFamily" Value="{StaticResource FIconPlusFontFamily}" />
                                     </Style>
                                 </UniformGrid.Resources>
-                                <hc:SimplePanel Height="50">
+                                <ItemsControl ItemsSource="{Binding CSQuestionList}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <hc:SimplePanel Height="50">
+                                                <TextBlock Text="{Binding Content}" Style="{StaticResource contentTextStyle}" />
+                                                <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
+                                            </hc:SimplePanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <!--<hc:SimplePanel Height="50">
                                     <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
                                     <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
                                 </hc:SimplePanel>
@@ -87,7 +97,7 @@
                                 <hc:SimplePanel Height="50">
                                     <TextBlock Text="新功能合集！高亮选中区域，告别看串行" Style="{StaticResource contentTextStyle}" />
                                     <Button Content="&#xe791;" Style="{StaticResource jumpBtnStyle}" />
-                                </hc:SimplePanel>
+                                </hc:SimplePanel>-->
                             </UniformGrid>
                         </hc:SimplePanel>
                     </Grid>

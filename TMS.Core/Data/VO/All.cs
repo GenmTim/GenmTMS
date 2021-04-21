@@ -23,4 +23,12 @@ namespace TMS.Core.Data.VO
         public string Date { get; set; }
         public string ContentList { get; set; }
     }
+
+
+    public class GroupVO
+    {
+        public string Name { get; set; }
+        public string Number { get; set; }
+        public string Uri { get; set; }
+    }
 }
