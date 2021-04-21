@@ -82,8 +82,16 @@
         <TextBlock Grid.Row="0" Grid.Column="1"
             Style="{StaticResource timeTextStyle}">
             <TextBlock.Inlines>
-                <!--<Run Text="{Binding Path=DateTime}" />-->
-                <Run Text="{Binding Path=DateTime}" FontWeight="Normal" />
+                <Run
+                    Text="{Binding Path=Name}"
+                    Foreground="Black"
+                    FontSize="18"
+                    BaselineAlignment="Center" />
+                <Run
+                    Text="{Binding Path=DateTime}"
+                    Foreground="#778899"
+                    FontSize="12"
+                    FontWeight="Normal" />
             </TextBlock.Inlines>
         </TextBlock>
         <Border Grid.Row="1" Grid.Column="0"
@@ -96,11 +104,14 @@
             Grid.Row="1"
             Grid.Column="0"
             Style="{StaticResource LinePathStyle}" />-->
-        <UserControl Grid.Row="1" Grid.Column="1"
+        <!--<UserControl Grid.Row="1" Grid.Column="1"
             Margin="15">
             <UserControl.Content>
                 <Binding Path="CardContent" />
             </UserControl.Content>
-        </UserControl>
+        </UserControl>-->
+        <TextBlock Grid.Row="1" Grid.Column="1"
+            Text="{Binding Content}"
+            Margin="0,10,0,15" />
     </Grid>
 </UserControl>
