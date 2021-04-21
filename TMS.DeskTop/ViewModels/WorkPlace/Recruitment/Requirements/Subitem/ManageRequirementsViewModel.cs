@@ -10,7 +10,7 @@ using TMS.DeskTop.Tools.Helper;
 
 namespace TMS.DeskTop.ViewModels.WorkPlace.Recruitment.Requirements.Subitem
 {
-    public public class RequirementManageVO
+    public class RequirementManageVO
     {
         public string Job { get; set; }
         public string NeedNumber { get; set; }

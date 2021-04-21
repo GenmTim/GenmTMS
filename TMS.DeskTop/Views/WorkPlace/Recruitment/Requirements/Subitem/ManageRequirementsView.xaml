@@ -90,7 +90,11 @@
                                                 VerticalAlignment="Center"
                                                 hc:BorderElement.Circular="True"
                                                 Background="{Binding FIconColor}">
-                                                <Image Source="{Binding BackgroundUri, Converter={StaticResource String2UriConverter}}" />
+                                                <hc:Gravatar
+                                                    Width="45"
+                                                    Height="45"
+                                                    Style="{StaticResource GravatarCircleImg}"
+                                                    Source="{Binding BackgroundUri, Converter={StaticResource String2UriConverter}}" />
                                                 <!--<TextBlock
                                                     Text="{Binding FIcon}"
                                                     HorizontalAlignment="Center"
@@ -100,7 +104,7 @@
                                                     FontFamily="{StaticResource FIconFontFamily}" />-->
                                             </Border>
                                             <Grid Grid.Column="1"
-                                                Margin="8,0,0,0"
+                                                Margin="15,0,0,0"
                                                 VerticalAlignment="Center">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition />

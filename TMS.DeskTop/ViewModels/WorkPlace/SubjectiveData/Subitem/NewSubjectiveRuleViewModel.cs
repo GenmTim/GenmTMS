@@ -37,8 +37,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.SubjectiveData.Subitem
 
             fieldDataList = new ObservableCollection<FieldTypeCheckBoxModel>
             {
-                new FieldTypeCheckBoxModel(dialogHost, eventAggregator){ Key="测试", Type=FieldType.文本 },
-                new FieldTypeCheckBoxModel(dialogHost, eventAggregator){ Key="检测", Type=FieldType.文本 },
+                new FieldTypeCheckBoxModel(dialogHost, eventAggregator){ Key="", Type=FieldType.文本 },
             };
         }
 
@@ -49,6 +48,8 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.SubjectiveData.Subitem
 
         private void RemoveOneField(FieldTypeCheckBoxModel data)
         {
+            if (FieldDataList.Count <= 1) return;
+
             FieldDataList.Remove(data);
         }
 
