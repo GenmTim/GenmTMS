@@ -69,5 +69,7 @@
         public static readonly string PersonalInfoContent = nameof(PersonalInfoContent);
 
         public static readonly string GloryDataEnteringContent = nameof(GloryDataEnteringContent);
+
+        public static readonly string SubjectiveDetailContent = nameof(SubjectiveDetailContent);
     }
 }

@@ -26,6 +26,7 @@ using TMS.DeskTop.Views.WorkPlace.Recruitment.Requirements.Subitem;
 using TMS.DeskTop.Views.WorkPlace.StaffCare;
 using TMS.DeskTop.Views.WorkPlace.SubjectiveData;
 using TMS.DeskTop.Views.WorkPlace.SubjectiveData.Subitem;
+using TMS.DeskTop.Views.WorkPlace.SubjectiveData.Subitem.Detail;
 using TMS.DeskTop.Views.WorkPlace.ViolateData;
 
 namespace TMS.DeskTop.Tools.Helper
@@ -190,6 +191,11 @@ namespace TMS.DeskTop.Tools.Helper
                 routeMap[typeof(SubjectiveDataView)] = routeMap[typeof(WorkPlaceView)] + "subjective_data/";
                 {
                     routeMap[typeof(SubjectiveDataMainView)] = routeMap[typeof(SubjectiveDataView)] + "main/";
+                    {
+                        routeMap[typeof(SubjectiveDetailView)] = routeMap[typeof(SubjectiveDataMainView)] + "main/";
+                        //routeMap[typeof(SubjectiveDataMainView)] = routeMap[typeof(SubjectiveDataMainView)] + "comment/";
+
+                    }
                     routeMap[typeof(NewSubjectiveRuleView)] = routeMap[typeof(SubjectiveDataView)] + "new/";
                 }
                 routeMap[typeof(AttendanceDataEnteringView)] = routeMap[typeof(WorkPlaceView)] + "attendanceDataEntering/";

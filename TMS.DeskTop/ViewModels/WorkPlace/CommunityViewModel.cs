@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,5 +45,9 @@ namespace TMS.DeskTop.ViewModels.WorkPlace
                     Content="应届生找工作常犯的七个错误!误区一:轻视求职准备。都觉得找工作是一件很重要的事情，但几乎没有人给予对等的准备;误区二:追捧高级感。什么高级投什么,什么热门选什么。只要岗位够热门,我就能觉得自己是合适的;误区三:不想浪费了自己的专业。好的决策应该尽力排除沉没成本的干扰;误区四:对岗位有想当然的刻板认知,粗浅片面甚至错到离谱;误区五:盲从经验主义,不深入本质,不体察变化;误区六:我还没有准备好，机会确实是留给有准备的人的,但不是留着等你准备的;误区七:过分理想化，有一个高一点的理想和目标肯定不是错误,但要充分预估困难和挑战,问问自己在理想范围内的底线是什么,及时启动 plan B 。", BackgroundUri="http://47.101.157.194:8081/static/background/i1.jpg" },
             };
         }
+
+        public DelegateCommand OpenDetailCmd;
+        
+
     }
 }
