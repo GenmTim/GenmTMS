@@ -306,6 +306,7 @@
                                     <ListBox
                                         BorderThickness="0"
                                         SelectedIndex="0"
+                                        Background="Transparent"
                                         Style="{StaticResource ListBoxCustom}"
                                         SelectedValue="{Binding NowCompanyEnv}"
                                         ItemsSource="{Binding MyCompanyList}">
@@ -322,7 +323,6 @@
                                                     FocusVisualStyle="{x:Null}"
                                                     Tag="{Binding Id}"
                                                     GroupName="company"
-                                                    BorderThickness="0"
                                                     Cursor="Hand" />
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>

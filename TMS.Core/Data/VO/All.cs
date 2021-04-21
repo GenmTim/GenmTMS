@@ -21,7 +21,6 @@ namespace TMS.Core.Data.VO
         public string Name { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
-        public string Time { get; set; }
-        public List<string> ContentList { get; set; }
+        public string ContentList { get; set; }
     }
 }

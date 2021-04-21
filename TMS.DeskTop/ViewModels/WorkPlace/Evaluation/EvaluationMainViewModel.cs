@@ -35,7 +35,7 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Evaluation
             NavigationCmd = new DelegateCommand<string>(NavigationPage);
             this.QuestionnaireVOList = new ObservableCollection<QuestionnaireVO>()
             {
-                new QuestionnaireVO { Name="李立清", ContentList=new List<string>{ "sdsd" }, Date="sdsd", Time="", Title=""  }
+                new QuestionnaireVO { Name="李立清", ContentList="asdss", Date="sdsd", Title=""  }
             };
         }
 

@@ -6,8 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.WorkPlace.Activity.Component"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     mc:Ignorable="d">
     <hc:SimplePanel
         Width="400"
@@ -22,7 +20,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <hc:SimplePanel Grid.Row="0" Grid.RowSpan="2">
-                <Border>
+                <!--<Border>
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                             <GradientStop Offset="0" Color="#2e92e9" />
@@ -36,7 +34,12 @@
                     Margin="40,15,0,0"
                     HorizontalAlignment="Left"
                     RenderOptions.BitmapScalingMode="HighQuality"
-                    Source="http://47.101.157.194:8081/uploads/image/i1.png" />
+                    Source="http://47.101.157.194:8081/uploads/image/i1.png" />-->
+                <Image
+                    Height="200"
+                    HorizontalAlignment="Left"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Source="{Binding BackgroundUri, Converter={StaticResource String2UriConverter}}" />
                 <hc:SimplePanel
                     Width="85"
                     Height="33"
@@ -45,10 +48,10 @@
                     <Border
                         CornerRadius="15,0,0,15"
                         Effect="{StaticResource EffectShadow1}"
-                        Background="{StaticResource SuccessBrush}"
+                        Background="{Binding StateColor}"
                         BorderThickness="1,1,0,1" />
                     <TextBlock
-                        Text="活动进行中"
+                        Text="{Binding State}"
                         Margin="10,0,0,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -108,7 +111,7 @@
                 <Border Background="White" />
                 <StackPanel>
                     <TextBlock
-                        Text="UX UI Designer"
+                        Text="{Binding Title}"
                         FontWeight="SemiBold"
                         FontSize="16" />
                     <TextBlock
@@ -125,7 +128,7 @@
                         RenderOptions.BitmapScalingMode="HighQuality"
                         BorderThickness="2"
                         BorderBrush="White"
-                        Source="http://47.101.157.194:8081/uploads/image/target1.jpg"
+                        Source="http://47.101.157.194:8081/static/avatar/target6.jpg"
                         Style="{StaticResource GravatarCircleImg}" />
                     <hc:Gravatar
                         Width="35"
@@ -134,7 +137,7 @@
                         RenderOptions.BitmapScalingMode="HighQuality"
                         BorderThickness="2"
                         BorderBrush="White"
-                        Source="http://47.101.157.194:8081/uploads/image/target2.jpg"
+                        Source="http://47.101.157.194:8081/static/avatar/target7.jpg"
                         Style="{StaticResource GravatarCircleImg}" />
                     <hc:Gravatar
                         Width="35"
@@ -143,7 +146,7 @@
                         BorderThickness="2"
                         RenderOptions.BitmapScalingMode="HighQuality"
                         BorderBrush="White"
-                        Source="http://47.101.157.194:8081/uploads/image/target3.jpg"
+                        Source="http://47.101.157.194:8081/static/avatar/target8.jpg"
                         Style="{StaticResource GravatarCircleImg}" />
                 </StackPanel>
             </hc:SimplePanel>

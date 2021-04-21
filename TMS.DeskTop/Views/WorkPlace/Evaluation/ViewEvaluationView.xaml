@@ -12,7 +12,349 @@
     d:DesignWidth="1440"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Resources/Styles/Views/WorkPlace/Evaluation/ViewEvaluationViewStyle.xaml" />
+        <Style x:Key="classifyRadioBtnStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Foreground" Value="{StaticResource ReverseTextBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid VerticalAlignment="Center">
+                            <Border
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Margin="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Focusable="False"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Background" Value="#FFDEE0E3" />
+
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#FFDEE0E3" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="expanderStyle" TargetType="{x:Type Expander}">
+            <Setter Property="Foreground" Value="{DynamicResource ReverseTextBrush}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="hc:BorderElement.CornerRadius" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Expander}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Border x:Name="BorderHeader"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0"
+                                CornerRadius="0">
+                                <ToggleButton
+                                    IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Width="{TemplateBinding Width}"
+                                    Height="{TemplateBinding MinHeight}"
+                                    Padding="0,0,0,0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Stretch"
+                                    Focusable="False"
+                                    Foreground="{TemplateBinding Foreground}">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+                                            <Setter Property="VerticalAlignment" Value="Center" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                                            <Setter Property="Padding" Value="0" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                            <Setter Property="BorderThickness" Value="0" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Border x:Name="Chrome"
+                                                            Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            SnapsToDevicePixels="True">
+                                                            <hc:SimplePanel>
+                                                                <ContentPresenter x:Name="UnCheckedElement"
+                                                                    Content="{TemplateBinding Content}"
+                                                                    Margin="{TemplateBinding Padding}"
+                                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                    ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                    RecognizesAccessKey="True"
+                                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                            </hc:SimplePanel>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="#FFEFF0F1" />
+                                                            </Trigger>
+
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Opacity" Value="0.4" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.BasedOn>
+                                                <Style TargetType="{x:Type Control}">
+                                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                                                    <Setter Property="FontSize" Value="12" />
+                                                    <Setter Property="FocusVisualStyle">
+                                                        <Setter.Value>
+                                                            <Style>
+                                                                <Setter Property="Control.Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate>
+                                                                            <Rectangle RadiusX="4" RadiusY="4">
+                                                                                <Rectangle.Style>
+                                                                                    <Style TargetType="{x:Type Rectangle}">
+                                                                                        <Setter Property="Margin" Value="-2" />
+                                                                                        <Setter Property="Opacity" Value="0.6" />
+                                                                                        <Setter Property="SnapsToDevicePixels" Value="True" />
+                                                                                        <Setter Property="Stroke" Value="{DynamicResource SecondaryBorderBrush}" />
+                                                                                        <Setter Property="StrokeThickness" Value="2" />
+                                                                                        <Setter Property="StrokeDashArray" Value="1 1" />
+                                                                                    </Style>
+                                                                                </Rectangle.Style>
+                                                                            </Rectangle>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Style.BasedOn>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="32" />
+                                        </Grid.ColumnDefinitions>
+                                        <ContentPresenter
+                                            Content="{TemplateBinding Header}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentSource="Header"
+                                            ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                            ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                                        <Path x:Name="PathArrow" Grid.Column="1"
+                                            Width="12"
+                                            Height="12"
+                                            Margin="0,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Data="M512,801.6896L5.12,282.0096 63.2832,222.4128 512,682.3936 960.7168,222.3104 1018.88,281.9072 512,801.6896z"
+                                            Fill="{TemplateBinding Foreground}"
+                                            IsHitTestVisible="False" />
+                                    </Grid>
+                                </ToggleButton>
+                            </Border>
+                            <ContentPresenter x:Name="ExpandSite" Grid.Row="1" Grid.Column="0"
+                                Content="{TemplateBinding Content}"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Visibility="Collapsed" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded" Value="True">
+                                <Setter TargetName="ExpandSite" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="PathArrow" Property="Data" Value="M50.000001,0L100,51.262779 94.262627,57.141584 50.000001,11.767713 5.7373757,57.151686 0,51.27288z" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="2" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="classifyListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="border" Height="40">
+                            <ContentPresenter VerticalAlignment="Center" />
+                            <!--<Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    Foreground="Black"
+                                    Text="{Binding Name}" />
+                                <Label
+                                    Grid.Column="2"
+                                    Margin="5"
+                                    Padding="5"
+                                    HorizontalAlignment="Left"
+                                    hc:BorderElement.CornerRadius="0"
+                                    Background="#FF6425D0"
+                                    BorderThickness="0"
+                                    Content="超级管理员"
+                                    FontSize="10"
+                                    Foreground="White" />
+                            </Grid>-->
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="#FFEFF0F1" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="#FFDEE0E3" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="classifyListBoxStyle"
+            BasedOn="{StaticResource ListBoxBaseStyle}"
+            TargetType="ListBox">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource classifyListBoxItemStyle}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style x:Key="evaluationListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Grid>
+                            <Border x:Name="border"
+                                Height="80"
+                                Background="White">
+                                <Grid Margin="20,0" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0" Grid.Column="0"
+                                        Width="25"
+                                        Height="25"
+                                        hc:BorderElement.Circular="True">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0.5, 0" EndPoint="1, 0">
+                                                <GradientStop Offset="0" Color="#FF00D7BB" />
+                                                <GradientStop Offset="1" Color="#FF00C0A6" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <TextBlock
+                                            Text="{Binding Name, Converter={StaticResource FetchFirstCharConverter}}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Foreground="White" />
+                                    </Border>
+                                    <Grid Grid.Row="0" Grid.Column="1"
+                                        Margin="5,0,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            Text="{Binding Name}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            TextTrimming="CharacterEllipsis"
+                                            FontSize="15" />
+                                        <TextBlock Grid.Column="1"
+                                            Text="{Binding Date}"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Foreground="{StaticResource SecondaryTextBrush}" />
+                                    </Grid>
+                                    <TextBlock Grid.Row="1" Grid.Column="1"
+                                        TextWrapping="Wrap"
+                                        Margin="5,5,0,0"
+                                        TextTrimming="CharacterEllipsis"
+                                        FontSize="14"
+                                        Foreground="{StaticResource SecondaryTextBrush}">
+                                        <Run Text="问卷姓名: " />
+                                        <Run Text="{Binding Name}" />
+                                        <Run Text=" " />
+                                        <Run Text="内容: " />
+                                        <Run Text="{Binding ContentList}" />
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <Border x:Name="tagBorder"
+                                BorderBrush="{StaticResource PrimaryBrush}"
+                                BorderThickness="4,0,0,0"
+                                Visibility="Collapsed" />
+                            <Border Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Margin="20,0"
+                                VerticalAlignment="Bottom"
+                                BorderBrush="{StaticResource BorderBrush}"
+                                BorderThickness="0,0,0,1" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="#FFEFF0F1" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="#FFF0F4FF" />
+                                <Setter TargetName="tagBorder" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="evaluationListBoxStyle"
+            BasedOn="{StaticResource ListBoxBaseStyle}"
+            TargetType="ListBox">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource evaluationListBoxItemStyle}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
     </UserControl.Resources>
     <Grid Grid.Row="1" Background="#FFF8F9FA">
         <Grid.ColumnDefinitions>
@@ -106,7 +448,7 @@
                     VerticalAlignment="Center"
                     BorderBrush="{StaticResource BorderBrush}"
                     BorderThickness="0,0,0,0.5" />
-                <!--<Border Grid.Row="3"
+                <Border Grid.Row="3"
                     Margin="0,5,0,0"
                     BorderBrush="{StaticResource BorderBrush}"
                     BorderThickness="0,0,0,0">
@@ -125,28 +467,25 @@
                                     FontSize="18"
                                     FontFamily="{StaticResource FIconFontFamily}" />
                                 <TextBlock Grid.Column="1"
-                                    Text="汇报规则"
+                                    Text="问卷规则"
                                     Margin="8,0,0,0"
                                     VerticalAlignment="Center"
                                     FontSize="14" />
-                                <TextBlock Grid.Column="1"
-                                    Text="&#xe6f1;"
-                                    HorizontalAlignment="Right"
-                                    FontFamily="{StaticResource FIconPlusFontFamily}" />
                             </Grid>
                         </Expander.Header>
                         <ListBox Style="{StaticResource classifyListBoxStyle}">
                             <ListBoxItem>
                                 <Grid Margin="38,0,0,0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="90" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="30" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0"
-                                        Text="360度绩效评估"
-                                        HorizontalAlignment="Right"
+                                        Text="员工工作状态调查"
+                                        HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
+                                        TextTrimming="CharacterEllipsis"
                                         FontSize="14"
                                         Foreground="Black" />
                                     <Label Grid.Column="1"
@@ -170,14 +509,15 @@
                             <ListBoxItem>
                                 <Grid Margin="38,0,0,0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="90" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="30" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0"
-                                        Text="360度绩效评估"
-                                        HorizontalAlignment="Right"
+                                        Text="每周工作汇报"
+                                        HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
+                                        TextTrimming="CharacterEllipsis"
                                         FontSize="14"
                                         Foreground="Black" />
                                     <Label Grid.Column="1"
@@ -201,14 +541,15 @@
                             <ListBoxItem>
                                 <Grid Margin="38,0,0,0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="90" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="30" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0"
                                         Text="360度绩效评估"
-                                        HorizontalAlignment="Right"
+                                        HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
+                                        TextTrimming="CharacterEllipsis"
                                         FontSize="14"
                                         Foreground="Black" />
                                     <Label Grid.Column="1"
@@ -231,7 +572,7 @@
                             </ListBoxItem>
                         </ListBox>
                     </Expander>
-                </Border>-->
+                </Border>
             </Grid>
         </Border>
         <Border Grid.Column="1"
@@ -257,10 +598,10 @@
                                 hc:BorderElement.Circular="True"
                                 Background="#FFFF8800">
                                 <TextBlock
-                                    Text="&#xe610;"
+                                    Text="&#xe6ef;"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    FontSize="20"
+                                    FontSize="23"
                                     Foreground="White"
                                     FontFamily="{StaticResource FIconFontFamily}" />
                             </Border>
@@ -287,7 +628,7 @@
                 </Border>
                 <Grid Grid.Row="1">
                     <ListBox
-                        ItemsSource="{Binding EvaluationList}"
+                        ItemsSource="{Binding QuestionnaireVOList}"
                         Style="{StaticResource evaluationListBoxStyle}"
                         Visibility="{Binding IsHasEvaluationItem, Converter={StaticResource Boolean2VisibilityConverter}}" />
                     <TextBlock Grid.Row="1"

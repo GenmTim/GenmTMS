@@ -90,13 +90,14 @@
                                                 VerticalAlignment="Center"
                                                 hc:BorderElement.Circular="True"
                                                 Background="{Binding FIconColor}">
-                                                <TextBlock
+                                                <Image Source="{Binding BackgroundUri, Converter={StaticResource String2UriConverter}}" />
+                                                <!--<TextBlock
                                                     Text="{Binding FIcon}"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
                                                     FontSize="24"
                                                     Foreground="White"
-                                                    FontFamily="{StaticResource FIconFontFamily}" />
+                                                    FontFamily="{StaticResource FIconFontFamily}" />-->
                                             </Border>
                                             <Grid Grid.Column="1"
                                                 Margin="8,0,0,0"
