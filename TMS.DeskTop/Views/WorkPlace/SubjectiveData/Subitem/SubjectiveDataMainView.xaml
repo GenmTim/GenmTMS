@@ -50,15 +50,15 @@
                                             Color="#FF18DAC0" />
                                     </Border.Effect>
                                     <TextBlock
-                                        Text="&#xe62c;"
+                                        Text="&#xe668;"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        FontSize="30"
+                                        FontSize="25"
                                         Foreground="White"
-                                        FontFamily="{StaticResource FIconFontFamily}" />
+                                        FontFamily="{StaticResource AppIconFontFamily}" />
                                 </Border>
                                 <TextBlock Grid.Row="0" Grid.Column="1"
-                                    Text="360度绩效评估"
+                                    Text="{Binding Title}"
                                     Margin="8"
                                     Panel.ZIndex="1"
                                     FontSize="16" />
@@ -80,7 +80,7 @@
                                                 BorderThickness="3"
                                                 BorderBrush="#f0f5ff"
                                                 Style="{StaticResource GravatarCircleImg}"
-                                                Source="http://47.101.157.194:8081/uploads/image/2.png" />
+                                                Source="http://47.101.157.194:8081/static/avatar/target6.jpg" />
                                             <hc:Gravatar
                                                 Width="44"
                                                 Height="44"
@@ -89,7 +89,7 @@
                                                 BorderThickness="3"
                                                 BorderBrush="#f0f5ff"
                                                 Style="{StaticResource GravatarCircleImg}"
-                                                Source="http://47.101.157.194:8081/uploads/image/1.png" />
+                                                Source="http://47.101.157.194:8081/static/avatar/target7.jpg" />
                                             <hc:Gravatar
                                                 Width="44"
                                                 Height="44"
@@ -98,7 +98,7 @@
                                                 BorderThickness="3"
                                                 BorderBrush="#f0f5ff"
                                                 Style="{StaticResource GravatarCircleImg}"
-                                                Source="http://47.101.157.194:8081/uploads/image/4.png" />
+                                                Source="http://47.101.157.194:8081/static/avatar/target8.jpg" />
                                             <hc:Gravatar
                                                 Width="44"
                                                 Height="44"
@@ -107,12 +107,12 @@
                                                 BorderThickness="3"
                                                 BorderBrush="#f0f5ff"
                                                 Style="{StaticResource GravatarCircleImg}"
-                                                Source="http://47.101.157.194:8081/uploads/image/3.png" />
+                                                Source="http://47.101.157.194:8081/static/avatar/target9.jpg" />
                                         </StackPanel>
                                     </hc:SimplePanel>
                                     <hc:SimplePanel Grid.Row="2">
                                         <TextBlock
-                                            Text="截止时间：2月19日 18:00"
+                                            Text="{Binding Date}"
                                             Margin="12,0"
                                             VerticalAlignment="Center"
                                             FontSize="14"
@@ -209,8 +209,8 @@
                                                 <hc:Gravatar
                                                     Width="33"
                                                     Height="33"
-                                                    Style="{StaticResource GravatarCircleImg}"
-                                                    Id="da4yyhifd" />
+                                                    Source="http://47.101.157.194:8081/static/avatar/target6.jpg"
+                                                    Style="{StaticResource GravatarCircleImg}" />
                                                 <TextBlock
                                                     Text="蔡承龙"
                                                     Margin="10,0,0,0"
@@ -262,8 +262,8 @@
                                                 <hc:Gravatar
                                                     Width="33"
                                                     Height="33"
-                                                    Style="{StaticResource GravatarCircleImg}"
-                                                    Id="dapp1d" />
+                                                    Source="http://47.101.157.194:8081/static/avatar/target7.jpg"
+                                                    Style="{StaticResource GravatarCircleImg}" />
                                                 <TextBlock
                                                     Text="安小雪"
                                                     Margin="10,0,0,0"
@@ -310,8 +310,8 @@
                                                 <hc:Gravatar
                                                     Width="33"
                                                     Height="33"
-                                                    Style="{StaticResource GravatarCircleImg}"
-                                                    Id="das69d" />
+                                                    Source="http://47.101.157.194:8081/static/avatar/target8.jpg"
+                                                    Style="{StaticResource GravatarCircleImg}" />
                                                 <TextBlock
                                                     Text="李新添"
                                                     Margin="10,0,0,0"
@@ -373,15 +373,15 @@
                                 </StackPanel>
 
                             </hc:SimplePanel>
-                            <ItemsControl Grid.Row="1">
-                                <Button
-                                    Height="200"
-                                    Margin="0,20,0,0"
-                                    Style="{StaticResource subjectiveDataItemBtnStyle}" />
-                                <Button
-                                    Height="200"
-                                    Margin="0,20,0,0"
-                                    Style="{StaticResource subjectiveDataItemBtnStyle}" />
+                            <ItemsControl Grid.Row="1" ItemsSource="{Binding SubjectiveVOList}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Height="200"
+                                            Margin="0,20,0,0"
+                                            Style="{StaticResource subjectiveDataItemBtnStyle}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </Grid>
                     </Grid>

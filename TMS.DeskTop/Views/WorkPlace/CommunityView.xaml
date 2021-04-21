@@ -115,5 +115,25 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button
+            Margin="30,50,100,30"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Cursor="Hand"
+            Style="{StaticResource ButtonCustom}">
+            <hc:SimplePanel>
+                <Border
+                    Width="45"
+                    Height="45"
+                    Background="White"
+                    Style="{StaticResource BorderCircular}" />
+                <Image
+                    Width="20"
+                    Height="20"
+                    Margin="3,1,0,0"
+                    VerticalAlignment="Center"
+                    Source="/Resources/Images/Icon/edit_icon.png" />
+            </hc:SimplePanel>
+        </Button>
     </Grid>
 </UserControl>

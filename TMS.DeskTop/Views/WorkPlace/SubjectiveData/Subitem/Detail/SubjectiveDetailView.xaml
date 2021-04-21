@@ -6,13 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="150" />
-            <RowDefinition />
+            <RowDefinition Height="*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <hc:SimplePanel>
@@ -32,6 +34,7 @@
                             Style="{StaticResource TextBtnStyle}" />
                         <Button
                             Content="&#xe7b7;"
+                            Command="{Binding ClosePopupCmd}"
                             Margin="15,0,0,0"
                             FontSize="20"
                             Foreground="#2b2f36"
@@ -47,15 +50,15 @@
                         <hc:Gravatar
                             Width="45"
                             Height="45"
-                            Style="{StaticResource GravatarCircleImg}"
-                            Id="kfoks" />
+                            Source="http://47.101.157.194:8081/static/avatar/target8.jpg"
+                            Style="{StaticResource GravatarCircleImg}" />
                         <StackPanel Margin="20,0,0,0">
                             <TextBlock
                                 Text="主观评价"
                                 FontSize="16"
                                 FontWeight="SemiBold" />
                             <TextBlock
-                                Text="蔡承龙"
+                                Text="李新添"
                                 Margin="0,3,0,0"
                                 FontSize="14"
                                 Foreground="{StaticResource SecondaryTextBrush}" />
@@ -99,10 +102,10 @@
                                     Text="评价内容"
                                     FontWeight="SemiBold"
                                     Foreground="{StaticResource SecondaryTextBrush}" />
-                                <TextBlock
-                                    Text="    忠实诚信,讲原则，说到做到，决不推卸职责;有自制力，做事情始终坚持有始有终，从不半途而废;肯学习,有问题不逃避,愿意虚心向他人学习;自信但不自负,不以自我为中心;愿意以谦虚态度赞扬接纳优越者,权威者;会用%的热情和精力投入到工作中;平易近人。为人诚恳,性格开朗,用心进取,适应力强勤奋好学脚踏实地，有较强的团队精神,工作用心进取,态度认真。"
-                                    TextWrapping="Wrap"
-                                    Margin="0,5,0,0" />
+                                <TextBlock TextWrapping="Wrap" Margin="0,5,0,0">
+                                    <Run Text="    " />
+                                    <Run Text="李新添所负责的劳动节活动已经完成，在活动运营中，发生服务器宕机，他及时做出补救，让公司损失减少。平时工作沉着冷静，对劳动节的活动掌握细致，即使出错也能很快补救。" />
+                                </TextBlock>
                             </StackPanel>
                         </hc:UniformSpacingPanel>
                     </hc:SimplePanel>
@@ -156,7 +159,10 @@
         </hc:SimplePanel>
         <hc:SimplePanel Grid.Row="2">
             <Border Background="White" />
-            <Button Cursor="Hand" Style="{StaticResource ButtonCustom}">
+            <Button
+                Command="{Binding JumpCmd}"
+                Cursor="Hand"
+                Style="{StaticResource ButtonCustom}">
                 <StackPanel>
                     <TextBlock
                         Text="&#xe741;"

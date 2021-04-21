@@ -99,6 +99,7 @@
     <None Remove="Resources\Images\Icon\1 %287%29.png" />
     <None Remove="Resources\Images\Icon\1 %288%29.png" />
     <None Remove="Resources\Images\Icon\1 %289%29.png" />
+    <None Remove="Resources\Images\Icon\edit_icon.png" />
     <None Remove="Resources\Images\Icon\FileType\Excel.png" />
     <None Remove="Resources\Images\Icon\FileType\Exe.png" />
     <None Remove="Resources\Images\Icon\FileType\Other.png" />
@@ -223,6 +224,7 @@
     <Resource Include="Resources\Images\Icon\1 (7).png" />
     <Resource Include="Resources\Images\Icon\1 (8).png" />
     <Resource Include="Resources\Images\Icon\1 (9).png" />
+    <Resource Include="Resources\Images\Icon\edit_icon.png" />
     <Resource Include="Resources\Images\Icon\FileType\Excel.png" />
     <Resource Include="Resources\Images\Icon\FileType\Exe.png" />
     <Resource Include="Resources\Images\Icon\FileType\Other.png" />
