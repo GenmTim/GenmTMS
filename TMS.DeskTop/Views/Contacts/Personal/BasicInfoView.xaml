@@ -154,7 +154,7 @@
                         <hc:SimplePanel Grid.Row="1">
                             <TextBlock Text="出生年月" Foreground="#a29ebb" />
                             <TextBlock
-                                Text="2020-10"
+                                Text="2000-10"
                                 HorizontalAlignment="Right"
                                 FontWeight="SemiBold"
                                 Foreground="#4d496e" />
