@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
     Width="{Binding Path=CardWidth}"
     Height="Auto"
     HorizontalAlignment="Left"
@@ -79,7 +80,32 @@
             Style="{StaticResource OuterRect}" />
         <Rectangle Grid.Row="0" Grid.Column="0"
             Style="{StaticResource InnerRect}" />
-        <TextBlock Grid.Row="0" Grid.Column="1"
+        <StackPanel Grid.Row="0" Grid.Column="1"
+            Orientation="Horizontal">
+            <hc:Gravatar
+                Width="25"
+                Height="25"
+                Margin="0,3,8,0"
+                Id="{Binding DateTime}"
+                Style="{StaticResource GravatarCircleImg}" />
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                VerticalAlignment="Center"
+                Style="{StaticResource timeTextStyle}">
+                <TextBlock.Inlines>
+                    <Run
+                        Text="{Binding Path=Name}"
+                        Foreground="Black"
+                        FontSize="18"
+                        BaselineAlignment="Center" />
+                    <Run
+                        Text="{Binding Path=DateTime}"
+                        Foreground="#778899"
+                        FontSize="12"
+                        FontWeight="Normal" />
+                </TextBlock.Inlines>
+            </TextBlock>
+        </StackPanel>
+        <!--<TextBlock Grid.Row="0" Grid.Column="1"
             Style="{StaticResource timeTextStyle}">
             <TextBlock.Inlines>
                 <Run
@@ -93,7 +119,7 @@
                     FontSize="12"
                     FontWeight="Normal" />
             </TextBlock.Inlines>
-        </TextBlock>
+        </TextBlock>-->
         <Border Grid.Row="1" Grid.Column="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Stretch"
