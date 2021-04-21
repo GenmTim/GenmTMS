@@ -160,8 +160,8 @@
                                     </Button>
                                     <Button
                                         Content="跟他（她）交流"
-                                        attach:IconFontElement.Geometry="&#xe70d;"
-                                        FontWeight="SemiBold" />
+                                        attach:IconFontElement.Geometry="&#xe718;"
+                                        FontWeight="SemiBold" Cursor="Hand" />
                                 </StackPanel>
                             </Grid>
                             <Border Grid.Row="2"

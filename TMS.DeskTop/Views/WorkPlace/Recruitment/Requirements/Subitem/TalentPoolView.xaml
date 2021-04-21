@@ -164,7 +164,7 @@
                     </hc:WaterfallPanel.Resources>
                     <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                         <TextBlock Text="经验要求 : " Style="{StaticResource fieldTextBlock}" />
-                        <TextBlock Text="在校/应届" Style="{StaticResource valueTextBlock}" />
+                        <TextBlock Text="1年及以上" Style="{StaticResource valueTextBlock}" />
                     </StackPanel>
                     <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                         <TextBlock Text="最低学历 : " Style="{StaticResource fieldTextBlock}" />
@@ -172,13 +172,14 @@
                     </StackPanel>
                     <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                         <TextBlock Text="薪资范围 : " Style="{StaticResource fieldTextBlock}" />
-                        <TextBlock Text="1-3K" Style="{StaticResource valueTextBlock}" />
+                        <TextBlock Text="4-12K" Style="{StaticResource valueTextBlock}" />
                     </StackPanel>
                     <StackPanel Margin="0,40,0,0" Orientation="Horizontal">
                         <TextBlock Text="职位描述 : " Style="{StaticResource fieldTextBlock}" />
                         <TextBlock
                             Text="负责分布式、微服务系统架构开发"
-                            TextWrapping="Wrap"
+                            Width="150"
+                            TextTrimming="CharacterEllipsis"
                             Style="{StaticResource valueTextBlock}" />
                     </StackPanel>
                 </hc:WaterfallPanel>

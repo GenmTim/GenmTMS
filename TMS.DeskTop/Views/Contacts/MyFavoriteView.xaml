@@ -203,6 +203,7 @@
                                                     FontWeight="SemiBold" />
                                                 <hc:UniformSpacingPanel
                                                     Margin="0,20,0,0"
+                                                    HorizontalAlignment="Center"
                                                     Spacing="20"
                                                     Orientation="Horizontal">
                                                     <hc:UniformSpacingPanel.Resources>
@@ -211,7 +212,6 @@
                                                         </Style>
                                                     </hc:UniformSpacingPanel.Resources>
                                                     <Button Content="&#xe718;" />
-                                                    <Button Content="&#xe7ae;" />
                                                 </hc:UniformSpacingPanel>
                                             </StackPanel>
                                         </hc:SimplePanel>

@@ -68,7 +68,8 @@
             <Button
                 Command="{Binding BackCmd}"
                 HorizontalAlignment="Left"
-                Style="{StaticResource backBtnStyle}" Cursor="Hand" />
+                Style="{StaticResource backBtnStyle}"
+                Cursor="Hand" />
             <Grid Grid.Row="1" Margin="10,20,10,0">
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -92,6 +93,7 @@
                         Foreground="{StaticResource SecondaryTextBrush}" />
                 </StackPanel>
                 <Button Grid.Row="1"
+                    Command="{Binding OpenFileCmd}"
                     Width="80"
                     Height="80"
                     Cursor="Hand"
@@ -105,6 +107,10 @@
                         FontSize="30"
                         FontFamily="{StaticResource FIconPlusFontFamily}" />
                 </Button>
+                <hc:Gravatar Grid.Row="1"
+                    Source="{Binding Avatar, Converter={StaticResource String2UriConverter}}"
+                    Visibility="{Binding IsHasAvatar, Converter={StaticResource Boolean2VisibilityConverter}}"
+                    Style="{StaticResource GravatarCircleImg}" />
                 <hc:SimplePanel Grid.Row="2">
                     <StackPanel Grid.Row="2" HorizontalAlignment="Center">
                         <TextBlock
@@ -114,30 +120,30 @@
                         <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
                             <hc:SimplePanel Width="60">
                                 <hc:Gravatar
-                                    Width="40"
-                                    Height="40"
-                                    Id="1"
+                                    Width="45"
+                                    Height="45"
+                                    Source="http://47.101.157.194:8081/static/avatar/target6.jpg"
                                     Style="{StaticResource GravatarCircleImg}" />
                             </hc:SimplePanel>
                             <hc:SimplePanel Width="60">
                                 <hc:Gravatar
-                                    Width="40"
-                                    Height="40"
-                                    Id="2"
+                                    Width="45"
+                                    Height="45"
+                                    Source="http://47.101.157.194:8081/static/avatar/target7.jpg"
                                     Style="{StaticResource GravatarCircleImg}" />
                             </hc:SimplePanel>
                             <hc:SimplePanel Width="60">
                                 <hc:Gravatar
-                                    Width="40"
-                                    Height="40"
-                                    Id="3"
+                                    Width="45"
+                                    Height="45"
+                                    Source="http://47.101.157.194:8081/static/avatar/target8.jpg"
                                     Style="{StaticResource GravatarCircleImg}" />
                             </hc:SimplePanel>
                             <hc:SimplePanel Width="60">
                                 <hc:Gravatar
-                                    Width="40"
-                                    Height="40"
-                                    Id="4"
+                                    Width="45"
+                                    Height="45"
+                                    Source="http://47.101.157.194:8081/static/avatar/target9.jpg"
                                     Style="{StaticResource GravatarCircleImg}" />
                             </hc:SimplePanel>
                         </StackPanel>

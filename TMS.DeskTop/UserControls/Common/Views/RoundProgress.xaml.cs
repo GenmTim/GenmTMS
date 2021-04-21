@@ -51,7 +51,6 @@ namespace TMS.DeskTop.UserControls.Common.Views
 
         private void HalfRoundProgress_Loaded(object sender, RoutedEventArgs e)
         {
-            Rate = rate;
             Size = size;
             StrokeThickness = strokeThickness;
             IsHalf = isHalf;
@@ -73,19 +72,38 @@ namespace TMS.DeskTop.UserControls.Common.Views
         }
 
 
-        private Double rate;
+
         public Double Rate
         {
-            get { return rate; }
-            set
+            get { return (Double)GetValue(RateProperty); }
+            set 
             {
                 value = Math.Max(value, 0);
                 value = Math.Min(value, 100);
-                rate = value;
                 UpdateRate();
                 ReDraw();
+                SetValue(RateProperty, value);
             }
         }
+
+        // Using a DependencyProperty as the backing store for rate.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RateProperty =
+            DependencyProperty.Register("Rate", typeof(Double), typeof(RoundProgress), new PropertyMetadata(default(Double)));
+
+
+        //private Double rate;
+        //public Double Rate
+        //{
+        //    get { return rate; }
+        //    set
+        //    {
+        //        value = Math.Max(value, 0);
+        //        value = Math.Min(value, 100);
+        //        rate = value;
+        //        UpdateRate();
+        //        ReDraw();
+        //    }
+        //}
 
         private double strokeThickness = 15;
         public double StrokeThickness
@@ -127,7 +145,7 @@ namespace TMS.DeskTop.UserControls.Common.Views
             {
                 InitComponent();
             }
-            if (rate == 0)
+            if (Rate == 0)
             {
                 progressBar.Visibility = Visibility.Hidden;
             }
@@ -190,7 +208,7 @@ namespace TMS.DeskTop.UserControls.Common.Views
         /// </summary>
         private void UpdateProgressBarValue()
         {
-            progressBar.StrokeDashArray = CalculateProgress(rate, progressBar.RadiusX, progressBar.StrokeThickness);
+            progressBar.StrokeDashArray = CalculateProgress(Rate, progressBar.RadiusX, progressBar.StrokeThickness);
         }
 
         /// <summary>

@@ -5,9 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:uc="clr-namespace:TMS.DeskTop.UserControls.Common.Views"
     xmlns:local="clr-namespace:TMS.DeskTop.Views.PersonalFile.Subitem"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
     mc:Ignorable="d">
     <hc:TransitioningContentControl>
         <hc:SimplePanel>
@@ -17,26 +17,23 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <hc:SimplePanel>
-                    <UniformGrid Rows="1">
-                        <hc:SimplePanel
-                            Width="165"
-                            Height="200"
-                            Margin="20,0">
+                    <hc:UniformSpacingPanel Spacing="20">
+                        <hc:SimplePanel Width="165" Height="200">
                             <Border CornerRadius="5" Background="White" />
                             <StackPanel VerticalAlignment="Center">
                                 <hc:SimplePanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <TextBlock
-                                        Text="&#xe638;"
+                                        Text="&#xe643;"
                                         FontSize="80"
                                         Foreground="#3cd9d0"
                                         FontFamily="{StaticResource MenuIconFontFamily}" />
                                 </hc:SimplePanel>
                                 <TextBlock
-                                    Text="主观评价数"
+                                    Text="发布主观评价数"
                                     HorizontalAlignment="Center"
                                     Foreground="{StaticResource SecondaryTextBrush}" />
                                 <TextBlock
-                                    Text="30"
+                                    Text="120"
                                     Margin="0,10,0,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -44,25 +41,22 @@
                                     FontSize="24" />
                             </StackPanel>
                         </hc:SimplePanel>
-                        <hc:SimplePanel
-                            Width="165"
-                            Height="200"
-                            Margin="20,0">
+                        <hc:SimplePanel Width="165" Height="200">
                             <Border CornerRadius="5" Background="White" />
                             <StackPanel VerticalAlignment="Center">
                                 <hc:SimplePanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <TextBlock
-                                        Text="&#xe631;"
+                                        Text="&#xe648;"
                                         FontSize="80"
                                         Foreground="#3cd9d0"
                                         FontFamily="{StaticResource MenuIconFontFamily}" />
                                 </hc:SimplePanel>
                                 <TextBlock
-                                    Text="主观评价数"
+                                    Text="招聘员工数"
                                     HorizontalAlignment="Center"
                                     Foreground="{StaticResource SecondaryTextBrush}" />
                                 <TextBlock
-                                    Text="30"
+                                    Text="32"
                                     Margin="0,10,0,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -70,25 +64,23 @@
                                     FontSize="24" />
                             </StackPanel>
                         </hc:SimplePanel>
-                        <hc:SimplePanel
-                            Width="165"
-                            Height="200"
-                            Margin="20,0">
+                        <hc:SimplePanel Width="165" Height="200">
                             <Border CornerRadius="5" Background="White" />
                             <StackPanel VerticalAlignment="Center">
                                 <hc:SimplePanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <TextBlock
-                                        Text="&#xe634;"
-                                        FontSize="80"
+                                        Text="&#xe7a1;"
+                                        FontSize="70"
                                         Foreground="#3cd9d0"
-                                        FontFamily="{StaticResource MenuIconFontFamily}" />
+                                        FontFamily="{StaticResource FIconPlusFontFamily}" />
                                 </hc:SimplePanel>
                                 <TextBlock
-                                    Text="主观评价数"
+                                    Text="点赞"
+                                    Margin="0,8,0,0"
                                     HorizontalAlignment="Center"
                                     Foreground="{StaticResource SecondaryTextBrush}" />
                                 <TextBlock
-                                    Text="30"
+                                    Text="111"
                                     Margin="0,10,0,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -98,31 +90,32 @@
                         </hc:SimplePanel>
                         <hc:SimplePanel Grid.Row="1"
                             Width="165"
-                            Height="200"
-                            Margin="20,0">
+                            Height="200">
                             <Border CornerRadius="5" Background="White" />
                             <StackPanel VerticalAlignment="Center">
-                                <hc:SimplePanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <hc:SimplePanel Grid.Column="1">
+                                    <uc:RoundProgress
+                                        Rate="50"
+                                        IsHalf="False"
+                                        Size="80"
+                                        StrokeThickness="5" />
                                     <TextBlock
-                                        Text="&#xe63f;"
-                                        FontSize="80"
-                                        Foreground="#3cd9d0"
-                                        FontFamily="{StaticResource MenuIconFontFamily}" />
+                                        Text="A"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="{StaticResource PrimaryBrush}"
+                                        FontSize="24"
+                                        FontWeight="SemiBold" />
                                 </hc:SimplePanel>
                                 <TextBlock
-                                    Text="主观评价数"
-                                    HorizontalAlignment="Center"
-                                    Foreground="{StaticResource SecondaryTextBrush}" />
-                                <TextBlock
-                                    Text="30"
-                                    Margin="0,10,0,0"
+                                    Text="HR 评级"
+                                    Margin="0,20,0,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    FontWeight="SemiBold"
-                                    FontSize="24" />
+                                    Foreground="{StaticResource SecondaryTextBrush}" />
                             </StackPanel>
                         </hc:SimplePanel>
-                    </UniformGrid>
+                    </hc:UniformSpacingPanel>
                 </hc:SimplePanel>
                 <hc:SimplePanel Grid.Row="1" Margin="0,20,0,0">
                     <hc:SimplePanel>
@@ -131,322 +124,130 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <TextBlock Text="负责员工" FontSize="24" />
+                            <TextBlock Text="历史员工" FontSize="24" />
                             <hc:SimplePanel Grid.Row="1">
-                                <StackPanel>
-                                    <hc:SimplePanel Margin="0,20,0,0">
-                                        <Border
-                                            CornerRadius="8"
-                                            Background="White"
-                                            Effect="{StaticResource EffectShadowCom}" />
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition />
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel Margin="10" Orientation="Horizontal">
-                                                <hc:Gravatar
-                                                    Width="60"
-                                                    Height="60"
-                                                    Style="{StaticResource GravatarCircleImg}"
-                                                    Id="fasf" />
-                                                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock
-                                                            Text="蔡承龙"
+                                <hc:ScrollViewer IsInertiaEnabled="True">
+                                    <ItemsControl Margin="5,15,10,0" ItemsSource="{Binding StaffDataVOList}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <hc:SimplePanel Margin="0,20,0,0">
+                                                    <Border
+                                                        CornerRadius="8"
+                                                        Background="White"
+                                                        Effect="{StaticResource EffectShadowCom}" />
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackPanel Margin="10" Orientation="Horizontal">
+                                                            <hc:Gravatar
+                                                                Width="60"
+                                                                Height="60"
+                                                                Source="{Binding Avatar}"
+                                                                Style="{StaticResource GravatarCircleImg}" />
+                                                            <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock
+                                                                        Text="{Binding Name}"
+                                                                        VerticalAlignment="Center"
+                                                                        FontSize="18"
+                                                                        FontWeight="SemiBold"
+                                                                        Foreground="Black" />
+                                                                    <Button
+                                                                        Content="&#xe641;"
+                                                                        Margin="10,0,0,0"
+                                                                        Style="{StaticResource TextBtnExStyle}"
+                                                                        FontFamily="{StaticResource MenuIconFontFamily}" />
+                                                                </StackPanel>
+                                                                <ListView
+                                                                    Width="200"
+                                                                    Margin="0,10,0,0"
+                                                                    Style="{StaticResource ListBoxCustom}"
+                                                                    Background="Transparent"
+                                                                    BorderThickness="0"
+                                                                    ItemsSource="{Binding LabelDataVOList}">
+                                                                    <ListView.ItemsPanel>
+                                                                        <ItemsPanelTemplate>
+                                                                            <hc:UniformSpacingPanel Spacing="15" />
+                                                                        </ItemsPanelTemplate>
+                                                                    </ListView.ItemsPanel>
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <Label
+                                                                                Padding="10,2"
+                                                                                Foreground="White"
+                                                                                Background="{Binding Color}"
+                                                                                Style="{StaticResource LabelBaseStyle}">
+                                                                                <TextBlock>
+                                                                                    <Run Text="{Binding Icon}" FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                                                    <Run Text="{Binding Name}" />
+                                                                                </TextBlock>
+                                                                            </Label>
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                        <hc:UniformSpacingPanel Grid.Column="1"
+                                                            Margin="20,0,0,0"
                                                             VerticalAlignment="Center"
-                                                            FontSize="18"
-                                                            FontWeight="SemiBold"
-                                                            Foreground="Black" />
-                                                        <Button
-                                                            Content="&#xe641;"
-                                                            Margin="10,0,0,0"
+                                                            Spacing="60">
+                                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                <TextBlock Text="评价数" Foreground="{StaticResource SecondaryBorderBrush}" />
+                                                                <TextBlock
+                                                                    Text="{Binding CommentNumber}"
+                                                                    Margin="0,8,0,0"
+                                                                    HorizontalAlignment="Center"
+                                                                    FontSize="16"
+                                                                    FontWeight="SemiBold"
+                                                                    Foreground="{StaticResource DangerBrush}" />
+                                                            </StackPanel>
+                                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                <TextBlock Text="通常数据" Foreground="{StaticResource SecondaryBorderBrush}" />
+                                                                <TextBlock
+                                                                    Text="{Binding CommonNumber}"
+                                                                    Margin="0,8,0,0"
+                                                                    HorizontalAlignment="Center"
+                                                                    FontSize="16"
+                                                                    FontWeight="SemiBold"
+                                                                    Foreground="{StaticResource InfoBrush}" />
+                                                            </StackPanel>
+                                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                <TextBlock Text="关注数" Foreground="{StaticResource SecondaryBorderBrush}" />
+                                                                <TextBlock
+                                                                    Text="{Binding FollowNumber}"
+                                                                    Margin="0,8,0,0"
+                                                                    HorizontalAlignment="Center"
+                                                                    FontSize="16"
+                                                                    FontWeight="SemiBold"
+                                                                    Foreground="{StaticResource PrimaryBrush}" />
+                                                            </StackPanel>
+                                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                <TextBlock Text="档案评分" Foreground="{StaticResource SecondaryBorderBrush}" />
+                                                                <TextBlock
+                                                                    Text="{Binding Grade}"
+                                                                    Margin="0,8,0,0"
+                                                                    HorizontalAlignment="Center"
+                                                                    FontSize="16"
+                                                                    FontWeight="SemiBold"
+                                                                    Foreground="{StaticResource WarningBrush}" />
+                                                            </StackPanel>
+                                                        </hc:UniformSpacingPanel>
+                                                        <Button Grid.Column="2"
+                                                            Content="&#xe64a;"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            FontSize="30"
                                                             Style="{StaticResource TextBtnExStyle}"
                                                             FontFamily="{StaticResource MenuIconFontFamily}" />
-                                                    </StackPanel>
-                                                    <hc:UniformSpacingPanel
-                                                        Margin="0,10,0,0"
-                                                        Spacing="15"
-                                                        Orientation="Horizontal">
-                                                        <Label Padding="10,2" Style="{StaticResource LabelWarning}">
-                                                            <TextBlock>
-                                                                <Run Text="&#xe7a1;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                                                <Run Text="牛人" />
-                                                            </TextBlock>
-                                                        </Label>
-                                                        <Label Padding="10,2" Style="{StaticResource LabelInfo}">
-                                                            <TextBlock>
-                                                                <Run Text="&#xe79a;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                                                <Run Text="B站百万Up主" />
-                                                            </TextBlock>
-                                                        </Label>
-                                                    </hc:UniformSpacingPanel>
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <hc:UniformSpacingPanel Grid.Column="1"
-                                                Margin="20,0,0,0"
-                                                VerticalAlignment="Center"
-                                                ItemWidth="100">
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="主观评价" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource DangerBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="通常数据" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource InfoBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="跟随者" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource PrimaryBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="档案评分" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="A+"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource WarningBrush}" />
-                                                </StackPanel>
-                                            </hc:UniformSpacingPanel>
-                                            <Button Grid.Column="2"
-                                                Content="&#xe64a;"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontSize="30"
-                                                Style="{StaticResource TextBtnExStyle}"
-                                                FontFamily="{StaticResource MenuIconFontFamily}" />
-                                        </Grid>
-                                    </hc:SimplePanel>
-                                    <hc:SimplePanel Margin="0,20,0,0">
-                                        <Border
-                                            CornerRadius="8"
-                                            Background="White"
-                                            Effect="{StaticResource EffectShadowCom}" />
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition />
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel Margin="10" Orientation="Horizontal">
-                                                <hc:Gravatar
-                                                    Width="60"
-                                                    Height="60"
-                                                    Style="{StaticResource GravatarCircleImg}"
-                                                    Id="fasf" />
-                                                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock
-                                                            Text="蔡承龙"
-                                                            VerticalAlignment="Center"
-                                                            FontSize="18"
-                                                            FontWeight="SemiBold"
-                                                            Foreground="Black" />
-                                                        <Button
-                                                            Content="&#xe641;"
-                                                            Margin="10,0,0,0"
-                                                            Style="{StaticResource TextBtnExStyle}"
-                                                            FontFamily="{StaticResource MenuIconFontFamily}" />
-                                                    </StackPanel>
-                                                    <hc:UniformSpacingPanel
-                                                        Margin="0,10,0,0"
-                                                        Spacing="15"
-                                                        Orientation="Horizontal">
-                                                        <Label Padding="10,2" Style="{StaticResource LabelWarning}">
-                                                            <TextBlock>
-                                                                <Run Text="&#xe7a1;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                                                <Run Text="牛人" />
-                                                            </TextBlock>
-                                                        </Label>
-                                                        <Label Padding="10,2" Style="{StaticResource LabelInfo}">
-                                                            <TextBlock>
-                                                                <Run Text="&#xe79a;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                                                <Run Text="B站百万Up主" />
-                                                            </TextBlock>
-                                                        </Label>
-                                                    </hc:UniformSpacingPanel>
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <hc:UniformSpacingPanel Grid.Column="1"
-                                                Margin="20,0,0,0"
-                                                VerticalAlignment="Center"
-                                                ItemWidth="100">
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="主观评价" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource DangerBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="通常数据" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource InfoBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="跟随者" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource PrimaryBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="档案评分" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="A+"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource WarningBrush}" />
-                                                </StackPanel>
-                                            </hc:UniformSpacingPanel>
-                                            <Button Grid.Column="2"
-                                                Content="&#xe64a;"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontSize="30"
-                                                Style="{StaticResource TextBtnExStyle}"
-                                                FontFamily="{StaticResource MenuIconFontFamily}" />
-                                        </Grid>
-                                    </hc:SimplePanel>
-                                    <hc:SimplePanel Margin="0,20,0,0">
-                                        <Border
-                                            CornerRadius="8"
-                                            Background="White"
-                                            Effect="{StaticResource EffectShadowCom}" />
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition />
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel Margin="10" Orientation="Horizontal">
-                                                <hc:Gravatar
-                                                    Width="60"
-                                                    Height="60"
-                                                    Style="{StaticResource GravatarCircleImg}"
-                                                    Id="fasf" />
-                                                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock
-                                                            Text="蔡承龙"
-                                                            VerticalAlignment="Center"
-                                                            FontSize="18"
-                                                            FontWeight="SemiBold"
-                                                            Foreground="Black" />
-                                                        <Button
-                                                            Content="&#xe641;"
-                                                            Margin="10,0,0,0"
-                                                            Style="{StaticResource TextBtnExStyle}"
-                                                            FontFamily="{StaticResource MenuIconFontFamily}" />
-                                                    </StackPanel>
-                                                    <hc:UniformSpacingPanel
-                                                        Margin="0,10,0,0"
-                                                        Spacing="15"
-                                                        Orientation="Horizontal">
-                                                        <Label Padding="10,2" Style="{StaticResource LabelWarning}">
-                                                            <TextBlock>
-                                                                <Run Text="&#xe7a1;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                                                <Run Text="牛人" />
-                                                            </TextBlock>
-                                                        </Label>
-                                                        <Label Padding="10,2" Style="{StaticResource LabelInfo}">
-                                                            <TextBlock>
-                                                                <Run Text="&#xe79a;" FontFamily="{StaticResource FIconPlusFontFamily}" />
-                                                                <Run Text="B站百万Up主" />
-                                                            </TextBlock>
-                                                        </Label>
-                                                    </hc:UniformSpacingPanel>
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <hc:UniformSpacingPanel Grid.Column="1"
-                                                Margin="20,0,0,0"
-                                                VerticalAlignment="Center"
-                                                ItemWidth="100">
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="主观评价" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource DangerBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="通常数据" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource InfoBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="跟随者" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="50"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource PrimaryBrush}" />
-                                                </StackPanel>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="档案评分" Foreground="{StaticResource SecondaryBorderBrush}" />
-                                                    <TextBlock
-                                                        Text="A+"
-                                                        Margin="0,8,0,0"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="16"
-                                                        FontWeight="SemiBold"
-                                                        Foreground="{StaticResource WarningBrush}" />
-                                                </StackPanel>
-                                            </hc:UniformSpacingPanel>
-                                            <Button Grid.Column="2"
-                                                Content="&#xe64a;"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontSize="30"
-                                                Style="{StaticResource TextBtnExStyle}"
-                                                FontFamily="{StaticResource MenuIconFontFamily}" />
-                                        </Grid>
-                                    </hc:SimplePanel>
-                                </StackPanel>
+                                                    </Grid>
+                                                </hc:SimplePanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </hc:ScrollViewer>
                             </hc:SimplePanel>
                         </Grid>
                     </hc:SimplePanel>

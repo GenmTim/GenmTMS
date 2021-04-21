@@ -70,23 +70,38 @@
                                             Style="{StaticResource GravatarCircleImg}"
                                             Source="http://47.101.157.194:8081/static/avatar/target6.jpg"
                                             Cursor="Hand" />
-                                        <hc:SimplePanel
-                                            Width="35"
-                                            Height="35"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Bottom">
-                                            <Border
-                                                Background="White"
-                                                BorderThickness="1"
-                                                Effect="{StaticResource EffectShadowCom}"
-                                                Style="{StaticResource BorderCircular}" />
-                                            <TextBlock
+                                        <hc:SimplePanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                            <Button Opacity="1" Cursor="Hand">
+                                                <Button.Style>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource ButtonCustom}" />
+                                                </Button.Style>
+                                                <hc:SimplePanel>
+                                                    <Border
+                                                        Background="#fa8c16"
+                                                        BorderThickness="1"
+                                                        CornerRadius="5"
+                                                        Effect="{StaticResource EffectShadowCom}" />
+                                                    <StackPanel Margin="8,2" Orientation="Horizontal">
+                                                        <TextBlock
+                                                            Text="&#xe782;"
+                                                            VerticalAlignment="Center"
+                                                            Foreground="White"
+                                                            FontFamily="{StaticResource FIconPlusFontFamily}" />
+                                                        <TextBlock
+                                                            Text="评价记录"
+                                                            Margin="5,0,0,0"
+                                                            VerticalAlignment="Center"
+                                                            Foreground="White" />
+                                                    </StackPanel>
+                                                </hc:SimplePanel>
+                                            </Button>
+                                            <!--<TextBlock
                                                 Text="&#xe6e8;"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 FontSize="18"
                                                 FontFamily="{StaticResource FIconPlusFontFamily}"
-                                                Foreground="{StaticResource PrimaryBrush}" />
+                                                Foreground="{StaticResource PrimaryBrush}" />-->
                                         </hc:SimplePanel>
                                     </hc:SimplePanel>
                                 </StackPanel>
@@ -102,12 +117,25 @@
                                             Margin="0,25,0,0"
                                             FontSize="14" />
                                         <Button
-                                            Content="修改个人信息"
+                                            Command="{Binding FollowCmd}"
                                             Height="35"
                                             Margin="0,20,0,0"
                                             HorizontalAlignment="Stretch"
                                             Cursor="Hand"
-                                            FontWeight="SemiBold" />
+                                            FontWeight="SemiBold">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock
+                                                    Text="&#xe640;"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="14"
+                                                    Foreground="{Binding FollowState.Color}"
+                                                    FontFamily="{StaticResource MenuIconFontFamily}" />
+                                                <TextBlock
+                                                    Text="{Binding FollowState.State}"
+                                                    Margin="8,0,0,0"
+                                                    VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
                                         <Grid Margin="0,20,0,0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />

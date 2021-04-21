@@ -70,11 +70,11 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
                 ContentData = new Item { Name = "研发部", Type = "部门" },
                 StateChange = StateChange
             };
-            node1.Add(new TreeNodeItem()
-            {
-                ContentData = new Item { Name = "蔡承龙", Type = "员工" },
-                StateChange = StateChange
-            });
+            //node1.Add(new TreeNodeItem()
+            //{
+            //    ContentData = new Item { Name = "蔡承龙", Type = "员工" },
+            //    StateChange = StateChange
+            //});
             TreeNodeItem node1tag1 = new TreeNodeItem()
             {
                 ContentData = new Item { Name = "研发一部", Type = "部门" },
@@ -111,11 +111,11 @@ namespace TMS.DeskTop.UserControls.Dialogs.ViewModels
             };
             node3.Add(node3tag1);
             node3.Add(node3tag2);
-            node3.Add(new TreeNodeItem()
-            {
-                ContentData = new Item { Name = "蔡承龙", Type = "员工" },
-                StateChange = StateChange
-            });
+            //node3.Add(new TreeNodeItem()
+            //{
+            //    ContentData = new Item { Name = "蔡承龙", Type = "员工" },
+            //    StateChange = StateChange
+            //});
 
             treeNodeList.Add(node1);
             treeNodeList.Add(node2);

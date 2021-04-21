@@ -117,7 +117,7 @@
                                             FontWeight="SemiBold" />
                                     </StackPanel>
                                     <TextBlock
-                                        Text="5"
+                                        Text="{Binding CompanyDataVOList.Count}"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Foreground="#343434" />
@@ -137,7 +137,7 @@
                                             FontWeight="SemiBold" />
                                     </StackPanel>
                                     <TextBlock
-                                        Text="10"
+                                        Text="{Binding GloryDataVOList.Count}"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Foreground="#343434" />
@@ -145,19 +145,19 @@
                                 <hc:SimplePanel Margin="0,10,0,0">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock
-                                            Text="&#xe6fd;"
+                                            Text="&#xe7b4;"
                                             VerticalAlignment="Center"
                                             FontSize="14"
                                             Foreground="{StaticResource PrimaryBrush}"
                                             FontFamily="{StaticResource FIconPlusFontFamily}" />
                                         <TextBlock
-                                            Text="总考勤记录："
+                                            Text="总违纪记录："
                                             Margin="10,0,0,0"
                                             VerticalAlignment="Center"
                                             FontWeight="SemiBold" />
                                     </StackPanel>
                                     <TextBlock
-                                        Text="10"
+                                        Text="0"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Foreground="#343434" />
@@ -221,7 +221,53 @@
                                     Style="{StaticResource TextBtnStyle}" />
                                 <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource TMS_BorderBrush}" />
                                 <hc:SimplePanel Grid.Row="1">
-                                    <uc:AttendanceTotalChart />
+                                    <hc:SimplePanel>
+                                        <uc:RoundProgress
+                                            IsHalf="True"
+                                            Size="220"
+                                            Rate="{Binding Attendance.Rate}" />
+                                        <StackPanel
+                                            Margin="0,0,0,10"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Bottom">
+                                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                                <TextBlock
+                                                    Text="已出勤"
+                                                    Margin="0,0,0,10"
+                                                    FontSize="12"
+                                                    Foreground="{StaticResource SecondaryBorderBrush}" />
+                                                <TextBlock
+                                                    Text="/"
+                                                    Margin="5,0"
+                                                    Foreground="#3F000000" />
+                                                <TextBlock Text="应到次数" Foreground="{StaticResource SecondaryBorderBrush}" />
+                                            </StackPanel>
+                                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                                <TextBlock
+                                                    Text="{Binding Attendance.Real}"
+                                                    VerticalAlignment="Center"
+                                                    FontWeight="Bold"
+                                                    FontSize="28" />
+                                                <TextBlock
+                                                    Text="/"
+                                                    Margin="5,0"
+                                                    VerticalAlignment="Center"
+                                                    FontWeight="SemiBold"
+                                                    Foreground="#3F000000"
+                                                    FontSize="18" />
+                                                <TextBlock
+                                                    Text="{Binding Attendance.Total}"
+                                                    VerticalAlignment="Center"
+                                                    FontWeight="Bold"
+                                                    FontSize="28" />
+                                            </StackPanel>
+                                            <Button
+                                                Content="打卡明细 &gt;"
+                                                HorizontalAlignment="Center"
+                                                FontSize="10"
+                                                Style="{StaticResource TextBtnStyle}" />
+                                        </StackPanel>
+                                    </hc:SimplePanel>
                                 </hc:SimplePanel>
                             </Grid>
                             <Grid Grid.Row="1" Margin="0,8,0,0">
@@ -492,29 +538,35 @@
                                 Cursor="Hand" />
                         </hc:SimplePanel>
                         <hc:SimplePanel Grid.Row="1">
-                            <ItemsControl>
-                                <hc:SimplePanel Margin="0,15,0,0" Cursor="Hand">
-                                    <Border CornerRadius="5" Background="{StaticResource RegionBrush}" />
-                                    <StackPanel Orientation="Horizontal">
-                                        <hc:Gravatar
-                                            Width="33"
-                                            Height="33"
-                                            VerticalAlignment="Center"
-                                            Effect="{StaticResource EffectShadowCom}"
-                                            Style="{StaticResource GravatarCircleImg}"
-                                            Source="http://47.101.157.194:8081/uploads/image/mihoyo.png" />
-                                        <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                                            <TextBlock
-                                                Text="Golang游戏服务端工程师"
-                                                FontSize="12"
-                                                FontWeight="SemiBold" />
-                                            <TextBlock FontSize="10" Foreground="#191919">
-                                                <Run Text="米哈游 ·" />
-                                                <Run Text="正式" />
-                                            </TextBlock>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </hc:SimplePanel>
+                            <ItemsControl ItemsSource="{Binding CompanyDataVOList}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <hc:SimplePanel Margin="0,15,0,0" Cursor="Hand">
+                                            <Border CornerRadius="5" Background="{StaticResource RegionBrush}" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <hc:Gravatar
+                                                    Width="33"
+                                                    Height="33"
+                                                    VerticalAlignment="Center"
+                                                    RenderOptions.BitmapScalingMode="HighQuality"
+                                                    Effect="{StaticResource EffectShadowCom}"
+                                                    Style="{StaticResource GravatarCircleImg}"
+                                                    Source="{Binding Uri}" />
+                                                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                                                    <TextBlock
+                                                        Text="{Binding Job}"
+                                                        FontSize="12"
+                                                        FontWeight="SemiBold" />
+                                                    <TextBlock FontSize="10" Foreground="#191919">
+                                                        <Run Text="{Binding Name}" />
+                                                        <Run Text=" · " />
+                                                        <Run Text="正式" />
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </hc:SimplePanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
                             </ItemsControl>
                             <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                                         <TextBlock

@@ -66,19 +66,19 @@
                 <StackPanel>
                     <Button Style="{StaticResource questionModuleBtnStyle}" Cursor="Hand">
                         <hc:SimplePanel>
-                            <StackPanel Margin="20" Orientation="Vertical">
+                            <StackPanel Margin="20,25" Orientation="Vertical">
                                 <TextBlock
                                     Text="基本信息"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontWeight="SemiBold"
                                     FontSize="18" />
-                                <TextBlock
+                                <!--<TextBlock
                                     Text="填写完成"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Foreground="{StaticResource SecondaryTextBrush}"
-                                    FontSize="12" />
+                                    FontSize="12" />-->
                             </StackPanel>
                             <TextBlock
                                 Text="&#xe6e9;"
@@ -95,19 +95,19 @@
                         Style="{StaticResource questionModuleBtnStyle}"
                         Cursor="Hand">
                         <hc:SimplePanel>
-                            <StackPanel Margin="20" Orientation="Vertical">
+                            <StackPanel Margin="20,25" Orientation="Vertical">
                                 <TextBlock
                                     Text="工作经历"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontWeight="SemiBold"
                                     FontSize="18" />
-                                <TextBlock
-                                    Text="填写完成"
+                                <!--<TextBlock
+                                    Text="{Binding WorkInfoState}"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Foreground="{StaticResource SecondaryTextBrush}"
-                                    FontSize="12" />
+                                    FontSize="12" />-->
                             </StackPanel>
                             <TextBlock
                                 Text="&#xe765;"
@@ -123,19 +123,19 @@
                         CommandParameter="EducationExperience"
                         Style="{StaticResource questionModuleBtnStyle}">
                         <hc:SimplePanel>
-                            <StackPanel Margin="20" Orientation="Vertical">
+                            <StackPanel Margin="20,25" Orientation="Vertical">
                                 <TextBlock
                                     Text="教育信息"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontWeight="SemiBold"
                                     FontSize="18" />
-                                <TextBlock
-                                    Text="填写完成"
+                                <!--<TextBlock
+                                    Text="{Binding EducationInfoState}"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Foreground="{StaticResource SecondaryTextBrush}"
-                                    FontSize="12" />
+                                    FontSize="12" />-->
                             </StackPanel>
                             <TextBlock
                                 Text="&#xe76c;"

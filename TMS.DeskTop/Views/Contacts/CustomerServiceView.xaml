@@ -36,7 +36,10 @@
                         </Grid.RowDefinitions>
                         <Border BorderBrush="{StaticResource TMS_BorderBrush}" BorderThickness="0,0,0,1" />
                         <StackPanel Margin="30,0,0,0" Orientation="Horizontal">
-                            <RadioButton hc:TitleElement.Title="热门问题" Style="{StaticResource UnderlineRadioBtnStyle}" />
+                            <RadioButton
+                                IsChecked="True"
+                                hc:TitleElement.Title="热门问题"
+                                Style="{StaticResource UnderlineRadioBtnStyle}" />
                             <RadioButton
                                 Margin="20,0,0,0"
                                 hc:TitleElement.Title="最近更新"

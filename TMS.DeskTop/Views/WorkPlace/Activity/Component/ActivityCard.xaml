@@ -115,7 +115,7 @@
                         FontWeight="SemiBold"
                         FontSize="16" />
                     <TextBlock
-                        Text="informotion Techonoiogy"
+                        Text="{Binding Remark}"
                         Margin="0,5,0,0"
                         FontWeight="SemiBold"
                         FontSize="14" />

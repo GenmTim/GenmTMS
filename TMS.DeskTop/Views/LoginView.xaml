@@ -158,7 +158,7 @@
                             Orientation="Vertical"
                             Background="White">
                             <TextBlock
-                                Text="登录SuperGame"
+                                Text="登录H-AID"
                                 Margin="30,30,0,30"
                                 FontSize="25"
                                 FontWeight="Bold"

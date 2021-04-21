@@ -143,7 +143,7 @@
                                     attach:IconFontElement.Color="#ffba27"
                                     Cursor="Hand" />
                                 <RadioButton
-                                    Content="我的收藏"
+                                    Content="我的关注"
                                     Command="{Binding NavigationCmd}"
                                     CommandParameter="MyFavoriteView"
                                     Margin="0,0,0,20"

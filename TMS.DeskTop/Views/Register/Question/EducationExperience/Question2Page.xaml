@@ -28,7 +28,8 @@
                 <Button
                     Command="{Binding BackCmd}"
                     HorizontalAlignment="Left"
-                    Style="{StaticResource backBtnStyle}" Cursor="Hand" />
+                    Style="{StaticResource backBtnStyle}"
+                    Cursor="Hand" />
             </hc:SimplePanel>
             <StackPanel Grid.Row="1" Margin="10,15,10,0">
                 <StackPanel Margin="0,20,0,0">
@@ -40,7 +41,7 @@
                         FontSize="14" />
                 </StackPanel>
                 <StackPanel Margin="0,20,0,0">
-                    <TextBlock Text="就读宁波工程学院的时间段是" Style="{StaticResource titleTextStyle}" />
+                    <TextBlock Text="就读卡塞尔学院的时间段是" Style="{StaticResource titleTextStyle}" />
                     <UniformGrid Margin="0,20,-20,0" Columns="2">
                         <UniformGrid.Resources>
                             <Style BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox">

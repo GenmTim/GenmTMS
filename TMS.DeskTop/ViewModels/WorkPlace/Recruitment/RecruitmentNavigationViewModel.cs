@@ -22,7 +22,10 @@ namespace TMS.DeskTop.ViewModels.WorkPlace.Recruitment
 
         private void NavigationPage(string view)
         {
-            RegionHelper.RequestNavigate(regionManager, RegionToken.RecruitmentContent, view);
+            if (!string.IsNullOrEmpty(view))
+            {
+                RegionHelper.RequestNavigate(regionManager, RegionToken.RecruitmentContent, view);
+            }
         }
     }
 }
