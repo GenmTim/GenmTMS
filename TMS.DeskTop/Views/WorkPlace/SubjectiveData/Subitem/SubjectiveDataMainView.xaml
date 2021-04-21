@@ -210,7 +210,7 @@
                                                     Width="33"
                                                     Height="33"
                                                     Style="{StaticResource GravatarCircleImg}"
-                                                    Id="dasd" />
+                                                    Id="da4yyhifd" />
                                                 <TextBlock
                                                     Text="蔡承龙"
                                                     Margin="10,0,0,0"
@@ -221,7 +221,7 @@
                                         <hc:SimplePanel Grid.Row="1">
                                             <TextBlock TextWrapping="Wrap" Margin="0,16,0,0">
                                                 <Run Text="    " />
-                                                <Run Text="举例评价一个人的身高：阿门王身高1.8米，这是客观；阿门王是高是矮？这是主观。在普通人看来是高，在姚明看来就是矮了。然而同时必须看到。" />
+                                                <Run Text="在资源系统设计时，提出多点共享策略，这是一个非常有创意的想法，在日常工作过程中该员工叶经常想到一些有创意的点子，是一个对工作很负责的人。" />
                                             </TextBlock>
                                         </hc:SimplePanel>
                                         <hc:SimplePanel Grid.Row="2" Margin="0,10,0,0">
@@ -263,9 +263,9 @@
                                                     Width="33"
                                                     Height="33"
                                                     Style="{StaticResource GravatarCircleImg}"
-                                                    Id="dasd" />
+                                                    Id="dapp1d" />
                                                 <TextBlock
-                                                    Text="蔡承龙"
+                                                    Text="安小雪"
                                                     Margin="10,0,0,0"
                                                     VerticalAlignment="Center"
                                                     FontSize="14" />
@@ -274,7 +274,7 @@
                                         <hc:SimplePanel Grid.Row="1">
                                             <TextBlock TextWrapping="Wrap" Margin="0,16,0,0">
                                                 <Run Text="    " />
-                                                <Run Text="举例评价一个人的身高：阿门王身高1.8米，这是客观；阿门王是高是矮？这是主观。在普通人看来是高，在姚明看来就是矮了。然而同时必须看到。" />
+                                                <Run Text="在上一次公司招标时，发现招标文件的一个很重要的纰漏，值得表扬。平时在人事部门工作时，也经常替同事检查出一些文件错误，是 一个非常细心的女孩子。" />
                                             </TextBlock>
                                         </hc:SimplePanel>
                                         <hc:SimplePanel Grid.Row="2" Margin="0,10,0,0">
@@ -311,9 +311,9 @@
                                                     Width="33"
                                                     Height="33"
                                                     Style="{StaticResource GravatarCircleImg}"
-                                                    Id="dasd" />
+                                                    Id="das69d" />
                                                 <TextBlock
-                                                    Text="蔡承龙"
+                                                    Text="李新添"
                                                     Margin="10,0,0,0"
                                                     VerticalAlignment="Center"
                                                     FontSize="14" />
@@ -322,7 +322,7 @@
                                         <hc:SimplePanel Grid.Row="1">
                                             <TextBlock TextWrapping="Wrap" Margin="0,16,0,0">
                                                 <Run Text="    " />
-                                                <Run Text="举例评价一个人的身高：阿门王身高1.8米，这是客观；阿门王是高是矮？这是主观。在普通人看来是高，在姚明看来就是矮了。然而同时必须看到。" />
+                                                <Run Text="李新添所负责的劳动节活动已经完成，在活动运营中，发生服务器宕机，他及时做出补救，让公司损失减少。平时工作沉着冷静，对劳动节的活动掌握细致，即使出错也能很快补救。" />
                                             </TextBlock>
                                         </hc:SimplePanel>
                                         <hc:SimplePanel Grid.Row="2" Margin="0,10,0,0">
