@@ -519,7 +519,6 @@
                                                 </Style>
                                             </StackPanel.Resources>
                                             <Button Content="&#xe718;" />
-                                            <Button Content="&#xe6d4;" />
                                             <Button Content="&#xe7ab;" />
                                         </StackPanel>
                                     </hc:SimplePanel>
@@ -528,52 +527,52 @@
 
                             <!--  文件块  -->
                             <!--<hc:SimplePanel Grid.Row="1"
-                            Width="250"
-                            Height="100">
-                            <Border
-                                Background="White"
-                                CornerRadius="2"
-                                BorderThickness="1"
-                                BorderBrush="{StaticResource BorderBrush}" />
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*" />
-                                    <RowDefinition Height="1*" />
-                                </Grid.RowDefinitions>
-                                <hc:SimplePanel>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <Image
-                                            Width="45"
-                                            Height="45"
-                                            Margin="20,0,15,0"
-                                            RenderOptions.BitmapScalingMode="HighQuality"
-                                            Source="/Resources/Images/Icon/FileType/PPT.png" />
-                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                            <TextBlock Text="需求问题.docx" />
-                                            <TextBlock Text="上传成功" Foreground="{StaticResource SecondaryTextBrush}" />
+                                Width="250"
+                                Height="100">
+                                <Border
+                                    Background="White"
+                                    CornerRadius="2"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource BorderBrush}" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
+                                    <hc:SimplePanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Image
+                                                Width="45"
+                                                Height="45"
+                                                Margin="20,0,15,0"
+                                                RenderOptions.BitmapScalingMode="HighQuality"
+                                                Source="/Resources/Images/Icon/FileType/PPT.png" />
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                <TextBlock Text="需求问题.docx" />
+                                                <TextBlock Text="上传成功" Foreground="{StaticResource SecondaryTextBrush}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </hc:SimplePanel>
+                                    <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BorderBrush}" />
+                                    <hc:SimplePanel Grid.Row="1">
+                                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="Button" BasedOn="{StaticResource TextBtnStyle}">
+                                                    <Setter Property="FontSize" Value="12" />
+                                                    <Setter Property="Margin" Value="0,0,10,0" />
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <Button Content="打开" />
+                                            <Button Content="打开文件夹" />
+                                            <Button Content="转发" />
                                         </StackPanel>
-                                    </Grid>
-                                </hc:SimplePanel>
-                                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BorderBrush}" />
-                                <hc:SimplePanel Grid.Row="1">
-                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                        <StackPanel.Resources>
-                                            <Style TargetType="Button" BasedOn="{StaticResource TextBtnStyle}">
-                                                <Setter Property="FontSize" Value="12" />
-                                                <Setter Property="Margin" Value="0,0,10,0" />
-                                            </Style>
-                                        </StackPanel.Resources>
-                                        <Button Content="打开" />
-                                        <Button Content="打开文件夹" />
-                                        <Button Content="转发" />
-                                    </StackPanel>
-                                </hc:SimplePanel>
-                            </Grid>
-                        </hc:SimplePanel>-->
+                                    </hc:SimplePanel>
+                                </Grid>
+                            </hc:SimplePanel>-->
                         </Grid>
                         <!--<hc:SimplePanel>
                         <genm:DataDialog
@@ -587,8 +586,6 @@
                                 Style="{StaticResource TextBoxExtend}" />
                         </genm:DataDialog>
                     </hc:SimplePanel>-->
-
-
                     </hc:SimplePanel>
                 </Grid>
             </Border>
