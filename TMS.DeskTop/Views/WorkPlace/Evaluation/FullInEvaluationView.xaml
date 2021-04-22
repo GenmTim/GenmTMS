@@ -165,7 +165,10 @@
                 BorderThickness="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Button Style="{StaticResource evaluationItemBtnStyle}" />
+                        <Button
+                            Command="hc:ControlCommands.OpenLink"
+                            CommandParameter="http://10.27.73.45:8080/#/dynamicForm?id=202CB962A"
+                            Style="{StaticResource evaluationItemBtnStyle}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.ItemsPanel>

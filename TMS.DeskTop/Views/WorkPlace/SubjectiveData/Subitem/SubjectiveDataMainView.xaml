@@ -377,6 +377,8 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Button
+                                            Command="hc:ControlCommands.OpenLink"
+                                            CommandParameter="http://10.27.73.45:8080/#/dynamicForm?id=2D234B70"
                                             Height="200"
                                             Margin="0,20,0,0"
                                             Style="{StaticResource subjectiveDataItemBtnStyle}" />

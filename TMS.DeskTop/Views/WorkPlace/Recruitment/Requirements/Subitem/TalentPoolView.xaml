@@ -39,7 +39,7 @@
                                             Grid.RowSpan="2"
                                             Width="40"
                                             Height="40"
-                                            Id="{Binding Name}"
+                                            Source="{Binding Avatar}"
                                             Style="{StaticResource GravatarCircleImg}" />
                                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                                             <TextBlock
