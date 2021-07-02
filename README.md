@@ -5,7 +5,7 @@
   GenmTMS
   <br>
 </h1>
-<h4 align="center">中小微企业人才管理系统.</h4>
+<h4 align="center">小微企业跨组织人才管理系统.</h4>
 
 <p align="center">
   <a href="">
